@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:Albatross.CodeGen.Shell"
         mc:Ignorable="d"
         Title="Albatross Code Generator" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+	<DockPanel>
+		<Menu DockPanel.Dock="Top">
+			<MenuItem Header="File">
+				<MenuItem Header="Exit"/>
+			</MenuItem>
+		</Menu>
+		<TabControl />
+	</DockPanel>
 </Window>

@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.Core
 {
     public interface ICodeGenerator    {
-		string Scenario { get; }
+		string Name { get; }
+		string Category { get; }
+		string Description { get; }
 		StringBuilder Build(StringBuilder sb);
     }
 }
