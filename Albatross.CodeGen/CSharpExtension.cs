@@ -52,9 +52,6 @@ namespace Albatross.CodeGen {
 		public static StringBuilder Public(this StringBuilder sb) {
 			return sb.Append("public ");
 		}
-		public static StringBuilder Comma(this StringBuilder sb) {
-			return sb.Append(", ");
-		}
 		public static StringBuilder Override(this StringBuilder sb, string methodName) {
 			return sb.Append("override ").Append(methodName);
 		}
