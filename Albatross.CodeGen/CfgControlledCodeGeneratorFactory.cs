@@ -23,6 +23,7 @@ namespace Albatross.CodeGen {
 					foreach (Type type in asm.GetTypes()) {
 						if (typeof(ICodeGenerator).IsAssignableFrom(type) && type.GetCustomAttribute<CodeGeneratorAttribute>() != null) {
 							var item = Lifestyle.Singleton.CreateRegistration(type, c);
+						Container c;
 							list.Add(item);
 						}
 					}

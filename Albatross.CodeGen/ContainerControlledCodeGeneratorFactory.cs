@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
-	public class CodeGeneratorFactory : ICodeGeneratorFactory {
+	public class ContainerControlledCodeGeneratorFactory : ICodeGeneratorFactory {
 		Dictionary<string, ICodeGenerator> _registration = new Dictionary<string, ICodeGenerator>();
 
-		public CodeGeneratorFactory(IEnumerable<ICodeGenerator> items) {
+		public ContainerControlledCodeGeneratorFactory(IEnumerable<ICodeGenerator> items) {
 			foreach (var item in items) {
 				Type type = item.GetType();
 				Type paramType = null;

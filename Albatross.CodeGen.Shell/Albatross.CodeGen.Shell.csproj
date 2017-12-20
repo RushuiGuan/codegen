@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CodeGeneratorFactory.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SettingRepository.cs" />
     <Compile Include="ViewModel\CodeGenerator.cs" />
@@ -111,6 +112,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Albatross.CodeGen.SqlServer\Albatross.CodeGen.SqlServer.csproj">
+      <Project>{0bd5819b-933b-4704-8aa4-d64153f819da}</Project>
+      <Name>Albatross.CodeGen.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj">
+      <Project>{b99b890a-0fc3-4744-b880-416665e9580a}</Project>
+      <Name>Albatross.CodeGen</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

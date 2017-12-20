@@ -53,7 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeGeneratorFactory.cs" />
+    <Compile Include="CodeGeneratorAttribute.cs" />
+    <Compile Include="CfgControlledCodeGeneratorFactory.cs" />
+    <Compile Include="ContainerControlledCodeGeneratorFactory.cs" />
+    <Compile Include="CodeGeneratorLocations.cs" />
     <Compile Include="CodeGenNotRegisteredException.cs" />
     <Compile Include="Composite.cs" />
     <Compile Include="CompositeCodeGenrator.cs" />
