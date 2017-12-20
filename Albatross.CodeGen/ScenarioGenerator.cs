@@ -15,12 +15,10 @@ namespace Albatross.CodeGen {
 
 		public StringBuilder Build(StringBuilder sb, Scenario t, ICodeGeneratorFactory factory) {
 			foreach (Step step in t.Steps) {
-				Type type = Type.GetType(step.SourceType);
-				object obj = JsonConvert.DeserializeObject(step.Source, type);
-				if (type == typeof(Scenario)) {
-					this.Build(sb, (Scenario)obj, factory);
+				if (step.SourceType == typeof(Scenario)) {
+					this.Build(sb, (Scenario)step.Source, factory);
 				} else {
-					string key = type.GetGeneratorName(step.Generator);
+					string key = step.SourceType.GetGeneratorName(step.Generator);
 				}
 			}
 			return sb;

@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.CSharp;
 using Albatross.CodeGen.Database;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -20,10 +21,11 @@ namespace Albatross.CodeGen {
 		}
 
 		public static string GetConnectionString(this Table table) {
-			SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-			builder.DataSource = table.Server.DataSource;
-			builder.InitialCatalog = table.Server.InitialCatalog;
-			builder.IntegratedSecurity = true;
+			SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder {
+				DataSource = table.Server.DataSource,
+				InitialCatalog = table.Server.InitialCatalog,
+				IntegratedSecurity = true
+			};
 			return builder.ToString();
 		}
 
@@ -38,6 +40,24 @@ namespace Albatross.CodeGen {
 		public static Type LoadType(this ObjectType objType) {
 			Assembly asm = Assembly.ReflectionOnlyLoadFrom(objType.AssemblyLocation);
 			return asm.GetType(objType.ClassName);
+		}
+
+		public static Step Deserialize(string json) {
+			StepDefinition def = JsonConvert.DeserializeObject<StepDefinition>(json);
+			Step step = new Step {
+				SourceType = Type.GetType(def.SourceType),
+				Generator = def.Generator,
+			};
+			step.Source = JsonConvert.DeserializeObject(def.Source, step.SourceType);
+			return step;
+		}
+		public static string Serialize(this Step step) {
+			StepDefinition def = new StepDefinition {
+				SourceType = step.SourceType.FullName,
+				Source = JsonConvert.SerializeObject(step.Source),
+				Generator = step.Generator,
+			};
+			return JsonConvert.SerializeObject(def);
 		}
 	}
 }

@@ -32,9 +32,8 @@ namespace Albatross.CodeGen {
 
 		public ICodeGenerator<T> Get<T>(string name) {
 			string key = typeof(T).GetGeneratorName(name);
-			ICodeGenerator codeGenerator;
-			if (_registration.TryGetValue(key, out codeGenerator)) {
-				return (ICodeGenerator<T>) codeGenerator;
+			if (_registration.TryGetValue(key, out ICodeGenerator codeGenerator)) {
+				return (ICodeGenerator<T>)codeGenerator;
 			} else {
 				throw new CodeGenNotRegisteredException(typeof(T), name);
 			}
@@ -42,8 +41,7 @@ namespace Albatross.CodeGen {
 
 		public ICodeGenerator Get(Type type, string name) {
 			string key = type.GetGeneratorName(name);
-			ICodeGenerator codeGenerator;
-			if (_registration.TryGetValue(key, out codeGenerator)) {
+			if (_registration.TryGetValue(key, out ICodeGenerator codeGenerator)) {
 				return codeGenerator;
 			} else {
 				throw new CodeGenNotRegisteredException(type, name);
