@@ -10,12 +10,12 @@ namespace Albatross.CodeGen.SqlServer {
 		public override string Description => "Composite: merge statement with the source joined by the identity column";
 
 
-		public override StringBuilder Build(StringBuilder sb, Table t, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table t, object options, ICodeGeneratorFactory factory) {
 			sb.Append("merge ").EscapeName(t.Schema).Dot().EscapeName(t.Name).Append(" as dst").AppendLine();
-			factory.Get<Table>("table_merge_select").Build(sb, t, factory).Space();
-			factory.Get<Table>("table_merge_join_by_id").Build(sb, t, factory).AppendLine();
-			factory.Get<Table>("table_merge_update").Build(sb, t, factory).AppendLine();
-			factory.Get<Table>("table_merge_insert").Build(sb, t, factory);
+			factory.Get<Table>("table_merge_select").Build(sb, t, options, factory).Space();
+			factory.Get<Table>("table_merge_join_by_id").Build(sb, t, options, factory).AppendLine();
+			factory.Get<Table>("table_merge_update").Build(sb, t, options, factory).AppendLine();
+			factory.Get<Table>("table_merge_insert").Build(sb, t, options, factory);
 			sb.Semicolon();
 			return sb;
 		}

@@ -38,7 +38,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			StringBuilder sb = new StringBuilder();
 			TableMergeByID builder = container.GetInstance<TableMergeByID>();
-			builder.Build(sb, new Table { Schema = "schema", Name = "table", }, container.GetInstance<ICodeGeneratorFactory>());
+			builder.Build(sb, new Table { Schema = "schema", Name = "table", }, null, container.GetInstance<ICodeGeneratorFactory>());
 			Assert.AreEqual(@"merge [schema].[table] as dst
 using (
 	select

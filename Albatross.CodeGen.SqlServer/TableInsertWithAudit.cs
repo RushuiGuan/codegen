@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public override string Description => "Insert statement with database populated audit fields such as createdby, modifiedby, created and modified";
 
 
-		public override StringBuilder Build(StringBuilder sb, Table table, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table table, object options, ICodeGeneratorFactory factory) {
 
 			Column[] columns = (from c in _getTableColumns.Get(table) where !c.IdentityColumn && !c.ComputedColumn select c).ToArray();
 			if (columns.Length == 0) {

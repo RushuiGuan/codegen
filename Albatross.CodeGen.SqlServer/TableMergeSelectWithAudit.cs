@@ -24,7 +24,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public override string Name => "table_merge_select_w_audit";
 		public override string Description => "Merge statement select clause with audit fields";
 
-		public override StringBuilder Build(StringBuilder sb, Table table, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table table, object options, ICodeGeneratorFactory factory) {
 			IEnumerable<Column> columns = _getColumns.Get(table);
 			if (columns.Count() == 0) {
 				throw new ColumnNotFoundException(table);

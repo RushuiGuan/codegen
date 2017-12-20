@@ -1,6 +1,8 @@
-﻿using SimpleInjector;
+﻿using Albatross.CodeGen.Shell.ViewModel;
+using SimpleInjector;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,25 +20,26 @@ namespace Albatross.CodeGen.Shell {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window {
+	public partial class MainWindow : Window , IWorkspaceService{
+		IObjectFactory factory;
 		public MainWindow() {
 			InitializeComponent();
-			Build();
+			DataContext = this;
+			Container container = new ConfigContainer().Run();
+			container.RegisterSingleton<IWorkspaceService>(this);
+			container.Verify();
+
+			factory = container.GetInstance<IObjectFactory>();
+			Create<CodeGeneratorCollectionViewModel>(args => args.Load());
 		}
 
-		void Build() {
-			Container c = new Container();
-			new SqlServer.Pack().RegisterServices(c);
+		public ObservableCollection<WorkspaceViewModel> Items { get; } = new ObservableCollection<WorkspaceViewModel>();
 
-			SettingRepository repo = new SettingRepository();
-			c.RegisterSingleton<SettingRepository>(repo);
-			Settings settings = repo.Get();
-			if (settings.GeneratorAssemblyLocations != null) {
-				foreach (var location in settings.GeneratorAssemblyLocations) {
-				}
-			}
-
-			new Pack().RegisterServices(c);
+		public void Create<T>(Action<T> action) where T: WorkspaceViewModel {
+			T t = factory.Create<T>();
+			Items.Add(t);
+			action?.Invoke(t);
+			t.IsSelected = true;
 		}
 	}
 }

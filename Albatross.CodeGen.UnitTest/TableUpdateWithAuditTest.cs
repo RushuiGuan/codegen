@@ -28,7 +28,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			StringBuilder sb = new StringBuilder();
 			TableUpdateWithAudit handle = container.GetInstance<TableUpdateWithAudit>();
-			string result = handle.Build(sb, new Table { Schema = "schema", Name = "table", }, null).ToString();
+			string result = handle.Build(sb, new Table { Schema = "schema", Name = "table", }, null, null).ToString();
 			Assert.AreEqual(@"update [schema].[table] set
 	[a] = @a,
 	[b] = @b", result);
@@ -54,7 +54,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			StringBuilder sb = new StringBuilder();
 			TableUpdateWithAudit handle = container.GetInstance<TableUpdateWithAudit>();
-			string result = handle.Build(sb, new Table { Schema = "schema", Name = "table", }, null).ToString();
+			string result = handle.Build(sb, new Table { Schema = "schema", Name = "table", }, null, null).ToString();
 			Assert.AreEqual(@"update [schema].[table] set
 	[a] = @a,
 	[b] = @b,
@@ -99,7 +99,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			StringBuilder sb = new StringBuilder();
 			TableUpdateWithAudit handle = container.GetInstance<TableUpdateWithAudit>();
-			sb = handle.Build(sb, new Table { Schema = "schema", Name = "table", }, container.GetInstance<ICodeGeneratorFactory>());
+			sb = handle.Build(sb, new Table { Schema = "schema", Name = "table", }, null, container.GetInstance<ICodeGeneratorFactory>());
 			Assert.AreEqual(@"update [schema].[table] set
 	[a] = @a,
 	[b] = @b,

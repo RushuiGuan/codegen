@@ -64,7 +64,6 @@
     <Compile Include="Pack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableCodeGenerator.cs" />
-    <Compile Include="TableCompositeGenerator.cs" />
     <Compile Include="TableDelete.cs" />
     <Compile Include="TableInsert.cs" />
     <Compile Include="TableInsertWithAudit.cs" />

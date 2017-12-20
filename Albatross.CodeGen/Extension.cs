@@ -31,34 +31,19 @@ namespace Albatross.CodeGen {
 		}
 
 		public static string GetGeneratorName(this Type type, string name) {
-			if (type == null) {
+			if (type == typeof(object) || type == null) {
 				return name;
 			} else {
 				return $"{type.FullName}.{name}";
 			}
 		}
+		public static string GetName(this ICodeGenerator codeGenerator) {
+			return codeGenerator.SourceType.GetGeneratorName(codeGenerator.Name);
+		}
 
 		public static Type LoadType(this ObjectType objType) {
 			Assembly asm = Assembly.ReflectionOnlyLoadFrom(objType.AssemblyLocation);
 			return asm.GetType(objType.ClassName);
-		}
-
-		public static Step Deserialize(string json) {
-			StepDefinition def = JsonConvert.DeserializeObject<StepDefinition>(json);
-			Step step = new Step {
-				SourceType = Type.GetType(def.SourceType),
-				Generator = def.Generator,
-			};
-			step.Source = JsonConvert.DeserializeObject(def.Source, step.SourceType);
-			return step;
-		}
-		public static string Serialize(this Step step) {
-			StepDefinition def = new StepDefinition {
-				SourceType = step.SourceType.FullName,
-				Source = JsonConvert.SerializeObject(step.Source),
-				Generator = step.Generator,
-			};
-			return JsonConvert.SerializeObject(def);
 		}
 
 		public static IEnumerable<Registration> FindCodeGenerator(this Container c, Assembly asm) {
@@ -70,6 +55,18 @@ namespace Albatross.CodeGen {
 				}
 			}
 			return list;
+		}
+
+		public static Composite NewSqlTableComposite(string name, string description, params string[] generators) {
+			return new Composite {
+				SourceType = typeof(Table),
+				Name = name,
+				Description = description,
+				Category = "Sql Server",
+				Target = "sql",
+				Generators = generators,
+				Seperator = "\r'n",
+			};
 		}
 	}
 }

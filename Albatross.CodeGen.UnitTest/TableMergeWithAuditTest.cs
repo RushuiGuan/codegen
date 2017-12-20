@@ -29,7 +29,7 @@ namespace Albatross.CodeGen.UnitTest {
 			container.Register<IGetTableColumns>(() => mock.Object, Lifestyle.Singleton);
 			StringBuilder sb = new StringBuilder();
 			TableMergeSelectWithAudit builder = container.GetInstance<TableMergeSelectWithAudit>();
-			builder.Build(sb, null, container.GetInstance<ICodeGeneratorFactory>());
+			builder.Build(sb, null, null, container.GetInstance<ICodeGeneratorFactory>());
 			Assert.AreEqual(@"using (
 	select
 		@a as [a],
@@ -72,7 +72,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			StringBuilder sb = new StringBuilder();
 			TableMergeSelectWithAudit builder = container.GetInstance<TableMergeSelectWithAudit>();
-			builder.Build(sb, null, container.GetInstance<ICodeGeneratorFactory>());
+			builder.Build(sb, new Table { Schema = "schema", Name = "table", }, null, container.GetInstance<ICodeGeneratorFactory>());
 			Assert.AreEqual(@"using (
 	select
 		@a as [a],

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Shell.ViewModel {
 	public class CodeGenerator : ViewModelBase {
+		public bool UserDefined { get; set; }
 
 		string _name;
 		public string Name {
@@ -54,6 +55,18 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 				}
 			}
 		}
+
+		string _type;
+		public string Type {
+			get { return _type; }
+			set {
+				if (value != _type) {
+					_type = value;
+					RaisePropertyChanged(nameof(Type));
+				}
+			}
+		}
+
 
 
 		string _location;

@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public override string Description => "Default delete statement";
 		public override string Name => "table_delete";
 
-		public override StringBuilder Build(StringBuilder sb, Table t, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table t, object options, ICodeGeneratorFactory factory) {
 			return sb.Append($"delete from [{t.Schema}].[{t.Name}]");
 		}
 	}

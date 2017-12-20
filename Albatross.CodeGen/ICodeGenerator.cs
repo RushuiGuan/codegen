@@ -10,11 +10,12 @@ namespace Albatross.CodeGen {
 		string Category { get; }
 		string Description { get; }
 		string Target { get; }
+		Type SourceType { get; }
 
-		StringBuilder Build(StringBuilder sb, object t, ICodeGeneratorFactory factory);
+		StringBuilder Build(StringBuilder sb, object t, object options, ICodeGeneratorFactory factory);
 	}
 
 	public interface ICodeGenerator<T> : ICodeGenerator {
-		StringBuilder Build(StringBuilder sb, T t, ICodeGeneratorFactory factory);
+		StringBuilder Build(StringBuilder sb, T t, object optinos, ICodeGeneratorFactory factory);
 	}
 }

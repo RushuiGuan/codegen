@@ -38,7 +38,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			ICodeGenerator<Table> builder = container.GetInstance<ICodeGeneratorFactory>().Get<Table>("table_update_by_primarykey");
 			StringBuilder sb = new StringBuilder();
-			builder.Build(sb, new Table { Schema = "schema", Name = "table", }, container.GetInstance<ICodeGeneratorFactory>());
+			builder.Build(sb, new Table { Schema = "schema", Name = "table", }, null, container.GetInstance<ICodeGeneratorFactory>());
 			Assert.AreEqual(@"update [schema].[table] set
 	[a] = @a,
 	[b] = @b,
@@ -53,7 +53,7 @@ where
 
 			ICodeGenerator<Table> builder = container.GetInstance<ICodeGeneratorFactory>().Get<Table>("table_update_by_primarykey");
 			StringBuilder sb = new StringBuilder();
-			builder.Build(sb, new Table { Schema = "schema", Name = "table", }, container.GetInstance<ICodeGeneratorFactory>());
+			builder.Build(sb, new Table { Schema = "schema", Name = "table", }, null, container.GetInstance<ICodeGeneratorFactory>());
 			Assert.AreEqual(@"update [schema].[table] set
 	[c] = @c,
 	[d] = @d

@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Shell {
-	public class CodeGeneratorFactory {
-		public CodeGeneratorFactory(SettingRepository settingRepository) {
-		}
+	public class CodeGeneratorLocations : List<string>{
 	}
 }

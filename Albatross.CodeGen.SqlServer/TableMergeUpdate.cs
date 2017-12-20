@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public override string Name => "table_merge_update";
 		public override string Description => "Table merge update clause";
 
-		public override StringBuilder Build(StringBuilder sb, Table table, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table table, object options, ICodeGeneratorFactory factory) {
 			Column[] columns = (from c in _getColumns.Get(table)
 								orderby c.OrdinalPosition ascending, c.Name ascending
 								where !c.ComputedColumn && !c.IdentityColumn

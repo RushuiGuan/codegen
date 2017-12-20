@@ -14,10 +14,12 @@ namespace Albatross.CodeGen.SqlServer {
 		public string Category => "Sql Server";
 		public string Target => "sql";
 
-		public abstract StringBuilder Build(StringBuilder sb, Table t, ICodeGeneratorFactory factory);
+		public Type SourceType => typeof(Table);
 
-		public StringBuilder Build(StringBuilder sb, object t, ICodeGeneratorFactory factory) {
-			return Build(sb, (Table)t, factory);
+		public abstract StringBuilder Build(StringBuilder sb, Table t, object options, ICodeGeneratorFactory factory);
+
+		public StringBuilder Build(StringBuilder sb, object t, object options, ICodeGeneratorFactory factory) {
+			return Build(sb, (Table)t, options, factory);
 		}
 	}
 }

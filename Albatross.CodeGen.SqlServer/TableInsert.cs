@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public override string Name => "table_insert";
 		public override string Description => "Insert statement that excludes the computed columns";
 
-		public override StringBuilder Build(StringBuilder sb, Table table, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table table, object options, ICodeGeneratorFactory factory) {
 			Column[] columns = (from c in _getTableColumns.Get(table) where !c.IdentityColumn && !c.ComputedColumn select c).ToArray();
 			if (columns.Length == 0) {
 				throw new ColumnNotFoundException(table.Schema, table.Name);

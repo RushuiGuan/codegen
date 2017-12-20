@@ -54,12 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeGeneratorAttribute.cs" />
-    <Compile Include="CfgControlledCodeGeneratorFactory.cs" />
-    <Compile Include="ContainerControlledCodeGeneratorFactory.cs" />
-    <Compile Include="CodeGeneratorLocations.cs" />
+    <Compile Include="ContainerControlledCodeGenFactory.cs" />
     <Compile Include="CodeGenNotRegisteredException.cs" />
     <Compile Include="Composite.cs" />
-    <Compile Include="CompositeCodeGenrator.cs" />
+    <Compile Include="CompositeCodeGenerator.cs" />
     <Compile Include="CSharpExtension.cs" />
     <Compile Include="CSharp\ObjectType.cs" />
     <Compile Include="Database\BuiltInColumn.cs" />
@@ -90,7 +88,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLExtension.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\logging\Albatross.Logging.Core\Albatross.Logging.Core.csproj">
+      <Project>{20b28674-b5ae-4762-a10a-d0185f556e1c}</Project>
+      <Name>Albatross.Logging.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

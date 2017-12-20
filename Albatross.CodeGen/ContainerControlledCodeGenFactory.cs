@@ -6,29 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
-	public class ContainerControlledCodeGeneratorFactory : ICodeGeneratorFactory {
+	public class ContainerControlledCodeGenFactory : ICodeGeneratorFactory {
 		Dictionary<string, ICodeGenerator> _registration = new Dictionary<string, ICodeGenerator>();
 
-		public ContainerControlledCodeGeneratorFactory(IEnumerable<ICodeGenerator> items) {
+		public ContainerControlledCodeGenFactory(IEnumerable<ICodeGenerator> items) {
 			foreach (var item in items) {
-				Type type = item.GetType();
-				Type paramType = null;
-
-				foreach (var interfaceType in type.GetInterfaces()) {
-					if (interfaceType.IsGenericType && typeof(ICodeGenerator<>) == interfaceType.GetGenericTypeDefinition()) {
-						paramType = interfaceType.GetGenericArguments()?.FirstOrDefault();
-						break;
-					}
-				}
-				string key;
-				if (paramType == null) {
-					key = item.Name;
-				} else {
-					key = $"{paramType.FullName}.{item.Name}";
-				}
+				string key = item.GetName();
 				_registration.Add(key, item);
 			}
 		}
+
+		public IEnumerable<ICodeGenerator> Registrations => _registration.Values;
 
 		public ICodeGenerator<T> Get<T>(string name) {
 			string key = typeof(T).GetGeneratorName(name);

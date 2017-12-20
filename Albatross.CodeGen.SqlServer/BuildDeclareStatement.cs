@@ -21,7 +21,9 @@ namespace Albatross.CodeGen.SqlServer {
 		public string Description => "Create a declare statement based on the parameters";
 		public string Target => "sql";
 
-		public StringBuilder Build(StringBuilder sb, ParamCollection list, ICodeGeneratorFactory factory) {
+		public Type SourceType => typeof(ParamCollection);
+
+		public StringBuilder Build(StringBuilder sb, ParamCollection list, object options, ICodeGeneratorFactory factory) {
 			sb.AppendLine("declare");
 			foreach (var pair in list) {
 				sb.Tab().Append(pair.Key).Append(" as ");
@@ -35,8 +37,8 @@ namespace Albatross.CodeGen.SqlServer {
 			return sb;
 		}
 
-		public StringBuilder Build(StringBuilder sb, object t, ICodeGeneratorFactory factory) {
-			return this.Build(sb, (ParamCollection)t, factory);
+		public StringBuilder Build(StringBuilder sb, object t, object options, ICodeGeneratorFactory factory) {
+			return this.Build(sb, (ParamCollection)t, options, factory);
 		}
 	}
 }

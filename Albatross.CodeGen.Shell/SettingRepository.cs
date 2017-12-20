@@ -14,11 +14,11 @@ namespace Albatross.CodeGen.Shell {
 		string _path;
 
 		public SettingRepository() {
-			string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + FolderName;
+			string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "\\" + FolderName;
 			if (!Directory.Exists(path)){
 				Directory.CreateDirectory(path);
 			}
-			_path = path + SettingsFileName;
+			_path = path + "\\" + SettingsFileName;
 		}
 
 		public Settings Get() {

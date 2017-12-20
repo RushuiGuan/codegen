@@ -24,7 +24,7 @@ namespace Albatross.CodeGen.SqlServer {
 		}
 
 
-		public override StringBuilder Build(StringBuilder sb, Table t, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table t, object options, ICodeGeneratorFactory factory) {
 			sb.Append($"update [{t.Schema}].[{t.Name}] set").AppendLine();
 			Column[] columns = (from c in _getTableColumns.Get(t).ToArray()
 								where !c.IdentityColumn && !c.ComputedColumn

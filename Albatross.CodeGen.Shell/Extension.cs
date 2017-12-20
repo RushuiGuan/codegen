@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Albatross.CodeGen {
-	public class CodeGeneratorLocations : List<string>{
+namespace Albatross.CodeGen.Shell {
+	public static class Extension {
+		
 	}
 }

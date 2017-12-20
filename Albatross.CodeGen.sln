@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.UnitTest"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.SqlServer", "Albatross.CodeGen.SqlServer\Albatross.CodeGen.SqlServer.csproj", "{0BD5819B-933B-4704-8AA4-D64153F819DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.Logging.Core", "..\logging\Albatross.Logging.Core\Albatross.Logging.Core.csproj", "{20B28674-B5AE-4762-A10A-D0185F556E1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.Logging", "..\logging\Albatross.Logging\Albatross.Logging.csproj", "{7EE2CA03-E0B3-4672-8E34-481087ECA46E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{0BD5819B-933B-4704-8AA4-D64153F819DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BD5819B-933B-4704-8AA4-D64153F819DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BD5819B-933B-4704-8AA4-D64153F819DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20B28674-B5AE-4762-A10A-D0185F556E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20B28674-B5AE-4762-A10A-D0185F556E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20B28674-B5AE-4762-A10A-D0185F556E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20B28674-B5AE-4762-A10A-D0185F556E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EE2CA03-E0B3-4672-8E34-481087ECA46E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EE2CA03-E0B3-4672-8E34-481087ECA46E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EE2CA03-E0B3-4672-8E34-481087ECA46E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EE2CA03-E0B3-4672-8E34-481087ECA46E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

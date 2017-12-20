@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.SqlServer {
 			_getVariableName = getVariableName;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, Table t, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table t, object options, ICodeGeneratorFactory factory) {
 			sb.Append($"update [{t.Schema}].[{t.Name}] set").AppendLine();
 			IEnumerable<string> primaryKey = from c in _getPrimary.Get(t) select c.Name;
 

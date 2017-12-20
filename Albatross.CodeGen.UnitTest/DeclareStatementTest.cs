@@ -37,7 +37,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(GetTestCase))]
 		public string Build(ParamCollection @params) {
 			BuildDeclareStatement handle = Container.GetInstance<BuildDeclareStatement>();
-			return handle.Build(new StringBuilder(), @params, null).ToString();
+			return handle.Build(new StringBuilder(), @params, null, null).ToString();
 		}
 	}
 }

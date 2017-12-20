@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.UnitTest {
 				},
 			});
 			StringBuilder sb = new StringBuilder();
-			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table { Schema = "schema", Name = "table", },  null);
+			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table { Schema = "schema", Name = "table", }, null, null);
 			Assert.AreEqual(@"insert into [schema].[table] (
 	[a],
 	[b]
@@ -41,7 +41,7 @@ namespace Albatross.CodeGen.UnitTest {
 				}
 			});
 			StringBuilder sb = new StringBuilder();
-			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table { Schema = "schema", Name = "table", }, null);
+			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table { Schema = "schema", Name = "table", }, null, null);
 			Assert.AreEqual(@"insert into [schema].[table] (
 	[a]
 ) values (
@@ -65,7 +65,7 @@ namespace Albatross.CodeGen.UnitTest {
 				},
 			});
 			StringBuilder sb = new StringBuilder();
-			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table { Schema = "schema", Name = "table", }, null);
+			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table { Schema = "schema", Name = "table", }, null, null);
 			Assert.AreEqual(@"insert into [schema].[table] (
 	[a],
 	[c]
@@ -91,7 +91,7 @@ namespace Albatross.CodeGen.UnitTest {
 				},
 			});
 			StringBuilder sb = new StringBuilder();
-			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table { Schema = "schema", Name = "table", }, null);
+			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table { Schema = "schema", Name = "table", }, null, null);
 			Assert.AreEqual(@"insert into [schema].[table] (
 	[a],
 	[c]

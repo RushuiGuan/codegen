@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.SqlServer {
 			_getPrimaryKey = getPrimaryKey;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, Table table, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table table, object options, ICodeGeneratorFactory factory) {
 			IEnumerable<Column> keys = _getPrimaryKey.Get(table);
 			if (keys.Count() == 0) {
 				throw new PrimaryKeyNotFoundException(table.Schema, table.Name);

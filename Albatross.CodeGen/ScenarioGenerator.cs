@@ -13,19 +13,22 @@ namespace Albatross.CodeGen {
 		public string Description => null;
 		public string Target => null;
 
-		public StringBuilder Build(StringBuilder sb, Scenario t, ICodeGeneratorFactory factory) {
+		public Type SourceType => typeof(Scenario);
+
+		public StringBuilder Build(StringBuilder sb, Scenario t, object options, ICodeGeneratorFactory factory) {
 			foreach (Step step in t.Steps) {
 				if (step.SourceType == typeof(Scenario)) {
-					this.Build(sb, (Scenario)step.Source, factory);
+					this.Build(sb, (Scenario)step.Source, options, factory);
 				} else {
-					string key = step.SourceType.GetGeneratorName(step.Generator);
+					ICodeGenerator gen = factory.Get(step.SourceType, step.Generator);
+					gen.Build(sb, step.Source, step.Options, factory);
 				}
 			}
 			return sb;
 		}
 
-		public StringBuilder Build(StringBuilder sb, object t, ICodeGeneratorFactory factory) {
-			return Build(sb, t, factory);
+		public StringBuilder Build(StringBuilder sb, object t, object options, ICodeGeneratorFactory factory) {
+			return Build(sb, t, options, factory);
 		}
 	}
 }

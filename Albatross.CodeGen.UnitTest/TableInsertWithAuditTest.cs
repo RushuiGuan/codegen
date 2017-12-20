@@ -28,7 +28,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			StringBuilder sb = new StringBuilder();
 			TableInsertWithAudit handle = container.GetInstance<TableInsertWithAudit>();
-			string result = handle.Build(sb, new Table { Schema = "schema", Name = "table"}, container.GetInstance<ICodeGeneratorFactory>()).ToString();
+			string result = handle.Build(sb, new Table { Schema = "schema", Name = "table"}, null, container.GetInstance<ICodeGeneratorFactory>()).ToString();
 			Assert.AreEqual(@"insert into [schema].[table] (
 	[a],
 	[b]
@@ -58,7 +58,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			StringBuilder sb = new StringBuilder();
 			TableInsertWithAudit handle = container.GetInstance<TableInsertWithAudit>();
-			string result = handle.Build(sb, new Table { Schema = "schema", Name = "table" }, container.GetInstance<ICodeGeneratorFactory>()).ToString();
+			string result = handle.Build(sb, new Table { Schema = "schema", Name = "table" }, null, container.GetInstance<ICodeGeneratorFactory>()).ToString();
 			Assert.AreEqual(@"insert into [schema].[table] (
 	[a],
 	[b],
@@ -108,7 +108,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			StringBuilder sb = new StringBuilder();
 			TableInsertWithAudit handle = container.GetInstance<TableInsertWithAudit>();
-			sb = handle.Build(sb, new Table { Schema = "schema", Name = "table" }, container.GetInstance<ICodeGeneratorFactory>());
+			sb = handle.Build(sb, new Table { Schema = "schema", Name = "table" }, null, container.GetInstance<ICodeGeneratorFactory>());
 			Assert.AreEqual(@"insert into [schema].[table] (
 	[a],
 	[b],

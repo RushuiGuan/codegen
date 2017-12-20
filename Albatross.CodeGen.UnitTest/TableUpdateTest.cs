@@ -36,7 +36,7 @@ namespace Albatross.CodeGen.UnitTest {
 				}
 			});
 			StringBuilder sb = new StringBuilder();
-			new TableUpdate(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table() { Schema = "schema", Name = "table" }, null);
+			new TableUpdate(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table() { Schema = "schema", Name = "table" }, null, null);
 			Assert.AreEqual(@"update [schema].[table] set
 	[a] = @a,
 	[b] = @b", sb.ToString());
@@ -54,7 +54,7 @@ namespace Albatross.CodeGen.UnitTest {
 				}
 			});
 			StringBuilder sb = new StringBuilder();
-			new TableUpdate(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table() { Schema = "schema", Name = "table" }, null);
+			new TableUpdate(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table() { Schema = "schema", Name = "table" }, null, null);
 			Assert.AreEqual(@"update [schema].[table] set
 	[a] = @a", sb.ToString());
 		}
@@ -79,7 +79,7 @@ namespace Albatross.CodeGen.UnitTest {
 				}
 			});
 			StringBuilder sb = new StringBuilder();
-			new TableUpdate(getColumns.Object, new GetSqlVariableName()).Build(sb,new Table() { Schema = "schema", Name = "table" }, null);
+			new TableUpdate(getColumns.Object, new GetSqlVariableName()).Build(sb,new Table() { Schema = "schema", Name = "table" }, null, null);
 			Assert.AreEqual(@"update [schema].[table] set
 	[a] = @a,
 	[c] = @c", sb.ToString());
