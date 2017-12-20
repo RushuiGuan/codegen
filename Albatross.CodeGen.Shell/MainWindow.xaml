@@ -5,13 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Albatross.CodeGen.Shell"
         mc:Ignorable="d"
-        Title="Albatross Code Generator" Height="350" Width="525">
+        Title="Albatross Code Generator" Height="350" Width="800" Padding="0" Margin="0">
+
 	<DockPanel>
 		<Menu DockPanel.Dock="Top">
 			<MenuItem Header="File">
 				<MenuItem Header="Exit"/>
 			</MenuItem>
+			<MenuItem Header="Settings">
+			</MenuItem>
 		</Menu>
-		<TabControl />
+		<Border Margin="5" BorderBrush="Silver">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="300"/>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+
+				<TabControl Grid.Column="0">
+					<TabItem Header="">
+
+					</TabItem>
+				</TabControl>
+
+				<GridSplitter Grid.Column="1" Background="Silver" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="5"/>
+
+				<TabControl Grid.Column="2">
+					<TabItem Header="Code Generators">
+						<DockPanel>
+							<ToolBar DockPanel.Dock="Top">
+								<Button Content="Refresh" />
+								<Button Content="New" />
+								<Separator/>
+								<Button Content="Delete"/>
+							</ToolBar>
+							<DataGrid>
+								<DataGrid.Columns>
+									<DataGridTextColumn Header="Category" Binding="{Binding Category}"/>
+									<DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+									<DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+									<DataGridTextColumn Header="Target" Binding="{Binding Target}"/>
+									<DataGridTextColumn Header="Location"/>
+								</DataGrid.Columns>
+							</DataGrid>
+						</DockPanel>
+					</TabItem>
+					<TabItem Header="Scenarios">
+						<DockPanel>
+							<ToolBar DockPanel.Dock="Top">
+								<Button Content="New" />
+							</ToolBar>
+							<DataGrid>
+							</DataGrid>
+						</DockPanel>
+					</TabItem>
+				</TabControl>
+			</Grid>
+		</Border>
 	</DockPanel>
 </Window>

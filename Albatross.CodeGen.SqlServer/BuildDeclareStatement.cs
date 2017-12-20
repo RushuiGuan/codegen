@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
+	[CodeGenerator]
 	public class BuildDeclareStatement : ICodeGenerator<ParamCollection>{
 
 		IColumnSqlTypeBuilder _typeBuilder;

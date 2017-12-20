@@ -14,12 +14,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public void RegisterServices(Container container) {
 
 			List<Registration> registrations = new List<Registration>();
-			foreach (Type type in this.GetType().Assembly.GetTypes()) {
-				if (typeof(ICodeGenerator).IsAssignableFrom(type) && type != typeof(TableCodeGenerator) && type != typeof(TableCompositeGenerator)) {
-					var item = Lifestyle.Singleton.CreateRegistration(type, container);
-					registrations.Add(item);
-				}
-			}
+			
 
 			registrations.Add(Lifestyle.Singleton.CreateRegistration<ICodeGenerator>(() => new TableCompositeGenerator("table_delete_default_by_id", null, "table_where_by_id"), container));
 			registrations.Add(Lifestyle.Singleton.CreateRegistration<ICodeGenerator>(() => new TableCompositeGenerator("table_delete_default_by_primarykey", null, "table_delete", "table_where_by_primarykey"), container));

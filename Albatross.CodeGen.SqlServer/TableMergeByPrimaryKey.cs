@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
+	[CodeGenerator]
 	public class TableMergeByPrimaryKey : TableCodeGenerator {
 		public override string Name => "table_merge_by_primarykey";
 		public override string Description => "Composite: merge statement with the source joined by the primary key columns";

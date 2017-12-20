@@ -9,7 +9,7 @@ using SimpleInjector;
 namespace Albatross.CodeGen {
 	public class Pack : IPackage {
 		public void RegisterServices(Container container) {
-			container.Register<ICodeGeneratorFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
+			container.Register<ICodeGeneratorFactory, ContainerControlledCodeGeneratorFactory>(Lifestyle.Singleton);
 		}
 	}
 }

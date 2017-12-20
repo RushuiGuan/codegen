@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
+	[CodeGenerator]
 	public class TableMergeSelectWithAudit : TableCodeGenerator {
 		IGetTableColumns _getColumns;
 		IGetVariableName _getVariableName;

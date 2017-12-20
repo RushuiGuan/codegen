@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
+	[CodeGenerator]
 	public class TableSelect : TableCodeGenerator{
 		IGetTableColumns _getTableColumns;
 

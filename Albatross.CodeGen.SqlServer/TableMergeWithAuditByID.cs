@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
+	[CodeGenerator]
 	public class TableMergeWithAuditByID : TableCodeGenerator {
 
 		public override string Name => "table_merge_w_audit_by_id";
