@@ -28,9 +28,7 @@ namespace Albatross.CodeGen.Shell {
 			Container container = new ConfigContainer().Run();
 			container.RegisterSingleton<IWorkspaceService>(this);
 			container.Verify();
-
 			factory = container.GetInstance<IObjectFactory>();
-			Create<CodeGeneratorCollectionViewModel>(args => args.Load());
 		}
 
 		public ObservableCollection<WorkspaceViewModel> Items { get; } = new ObservableCollection<WorkspaceViewModel>();
@@ -41,5 +39,22 @@ namespace Albatross.CodeGen.Shell {
 			action?.Invoke(t);
 			t.IsSelected = true;
 		}
+
+		public void CloseWorkspace(WorkspaceViewModel vm) {
+			for (int i = 0; i < Items.Count; i++) {
+				if (Items[i] == vm) {
+					Items.RemoveAt(i);
+					break;
+				}
+			}
+		}
+
+
+		public RelayCommand CodeGeneratorsCommand {
+			get {
+				return new RelayCommand(args => Create<CodeGeneratorCollectionViewModel>(vm=> vm.Load()));
+			}
+		}
+
 	}
 }

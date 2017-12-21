@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Shell.ViewModel {
 	public class CompositeDetailViewModel : WorkspaceViewModel {
+		public CompositeDetailViewModel(IWorkspaceService svc) : base(svc) { }
+
 		public void Load(Composite c) {
 			if (c == null) {
 				c = new Composite {

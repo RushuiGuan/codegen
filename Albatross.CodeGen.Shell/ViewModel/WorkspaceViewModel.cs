@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Shell.ViewModel {
 	public class WorkspaceViewModel : ViewModelBase {
+		protected IWorkspaceService WorkspaceService { get; private set; }
+		public WorkspaceViewModel(IWorkspaceService svc) {
+			WorkspaceService = svc;
+		}
+
+
 		public string _title;
 		public string Title {
 			get { return _title; }
@@ -25,6 +31,13 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 					_isSelected = value;
 					RaisePropertyChanged(nameof(IsSelected));
 				}
+			}
+		}
+
+
+		public RelayCommand CloseCommand {
+			get {
+				return new RelayCommand(args => WorkspaceService.CloseWorkspace(this));
 			}
 		}
 	}

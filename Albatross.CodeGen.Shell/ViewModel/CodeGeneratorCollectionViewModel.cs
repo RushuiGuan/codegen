@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.Shell.ViewModel {
 	public class CodeGeneratorCollectionViewModel : WorkspaceViewModel {
 		IConfigurableCodeGenFactory _codeGenFactory;
-		IWorkspaceService _workspaceService;
 
-		public CodeGeneratorCollectionViewModel(IConfigurableCodeGenFactory codeGenFactory, IWorkspaceService svc) {
+		public CodeGeneratorCollectionViewModel(IConfigurableCodeGenFactory codeGenFactory, IWorkspaceService svc):base(svc) {
 			_codeGenFactory = codeGenFactory;
-			_workspaceService = svc;
 			Title = "Code Generators";
 		}
 
@@ -36,8 +34,8 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 					Description = item.Description,
 					Target = item.Target,
 					Type = type.FullName,
+					Assembly = type.Assembly.FullName,
 					Location = type.Assembly.Location,
-					UserDefined = false,
 				};
 				Items.Add(gen);
 			}
@@ -51,7 +49,7 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 			get { return new RelayCommand(args => NewComposite()); }
 		}
 		void NewComposite() {
-			_workspaceService.Create<CompositeDetailViewModel>(args => args.Load(null));
+			WorkspaceService.Create<CompositeDetailViewModel>(args => args.Load(null));
 		}
 
 		public RelayCommand EditCommand {

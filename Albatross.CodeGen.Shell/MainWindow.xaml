@@ -6,26 +6,23 @@
 		xmlns:vm="clr-namespace:Albatross.CodeGen.Shell.ViewModel"
 		xmlns:local="clr-namespace:Albatross.CodeGen.Shell.View"
         mc:Ignorable="d"
-        Title="Albatross Code Generator" Height="350" Width="800" Padding="0" Margin="0">
+        Title="Albatross Code Generator" Height="350" Width="800" Padding="0" Margin="0" FontSize="12">
 
 	<Window.Resources>
-		<vm:DefaultDataTemplateSelector x:Key="defaultSelector"/>
-
-		<Style x:Key="tabStyle" TargetType="TabItem">
-			<Setter Property="Header" Value="{Binding Title}"/>
-			<Setter Property="ContentTemplateSelector" Value="{StaticResource defaultSelector}" />
-			<Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
-		</Style>
+		<ResourceDictionary Source="./View/Style.xaml"/>
 	</Window.Resources>
 
 	<DockPanel>
-		<Menu DockPanel.Dock="Top">
-			<MenuItem Header="File">
+		<Menu DockPanel.Dock="Top" FontSize="14">
+			<MenuItem Header="File" Style="{StaticResource menuItem}">
+				<MenuItem Header="Code Generators" Command="{Binding CodeGeneratorsCommand}" />
 				<MenuItem Header="Exit"/>
 			</MenuItem>
 			<MenuItem Header="Settings">
 			</MenuItem>
 		</Menu>
-		<TabControl ItemsSource="{Binding Items}"  ItemContainerStyle="{StaticResource tabStyle}" />
+		<Border Padding="5">
+			<TabControl ItemsSource="{Binding Items}"  ItemContainerStyle="{StaticResource tab}" />
+		</Border>
 	</DockPanel>
 </Window>

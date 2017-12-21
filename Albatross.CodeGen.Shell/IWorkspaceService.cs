@@ -8,5 +8,6 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.Shell {
 	public interface IWorkspaceService {
 		void Create<T>(Action<T> action = null) where T:WorkspaceViewModel;
+		void CloseWorkspace(WorkspaceViewModel vm);
 	}
 }
