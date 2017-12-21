@@ -24,10 +24,10 @@
 		<Setter Property="BorderThickness" Value="1"/>
 		<Setter Property="CellStyle" Value="{StaticResource cell}"/>
 	</Style>
-	<vm:DefaultDataTemplateSelector x:Key="defaultSelector"/>
+	
+	
 	<Style x:Key="tab" TargetType="TabItem">
 		<Setter Property="Header" Value="{Binding Title}"/>
-		<Setter Property="ContentTemplateSelector" Value="{StaticResource defaultSelector}" />
 		<Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
 	</Style>
 

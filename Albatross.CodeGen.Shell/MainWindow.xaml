@@ -9,7 +9,7 @@
         Title="Albatross Code Generator" Height="350" Width="800" Padding="0" Margin="0" FontSize="12">
 
 	<Window.Resources>
-		<ResourceDictionary Source="./View/Style.xaml"/>
+		<ResourceDictionary Source="/View/Style.xaml"/>
 	</Window.Resources>
 
 	<DockPanel>
@@ -22,7 +22,7 @@
 			</MenuItem>
 		</Menu>
 		<Border Padding="5">
-			<TabControl ItemsSource="{Binding Items}"  ItemContainerStyle="{StaticResource tab}" />
+			<TabControl ItemContainerStyle="{StaticResource tab}" x:Name="tabs" />
 		</Border>
 	</DockPanel>
 </Window>
