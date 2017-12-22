@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Albatross.Logging.Core;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 	public class CodeGeneratorCollectionViewModel : WorkspaceViewModel {
 		IConfigurableCodeGenFactory _codeGenFactory;
 
-		public CodeGeneratorCollectionViewModel(IConfigurableCodeGenFactory codeGenFactory, IWorkspaceService svc):base(svc) {
+		public CodeGeneratorCollectionViewModel(IConfigurableCodeGenFactory codeGenFactory, IWorkspaceService svc, ILogFactory logFactory):base(svc, logFactory) {
 			_codeGenFactory = codeGenFactory;
 			Title = "Code Generators";
 		}
@@ -56,11 +57,11 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 		}
 
 		public RelayCommand RunCommand {
-			get { return new RelayCommand(args => Run()); }
+			get { return new RelayCommand(args => Run(args)); }
 		}
-		void Run() {
-			if (Selected != null) {
-				WorkspaceService.Create<CodeGenerationViewModel>(vm => vm.Init(Selected.Handle));
+		void Run(object args) {
+			if(args is CodeGenerator) { 
+				WorkspaceService.Create<CodeGenerationViewModel>(vm => vm.Init(((CodeGenerator)args).Handle));
 			}
 		}
 	}

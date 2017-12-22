@@ -65,7 +65,7 @@ namespace Albatross.CodeGen {
 				Category = "Sql Server",
 				Target = "sql",
 				Generators = generators,
-				Seperator = "\r'n",
+				Seperator = "\r\n",
 			};
 		}
 	}

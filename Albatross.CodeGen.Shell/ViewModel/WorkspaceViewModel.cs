@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Albatross.Logging.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +8,10 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.Shell.ViewModel {
 	public class WorkspaceViewModel : ViewModelBase {
 		protected IWorkspaceService WorkspaceService { get; private set; }
-		public WorkspaceViewModel(IWorkspaceService svc) {
+		ILog log;
+		public WorkspaceViewModel(IWorkspaceService svc, ILogFactory logFactory) {
 			WorkspaceService = svc;
+			log = logFactory.Get(this);
 		}
 
 
@@ -29,6 +32,7 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 			set {
 				if (_isSelected != value) {
 					_isSelected = value;
+					log.Info($"Workspace({this.GetHashCode()}) Active:{value}");
 					RaisePropertyChanged(nameof(IsSelected));
 				}
 			}

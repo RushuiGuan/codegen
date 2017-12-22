@@ -52,6 +52,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -75,6 +78,7 @@
     <Compile Include="ConfigContainer.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="IConfigurableCodeGenFactory.cs" />
+    <Compile Include="IGetWorkspaceTabControl.cs" />
     <Compile Include="IObjectFactory.cs" />
     <Compile Include="IViewLocator.cs" />
     <Compile Include="IWorkspaceService.cs" />
@@ -88,6 +92,7 @@
     <Compile Include="ViewModel\CodeGeneratorCollectionViewModel.cs" />
     <Compile Include="ViewModel\CompositeDetailViewModel.cs" />
     <Compile Include="ViewModel\DefaultDataTemplateSelector.cs" />
+    <Compile Include="ViewModel\ShellViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\WorkspaceViewModel.cs" />
     <Compile Include="View\CodeGenerationView.xaml.cs">
@@ -99,6 +104,7 @@
     <Compile Include="View\CompositeDetailView.xaml.cs">
       <DependentUpon>CompositeDetailView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DataGridBehavior.cs" />
     <Compile Include="View\ServerInputView.xaml.cs">
       <DependentUpon>ServerInputView.xaml</DependentUpon>
     </Compile>

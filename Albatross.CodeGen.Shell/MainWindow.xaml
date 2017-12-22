@@ -22,7 +22,7 @@
 			</MenuItem>
 		</Menu>
 		<Border Padding="5">
-			<TabControl ItemContainerStyle="{StaticResource tab}" x:Name="tabs" />
+			<TabControl DataContext="{Binding ShellViewModel}" ItemContainerStyle="{StaticResource tab}" x:Name="tabs" SelectedItem="{Binding Current, Mode=TwoWay}" />
 		</Border>
 	</DockPanel>
 </Window>

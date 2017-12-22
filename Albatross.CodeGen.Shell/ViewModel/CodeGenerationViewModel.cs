@@ -10,7 +10,7 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 		ICodeGenerator codeGenerator;
 		ICodeGeneratorFactory factory;
 		ILog log;
-		public CodeGenerationViewModel(IWorkspaceService svc, ICodeGeneratorFactory factory, ILogFactory logFactory) : base(svc) {
+		public CodeGenerationViewModel(IWorkspaceService svc, ICodeGeneratorFactory factory, ILogFactory logFactory) : base(svc, logFactory) {
 			this.factory = factory;
 			Title = "Code Generation";
 			log = logFactory.Get(this);
