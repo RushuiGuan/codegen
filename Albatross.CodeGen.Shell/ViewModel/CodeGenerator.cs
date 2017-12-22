@@ -6,13 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Shell.ViewModel {
-	public class CodeGenerator { 
-		public string Name { get; set; }
-		public string Category { get; set; }
-		public string Description { get; set; }
-		public string Target { get; set; }
-		public string Type { get; set; }
-		public string Assembly { get; set; }
-		public string Location { get; set; }
+	public class CodeGenerator {
+		public CodeGenerator(ICodeGenerator codeGen) {
+			Handle = codeGen;
+		}
+
+		public string SourceType { get { return Handle.SourceType.Name; } }
+		public string Name { get { return Handle.Name; } }
+		public string Category { get { return Handle.Category; } }
+		public string Description { get { return Handle.Description; } }
+		public string Target { get { return Handle.Target; } }
+		public string Type { get { return Handle.GetType().FullName; } }
+		public string Assembly { get { return Handle.GetType().Assembly.FullName; } }
+		public string Location { get { return Handle.GetType().Assembly.Location; } }
+
+		public ICodeGenerator Handle { get; private set; }
 	}
 }

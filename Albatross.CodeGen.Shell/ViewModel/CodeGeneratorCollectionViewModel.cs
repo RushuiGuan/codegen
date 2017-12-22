@@ -28,16 +28,7 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 			Items.Clear();
 			foreach (var item in _codeGenFactory.Registrations) {
 				Type type = item.GetType();
-				CodeGenerator gen = new CodeGenerator {
-					Name = item.Name,
-					Category = item.Category,
-					Description = item.Description,
-					Target = item.Target,
-					Type = type.FullName,
-					Assembly = type.Assembly.FullName,
-					Location = type.Assembly.Location,
-				};
-				Items.Add(gen);
+				Items.Add(new CodeGenerator(item));
 			}
 		}
 
@@ -52,10 +43,25 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 			WorkspaceService.Create<CompositeDetailViewModel>(args => args.Load(null));
 		}
 
-		public RelayCommand EditCommand {
-			get { return new RelayCommand(args => Edit()); }
+
+		CodeGenerator _codeGenerator;
+		public CodeGenerator Selected {
+			get { return _codeGenerator; }
+			set {
+				if (value != _codeGenerator) {
+					_codeGenerator = value;
+					RaisePropertyChanged(nameof(Selected));
+				}
+			}
 		}
-		void Edit() {
+
+		public RelayCommand RunCommand {
+			get { return new RelayCommand(args => Run()); }
+		}
+		void Run() {
+			if (Selected != null) {
+				WorkspaceService.Create<CodeGenerationViewModel>(vm => vm.Init(Selected.Handle));
+			}
 		}
 	}
 }

@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.Shell {
 			container.Register<ILogFactory, Log4netLogFactory>(Lifestyle.Singleton);
 			new SqlServer.Pack().RegisterServices(container);
 			container.RegisterSingleton<SettingRepository>();
-			container.RegisterSingleton<ViewLocator>();
+			container.RegisterSingleton<IViewLocator, ViewLocator>();
 
 			return container;
 		}

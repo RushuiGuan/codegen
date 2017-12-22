@@ -9,5 +9,7 @@ namespace Albatross.CodeGen.Shell {
 	public interface IWorkspaceService {
 		void Create<T>(Action<T> action = null) where T:WorkspaceViewModel;
 		void CloseWorkspace(WorkspaceViewModel vm);
+		void Alert(string msg, string caption);
+		bool Confirm(string msg, string caption);
 	}
 }

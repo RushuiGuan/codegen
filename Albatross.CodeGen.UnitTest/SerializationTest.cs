@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.UnitTest {
 		public void StepSerialization() {
 			Step step = new Step {
 				 Generator = "test",
-				  Source = new Table { Schema = "schema", Name = "table", Server = new Server { DatabaseType = "sql", DataSource = "prod", InitialCatalog ="albatross", } },
+				  Source = new Table { Schema = "schema", Name = "table", Server = new Server { DataSource = "prod", InitialCatalog ="albatross", } },
 				  SourceType = typeof(Table),
 			};
 			string text = JsonConvert.SerializeObject(step);

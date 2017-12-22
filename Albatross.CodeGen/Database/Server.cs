@@ -8,6 +8,5 @@ namespace Albatross.CodeGen.Database {
 	public class Server {
 		public string DataSource { get; set; }
 		public string InitialCatalog { get; set; }
-		public string DatabaseType { get; set; }
 	}
 }

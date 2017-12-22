@@ -9,6 +9,6 @@ namespace Albatross.CodeGen.Database {
 		public string Schema { get; set; }
 		public string Name { get; set; }
 
-		public Server Server { get; set; }
+		public Server Server { get; set; } = new Server();
 	}
 }

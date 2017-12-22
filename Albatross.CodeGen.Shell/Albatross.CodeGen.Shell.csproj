@@ -34,6 +34,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Albatross.CodeGen.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -70,18 +76,23 @@
     <Compile Include="Extension.cs" />
     <Compile Include="IConfigurableCodeGenFactory.cs" />
     <Compile Include="IObjectFactory.cs" />
+    <Compile Include="IViewLocator.cs" />
     <Compile Include="IWorkspaceService.cs" />
     <Compile Include="ObjectFactory.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SettingRepository.cs" />
     <Compile Include="ViewLocator.cs" />
+    <Compile Include="ViewModel\CodeGenerationViewModel.cs" />
     <Compile Include="ViewModel\CodeGenerator.cs" />
     <Compile Include="ViewModel\CodeGeneratorCollectionViewModel.cs" />
     <Compile Include="ViewModel\CompositeDetailViewModel.cs" />
     <Compile Include="ViewModel\DefaultDataTemplateSelector.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\WorkspaceViewModel.cs" />
+    <Compile Include="View\CodeGenerationView.xaml.cs">
+      <DependentUpon>CodeGenerationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CodeGeneratorCollectionView.xaml.cs">
       <DependentUpon>CodeGeneratorCollectionView.xaml</DependentUpon>
     </Compile>
@@ -112,6 +123,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\CodeGenerationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CodeGeneratorCollectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +174,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Albatross.CodeGen.snk" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

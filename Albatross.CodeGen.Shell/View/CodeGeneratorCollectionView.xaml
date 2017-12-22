@@ -13,16 +13,19 @@
 	<DockPanel>
 		<ToolBar DockPanel.Dock="Top">
 			<Button Content="Refresh" Command="{Binding RefreshCommand}" />
+			<Button Content="Run" Command="{Binding RunCommand}" />
+			<Separator/>
 			<Button Content="Close" Command="{Binding CloseCommand}" />
 		</ToolBar>
-		<DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Style="{StaticResource datagrid}">
+		<DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Style="{StaticResource datagrid}" SelectedItem="{Binding Selected}">
 			<DataGrid.Columns>
-				<DataGridTextColumn Header="Category" Binding="{Binding Category}"/>
-				<DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-				<DataGridTextColumn Header="Description" Binding="{Binding Description}" />
-				<DataGridTextColumn Header="Target" Binding="{Binding Target}"/>
-				<DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
-				<DataGridTextColumn Header="Assembly" Binding="{Binding Assembly}"/>
+				<DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="100"/>
+				<DataGridTextColumn Header="SourceType" Binding="{Binding SourceType}" Width="80"/>
+				<DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200"/>
+				<DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="250" />
+				<DataGridTextColumn Header="Target" Binding="{Binding Target}" Width="60"/>
+				<DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="120"/>
+				<DataGridTextColumn Header="Assembly" Binding="{Binding Assembly}" Width="*"/>
 			</DataGrid.Columns>
 		</DataGrid>
 	</DockPanel>
