@@ -14,6 +14,7 @@
 	<DockPanel>
 		<ToolBar DockPanel.Dock="Top">
 			<Button Content="Run" Command="{Binding RunCommand}"/>
+			<Button Content="Save as Scenario" Command="{Binding SaveAsCommand}"/>
 			<Separator/>
 			<Button Content="Close" Command="{Binding CloseCommand}"/>
 		</ToolBar>
