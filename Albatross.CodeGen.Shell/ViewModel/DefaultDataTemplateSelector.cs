@@ -11,23 +11,21 @@ using System.Windows.Markup;
 namespace Albatross.CodeGen.Shell.ViewModel {
 	//this is not used. because TabItem vituralized its content
 	public class DefaultDataTemplateSelector : DataTemplateSelector {
+		ViewLocator locator = new ViewLocator();
 		public DefaultDataTemplateSelector() {
 		}
 
 		public override DataTemplate SelectTemplate(object item, DependencyObject container) {
 			//try to retrieve viewLocator from the contanier object!!!
-
-			Type type = item?.GetType();
-			if (type == typeof(CodeGeneratorCollectionViewModel)) {
-				return CreateTemplate<CodeGeneratorCollectionView>();
-			} else if (type == typeof(CompositeDetailViewModel)) {
-				return CreateTemplate<CompositeDetailView>();
+			Type type = locator.GetViewType(item.GetType());
+			if (type != null) {
+				return CreateTemplate(type);
+			} else {
+				return base.SelectTemplate(item, container);
 			}
-			return base.SelectTemplate(item, container);
 		}
 
-		DataTemplate CreateTemplate<T>() {
-			Type viewType = typeof(T);
+		DataTemplate CreateTemplate(Type viewType) {
 			string xaml = $"<DataTemplate> <v:{viewType.Name} /> </DataTemplate>";
 			var context = new ParserContext();
 

@@ -88,6 +88,18 @@
     <Compile Include="View\CompositeDetailView.xaml.cs">
       <DependentUpon>CompositeDetailView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ServerInputView.xaml.cs">
+      <DependentUpon>ServerInputView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ObjectTypeInputView.xaml.cs">
+      <DependentUpon>ObjectTypeInputView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StoredProcedureInputView.xaml.cs">
+      <DependentUpon>StoredProcedureInputView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableInputView.xaml.cs">
+      <DependentUpon>TableInputView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,7 +120,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ServerInputView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ObjectTypeInputView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\StoredProcedureInputView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TableInputView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
