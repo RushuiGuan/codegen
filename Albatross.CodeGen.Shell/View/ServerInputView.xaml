@@ -22,10 +22,10 @@
 				<RowDefinition/>
 			</Grid.RowDefinitions>
 			<Label Style="{StaticResource label}">Data Source</Label>
-			<TextBox Style="{StaticResource textInput}" Grid.Column="1" Text="{Binding DataSource}"/>
+			<TextBox Style="{StaticResource textInput}" Grid.Column="1" Text="{Binding DataSource, UpdateSourceTrigger=PropertyChanged}"/>
 
 			<Label Grid.Row="1" Style="{StaticResource label}">Initial Catalog</Label>
-			<TextBox Grid.Row="1" Style="{StaticResource textInput}" Grid.Column="1" Text="{Binding InitialCatalog}"/>
+			<TextBox Grid.Row="1" Style="{StaticResource textInput}" Grid.Column="1" Text="{Binding InitialCatalog, UpdateSourceTrigger=PropertyChanged}"/>
 		</Grid>
 	</GroupBox>
 </UserControl>
