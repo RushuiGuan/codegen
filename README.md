@@ -22,7 +22,8 @@
 	
 	- CRUD operations for SQL tables.
 	- Dapper Command Definitions for Stored Procedures.
-	- Creating WPF View Models from POCO objects
+	- Generate C# POCO objects from sql tables
+	- Creating C# WPF View Models from POCO objects
 	- WebApi C# Proxy Generation
 	
 	
