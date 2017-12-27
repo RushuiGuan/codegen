@@ -30,9 +30,9 @@ Currently I am working on the following generators.  They are specific to the se
 - **Build(text, source, options, factory)**; Call the  method to invoke the generator.  
 	* text is a string builder instance.
 	* source is the source of data that the generator is running against.
-	* Option is the secondary parameter allows the adjustment of code generation behavior but it is often not used.  
+	* Option is the secondary parameter allows the adjustment of code generation behavior.
 	* Factory is a instance of the ICodeGeneratorFactory.  It will allow the generator to retrieve other generators.
 
 **CodeGeneratorAttribute**; Any ICodeGenerator implementation with this attribute will be registered automatically when IConfigurableCodeGenFactory.Register(Assembly) is called.
 
-**Composite**; A composite generator contains multiple generators of the same target.  When invoked, its components will be invoked sequentially.  The same source and option will be passed into each of its components.  A composite can be created using the concrete CompositeCodeGenerator class.  The instance of the CompositeCodeGenerator class will need to be registered manually by calling IConfigurableCodeGenFactory.Register(IEnumerable<ICodeGenerator>).  Sometimes it might be better to create composites by deriving directly from the CompositeCodeGenerator class and mark it using the CodeGeneratorAttribute.
+**Composite**; A composite generator contains multiple generators of the same target.  When invoked, its components will be invoked sequentially.  The same source and option will be passed into each of its components.  A composite can be created by creating instances of the concrete CompositeCodeGenerator class.  The created instances will need to be registered manually by calling IConfigurableCodeGenFactory.Register(IEnumerable<ICodeGenerator>).  Sometimes it might be better to create composites by deriving directly from the CompositeCodeGenerator class and mark it using the CodeGeneratorAttribute.
