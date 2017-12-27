@@ -1,10 +1,10 @@
 # CodeGen
 
 ### Why
-	- The project was created because I have created numerous code generators over the last few years.  
-	Some of them are visual	studio text templates, others are console or powershell commands.  They were 
-	just temperary solutions to get the job done at the time. So I created this project looking for a 
-	permanent solution and hope others can join to create some interesting scenarios.
+	- I have created numerous code generators over the last few years.  Some of them are visual studio 
+	text templates, others are console or powershell commands.  They were just temperary solutions to 
+	get the job done at the time. Codes were often short term and disgarded soon after.  So I created this 
+	project looking for a permanent solution and hope others can join to create some interesting scenarios.
 	
 ### Goal
 	- The aim of this project is to simply use code generator to speed up softwware development.  It allows 
