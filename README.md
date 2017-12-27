@@ -19,18 +19,20 @@ Currently I am working on the following generators.  They are specific to the se
 	- WebApi C# Proxy Generation
 	
 ### Concept and Design
-Albatross.CodeGen.ICodeGenerator interface is reponsible for the code generation logic.  Implement this interface to create new generators.  
-- Name; Each generator has a unique name that will be used as identitication.  
-- Target; Target indicates what kind of text is being generated.  Some examples could be C#, sql, javascript etc.  
-- SourceType; SourceType indicates the Class Type of the input source when the generator is invoked.  Currently we have:
+**Albatross.CodeGen.ICodeGenerator** interface is reponsible for the code generation logic.  Implement this interface to create new generators.  **All code generator MUST be THREADSAFE Singleton objects!!!**
+- **Name**; Each generator has a unique name that will be used as identitication.  
+- **Target**; Target indicates what kind of text is being generated.  Some examples could be C#, sql, javascript etc.  
+- **SourceType**; SourceType indicates the Class Type of the input source when the generator is invoked.  Currently we have:
 	* Albatross.CodeGen.Database.Table; A sql database table
 	* Albatross.CodeGen.Database.StoredProcedure; A sql stored procedure
 	* Albatross.CodeGen.CSharp.ObjectType; A C# class type
-- Category and Description; They are both informational properties.
-- Build(text, source, options, factory); Call the  method to invoke the generator.  
+- **Category** and **Description**; They are both informational properties.
+- **Build(text, source, options, factory)**; Call the  method to invoke the generator.  
 	* text is a string builder instance.
 	* source is the source of data that the generator is running against.
 	* Option is the secondary parameter allows the adjustment of code generation behavior but it is often not used.  
 	* Factory is a instance of the ICodeGeneratorFactory.  It will allow the generator to retrieve other generators.
-	
-Composite; A composite generator contains multiple generators of the same target.  When invoked, its components will be invoked sequentially.  The same source and option will be passed into each of its components.  
+
+**CodeGeneratorAttribute**; Any ICodeGenerator implementation with this attribute will be registered automatically when IConfigurableCodeGenFactory.Register(Assembly) is called.
+
+**Composite**; A composite generator contains multiple generators of the same target.  When invoked, its components will be invoked sequentially.  The same source and option will be passed into each of its components.  A composite can be created using the concrete CompositeCodeGenerator class.  The instance of the CompositeCodeGenerator class will need to be registered manually by calling IConfigurableCodeGenFactory.Register(IEnumerable<ICodeGenerator>).  Sometimes it might be better to create composites by deriving directly from the CompositeCodeGenerator class and mark it using the CodeGeneratorAttribute.
