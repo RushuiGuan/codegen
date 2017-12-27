@@ -32,6 +32,7 @@ namespace Albatross.CodeGen.Shell {
 			RegisterViews(viewLocator);
 			this.Resources.Add(DefaultDataTemplateSelector.ViewLocatorKey, viewLocator);
 			ShellViewModel = container.GetInstance<IWorkspaceService>();
+			Nav = container.GetInstance<NavigationViewModel>();
 			DataContext = this;
 		}
 
@@ -41,11 +42,12 @@ namespace Albatross.CodeGen.Shell {
 				.Register<Table, TableInputView>()
 				.Register<StoredProcedure, StoredProcedureInputView>()
 				.Register<Server, ServerInputView>()
-				.Register<CodeGenerationViewModel, CodeGenerationView>();
+				.Register<CodeGenerationViewModel, CodeGenerationView>()
+				.Register<NavigationViewModel, NavigationView>();
 		}
 
 		public IWorkspaceService ShellViewModel { get; private set; }
 		public TabControl Get() { return tabs; }
-		public RelayCommand CodeGeneratorsCommand { get { return new RelayCommand(args => ShellViewModel.Create<CodeGeneratorCollectionViewModel>(vm => vm.Load())); } }
+		public NavigationViewModel Nav { get; private set; }
 	}
 }

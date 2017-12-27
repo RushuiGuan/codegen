@@ -13,14 +13,9 @@
 	</Window.Resources>
 
 	<DockPanel>
-		<Menu DockPanel.Dock="Top" FontSize="14">
-			<MenuItem Header="File" Style="{StaticResource menuItem}">
-				<MenuItem Header="Code Generators" Command="{Binding CodeGeneratorsCommand}" />
-				<MenuItem Header="Exit"/>
-			</MenuItem>
-			<MenuItem Header="Settings">
-			</MenuItem>
-		</Menu>
+		<local:NavigationView DockPanel.Dock="Left" DataContext="{Binding Nav}">
+		</local:NavigationView>
+		
 		<Border Padding="5">
 			<TabControl DataContext="{Binding ShellViewModel}" ItemContainerStyle="{StaticResource tab}" x:Name="tabs" SelectedItem="{Binding Current, Mode=TwoWay}" />
 		</Border>
