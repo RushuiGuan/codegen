@@ -74,7 +74,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CfgControlledCodeGeneratorFactory.cs" />
-    <Compile Include="CodeGeneratorLocations.cs" />
+    <Compile Include="JsonFileRepository.cs" />
+    <Compile Include="ScenarioRepository.cs" />
+    <Compile Include="CompositeRepository.cs" />
     <Compile Include="ConfigContainer.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="IConfigurableCodeGenFactory.cs" />
@@ -84,11 +86,14 @@
     <Compile Include="IWorkspaceService.cs" />
     <Compile Include="ObjectFactory.cs" />
     <Compile Include="RelayCommand.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="SettingRepository.cs" />
+    <Compile Include="JsonFolderRepository.cs" />
+    <Compile Include="AssemblyLocationSetting.cs" />
+    <Compile Include="AssemblyLocationRepository.cs" />
+    <Compile Include="SourceTypeFactory.cs" />
     <Compile Include="ViewLocator.cs" />
     <Compile Include="ViewModel\CodeGenerationViewModel.cs" />
     <Compile Include="ViewModel\CodeGenerator.cs" />
+    <Compile Include="ViewModel\CompositeCollectionViewModel.cs" />
     <Compile Include="ViewModel\CodeGeneratorCollectionViewModel.cs" />
     <Compile Include="ViewModel\CompositeDetailViewModel.cs" />
     <Compile Include="ViewModel\DefaultDataTemplateSelector.cs" />
@@ -98,6 +103,9 @@
     <Compile Include="ViewModel\WorkspaceViewModel.cs" />
     <Compile Include="View\CodeGenerationView.xaml.cs">
       <DependentUpon>CodeGenerationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CompositeCollectionView.xaml.cs">
+      <DependentUpon>CompositeCollectionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CodeGeneratorCollectionView.xaml.cs">
       <DependentUpon>CodeGeneratorCollectionView.xaml</DependentUpon>
@@ -136,6 +144,10 @@
     <Page Include="View\CodeGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CompositeCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\CodeGeneratorCollectionView.xaml">
       <SubType>Designer</SubType>

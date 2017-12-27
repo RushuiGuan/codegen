@@ -14,6 +14,7 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 			log = logFactory.Get(this);
 		}
 
+		public object ID { get; set; }
 
 		public string _title;
 		public string Title {

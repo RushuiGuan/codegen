@@ -9,7 +9,7 @@ namespace Albatross.CodeGen.Shell {
 	public interface IConfigurableCodeGenFactory : ICodeGeneratorFactory {
 		void Clear();
 		void Register();
-		void RegisterAdditional(Assembly asm);
-		void RegisterComposites(IEnumerable<Composite> items);
+		void Register(Assembly asm);
+		void Register(IEnumerable<Composite> items);
 	}
 }

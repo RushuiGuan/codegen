@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Database {
+	[SourceType]
 	public class Column {
 		public string Name { get; set; }
 		public int OrdinalPosition { get; set; }

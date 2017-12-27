@@ -43,7 +43,8 @@ namespace Albatross.CodeGen.Shell {
 				.Register<StoredProcedure, StoredProcedureInputView>()
 				.Register<Server, ServerInputView>()
 				.Register<CodeGenerationViewModel, CodeGenerationView>()
-				.Register<NavigationViewModel, NavigationView>();
+				.Register<NavigationViewModel, NavigationView>()
+				.Register<CompositeCollectionViewModel, CompositeCollectionView>();
 		}
 
 		public IWorkspaceService ShellViewModel { get; private set; }

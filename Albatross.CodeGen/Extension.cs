@@ -68,5 +68,14 @@ namespace Albatross.CodeGen {
 				Seperator = "\r\n",
 			};
 		}
+
+		public static List<Type> GetSourceType(this List<Type> list, Assembly asm) {
+			foreach (var type in asm.GetTypes()) {
+				if (type.GetCustomAttribute<SourceTypeAttribute>() != null) {
+					list.Add(type);
+				}
+			}
+			return list;
+		}
 	}
 }

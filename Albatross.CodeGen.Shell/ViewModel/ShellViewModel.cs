@@ -20,7 +20,11 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 			get { return _current; }
 			set {
 				if (_current != value) {
+					if (_current != null) {
+						_current.IsSelected = false;
+					}
 					_current = value;
+					if (_current != null) { _current.IsSelected = true; }
 					RaisePropertyChanged(nameof(Current));
 				}
 			}
@@ -34,14 +38,37 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 			log = logFactory.Get(this);
 		}
 
-		public void Create<T>(Action<T> action = null) where T : WorkspaceViewModel {
-			T t = factory.Create<T>();
-			Type viewType = viewLocator.GetView(typeof(T));
-			TabItem tab = new TabItem { Content = factory.Create(viewType), DataContext = t, };
-			tabs.Items.Add(tab);
-			action?.Invoke(t);
-			t.IsSelected = true;
-			log.Info("Created:" + t.GetHashCode());
+		bool TryFindWorkspace<T>(object id, out TabItem tab) {
+			tab = null;
+			if (id == null) {
+				return false;
+			} else {
+				foreach (TabItem item in tabs.Items) {
+					if(item.DataContext?.GetType() == typeof(T)) {
+						WorkspaceViewModel vm = item.DataContext as WorkspaceViewModel;
+						if (object.Equals(vm?.ID, id)) {
+							tab = item;
+							return true;
+						}
+					}
+				}
+			}
+			return false;
+		}
+
+		public void Create<T>(Action<T> action = null, object id = null) where T : WorkspaceViewModel {
+			TabItem tab;
+
+			if (!TryFindWorkspace<T>(id, out tab)) {
+				T t = factory.Create<T>();
+				t.ID = id;
+				Type viewType = viewLocator.GetView(typeof(T));
+				tab = new TabItem { Content = factory.Create(viewType), DataContext = t, };
+				tabs.Items.Add(tab);
+				action?.Invoke(t);
+				log.Info("Created:" + t.GetHashCode());
+			}
+			Current = tab;
 		}
 
 		public void CloseWorkspace(WorkspaceViewModel vm) {

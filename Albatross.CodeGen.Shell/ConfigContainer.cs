@@ -13,10 +13,13 @@ namespace Albatross.CodeGen.Shell {
 			Container container = new Container();
 			container.Register<ICodeGeneratorFactory, CfgControlledCodeGeneratorFactory>(Lifestyle.Singleton);
 			container.Register<IConfigurableCodeGenFactory, CfgControlledCodeGeneratorFactory>(Lifestyle.Singleton);
+			container.Register<CompositeRepository>(Lifestyle.Singleton);
+			container.Register<ScenarioRepository>(Lifestyle.Singleton);
+
 			container.RegisterSingleton<IObjectFactory>(new	ObjectFactory(container));
 			container.Register<ILogFactory, Log4netLogFactory>(Lifestyle.Singleton);
 			new SqlServer.Pack().RegisterServices(container);
-			container.RegisterSingleton<SettingRepository>();
+			container.RegisterSingleton<AssemblyLocationRepository>();
 			container.RegisterSingleton<IViewLocator, ViewLocator>();
 
 			return container;

@@ -23,8 +23,8 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 			_codeGenFactory.Register();
 
 			//register bulit in generators
-			_codeGenFactory.RegisterComposites(Albatross.CodeGen.SqlServer.Pack.Composites);
-			_codeGenFactory.RegisterAdditional(typeof(Albatross.CodeGen.SqlServer.Pack).Assembly);
+			_codeGenFactory.Register(Albatross.CodeGen.SqlServer.Pack.Composites);
+			_codeGenFactory.Register(typeof(Albatross.CodeGen.SqlServer.Pack).Assembly);
 
 			Items.Clear();
 			foreach (var item in _codeGenFactory.Registrations) {
