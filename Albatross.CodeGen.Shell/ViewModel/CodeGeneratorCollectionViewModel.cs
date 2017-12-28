@@ -1,12 +1,10 @@
-﻿using Albatross.Logging.Core;
+﻿using Albatross.CodeGen.Shell.View;
+using Albatross.Logging.Core;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Shell.ViewModel {
+	[ViewUsage(typeof(CodeGeneratorCollectionView))]
 	public class CodeGeneratorCollectionViewModel : WorkspaceViewModel {
 		IConfigurableCodeGenFactory _codeGenFactory;
 
@@ -18,13 +16,8 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 		public ObservableCollection<CodeGenerator> Items { get; } = new ObservableCollection<CodeGenerator>();
 
 		public void Load() {
-			_codeGenFactory.Clear();
 			//register whatever is in the settings file
 			_codeGenFactory.Register();
-
-			//register bulit in generators
-			_codeGenFactory.Register(Albatross.CodeGen.SqlServer.Pack.Composites);
-			_codeGenFactory.Register(typeof(Albatross.CodeGen.SqlServer.Pack).Assembly);
 
 			Items.Clear();
 			foreach (var item in _codeGenFactory.Registrations) {
@@ -41,7 +34,7 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 			get { return new RelayCommand(args => NewComposite()); }
 		}
 		void NewComposite() {
-			WorkspaceService.Create<CompositeDetailViewModel>(args => args.Load(null));
+			WorkspaceService.Create<CompositeViewModel>();
 		}
 
 

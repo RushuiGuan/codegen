@@ -17,8 +17,8 @@ namespace Albatross.CodeGen.Shell.View {
 	/// <summary>
 	/// Interaction logic for CompositeDetailView.xaml
 	/// </summary>
-	public partial class CompositeDetailView : UserControl {
-		public CompositeDetailView() {
+	public partial class CompositeView : UserControl {
+		public CompositeView() {
 			InitializeComponent();
 		}
 	}

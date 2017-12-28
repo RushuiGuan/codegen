@@ -41,6 +41,9 @@
     <AssemblyOriginatorKeyFile>Albatross.CodeGen.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -52,6 +55,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -74,6 +78,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CfgControlledCodeGeneratorFactory.cs" />
+    <Compile Include="ListValueAttribute.cs" />
+    <Compile Include="IListValues.cs" />
     <Compile Include="JsonFileRepository.cs" />
     <Compile Include="ScenarioRepository.cs" />
     <Compile Include="CompositeRepository.cs" />
@@ -91,16 +97,23 @@
     <Compile Include="AssemblyLocationRepository.cs" />
     <Compile Include="SourceTypeFactory.cs" />
     <Compile Include="ViewLocator.cs" />
+    <Compile Include="ViewModel\AssemblyLocationsViewModel.cs" />
     <Compile Include="ViewModel\CodeGenerationViewModel.cs" />
     <Compile Include="ViewModel\CodeGenerator.cs" />
     <Compile Include="ViewModel\CompositeCollectionViewModel.cs" />
     <Compile Include="ViewModel\CodeGeneratorCollectionViewModel.cs" />
-    <Compile Include="ViewModel\CompositeDetailViewModel.cs" />
+    <Compile Include="ViewModel\CompositeViewModel.cs" />
     <Compile Include="ViewModel\DefaultDataTemplateSelector.cs" />
+    <Compile Include="ViewModel\GeneratorList.cs" />
     <Compile Include="ViewModel\NavigationViewModel.cs" />
     <Compile Include="ViewModel\ShellViewModel.cs" />
+    <Compile Include="ViewModel\SourceTypeList.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\WorkspaceViewModel.cs" />
+    <Compile Include="ViewUsageAttribute.cs" />
+    <Compile Include="View\AssemblyLocationsView.xaml.cs">
+      <DependentUpon>AssemblyLocationsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CodeGenerationView.xaml.cs">
       <DependentUpon>CodeGenerationView.xaml</DependentUpon>
     </Compile>
@@ -110,8 +123,8 @@
     <Compile Include="View\CodeGeneratorCollectionView.xaml.cs">
       <DependentUpon>CodeGeneratorCollectionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CompositeDetailView.xaml.cs">
-      <DependentUpon>CompositeDetailView.xaml</DependentUpon>
+    <Compile Include="View\CompositeView.xaml.cs">
+      <DependentUpon>CompositeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DataGridBehavior.cs" />
     <Compile Include="View\NavigationView.xaml.cs">
@@ -141,6 +154,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AssemblyLocationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\CodeGenerationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,7 +170,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CompositeDetailView.xaml">
+    <Page Include="View\CompositeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

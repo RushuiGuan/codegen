@@ -7,5 +7,9 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen {
 	[AttributeUsage(AttributeTargets.Class)]
 	public class SourceTypeAttribute : Attribute {
+		public string Description { get; set; }
+		public SourceTypeAttribute(string description) {
+			Description = description;
+		}
 	}
 }

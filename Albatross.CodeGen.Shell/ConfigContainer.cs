@@ -1,4 +1,6 @@
-﻿using Albatross.Logging;
+﻿using System.Reflection;
+using Albatross.CodeGen.Shell.ViewModel;
+using Albatross.Logging;
 using Albatross.Logging.Core;
 using SimpleInjector;
 using System;
@@ -15,6 +17,7 @@ namespace Albatross.CodeGen.Shell {
 			container.Register<IConfigurableCodeGenFactory, CfgControlledCodeGeneratorFactory>(Lifestyle.Singleton);
 			container.Register<CompositeRepository>(Lifestyle.Singleton);
 			container.Register<ScenarioRepository>(Lifestyle.Singleton);
+			container.Register<SourceTypeFactory>(Lifestyle.Singleton);
 
 			container.RegisterSingleton<IObjectFactory>(new	ObjectFactory(container));
 			container.Register<ILogFactory, Log4netLogFactory>(Lifestyle.Singleton);
@@ -22,6 +25,15 @@ namespace Albatross.CodeGen.Shell {
 			container.RegisterSingleton<AssemblyLocationRepository>();
 			container.RegisterSingleton<IViewLocator, ViewLocator>();
 
+
+			Type genericType = typeof(IListValues<>);
+			foreach(Type type in this.GetType().Assembly.GetTypes()){
+				ListValueAttribute attrib = type.GetCustomAttribute<ListValueAttribute>();
+				if (attrib != null) {
+					Type serviceType = genericType.MakeGenericType(attrib.ValueType);
+					container.RegisterSingleton(serviceType, type);
+				}
+			}
 			return container;
 		}
 	}

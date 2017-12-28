@@ -14,7 +14,7 @@
 			<TextBlock Margin="5"><Hyperlink Command="{Binding CompositesCommand}">Composites</Hyperlink></TextBlock>
 			<TextBlock Margin="5"><Hyperlink Command="{Binding ScenariosCommand}">Scenarios</Hyperlink></TextBlock>
 			<Separator/>
-			<TextBlock Margin="5"><Hyperlink Command="{Binding SettingsCommand}">Settings</Hyperlink></TextBlock>
+			<TextBlock Margin="5"><Hyperlink Command="{Binding AssemblyLocationsCommand}">Assembly Locations</Hyperlink></TextBlock>
 		</StackPanel>
 	</Border>
 </UserControl>

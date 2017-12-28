@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>$id$</id>
+		<version>$version$</version>
+		<title>Albatross Code Generator</title>
+		<authors>Rushui Guan</authors>
+		<owners>Rushui Guan</owners>
+		<licenseUrl>https://github.com/RushuiGuan/CodeGen/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/RushuiGuan/CodeGen</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<summary></summary>
+		<description>$description$</description>
+		<releaseNotes>Initial Release</releaseNotes>
+		<copyright>Copyright 2017</copyright>
+		<tags>Code Generator C# sql</tags>
+	</metadata>
+</package>

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Albatross.CodeGen.Shell {
@@ -37,6 +33,39 @@ namespace Albatross.CodeGen.Shell {
 		public void Execute(object parameter) {
 			if (CanExecute(parameter) && _execute != null) {
 				_execute(parameter);
+			}
+		}
+	}
+
+	public class RelayCommand<T> : RelayCommand {
+		public RelayCommand(Action<T> execute) : this(execute, null) { }
+		public RelayCommand(Action<T> execute, Func<T, bool> canExecute) : base(Convert(execute), Convert(canExecute)) {
+		}
+
+		static Action<object> Convert(Action<T> action) {
+			if (action == null) {
+				return null;
+			} else {
+				return args => {
+					if (args == null) {
+						action(default(T));
+					} else {
+						action((T)args);
+					}
+				};
+			}
+		}
+		static Func<object, bool> Convert(Func<T, bool> func) {
+			if (func == null) {
+				return null;
+			} else {
+				return args => {
+					if (args == null) {
+						return func(default(T));
+					} else {
+						return func((T)args);
+					}
+				};
 			}
 		}
 	}

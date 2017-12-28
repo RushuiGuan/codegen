@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Database {
-	[SourceType]
+	[SourceType("Datbase table")]
 	public class Table {
 		public string Schema { get; set; }
 		public string Name { get; set; }

@@ -31,6 +31,21 @@ namespace Albatross.CodeGen.Shell {
 								list.Add(asm);
 							}
 						}
+					} else {
+						//try to do a pattern match
+						try {
+							string folder = Path.GetDirectoryName(path);
+							if (Directory.Exists(folder)) {
+								string pattern = Path.GetFileName(path);
+								foreach (var file in Directory.GetFiles(folder, pattern)) {
+									if (TryLoadFile(file, out Assembly asm)) {
+										list.Add(asm);
+									}
+								}
+							}
+						} catch (Exception err) {
+							_log.Error(err);
+						}
 					}
 				}
 			}

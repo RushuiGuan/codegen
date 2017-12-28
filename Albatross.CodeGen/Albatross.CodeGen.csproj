@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ISourceTypeFactory.cs" />
+    <Compile Include="SourceType.cs" />
     <Compile Include="SourceTypeAttribute.cs" />
     <Compile Include="CodeGeneratorAttribute.cs" />
     <Compile Include="ContainerControlledCodeGenFactory.cs" />

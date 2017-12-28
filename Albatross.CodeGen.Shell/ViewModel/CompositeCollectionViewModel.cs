@@ -1,4 +1,5 @@
-﻿using Albatross.Logging.Core;
+﻿using Albatross.CodeGen.Shell.View;
+using Albatross.Logging.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Shell.ViewModel {
+	[ViewUsage(typeof(CompositeCollectionView))]
 	public class CompositeCollectionViewModel : WorkspaceViewModel {
 		CompositeRepository _repo;
 		public CompositeCollectionViewModel(CompositeRepository repo, IWorkspaceService svc, ILogFactory logFactory):base(svc, logFactory) {
@@ -32,7 +34,7 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 			get { return new RelayCommand(args => NewComposite()); }
 		}
 		void NewComposite() {
-			WorkspaceService.Create<CompositeDetailViewModel>(args => args.Load(null));
+			WorkspaceService.Create<CompositeViewModel>();
 		}
 
 
@@ -63,8 +65,14 @@ namespace Albatross.CodeGen.Shell.ViewModel {
 		}
 		void Edit(object args) {
 			if (args is Composite) {
-				WorkspaceService.Create<CompositeDetailViewModel>(null, ((Composite)args).Name);
+				WorkspaceService.Create<CompositeViewModel>(null, ((Composite)args).Name);
 			}
+		}
+
+
+		public RelayCommand NewCommand { get { return new RelayCommand(New); } }
+		void New(object args) {
+			WorkspaceService.Create<CompositeViewModel>(vm => vm.New());
 		}
 	}
 }

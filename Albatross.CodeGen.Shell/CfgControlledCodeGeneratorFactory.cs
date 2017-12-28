@@ -37,16 +37,20 @@ namespace Albatross.CodeGen.Shell {
 		}
 
 		public void Register() {
-			lock (_sync) {
-				var list = _settingRepository.GetAssembly();
-				foreach (var item in list) {
-					Register(item);
-				}
-				var items = _compositeRepository.Get();
-				if (items != null) {
-					this.Register(items);
-				}
+			Clear();
+
+			var list = _settingRepository.GetAssembly();
+			foreach (var item in list) {
+				Register(item);
 			}
+			var items = _compositeRepository.Get();
+			if (items != null) {
+				this.Register(items);
+			}
+
+			//register bulit in generators
+			Register(Albatross.CodeGen.SqlServer.Pack.Composites);
+			Register(typeof(Albatross.CodeGen.SqlServer.Pack).Assembly);
 		}
 
 		public void Register(IEnumerable<Composite> items) {
@@ -58,11 +62,13 @@ namespace Albatross.CodeGen.Shell {
 			}
 		}
 		public void Register(Assembly asm) {
-			foreach (Type type in asm.GetTypes()) {
-				if (typeof(ICodeGenerator).IsAssignableFrom(type) && type.GetCustomAttribute<CodeGeneratorAttribute>() != null) {
-					ICodeGenerator c = (ICodeGenerator)_factory.Create(type);
-					string key = c.GetName();
-					_registration[key] = c;
+			lock (_sync) {
+				foreach (Type type in asm.GetTypes()) {
+					if (typeof(ICodeGenerator).IsAssignableFrom(type) && type.GetCustomAttribute<CodeGeneratorAttribute>() != null) {
+						ICodeGenerator c = (ICodeGenerator)_factory.Create(type);
+						string key = c.GetName();
+						_registration[key] = c;
+					}
 				}
 			}
 		}

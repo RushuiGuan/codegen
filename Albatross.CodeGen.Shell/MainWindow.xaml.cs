@@ -1,4 +1,5 @@
-﻿using Albatross.CodeGen.Database;
+﻿using System.Reflection;
+using Albatross.CodeGen.Database;
 using Albatross.CodeGen.Shell.View;
 using Albatross.CodeGen.Shell.ViewModel;
 using Albatross.Logging.Core;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using AutoMapper;
 
 namespace Albatross.CodeGen.Shell {
 	/// <summary>
@@ -17,35 +19,53 @@ namespace Albatross.CodeGen.Shell {
 
 		public MainWindow() {
 			InitializeComponent();
-			DataContext = this;
+
+			//configure container
 			Container container = new ConfigContainer().Run();
 			container.RegisterSingleton<IWorkspaceService, ShellViewModel>();
 			container.RegisterSingleton<IGetWorkspaceTabControl>(this);
 			container.Verify();
 
+			//configure logging
 			ILogFactory logFactory = container.GetInstance<ILogFactory>();
 			logFactory.Init();
 			log = logFactory.Get(this);
 			log.Info("Contanier Initialized");
 
+			//register views
 			IViewLocator viewLocator = container.GetInstance<IViewLocator>();
 			RegisterViews(viewLocator);
 			this.Resources.Add(DefaultDataTemplateSelector.ViewLocatorKey, viewLocator);
-			ShellViewModel = container.GetInstance<IWorkspaceService>();
+
+			//configure automapper
+			AutoMapper.Mapper.Initialize(ConfigAutoMapper);
+
+			//setup nav
 			Nav = container.GetInstance<NavigationViewModel>();
+			
+			//setup workspace service
+			ShellViewModel = container.GetInstance<IWorkspaceService>();
 			DataContext = this;
 		}
 
 		public void RegisterViews(IViewLocator locator) {
-			locator.Register<CodeGeneratorCollectionViewModel, CodeGeneratorCollectionView>()
-				.Register<CompositeDetailViewModel, CompositeDetailView>()
-				.Register<Table, TableInputView>()
+			foreach (Type type in this.GetType().Assembly.GetTypes()) {
+				ViewUsageAttribute attrib = type.GetCustomAttribute<ViewUsageAttribute>();
+				if (attrib != null) {
+					locator.Register(type, attrib.ViewType);
+				}
+			}
+			locator.Register<Table, TableInputView>()
 				.Register<StoredProcedure, StoredProcedureInputView>()
-				.Register<Server, ServerInputView>()
-				.Register<CodeGenerationViewModel, CodeGenerationView>()
-				.Register<NavigationViewModel, NavigationView>()
-				.Register<CompositeCollectionViewModel, CompositeCollectionView>();
+				.Register<Server, ServerInputView>();
 		}
+
+		public void ConfigAutoMapper(IMapperConfigurationExpression cfg) {
+			cfg.CreateMap<Composite, CompositeViewModel>().ReverseMap();
+		}
+
+
+
 
 		public IWorkspaceService ShellViewModel { get; private set; }
 		public TabControl Get() { return tabs; }

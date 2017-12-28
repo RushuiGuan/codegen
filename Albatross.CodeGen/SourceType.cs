@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
-	public interface ISourceTypeFactory {
-		IEnumerable<SourceType> Get();
+	public class SourceType {
+		public Type ObjectType { get; set; }
+		public string Description { get; set; }
 	}
 }

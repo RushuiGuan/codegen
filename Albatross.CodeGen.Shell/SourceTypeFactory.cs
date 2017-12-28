@@ -12,12 +12,16 @@ namespace Albatross.CodeGen.Shell {
 			settingRepository = repo;
 		}
 
-		public IEnumerable<Type> Get() {
-			List<Type> list = new List<Type>();
+		public IEnumerable<SourceType> Get() {
+			List<SourceType> list = new List<SourceType>();
 			foreach (var asm in settingRepository.GetAssembly()) {
 				foreach (var type in asm.GetTypes()) {
-					if (type.GetCustomAttribute<SourceTypeAttribute>() != null) {
-						list.Add(type);
+					SourceTypeAttribute attrib = type.GetCustomAttribute<SourceTypeAttribute>();
+					if (attrib != null) {
+						list.Add(new SourceType {
+							ObjectType = type,
+							Description = attrib.Description,
+						});
 					}
 				}
 			}
