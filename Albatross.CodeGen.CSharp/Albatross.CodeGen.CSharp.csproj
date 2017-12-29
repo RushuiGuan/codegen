@@ -31,11 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Albatross.CodeGen, Version=1.0.6571.38013, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Albatross.CodeGen.1.0.2-alpha\lib\net47\Albatross.CodeGen.dll</HintPath>
-    </Reference>
-    <Reference Include="Albatross.Logging.Core, Version=1.0.6571.38013, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Albatross.CodeGen.1.0.2-alpha\lib\net47\Albatross.Logging.Core.dll</HintPath>
+    <Reference Include="Albatross.CodeGen, Version=1.0.6571.38915, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Albatross.CodeGen.1.0.3-alpha\lib\net45\Albatross.CodeGen.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>

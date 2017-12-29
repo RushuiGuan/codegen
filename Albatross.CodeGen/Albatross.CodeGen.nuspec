@@ -10,14 +10,14 @@
 		<projectUrl>https://github.com/RushuiGuan/CodeGen</projectUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<summary>A customizable code generator engine with a UI tool that allows user to quickly setup composite generators as well as complex code generation scenarios.</summary>
-		<description>The goal of this library is to create code generators to speed up software development.  It comes with a WPF based UI that allows users to create composite code generators and setup scenarios with multiple generator and its defined parameters.  The UI also allows users to quickly execute the scenarios repeatly.  It is as easy as alt-tab to the CodeGen UI, press F5 to generate and alt-tab back to copy and paste.</description>
+		<description>The goal of this library is to create code generators to speed up software development.  It comes with a WPF based UI that allows users to create composite code generators and setup scenarios with multiple generator and its defined parameters.  The UI also allows users to quickly execute the scenarios repeatly.  It is as easy as alt-tab to the CodeGen UI, press F5 to generate and alt-tab back to copy and paste. The tool can be found in the tools folder or use nuget package &quot;Albatross.CodeGen.Tool&quot; for the latest build</description>
 		<releaseNotes>Initial Release</releaseNotes>
 		<copyright>Copyright 2017</copyright>
 		<tags>Code Generator C# sql</tags>
 	</metadata>
 	<files>
-		<file src="..\Albatross.CodeGen.Shell\bin\Release\*.dll" target="tools" />
-		<file src="..\Albatross.CodeGen.Shell\bin\Release\*.exe" target="tools" />
+		<file src="..\Albatross.CodeGen.Tool\bin\Release\*.dll" target="tools" />
+		<file src="..\Albatross.CodeGen.Tool\bin\Release\*.exe" target="tools" />
 		<file src="..\readme.md" target="" />
 	</files>
 </package>
