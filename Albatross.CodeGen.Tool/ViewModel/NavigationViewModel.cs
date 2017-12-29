@@ -9,8 +9,9 @@ namespace Albatross.CodeGen.Tool.ViewModel {
 		}
 		public RelayCommand CodeGeneratorsCommand { get { return new RelayCommand(args => WorkspaceService.Create<CodeGeneratorCollectionViewModel>(vm => vm.Load(), 0)); } }
 
+		public RelayCommand NewCompositeCommand { get { return new RelayCommand(args => WorkspaceService.Create<CompositeViewModel>(vm => vm.New())); } }
+		
 		public RelayCommand CompositesCommand { get { return new RelayCommand(args => WorkspaceService.Create<CompositeCollectionViewModel>(vm => vm.Load(), 0)); } }
-
 
 		public RelayCommand AssemblyLocationsCommand { get { return new RelayCommand(AssemblyLocations); } }
 		void AssemblyLocations(object args) {

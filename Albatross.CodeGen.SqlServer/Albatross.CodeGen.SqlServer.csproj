@@ -40,12 +40,6 @@
     <Reference Include="Dapper, Version=1.50.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.50.4\lib\net451\Dapper.dll</HintPath>
     </Reference>
-    <Reference Include="SimpleInjector, Version=4.0.12.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleInjector.4.0.12\lib\net45\SimpleInjector.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleInjector.Packaging, Version=4.0.12.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleInjector.Packaging.4.0.12\lib\net40\SimpleInjector.Packaging.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -67,7 +61,7 @@
     <Compile Include="GetTableColumns.cs" />
     <Compile Include="GetTableIdentityColumn.cs" />
     <Compile Include="GetTablePrimaryKey.cs" />
-    <Compile Include="Pack.cs" />
+    <Compile Include="BuiltInComposites.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableCodeGenerator.cs" />
     <Compile Include="TableDelete.cs" />

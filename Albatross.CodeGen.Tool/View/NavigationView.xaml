@@ -11,7 +11,9 @@
 	<Border BorderBrush="Silver" BorderThickness="1 0 1 0">
 		<StackPanel Orientation="Vertical">
 			<TextBlock Margin="5"><Hyperlink Command="{Binding CodeGeneratorsCommand}">Code Generators</Hyperlink></TextBlock>
+			<TextBlock Margin="5"><Hyperlink Command="{Binding NewCompositeCommand}">New Composite</Hyperlink></TextBlock>
 			<TextBlock Margin="5"><Hyperlink Command="{Binding CompositesCommand}">Composites</Hyperlink></TextBlock>
+			<TextBlock Margin="5"><Hyperlink Command="{Binding NewScenarioCommand}">New Scenario</Hyperlink></TextBlock>
 			<TextBlock Margin="5"><Hyperlink Command="{Binding ScenariosCommand}">Scenarios</Hyperlink></TextBlock>
 			<Separator/>
 			<TextBlock Margin="5"><Hyperlink Command="{Binding AssemblyLocationsCommand}">Assembly Locations</Hyperlink></TextBlock>

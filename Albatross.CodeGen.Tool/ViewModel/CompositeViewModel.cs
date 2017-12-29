@@ -1,18 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 using Albatross.Logging.Core;
 using Albatross.CodeGen.Tool.View;
 using System;
 using System.Collections.ObjectModel;
+using System.Collections;
+using System.Text;
 
 namespace Albatross.CodeGen.Tool.ViewModel {
 	[ViewUsage(typeof(CompositeView))]
 	public class CompositeViewModel : WorkspaceViewModel {
-		public CompositeViewModel(IWorkspaceService svc, ILogFactory logFactory, IListValues<SourceType> srcTypeList, IListValues<CodeGenerator> generatorList) : base(svc, logFactory) {
+		ICodeGeneratorFactory _codeGeneratorFactory;
+
+		public CompositeViewModel(IWorkspaceService svc, ILogFactory logFactory, IListValues<SourceType> srcTypeList, ICodeGeneratorFactory codeGeneratorFactory) : base(svc, logFactory) {
 			SourceTypeList = srcTypeList;
-			GeneratorList = generatorList;
+			this._codeGeneratorFactory = codeGeneratorFactory;
 			SetTitle();
+			SetAvailableGenerators();
 		}
 
+		void SetAvailableGenerators() {
+			AvailableGenerators.Clear();
+			foreach (var gen in _codeGeneratorFactory.Registrations) {
+				if ((SourceType == null || SourceType == gen.SourceType) && (string.IsNullOrEmpty(Target) || string.Equals(Target, gen.Target, StringComparison.InvariantCultureIgnoreCase))) {
+					AvailableGenerators.Add(gen.Name);
+				}
+			}
+		}
 
 		void SetTitle() {
 			if (string.IsNullOrEmpty(Name)) {
@@ -23,11 +37,8 @@ namespace Albatross.CodeGen.Tool.ViewModel {
 		}
 		public void Load(Composite c) {
 			AutoMapper.Mapper.Map<Composite, CompositeViewModel>(c, this);
-			SelectedGenerators.Clear();
 			if (c.Generators != null) {
-				foreach (var item in c.Generators) {
-					SelectedGenerators.Add(item);
-				}
+				SelectedGenerators = string.Join("\n", c.Generators);
 			}
 		}
 		public void New() {
@@ -36,8 +47,6 @@ namespace Albatross.CodeGen.Tool.ViewModel {
 
 		#region properties
 		public IListValues<SourceType> SourceTypeList { get; }
-		public IListValues<CodeGenerator> GeneratorList { get; }
-
 
 		string _name;
 		public string Name {
@@ -80,11 +89,36 @@ namespace Albatross.CodeGen.Tool.ViewModel {
 				if (_target != value) {
 					_target = value;
 					RaisePropertyChanged(nameof(Target));
+					SetAvailableGenerators();
 				}
 			}
 		}
 
-		public ObservableCollection<string> SelectedGenerators { get; } = new ObservableCollection<string>();
+
+		string _selecedGenerators;
+		public string SelectedGenerators {
+			get { return _selecedGenerators; }
+			set {
+				if (_selecedGenerators != value) {
+					_selecedGenerators = value;
+					RaisePropertyChanged(nameof(SelectedGenerators));
+				}
+			}
+		}
+
+
+		public ObservableCollection<string> AvailableGenerators { get; } = new ObservableCollection<string>();
+
+		//string _availableGenerators;
+		//public string AvailableGenerators {
+		//	get { return _availableGenerators; }
+		//	set {
+		//		if (_availableGenerators != value) {
+		//			_availableGenerators = value;
+		//			RaisePropertyChanged(nameof(AvailableGenerators));
+		//		}
+		//	}
+		//}
 
 		Type _sourceType;
 		public Type SourceType {
@@ -93,6 +127,7 @@ namespace Albatross.CodeGen.Tool.ViewModel {
 				if (_sourceType != value) {
 					_sourceType = value;
 					RaisePropertyChanged(nameof(SourceType));
+					SetAvailableGenerators();
 				}
 			}
 		}
@@ -100,22 +135,26 @@ namespace Albatross.CodeGen.Tool.ViewModel {
 
 		#region commands
 
-		public RelayCommand<CodeGenerator> AddSelectedCommand { get { return new RelayCommand<CodeGenerator>(AddSelected); } }
-		void AddSelected(CodeGenerator args) {
+		public RelayCommand<IList> CopyCommand { get { return new RelayCommand<IList>(Copy); } }
+		void Copy(IList args) {
+			StringBuilder sb = new StringBuilder();
 			if (args != null) {
-				if (!SelectedGenerators.Contains(args.Name)) {
-					SelectedGenerators.Add(args.Name);
+				foreach (string item in args) {
+					sb.AppendLine(item);
 				}
 			}
+			System.Windows.Clipboard.SetText(sb.ToString());
 		}
 
-
-		public RelayCommand<string> RemoveSelectedCommand { get { return new RelayCommand<string>(RemoveSelected); } }
-		void RemoveSelected(string args) {
-			for (int i = 0; i < SelectedGenerators.Count; i++) {
-				if (SelectedGenerators[i] == args) {
-					SelectedGenerators.RemoveAt(i);
-					break;
+		public RelayCommand AddSelectedCommand {
+			get { return new RelayCommand(AddSelected); }
+		}
+		void AddSelected(object item) {
+			if (!string.IsNullOrEmpty(Convert.ToString(item))) {
+				if (string.IsNullOrWhiteSpace(SelectedGenerators)) {
+					SelectedGenerators = Convert.ToString(item);
+				} else {
+					SelectedGenerators = SelectedGenerators + "\n" + item;
 				}
 			}
 		}

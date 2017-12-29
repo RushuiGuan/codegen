@@ -2,9 +2,10 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
+using System.Windows.Media;
 
 namespace Albatross.CodeGen.Tool.View {
-	public class DataGridBehavior : Behavior<DataGrid> {
+	public class ListViewBehavior : Behavior<ListView> {
 		protected override void OnAttached() {
 			base.OnAttached();
 			this.AssociatedObject.MouseDoubleClick += AssociatedObject_MouseDoubleClick;
@@ -14,20 +15,24 @@ namespace Albatross.CodeGen.Tool.View {
 		}
 
 		public const string DoubleClickCommandPropertyName = "DoubleClickCommand";
-		public static readonly DependencyProperty DoubleClickCommandProperty = DependencyProperty.Register(DoubleClickCommandPropertyName, typeof(ICommand), typeof(DataGridBehavior), new PropertyMetadata());
+		public static readonly DependencyProperty DoubleClickCommandProperty = DependencyProperty.Register(DoubleClickCommandPropertyName, typeof(ICommand), typeof(ListViewBehavior), new PropertyMetadata());
 		public ICommand DoubleClickCommand {
 			get { return (ICommand)GetValue(DoubleClickCommandProperty); }
 			set { SetValue(DoubleClickCommandProperty, value); }
 		}
 		private void AssociatedObject_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) {
-			var cmd = DoubleClickCommand;
+			ListView listView = sender as ListView;
+			if (listView != null && DoubleClickCommand != null) {
+				var cmd = DoubleClickCommand;
 
-			IInputElement element = e.MouseDevice.DirectlyOver;
-			if (cmd != null && element != null && element is FrameworkElement) {
-				DataGridCell cell = ((FrameworkElement)element).Parent as DataGridCell;
-				if (cell != null) {
-					cmd.Execute(cell.DataContext);
-					e.Handled = true;
+				var item = VisualTreeHelper.HitTest(listView, e.GetPosition(listView)).VisualHit;
+				while (item != null) {
+					if (item is ListViewItem) {
+						cmd.Execute(((ListViewItem)item).DataContext);
+						break;
+					} else {
+						item = VisualTreeHelper.GetParent(item);
+					}
 				}
 			}
 		}

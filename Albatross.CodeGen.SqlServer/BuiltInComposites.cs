@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SimpleInjector;
-using Albatross.CodeGen;
-using Albatross.CodeGen.Database;
-using System.Reflection;
-
-namespace Albatross.CodeGen.SqlServer {
-	public class Pack : SimpleInjector.Packaging.IPackage {
+﻿namespace Albatross.CodeGen.SqlServer {
+	public class BuiltInComposites {
 		public readonly static Composite[] Composites = new Composite[] {
 			Extension.NewSqlTableComposite("table_delete_default_by_id", "Delete a sql table row by the identity column", "table_where_by_id"),
 			Extension.NewSqlTableComposite("table_delete_default_by_primarykey", "Delete a sql table row by its primary key", "table_delete", "table_where_by_primarykey"), 
@@ -20,17 +10,7 @@ namespace Albatross.CodeGen.SqlServer {
 			Extension.NewSqlTableComposite("table_update_by_primarykey", "Update statement with where clause on the primary key columns", "table_update_exclude_primarykey", "table_where_by_primarykey"), 
 		};
 
-		//use for unit testing only
-		public void RegisterGenerators(Container container) {
-			List<Registration> registrations = new List<Registration>();
-			for(int i=0; i<Composites.Length; i++) { 
-				registrations.Add(Lifestyle.Singleton.CreateRegistration<ICodeGenerator>(() => new CompositeCodeGenerator(Composites[i]), container));
-			}
-			container.RegisterCollection<ICodeGenerator>(registrations);
-		}
-
-
-
+		/*
 		public void RegisterServices(Container container) {
 			container.RegisterSingleton<IGetTableColumns, GetTableColumns>();
 			container.RegisterSingleton<IGetVariableName, GetSqlVariableName>();
@@ -41,5 +21,6 @@ namespace Albatross.CodeGen.SqlServer {
 			container.RegisterCollection<BuiltInColumn>(BuiltInColumns.Items);
 			container.RegisterSingleton<IBuiltInColumnFactory, BuiltInColumnFactory>();
 		}
+		*/
 	}
 }

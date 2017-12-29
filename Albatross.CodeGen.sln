@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.0
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen", "Albatross.CodeGen\Albatross.CodeGen.csproj", "{B99B890A-0FC3-4744-B880-416665E9580A}"
 EndProject
@@ -24,38 +24,39 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B99B890A-0FC3-4744-B880-416665E9580A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B99B890A-0FC3-4744-B880-416665E9580A}.Debug|Any CPU.BToolld.0 = Debug|Any CPU
+		{B99B890A-0FC3-4744-B880-416665E9580A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B99B890A-0FC3-4744-B880-416665E9580A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B99B890A-0FC3-4744-B880-416665E9580A}.Release|Any CPU.BToolld.0 = Release|Any CPU
+		{B99B890A-0FC3-4744-B880-416665E9580A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC7EE3A3-EFA9-4C54-BC97-98171D9708AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC7EE3A3-EFA9-4C54-BC97-98171D9708AB}.Debug|Any CPU.BToolld.0 = Debug|Any CPU
+		{BC7EE3A3-EFA9-4C54-BC97-98171D9708AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC7EE3A3-EFA9-4C54-BC97-98171D9708AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC7EE3A3-EFA9-4C54-BC97-98171D9708AB}.Release|Any CPU.BToolld.0 = Release|Any CPU
+		{BC7EE3A3-EFA9-4C54-BC97-98171D9708AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0135055F-595E-42DB-A70E-1DF23C57351A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0135055F-595E-42DB-A70E-1DF23C57351A}.Debug|Any CPU.BToolld.0 = Debug|Any CPU
+		{0135055F-595E-42DB-A70E-1DF23C57351A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0135055F-595E-42DB-A70E-1DF23C57351A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0135055F-595E-42DB-A70E-1DF23C57351A}.Release|Any CPU.BToolld.0 = Release|Any CPU
+		{0135055F-595E-42DB-A70E-1DF23C57351A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0BD5819B-933B-4704-8AA4-D64153F819DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0BD5819B-933B-4704-8AA4-D64153F819DA}.Debug|Any CPU.BToolld.0 = Debug|Any CPU
+		{0BD5819B-933B-4704-8AA4-D64153F819DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BD5819B-933B-4704-8AA4-D64153F819DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0BD5819B-933B-4704-8AA4-D64153F819DA}.Release|Any CPU.BToolld.0 = Release|Any CPU
+		{0BD5819B-933B-4704-8AA4-D64153F819DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20B28674-B5AE-4762-A10A-D0185F556E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{20B28674-B5AE-4762-A10A-D0185F556E1C}.Debug|Any CPU.BToolld.0 = Debug|Any CPU
+		{20B28674-B5AE-4762-A10A-D0185F556E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20B28674-B5AE-4762-A10A-D0185F556E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{20B28674-B5AE-4762-A10A-D0185F556E1C}.Release|Any CPU.BToolld.0 = Release|Any CPU
+		{20B28674-B5AE-4762-A10A-D0185F556E1C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7EE2CA03-E0B3-4672-8E34-481087ECA46E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7EE2CA03-E0B3-4672-8E34-481087ECA46E}.Debug|Any CPU.BToolld.0 = Debug|Any CPU
+		{7EE2CA03-E0B3-4672-8E34-481087ECA46E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EE2CA03-E0B3-4672-8E34-481087ECA46E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7EE2CA03-E0B3-4672-8E34-481087ECA46E}.Release|Any CPU.BToolld.0 = Release|Any CPU
+		{7EE2CA03-E0B3-4672-8E34-481087ECA46E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Debug|Any CPU.BToolld.0 = Debug|Any CPU
+		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Release|Any CPU.BToolld.0 = Release|Any CPU
+		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGToold = {DC66FBE3-16F6-4FE3-BA4F-D3C380D2AB75}
+		SolutionGuid = {8E6AD19A-703E-4DCE-92B7-50652D34EE15}
 	EndGlobalSection
 EndGlobal

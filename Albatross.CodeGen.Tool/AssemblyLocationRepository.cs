@@ -10,14 +10,13 @@ using System.Reflection;
 
 namespace Albatross.CodeGen.Tool {
 	public class AssemblyLocationRepository : JsonFileRepository<AssemblyLocationSetting> {
-		public AssemblyLocationRepository(ILogFactory logFactory) : base(logFactory) {
-		}
+		public AssemblyLocationRepository(ILogFactory logFactory) : base(logFactory) { }
 
 		public override string FileName => "AssemblyLocations";
 
-
 		public IEnumerable<Assembly> GetAssembly() {
 			List<Assembly> list = new List<Assembly>();
+			list.Add(typeof(Albatross.CodeGen.Database.Table).Assembly);
 			var setting = Get();
 			if (setting?.Locations != null) {
 				foreach (var path in setting.Locations) {

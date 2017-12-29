@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Albatross.CodeGen.Tool.View"
+			 xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
-             d:DesignHeight="900" d:DesignWidth="300">
+             d:DesignHeight="900" d:DesignWidth="600">
 	<UserControl.Resources>
 		<ResourceDictionary Source="Style.xaml"/>
 	</UserControl.Resources>
@@ -14,7 +15,6 @@
 			<Button>Save</Button>
 			<Separator/>
 			<Button>Delete</Button>
-
 			<Separator/>
 			<Button Command="{Binding CloseCommand}">Close</Button>
 		</ToolBar>
@@ -42,36 +42,35 @@
 			<TextBox Grid.Row="2" Style="{StaticResource textInput}" Grid.Column="3" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
 
 			<Label Grid.Row="3" Style="{StaticResource label}">Target</Label>
-			<TextBox Grid.Row="3" Style="{StaticResource textInput}" Grid.Column="4" Text="{Binding Target, UpdateSourceTrigger=PropertyChanged}"/>
+			<TextBox Grid.Row="3" Style="{StaticResource textInput}" Grid.Column="4" Text="{Binding Target, UpdateSourceTrigger=LostFocus}" local:BindingsManager.UpdateBindingWhenEnter="TextBox.Text">
+			</TextBox>
 
 			<Label Grid.Row="4" Style="{StaticResource label}">Source Type</Label>
-			<ComboBox Grid.Row="4" Style="{StaticResource comboInput}" Grid.Column="4" ItemsSource="{Binding SourceTypeList.Items}" SelectedValue="{Binding SourceType}" DisplayMemberPath="Description" SelectedValuePath="ObjectType" />
+			<ComboBox Grid.Row="4" Style="{StaticResource comboInput}" Grid.Column="4" ItemsSource="{Binding SourceTypeList.Items}" SelectedValue="{Binding SourceType}" DisplayMemberPath="Title" SelectedValuePath="ObjectType" />
 
 			<Label Grid.Row="5" Style="{StaticResource label}">Generators</Label>
-			<DockPanel Grid.Row="5" Grid.Column="1">
-				<DockPanel DockPanel.Dock="Top">
-					<Button DockPanel.Dock="Right" Margin="0 5 5 5" Command="{Binding AddSelectedCommand}" CommandParameter="{Binding SelectedItem, ElementName=Combo}">Add</Button>
-					<ComboBox x:Name="Combo" Style="{StaticResource comboInput}" ItemsSource="{Binding GeneratorList.Items}" DockPanel.Dock="Top" DisplayMemberPath="Name">
-						<ComboBox.InputBindings>
-							<KeyBinding Key="Return" Command="{Binding AddSelectedCommand}" CommandParameter="{Binding SelectedItem, ElementName=Combo}"/>
-						</ComboBox.InputBindings>
-					</ComboBox>
-				</DockPanel>
-
+			<Grid Grid.Row="5" Grid.Column="1">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
 				<DockPanel>
-					<StackPanel Orientation="Vertical" DockPanel.Dock="Right">
-						<Button DockPanel.Dock="Right" Margin="0 5 5 5" Command="{Binding RemoveSelectedCommand}" CommandParameter="{Binding SelectedItem, ElementName=ListView}">Remove</Button>
-						<Button DockPanel.Dock="Right" Margin="0 5 5 5" Command="{Binding MoveUpCommand}" CommandParameter="{Binding SelectedItem, ElementName=ListView}">Up</Button>
-						<Button DockPanel.Dock="Right" Margin="0 5 5 5" Command="{Binding MoveDownCommand}" CommandParameter="{Binding SelectedItem, ElementName=ListView}">Down</Button>
-
-					</StackPanel>
-					<ListView Margin="5 0 5 5" x:Name="ListView" ItemsSource="{Binding SelectedGenerators}">
+					<Label DockPanel.Dock="Top">Selected Generators</Label>
+					<TextBox Margin="0 0 5 5" AcceptsReturn="True" Text="{Binding SelectedGenerators}" />
+				</DockPanel>
+				<DockPanel Grid.Column="1">
+					<Label DockPanel.Dock="Top">Available Generators</Label>
+					<ListView ItemsSource="{Binding AvailableGenerators}" Margin="0 0 5 5" x:Name="listView">
+						<i:Interaction.Behaviors>
+							<local:ListViewBehavior DoubleClickCommand="{Binding AddSelectedCommand}"/>
+						</i:Interaction.Behaviors>
+						
 						<ListView.InputBindings>
-							<KeyBinding Key="Delete" Command="{Binding RemoveSelectedCommand}" CommandParameter="{Binding SelectedItem, ElementName=ListView}"/>
+							<KeyBinding Modifiers="Ctrl" Key="C" Command="{Binding CopyCommand}" CommandParameter="{Binding SelectedItems, ElementName=listView}" />
 						</ListView.InputBindings>
 					</ListView>
 				</DockPanel>
-			</DockPanel>
+			</Grid>
 		</Grid>
 	</DockPanel>
 </UserControl>

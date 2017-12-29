@@ -1,7 +1,6 @@
 ﻿using Albatross.CodeGen.CSharp;
 using Albatross.CodeGen.Database;
 using Newtonsoft.Json;
-using SimpleInjector;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -44,17 +43,6 @@ namespace Albatross.CodeGen {
 		public static Type LoadType(this ObjectType objType) {
 			Assembly asm = Assembly.ReflectionOnlyLoadFrom(objType.AssemblyLocation);
 			return asm.GetType(objType.ClassName);
-		}
-
-		public static IEnumerable<Registration> FindCodeGenerator(this Container c, Assembly asm) {
-			List<Registration> list = new List<Registration>();
-			foreach (Type type in asm.GetTypes()) {
-				if (typeof(ICodeGenerator).IsAssignableFrom(type) && type.GetCustomAttribute<CodeGeneratorAttribute>() != null) {
-					var item = Lifestyle.Singleton.CreateRegistration(type, c);
-					list.Add(item);
-				}
-			}
-			return list;
 		}
 
 		public static Composite NewSqlTableComposite(string name, string description, params string[] generators) {

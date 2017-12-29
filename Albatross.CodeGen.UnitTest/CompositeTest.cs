@@ -17,7 +17,16 @@ namespace Albatross.CodeGen.UnitTest {
 
 		public CompositeTest() {
 			container.Options.AllowOverridingRegistrations = true;
-			new Albatross.CodeGen.SqlServer.Pack().RegisterServices(container);
+
+			container.RegisterSingleton<IGetTableColumns, GetTableColumns>();
+			container.RegisterSingleton<IGetVariableName, GetSqlVariableName>();
+			container.RegisterSingleton<IGetTablePrimaryKey, GetTablePrimaryKey>();
+			container.RegisterSingleton<IGetTableIdentityColumn, GetTableIdentityColumn>();
+			container.RegisterSingleton<IColumnSqlTypeBuilder, ColumnSqlTypeBuilder>();
+
+			container.RegisterCollection<BuiltInColumn>(BuiltInColumns.Items);
+			container.RegisterSingleton<IBuiltInColumnFactory, BuiltInColumnFactory>();
+
 
 			container.Register<ICodeGeneratorFactory, ContainerControlledCodeGenFactory>(Lifestyle.Singleton);
 			container.Register<IGetTablePrimaryKey>(() => mock_GetTablePrimaryKey.Object, Lifestyle.Singleton);

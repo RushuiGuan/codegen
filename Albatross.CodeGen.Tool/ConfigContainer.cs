@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Albatross.CodeGen.Database;
+using Albatross.CodeGen.SqlServer;
 
 namespace Albatross.CodeGen.Tool {
 	public class ConfigContainer {
@@ -21,10 +23,17 @@ namespace Albatross.CodeGen.Tool {
 
 			container.RegisterSingleton<IObjectFactory>(new	ObjectFactory(container));
 			container.Register<ILogFactory, Log4netLogFactory>(Lifestyle.Singleton);
-			new SqlServer.Pack().RegisterServices(container);
+
+			container.RegisterSingleton<IGetTableColumns, GetTableColumns>();
+			container.RegisterSingleton<IGetVariableName, GetSqlVariableName>();
+			container.RegisterSingleton<IGetTablePrimaryKey, GetTablePrimaryKey>();
+			container.RegisterSingleton<IGetTableIdentityColumn, GetTableIdentityColumn>();
+			container.RegisterSingleton<IColumnSqlTypeBuilder, ColumnSqlTypeBuilder>();
+			container.RegisterCollection<BuiltInColumn>(BuiltInColumns.Items);
+			container.RegisterSingleton<IBuiltInColumnFactory, BuiltInColumnFactory>();
+
 			container.RegisterSingleton<AssemblyLocationRepository>();
 			container.RegisterSingleton<IViewLocator, ViewLocator>();
-
 
 			Type genericType = typeof(IListValues<>);
 			foreach(Type type in this.GetType().Assembly.GetTypes()){

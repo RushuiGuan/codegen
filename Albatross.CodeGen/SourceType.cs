@@ -8,5 +8,6 @@ namespace Albatross.CodeGen {
 	public class SourceType {
 		public Type ObjectType { get; set; }
 		public string Description { get; set; }
+		public string Title { get { return $"{ObjectType.Name} - {Description}"; } }
 	}
 }

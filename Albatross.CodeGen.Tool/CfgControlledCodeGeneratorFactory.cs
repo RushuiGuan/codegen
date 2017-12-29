@@ -49,8 +49,8 @@ namespace Albatross.CodeGen.Tool {
 			}
 
 			//register bulit in generators
-			Register(Albatross.CodeGen.SqlServer.Pack.Composites);
-			Register(typeof(Albatross.CodeGen.SqlServer.Pack).Assembly);
+			Register(Albatross.CodeGen.SqlServer.BuiltInComposites.Composites);
+			Register(typeof(Albatross.CodeGen.SqlServer.BuiltInComposites).Assembly);
 		}
 
 		public void Register(IEnumerable<Composite> items) {

@@ -123,7 +123,9 @@
     <Compile Include="View\CompositeView.xaml.cs">
       <DependentUpon>CompositeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ListViewBehavior.cs" />
     <Compile Include="View\DataGridBehavior.cs" />
+    <Compile Include="View\BindingsManager.cs" />
     <Compile Include="View\NavigationView.xaml.cs">
       <DependentUpon>NavigationView.xaml</DependentUpon>
     </Compile>
