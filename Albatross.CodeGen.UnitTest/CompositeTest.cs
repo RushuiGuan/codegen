@@ -18,8 +18,8 @@ namespace Albatross.CodeGen.UnitTest {
 		public CompositeTest() {
 			container.Options.AllowOverridingRegistrations = true;
 			new Albatross.CodeGen.SqlServer.Pack().RegisterServices(container);
-			new Albatross.CodeGen.Pack().RegisterServices(container);
 
+			container.Register<ICodeGeneratorFactory, ContainerControlledCodeGenFactory>(Lifestyle.Singleton);
 			container.Register<IGetTablePrimaryKey>(() => mock_GetTablePrimaryKey.Object, Lifestyle.Singleton);
 			container.Register<IGetTableIdentityColumn>(() => mock_GetTableIDColumn.Object, Lifestyle.Singleton);
 			container.Register<IGetTableColumns>(() => mock_GetTableColumns.Object, Lifestyle.Singleton);
