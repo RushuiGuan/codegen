@@ -1,14 +1,10 @@
 ﻿using Albatross.CodeGen.CSharp;
 using Albatross.CodeGen.Database;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
 	public static class Extension {

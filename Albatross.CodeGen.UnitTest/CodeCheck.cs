@@ -22,5 +22,11 @@ namespace Albatross.CodeGen.UnitTest {
 		public string FileCheck(string path) {
 			return Path.GetFileName(path);
 		}
+
+
+		[TestCase(ExpectedResult = "c:\temp\test")]
+		public string PathCheck() {
+			return Path.GetFileNameWithoutExtension(@"c:\temp\test.txt");
+		}
 	}
 }

@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>Albatross.CodeGen.snk</AssemblyOriginatorKeyFile>
@@ -218,7 +220,6 @@
     </EmbeddedResource>
     <None Include="Albatross.CodeGen.UI.nuspec" />
     <None Include="Albatross.CodeGen.snk" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -227,7 +228,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="AutoMapper">
+      <Version>6.2.2</Version>
+    </PackageReference>
+    <PackageReference Include="Expression.Blend.Sdk">
+      <Version>1.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="SimpleInjector">
+      <Version>4.0.12</Version>
+    </PackageReference>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\logging\Albatross.Logging.Core\Albatross.Logging.Core.csproj">
       <Project>{20b28674-b5ae-4762-a10a-d0185f556e1c}</Project>

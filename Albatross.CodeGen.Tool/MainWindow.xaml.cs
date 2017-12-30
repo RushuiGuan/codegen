@@ -28,7 +28,6 @@ namespace Albatross.CodeGen.Tool {
 
 			//configure logging
 			ILogFactory logFactory = container.GetInstance<ILogFactory>();
-			logFactory.Init();
 			log = logFactory.Get(this);
 			log.Info("Contanier Initialized");
 
@@ -63,9 +62,6 @@ namespace Albatross.CodeGen.Tool {
 		public void ConfigAutoMapper(IMapperConfigurationExpression cfg) {
 			cfg.CreateMap<Composite, CompositeViewModel>().ReverseMap();
 		}
-
-
-
 
 		public IWorkspaceService ShellViewModel { get; private set; }
 		public TabControl Get() { return tabs; }
