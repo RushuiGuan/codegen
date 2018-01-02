@@ -15,6 +15,18 @@ namespace Albatross.CodeGen {
 			}
 		}
 
+		public static string Proper(this string text) {
+			if (!string.IsNullOrEmpty(text)) {
+				string result = text.Substring(0, 1).ToUpper();
+				if (text.Length > 1) {
+					result = result + text.Substring(1);
+				}
+				return result;
+			} else {
+				return text;
+			}
+		}
+
 
 		public static string GetGeneratorName(this Type type, string name) {
 			if (type == typeof(object) || type == null) {
