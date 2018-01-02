@@ -5,10 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell {
-	public class SetupContainer {
-		public void Run() {
-		}
-
-
+	public interface IObjectFactory {
+		T Create<T>() where T : class;
 	}
 }

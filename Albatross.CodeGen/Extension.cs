@@ -2,7 +2,6 @@
 using Albatross.CodeGen.Database;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.IO;
 using System.Reflection;
 
@@ -16,14 +15,6 @@ namespace Albatross.CodeGen {
 			}
 		}
 
-		public static string GetConnectionString(this Table table) {
-			SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder {
-				DataSource = table.Server.DataSource,
-				InitialCatalog = table.Server.InitialCatalog,
-				IntegratedSecurity = true
-			};
-			return builder.ToString();
-		}
 
 		public static string GetGeneratorName(this Type type, string name) {
 			if (type == typeof(object) || type == null) {
