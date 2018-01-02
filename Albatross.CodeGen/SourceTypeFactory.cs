@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Albatross.CodeGen.Tool {
+namespace Albatross.CodeGen {
 	public class SourceTypeFactory : ISourceTypeFactory {
 		AssemblyLocationRepository settingRepository;
 		public SourceTypeFactory(AssemblyLocationRepository repo) {

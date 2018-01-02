@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Albatross.CodeGen.Tool {
+namespace Albatross.CodeGen {
 	public interface IConfigurableCodeGenFactory : ICodeGeneratorFactory {
 		void Clear();
 		void Register();

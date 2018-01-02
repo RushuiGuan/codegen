@@ -6,6 +6,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Collections;
 using System.Text;
+using System.ComponentModel;
 
 namespace Albatross.CodeGen.Tool.ViewModel {
 	[ViewUsage(typeof(CompositeView))]
@@ -149,6 +150,7 @@ namespace Albatross.CodeGen.Tool.ViewModel {
 		public RelayCommand AddSelectedCommand {
 			get { return new RelayCommand(AddSelected); }
 		}
+
 		void AddSelected(object item) {
 			if (!string.IsNullOrEmpty(Convert.ToString(item))) {
 				if (string.IsNullOrWhiteSpace(SelectedGenerators)) {

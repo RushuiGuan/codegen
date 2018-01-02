@@ -7,16 +7,22 @@ using System.Threading.Tasks;
 using Albatross.Logging.Core;
 using System.Reflection;
 
-namespace Albatross.CodeGen.Tool {
+namespace Albatross.CodeGen {
 	public class AssemblyLocationRepository : JsonFileRepository<AssemblyLocationSetting> {
-		public AssemblyLocationRepository(ILogFactory logFactory) : base(logFactory) { }
+		JsonFileRepository<AssemblyLocationSetting> _jsonFileRepo;
 
-		public override string FileName => "AssemblyLocations";
+		public AssemblyLocationRepository(ILogFactory logFactory, JsonFileRepository<AssemblyLocationSetting> fileRepo, IGetDefaultRepoFolder getDefaultFolder) : base(logFactory) {
+			_jsonFileRepo = fileRepo;
+			Path = getDefaultFolder.Get() + "\\" + FileName;
+		}
+
+		public string FileName => "AssemblyLocations.json";
+		public string Path{ get; }
 
 		public IEnumerable<Assembly> GetAssembly() {
 			List<Assembly> list = new List<Assembly>();
 			list.Add(typeof(Albatross.CodeGen.Database.Table).Assembly);
-			var setting = Get();
+			var setting = Get(Path);
 			if (setting?.Locations != null) {
 				foreach (var path in setting.Locations) {
 					if (File.Exists(path)) {
@@ -32,9 +38,9 @@ namespace Albatross.CodeGen.Tool {
 					} else {
 						//try to do a pattern match
 						try {
-							string folder = Path.GetDirectoryName(path);
+							string folder = System.IO.Path.GetDirectoryName(path);
 							if (Directory.Exists(folder)) {
-								string pattern = Path.GetFileName(path);
+								string pattern = System.IO.Path.GetFileName(path);
 								foreach (var file in Directory.GetFiles(folder, pattern)) {
 									if (TryLoadFile(file, out Assembly asm)) {
 										list.Add(asm);

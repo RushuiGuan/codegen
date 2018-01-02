@@ -1,6 +1,5 @@
 ﻿using Albatross.CodeGen;
 using Albatross.Logging.Core;
-using SimpleInjector;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Albatross.CodeGen.Tool {
+namespace Albatross.CodeGen{
 	//when controlled by cfg, types will be added at run time.  Container registration cannot be used, but contaner is still
 	//needed to create a new type instance.  ObjectFactory is a wrapper on the container.  This is a ServiceLocator Pattern in disguise.
 	//edge case only.  do not copy this pattern!
@@ -43,14 +42,10 @@ namespace Albatross.CodeGen.Tool {
 			foreach (var item in list) {
 				Register(item);
 			}
-			var items = _compositeRepository.Get();
+			var items = _compositeRepository.List();
 			if (items != null) {
 				this.Register(items);
 			}
-
-			//register bulit in generators
-			Register(Albatross.CodeGen.SqlServer.BuiltInComposites.Composites);
-			Register(typeof(Albatross.CodeGen.SqlServer.BuiltInComposites).Assembly);
 		}
 
 		public void Register(IEnumerable<Composite> items) {

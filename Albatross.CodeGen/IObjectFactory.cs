@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Albatross.CodeGen.Tool {
-	public class AssemblyLocationSetting {
-		public IEnumerable<string> Locations{ get; set; }
+namespace Albatross.CodeGen {
+	public interface IObjectFactory {
+		T Create<T>() where T:class;
+		object Create(Type type);
 	}
 }

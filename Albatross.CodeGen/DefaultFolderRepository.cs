@@ -7,28 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Albatross.CodeGen.Tool {
-	public abstract class JsonFolderRepository<T> where T:class{
-		string _path;
+namespace Albatross.CodeGen {
+	public abstract class DefaultFolderRepository<T> where T:class{
 		ILog _log;
-		public abstract string FolderName { get; }
+		public string Path { get; }
+		public abstract string FileExtension { get; }
 
-		public JsonFolderRepository(ILogFactory logFactory) {
+		public DefaultFolderRepository(ILogFactory logFactory, IGetDefaultRepoFolder getDefaultFolder) {
 			_log = logFactory.Get(this);
-			_path = Extension.InitRootFolder() + "\\" + FolderName;
-			if (!Directory.Exists(_path)){
-				Directory.CreateDirectory(_path);
+			Path = getDefaultFolder.Get();
+			if (!Directory.Exists(Path)){
+				Directory.CreateDirectory(Path);
 			}
 		}
 
 		public string GetPath(string name) {
-			return _path = "\\" + name + Extension.JsonFileExtension;
+			return Path + "\\" + name + FileExtension;
 		}
 
-		public IEnumerable<T> Get() {
+		public IEnumerable<T> List() {
 			List<T> list = new List<T>();
-			if (Directory.Exists(_path)) {
-				foreach (var file in Directory.GetFiles(_path, "*" + Extension.JsonFileExtension)) {
+			if (Directory.Exists(Path)) {
+				foreach (var file in Directory.GetFiles(Path, "*" + FileExtension)) {
 					try {
 						using (StreamReader reader = new StreamReader(file)) {
 							T t = JsonConvert.DeserializeObject<T>(reader.ReadToEnd());
@@ -56,8 +56,8 @@ namespace Albatross.CodeGen.Tool {
 			string path = GetPath(name);
 			return File.Exists(path);
 		}
-		public void Save(T t, Func<T, string> getName) {
-			string name = getName(t);
+		public void Save(T t, string name) {
+			if (string.IsNullOrEmpty(name)) { throw new IOException("Missing Name"); }
 			string path = GetPath(name);
 			using (StreamWriter writer = new StreamWriter(path)) {
 				string content = JsonConvert.SerializeObject(t);

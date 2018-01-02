@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Albatross.CodeGen.Tool {
-	public interface IObjectFactory {
-		T Create<T>() where T:class;
-		object Create(Type type);
+namespace Albatross.CodeGen.PowerShell {
+	public class SetupContainer {
+		public void Run() {
+		}
+
+
 	}
 }
