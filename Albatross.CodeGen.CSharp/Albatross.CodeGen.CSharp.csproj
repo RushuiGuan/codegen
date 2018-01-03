@@ -2,4 +2,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
 	</PropertyGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
+	</ItemGroup>
 </Project>

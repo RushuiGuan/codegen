@@ -1,5 +1,4 @@
 ﻿using Albatross.CodeGen;
-using Albatross.Logging.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,18 +14,16 @@ namespace Albatross.CodeGen{
 	public class CfgControlledCodeGeneratorFactory : IConfigurableCodeGenFactory {
 		Dictionary<string, ICodeGenerator> _registration = new Dictionary<string, ICodeGenerator>();
 		IObjectFactory _factory;
-		ILog _log;
 		AssemblyLocationRepository _settingRepository;
 		CompositeRepository _compositeRepository;
 		object _sync = new object();
 
 		public IEnumerable<ICodeGenerator> Registrations => _registration.Values;
 
-		public CfgControlledCodeGeneratorFactory(AssemblyLocationRepository settingRepository, CompositeRepository compositRepo, IObjectFactory factory, ILogFactory logFactory) {
+		public CfgControlledCodeGeneratorFactory(AssemblyLocationRepository settingRepository, CompositeRepository compositRepo, IObjectFactory factory) {
 			_settingRepository = settingRepository;
 			_compositeRepository = compositRepo;
 			_factory = factory;
-			_log = logFactory.Get(this);
 		}
 
 		public void Clear() {

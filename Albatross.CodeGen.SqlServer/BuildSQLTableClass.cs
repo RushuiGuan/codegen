@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
+using Albatross.CodeGen;
 
 namespace Albatross.CodeGen.SqlServer
 {
@@ -32,7 +35,7 @@ namespace Albatross.CodeGen.SqlServer
 					if (requireTrim) {
 						sb.Tab().GetTypeName(type).Space().Append("_").Append(item.Column_Name).Terminate();
 						sb.Tab().Public().GetTypeName(type).Space().Append(item.Column_Name).OpenScope();
-						sb.Tab(2).Append("get { return _").Append(item.Column_Name).CloseScope(true, true);
+						sb.Tab(2).Append("get { return _").Append(item.Column_Name).CloseScope(true);
 						sb.Tab(2).Append("set { _").Append(item.Column_Name).Append(" = value?.TrimEnd(); }").AppendLine();
 						sb.Tab().CloseScope();
 					} else {

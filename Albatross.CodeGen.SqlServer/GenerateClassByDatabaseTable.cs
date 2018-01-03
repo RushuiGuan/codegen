@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.SqlServer
 
 		public override void RenderBody(StringBuilder sb, int tabLevel, Table t, ClassOptions options, ICodeGeneratorFactory factory) {
 			foreach (var item in _getColumns.Get(t)) {
-				sb.Tab(tabLevel).Append("public ").Append(t.Name.Proper())
+				sb.Tab(tabLevel).Append("public ").Append(t.Name.Proper());
 			}
 		}
 	}
