@@ -7,7 +7,7 @@ I have created numerous code generators over the last few years.  Some of them a
 The aim of this project is to simply use code generator to speed up software development.  It allows users to setup scenarios that combine multiple generator with parameters and execute them.  There should be no limitation on what it should generate other than text files.  
 		
 ### How to use it
-In order to make it easier to use, I have created a UI that allows users to quickly setup scenarios and execute them repeatly.  It has to be as easy as alt-tab to the UI, press F5 to generate and alt-tab back to code and paste.  
+In order to make it easier to use, I have created powershell cmdlets that allows users to quickly setup scenarios and execute them repeatly.
 	
 ### Generator Engines
 Currently I am working on the following generators.  They are specific to the set of tools that I use.  The Albatross.CodeGen.dll will be available in NuGet so that others can use it to create their own generators.  
