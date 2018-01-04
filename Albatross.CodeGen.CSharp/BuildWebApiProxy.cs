@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Albatross.CodeGen.CSharp
-{
+namespace Albatross.CodeGen.CSharp {
 	public class BuildWebApiProxy : ClassGenerator<ObjectType> {
 
 		const string ControllerPostfix = "Controller";
@@ -30,18 +27,23 @@ namespace Albatross.CodeGen.CSharp
 			}
 			return controller;
 		}
+		const string HttpGetAttribName = "System.Web.Http.HttpGetAttribute";
+		const string HttpDeleteAttribName = "System.Web.Http.HttpDeleteAttribute";
+		const string HttpPostAttribName = "System.Web.Http.HttpPostAttribute";
+		const string HttpPutAttribName = "System.Web.Http.HttpPutAttribute";
+
 
 		public override void RenderBody(StringBuilder sb, int tabLevel, ObjectType objType, ClassOptions options, ICodeGeneratorFactory factory) {
 			Type controllerType = _getReflectionOnlyType.Get(objType);
 			foreach (MethodInfo method in controllerType.GetMethods(BindingFlags.Public | BindingFlags.Instance)) {
 				foreach (CustomAttributeData data in method.GetCustomAttributesData()) {
-					if (data.AttributeType.FullName == typeof(HttpGetAttribute).FullName) {
+					if (data.AttributeType.FullName == HttpGetAttribName) {
 						BuildGetDelete(sb, tabLevel, method, "Get", controllerType);
-					} else if (data.AttributeType.FullName == typeof(HttpDeleteAttribute).FullName) {
+					} else if (data.AttributeType.FullName == HttpDeleteAttribName) {
 						BuildGetDelete(sb, tabLevel, method, "Delete", controllerType);
-					} else if (data.AttributeType.FullName == typeof(HttpPostAttribute).FullName) {
+					} else if (data.AttributeType.FullName == HttpPostAttribName) {
 						BuildPostPut(sb, tabLevel, method, "Post", controllerType);
-					} else if (data.AttributeType.FullName == typeof(HttpPutAttribute).FullName) {
+					} else if (data.AttributeType.FullName == HttpPutAttribName) {
 						BuildPostPut(sb, tabLevel, method, "Put", controllerType);
 					}
 				}

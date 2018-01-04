@@ -1,9 +1,5 @@
-﻿using SimpleInjector;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using SimpleInjector;
 
 namespace Albatross.CodeGen.PowerShell {
 	public class ObjectFactory : IObjectFactory {
@@ -14,6 +10,10 @@ namespace Albatross.CodeGen.PowerShell {
 
 		public T Create<T>() where T : class {
 			return _container.GetInstance<T>();
+		}
+
+		public object Create(Type type) {
+			return _container.GetInstance(type);
 		}
 	}
 }

@@ -1,1 +1,0 @@
-nuget pack Albatross.CodeGen.csproj -includeReferencedProjects -properties Configuration=Release

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>Albatross.CodeGen.PowerShell</id>
+		<version>1.0.0-alpha</version>
+		<title>Albatross Code Generator PowerShell Utilities</title>
+		<authors>Rushui Guan</authors>
+		<owners>Rushui Guan</owners>
+		<licenseUrl>https://github.com/RushuiGuan/CodeGen/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/RushuiGuan/CodeGen</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<summary>The powershell utility contains a set of cmdlets that allow users to create composite generators, code generation scenarios as well as execution of generators and scenarios.</summary>
+		<description>Call "Import-Module Albatross.CodeGen.PowerShell.dll" to ensure the commands are available for use.  See the readme.md file for details on the commands</description>
+		<releaseNotes>Initial Release</releaseNotes>
+		<copyright>Copyright 2018</copyright>
+		<tags>code generator c# sql codegen powershell database csharp</tags>
+
+	</metadata>
+	<files>
+		<file src=".\bin\Release\net462\*.dll" target="tools" />
+		<file src=".\bin\Release\net462\*.exe" target="tools" />
+		<file src=".\readme.md" target="tools" />
+	</files>
+</package>

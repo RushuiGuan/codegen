@@ -1,5 +1,4 @@
 ﻿using Albatross.CodeGen.CSharp;
-using Albatross.CodeGen.Database;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +25,14 @@ namespace Albatross.CodeGen {
 				return text;
 			}
 		}
+		public static void AddRange<T>(this HashSet<T> list, IEnumerable<T> items) {
+			if (items != null) {
+				foreach (var item in items) {
+					list.Add(item);
+				}
+			}
+		}
+
 
 
 		public static string GetGeneratorName(this Type type, string name) {
@@ -44,17 +51,6 @@ namespace Albatross.CodeGen {
 			return asm.GetType(objType.ClassName);
 		}
 
-		public static Composite NewSqlTableComposite(string name, string description, params string[] generators) {
-			return new Composite {
-				SourceType = typeof(Table),
-				Name = name,
-				Description = description,
-				Category = "Sql Server",
-				Target = "sql",
-				Generators = generators,
-				Seperator = "\r\n",
-			};
-		}
 
 		public static List<Type> GetSourceType(this List<Type> list, Assembly asm) {
 			foreach (var type in asm.GetTypes()) {

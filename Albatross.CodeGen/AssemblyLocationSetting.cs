@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
 	public class AssemblyLocationSetting {
-		public IEnumerable<string> Locations{ get; set; }
+		public IEnumerable<string> Locations { get; set; }
 	}
 }

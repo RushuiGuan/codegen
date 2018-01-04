@@ -24,6 +24,7 @@ namespace Albatross.CodeGen{
 			_settingRepository = settingRepository;
 			_compositeRepository = compositRepo;
 			_factory = factory;
+			Register();
 		}
 
 		public void Clear() {

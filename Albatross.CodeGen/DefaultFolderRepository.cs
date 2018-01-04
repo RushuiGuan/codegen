@@ -1,20 +1,13 @@
-﻿using Albatross.Logging.Core;
-using Newtonsoft.Json;
-using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
 	public abstract class DefaultFolderRepository<T> where T:class{
-		ILog _log;
 		public string Path { get; }
 		public abstract string FileExtension { get; }
 
-		public DefaultFolderRepository(ILogFactory logFactory, IGetDefaultRepoFolder getDefaultFolder) {
-			_log = logFactory.Get(this);
+		public DefaultFolderRepository(IGetDefaultRepoFolder getDefaultFolder) {
 			Path = getDefaultFolder.Get();
 			if (!Directory.Exists(Path)){
 				Directory.CreateDirectory(Path);
@@ -29,13 +22,9 @@ namespace Albatross.CodeGen {
 			List<T> list = new List<T>();
 			if (Directory.Exists(Path)) {
 				foreach (var file in Directory.GetFiles(Path, "*" + FileExtension)) {
-					try {
-						using (StreamReader reader = new StreamReader(file)) {
-							T t = JsonConvert.DeserializeObject<T>(reader.ReadToEnd());
-							list.Add(t);
-						}
-					} catch (Exception err) {
-						_log.Error(err);
+					using (StreamReader reader = new StreamReader(file)) {
+						T t = JsonConvert.DeserializeObject<T>(reader.ReadToEnd());
+						list.Add(t);
 					}
 				}
 			}

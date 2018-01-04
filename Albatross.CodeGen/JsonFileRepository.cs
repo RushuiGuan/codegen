@@ -1,5 +1,4 @@
-﻿using Albatross.Logging.Core;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,24 +8,9 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
 	public class JsonFileRepository<T> where T:class{
-		protected ILog _log;
-
-		public JsonFileRepository(ILogFactory logFactory) {
-			_log = logFactory.Get(this);
-		}
-
 		public T Get(string name) {
-			if (File.Exists(name)) {
-				try {
-					using (StreamReader reader = new StreamReader(name)) {
-						return JsonConvert.DeserializeObject<T>(reader.ReadToEnd());
-					}
-				} catch (Exception err) {
-					_log.Error(err);
-					throw;
-				}
-			} else {
-				throw new ArgumentException($"File {name} doesn't exist");
+			using (StreamReader reader = new StreamReader(name)) {
+				return JsonConvert.DeserializeObject<T>(reader.ReadToEnd());
 			}
 		}
 

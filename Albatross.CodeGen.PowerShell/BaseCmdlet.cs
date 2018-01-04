@@ -12,19 +12,17 @@ namespace Albatross.CodeGen.PowerShell {
 	public class BaseCmdlet<T> : PSCmdlet where T:class{
 		protected T Handle { get; private set; }
 
+		protected IObjectFactory Factory => SetupIoc.Factory;
+
 		public BaseCmdlet() {
 		}
 
+		protected override void BeginProcessing() {
+			base.BeginProcessing();
+			GetHandle();
+		}
 		protected virtual void GetHandle() {
-			Container c = new Container();
-			c.Register<IGetLog4NetLoggerRepository, GetDefaultLog4NetLoggerRepository>(Lifestyle.Singleton);
-			c.Register<ILoggerRepository>(() => c.GetInstance<IGetLog4NetLoggerRepository>().Get(), Lifestyle.Singleton);
-
-			c.Register<ISourceTypeFactory, SourceTypeFactory>();
-			c.Verify();
-
-
-			Handle = c.GetInstance<T>();
+			Handle = Factory.Create<T>();
 		}
 	}
 }
