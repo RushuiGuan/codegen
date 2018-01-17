@@ -4,11 +4,11 @@ using System.IO;
 using System.Reflection;
 
 namespace Albatross.CodeGen {
-	public class AssemblyLocationRepository : JsonFileRepository<AssemblyLocationSetting> {
-		public string FileName => "AssemblyLocations.json";
+	public class CodeGenSettingRepository : JsonFileRepository<CodeGenSetting> {
+		public string FileName => "settings.json";
 		public string Path { get; }
 
-		public AssemblyLocationRepository(IGetDefaultRepoFolder getDefaultFolder) {
+		public CodeGenSettingRepository(IGetDefaultRepoFolder getDefaultFolder) {
 			Path = getDefaultFolder.Get() + "\\" + FileName;
 			if (!File.Exists(Path)) {
 				var file = File.Create(Path);
@@ -22,7 +22,7 @@ namespace Albatross.CodeGen {
 			};
 
 			var setting = Get(Path);
-			list.AddRange(setting?.Locations);
+			list.AddRange(setting?.AssemblyLocations);
 
 			List<Assembly> result = new List<Assembly>();
 

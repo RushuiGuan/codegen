@@ -18,20 +18,20 @@ namespace Albatross.CodeGen.PowerShell
 		public Composite Composite{ get; set; }
 
 		[Parameter(Position = 1)]
-		[Alias("p")]
-		public string Path { get; set; }
+		[Alias("l")]
+		public string Location { get; set; }
 
 		[Parameter]
 		public SwitchParameter Force { get; set; }
 
 		protected override void ProcessRecord() {
-			if (string.IsNullOrEmpty(Path)) {
+			if (string.IsNullOrEmpty(Location)) {
 				CompositeRepository repo = Factory.Create<CompositeRepository>();
 				if (!repo.IsExisting(Composite.Name) || Force.ToBool() ||  ShouldContinue($"The file exists, are you sure that you want to override?", "Warning")) {
 					repo.Save(Composite, Composite.Name);
 				}
 			} else {
-				Handle.Save(Composite, Path);
+				Handle.Save(Composite, Location);
 			}
 		}
 	}

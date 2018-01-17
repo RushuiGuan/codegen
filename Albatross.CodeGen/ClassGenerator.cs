@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albatross.CodeGen
-{
+namespace Albatross.CodeGen {
+	/// <summary>
+	/// an abstract class created to speed up C# class code generation.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
 	public abstract class ClassGenerator<T> : ICodeGenerator<T> where T : class {
 		public abstract string Category { get; }
 		public abstract string Description { get; }

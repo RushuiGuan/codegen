@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Albatross.CodeGen
-{
+namespace Albatross.CodeGen{
+	//set the default repository folder to be the same folder as the Albatross.CodeGen assembly
 	public class GetDefaultRepoFolder : IGetDefaultRepoFolder {
 		public const string AlbatrossCodeGenFolder = "AlbatrossCodeGen";
 		public string Get() {

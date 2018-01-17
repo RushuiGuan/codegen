@@ -14,13 +14,13 @@ namespace Albatross.CodeGen{
 	public class CfgControlledCodeGeneratorFactory : IConfigurableCodeGenFactory {
 		Dictionary<string, ICodeGenerator> _registration = new Dictionary<string, ICodeGenerator>();
 		IObjectFactory _factory;
-		AssemblyLocationRepository _settingRepository;
+		CodeGenSettingRepository _settingRepository;
 		CompositeRepository _compositeRepository;
 		object _sync = new object();
 
 		public IEnumerable<ICodeGenerator> Registrations => _registration.Values;
 
-		public CfgControlledCodeGeneratorFactory(AssemblyLocationRepository settingRepository, CompositeRepository compositRepo, IObjectFactory factory) {
+		public CfgControlledCodeGeneratorFactory(CodeGenSettingRepository settingRepository, CompositeRepository compositRepo, IObjectFactory factory) {
 			_settingRepository = settingRepository;
 			_compositeRepository = compositRepo;
 			_factory = factory;

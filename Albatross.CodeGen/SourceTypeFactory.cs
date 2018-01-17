@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
 	public class SourceTypeFactory : ISourceTypeFactory {
-		AssemblyLocationRepository settingRepository;
-		public SourceTypeFactory(AssemblyLocationRepository repo) {
+		CodeGenSettingRepository settingRepository;
+		public SourceTypeFactory(CodeGenSettingRepository repo) {
 			settingRepository = repo;
 		}
 
