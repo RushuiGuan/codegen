@@ -5,9 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
-	public class CompositeRepository : DefaultFolderRepository<Composite> {
-		public CompositeRepository(IGetDefaultRepoFolder getDefaultFolder) : base(getDefaultFolder) {
+	public class CompositeRepository {
+		CodeGenSettingRepository settingRepo;
+
+		public CompositeRepository(CodeGenSettingRepository settingRepo) {
+
 		}
-		public override string FileExtension => ".composite";
+		public string FileExtension => ".composite";
 	}
 }
