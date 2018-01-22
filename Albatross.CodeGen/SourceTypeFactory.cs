@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
 	public class SourceTypeFactory : ISourceTypeFactory {
-		CodeGenSettingRepository settingRepository;
-		public SourceTypeFactory(CodeGenSettingRepository repo) {
-			settingRepository = repo;
+		IFactory<IEnumerable<Assembly>> getAssembly;
+
+		public SourceTypeFactory(IFactory<IEnumerable<Assembly>> getAssembly) {
+			this.getAssembly = getAssembly;
 		}
 
 		public IEnumerable<SourceType> Get() {
 			List<SourceType> list = new List<SourceType>();
-			foreach (var asm in settingRepository.GetAssembly()) {
+			foreach (var asm in getAssembly.Get()) {
 				foreach (var type in asm.GetTypes()) {
 					SourceTypeAttribute attrib = type.GetCustomAttribute<SourceTypeAttribute>();
 					if (attrib != null) {

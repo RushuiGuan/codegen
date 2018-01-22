@@ -12,18 +12,18 @@ namespace Albatross.CodeGen{
 	//needed to create a new type instance.  ObjectFactory is a wrapper on the container.  This is a ServiceLocator Pattern in disguise.
 	//edge case only.  do not copy this pattern!
 	public class CfgControlledCodeGeneratorFactory : IConfigurableCodeGenFactory {
+		IObjectFactory factory;
 		Dictionary<string, ICodeGenerator> _registration = new Dictionary<string, ICodeGenerator>();
-		IObjectFactory _factory;
-		CodeGenSettingRepository _settingRepository;
-		CompositeRepository _compositeRepository;
+		IFactory<IEnumerable<Assembly>> assemblyFactory;
+		IFactory<IEnumerable<Composite>> compositeFactory;
 		object _sync = new object();
 
 		public IEnumerable<ICodeGenerator> Registrations => _registration.Values;
 
-		public CfgControlledCodeGeneratorFactory(CodeGenSettingRepository settingRepository, CompositeRepository compositRepo, IObjectFactory factory) {
-			_settingRepository = settingRepository;
-			_compositeRepository = compositRepo;
-			_factory = factory;
+		public CfgControlledCodeGeneratorFactory(IFactory<IEnumerable<Assembly>> assemblyFactory, IFactory<IEnumerable<Composite>> compositeFactory, IObjectFactory factory) {
+			this.assemblyFactory = assemblyFactory;
+			this.compositeFactory = compositeFactory;
+			this.factory = factory;
 			Register();
 		}
 
@@ -36,11 +36,11 @@ namespace Albatross.CodeGen{
 		public void Register() {
 			Clear();
 
-			var list = _settingRepository.GetAssembly();
+			var list = assemblyFactory.Get();
 			foreach (var item in list) {
 				Register(item);
 			}
-			var items = _compositeRepository.List();
+			var items = compositeFactory.Get();
 			if (items != null) {
 				this.Register(items);
 			}
@@ -58,7 +58,7 @@ namespace Albatross.CodeGen{
 			lock (_sync) {
 				foreach (Type type in asm.GetTypes()) {
 					if (typeof(ICodeGenerator).IsAssignableFrom(type) && type.GetCustomAttribute<CodeGeneratorAttribute>() != null) {
-						ICodeGenerator c = (ICodeGenerator)_factory.Create(type);
+						ICodeGenerator c = (ICodeGenerator)factory.Create(type);
 						string key = c.GetName();
 						_registration[key] = c;
 					}
