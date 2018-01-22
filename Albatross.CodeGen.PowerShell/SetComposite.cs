@@ -25,14 +25,7 @@ namespace Albatross.CodeGen.PowerShell
 		public SwitchParameter Force { get; set; }
 
 		protected override void ProcessRecord() {
-			if (string.IsNullOrEmpty(Location)) {
-				CompositeRepository repo = Factory.Create<CompositeRepository>();
-				if (!repo.IsExisting(Composite.Name) || Force.ToBool() ||  ShouldContinue($"The file exists, are you sure that you want to override?", "Warning")) {
-					repo.Save(Composite, Composite.Name);
-				}
-			} else {
-				Handle.Save(Composite, Location);
-			}
+			Handle.Save(Composite, Location);
 		}
 	}
 }

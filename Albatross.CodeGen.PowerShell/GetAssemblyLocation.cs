@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.PowerShell
 {
 	[Cmdlet(VerbsCommon.Get, "AssemblyLocation")]
-    public class GetAssemblyLocation:BaseCmdlet<AssemblyLocationRepository> {
+    public class GetAssemblyLocation:BaseCmdlet<CodeGenSettingFactory> {
 		protected override void ProcessRecord() {
-			var value = Handle.Get(Handle.Path);
-			if (value != null && value.Locations != null) {
-				foreach (var item in value.Locations) {
+			var value = Handle.Get();
+			if (value != null && value.AssemblyLocations != null) {
+				foreach (var item in value.AssemblyLocations) {
 					WriteObject(item);
 				}
 			}

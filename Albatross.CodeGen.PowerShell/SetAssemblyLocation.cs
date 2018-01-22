@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.PowerShell
 {
 	[Cmdlet(VerbsCommon.Set, "AssemblyLocation")]
-    public class SetAssemblyLocation : BaseCmdlet<AssemblyLocationRepository> {
+    public class SetAssemblyLocation : BaseCmdlet<CodeGenSettingFactory> {
 
 		[Parameter(Position =0, ValueFromPipeline =true)]
 		public DirectoryInfo[] Locations { get; set; }
