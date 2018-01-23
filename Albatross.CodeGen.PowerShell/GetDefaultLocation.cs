@@ -8,7 +8,6 @@ namespace Albatross.CodeGen.PowerShell {
     {
 		protected override void ProcessRecord() {
 			WriteObject(Handle.Get());
-			WriteObject(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 		}
 	}
 }

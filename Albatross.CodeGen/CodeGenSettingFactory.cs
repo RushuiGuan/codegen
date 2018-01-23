@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 
 namespace Albatross.CodeGen {
-	public class CodeGenSettingFactory : IFactory<CodeGenSetting> {
+	public class CodeGenSettingFactory : IFactory<CodeGenSetting> , ISaveFile<CodeGenSetting>{
 		public string FileName => "settings.json";
 		IGetDefaultRepoFolder getDefaultFolder;
 		JsonFileRepository<CodeGenSetting> fileRepo;
@@ -20,7 +20,20 @@ namespace Albatross.CodeGen {
 				var file = File.Create(path);
 				file.Close();
 			}
-			return fileRepo.Get(path);
+			var result = fileRepo.Get(path);
+			if (result == null) {
+				result = new CodeGenSetting {
+					AssemblyLocations = new string[0],
+					CompositeLocations = new string[0],
+					ScenarioLocations = new string[0],
+				};
+			}
+			return result;
+		}
+
+		public void Save(CodeGenSetting t) {
+			string path = getDefaultFolder.Get() + "\\" + FileName;
+			fileRepo.Save(t, path);
 		}
 	}
 }

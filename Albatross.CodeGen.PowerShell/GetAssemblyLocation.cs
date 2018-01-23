@@ -11,11 +11,10 @@ namespace Albatross.CodeGen.PowerShell
 	[Cmdlet(VerbsCommon.Get, "AssemblyLocation")]
     public class GetAssemblyLocation:BaseCmdlet<CodeGenSettingFactory> {
 		protected override void ProcessRecord() {
-			var value = Handle.Get();
-			if (value != null && value.AssemblyLocations != null) {
-				foreach (var item in value.AssemblyLocations) {
-					WriteObject(item);
-				}
+			var setting = Handle.Get();
+			WriteObject(System.IO.Path.GetDirectoryName(typeof(CodeGenSettingFactory).Assembly.Location));
+			foreach (var item in setting.AssemblyLocations) {
+				WriteObject(item);
 			}
 		}
 	}
