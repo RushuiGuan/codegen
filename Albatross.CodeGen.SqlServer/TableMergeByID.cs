@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableMergeByID : TableCodeGenerator {
+	public class TableMergeByID : TableQueryGenerator {
 		public override string Name => "table_merge_by_id";
 		public override string Description => "Composite: merge statement with the source joined by the identity column";
 

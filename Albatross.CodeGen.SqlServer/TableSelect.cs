@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableSelect : TableCodeGenerator{
+	public class TableSelect : TableQueryGenerator{
 		IGetTableColumns _getTableColumns;
 
 		public TableSelect(IGetTableColumns getTableColumns) {

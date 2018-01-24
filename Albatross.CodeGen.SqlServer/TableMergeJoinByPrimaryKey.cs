@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableMergeJoinByPrimaryKey : TableCodeGenerator {
+	public class TableMergeJoinByPrimaryKey : TableQueryGenerator {
 		IGetTablePrimaryKey _getPrimaryKey;
 
 		public override string Name => "table_merge_join_by_primarykey";

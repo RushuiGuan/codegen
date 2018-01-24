@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableMergeDelete : TableCodeGenerator {
+	public class TableMergeDelete : TableQueryGenerator {
 
 		public override string Name => "table_merge_delete";
 		public override string Description => "Merage statement delete clause";

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableSelectScopedIdentity : TableCodeGenerator {
+	public class TableSelectScopedIdentity : TableQueryGenerator {
 		IGetTableIdentityColumn _getIDColumn;
 
 		public override string Name => "table_select_scope_identity";

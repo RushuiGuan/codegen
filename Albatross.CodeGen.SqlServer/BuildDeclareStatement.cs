@@ -22,6 +22,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public string Target => "sql";
 
 		public Type SourceType => typeof(ParamCollection);
+		public Type OptionType => typeof(object);
 
 		public StringBuilder Build(StringBuilder sb, ParamCollection list, object options, ICodeGeneratorFactory factory) {
 			sb.AppendLine("declare");

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableMergeJoinByID : TableCodeGenerator {
+	public class TableMergeJoinByID : TableQueryGenerator {
 		IGetTableIdentityColumn _getIDColumn;
 
 		public override string Name => "table_merge_join_by_id";

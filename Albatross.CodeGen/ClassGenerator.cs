@@ -12,8 +12,8 @@ namespace Albatross.CodeGen {
 		public abstract string Description { get; }
 		public abstract string Name { get; }
 		public Type SourceType => typeof(T);
+		public Type OptionType => typeof(ClassOptions);
 		public string Target => "c#";
-		public ClassOptions Options { get; set; }
 
 
 		public abstract string GetClassName(T t);

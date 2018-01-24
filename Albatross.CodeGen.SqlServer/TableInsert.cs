@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableInsert : TableCodeGenerator {
+	public class TableInsert : TableQueryGenerator {
 		IGetTableColumns _getTableColumns;
 		IGetVariableName _getVariableName;
 

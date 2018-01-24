@@ -6,20 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
-	public class SourceTypeFactory : IFactory<IEnumerable<SourceType>>{
+	public class OptionTypeFactory : IFactory<IEnumerable<OptionType>> {
 		IFactory<IEnumerable<Assembly>> getAssembly;
 
-		public SourceTypeFactory(IFactory<IEnumerable<Assembly>> getAssembly) {
+		public OptionTypeFactory(IFactory<IEnumerable<Assembly>> getAssembly) {
 			this.getAssembly = getAssembly;
 		}
 
-		public IEnumerable<SourceType> Get() {
-			List<SourceType> list = new List<SourceType>();
+		public IEnumerable<OptionType> Get() {
+			List<OptionType> list = new List<OptionType>();
 			foreach (var asm in getAssembly.Get()) {
 				foreach (var type in asm.GetTypes()) {
-					SourceTypeAttribute attrib = type.GetCustomAttribute<SourceTypeAttribute>();
+					OptionTypeAttribute attrib = type.GetCustomAttribute<OptionTypeAttribute>();
 					if (attrib != null) {
-						list.Add(new SourceType {
+						list.Add(new OptionType {
 							ObjectType = type,
 							Description = attrib.Description,
 						});

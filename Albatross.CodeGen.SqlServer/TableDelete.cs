@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableDelete : TableCodeGenerator {
+	public class TableDelete : TableQueryGenerator {
 		public override string Description => "Default delete statement";
 		public override string Name => "table_delete";
 

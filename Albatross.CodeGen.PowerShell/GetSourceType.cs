@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsCommon.Get, "SourceType")]
-	public class GetSourceType : BaseCmdlet<ISourceTypeFactory>{
+	public class GetSourceType : BaseCmdlet<IFactory<IEnumerable<SourceType>>>{
 		[Parameter(ValueFromPipeline =true, Position = 0)]
 		public string Name { get; set; }
 

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableMergeUpdate : TableCodeGenerator {
+	public class TableMergeUpdate : TableQueryGenerator {
 		IGetTableColumns _getColumns;
 		IGetVariableName _getVariableName;
 

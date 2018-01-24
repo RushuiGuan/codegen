@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableUpdateWithAudit : TableCodeGenerator {
+	public class TableUpdateWithAudit : TableQueryGenerator {
 		IGetTableColumns _getTableColumns;
 		IGetVariableName _getVariableName;
 		IBuiltInColumnFactory _builtInColumnFactory;

@@ -26,6 +26,7 @@ namespace Albatross.CodeGen {
 		public string Target { get; private set; }
 
 		public Type SourceType { get; private set; }
+		public Type OptionType { get; private set; }
 
 		public StringBuilder Build(StringBuilder sb, object t, object options, ICodeGeneratorFactory factory) {
 			if (t.GetType() == SourceType) {

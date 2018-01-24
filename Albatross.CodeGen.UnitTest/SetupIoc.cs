@@ -6,18 +6,15 @@ using log4net.Repository;
 using SimpleInjector;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Albatross.CodeGen.PowerShell {
+namespace Albatross.CodeGen.UnitTest {
 	public class SetupIoc {
 
-		private IObjectFactory Run() {
+		public Container Get() {
 			Container c = new Container();
-			c.Register<IObjectFactory>(() => new ObjectFactory(c), Lifestyle.Singleton);
+			c.Options.AllowOverridingRegistrations = true;
+
 			//logging
 			c.RegisterSingleton<GetLog4NetLoggerRepositoryByXmlConfig>();
 			c.Register<IGetLog4NetLoggerRepository, GetDefaultLog4NetLoggerRepository>(Lifestyle.Singleton);
@@ -45,11 +42,8 @@ namespace Albatross.CodeGen.PowerShell {
 			c.Register<IGetVariableName, GetSqlVariableName>(Lifestyle.Singleton);
 			c.Register<IBuiltInColumnFactory, BuiltInColumnFactory>(Lifestyle.Singleton);
 			c.RegisterCollection<BuiltInColumn>(BuiltInColumns.Items);
-			c.Verify();
-			return c.GetInstance<IObjectFactory>();
-		}
 
-		static Lazy<IObjectFactory> _lazy => new Lazy<IObjectFactory>(() => new SetupIoc().Run());
-		public static IObjectFactory Factory => _lazy.Value;
+			return c;
+		}
 	}
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableMergeWithAuditByID : TableCodeGenerator {
+	public class TableMergeWithAuditByID : TableQueryGenerator {
 
 		public override string Name => "table_merge_w_audit_by_id";
 		public override string Description => "Composite: merge statement with audit in its select clause and joined by the identity column";

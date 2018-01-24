@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableMergeSelectWithAudit : TableCodeGenerator {
+	public class TableMergeSelectWithAudit : TableQueryGenerator {
 		IGetTableColumns _getColumns;
 		IGetVariableName _getVariableName;
 		IBuiltInColumnFactory _builtInColumnFactory;

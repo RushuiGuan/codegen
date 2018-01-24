@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
-	public abstract class TableCodeGenerator : ICodeGenerator<Table> {
+	public abstract class TableQueryGenerator : ICodeGenerator<Table> {
 		public abstract string Name { get; }
 		public abstract string Description { get; }
 
@@ -15,6 +15,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public string Target => "sql";
 
 		public Type SourceType => typeof(Table);
+		public Type OptionType => typeof(SqlQueryOption);
 
 		public abstract StringBuilder Build(StringBuilder sb, Table t, object options, ICodeGeneratorFactory factory);
 

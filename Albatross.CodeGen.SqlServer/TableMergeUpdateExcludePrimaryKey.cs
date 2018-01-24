@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableMergeUpdateExcludePrimaryKey : TableCodeGenerator {
+	public class TableMergeUpdateExcludePrimaryKey : TableQueryGenerator {
 		IGetTableColumns _getColumns;
 		IGetVariableName _getVariableName;
 		IGetTablePrimaryKey _getPrimaryKey;

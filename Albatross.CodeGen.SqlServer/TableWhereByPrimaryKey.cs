@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class TableWhereByPrimaryKey : TableCodeGenerator {
+	public class TableWhereByPrimaryKey : TableQueryGenerator {
 		IGetTablePrimaryKey _getPrimaryKey;
 		IGetVariableName _getVariableName;
 
