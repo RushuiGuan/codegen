@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell
 {
-	[Cmdlet(VerbsCommon.Add, "AssemblyLocation")]
-    public class AddAssemblyLocation : BaseCmdlet<IFactory<CodeGenSetting>> {
+	[Cmdlet(VerbsCommon.Set, "ScenarioLocation")]
+    public class SetScenarioLocation : BaseCmdlet<IFactory<CodeGenSetting>> {
 
-		[Parameter(Position =0, ValueFromPipeline =true)]
+		[Parameter(Position = 0, ValueFromPipeline = true)]
 		[PathInfo2DirectoryInfoAttribute]
 		public DirectoryInfo[] Locations { get; set; } = new DirectoryInfo[0];
 
 		protected override void ProcessRecord() {
 			var setting = Handle.Get();
-			setting.AssemblyLocations = (from item in Locations where item.Exists select item.FullName).Union(setting.AssemblyLocations).Distinct();
+			setting.ScenarioLocations = (from item in Locations where item.Exists select item.FullName).Distinct();
 			base.Factory.Create<ISaveFile<CodeGenSetting>>().Save(setting);
 		}
 	}

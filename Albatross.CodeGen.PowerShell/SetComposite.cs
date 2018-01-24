@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
@@ -18,14 +19,16 @@ namespace Albatross.CodeGen.PowerShell
 		public Composite Composite{ get; set; }
 
 		[Parameter(Position = 1)]
-		[Alias("l")]
-		public string Location { get; set; }
+		[Alias("f")]
+		public FileInfo File { get; set; }
 
 		[Parameter]
 		public SwitchParameter Force { get; set; }
 
 		protected override void ProcessRecord() {
-			Handle.Save(Composite, Location);
+			if (!Handle.IsExisting(File.FullName) || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning")) {
+				Handle.Save(Composite, File.FullName);
+			}
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Albatross.CodeGen.PowerShell.Transformation;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Albatross.CodeGen.PowerShell
     public class SetAssemblyLocation : BaseCmdlet<IFactory<CodeGenSetting>> {
 
 		[Parameter(Position = 0, ValueFromPipeline = true)]
+		[PathInfo2DirectoryInfoAttribute]
 		public DirectoryInfo[] Locations { get; set; } = new DirectoryInfo[0];
 
 		protected override void ProcessRecord() {

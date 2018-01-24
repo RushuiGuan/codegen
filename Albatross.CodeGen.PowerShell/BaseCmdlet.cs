@@ -20,6 +20,7 @@ namespace Albatross.CodeGen.PowerShell {
 		protected override void BeginProcessing() {
 			base.BeginProcessing();
 			GetHandle();
+			System.Environment.CurrentDirectory = this.SessionState.Path.CurrentFileSystemLocation.Path;
 		}
 		protected virtual void GetHandle() {
 			Handle = Factory.Create<T>();
