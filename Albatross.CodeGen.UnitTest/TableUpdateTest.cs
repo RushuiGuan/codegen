@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
+using Albatross.CodeGen.UnitTest.Mocking;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -9,80 +10,24 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture]
+	[TestFixture(TestOf =typeof(TableUpdate))]
 	public class TableUpdateTest {
-		IGetTableIdentityColumn _getIDColumn;
-		[OneTimeSetUp]
-		public void Setup() {
-			var mock = new Mock<IGetTableIdentityColumn>();
-			mock.Setup(args => args.Get(It.IsAny<Table>())).Returns(new Column() { Name="id", IdentityColumn = true, });
-			_getIDColumn = mock.Object;
+		static IEnumerable<TestCaseData> GetTestCases() {
+			return new TestCaseData[] {
+				new TestCaseData(new SymbolTable(), new SqlQueryOption{ ExcludePrimaryKey = false, }){ ExpectedResult = "update [test].[Symbol] set\r\n\t[SyCode] = @syCode,\r\n\t[CuID] = @cuID,\r\n\t[OutShares] = @outShares,\r\n\t[CoID] = @coID,\r\n\t[SnID] = @snID"},
+				new TestCaseData(new SymbolTable(), new SqlQueryOption{ ExcludePrimaryKey = true, }){ ExpectedResult = "update [test].[Symbol] set\r\n\t[CuID] = @cuID,\r\n\t[OutShares] = @outShares,\r\n\t[CoID] = @coID,\r\n\t[SnID] = @snID"},
+				new TestCaseData(new ContactTable(), new SqlQueryOption{ ExcludePrimaryKey = false, }){ ExpectedResult = "update [test].[Contact] set\r\n\t[Domain] = @domain,\r\n\t[Login] = @login,\r\n\t[FirstName] = @firstName,\r\n\t[LastName] = @lastName,\r\n\t[MiddleName] = @middleName,\r\n\t[Gender] = @gender,\r\n\t[Cell] = @cell,\r\n\t[Address] = @address,\r\n\t[Created] = @created,\r\n\t[CreatedBy] = @createdBy,\r\n\t[Modified] = @modified,\r\n\t[ModifiedBy] = @modifiedBy"},
+				new TestCaseData(new ContactTable(), new SqlQueryOption{ ExcludePrimaryKey = true, }){ ExpectedResult = "update [test].[Contact] set\r\n\t[FirstName] = @firstName,\r\n\t[LastName] = @lastName,\r\n\t[MiddleName] = @middleName,\r\n\t[Gender] = @gender,\r\n\t[Cell] = @cell,\r\n\t[Address] = @address,\r\n\t[Created] = @created,\r\n\t[CreatedBy] = @createdBy,\r\n\t[Modified] = @modified,\r\n\t[ModifiedBy] = @modifiedBy"},
+				new TestCaseData(new ContactTable(), new SqlQueryOption{ ExcludePrimaryKey = true, Variables={ { "@user", "varchar(100)"} }, Expressions={ {"created", "getdate()" }, { "createdBy", "@user"}, { "modified","getdate()"}, { "modifiedBy", "@user"} } }){ ExpectedResult = "update [test].[Contact] set\r\n\t[FirstName] = @firstName,\r\n\t[LastName] = @lastName,\r\n\t[MiddleName] = @middleName,\r\n\t[Gender] = @gender,\r\n\t[Cell] = @cell,\r\n\t[Address] = @address,\r\n\t[Created] = getdate(),\r\n\t[CreatedBy] = @user,\r\n\t[Modified] = getdate(),\r\n\t[ModifiedBy] = @user"},
+			};
 		}
 
 
-		[Test]
-		public void TwoColumn() {
-			var getColumns = new Mock<IGetTableColumns>();
-			getColumns.Setup(args => args.Get(It.IsAny<Table>())).Returns(new Column[] {
-				new Column(){
-					Name = "a",
-				},
-				new Column(){
-					Name = "b",
-				},
-				new Column(){
-					Name = "id",
-					IdentityColumn = true,
-				}
-			});
+		[TestCaseSource(nameof(GetTestCases))]
+		public string Run(TableMocking mock, SqlQueryOption option) {
 			StringBuilder sb = new StringBuilder();
-			new TableUpdate(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table() { Schema = "schema", Name = "table" }, null, null);
-			Assert.AreEqual(@"update [schema].[table] set
-	[a] = @a,
-	[b] = @b", sb.ToString());
-		}
-		[Test]
-		public void OneColumn() {
-			var getColumns = new Mock<IGetTableColumns>();
-			getColumns.Setup(args => args.Get(It.IsAny<Table>())).Returns(new Column[] {
-				new Column(){
-					Name = "a",
-				},
-				new Column(){
-					Name = "id",
-					IdentityColumn = true,
-				}
-			});
-			StringBuilder sb = new StringBuilder();
-			new TableUpdate(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table() { Schema = "schema", Name = "table" }, null, null);
-			Assert.AreEqual(@"update [schema].[table] set
-	[a] = @a", sb.ToString());
-		}
-		
-		[Test]
-		public void ComputedColumn() {
-			var getColumns = new Mock<IGetTableColumns>();
-			getColumns.Setup(args => args.Get(It.IsAny<Table>())).Returns(new Column[] {
-				new Column(){
-					Name = "a",
-				},
-				new Column(){
-					Name = "b",
-					ComputedColumn = true
-				},
-				new Column(){
-					Name = "c",
-				},
-				new Column(){
-					Name = "id",
-					IdentityColumn = true,
-				}
-			});
-			StringBuilder sb = new StringBuilder();
-			new TableUpdate(getColumns.Object, new GetSqlVariableName()).Build(sb,new Table() { Schema = "schema", Name = "table" }, null, null);
-			Assert.AreEqual(@"update [schema].[table] set
-	[a] = @a,
-	[c] = @c", sb.ToString());
+			mock.Build().GetInstance<TableUpdate>().Build(sb, mock.Table, option, null);
+			return sb.ToString();
 		}
 	}
 }

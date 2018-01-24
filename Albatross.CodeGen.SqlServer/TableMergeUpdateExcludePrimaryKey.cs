@@ -24,7 +24,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public override string Name => "table_merge_update_exclude_primarykey";
 		public override string Description => "Table merge update clause exclude the primary key columns";
 
-		public override StringBuilder Build(StringBuilder sb, Table table, object options, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table table, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			IEnumerable<string> primaryKeys = from c in _getPrimaryKey.Get(table) select c.Name;
 			Column[] columns = (from c in _getColumns.Get(table)
 								orderby c.OrdinalPosition ascending, c.Name ascending

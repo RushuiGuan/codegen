@@ -48,7 +48,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(GetTestCase))]
 		public string Run(Column column) {
 			ColumnSqlTypeBuilder builder = new ColumnSqlTypeBuilder();
-			return builder.Build(new StringBuilder(), column).ToString();
+			return builder.Build(column);
 		}
 	}
 }

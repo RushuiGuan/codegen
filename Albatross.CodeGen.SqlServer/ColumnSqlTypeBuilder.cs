@@ -3,51 +3,42 @@ using Albatross.CodeGen.Database;
 
 namespace Albatross.CodeGen.SqlServer {
 	public class ColumnSqlTypeBuilder : IColumnSqlTypeBuilder {
-		public StringBuilder Build(StringBuilder sb, Column c) {
+		public string Build(Column c) {
 			string dataType = c.DataType?.ToLower();
 			switch (dataType) {
 				case "ntext":
-					sb.Append("nvarchar(max)");
-					break;
+					return "nvarchar(max)";
 				case "text":
-					sb.Append("varchar(max)");
-					break;
+					return "varchar(max)";
+
 				case "image":
-					sb.Append("varbinary(max)");
-					break;
+					return "varbinary(max)";
 
 				case "binary":
 				case "char":
 				case "nchar":
-					sb.Append(dataType).OpenParenthesis().Append(c.MaxLength).CloseParenthesis();
-					break;
+					return $"{dataType}({c.MaxLength})";
 
 				case "nvarchar":
 				case "varbinary":
 				case "varchar":
-					sb.Append(dataType).OpenParenthesis();
 					if (c.MaxLength == -1) {
-						sb.Append("max");
+						return $"{dataType}(max)";
 					} else {
-						sb.Append(c.MaxLength);
+						return $"{dataType}({c.MaxLength})";
 					}
-					sb.CloseParenthesis();
-					break;
 
 				case "datetime2":
 				case "datetimeoffset":
 				case "float":
-					sb.Append(dataType).OpenParenthesis().Append(c.Precision).CloseParenthesis();
-					break;
+					return $"{dataType}({c.Precision})";
+
 				case "decimal":
 				case "numeric":
-					sb.Append(dataType).OpenParenthesis().Append(c.Precision).Comma().Space().Append(c.Scale).CloseParenthesis();
-					break;
+					return $"{dataType}({c.Precision}, {c.Scale})";
 				default:
-					sb.Append(dataType);
-					break;
+					return dataType;
 			}
-			return sb;
 		}
 	}
 }

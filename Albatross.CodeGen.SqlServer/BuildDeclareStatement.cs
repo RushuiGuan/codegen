@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
-	public class BuildDeclareStatement : ICodeGenerator<ParamCollection>{
+	public class BuildDeclareStatement : ICodeGenerator<ParamCollection, SqlQueryOption>{
 
 		IColumnSqlTypeBuilder _typeBuilder;
 
@@ -24,11 +24,11 @@ namespace Albatross.CodeGen.SqlServer {
 		public Type SourceType => typeof(ParamCollection);
 		public Type OptionType => typeof(object);
 
-		public StringBuilder Build(StringBuilder sb, ParamCollection list, object options, ICodeGeneratorFactory factory) {
+		public StringBuilder Build(StringBuilder sb, ParamCollection list, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			sb.AppendLine("declare");
 			foreach (var pair in list) {
 				sb.Tab().Append(pair.Key).Append(" as ");
-				_typeBuilder.Build(sb, pair.Value);
+				sb.Append(_typeBuilder.Build(pair.Value));
 				if (pair.Key != list.Keys.Last()) {
 					sb.Comma().AppendLine();
 				} else {
@@ -39,7 +39,7 @@ namespace Albatross.CodeGen.SqlServer {
 		}
 
 		public StringBuilder Build(StringBuilder sb, object t, object options, ICodeGeneratorFactory factory) {
-			return this.Build(sb, (ParamCollection)t, options, factory);
+			return this.Build(sb, (ParamCollection)t, (SqlQueryOption)options, factory);
 		}
 	}
 }

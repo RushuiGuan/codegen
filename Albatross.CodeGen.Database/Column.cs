@@ -16,5 +16,8 @@ namespace Albatross.CodeGen.Database {
 		public int Scale { get; set; }
 		public bool IdentityColumn { get; set; }
 		public bool ComputedColumn { get; set; }
+
+
+		public string Expression { get; set; }
 	}
 }

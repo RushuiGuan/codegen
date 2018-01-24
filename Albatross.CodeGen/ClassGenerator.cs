@@ -7,7 +7,7 @@ namespace Albatross.CodeGen {
 	/// an abstract class created to speed up C# class code generation.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
-	public abstract class ClassGenerator<T> : ICodeGenerator<T> where T : class {
+	public abstract class ClassGenerator<T> : ICodeGenerator<T, ClassOptions> where T : class {
 		public abstract string Category { get; }
 		public abstract string Description { get; }
 		public abstract string Name { get; }
@@ -20,11 +20,9 @@ namespace Albatross.CodeGen {
 		public abstract void RenderBody(StringBuilder sb, int tabLevel, T t, ClassOptions options, ICodeGeneratorFactory factory);
 
 
-		public StringBuilder Build(StringBuilder sb, T t, object options, ICodeGeneratorFactory factory) {
-			ClassOptions opt = options as ClassOptions;
-			if (opt == null) { opt = new ClassOptions(); }
-			if (opt.Imports != null) {
-				foreach (var ns in opt.Imports) {
+		public StringBuilder Build(StringBuilder sb, T t, ClassOptions option, ICodeGeneratorFactory factory) {
+			if (option.Imports != null) {
+				foreach (var ns in option.Imports) {
 					sb.Append("using ").Append(ns).Terminate();
 				}
 			}
@@ -32,16 +30,16 @@ namespace Albatross.CodeGen {
 
 			string className = GetClassName(t);
 			int level = 0;
-			sb.Tab(level).Append("namespace ").Append(opt.Namespace).OpenScope();
+			sb.Tab(level).Append("namespace ").Append(option.Namespace).OpenScope();
 			level++;
-			sb.Tab(level).Append(opt.AccessModifier).Append(" class ").Append(className).Append(" : ").Append(opt.BaseClass).OpenScope();
+			sb.Tab(level).Append(option.AccessModifier).Append(" class ").Append(className).Append(" : ").Append(option.BaseClass).OpenScope();
 			level++;
 
-			foreach (string constructor in opt.Constructors) {
+			foreach (string constructor in option.Constructors) {
 				sb.Tab(level).Public().Append(className).Append(constructor).EmptyScope();
 			}
 
-			RenderBody(sb, level, t, opt, factory);
+			RenderBody(sb, level, t, option, factory);
 
 			level--;
 			sb.Tab(level).CloseScope(false);
@@ -53,7 +51,7 @@ namespace Albatross.CodeGen {
 
 
 		StringBuilder ICodeGenerator.Build(StringBuilder sb, object t, object options, ICodeGeneratorFactory factory) {
-			return this.Build(sb, (T)t, options, factory);
+			return this.Build(sb, (T)t, (ClassOptions)options, factory);
 		}
 	}
 }

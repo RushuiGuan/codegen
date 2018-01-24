@@ -40,7 +40,6 @@ namespace Albatross.CodeGen.PowerShell {
 
 
 		protected override void ProcessRecord() {
-			WriteObject(ParameterSetName);
 			if (base.ParameterSetName == PSName_ByComponent && !IntegratedSecurity.ToBool()) {
 				if (string.IsNullOrEmpty(User)) { throw new ArgumentException("Parameter User is required"); }
 				if (string.IsNullOrEmpty(Password)) { throw new ArgumentException("Parameter Password is required"); }

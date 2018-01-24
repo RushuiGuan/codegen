@@ -30,9 +30,6 @@ namespace Albatross.CodeGen.SqlServer {
 			return sb.Append('[').Append(name).Append(']');
 		}
 
-		public static bool Match(this IBuiltInColumnFactory builtInColumnFactory, Column column) {
-			return builtInColumnFactory.Get(column.Name).Match(column);
-		}
 
 		#region columns
 		public static bool IsString(this Column c) {

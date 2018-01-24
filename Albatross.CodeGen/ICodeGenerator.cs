@@ -16,7 +16,7 @@ namespace Albatross.CodeGen {
 		StringBuilder Build(StringBuilder sb, object t, object options, ICodeGeneratorFactory factory);
 	}
 
-	public interface ICodeGenerator<T> : ICodeGenerator {
-		StringBuilder Build(StringBuilder sb, T t, object option, ICodeGeneratorFactory factory);
+	public interface ICodeGenerator<T, O> : ICodeGenerator {
+		StringBuilder Build(StringBuilder sb, T t, O option, ICodeGeneratorFactory factory);
 	}
 }

@@ -13,21 +13,19 @@ namespace Albatross.CodeGen.SqlServer {
 		IGetTableColumns getTableColumns;
 		IGetVariableName getVariableName;
 		IGetTablePrimaryKey getPrimary;
+		IColumnSqlTypeBuilder typeBuilder;
 
 		public override string Name => "table_update";
-		public override string Description => "Update statement that excludes the computed columns";
+		public override string Description => "Update statement that excludes the computed columns.  Will exclude the primary key by default unless ExcludePrimaryKey flag is set to false in the option";
 
-		public TableUpdate(IGetTableColumns getTableColumns, IGetTablePrimaryKey getPrimary, IGetVariableName getVariableName) {
+		public TableUpdate(IGetTableColumns getTableColumns, IGetTablePrimaryKey getPrimary, IGetVariableName getVariableName, IColumnSqlTypeBuilder typeBuilder) {
 			this.getTableColumns = getTableColumns;
 			this.getVariableName = getVariableName;
 			this.getPrimary = getPrimary;
+			this.typeBuilder = typeBuilder;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, Table t, object options, ICodeGeneratorFactory factory) {
-			SqlQueryOption option = options as SqlQueryOption;
-			if (option == null) {
-				option = new SqlQueryOption();
-			}
+		public override StringBuilder Build(StringBuilder sb, Table t, SqlQueryOption option, ICodeGeneratorFactory factory) {
 			HashSet<string> keys = new HashSet<string>();
 			if (option.ExcludePrimaryKey) {
 				keys.AddRange(from item in getPrimary.Get(t) select item.Name);
@@ -42,7 +40,12 @@ namespace Albatross.CodeGen.SqlServer {
 			string name;
 			foreach (Column c in columns) {
 				name = getVariableName.Get(c.Name);
-				sb.Tab().EscapeName(c.Name).Append(" = ").Append(name);
+				if (option.Expressions.TryGetValue(c.Name, out string expression)) {
+					sb.Tab().EscapeName(c.Name).Append(" = ").Append(expression);
+				} else {
+					option.Variables[name] = typeBuilder.Build(c);
+					sb.Tab().EscapeName(c.Name).Append(" = ").Append(name);
+				}
 				if (c != columns.Last()) {
 					sb.Comma().AppendLine();
 				}

@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public override string Name => "table_select";
 		public override string Description => "Select statement sorted by ordinal position";
 
-		public override StringBuilder Build(StringBuilder sb, Table t, object options, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table t, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			IEnumerable<Column> columns = _getTableColumns.Get(t);
 			sb.Append("select").AppendLine();
 			foreach (Column c in columns) {

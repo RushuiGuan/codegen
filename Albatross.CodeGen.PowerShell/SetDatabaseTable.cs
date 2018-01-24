@@ -7,6 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell {
-	[Cmdlet(VerbsCommon.Set, "Composite", SupportsShouldProcess = true)]
-	public class SetComposite : SetJsonObject<Composite> { }
+	[Cmdlet(VerbsCommon.Set, "DatabaseTable", SupportsShouldProcess = true)]
+	public class SetDatabaseTable : SetJsonObject<Albatross.CodeGen.Database.Table> { }
 }

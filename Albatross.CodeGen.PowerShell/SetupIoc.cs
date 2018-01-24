@@ -43,8 +43,6 @@ namespace Albatross.CodeGen.PowerShell {
 			c.Register<IGetTableIdentityColumn, GetTableIdentityColumn>(Lifestyle.Singleton);
 			c.Register<IGetTablePrimaryKey, GetTablePrimaryKey>(Lifestyle.Singleton);
 			c.Register<IGetVariableName, GetSqlVariableName>(Lifestyle.Singleton);
-			c.Register<IBuiltInColumnFactory, BuiltInColumnFactory>(Lifestyle.Singleton);
-			c.RegisterCollection<BuiltInColumn>(BuiltInColumns.Items);
 			c.Verify();
 			return c.GetInstance<IObjectFactory>();
 		}

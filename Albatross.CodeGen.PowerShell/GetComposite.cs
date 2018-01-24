@@ -6,13 +6,9 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Albatross.CodeGen.PowerShell
-{
-	[Cmdlet(VerbsCommon.Get, "Composite", SupportsShouldProcess =true)]
-    public class GetComposite: BaseCmdlet<IFactory<IEnumerable<Composite>>>  {
-		public GetComposite() {
-		}
-
+namespace Albatross.CodeGen.PowerShell {
+	[Cmdlet(VerbsCommon.Get, "Composite")]
+	public class GetComposite : BaseCmdlet<IFactory<IEnumerable<Composite>>> {
 		[Parameter(Position = 0)]
 		[Alias("n")]
 		public string Name { get; set; }

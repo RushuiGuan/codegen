@@ -15,12 +15,12 @@ namespace Albatross.CodeGen.SqlServer {
 		public override string Description => "Composite: merge statement with audit in its select clause and joined by the primary key columns";
 
 
-		public override StringBuilder Build(StringBuilder sb, Table t, object options, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table t, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			sb.Append("merge ").EscapeName(t.Schema).Dot().EscapeName(t.Name).Append(" as dst").AppendLine();
-			factory.Get<Table>("table_merge_select_w_audit").Build(sb, t, options, factory).Space();
-			factory.Get<Table>("table_merge_join_by_primarykey").Build(sb, t, options, factory).AppendLine();
-			factory.Get<Table>("table_merge_update_exclude_primarykey").Build(sb, t, options, factory).AppendLine();
-			factory.Get<Table>("table_merge_insert").Build(sb, t, options, factory);
+			factory.Get<Table, SqlQueryOption>("table_merge_select_w_audit").Build(sb, t, options, factory).Space();
+			factory.Get<Table, SqlQueryOption>("table_merge_join_by_primarykey").Build(sb, t, options, factory).AppendLine();
+			factory.Get<Table, SqlQueryOption>("table_merge_update_exclude_primarykey").Build(sb, t, options, factory).AppendLine();
+			factory.Get<Table, SqlQueryOption>("table_merge_insert").Build(sb, t, options, factory);
 			sb.Semicolon();
 			return sb;
 		}

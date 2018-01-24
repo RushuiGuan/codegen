@@ -66,10 +66,10 @@ namespace Albatross.CodeGen{
 			}
 		}
 
-		public ICodeGenerator<T> Get<T>(string name) {
+		public ICodeGenerator<T, O> Get<T,O>(string name) {
 			string key = typeof(T).GetGeneratorName(name);
 			if (_registration.TryGetValue(key, out ICodeGenerator codeGenerator)) {
-				return (ICodeGenerator<T>)codeGenerator;
+				return (ICodeGenerator<T, O>)codeGenerator;
 			} else {
 				throw new CodeGenNotRegisteredException(typeof(T), name);
 			}

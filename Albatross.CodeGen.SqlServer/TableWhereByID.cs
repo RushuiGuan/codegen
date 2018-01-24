@@ -22,7 +22,7 @@ namespace Albatross.CodeGen.SqlServer {
 			_getVariableName = getVariableName;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, Table t, object options, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, Table t, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			Column identityColumn = _getIDColumn.Get(t);
 			if (identityColumn == null) {
 				throw new IdentityColumnNotFoundException(t);
