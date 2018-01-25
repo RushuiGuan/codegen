@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.PowerShell {
 
 
 		protected override void ProcessRecord() {
-			var table = new Albatross.CodeGen.Database.Table {
+			var table = new Albatross.CodeGen.Database.DatabaseObject {
 				Name = Name,
 				Schema = Schema,
 				Server = Server,

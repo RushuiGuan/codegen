@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public override string Name => "table_merge_delete";
 		public override string Description => "Merage statement delete clause";
 
-		public override StringBuilder Build(StringBuilder sb, Table t, SqlQueryOption options, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			return sb.Append("when not matched by source then delete");
 		}
 	}

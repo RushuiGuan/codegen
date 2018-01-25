@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer
 {
-	public class GenerateClassByDatabaseTable : ClassGenerator<Table> {
+	public class GenerateClassByDatabaseTable : ClassGenerator<DatabaseObject> {
 		public override string Category => "Sql Server";
 		public override string Description => "Generate a C# class from a sql server table";
 		public override string Name => "table_to_class";
 		IGetTableColumns _getColumns;
 		IGetCSharpType _getCSharpType;
 
-		public override string GetClassName(Table t) {
+		public override string GetClassName(DatabaseObject t) {
 			return t.Name.Proper();
 		}
 
@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.SqlServer
 			_getCSharpType = getCSharpType;
 		}
 
-		public override void RenderBody(StringBuilder sb, int tabLevel, Table t, ClassOptions options, ICodeGeneratorFactory factory) {
+		public override void RenderBody(StringBuilder sb, int tabLevel, DatabaseObject t, ClassOptions options, ICodeGeneratorFactory factory) {
 			foreach (var item in _getColumns.Get(t)) {
 				sb.Tab(tabLevel).Append("public ").Append(t.Name.Proper());
 			}

@@ -22,7 +22,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public override string Name => "table_merge_update";
 		public override string Description => "Table merge update clause";
 
-		public override StringBuilder Build(StringBuilder sb, Table table, SqlQueryOption options, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			HashSet<string> keys = new HashSet<string>();
 			if (options.ExcludePrimaryKey) {
 				keys.AddRange(from item in getPrimary.Get(table) select item.Name);

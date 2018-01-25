@@ -26,7 +26,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.typeBuilder = typeBuilder;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, Table t, SqlQueryOption option, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption option, ICodeGeneratorFactory factory) {
 			sb.Append("where");
 			int count = 0;
 			if ((option.Filter & FilterOption.ByIdentityColumn) > 0){

@@ -33,7 +33,7 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 	public class ContactTable : TableMocking {
 		public override string TableName => "Contact";
 		public override string Schema => "test";
-		public override Table Table => new Table { Name = TableName, Schema = Schema };
+		public override DatabaseObject Table => new DatabaseObject { Name = TableName, Schema = Schema };
 		public override IEnumerable<Column> Columns => new Column[] {
 			new Column { Name = "ContactID", IdentityColumn = true, DataType="int", IsNullable=false,OrdinalPosition = 0 },
 				new Column{ Name="Domain", DataType = "varchar", MaxLength=100, IsNullable=false,OrdinalPosition = 1},

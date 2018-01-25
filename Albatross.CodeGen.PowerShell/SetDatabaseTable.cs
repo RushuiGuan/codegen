@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsCommon.Set, "DatabaseTable", SupportsShouldProcess = true)]
-	public class SetDatabaseTable : SetJsonObject<Albatross.CodeGen.Database.Table> { }
+	public class SetDatabaseTable : SetJsonObject<Albatross.CodeGen.Database.DatabaseObject> { }
 }

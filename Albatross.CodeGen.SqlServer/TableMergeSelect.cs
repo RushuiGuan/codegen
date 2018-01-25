@@ -24,7 +24,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public override string Name  => "table_merge_select";
 		public override string Description => "Merge statement select clause";
 
-		public override StringBuilder Build(StringBuilder sb, Table table, SqlQueryOption options, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			Column[] columns = _getColumns.Get(table).ToArray();
 			if (columns.Length == 0) {
 				throw new ColumnNotFoundException(table);

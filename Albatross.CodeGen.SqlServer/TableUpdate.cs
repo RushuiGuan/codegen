@@ -25,7 +25,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.typeBuilder = typeBuilder;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, Table t, SqlQueryOption option, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption option, ICodeGeneratorFactory factory) {
 			HashSet<string> keys = new HashSet<string>();
 			if (option.ExcludePrimaryKey) {
 				keys.AddRange(from item in getPrimary.Get(t) select item.Name);

@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Database {
-	[SourceType("Database table")]
-	public class Table {
+	[SourceType("A database object, such as Table, Stored Procedure, View")]
+	public class DatabaseObject {
 		public string Schema { get; set; }
 		public string Name { get; set; }
 

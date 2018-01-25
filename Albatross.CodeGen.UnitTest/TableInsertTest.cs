@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[Test]
 		public void TwoColumn() {
 			var getColumns = new Mock<IGetTableColumns>();
-			getColumns.Setup(args => args.Get(It.IsAny<Table>())).Returns(new Column[] {
+			getColumns.Setup(args => args.Get(It.IsAny<DatabaseObject>())).Returns(new Column[] {
 				new Column(){
 					Name = "a",
 				},
@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.UnitTest {
 				},
 			});
 			StringBuilder sb = new StringBuilder();
-			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table { Schema = "schema", Name = "table", }, null, null);
+			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new DatabaseObject { Schema = "schema", Name = "table", }, null, null);
 			Assert.AreEqual(@"insert into [schema].[table] (
 	[a],
 	[b]
@@ -35,13 +35,13 @@ namespace Albatross.CodeGen.UnitTest {
 		[Test]
 		public void OneColumn() {
 			var getColumns = new Mock<IGetTableColumns>();
-			getColumns.Setup(args => args.Get(It.IsAny<Table>())).Returns(new Column[] {
+			getColumns.Setup(args => args.Get(It.IsAny<DatabaseObject>())).Returns(new Column[] {
 				new Column(){
 					Name = "a",
 				}
 			});
 			StringBuilder sb = new StringBuilder();
-			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table { Schema = "schema", Name = "table", }, null, null);
+			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new DatabaseObject { Schema = "schema", Name = "table", }, null, null);
 			Assert.AreEqual(@"insert into [schema].[table] (
 	[a]
 ) values (
@@ -52,7 +52,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[Test]
 		public void IdentityColumn() {
 			var getColumns = new Mock<IGetTableColumns>();
-			getColumns.Setup(args => args.Get(It.IsAny<Table>())).Returns(new Column[] {
+			getColumns.Setup(args => args.Get(It.IsAny<DatabaseObject>())).Returns(new Column[] {
 				new Column(){
 					Name = "a",
 				},
@@ -65,7 +65,7 @@ namespace Albatross.CodeGen.UnitTest {
 				},
 			});
 			StringBuilder sb = new StringBuilder();
-			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table { Schema = "schema", Name = "table", }, null, null);
+			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new DatabaseObject { Schema = "schema", Name = "table", }, null, null);
 			Assert.AreEqual(@"insert into [schema].[table] (
 	[a],
 	[c]
@@ -78,7 +78,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[Test]
 		public void ComputedColumn() {
 			var getColumns = new Mock<IGetTableColumns>();
-			getColumns.Setup(args => args.Get(It.IsAny<Table>())).Returns(new Column[] {
+			getColumns.Setup(args => args.Get(It.IsAny<DatabaseObject>())).Returns(new Column[] {
 				new Column(){
 					Name = "a",
 				},
@@ -91,7 +91,7 @@ namespace Albatross.CodeGen.UnitTest {
 				},
 			});
 			StringBuilder sb = new StringBuilder();
-			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new Table { Schema = "schema", Name = "table", }, null, null);
+			new TableInsert(getColumns.Object, new GetSqlVariableName()).Build(sb, new DatabaseObject { Schema = "schema", Name = "table", }, null, null);
 			Assert.AreEqual(@"insert into [schema].[table] (
 	[a],
 	[c]

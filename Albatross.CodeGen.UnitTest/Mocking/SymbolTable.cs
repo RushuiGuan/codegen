@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 	public class SymbolTable : TableMocking {
 		public override string TableName => "Symbol";
 		public override string Schema => "test";
-		public override Table Table => new Table { Name = TableName, Schema = Schema };
+		public override DatabaseObject Table => new DatabaseObject { Name = TableName, Schema = Schema };
 		public override IEnumerable<Column> Columns => new Column[] {
 			new Column { Name = "SyID", IdentityColumn = true, DataType="int", IsNullable=false, OrdinalPosition = 0 },
 				new Column{ Name="SyCode", DataType = "varchar", MaxLength=100, IsNullable=false, OrdinalPosition = 1},

@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public GetTableIdentityColumn() {
 		}
 
-		public Column Get(Table table) {
+		public Column Get(DatabaseObject table) {
 			string sql = this.GetType().GetAssemblyResource("Albatross.CodeGen.SqlServer.GetTableIdentityColumn.sql");
 			using (var db = new SqlConnection(table.GetConnectionString())) {
 				return db.QueryFirstOrDefault<Column>(sql, new { schema = table.Schema, table = table.Name }, commandType: System.Data.CommandType.Text);

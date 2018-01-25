@@ -5,7 +5,7 @@ using System.Text;
 namespace Albatross.CodeGen.SqlServer {
 	public static class Extension
     {
-		public static string GetConnectionString(this Table table) {
+		public static string GetConnectionString(this DatabaseObject table) {
 			SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder {
 				DataSource = table.Server.DataSource,
 				InitialCatalog = table.Server.InitialCatalog,
@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.SqlServer {
 				Description = description,
 				Category = "Sql Server",
 				Generators = children,
-				SourceType = typeof(Table),
+				SourceType = typeof(DatabaseObject),
 				Target = "sql",
 				Seperator = "\r\n",
 			};

@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator]
 	public class TableSelect : TableQueryGenerator{
-		IGetTableColumns _getTableColumns;
+		IGetTableColumns getTableColumns;
 
 		public TableSelect(IGetTableColumns getTableColumns) {
-			_getTableColumns = getTableColumns;
+			this.getTableColumns = getTableColumns;
 		}
 
 		public override string Name => "table_select";
 		public override string Description => "Select statement sorted by ordinal position";
 
-		public override StringBuilder Build(StringBuilder sb, Table t, SqlQueryOption options, ICodeGeneratorFactory factory) {
-			IEnumerable<Column> columns = _getTableColumns.Get(t);
+		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options, ICodeGeneratorFactory factory) {
+			IEnumerable<Column> columns = getTableColumns.Get(t);
 			sb.Append("select").AppendLine();
 			foreach (Column c in columns) {
 				sb.Tab().EscapeName(c.Name);
