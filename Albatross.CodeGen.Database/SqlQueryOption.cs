@@ -8,6 +8,7 @@ namespace Albatross.CodeGen.Database
     public class SqlQueryOption
     {
 		public bool ExcludePrimaryKey { get; set; } = true;
+		public FilterOption Filter { get; set; }
 		public Dictionary<string, string> Variables { get; } = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
 		public Dictionary<string, string> Expressions { get; } = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
 	}

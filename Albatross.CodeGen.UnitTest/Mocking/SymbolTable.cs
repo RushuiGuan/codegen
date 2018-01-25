@@ -25,13 +25,13 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 		public override string Schema => "test";
 		public override Table Table => new Table { Name = TableName, Schema = Schema };
 		public override IEnumerable<Column> Columns => new Column[] {
-			new Column { Name = "SyID", IdentityColumn = true, DataType="int", IsNullable=false, },
-				new Column{ Name="SyCode", DataType = "varchar", MaxLength=100, IsNullable=false,},
+			new Column { Name = "SyID", IdentityColumn = true, DataType="int", IsNullable=false, OrdinalPosition = 0 },
+				new Column{ Name="SyCode", DataType = "varchar", MaxLength=100, IsNullable=false, OrdinalPosition = 1},
 
-				new Column { Name = "CuID", DataType="int", IsNullable=false, },
-				new Column { Name = "OutShares", DataType="bigint", IsNullable=false, },
-				new Column { Name = "CoID", DataType="int", IsNullable=false, },
-				new Column { Name = "SnID", DataType="int", IsNullable=true, },
+				new Column { Name = "CuID", DataType="int", IsNullable=false,  OrdinalPosition =2 },
+				new Column { Name = "OutShares", DataType="bigint", IsNullable=false, OrdinalPosition = 3 },
+				new Column { Name = "CoID", DataType="int", IsNullable=false, OrdinalPosition = 4 },
+				new Column { Name = "SnID", DataType="int", IsNullable=true,  OrdinalPosition = 5},
 		};
 		public override IEnumerable<Column> PrimaryKeys => new Column[] {
 			new Column{ Name="SyCode", DataType = "varchar", MaxLength=100, IsNullable=false,},

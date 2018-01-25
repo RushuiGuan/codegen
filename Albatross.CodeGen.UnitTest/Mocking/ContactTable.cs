@@ -35,22 +35,22 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 		public override string Schema => "test";
 		public override Table Table => new Table { Name = TableName, Schema = Schema };
 		public override IEnumerable<Column> Columns => new Column[] {
-			new Column { Name = "ContactID", IdentityColumn = true, DataType="int", IsNullable=false, },
-				new Column{ Name="Domain", DataType = "varchar", MaxLength=100, IsNullable=false,},
-				new Column{ Name="Login", DataType = "varchar", MaxLength=100, IsNullable=false,},
+			new Column { Name = "ContactID", IdentityColumn = true, DataType="int", IsNullable=false,OrdinalPosition = 0 },
+				new Column{ Name="Domain", DataType = "varchar", MaxLength=100, IsNullable=false,OrdinalPosition = 1},
+				new Column{ Name="Login", DataType = "varchar", MaxLength=100, IsNullable=false,OrdinalPosition = 2},
 
-				new Column{ Name="FirstName", DataType = "nvarchar", MaxLength=100, IsNullable=false,},
-				new Column{ Name="LastName", DataType = "nvarchar", MaxLength=100, IsNullable=false,},
-				new Column{ Name="MiddleName", DataType = "nvarchar", MaxLength=100, IsNullable=true,},
+				new Column{ Name="FirstName", DataType = "nvarchar", MaxLength=100, IsNullable=false,OrdinalPosition = 3},
+				new Column{ Name="LastName", DataType = "nvarchar", MaxLength=100, IsNullable=false,OrdinalPosition = 4},
+				new Column{ Name="MiddleName", DataType = "nvarchar", MaxLength=100, IsNullable=true,OrdinalPosition = 5},
 
-				new Column { Name = "Gender", DataType="char", IsNullable=false, },
-				new Column{ Name="Cell", DataType = "varchar", MaxLength=100, IsNullable=true,},
-				new Column{ Name="Address", DataType = "nvarchar", MaxLength=100, IsNullable=true,},
+				new Column { Name = "Gender", DataType="char", IsNullable=false, OrdinalPosition = 6},
+				new Column{ Name="Cell", DataType = "varchar", MaxLength=100, IsNullable=true,OrdinalPosition = 7},
+				new Column{ Name="Address", DataType = "nvarchar", MaxLength=100, IsNullable=true,OrdinalPosition = 8},
 
-				new Column { Name = "Created", DataType="datetime", IsNullable=false, },
-				new Column { Name = "CreatedBy", DataType="varchar", MaxLength=100, IsNullable=false, },
-				new Column { Name = "Modified", DataType="datetime", IsNullable=false, },
-				new Column { Name = "ModifiedBy", DataType="varchar", MaxLength=100, IsNullable=false, },
+				new Column { Name = "Created", DataType="datetime", IsNullable=false, OrdinalPosition = 9},
+				new Column { Name = "CreatedBy", DataType="varchar", MaxLength=100, IsNullable=false, OrdinalPosition = 10},
+				new Column { Name = "Modified", DataType="datetime", IsNullable=false, OrdinalPosition = 11},
+				new Column { Name = "ModifiedBy", DataType="varchar", MaxLength=100, IsNullable=false, OrdinalPosition = 12},
 		};
 		public override IEnumerable<Column> PrimaryKeys => new Column[] {
 			new Column{ Name="Domain", DataType = "varchar", MaxLength=100, IsNullable=false,},

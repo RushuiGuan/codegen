@@ -13,10 +13,12 @@ namespace Albatross.CodeGen.SqlServer {
 	public class TableMergeSelect : TableQueryGenerator {
 		IGetTableColumns _getColumns;
 		IGetVariableName _getVariableName;
+		IColumnSqlTypeBuilder typeBuilder;
 
-		public TableMergeSelect(IGetTableColumns getColumns, IGetVariableName getVariableName) {
+		public TableMergeSelect(IGetTableColumns getColumns, IGetVariableName getVariableName, IColumnSqlTypeBuilder typeBuilder) {
 			_getColumns = getColumns;
 			_getVariableName = getVariableName;
+			this.typeBuilder = typeBuilder;
 		}
 
 		public override string Name  => "table_merge_select";
@@ -30,8 +32,15 @@ namespace Albatross.CodeGen.SqlServer {
 			sb.Append("using ").OpenParenthesis().AppendLine();
 			sb.Tab().AppendLine("select");
 			foreach (var column in columns) {
-				string name = _getVariableName.Get(column.Name);
-				sb.Tab(2).Append(name).Append(" as ").EscapeName(column.Name);
+				sb.Tab(2);
+				if (options.Expressions.TryGetValue(column.Name, out string expression)) {
+					sb.Append(expression);
+				} else {
+					string name = _getVariableName.Get(column.Name);
+					sb.Append(name);
+					options.Variables[name] = typeBuilder.Build(column);
+				}
+				sb.Append(" as ").EscapeName(column.Name);
 				if (column != columns.Last()) {
 					sb.Comma();
 				}

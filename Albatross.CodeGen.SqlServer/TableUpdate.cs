@@ -30,7 +30,6 @@ namespace Albatross.CodeGen.SqlServer {
 			if (option.ExcludePrimaryKey) {
 				keys.AddRange(from item in getPrimary.Get(t) select item.Name);
 			}
-			getPrimary.Get(t);
 
 			sb.Append($"update [{t.Schema}].[{t.Name}] set").AppendLine();
 			Column[] columns = (from c in getTableColumns.Get(t).ToArray()
@@ -40,11 +39,12 @@ namespace Albatross.CodeGen.SqlServer {
 			string name;
 			foreach (Column c in columns) {
 				name = getVariableName.Get(c.Name);
+				sb.Tab().EscapeName(c.Name).Append(" = ");
 				if (option.Expressions.TryGetValue(c.Name, out string expression)) {
-					sb.Tab().EscapeName(c.Name).Append(" = ").Append(expression);
+					sb.Append(expression);
 				} else {
 					option.Variables[name] = typeBuilder.Build(c);
-					sb.Tab().EscapeName(c.Name).Append(" = ").Append(name);
+					sb.Append(name);
 				}
 				if (c != columns.Last()) {
 					sb.Comma().AppendLine();

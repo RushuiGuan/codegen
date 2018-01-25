@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.UnitTest {
 	[TestFixture]
-	public class GetTableInsertTest {
+	public class TableInsertTest {
 		[Test]
 		public void TwoColumn() {
 			var getColumns = new Mock<IGetTableColumns>();
