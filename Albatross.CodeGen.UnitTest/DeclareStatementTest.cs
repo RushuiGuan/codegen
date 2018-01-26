@@ -19,23 +19,7 @@ namespace Albatross.CodeGen.UnitTest {
 			Container.Verify();
 		}
 
-		public static TestCaseData[] GetTestCase() {
-			return new TestCaseData[] {
-				new TestCaseData(new ParamCollection{
-					["@a"] = new Column(){ DataType = "int",},
-					["@b"] = new Column(){ DataType = "int",}
-				}){ ExpectedResult = @"declare
-	@a as int,
-	@b as int;" },
-				new TestCaseData(new ParamCollection{
-					["@a"] = new Column(){ DataType = "int",},
-				}){ ExpectedResult = @"declare
-	@a as int;" },
-			};
-		}
-
-		[TestCaseSource(nameof(GetTestCase))]
-		public string Build(ParamCollection @params) {
+		public string Build(DatabaseObject @params) {
 			DeclareStatement handle = Container.GetInstance<DeclareStatement>();
 			return handle.Build(new StringBuilder(), @params, null, null).ToString();
 		}

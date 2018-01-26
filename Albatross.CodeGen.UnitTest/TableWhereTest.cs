@@ -28,7 +28,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(TableMocking mock, SqlQueryOption option) {
 			StringBuilder sb = new StringBuilder();
-			mock.Build().GetInstance<TableWhere>().Build(sb, mock.Table, option, null);
+			Ioc.Container.GetInstance<TableWhere>().Build(sb, mock.Table, option, null);
 			return sb.ToString();
 		}
 	}

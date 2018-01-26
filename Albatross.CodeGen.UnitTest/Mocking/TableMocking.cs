@@ -17,25 +17,17 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 		public abstract Column IdentityColumn { get; }
 		public abstract DatabaseObject Table { get; }
 
-		public Container Build(Container container = null) {
-			if (container == null) { container = new Container(); }
-			container.Options.AllowOverridingRegistrations = true;
 
-			var getTableColumns = new Mock<IGetTableColumns>();
+		public void Setup() {
+
+			var getTableColumns = MockContainer.Instance.Get<IGetTableColumns>();
 			getTableColumns.Setup(args => args.Get(It.Is<DatabaseObject>(t=>t.Name == TableName))).Returns(Columns);
 
-			var getPrimaryKeys = new Mock<IGetTablePrimaryKey>();
+			var getPrimaryKeys = MockContainer.Instance.Get<IGetTablePrimaryKey>();
 			getPrimaryKeys.Setup(args => args.Get(It.Is<DatabaseObject>(t=>t.Name == TableName))).Returns(PrimaryKeys);
 
-			var getIdentityColumn = new Mock<IGetTableIdentityColumn>();
+			var getIdentityColumn = MockContainer.Instance.Get<IGetTableIdentityColumn>();
 			getIdentityColumn.Setup(args => args.Get(It.Is<DatabaseObject>(t=>t.Name == TableName))).Returns(IdentityColumn);
-
-			container.RegisterSingleton<IGetTableColumns>(getTableColumns.Object);
-			container.RegisterSingleton<IGetTablePrimaryKey>(getPrimaryKeys.Object);
-			container.RegisterSingleton<IGetTableIdentityColumn>(getIdentityColumn.Object);
-			container.RegisterSingleton<IColumnSqlTypeBuilder, ColumnSqlTypeBuilder>();
-			container.RegisterSingleton<IGetVariableName, GetSqlVariableName>();
-			return container;
 		}
 	}
 }

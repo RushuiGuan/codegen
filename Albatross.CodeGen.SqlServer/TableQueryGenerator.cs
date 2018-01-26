@@ -20,6 +20,9 @@ namespace Albatross.CodeGen.SqlServer {
 		public abstract StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options, ICodeGeneratorFactory factory);
 
 		public StringBuilder Build(StringBuilder sb, object t, object options, ICodeGeneratorFactory factory) {
+			t.TypeCheck<DatabaseObject>("SourceType");
+			options.TypeCheck<SqlQueryOption>("Option");
+
 			return Build(sb, (DatabaseObject)t, (SqlQueryOption)options, factory);
 		}
 	}

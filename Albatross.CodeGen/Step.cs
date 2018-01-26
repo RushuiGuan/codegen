@@ -11,8 +11,11 @@ namespace Albatross.CodeGen {
 	public class Step {
 		public Type SourceType { get; set; }
 		public object Source { get; set; }
+
+		public Type OptionType { get; set; }
+		public object Options { get; set; }
+
 		public string Generator { get; set; }
-		public string Options { get; set; }
 	}
 
 	public class StepConverter : JsonConverter {

@@ -60,5 +60,11 @@ namespace Albatross.CodeGen {
 			}
 			return list;
 		}
+
+		public static void TypeCheck<T>(this object t, string name) {
+			if (t != null && !(t is T)) {
+				throw new ArgumentException($"Invalid {name}: {t.GetType().Name}; expected: {typeof(T).Name}");
+			}
+		}
 	}
 }

@@ -9,6 +9,6 @@ namespace Albatross.CodeGen.UnitTest.Mocking
 {
     public interface IMocking
     {
-		Container Build(Container c);
+		void Setup();
     }
 }
