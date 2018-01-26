@@ -15,18 +15,21 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 		public abstract IEnumerable<Column> PrimaryKeys { get; }
 		public abstract IEnumerable<Column> Columns { get; }
 		public abstract Column IdentityColumn { get; }
-		public abstract DatabaseObject Table { get; }
+
+		Mock<IGetTableColumns> getTableColumns;
+		Mock<IGetTablePrimaryKey> getPrimaryKeys;
+		Mock<IGetTableIdentityColumn> getIdentityColumn;
+
+		public TableMocking(Mock<IGetTableColumns> getTableColumns, Mock<IGetTablePrimaryKey> getPrimaryKeys, Mock<IGetTableIdentityColumn> getIdentityColumn) {
+			this.getTableColumns = getTableColumns;
+			this.getPrimaryKeys = getPrimaryKeys;
+			this.getIdentityColumn = getIdentityColumn;
+		}
 
 
 		public void Setup() {
-
-			var getTableColumns = MockContainer.Instance.Get<IGetTableColumns>();
 			getTableColumns.Setup(args => args.Get(It.Is<DatabaseObject>(t=>t.Name == TableName))).Returns(Columns);
-
-			var getPrimaryKeys = MockContainer.Instance.Get<IGetTablePrimaryKey>();
 			getPrimaryKeys.Setup(args => args.Get(It.Is<DatabaseObject>(t=>t.Name == TableName))).Returns(PrimaryKeys);
-
-			var getIdentityColumn = MockContainer.Instance.Get<IGetTableIdentityColumn>();
 			getIdentityColumn.Setup(args => args.Get(It.Is<DatabaseObject>(t=>t.Name == TableName))).Returns(IdentityColumn);
 		}
 	}

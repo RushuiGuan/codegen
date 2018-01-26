@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.Database;
+using Moq;
 using System.Collections.Generic;
 
 namespace Albatross.CodeGen.UnitTest.Mocking {
@@ -21,10 +22,18 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 
 
 	public class SymbolTable : TableMocking {
-		public override string TableName => "Symbol";
-		public override string Schema => "test";
+		public static readonly DatabaseObject Table = new DatabaseObject {
+			Name = "Symbol",
+			Schema = "test",
+		};
 
-		public override DatabaseObject Table => new DatabaseObject { Name = TableName, Schema = Schema };
+
+		public SymbolTable(Mock<IGetTableColumns> getTableColumns, Mock<IGetTablePrimaryKey> getPrimaryKeys, Mock<IGetTableIdentityColumn> getIdentityColumn) : base(getTableColumns, getPrimaryKeys, getIdentityColumn) {
+		}
+
+		public override string TableName => Table.Name;
+		public override string Schema => Table.Schema;
+
 		public override IEnumerable<Column> Columns => new Column[] {
 			new Column { Name = "SyID", IdentityColumn = true, DataType="int", IsNullable=false, OrdinalPosition = 0 },
 				new Column{ Name="SyCode", DataType = "varchar", MaxLength=100, IsNullable=false, OrdinalPosition = 1},
