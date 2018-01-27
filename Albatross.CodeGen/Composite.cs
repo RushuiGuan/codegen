@@ -16,4 +16,14 @@ namespace Albatross.CodeGen {
 		public string Target { get; set; }
 		public string Seperator { get; set; }
 	}
+
+	public class Composite<T, O> {
+		public string Name { get; set; }
+		public string Category { get; set; }
+		public string Description { get; set; }
+
+		public IEnumerable<string> Generators { get; set; }
+		public string Target { get; set; }
+		public string Seperator { get; set; }
+	}
 }

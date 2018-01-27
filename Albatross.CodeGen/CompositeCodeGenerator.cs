@@ -6,11 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
-	public class CompositeCodeGenerator : ICodeGenerator {
+	public class CompositeCodeGenerator<T, O> : ICodeGenerator<T, O> {
 		IEnumerable<string> _generators;
 
-		public CompositeCodeGenerator(Composite composite) {
-			SourceType = composite.SourceType;
+		public CompositeCodeGenerator(Composite<T, O> composite) {
+			SourceType = typeof(T);
+			OptionType = typeof(O);
+
 			_generators = composite.Generators;
 			Name = composite.Name;
 			Category = composite.Category;
@@ -27,8 +29,9 @@ namespace Albatross.CodeGen {
 
 		public Type SourceType { get; private set; }
 		public Type OptionType { get; private set; }
+		public IEnumerable<ICodeGenerator<T, O>> Children { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-		public StringBuilder Build(StringBuilder sb, object t, object options, ICodeGeneratorFactory factory) {
+		public StringBuilder Build(StringBuilder sb, T t, O options, ICodeGeneratorFactory factory) {
 			if (t.GetType() == SourceType) {
 				foreach (var item in _generators) {
 					var gen = factory.Get(SourceType, item);
@@ -39,6 +42,10 @@ namespace Albatross.CodeGen {
 				}
 			}
 			return sb;
+		}
+
+		public StringBuilder Build(StringBuilder sb, object t, object options, ICodeGeneratorFactory factory) {
+			throw new NotImplementedException();
 		}
 	}
 }

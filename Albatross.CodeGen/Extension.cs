@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Text;
 
 namespace Albatross.CodeGen {
 	public static class Extension {
@@ -33,19 +34,10 @@ namespace Albatross.CodeGen {
 			}
 		}
 
-
-
-		public static string GetGeneratorName(this Type type, string name) {
-			if (type == typeof(object) || type == null) {
-				return name;
-			} else {
+		public static string GetGeneratorKey(this Type type, string name) {
 				return $"{type.FullName}.{name}";
-			}
 		}
-		public static string GetName(this ICodeGenerator codeGenerator) {
-			return codeGenerator.SourceType.GetGeneratorName(codeGenerator.Name);
-		}
-
+		
 		public static Type LoadType(this ObjectType objType) {
 			Assembly asm = Assembly.ReflectionOnlyLoadFrom(objType.AssemblyLocation);
 			return asm.GetType(objType.ClassName);
@@ -75,6 +67,12 @@ namespace Albatross.CodeGen {
 			} else {
 				return (T)value;
 			}
+		}
+
+		public static StringBuilder RunStep<T, O>(StringBuilder sb, Step<T, O> step, ICodeGeneratorFactory factory) {
+			ICodeGenerator<T, O> gen = factory.Get<T, O>(step.Generator);
+			gen.Build(sb, step.Source, step.Options, factory);
+			return sb;
 		}
 	}
 }

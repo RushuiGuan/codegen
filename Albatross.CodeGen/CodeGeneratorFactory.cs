@@ -13,12 +13,12 @@ namespace Albatross.CodeGen{
 	//edge case only.  do not copy this pattern!
 	public class CodeGeneratorFactory : IConfigurableCodeGenFactory {
 		IObjectFactory factory;
-		Dictionary<string, Tuple<Type, CodeGeneratorAttribute>> _registration = new Dictionary<string, Tuple<Type, CodeGeneratorAttribute>>();
+		Dictionary<string, CodeGenerator> _registration = new Dictionary<string, CodeGenerator>();
 		IFactory<IEnumerable<Assembly>> assemblyFactory;
 		IFactory<IEnumerable<Composite>> compositeFactory;
 		object _sync = new object();
 
-		public IEnumerable<CodeGeneratorAttribute> Registrations => _registration.Values;
+		public IEnumerable<CodeGenerator> Registrations => _registration.Values;
 
 		public CodeGeneratorFactory(IFactory<IEnumerable<Assembly>> assemblyFactory, IFactory<IEnumerable<Composite>> compositeFactory, IObjectFactory factory) {
 			this.assemblyFactory = assemblyFactory;
@@ -46,42 +46,49 @@ namespace Albatross.CodeGen{
 			}
 		}
 
-		public void Register(IEnumerable<Composite> items) {
+		public void Register<T,O>(Composite<T, O> item) {
 			lock (_sync) {
-				foreach (var item in items) {
-					var gen = new CompositeCodeGenerator(item);
-					_registration[gen.GetName()] = gen;
-				}
+				var gen = new CodeGenerator {
+					Name = item.Name,
+					Target = item.Target,
+					Category = item.Category,
+					Description = item.Description,
+					GeneratorType = typeof(CompositeCodeGenerator<T, O>),
+					SourceType = typeof(T),
+					OptionType = typeof(O),
+				};
+				_registration[gen.Key] = gen;
 			}
 		}
 		public void Register(Assembly asm) {
 			lock (_sync) {
 				foreach (Type type in asm.GetTypes()) {
-					CodeGeneratorAttribute attrib = type.GetCustomAttribute<CodeGeneratorAttribute>();
-					if (attrib != null) {
-
-						Tuple<Type, CodeGeneratorAttribute> tuple = new Tuple<Type, CodeGeneratorAttribute>(type, attrib);
-						_registration[attrib.Name] = tuple;
+					if (type.GetGenericTypeDefinition() == typeof(ICodeGenerator<,>)) {
+						CodeGeneratorAttribute attrib = type.GetCustomAttribute<CodeGeneratorAttribute>();
+						if (attrib != null) {
+							Type[] arguments = type.GetGenericArguments();
+							CodeGenerator gen = new CodeGenerator {
+								Name = attrib.Name,
+								Target = attrib.Target,
+								Category = attrib.Category,
+								Description = attrib.Description,
+								GeneratorType = type,
+								SourceType = arguments[0],
+								OptionType = arguments[1],
+							};
+							_registration[gen.Key] = gen;
+						}
 					}
 				}
 			}
 		}
 
 		public ICodeGenerator<T, O> Get<T,O>(string name) {
-			string key = typeof(T).GetGeneratorName(name);
-			if (_registration.TryGetValue(key, out ICodeGenerator codeGenerator)) {
-				return (ICodeGenerator<T, O>)codeGenerator;
+			string key = typeof(T).GetGeneratorKey(name);
+			if (_registration.TryGetValue(key, out CodeGenerator codeGenerator)) {
+				return (ICodeGenerator<T, O>)factory.Create(codeGenerator.GeneratorType);
 			} else {
 				throw new CodeGenNotRegisteredException(typeof(T), name);
-			}
-		}
-
-		public ICodeGenerator Get(Type type, string name) {
-			string key = type.GetGeneratorName(name);
-			if (_registration.TryGetValue(key, out ICodeGenerator codeGenerator)) {
-				return codeGenerator;
-			} else {
-				throw new CodeGenNotRegisteredException(type, name);
 			}
 		}
 	}
