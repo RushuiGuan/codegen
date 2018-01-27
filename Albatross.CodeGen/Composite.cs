@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen {
 	public class Composite {
 		public Type SourceType { get; set; }
+		public Type OptionType { get; set; }
+
 		public string Name { get; set; }
 		public string Category { get; set; }
 		public string Description { get; set; }

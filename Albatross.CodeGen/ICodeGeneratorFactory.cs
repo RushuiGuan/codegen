@@ -8,6 +8,6 @@ namespace Albatross.CodeGen {
 	public interface ICodeGeneratorFactory {
 		ICodeGenerator<T, O> Get<T, O>(string name);
 		ICodeGenerator Get(Type type, string name);
-		IEnumerable<ICodeGenerator> Registrations { get; }
+		IEnumerable<CodeGeneratorAttribute> Registrations { get; }
 	}
 }

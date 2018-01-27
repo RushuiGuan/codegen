@@ -30,8 +30,8 @@ namespace Albatross.CodeGen.UnitTest {
 			container.Register<IFactory<IEnumerable<SourceType>>, SourceTypeFactory>();
 			container.Register<IFactory<IEnumerable<OptionType>>, OptionTypeFactory>();
 			container.Register<IGetDefaultRepoFolder, GetDefaultRepoFolder>(Lifestyle.Singleton);
-			container.Register<ICodeGeneratorFactory, CfgControlledCodeGeneratorFactory>(Lifestyle.Singleton);
-			container.Register<IConfigurableCodeGenFactory, CfgControlledCodeGeneratorFactory>(Lifestyle.Singleton);
+			container.Register<ICodeGeneratorFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
+			container.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 			container.Register<ISaveFile<CodeGenSetting>, CodeGenSettingFactory>(Lifestyle.Singleton);
 			container.Register<IGetFiles, GetFiles>(Lifestyle.Singleton);
 
@@ -44,6 +44,8 @@ namespace Albatross.CodeGen.UnitTest {
 			container.Register<IGetTableIdentityColumn, GetTableIdentityColumn>(Lifestyle.Singleton);
 			container.Register<IGetTablePrimaryKey, GetTablePrimaryKey>(Lifestyle.Singleton);
 			container.Register<IGetVariableName, GetSqlVariableName>(Lifestyle.Singleton);
+
+			container.Register<ICreateVariable, CreateVariable>(Lifestyle.Singleton);
 
 			var mock_getTableColumns = new Mock<IGetTableColumns>();
 			container.RegisterSingleton<Mock<IGetTableColumns>>(mock_getTableColumns);

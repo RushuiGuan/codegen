@@ -18,5 +18,6 @@ namespace Albatross.CodeGen {
 
 	public interface ICodeGenerator<T, O> : ICodeGenerator {
 		StringBuilder Build(StringBuilder sb, T t, O option, ICodeGeneratorFactory factory);
+		IEnumerable<ICodeGenerator<T, O>> Children { get; set; }
 	}
 }

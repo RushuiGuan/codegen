@@ -66,5 +66,15 @@ namespace Albatross.CodeGen {
 				throw new ArgumentException($"Invalid {name}: {t.GetType().Name}; expected: {typeof(T).Name}");
 			}
 		}
+
+		public static T ContextCheck<T>(this IDictionary<string, object> dict, string key) {
+			if (!dict.TryGetValue(key, out object value)) {
+				throw new ContextException(key);
+			} else if (!(value is T)) {
+				throw new ContextException(key, typeof(T));
+			} else {
+				return (T)value;
+			}
+		}
 	}
 }

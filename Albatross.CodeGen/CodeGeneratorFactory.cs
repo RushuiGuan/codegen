@@ -11,16 +11,16 @@ namespace Albatross.CodeGen{
 	//when controlled by cfg, types will be added at run time.  Container registration cannot be used, but contaner is still
 	//needed to create a new type instance.  ObjectFactory is a wrapper on the container.  This is a ServiceLocator Pattern in disguise.
 	//edge case only.  do not copy this pattern!
-	public class CfgControlledCodeGeneratorFactory : IConfigurableCodeGenFactory {
+	public class CodeGeneratorFactory : IConfigurableCodeGenFactory {
 		IObjectFactory factory;
-		Dictionary<string, ICodeGenerator> _registration = new Dictionary<string, ICodeGenerator>();
+		Dictionary<string, Tuple<Type, CodeGeneratorAttribute>> _registration = new Dictionary<string, Tuple<Type, CodeGeneratorAttribute>>();
 		IFactory<IEnumerable<Assembly>> assemblyFactory;
 		IFactory<IEnumerable<Composite>> compositeFactory;
 		object _sync = new object();
 
-		public IEnumerable<ICodeGenerator> Registrations => _registration.Values;
+		public IEnumerable<CodeGeneratorAttribute> Registrations => _registration.Values;
 
-		public CfgControlledCodeGeneratorFactory(IFactory<IEnumerable<Assembly>> assemblyFactory, IFactory<IEnumerable<Composite>> compositeFactory, IObjectFactory factory) {
+		public CodeGeneratorFactory(IFactory<IEnumerable<Assembly>> assemblyFactory, IFactory<IEnumerable<Composite>> compositeFactory, IObjectFactory factory) {
 			this.assemblyFactory = assemblyFactory;
 			this.compositeFactory = compositeFactory;
 			this.factory = factory;
@@ -57,10 +57,11 @@ namespace Albatross.CodeGen{
 		public void Register(Assembly asm) {
 			lock (_sync) {
 				foreach (Type type in asm.GetTypes()) {
-					if (typeof(ICodeGenerator).IsAssignableFrom(type) && type.GetCustomAttribute<CodeGeneratorAttribute>() != null) {
-						ICodeGenerator c = (ICodeGenerator)factory.Create(type);
-						string key = c.GetName();
-						_registration[key] = c;
+					CodeGeneratorAttribute attrib = type.GetCustomAttribute<CodeGeneratorAttribute>();
+					if (attrib != null) {
+
+						Tuple<Type, CodeGeneratorAttribute> tuple = new Tuple<Type, CodeGeneratorAttribute>(type, attrib);
+						_registration[attrib.Name] = tuple;
 					}
 				}
 			}

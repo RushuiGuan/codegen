@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen;
 using Albatross.CodeGen.Database;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {

@@ -29,8 +29,8 @@ namespace Albatross.CodeGen.PowerShell {
 			c.Register<IFactory<IEnumerable<SourceType>>, SourceTypeFactory>();
 			c.Register<IFactory<IEnumerable<OptionType>>, OptionTypeFactory>();
 			c.Register<IGetDefaultRepoFolder, GetDefaultRepoFolder>(Lifestyle.Singleton);
-			c.Register<ICodeGeneratorFactory, CfgControlledCodeGeneratorFactory>(Lifestyle.Singleton);
-			c.Register<IConfigurableCodeGenFactory, CfgControlledCodeGeneratorFactory>(Lifestyle.Singleton);
+			c.Register<ICodeGeneratorFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
+			c.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 			c.Register<ISaveFile<CodeGenSetting>, CodeGenSettingFactory>(Lifestyle.Singleton);
 			c.Register<IGetFiles, GetFiles>(Lifestyle.Singleton);
 

@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 	///		constraint PK_Symbol_SyCode primary key clustered (SyCode),
 	///		
 	///		CuID int not null,
-	///		Outshares bigint not null,
+	///		OutShares bigint not null,
 	///		CoID int not null,
 	///		SnID int,
 	/// )

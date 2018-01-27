@@ -20,7 +20,6 @@ namespace Albatross.CodeGen.UnitTest {
 			container.RegisterSingleton<IColumnSqlTypeBuilder, ColumnSqlTypeBuilder>();
 
 
-			container.Register<ICodeGeneratorFactory, ContainerControlledCodeGenFactory>(Lifestyle.Singleton);
 			container.Register<IGetTablePrimaryKey>(() => mock_GetTablePrimaryKey.Object, Lifestyle.Singleton);
 			container.Register<IGetTableIdentityColumn>(() => mock_GetTableIDColumn.Object, Lifestyle.Singleton);
 			container.Register<IGetTableColumns>(() => mock_GetTableColumns.Object, Lifestyle.Singleton);

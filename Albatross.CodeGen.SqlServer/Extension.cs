@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.Database;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 
@@ -58,6 +59,13 @@ namespace Albatross.CodeGen.SqlServer {
 
 				|| dataType == "money"
 				|| dataType == "smallmoney";
+		}
+		#endregion
+
+		#region context
+		public const string Variable_ContextName = "Variables";
+		public static IDictionary<string, string> GetVariables(this IDictionary<string, object> context) {
+			return context.ContextCheck<IDictionary<string, string>>(Variable_ContextName);
 		}
 		#endregion
 	}

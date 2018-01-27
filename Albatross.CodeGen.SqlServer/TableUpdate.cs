@@ -14,15 +14,17 @@ namespace Albatross.CodeGen.SqlServer {
 		IGetVariableName getVariableName;
 		IGetTablePrimaryKey getPrimary;
 		IColumnSqlTypeBuilder typeBuilder;
+		ICreateVariable createVariable;
 
 		public override string Name => "table_update";
 		public override string Description => "Update statement that excludes the computed columns.  Will exclude the primary key by default unless ExcludePrimaryKey flag is set to false in the option";
 
-		public TableUpdate(IGetTableColumns getTableColumns, IGetTablePrimaryKey getPrimary, IGetVariableName getVariableName, IColumnSqlTypeBuilder typeBuilder) {
+		public TableUpdate(IGetTableColumns getTableColumns, IGetTablePrimaryKey getPrimary, IGetVariableName getVariableName, IColumnSqlTypeBuilder typeBuilder, ICreateVariable createVariable) {
 			this.getTableColumns = getTableColumns;
 			this.getVariableName = getVariableName;
 			this.getPrimary = getPrimary;
 			this.typeBuilder = typeBuilder;
+			this.createVariable = createVariable;
 		}
 
 		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption option, ICodeGeneratorFactory factory) {
@@ -37,13 +39,16 @@ namespace Albatross.CodeGen.SqlServer {
 								select c).ToArray();
 
 			string name;
+			foreach (var item in option.Variables) {
+				createVariable.Create(this, item.Key, item.Value);
+			}
 			foreach (Column c in columns) {
 				name = getVariableName.Get(c.Name);
 				sb.Tab().EscapeName(c.Name).Append(" = ");
 				if (option.Expressions.TryGetValue(c.Name, out string expression)) {
 					sb.Append(expression);
 				} else {
-					option.Variables[name] = typeBuilder.Build(c);
+					createVariable.Create(this, name,typeBuilder.Build(c));
 					sb.Append(name);
 				}
 				if (c != columns.Last()) {

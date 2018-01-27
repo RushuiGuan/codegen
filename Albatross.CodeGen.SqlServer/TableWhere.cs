@@ -15,20 +15,23 @@ namespace Albatross.CodeGen.SqlServer {
 		IGetVariableName getVariableName;
 		IGetTablePrimaryKey getPrimary;
 		IColumnSqlTypeBuilder typeBuilder;
+		ICreateVariable createVariable;
 
 		public override string Name => "table_where";
 		public override string Description => "Table where clause, can handle identity column and\\or primary keys.  Use the SqlQueryOption.Filter flag to indicate filter method";
 
-		public TableWhere(IGetTableIdentityColumn getIDColumn, IGetVariableName getVariableName, IGetTablePrimaryKey getPrimary, IColumnSqlTypeBuilder typeBuilder) {
+		public TableWhere(IGetTableIdentityColumn getIDColumn, IGetVariableName getVariableName, IGetTablePrimaryKey getPrimary, IColumnSqlTypeBuilder typeBuilder, ICreateVariable createVariable) {
 			this.getIDColumn = getIDColumn;
 			this.getVariableName = getVariableName;
 			this.getPrimary = getPrimary;
 			this.typeBuilder = typeBuilder;
+			this.createVariable = createVariable;
 		}
 
 		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption option, ICodeGeneratorFactory factory) {
 			sb.Append("where");
 			int count = 0;
+
 			if ((option.Filter & FilterOption.ByIdentityColumn) > 0){
 				Column column = getIDColumn.Get(t);
 				if (column == null) {
@@ -53,7 +56,7 @@ namespace Albatross.CodeGen.SqlServer {
 			if (count > 0) { sb.Append("and "); }
 			string variable = getVariableName.Get(c.Name);
 			sb.EscapeName(c.Name).Append(" = ").Append(variable);
-			option.Variables[variable] = typeBuilder.Build(c);
+			createVariable.Create(this, variable, typeBuilder.Build(c));
 		}
 	}
 }
