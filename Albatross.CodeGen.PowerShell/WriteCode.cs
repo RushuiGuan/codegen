@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,14 +25,20 @@ namespace Albatross.CodeGen.PowerShell {
 			}
 			Type sourceType = Source.GetType();
 			var generator = Handle.Get(sourceType, Name);
-			if (Option == null) {
-				Option = Activator.CreateInstance(generator.OptionType);
-			} else if (Option is PSObject) {
+			CodeGenerator meta = Handle.GetMetadata(sourceType, Name);
+			if (Option is PSObject) {
 				Option = ((PSObject)Option).BaseObject;
 			}
 
+			if (Option == null) {
+				Option = Activator.CreateInstance(meta.SourceType);
+			} else {
+				if (meta.SourceType != Option.GetType()) { throw new InvalidOptionTypeException(); }
+			}
+
 			StringBuilder sb = new StringBuilder();
-			generator.Build(sb, Source, Option, Handle);
+			MethodInfo method = generator.GetType().GetMethod(nameof(ICodeGenerator<object, object>.Build));
+			method.Invoke(generator, new object[] { sb, Source, Option, Handle });
 			WriteObject(sb.ToString());
 		}
 	}

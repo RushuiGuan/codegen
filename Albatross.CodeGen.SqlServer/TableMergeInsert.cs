@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator]
+	[CodeGenerator("table_merge_insert", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Merge statement insert clause")]
 	public class TableMergeInsert : TableQueryGenerator {
 		IGetTableColumns _getColumns;
 		IGetVariableName _getVariableName;
@@ -15,8 +15,6 @@ namespace Albatross.CodeGen.SqlServer {
 			_getVariableName = getVariableName;
 		}
 
-		public override string Description => "Merge statement insert clause";
-		public override string Name => "table_merge_insert";
 
 		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			Column[] columns = (from c in _getColumns.Get(t)

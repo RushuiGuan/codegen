@@ -8,16 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator]
-	public class TableSelect : TableQueryGenerator{
+	[CodeGenerator("table_select", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Select statement sorted by ordinal position")]
+	public class TableSelect : TableQueryGenerator {
 		IGetTableColumns getTableColumns;
 
 		public TableSelect(IGetTableColumns getTableColumns) {
 			this.getTableColumns = getTableColumns;
 		}
-
-		public override string Name => "table_select";
-		public override string Description => "Select statement sorted by ordinal position";
 
 		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			IEnumerable<Column> columns = getTableColumns.Get(t);

@@ -16,9 +16,6 @@ namespace Albatross.CodeGen.UnitTest {
 			container.RegisterSingleton<IGetTableIdentityColumn, GetTableIdentityColumn>();
 			container.RegisterSingleton<IColumnSqlTypeBuilder, ColumnSqlTypeBuilder>();
 
-
-			container.Register<ICodeGeneratorFactory, ContainerControlledCodeGenFactory>(Lifestyle.Singleton);
-
 			return container;
 		}
 

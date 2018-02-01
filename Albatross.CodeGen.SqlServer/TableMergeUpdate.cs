@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator]
+	[CodeGenerator("table_merge_update", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Table merge update clause")]
 	public class TableMergeUpdate : TableQueryGenerator {
 		IGetTableColumns getColumns;
 		IGetVariableName getVariableName;
@@ -18,9 +18,6 @@ namespace Albatross.CodeGen.SqlServer {
 			this.typeBuilder = typeBuilder;
 			this.getPrimary = getPrimary;
 		}
-
-		public override string Name => "table_merge_update";
-		public override string Description => "Table merge update clause";
 
 		public override StringBuilder Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			HashSet<string> keys = new HashSet<string>();

@@ -8,12 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator]
+	[CodeGenerator("table_merge_delete", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Merage statement delete clause")]
 	public class TableMergeDelete : TableQueryGenerator {
-
-		public override string Name => "table_merge_delete";
-		public override string Description => "Merage statement delete clause";
-
 		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			return sb.Append("when not matched by source then delete");
 		}

@@ -25,7 +25,7 @@ namespace Albatross.CodeGen.PowerShell {
 			c.Register<ILogFactory, Log4netLogFactory>(Lifestyle.Singleton);
 
 			c.Register<JsonFileRepository<CodeGenSetting>>(Lifestyle.Singleton);
-			c.Register<JsonFileRepository<Composite>>(Lifestyle.Singleton);
+			c.Register<JsonFileRepository<IComposite>>(Lifestyle.Singleton);
 			c.Register<IFactory<IEnumerable<SourceType>>, SourceTypeFactory>();
 			c.Register<IFactory<IEnumerable<OptionType>>, OptionTypeFactory>();
 			c.Register<IGetDefaultRepoFolder, GetDefaultRepoFolder>(Lifestyle.Singleton);
@@ -34,7 +34,7 @@ namespace Albatross.CodeGen.PowerShell {
 			c.Register<ISaveFile<CodeGenSetting>, CodeGenSettingFactory>(Lifestyle.Singleton);
 			c.Register<IGetFiles, GetFiles>(Lifestyle.Singleton);
 
-			c.Register<IFactory<IEnumerable<Composite>>, CompositeFactory>(Lifestyle.Singleton);
+			c.Register<IFactory<IEnumerable<IComposite>>, CompositeFactory>(Lifestyle.Singleton);
 			c.Register<IFactory<CodeGenSetting>, CodeGenSettingFactory>(Lifestyle.Singleton);
 			c.Register<IFactory<IEnumerable<Assembly>>, GetAssembly>(Lifestyle.Singleton);
 

@@ -8,14 +8,8 @@ namespace Albatross.CodeGen {
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	public abstract class ClassGenerator<T> : ICodeGenerator<T, ClassOptions> where T : class {
-		public abstract string Category { get; }
-		public abstract string Description { get; }
-		public abstract string Name { get; }
-		public Type SourceType => typeof(T);
-		public Type OptionType => typeof(ClassOptions);
-		public string Target => "c#";
-
 		public IEnumerable<ICodeGenerator<T, ClassOptions>> Children { get; set; }
+
 		public abstract string GetClassName(T t);
 		public abstract void RenderBody(StringBuilder sb, int tabLevel, T t, ClassOptions options, ICodeGeneratorFactory factory);
 
@@ -46,12 +40,6 @@ namespace Albatross.CodeGen {
 			level--;
 			sb.CloseScope(terminate: false);
 			return sb;
-		}
-
-
-
-		StringBuilder ICodeGenerator.Build(StringBuilder sb, object t, object options,  ICodeGeneratorFactory factory) {
-			return this.Build(sb, (T)t, (ClassOptions)options, factory);
 		}
 	}
 }

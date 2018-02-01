@@ -6,6 +6,6 @@ namespace Albatross.CodeGen.Database
 {
     public interface IGetVariable
     {
-		IDictionary<string, string> Get(ICodeGenerator generator);
+		IDictionary<string, string> Get(object creator);
     }
 }

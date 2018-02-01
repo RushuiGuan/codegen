@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator]
+	[CodeGenerator("table_insert", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Insert statement that excludes the computed columns")]
 	public class TableInsert : TableQueryGenerator {
 		IGetTableColumns getTableColumns;
 		IGetVariableName getVariableName;
@@ -18,9 +18,6 @@ namespace Albatross.CodeGen.SqlServer {
 			this.sqlTypeBuilder = sqlTypeBuilder;
 			this.createVariable = createVariable;
 		}
-
-		public override string Name => "table_insert";
-		public override string Description => "Insert statement that excludes the computed columns";
 
 		public override StringBuilder Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			foreach (var item in options.Variables) {

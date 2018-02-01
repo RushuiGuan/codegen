@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsCommon.Get, "Composite")]
-	public class GetComposite : BaseCmdlet<IFactory<IEnumerable<Composite>>> {
+	public class GetComposite : BaseCmdlet<IFactory<IEnumerable<IComposite>>> {
 		[Parameter(Position = 0)]
 		[Alias("n")]
 		public string Name { get; set; }

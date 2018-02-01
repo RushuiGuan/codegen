@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	public abstract class TableQueryGenerator : ICodeGenerator<DatabaseObject, SqlQueryOption> {
-		public abstract string Name { get; }
-		public abstract string Description { get; }
 
 		public string Category => "Sql Server";
 		public string Target => "sql";

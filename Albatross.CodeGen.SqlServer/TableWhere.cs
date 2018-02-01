@@ -9,16 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator]
+	[CodeGenerator("table_where", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Table where clause, can handle identity column and\\or primary keys.  Use the SqlQueryOption.Filter flag to indicate filter method")]
 	public class TableWhere : TableQueryGenerator {
 		IGetTableIdentityColumn getIDColumn;
 		IGetVariableName getVariableName;
 		IGetTablePrimaryKey getPrimary;
 		IColumnSqlTypeBuilder typeBuilder;
 		ICreateVariable createVariable;
-
-		public override string Name => "table_where";
-		public override string Description => "Table where clause, can handle identity column and\\or primary keys.  Use the SqlQueryOption.Filter flag to indicate filter method";
 
 		public TableWhere(IGetTableIdentityColumn getIDColumn, IGetVariableName getVariableName, IGetTablePrimaryKey getPrimary, IColumnSqlTypeBuilder typeBuilder, ICreateVariable createVariable) {
 			this.getIDColumn = getIDColumn;

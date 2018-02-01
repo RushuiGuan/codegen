@@ -8,16 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator]
+	[CodeGenerator("table_update", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Update statement that excludes the computed columns.  Will exclude the primary key by default unless ExcludePrimaryKey flag is set to false in the option")]
 	public class TableUpdate : TableQueryGenerator {
 		IGetTableColumns getTableColumns;
 		IGetVariableName getVariableName;
 		IGetTablePrimaryKey getPrimary;
 		IColumnSqlTypeBuilder typeBuilder;
 		ICreateVariable createVariable;
-
-		public override string Name => "table_update";
-		public override string Description => "Update statement that excludes the computed columns.  Will exclude the primary key by default unless ExcludePrimaryKey flag is set to false in the option";
 
 		public TableUpdate(IGetTableColumns getTableColumns, IGetTablePrimaryKey getPrimary, IGetVariableName getVariableName, IColumnSqlTypeBuilder typeBuilder, ICreateVariable createVariable) {
 			this.getTableColumns = getTableColumns;

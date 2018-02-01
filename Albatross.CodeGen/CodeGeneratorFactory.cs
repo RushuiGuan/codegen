@@ -15,12 +15,12 @@ namespace Albatross.CodeGen{
 		IObjectFactory factory;
 		Dictionary<string, CodeGenerator> _registration = new Dictionary<string, CodeGenerator>();
 		IFactory<IEnumerable<Assembly>> assemblyFactory;
-		IFactory<IEnumerable<Composite>> compositeFactory;
+		IFactory<IEnumerable<IComposite>> compositeFactory;
 		object _sync = new object();
 
 		public IEnumerable<CodeGenerator> Registrations => _registration.Values;
 
-		public CodeGeneratorFactory(IFactory<IEnumerable<Assembly>> assemblyFactory, IFactory<IEnumerable<Composite>> compositeFactory, IObjectFactory factory) {
+		public CodeGeneratorFactory(IFactory<IEnumerable<Assembly>> assemblyFactory, IFactory<IEnumerable<IComposite>> compositeFactory, IObjectFactory factory) {
 			this.assemblyFactory = assemblyFactory;
 			this.compositeFactory = compositeFactory;
 			this.factory = factory;
@@ -42,20 +42,23 @@ namespace Albatross.CodeGen{
 			}
 			var items = compositeFactory.Get();
 			if (items != null) {
-				this.Register(items);
+				foreach (var item in items) {
+					this.Register(item);
+				}
 			}
 		}
 
-		public void Register<T,O>(Composite<T, O> item) {
+		public void Register(IComposite item) {
 			lock (_sync) {
+				Type type = typeof(CompositeCodeGenerator<,>);
 				var gen = new CodeGenerator {
 					Name = item.Name,
 					Target = item.Target,
 					Category = item.Category,
 					Description = item.Description,
-					GeneratorType = typeof(CompositeCodeGenerator<T, O>),
-					SourceType = typeof(T),
-					OptionType = typeof(O),
+					GeneratorType = type.MakeGenericType(item.SourceType, item.OptionType),
+					SourceType = item.SourceType,
+					OptionType = item.OptionType,
 				};
 				_registration[gen.Key] = gen;
 			}
@@ -63,7 +66,7 @@ namespace Albatross.CodeGen{
 		public void Register(Assembly asm) {
 			lock (_sync) {
 				foreach (Type type in asm.GetTypes()) {
-					if (type.GetGenericTypeDefinition() == typeof(ICodeGenerator<,>)) {
+					if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(ICodeGenerator<,>)) {
 						CodeGeneratorAttribute attrib = type.GetCustomAttribute<CodeGeneratorAttribute>();
 						if (attrib != null) {
 							Type[] arguments = type.GetGenericArguments();
@@ -89,6 +92,24 @@ namespace Albatross.CodeGen{
 				return (ICodeGenerator<T, O>)factory.Create(codeGenerator.GeneratorType);
 			} else {
 				throw new CodeGenNotRegisteredException(typeof(T), name);
+			}
+		}
+
+		public object Get(Type srcType, string name) {
+			string key = srcType.GetGeneratorKey(name);
+			if (_registration.TryGetValue(key, out CodeGenerator codeGenerator)) {
+				return factory.Create(codeGenerator.GeneratorType);
+			} else {
+				throw new CodeGenNotRegisteredException(srcType, name);
+			}
+		}
+
+		public CodeGenerator GetMetadata(Type srcType, string name) {
+			string key = srcType.GetGeneratorKey(name);
+			if (_registration.TryGetValue(key, out CodeGenerator codeGenerator)) {
+				return codeGenerator;
+			} else {
+				throw new CodeGenNotRegisteredException(srcType, name);
 			}
 		}
 	}

@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsCommon.Set, "Composite", SupportsShouldProcess = true)]
-	public class SetComposite : SetJsonObject<Composite> { }
+	public class SetComposite : SetJsonObject<IComposite> { }
 }

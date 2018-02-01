@@ -5,10 +5,8 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer
 {
+	[CodeGenerator("table_to_class", GeneratorTarget.CSharp, Category = GeneratorCategory.SQLServer, Description = "Generate a C# class from a sql server table")]
 	public class GenerateClassByDatabaseTable : ClassGenerator<DatabaseObject> {
-		public override string Category => "Sql Server";
-		public override string Description => "Generate a C# class from a sql server table";
-		public override string Name => "table_to_class";
 		IGetTableColumns _getColumns;
 		IGetCSharpType _getCSharpType;
 

@@ -68,11 +68,5 @@ namespace Albatross.CodeGen {
 				return (T)value;
 			}
 		}
-
-		public static StringBuilder RunStep<T, O>(StringBuilder sb, Step<T, O> step, ICodeGeneratorFactory factory) {
-			ICodeGenerator<T, O> gen = factory.Get<T, O>(step.Generator);
-			gen.Build(sb, step.Source, step.Options, factory);
-			return sb;
-		}
 	}
 }

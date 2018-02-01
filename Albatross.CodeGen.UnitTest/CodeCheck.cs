@@ -28,5 +28,11 @@ namespace Albatross.CodeGen.UnitTest {
 		public string PathCheck() {
 			return Path.GetFileNameWithoutExtension(@"c:\temp\test.txt");
 		}
+
+		[Test]
+		public void GenericType() {
+			Type type = typeof(ICodeGenerator<,>);
+			type.ToString();
+		}
 	}
 }

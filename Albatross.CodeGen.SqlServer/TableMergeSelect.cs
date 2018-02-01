@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator]
+	[CodeGenerator("table_merge_select", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Merge statement select clause")]
 	public class TableMergeSelect : TableQueryGenerator {
 		IGetTableColumns _getColumns;
 		IGetVariableName _getVariableName;
@@ -22,9 +22,6 @@ namespace Albatross.CodeGen.SqlServer {
 			this.typeBuilder = typeBuilder;
 			this.createVariable = createVariable;
 		}
-
-		public override string Name  => "table_merge_select";
-		public override string Description => "Merge statement select clause";
 
 		public override StringBuilder Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options, ICodeGeneratorFactory factory) {
 			Column[] columns = _getColumns.Get(table).ToArray();

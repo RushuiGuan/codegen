@@ -16,13 +16,11 @@ namespace Albatross.CodeGen.UnitTest {
 			Step step = new Step {
 				 Generator = "test",
 				  Source = new DatabaseObject { Schema = "schema", Name = "table", Server = new Server { DataSource = "prod", InitialCatalog ="albatross", } },
-				  SourceType = typeof(DatabaseObject),
 			};
 			string text = JsonConvert.SerializeObject(step);
 			Step newValue = JsonConvert.DeserializeObject<Step>(text);
 
 			//Assert.AreEqual(step.Source, newValue.Source);
-			Assert.AreEqual(step.SourceType, newValue.SourceType);
 			Assert.AreEqual(step.Generator, newValue.Generator);
 		}
 	}

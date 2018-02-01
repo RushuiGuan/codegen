@@ -7,5 +7,5 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell {
-	public class GetCompositeFromFile : GetJsonObject<Composite> { }
+	public class GetCompositeFromFile : GetJsonObject<IComposite> { }
 }

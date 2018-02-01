@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
-	public class Step<T, O> {
-		public T Source { get; set; }
-		public O Options { get; set; }
+	public class Step{
+		public object Source { get; set; }
+		public object Options { get; set; }
 		public string Generator { get; set; }
 	}
 }

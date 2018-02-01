@@ -5,19 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
-	public class Composite {
-		public Type SourceType { get; set; }
-		public Type OptionType { get; set; }
+	public interface IComposite {
+		 Type SourceType { get; }
+		 Type OptionType { get; }
 
-		public string Name { get; set; }
-		public string Category { get; set; }
-		public string Description { get; set; }
-		public IEnumerable<string> Generators { get; set; }
-		public string Target { get; set; }
-		public string Seperator { get; set; }
+		string Name { get; }
+		 string Category { get; }
+		 string Description { get; }
+		 IEnumerable<string> Generators { get; }
+		 string Target { get; }
+		 string Seperator { get; }
 	}
 
-	public class Composite<T, O> {
+	public class Composite<T, O> : IComposite{
 		public string Name { get; set; }
 		public string Category { get; set; }
 		public string Description { get; set; }
@@ -25,5 +25,8 @@ namespace Albatross.CodeGen {
 		public IEnumerable<string> Generators { get; set; }
 		public string Target { get; set; }
 		public string Seperator { get; set; }
+
+		public Type SourceType => typeof(T);
+		public Type OptionType => typeof(O);
 	}
 }

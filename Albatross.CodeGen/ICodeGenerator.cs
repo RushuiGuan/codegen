@@ -8,10 +8,5 @@ namespace Albatross.CodeGen {
 	public interface ICodeGenerator<T, O> {
 		StringBuilder Build(StringBuilder sb, T t, O option, ICodeGeneratorFactory factory);
 		IEnumerable<ICodeGenerator<T, O>> Children { get; set; }
-
-		string Name { get; }
-		string Category { get; }
-		string Description { get; }
-		string Target { get; }
 	}
 }

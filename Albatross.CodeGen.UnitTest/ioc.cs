@@ -26,7 +26,7 @@ namespace Albatross.CodeGen.UnitTest {
 			container.Register<ILogFactory, Log4netLogFactory>(Lifestyle.Singleton);
 
 			container.Register<JsonFileRepository<CodeGenSetting>>(Lifestyle.Singleton);
-			container.Register<JsonFileRepository<Composite>>(Lifestyle.Singleton);
+			container.Register<JsonFileRepository<IComposite>>(Lifestyle.Singleton);
 			container.Register<IFactory<IEnumerable<SourceType>>, SourceTypeFactory>();
 			container.Register<IFactory<IEnumerable<OptionType>>, OptionTypeFactory>();
 			container.Register<IGetDefaultRepoFolder, GetDefaultRepoFolder>(Lifestyle.Singleton);
@@ -35,7 +35,7 @@ namespace Albatross.CodeGen.UnitTest {
 			container.Register<ISaveFile<CodeGenSetting>, CodeGenSettingFactory>(Lifestyle.Singleton);
 			container.Register<IGetFiles, GetFiles>(Lifestyle.Singleton);
 
-			container.Register<IFactory<IEnumerable<Composite>>, CompositeFactory>(Lifestyle.Singleton);
+			container.Register<IFactory<IEnumerable<IComposite>>, CompositeFactory>(Lifestyle.Singleton);
 			container.Register<IFactory<CodeGenSetting>, CodeGenSettingFactory>(Lifestyle.Singleton);
 			container.Register<IFactory<IEnumerable<Assembly>>, GetAssembly>(Lifestyle.Singleton);
 

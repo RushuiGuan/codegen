@@ -10,6 +10,6 @@ namespace Albatross.CodeGen {
 		void Clear();
 		void Register();
 		void Register(Assembly asm);
-		void Register(IEnumerable<Composite> items);
+		void Register(IComposite item);
 	}
 }
