@@ -24,7 +24,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(TableInsertTestCase))]
 		public string TableInsert(DatabaseObject table, SqlQueryOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<TableInsert>().Build(sb, table, option, null);
+			Ioc.Container.GetInstance<TableInsert>().Build(sb, table, option, null, out var used);
 			return sb.ToString();
 		}
 	}

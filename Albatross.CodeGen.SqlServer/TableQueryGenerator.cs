@@ -15,8 +15,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public Type SourceType => typeof(DatabaseObject);
 		public Type OptionType => typeof(SqlQueryOption);
 
-		public IEnumerable<ICodeGenerator<DatabaseObject, SqlQueryOption>> Children { get; set; }
-
-		public abstract StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options, ICodeGeneratorFactory factory);
+		public event Func<StringBuilder, DatabaseObject, SqlQueryOption, ICodeGeneratorFactory, IEnumerable<object>> Yield;
+		public abstract StringBuilder Build(StringBuilder sb, DatabaseObject source, SqlQueryOption option, ICodeGeneratorFactory factory, out IEnumerable<object> used);
 	}
 }

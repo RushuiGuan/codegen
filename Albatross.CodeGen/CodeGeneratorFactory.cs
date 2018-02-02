@@ -87,7 +87,7 @@ namespace Albatross.CodeGen{
 			}
 		}
 
-		public ICodeGenerator<T, O> Get<T,O>(string name) {
+		public ICodeGenerator<T, O> Create<T,O>(string name) {
 			string key = typeof(T).GetGeneratorKey(name);
 			if (_registration.TryGetValue(key, out CodeGenerator codeGenerator)) {
 				return (ICodeGenerator<T, O>)factory.Create(codeGenerator.GeneratorType);
@@ -96,7 +96,7 @@ namespace Albatross.CodeGen{
 			}
 		}
 
-		public object Get(Type srcType, string name) {
+		public object Create(Type srcType, string name) {
 			string key = srcType.GetGeneratorKey(name);
 			if (_registration.TryGetValue(key, out CodeGenerator codeGenerator)) {
 				return factory.Create(codeGenerator.GeneratorType);

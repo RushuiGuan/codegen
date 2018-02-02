@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
 	public interface ICodeGenerator<T, O> {
-		StringBuilder Build(StringBuilder sb, T t, O option, ICodeGeneratorFactory factory);
-		IEnumerable<ICodeGenerator<T, O>> Children { get; set; }
+		StringBuilder Build(StringBuilder sb, T source, O option, ICodeGeneratorFactory factory, out IEnumerable<object> used);
+		event Func<StringBuilder,T, O, ICodeGeneratorFactory, IEnumerable<object>> Yield;
 	}
 }

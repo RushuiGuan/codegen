@@ -17,7 +17,8 @@ namespace Albatross.CodeGen.SqlServer {
 			_getIDColumn = getIDColumn;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
+			used = new[] { this };
 			Column identityColumn = _getIDColumn.Get(t);
 			if (identityColumn == null) {
 				throw new IdentityColumnNotFoundException(t);

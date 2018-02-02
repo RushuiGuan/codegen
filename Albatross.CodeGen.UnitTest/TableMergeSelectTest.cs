@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(MergeSelectTestCase))]
 		public string MergeSelect(DatabaseObject table, SqlQueryOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<TableMergeSelect>().Build(sb, table, option, null);
+			Ioc.Container.GetInstance<TableMergeSelect>().Build(sb, table, option, null, out var used);
 			return sb.ToString();
 		}
 	}

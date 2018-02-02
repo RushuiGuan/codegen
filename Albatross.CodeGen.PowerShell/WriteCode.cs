@@ -24,7 +24,7 @@ namespace Albatross.CodeGen.PowerShell {
 				Source = ((PSObject)Source).BaseObject;
 			}
 			Type sourceType = Source.GetType();
-			var generator = Handle.Get(sourceType, Name);
+			var generator = Handle.Create(sourceType, Name);
 			CodeGenerator meta = Handle.GetMetadata(sourceType, Name);
 			if (Option is PSObject) {
 				Option = ((PSObject)Option).BaseObject;

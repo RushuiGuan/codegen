@@ -19,7 +19,9 @@ namespace Albatross.CodeGen.SqlServer {
 			this.getPrimary = getPrimary;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options, ICodeGeneratorFactory factory) {
+		public override StringBuilder Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
+			used = new[] { this, };
+
 			HashSet<string> keys = new HashSet<string>();
 			if (options.ExcludePrimaryKey) {
 				keys.AddRange(from item in getPrimary.Get(table) select item.Name);

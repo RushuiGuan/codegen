@@ -24,21 +24,12 @@ namespace Albatross.CodeGen.SqlServer {
 		public Type SourceType => typeof(DatabaseObject);
 		public Type OptionType => typeof(SqlQueryOption);
 
-		public IEnumerable<ICodeGenerator<DatabaseObject, SqlQueryOption>> Children { get; set; }
+		public event Func<StringBuilder, DatabaseObject, SqlQueryOption, ICodeGeneratorFactory, IEnumerable<object>> Yield;
 
-		public StringBuilder Build(StringBuilder sb, DatabaseObject list, SqlQueryOption options, ICodeGeneratorFactory factory) {
+		public StringBuilder Build(StringBuilder sb, DatabaseObject list, SqlQueryOption options, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
+			used = new object[] { this };
 			sb.AppendLine("declare");
-
-
 			return sb;
-		}
-
-		public StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption option, IEnumerable<ICodeGenerator<DatabaseObject, SqlQueryOption>> children, ICodeGeneratorFactory factory) {
-			throw new NotImplementedException();
-		}
-
-		public StringBuilder Build(StringBuilder sb, object t, object options, ICodeGeneratorFactory factory) {
-			throw new NotImplementedException();
 		}
 	}
 }

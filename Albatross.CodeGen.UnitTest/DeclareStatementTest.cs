@@ -21,7 +21,8 @@ namespace Albatross.CodeGen.UnitTest {
 
 		public string Build(DatabaseObject @params) {
 			DeclareStatement handle = Container.GetInstance<DeclareStatement>();
-			return handle.Build(new StringBuilder(), @params, null, null).ToString();
+			return null;
+			//return handle.Build(new StringBuilder(), @params, null, null).ToString();
 		}
 	}
 }
