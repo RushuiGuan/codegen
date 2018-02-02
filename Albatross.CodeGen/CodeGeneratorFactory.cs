@@ -66,10 +66,11 @@ namespace Albatross.CodeGen{
 		public void Register(Assembly asm) {
 			lock (_sync) {
 				foreach (Type type in asm.GetTypes()) {
-					if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(ICodeGenerator<,>)) {
+					Type interfaceType = type.FindInterfaces(new TypeFilter((t, obj) => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(ICodeGenerator<,>)), null).FirstOrDefault();
+					if (interfaceType != null) {
 						CodeGeneratorAttribute attrib = type.GetCustomAttribute<CodeGeneratorAttribute>();
 						if (attrib != null) {
-							Type[] arguments = type.GetGenericArguments();
+							Type[] arguments = interfaceType.GetGenericArguments();
 							CodeGenerator gen = new CodeGenerator {
 								Name = attrib.Name,
 								Target = attrib.Target,

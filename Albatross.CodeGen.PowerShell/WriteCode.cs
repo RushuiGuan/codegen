@@ -33,7 +33,7 @@ namespace Albatross.CodeGen.PowerShell {
 			if (Option == null) {
 				Option = Activator.CreateInstance(meta.SourceType);
 			} else {
-				if (meta.SourceType != Option.GetType()) { throw new InvalidOptionTypeException(); }
+				if (meta.OptionType != Option.GetType()) { throw new InvalidOptionTypeException(); }
 			}
 
 			StringBuilder sb = new StringBuilder();

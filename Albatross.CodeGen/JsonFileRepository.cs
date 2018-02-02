@@ -10,7 +10,8 @@ namespace Albatross.CodeGen {
 	public class JsonFileRepository<T> where T:class{
 		public T Get(string name) {
 			using (StreamReader reader = new StreamReader(name)) {
-				return JsonConvert.DeserializeObject<T>(reader.ReadToEnd(), Setting);
+				object value = JsonConvert.DeserializeObject(reader.ReadToEnd(), Setting);
+				return (T)value;
 			}
 		}
 

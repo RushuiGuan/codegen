@@ -1,1 +1,0 @@
-{"SourceType":"Albatross.CodeGen.Database.Table, Albatross.CodeGen.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null","Name":"UpdateWithIdentity","Category":null,"Description":null,"Generators":["table_update","table_where_byid"],"Target":"sql","Seperator":null}
