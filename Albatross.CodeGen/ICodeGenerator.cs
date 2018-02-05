@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
-	public interface ICodeGenerator<T, O> {
+	public interface ICodeGenerator<in T, in O> {
 		StringBuilder Build(StringBuilder sb, T source, O option, ICodeGeneratorFactory factory, out IEnumerable<object> used);
-		event Func<StringBuilder,T, O, ICodeGeneratorFactory, IEnumerable<object>> Yield;
+		event Func<StringBuilder, ICodeGeneratorFactory, IEnumerable<object>> Yield;
 	}
 }

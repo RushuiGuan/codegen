@@ -8,10 +8,10 @@ namespace Albatross.CodeGen {
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	public abstract class ClassGenerator<T> : ICodeGenerator<T, ClassOptions> where T : class {
+		public event Func<StringBuilder, ICodeGeneratorFactory, IEnumerable<object>> Yield { add { } remove { } }
 		public abstract string GetClassName(T t);
 		public abstract void RenderBody(StringBuilder sb, int tabLevel, T t, ClassOptions options, ICodeGeneratorFactory factory);
 
-		public event Func<StringBuilder, T, ClassOptions, ICodeGeneratorFactory, IEnumerable<object>> Yield { add { } remove { } }
 		public StringBuilder Build(StringBuilder sb, T t, ClassOptions option, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
 			if (option.Imports != null) {
 				foreach (var ns in option.Imports) {

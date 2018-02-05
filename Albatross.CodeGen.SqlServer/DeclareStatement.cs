@@ -26,7 +26,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public Type SourceType => typeof(DatabaseObject);
 		public Type OptionType => typeof(SqlQueryOption);
 
-		public event Func<StringBuilder, DatabaseObject, SqlQueryOption, ICodeGeneratorFactory, IEnumerable<object>> Yield;
+		public event Func<StringBuilder, ICodeGeneratorFactory, IEnumerable<object>> Yield;
 
 		public StringBuilder Build(StringBuilder sb, DatabaseObject src, SqlQueryOption options, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
 			List<object> list = new List<object>();
@@ -35,7 +35,7 @@ namespace Albatross.CodeGen.SqlServer {
 			sb.AppendLine("declare");
 
 			StringBuilder child = new StringBuilder();
-			var items = Yield(child, src, options, factory);
+			var items = Yield(child, factory);
 			foreach (var item in items) {
 				foreach (var pair in getVariable.Get(item)) {
 					sb.Tab().Append(pair.Key).Append(" as ").Append(pair.Value).Comma().AppendLine();
