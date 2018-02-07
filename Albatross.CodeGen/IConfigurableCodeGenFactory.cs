@@ -10,7 +10,5 @@ namespace Albatross.CodeGen {
 		void Clear();
 		void Register();
 		void Register(CodeGenerator codeGenerator);
-		void Register(Assembly asm);
-		void Register(IComposite item);
 	}
 }

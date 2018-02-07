@@ -12,8 +12,9 @@ namespace Albatross.CodeGen {
 		string Name { get; }
 		 string Category { get; }
 		 string Description { get; }
-		 IEnumerable<string> Generators { get; }
-		 string Target { get; }
+
+		Branch Branch { get; }
+		string Target { get; }
 	}
 
 	public class Composite<T, O> : IComposite{
@@ -21,7 +22,7 @@ namespace Albatross.CodeGen {
 		public string Category { get; set; }
 		public string Description { get; set; }
 
-		public IEnumerable<string> Generators { get; set; }
+		public Branch Branch { get; set; }
 		public string Target { get; set; }
 
 		public Type SourceType => typeof(T);

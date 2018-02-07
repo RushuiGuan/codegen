@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Albatross.CodeGen {
 	public class CompositeCodeGenerator<T, O> : ICodeGenerator<T, O> {
-		IEnumerable<string> _generators;
+		Branch branch;
 
 		public event Func<StringBuilder, ICodeGeneratorFactory, IEnumerable<object>> Yield { add { }remove { } }
 
@@ -13,10 +13,16 @@ namespace Albatross.CodeGen {
 			Queue<ICodeGenerator<T, O>> queue = new Queue<ICodeGenerator<T, O>>();
 			List<object> list = new List<object>();
 
-			foreach (var item in _generators) {
-				var gen = factory.Create<T, O>(item);
-				gen.Yield += (scoped_sb, scoped_factory) => OnYield(queue, scoped_sb, source, option, scoped_factory);
-				queue.Enqueue(gen);
+			foreach (var item in branch) {
+				if (item.IsLeaf) {
+					var gen = factory.Create<T, O>(item.Name);
+					gen.Yield += (scoped_sb, scoped_factory) => OnYield(queue, scoped_sb, source, option, scoped_factory);
+					queue.Enqueue(gen);
+				} else {
+					var gen = new CompositeCodeGenerator<T, O>();
+					gen.Configure(item);
+					queue.Enqueue(gen);
+				}
 			}
 
 			while (queue.Count > 0) {
@@ -29,7 +35,7 @@ namespace Albatross.CodeGen {
 		}
 
 		public void Configure(object data) {
-			_generators = data as IEnumerable<string>;
+			branch = data as Branch;
 
 		}
 

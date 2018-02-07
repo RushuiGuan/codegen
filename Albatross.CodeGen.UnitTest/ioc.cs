@@ -35,6 +35,8 @@ namespace Albatross.CodeGen.UnitTest {
 			container.Register<IGetLog4NetLoggerRepository, GetDefaultLog4NetLoggerRepository>(Lifestyle.Singleton);
 			container.Register<ILoggerRepository>(() => container.GetInstance<IGetLog4NetLoggerRepository>().Get(), Lifestyle.Singleton);
 			container.Register<ILogFactory, Log4netLogFactory>(Lifestyle.Singleton);
+			container.Register<IGetVariable, SqlVariableMgmt>(Lifestyle.Singleton);
+			container.Register<ICreateVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 
 			container.Register<JsonFileRepository<CodeGenSetting>>(Lifestyle.Singleton);
 			container.Register<JsonFileRepository<IComposite>>(Lifestyle.Singleton);
@@ -56,7 +58,7 @@ namespace Albatross.CodeGen.UnitTest {
 			container.Register<IGetTablePrimaryKey, GetTablePrimaryKey>(Lifestyle.Singleton);
 			container.Register<IGetVariableName, GetSqlVariableName>(Lifestyle.Singleton);
 
-			container.Register<ICreateVariable, CreateVariable>(Lifestyle.Singleton);
+			container.Register<ICreateVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 
 			var mock_getTableColumns = new Mock<IGetTableColumns>();
 			container.RegisterSingleton<Mock<IGetTableColumns>>(mock_getTableColumns);

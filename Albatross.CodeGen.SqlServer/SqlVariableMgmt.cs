@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer
 {
-	public class CreateVariable : ICreateVariable, IGetVariable {
+	public class SqlVariableMgmt : ICreateVariable, IGetVariable {
 		Dictionary<object, Dictionary<string, string>> created = new Dictionary<object, Dictionary<string, string>>();
 
 		public void Create(object creator, string name, string type) {

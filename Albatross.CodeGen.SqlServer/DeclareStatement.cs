@@ -32,15 +32,28 @@ namespace Albatross.CodeGen.SqlServer {
 			List<object> list = new List<object>();
 			list.Add(this);
 
-			sb.AppendLine("declare");
 
 			StringBuilder child = new StringBuilder();
-			var items = Yield(child, factory);
+			var items = Yield?.Invoke(child, factory);
+
+			Dictionary<string, string> variables = new Dictionary<string, string>();
 			foreach (var item in items) {
 				foreach (var pair in getVariable.Get(item)) {
-					sb.Tab().Append(pair.Key).Append(" as ").Append(pair.Value).Comma().AppendLine();
+					variables.Add(pair.Key, pair.Value);
 				}
 			}
+			if (variables.Count > 0) {
+				sb.AppendLine("declare");
+				foreach (var variable in variables) {
+					sb.Tab().Append(variable.Key).Append(" as ").Append(variable.Value);
+					if (variable.Key == variables.Last().Key) {
+						sb.Semicolon().AppendLine();
+					} else {
+						sb.Comma().AppendLine();
+					}
+				}
+			}
+
 			sb.Append(child);
 			list.AddRange(items);
 			used = list;

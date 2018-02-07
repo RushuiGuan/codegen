@@ -38,7 +38,7 @@ namespace Albatross.CodeGen{
 
 			var list = assemblyFactory.Get();
 			foreach (var item in list) {
-				Register(item);
+				this.Register(item);
 			}
 			var items = compositeFactory.Get();
 			if (items != null) {
@@ -48,50 +48,9 @@ namespace Albatross.CodeGen{
 			}
 		}
 
-		public void Register(IComposite item) {
-			lock (_sync) {
-				Type type = typeof(CompositeCodeGenerator<,>);
-				var gen = new CodeGenerator {
-					Name = item.Name,
-					Target = item.Target,
-					Category = item.Category,
-					Description = item.Description,
-					GeneratorType = type.MakeGenericType(item.SourceType, item.OptionType),
-					SourceType = item.SourceType,
-					OptionType = item.OptionType,
-					Data = item.Generators,
-				};
-				_registration[gen.Key] = gen;
-			}
-		}
-
 		public void Register(CodeGenerator gen) {
 			lock (_sync) {
 				_registration[gen.Key] = gen;
-			}
-		}
-
-		public void Register(Assembly asm) {
-			lock (_sync) {
-				foreach (Type type in asm.GetTypes()) {
-					Type interfaceType = type.FindInterfaces(new TypeFilter((t, obj) => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(ICodeGenerator<,>)), null).FirstOrDefault();
-					if (interfaceType != null) {
-						CodeGeneratorAttribute attrib = type.GetCustomAttribute<CodeGeneratorAttribute>();
-						if (attrib != null) {
-							Type[] arguments = interfaceType.GetGenericArguments();
-							CodeGenerator gen = new CodeGenerator {
-								Name = attrib.Name,
-								Target = attrib.Target,
-								Category = attrib.Category,
-								Description = attrib.Description,
-								GeneratorType = type,
-								SourceType = arguments[0],
-								OptionType = arguments[1],
-							};
-							_registration[gen.Key] = gen;
-						}
-					}
-				}
 			}
 		}
 
@@ -125,6 +84,5 @@ namespace Albatross.CodeGen{
 				throw new CodeGenNotRegisteredException(srcType, name);
 			}
 		}
-
 	}
 }

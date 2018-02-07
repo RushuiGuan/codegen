@@ -15,12 +15,12 @@ namespace Albatross.CodeGen.SqlServer {
 			return builder.ToString();
 		}
 
-		public static Composite<DatabaseObject, SqlQueryOption> NewSqlTableComposite(string name, string description, params string[] children) {
+		public static Composite<DatabaseObject, SqlQueryOption> NewSqlTableComposite(string name, string description, Branch branch) {
 			return new Composite<DatabaseObject, SqlQueryOption>{
 				Name = name,
 				Description = description,
 				Category = "Sql Server",
-				Generators = children,
+				Branch = branch,
 				Target = "sql",
 			};
 		}
