@@ -17,5 +17,7 @@ namespace Albatross.CodeGen.SqlServer {
 
 		public event Func<StringBuilder, ICodeGeneratorFactory, IEnumerable<object>> Yield;
 		public abstract StringBuilder Build(StringBuilder sb, DatabaseObject source, SqlQueryOption option, ICodeGeneratorFactory factory, out IEnumerable<object> used);
+
+		public void Configure(object data) { }
 	}
 }

@@ -68,5 +68,19 @@ namespace Albatross.CodeGen {
 				return (T)value;
 			}
 		}
+
+		public static IConfigurableCodeGenFactory RegisterStatic(this IConfigurableCodeGenFactory factory, string name, string target, string content, string category, string description) {
+			factory.Register(new CodeGenerator {
+				Category = category,
+				Data = content,
+				Description = description,
+				GeneratorType = typeof(StaticCodeGenerator),
+				SourceType = typeof(object),
+				OptionType = typeof(object),
+				Name = name,
+				Target = target,
+			});
+			return factory;
+		}
 	}
 }

@@ -22,7 +22,6 @@ namespace Albatross.CodeGen.SqlServer {
 				Category = "Sql Server",
 				Generators = children,
 				Target = "sql",
-				Seperator = "\r\n",
 			};
 		}
 

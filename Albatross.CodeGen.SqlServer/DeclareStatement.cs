@@ -46,5 +46,7 @@ namespace Albatross.CodeGen.SqlServer {
 			used = list;
 			return sb;
 		}
+
+		public void Configure(object data) { }
 	}
 }

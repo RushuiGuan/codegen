@@ -14,7 +14,6 @@ namespace Albatross.CodeGen {
 		 string Description { get; }
 		 IEnumerable<string> Generators { get; }
 		 string Target { get; }
-		 string Seperator { get; }
 	}
 
 	public class Composite<T, O> : IComposite{
@@ -24,7 +23,6 @@ namespace Albatross.CodeGen {
 
 		public IEnumerable<string> Generators { get; set; }
 		public string Target { get; set; }
-		public string Seperator { get; set; }
 
 		public Type SourceType => typeof(T);
 		public Type OptionType => typeof(O);

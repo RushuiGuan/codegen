@@ -41,5 +41,7 @@ namespace Albatross.CodeGen {
 			used = new object[] { this, };
 			return sb;
 		}
+
+		public void Configure(object data) { }
 	}
 }

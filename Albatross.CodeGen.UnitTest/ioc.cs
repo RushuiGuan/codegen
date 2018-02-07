@@ -11,15 +11,26 @@ using System.Collections.Generic;
 using System.Reflection;
 
 namespace Albatross.CodeGen.UnitTest {
-	public class Ioc {
+	public class Ioc : IObjectFactory{
 		Container container = new Container();
+		public T Create<T>() where T : class {
+			return container.GetInstance<T>();
+		}
+
+		public object Create(Type type) {
+			return container.GetInstance(type);
+		}
+
 		private Ioc() {
 			Setup();
 		}
+
+
 		void Setup() {
 			container.Options.AllowOverridingRegistrations = true;
 
 			//logging
+			container.RegisterSingleton<IObjectFactory>(this);
 			container.RegisterSingleton<GetLog4NetLoggerRepositoryByXmlConfig>();
 			container.Register<IGetLog4NetLoggerRepository, GetDefaultLog4NetLoggerRepository>(Lifestyle.Singleton);
 			container.Register<ILoggerRepository>(() => container.GetInstance<IGetLog4NetLoggerRepository>().Get(), Lifestyle.Singleton);
@@ -59,6 +70,8 @@ namespace Albatross.CodeGen.UnitTest {
 			container.RegisterSingleton<Mock<IGetTablePrimaryKey>>(mock_getTablePrimaryKey);
 			container.RegisterSingleton<IGetTablePrimaryKey>(mock_getTablePrimaryKey.Object);
 		}
+
+		
 
 		public static Lazy<Ioc> _lazy = new Lazy<Ioc>(()=>new Ioc());
 

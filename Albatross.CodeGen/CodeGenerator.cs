@@ -15,7 +15,7 @@ namespace Albatross.CodeGen {
 		public Type SourceType { get; set; }
 		public Type OptionType { get; set; }
 		public Type GeneratorType { get; set; }
-		public string Content { get; set; }
+		public object Data { get; set; }
 
 		public string Key { get { return $"{SourceType.FullName}.{Name}"; } }
 	}
