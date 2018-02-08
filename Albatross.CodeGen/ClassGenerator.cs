@@ -7,12 +7,12 @@ namespace Albatross.CodeGen {
 	/// an abstract class created to speed up C# class code generation.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
-	public abstract class ClassGenerator<T> : ICodeGenerator<T, ClassOptions> where T : class {
-		public event Func<StringBuilder, ICodeGeneratorFactory, IEnumerable<object>> Yield { add { } remove { } }
+	public abstract class ClassGenerator<T> : ICodeGenerator<T, ClassOption> where T : class {
+		public event Func<StringBuilder, IEnumerable<object>> Yield;
 		public abstract string GetClassName(T t);
-		public abstract void RenderBody(StringBuilder sb, int tabLevel, T t, ClassOptions options, ICodeGeneratorFactory factory);
+		public abstract void RenderBody(StringBuilder sb, int tabLevel, T t, ClassOption options);
 
-		public StringBuilder Build(StringBuilder sb, T t, ClassOptions option, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
+		public IEnumerable<object>  Build(StringBuilder sb, T t, ClassOption option) {
 			if (option.Imports != null) {
 				foreach (var ns in option.Imports) {
 					sb.Append("using ").Append(ns).Terminate();
@@ -31,15 +31,14 @@ namespace Albatross.CodeGen {
 				sb.Tab(level).Public().Append(className).Append(constructor).EmptyScope();
 			}
 
-			RenderBody(sb, level, t, option, factory);
+			RenderBody(sb, level, t, option);
 
 			level--;
 			sb.Tab(level).CloseScope(false);
 			level--;
 			sb.CloseScope(terminate: false);
 
-			used = new object[] { this, };
-			return sb;
+			return new object[] { this, };
 		}
 
 		public void Configure(object data) { }

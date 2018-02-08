@@ -17,13 +17,13 @@ namespace Albatross.CodeGen.SqlServer {
 			_getIDColumn = getIDColumn;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
-			used = new[] { this };
+		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options) {
 			Column identityColumn = _getIDColumn.Get(t);
 			if (identityColumn == null) {
 				throw new IdentityColumnNotFoundException(t);
 			}
-			return sb.Append("select scope_identity() as ").EscapeName(identityColumn.Name);
+			sb.Append("select scope_identity() as ").EscapeName(identityColumn.Name);
+			return new[] { this };
 		}
 	}
 }

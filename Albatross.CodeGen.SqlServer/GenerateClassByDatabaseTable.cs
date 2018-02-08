@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.SqlServer
 			_getCSharpType = getCSharpType;
 		}
 
-		public override void RenderBody(StringBuilder sb, int tabLevel, DatabaseObject t, ClassOptions options, ICodeGeneratorFactory factory) {
+		public override void RenderBody(StringBuilder sb, int tabLevel, DatabaseObject t, ClassOption options) {
 			foreach (var item in _getColumns.Get(t)) {
 				sb.Tab(tabLevel).Append("public ").Append(t.Name.Proper());
 			}

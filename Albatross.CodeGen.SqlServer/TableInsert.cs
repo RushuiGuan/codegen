@@ -19,8 +19,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
-			used = new[] { this };
+		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options) {
 			foreach (var item in options.Variables) {
 				createVariable.Create(this, item.Key, item.Value);
 			}
@@ -46,7 +45,7 @@ namespace Albatross.CodeGen.SqlServer {
 				if (c != columns.Last()) { sb.Comma().Space(); }
 			}
 			sb.CloseParenthesis();
-			return sb;
+			return new[] { this };
 		}
 	}
 }

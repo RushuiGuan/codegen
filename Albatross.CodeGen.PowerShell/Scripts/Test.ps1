@@ -1,14 +1,12 @@
 ﻿cls
 
-get-location | set-CompositeLocation;
-get-location | set-ScenarioLocation;
-
-
-New-DatabaseServer -DataSource localhost -InitialCatalog albatross -IntegratedSecurity | New-DatabaseTable -Name Contact -Schema crm  | Set-DatabaseTable .\contact.json -Force 
-$table = Get-DatabaseTable .\contact.json;
+$server = New-DatabaseServer -DataSource localhost -InitialCatalog albatross -IntegratedSecurity;
+$table = New-DatabaseTable -Name Contact -Schema crm  -Server $server;
 $option = New-SqlQueryOption
-Write-Code -Name table_update -Source $table -Option $option
-$option.Variables;
+
+Invoke-CodeGenerator -Name table_update -Source $table -Option $option
+
+New-Composite -SourceType Albatross.CodeGen.Database.DatabaseObject 
 
 <#
 

@@ -23,8 +23,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
-			used = new[] { this };
+		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options) {
 			Column[] columns = _getColumns.Get(table).ToArray();
 			if (columns.Length == 0) {
 				throw new ColumnNotFoundException(table);
@@ -47,7 +46,7 @@ namespace Albatross.CodeGen.SqlServer {
 				sb.AppendLine();
 			}
 			sb.CloseParenthesis().Append(" as src");
-			return sb;
+			return new[] { this, };
 		}
 	}
 }

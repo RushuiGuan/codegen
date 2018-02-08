@@ -19,8 +19,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.getPrimary = getPrimary;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
-			used = new[] { this, };
+		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options) {
 
 			HashSet<string> keys = new HashSet<string>();
 			if (options.ExcludePrimaryKey) {
@@ -33,7 +32,7 @@ namespace Albatross.CodeGen.SqlServer {
 								select c).ToArray();
 			if (columns.Length == 0) {
 				//merge without update is OK
-				return sb;
+				return new[] { this, };
 			}
 			sb.Append("when matched then update set").AppendLine();
 			foreach (var column in columns) {
@@ -42,7 +41,7 @@ namespace Albatross.CodeGen.SqlServer {
 					sb.Comma().AppendLine();
 				}
 			}
-			return sb;
+			return new[] { this, };
 		}
 	}
 }

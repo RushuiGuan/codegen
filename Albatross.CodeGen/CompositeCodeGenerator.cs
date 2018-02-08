@@ -5,21 +5,25 @@ using System.Text;
 
 namespace Albatross.CodeGen {
 	public class CompositeCodeGenerator<T, O> : ICodeGenerator<T, O> {
+		ICodeGeneratorFactory factory;
 		Branch branch;
+		public event Func<StringBuilder, IEnumerable<object>> Yield { add { } remove { } }
 
-		public event Func<StringBuilder, ICodeGeneratorFactory, IEnumerable<object>> Yield { add { }remove { } }
+		public CompositeCodeGenerator(ICodeGeneratorFactory factory) {
+			this.factory = factory;
+		}
 
-		public StringBuilder Build(StringBuilder sb, T source, O option, ICodeGeneratorFactory factory, out IEnumerable<object> generators) {
+		public IEnumerable<object> Build(StringBuilder sb, T source, O option) {
 			Queue<ICodeGenerator<T, O>> queue = new Queue<ICodeGenerator<T, O>>();
 			List<object> list = new List<object>();
 
 			foreach (var item in branch) {
 				if (item.IsLeaf) {
 					var gen = factory.Create<T, O>(item.Name);
-					gen.Yield += (scoped_sb, scoped_factory) => OnYield(queue, scoped_sb, source, option, scoped_factory);
+					gen.Yield += (scoped_sb) => OnYield(queue, scoped_sb, source, option);
 					queue.Enqueue(gen);
 				} else {
-					var gen = new CompositeCodeGenerator<T, O>();
+					var gen = new CompositeCodeGenerator<T, O>(factory);
 					gen.Configure(item);
 					queue.Enqueue(gen);
 				}
@@ -27,11 +31,10 @@ namespace Albatross.CodeGen {
 
 			while (queue.Count > 0) {
 				var item = queue.Dequeue();
-				item.Build(sb, source, option, factory, out IEnumerable<object> scoped_generators);
-				list.AddRange(scoped_generators);
+				var used = item.Build(sb, source, option);
+				list.AddRange(used);
 			}
-			generators = list;
-			return sb;
+			return list;
 		}
 
 		public void Configure(object data) {
@@ -39,11 +42,10 @@ namespace Albatross.CodeGen {
 
 		}
 
-		private IEnumerable<object> OnYield(Queue<ICodeGenerator<T, O>> queue, StringBuilder sb, T source, O option, ICodeGeneratorFactory factory) {
+		private IEnumerable<object> OnYield(Queue<ICodeGenerator<T, O>> queue, StringBuilder sb, T source, O option) {
 			if (queue.Count > 0) {
-				var item = queue.Dequeue();
-				item.Build(sb, source, option, factory, out IEnumerable<object> list);
-				return list;
+				var handle = queue.Dequeue();
+				return handle.Build(sb, source, option);
 			} else {
 				return new object[0];
 			}

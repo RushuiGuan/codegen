@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text;
 
 namespace Albatross.CodeGen.CSharp {
-	[CodeGenerator("webapi proxy", GeneratorTarget.CSharp, Category = "WebApi Proxy", Description = "Create a web api proxy class by using the reflection against the controller")]
+	[CodeGenerator("asp.net webapi proxy", GeneratorTarget.CSharp, Category = "WebApi Proxy", Description = "Create a web api proxy class by using the reflection against the controller")]
 	public class BuildWebApiProxy : ClassGenerator<ObjectType> {
 
 		const string ControllerPostfix = "Controller";
@@ -31,7 +31,7 @@ namespace Albatross.CodeGen.CSharp {
 		const string HttpPutAttribName = "System.Web.Http.HttpPutAttribute";
 
 
-		public override void RenderBody(StringBuilder sb, int tabLevel, ObjectType objType, ClassOptions options, ICodeGeneratorFactory factory) {
+		public override void RenderBody(StringBuilder sb, int tabLevel, ObjectType objType, ClassOption options) {
 			Type controllerType = _getReflectionOnlyType.Get(objType);
 			foreach (MethodInfo method in controllerType.GetMethods(BindingFlags.Public | BindingFlags.Instance)) {
 				foreach (CustomAttributeData data in method.GetCustomAttributesData()) {

@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(MergeUpdateTestCase))]
 		public string MergeUpdate(DatabaseObject table, SqlQueryOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<TableMergeUpdate>().Build(sb, table, option, null, out var used);
+			Ioc.Container.GetInstance<TableMergeUpdate>().Build(sb, table, option);
 			return sb.ToString();
 		}
 	}

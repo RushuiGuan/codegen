@@ -101,8 +101,7 @@ where
 
 			StringBuilder sb = new StringBuilder();
 			var handle = factory.Create<DatabaseObject, SqlQueryOption>("test");
-			IEnumerable<object> used;
-			handle.Build(sb, table, option, factory, out used);
+			handle.Build(sb, table, option);
 			return sb.ToString();
 		}
 
@@ -134,8 +133,7 @@ from [test].[Symbol]" },
 
 			StringBuilder sb = new StringBuilder();
 			var handle = factory.Create<DatabaseObject, SqlQueryOption>("test");
-			IEnumerable<object> used;
-			handle.Build(sb, table, option, factory, out used);
+			handle.Build(sb, table, option);
 			return sb.ToString();
 		}
 	}

@@ -6,28 +6,26 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.UnitTest {
 	public class YieldTestCodeGenerator : ICodeGenerator<object, object> {
-		public event Func<StringBuilder, ICodeGeneratorFactory, IEnumerable<object>> Yield;
+		public event Func<StringBuilder, IEnumerable<object>> Yield;
 
-		public StringBuilder Build(StringBuilder sb, object source, object option, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
+		public IEnumerable<object> Build(StringBuilder sb, object source, object option) {
 			sb.AppendLine("begin");
 			IEnumerable<object> objects;
-			List<object> list = new List<object>();
-			list.Add(this);
+			List<object> list = new List<object> { this };
 
-			while(true){
+			while (true) {
 				sb.Tab();
-				objects = Yield?.Invoke(sb, factory);
+				objects = Yield?.Invoke(sb);
 				if (objects?.Count() > 0) {
 					list.AddRange(objects);
 				} else {
 					sb.Length--;
 					break;
 				}
-			} 
+			}
 			sb.AppendLine();
 			sb.Append("end");
-			used = list;
-			return sb;
+			return list;
 		}
 
 		public void Configure(object data) {

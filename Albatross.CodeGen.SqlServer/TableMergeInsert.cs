@@ -16,8 +16,7 @@ namespace Albatross.CodeGen.SqlServer {
 		}
 
 
-		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
-			used = new[] { this };
+		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options) {
 			Column[] columns = (from c in _getColumns.Get(t)
 								orderby c.OrdinalPosition ascending, c.Name ascending
 								where !c.ComputedColumn && !c.IdentityColumn
@@ -42,7 +41,7 @@ namespace Albatross.CodeGen.SqlServer {
 				sb.AppendLine();
 			}
 			sb.CloseParenthesis();
-			return sb;
+			return new[] { this };
 		}
 	}
 }

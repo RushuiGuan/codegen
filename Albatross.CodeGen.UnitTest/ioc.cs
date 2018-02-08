@@ -38,19 +38,10 @@ namespace Albatross.CodeGen.UnitTest {
 			container.Register<IGetVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<ICreateVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 
-			container.Register<JsonFileRepository<CodeGenSetting>>(Lifestyle.Singleton);
-			container.Register<JsonFileRepository<IComposite>>(Lifestyle.Singleton);
 			container.Register<IFactory<IEnumerable<SourceType>>, SourceTypeFactory>();
 			container.Register<IFactory<IEnumerable<OptionType>>, OptionTypeFactory>();
-			container.Register<IGetDefaultRepoFolder, GetDefaultRepoFolder>(Lifestyle.Singleton);
 			container.Register<ICodeGeneratorFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 			container.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
-			container.Register<ISaveFile<CodeGenSetting>, CodeGenSettingFactory>(Lifestyle.Singleton);
-			container.Register<IGetFiles, GetFiles>(Lifestyle.Singleton);
-
-			container.Register<IFactory<IEnumerable<IComposite>>, CompositeFactory>(Lifestyle.Singleton);
-			container.Register<IFactory<CodeGenSetting>, CodeGenSettingFactory>(Lifestyle.Singleton);
-			container.Register<IFactory<IEnumerable<Assembly>>, GetAssembly>(Lifestyle.Singleton);
 
 			container.Register<IColumnSqlTypeBuilder, ColumnSqlTypeBuilder>(Lifestyle.Singleton);
 			container.Register<IGetTableColumns, GetTableColumns>(Lifestyle.Singleton);

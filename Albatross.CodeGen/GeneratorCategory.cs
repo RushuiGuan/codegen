@@ -4,6 +4,6 @@ using System.Text;
 
 namespace Albatross.CodeGen {
 	public static class GeneratorCategory {
-		public const string SQLServer = "SQLServer";
+		public const string SQLServer = "Sql Server Table";
 	}
 }

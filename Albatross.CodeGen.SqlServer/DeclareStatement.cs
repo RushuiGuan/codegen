@@ -26,15 +26,13 @@ namespace Albatross.CodeGen.SqlServer {
 		public Type SourceType => typeof(DatabaseObject);
 		public Type OptionType => typeof(SqlQueryOption);
 
-		public event Func<StringBuilder, ICodeGeneratorFactory, IEnumerable<object>> Yield;
+		public event Func<StringBuilder, IEnumerable<object>> Yield;
 
-		public StringBuilder Build(StringBuilder sb, DatabaseObject src, SqlQueryOption options, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
-			List<object> list = new List<object>();
-			list.Add(this);
-
+		public IEnumerable<object>  Build(StringBuilder sb, DatabaseObject src, SqlQueryOption options) {
+			List<object> list = new List<object> { this };
 
 			StringBuilder child = new StringBuilder();
-			var items = Yield?.Invoke(child, factory);
+			var items = Yield?.Invoke(child);
 
 			Dictionary<string, string> variables = new Dictionary<string, string>();
 			foreach (var item in items) {
@@ -56,8 +54,7 @@ namespace Albatross.CodeGen.SqlServer {
 
 			sb.Append(child);
 			list.AddRange(items);
-			used = list;
-			return sb;
+			return list;
 		}
 
 		public void Configure(object data) { }

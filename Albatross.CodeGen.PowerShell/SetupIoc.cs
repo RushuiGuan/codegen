@@ -24,19 +24,12 @@ namespace Albatross.CodeGen.PowerShell {
 			c.Register<ILoggerRepository>(() => c.GetInstance<IGetLog4NetLoggerRepository>().Get(), Lifestyle.Singleton);
 			c.Register<ILogFactory, Log4netLogFactory>(Lifestyle.Singleton);
 
-			c.Register<JsonFileRepository<CodeGenSetting>>(Lifestyle.Singleton);
-			c.Register<JsonFileRepository<IComposite>>(Lifestyle.Singleton);
 			c.Register<IFactory<IEnumerable<SourceType>>, SourceTypeFactory>();
 			c.Register<IFactory<IEnumerable<OptionType>>, OptionTypeFactory>();
-			c.Register<IGetDefaultRepoFolder, GetDefaultRepoFolder>(Lifestyle.Singleton);
 			c.Register<ICodeGeneratorFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
+			c.Register<IRunCodeGenerator, RunCodeGenerator>(Lifestyle.Singleton);
 			c.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
-			c.Register<ISaveFile<CodeGenSetting>, CodeGenSettingFactory>(Lifestyle.Singleton);
-			c.Register<IGetFiles, GetFiles>(Lifestyle.Singleton);
 
-			c.Register<IFactory<IEnumerable<IComposite>>, CompositeFactory>(Lifestyle.Singleton);
-			c.Register<IFactory<CodeGenSetting>, CodeGenSettingFactory>(Lifestyle.Singleton);
-			c.Register<IFactory<IEnumerable<Assembly>>, GetAssembly>(Lifestyle.Singleton);
 
 			c.Register<IColumnSqlTypeBuilder, ColumnSqlTypeBuilder>(Lifestyle.Singleton);
 			c.Register<IGetTableColumns, GetTableColumns>(Lifestyle.Singleton);

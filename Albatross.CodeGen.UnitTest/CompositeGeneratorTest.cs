@@ -31,9 +31,9 @@ namespace Albatross.CodeGen.UnitTest {
 			});
 
 			var handle = factory.Create<DatabaseObject, SqlQueryOption>("test");
-			IEnumerable<object> used;
-			var result = handle.Build(new StringBuilder(), new DatabaseObject(), new SqlQueryOption(), factory, out used);
-			Assert.AreEqual("test1test2", result.ToString());
+			StringBuilder sb = new StringBuilder();
+			var used = handle.Build(sb, new DatabaseObject(), new SqlQueryOption());
+			Assert.AreEqual("test1test2", sb.ToString());
 			Assert.Greater(used.Count(), 1);
 		}
 
@@ -49,9 +49,10 @@ namespace Albatross.CodeGen.UnitTest {
 				Name = "test0",
 			});
 			var handle = factory.Create<string, string>("test0");
-			IEnumerable<object> used;
-			var result = handle.Build(new StringBuilder(), string.Empty, string.Empty, factory, out used);
-			Assert.AreEqual("begin\r\n\r\nend", result.ToString());
+
+			StringBuilder sb = new StringBuilder();
+			IEnumerable<object> used = handle.Build(sb, string.Empty, string.Empty);
+			Assert.AreEqual("begin\r\n\r\nend", sb.ToString());
 			Assert.AreEqual(1, used.Count());
 		}
 
@@ -79,14 +80,13 @@ namespace Albatross.CodeGen.UnitTest {
 				Target = GeneratorTarget.Sql,
 			});
 
-
 			var handle = factory.Create<DatabaseObject, SqlQueryOption>("test");
-			IEnumerable<object> used;
-			var result = handle.Build(new StringBuilder(), new DatabaseObject(), new SqlQueryOption(), factory, out used);
+			StringBuilder sb = new StringBuilder();
+			IEnumerable<object> used= handle.Build(sb, new DatabaseObject(), new SqlQueryOption());
 			Assert.AreEqual(@"begin
 	test1	
 	test2
-end", result.ToString());
+end", sb.ToString());
 			Assert.Greater(used.Count(), 1);
 		}
 	}

@@ -24,8 +24,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption option, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
-			used = new[] { this, };
+		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject t, SqlQueryOption option) {
 			HashSet<string> keys = new HashSet<string>();
 			if (option.ExcludePrimaryKey) {
 				keys.AddRange(from item in getPrimary.Get(t) select item.Name);
@@ -53,8 +52,7 @@ namespace Albatross.CodeGen.SqlServer {
 					sb.Comma().AppendLine();
 				}
 			}
-			return sb;
+			return new[] { this, };
 		}
-
 	}
 }

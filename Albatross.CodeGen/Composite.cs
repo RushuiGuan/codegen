@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
 	public interface IComposite {
-		 Type SourceType { get; }
-		 Type OptionType { get; }
+		Type SourceType { get; }
+		Type OptionType { get; }
 
 		string Name { get; }
-		 string Category { get; }
-		 string Description { get; }
+		string Category { get; }
+		string Description { get; }
+		string Target { get; }
 
 		Branch Branch { get; }
-		string Target { get; }
 	}
 
 	public class Composite<T, O> : IComposite{

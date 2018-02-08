@@ -16,8 +16,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.getTableColumns = getTableColumns;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
-			used = new[] { this };
+		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options) {
 			IEnumerable<Column> columns = getTableColumns.Get(t);
 			sb.Append("select").AppendLine();
 			foreach (Column c in columns) {
@@ -26,7 +25,7 @@ namespace Albatross.CodeGen.SqlServer {
 				sb.AppendLine();
 			}
 			sb.Append("from ").EscapeName(t.Schema).Dot().EscapeName(t.Name);
-			return sb;
+			return new[] { this };
 		}
 	}
 }

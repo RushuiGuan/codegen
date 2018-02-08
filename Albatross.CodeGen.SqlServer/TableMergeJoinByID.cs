@@ -15,14 +15,13 @@ namespace Albatross.CodeGen.SqlServer {
 			_getIDColumn = getIDColumn;
 		}
 
-		public override StringBuilder Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options, ICodeGeneratorFactory factory, out IEnumerable<object> used) {
-			used = new[] { this };
+		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options) {
 			Column idColumn = _getIDColumn.Get(table);
 			if (idColumn == null) {
 				throw new IdentityColumnNotFoundException(table.Schema, table.Name);
 			}
 			sb.Append("on src.").EscapeName(idColumn.Name).Append(" = dst.").EscapeName(idColumn.Name);
-			return sb;
+			return new[] { this };
 		}
 	}
 }

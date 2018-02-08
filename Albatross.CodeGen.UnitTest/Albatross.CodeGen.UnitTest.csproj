@@ -16,6 +16,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\logging\Albatross.Logging.Core\Albatross.Logging.Core.csproj" />
 	  <ProjectReference Include="..\..\logging\Albatross.Logging\Albatross.Logging.csproj" />
+	  <ProjectReference Include="..\Albatross.CodeGen.CSharp\Albatross.CodeGen.CSharp.csproj" />
 	  <ProjectReference Include="..\Albatross.CodeGen.SqlServer\Albatross.CodeGen.SqlServer.csproj" />
 	  <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
 	</ItemGroup>
