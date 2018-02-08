@@ -49,7 +49,7 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 				new Column{ Name="LastName", DataType = "nvarchar", MaxLength=100, IsNullable=false,OrdinalPosition = 4},
 				new Column{ Name="MiddleName", DataType = "nvarchar", MaxLength=100, IsNullable=true,OrdinalPosition = 5},
 
-				new Column { Name = "Gender", DataType="char", IsNullable=false, OrdinalPosition = 6},
+				new Column { Name = "Gender", DataType="char", MaxLength=20, IsNullable=false, OrdinalPosition = 6},
 				new Column{ Name="Cell", DataType = "varchar", MaxLength=100, IsNullable=true,OrdinalPosition = 7},
 				new Column{ Name="Address", DataType = "nvarchar", MaxLength=100, IsNullable=true,OrdinalPosition = 8},
 
