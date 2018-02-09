@@ -38,8 +38,8 @@ namespace Albatross.CodeGen.UnitTest {
 			container.Register<IGetVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<ICreateVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 
-			container.Register<IFactory<IEnumerable<SourceType>>, SourceTypeFactory>();
-			container.Register<IFactory<IEnumerable<OptionType>>, OptionTypeFactory>();
+			container.Register<IFactory<SourceType>, SourceTypeFactory>();
+			container.Register<IFactory<OptionType>, OptionTypeFactory>();
 			container.Register<ICodeGeneratorFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 			container.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 

@@ -1,1 +1,0 @@
-{"$type":"Albatross.CodeGen.Database.DatabaseObject, Albatross.CodeGen.Database","Schema":"crm","Name":"Contact","Server":{"$type":"Albatross.CodeGen.Database.Server, Albatross.CodeGen.Database","DataSource":"localhost","InitialCatalog":"albatross","SSPI":true,"UserName":null,"Password":null,"ConnectionString":null}}

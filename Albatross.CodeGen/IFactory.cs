@@ -6,6 +6,8 @@ namespace Albatross.CodeGen
 {
     public interface IFactory<T>
     {
-		T Get();
+		void Clear();
+		IEnumerable<T> List();
+		void Register(T t);
     }
 }

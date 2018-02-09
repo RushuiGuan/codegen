@@ -24,7 +24,7 @@ namespace Albatross.CodeGen.UnitTest {
 			factory.RegisterStatic("test2", GeneratorTarget.Any, "test2", null, null);
 			factory.RegisterStatic("test3", GeneratorTarget.Any, "test3", null, null);
 			factory.RegisterStatic("test4", GeneratorTarget.Any, "test4", null, null);
-			factory.Register(new Composite<DatabaseObject, SqlQueryOption> {
+			factory.Register(new Composite(typeof(DatabaseObject), typeof(SqlQueryOption)) {
 				Name = "test",
 				Branch = new Branch(new Leaf("test1"), new Leaf("test2")),
 				Target = GeneratorTarget.Sql,
@@ -74,7 +74,7 @@ namespace Albatross.CodeGen.UnitTest {
 			factory.RegisterStatic("test3", GeneratorTarget.Any, "test3", null, null);
 			factory.RegisterStatic("test4", GeneratorTarget.Any, "test4", null, null);
 			factory.RegisterStatic("test4", GeneratorTarget.Any, "test4", null, null);
-			factory.Register(new Composite<DatabaseObject, SqlQueryOption> {
+			factory.Register(new Composite(typeof(DatabaseObject), typeof(SqlQueryOption)) {
 				Name = "test",
 				Branch = new Branch(new Leaf("test0"), new Leaf("test1"), new Leaf("newline"), new Leaf("test2")),
 				Target = GeneratorTarget.Sql,

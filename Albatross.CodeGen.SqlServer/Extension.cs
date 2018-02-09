@@ -15,8 +15,8 @@ namespace Albatross.CodeGen.SqlServer {
 			return builder.ToString();
 		}
 
-		public static Composite<DatabaseObject, SqlQueryOption> NewSqlTableComposite(string name, string description, Branch branch) {
-			return new Composite<DatabaseObject, SqlQueryOption>{
+		public static Composite NewSqlTableComposite(string name, string description, Branch branch) {
+			return new Composite(typeof(DatabaseObject), typeof(SqlQueryOption)){
 				Name = name,
 				Description = description,
 				Category = "Sql Server",

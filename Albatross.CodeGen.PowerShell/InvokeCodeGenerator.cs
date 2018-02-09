@@ -24,7 +24,7 @@ namespace Albatross.CodeGen.PowerShell {
 
 		[Parameter(Position = 3, Mandatory = false)]
 		[Alias("t")]
-		public string Target { get; set; }
+		public FileInfo Output { get; set; }
 
 		[Parameter]
 		public SwitchParameter Force { get; set; }
@@ -40,9 +40,9 @@ namespace Albatross.CodeGen.PowerShell {
 
 			runHandle.Run(meta, sb, Source, Option);
 			WriteObject(sb.ToString());
-			if (!string.IsNullOrEmpty(Target)) {
-				if (!System.IO.File.Exists(Target) || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning")) {
-					using (var stream = new FileStream(Target, FileMode.OpenOrCreate)) {
+			if (Output != null) {
+				if (!Output.Exists || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning")) {
+					using (var stream = new FileStream(Output.FullName, FileMode.OpenOrCreate)) {
 						using (var writer = new StreamWriter(stream)) {
 							writer.Write(sb.ToString());
 						}

@@ -10,22 +10,43 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsLifecycle.Invoke, "Composite")]
 	public class InvokeComposite: BaseCmdlet<IRunCodeGenerator> {
-
-		[Parameter(Position = 0, Mandatory =true, ValueFromPipeline =true)]
-		public IComposite Composite { get; set; }
+		[Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true)]
+		[Alias("b")]
+		public Branch Branch { get; set; }
 
 		[Parameter(Position = 1, Mandatory = true)]
 		public object Source{ get; set; }
 
-		[Parameter(Position = 2, Mandatory = false)]
+		[Parameter(Position = 2, Mandatory = true)]
 		public object Option { get; set; }
 
+		[Parameter(Position = 3, Mandatory = false)]
+		[Alias("t")]
+		public FileInfo Output { get; set; }
+
+		[Parameter]
+		public SwitchParameter Force { get; set; }
+
+
 		protected override void ProcessRecord() {
-			var meta = Composite.GetMeta();
 			StringBuilder sb = new StringBuilder();
 			if(Source is PSObject) { Source = ((PSObject)Source).BaseObject; }
 			if (Option is PSObject) { Option = ((PSObject)Option).BaseObject; }
+			Composite c = new Composite(Source.GetType(), Option.GetType()) {
+				Branch = Branch,
+			};
+			var meta = c.GetMeta();
 			Handle.Run(meta, sb, Source, Option);
+			WriteObject(sb.ToString());
+			if (Output != null) {
+				if (!Output.Exists || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning")) {
+					using (var stream = new FileStream(Output.FullName, FileMode.OpenOrCreate)) {
+						using (var writer = new StreamWriter(stream)) {
+							writer.Write(sb.ToString());
+						}
+					}
+				}
+			}
 		}
 	}
 }

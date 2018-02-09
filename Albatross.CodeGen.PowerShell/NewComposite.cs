@@ -39,17 +39,14 @@ namespace Albatross.CodeGen.PowerShell
 		
 
 		protected override void ProcessRecord() {
-			Type type = typeof(Composite<,>);
-			type = type.MakeGenericType(SourceType, OptionType);
-			object obj = Activator.CreateInstance(type);
-			type.GetProperty(nameof(Branch)).SetValue(obj, Branch);
-
-			type.GetProperty(nameof(Name)).SetValue(obj, Name);
-			type.GetProperty(nameof(Target)).SetValue(obj, Target);
-			type.GetProperty(nameof(Category)).SetValue(obj, Category);
-			type.GetProperty(nameof(Description)).SetValue(obj, Description);
-
-			WriteObject(obj);
+			Composite c = new Composite(SourceType, OptionType) {
+				Branch= Branch,
+				Name = Name,
+				Target = Target,
+				Category = Category,
+				Description = Description,
+			};
+			WriteObject(c);
 		}
 	}
 }

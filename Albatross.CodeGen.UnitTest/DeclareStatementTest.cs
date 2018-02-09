@@ -91,9 +91,7 @@ where
 		public string BuildDeclareStatement(DatabaseObject table, SqlQueryOption option) {
 			Container c = Ioc.Container;
 			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
-			factory.Register(typeof(DeclareStatement).Assembly);
-			factory.RegisterStatic();
-			factory.Register(new Composite<DatabaseObject, SqlQueryOption> {
+			factory.Register(new Composite(typeof(DatabaseObject), typeof(SqlQueryOption)) {
 				Name = "test",
 				Branch = new Branch(new Leaf("declare statement"), new Branch(new Leaf("newline"), new Leaf("table_update"), new Leaf("newline"), new Leaf("table_where"))),
 				Target = GeneratorTarget.Sql,
@@ -123,9 +121,9 @@ from [test].[Symbol]" },
 		public string DeclareStatementWithoutDeclare(DatabaseObject table, SqlQueryOption option) {
 			Container c = Ioc.Container;
 			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
-			factory.Register(typeof(DeclareStatement).Assembly);
+			typeof(DeclareStatement).Assembly.Register(factory, null, null);
 			factory.RegisterStatic();
-			factory.Register(new Composite<DatabaseObject, SqlQueryOption> {
+			factory.Register(new Composite(typeof(DatabaseObject), typeof(SqlQueryOption)) {
 				Name = "test",
 				Branch = new Branch(new Leaf("declare statement"), new Branch(new Leaf("newline"), new Leaf("table_select"))),
 				Target = GeneratorTarget.Sql,

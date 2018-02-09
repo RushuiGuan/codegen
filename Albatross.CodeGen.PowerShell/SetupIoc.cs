@@ -24,9 +24,10 @@ namespace Albatross.CodeGen.PowerShell {
 			c.Register<ILoggerRepository>(() => c.GetInstance<IGetLog4NetLoggerRepository>().Get(), Lifestyle.Singleton);
 			c.Register<ILogFactory, Log4netLogFactory>(Lifestyle.Singleton);
 
-			c.Register<IFactory<IEnumerable<SourceType>>, SourceTypeFactory>();
-			c.Register<IFactory<IEnumerable<OptionType>>, OptionTypeFactory>();
+			c.Register<IFactory<SourceType>, SourceTypeFactory>(Lifestyle.Singleton);
+			c.Register<IFactory<OptionType>, OptionTypeFactory>(Lifestyle.Singleton);
 			c.Register<ICodeGeneratorFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
+
 			c.Register<IRunCodeGenerator, RunCodeGenerator>(Lifestyle.Singleton);
 			c.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 
@@ -41,7 +42,7 @@ namespace Albatross.CodeGen.PowerShell {
 			return c.GetInstance<IObjectFactory>();
 		}
 
-		static Lazy<IObjectFactory> _lazy => new Lazy<IObjectFactory>(() => new SetupIoc().Run());
-		public static IObjectFactory Factory => _lazy.Value;
+		static Lazy<IObjectFactory> _lazy = new Lazy<IObjectFactory>(() => new SetupIoc().Run());
+		public static IObjectFactory Factory { get; private set; } = _lazy.Value;
 	}
 }

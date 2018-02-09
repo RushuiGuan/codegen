@@ -57,7 +57,7 @@ namespace Albatross.CodeGen {
 			factory.RegisterStatic("Newline", GeneratorTarget.Any, "\r\n", "Static", null);
 			factory.RegisterStatic("Tab", GeneratorTarget.Any, "\r\n", "Tab", null);
 		}
-		public static CodeGenerator GetMeta(this IComposite item) {
+		public static CodeGenerator GetMeta(this Composite item) {
 			Type type = typeof(CompositeCodeGenerator<,>);
 			var meta = new CodeGenerator {
 				Name = item.Name,
@@ -71,7 +71,7 @@ namespace Albatross.CodeGen {
 			};
 			return meta;
 		}
-		public static IConfigurableCodeGenFactory Register(this IConfigurableCodeGenFactory factory, IComposite item) {
+		public static IConfigurableCodeGenFactory Register(this IConfigurableCodeGenFactory factory, Composite item) {
 			factory.Register(item.GetMeta());
 			return factory;
 		}
@@ -97,11 +97,26 @@ namespace Albatross.CodeGen {
 				return false;
 			}
 		}
-		public static void Register(this IConfigurableCodeGenFactory factory, Assembly asm) {
+
+		public static void Register(this Assembly asm, IConfigurableCodeGenFactory codeGenFactory, IFactory<SourceType> srcTypeFactory, IFactory<OptionType> optionTypeFactory) {
 			foreach (Type type in asm.GetTypes()) {
-				CodeGeneratorAttribute attrib = type.GetCustomAttribute<CodeGeneratorAttribute>();
-				if (attrib != null) {
-					factory.TryRegister(type, attrib.Name, attrib.Target, attrib.Category, attrib.Description, null);
+				var codeGenAttrib = type.GetCustomAttribute<CodeGeneratorAttribute>();
+				if (codeGenAttrib != null) {
+					codeGenFactory.TryRegister(type, codeGenAttrib.Name, codeGenAttrib.Target, codeGenAttrib.Category, codeGenAttrib.Description, null);
+				}
+
+				if (srcTypeFactory != null) {
+					var srcTypeAttrib = type.GetCustomAttribute<SourceTypeAttribute>();
+					if (srcTypeAttrib != null) {
+						srcTypeFactory.Register(new SourceType { Description = srcTypeAttrib.Description, ObjectType = type, });
+					}
+				}
+
+				if (optionTypeFactory != null) {
+					var optionTypeAttrib = type.GetCustomAttribute<OptionTypeAttribute>();
+					if (optionTypeAttrib != null) {
+						optionTypeFactory.Register(new OptionType { Description = optionTypeAttrib.Description, ObjectType = type, });
+					}
 				}
 			}
 		}
