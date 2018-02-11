@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>Albatross.CodeGen.PowerShell</id>
-		<version>1.1.3</version>
+		<version>1.1.5</version>
 		<title>Albatross Code Generator PowerShell Utilities</title>
 		<authors>Rushui Guan</authors>
 		<owners>Rushui Guan</owners>
@@ -16,6 +16,7 @@
 		<tags>code generator c# sql codegen powershell database csharp</tags>
 	</metadata>
 	<files>
+		<file src=".\bin\Release\net462\*.config" target="tools" />
 		<file src=".\bin\Release\net462\*.dll" target="tools" />
 		<file src=".\bin\Release\net462\*.exe" target="tools" />
 		<file src=".\readme.md" target="tools" />
