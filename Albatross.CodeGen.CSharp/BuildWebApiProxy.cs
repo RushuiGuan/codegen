@@ -8,9 +8,9 @@ namespace Albatross.CodeGen.CSharp {
 	public class BuildWebApiProxy : ClassGenerator<ObjectType> {
 
 		const string ControllerPostfix = "Controller";
-		GetReflectionOnlyType _getReflectionOnlyType;
+		IGetReflectionOnlyType _getReflectionOnlyType;
 
-		public BuildWebApiProxy(GetReflectionOnlyType handle) {
+		public BuildWebApiProxy(IGetReflectionOnlyType handle) {
 			this._getReflectionOnlyType = handle;
 		}
 
