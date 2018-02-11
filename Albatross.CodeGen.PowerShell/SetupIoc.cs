@@ -1,4 +1,5 @@
-﻿using Albatross.CodeGen.Database;
+﻿using Albatross.CodeGen.CSharp;
+using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
 using Albatross.Logging;
 using Albatross.Logging.Core;
@@ -31,13 +32,14 @@ namespace Albatross.CodeGen.PowerShell {
 			c.Register<IRunCodeGenerator, RunCodeGenerator>(Lifestyle.Singleton);
 			c.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 
-
 			c.Register<IColumnSqlTypeBuilder, ColumnSqlTypeBuilder>(Lifestyle.Singleton);
 			c.Register<IGetTableColumns, GetTableColumns>(Lifestyle.Singleton);
 			c.Register<IGetTableIdentityColumn, GetTableIdentityColumn>(Lifestyle.Singleton);
 			c.Register<IGetTablePrimaryKey, GetTablePrimaryKey>(Lifestyle.Singleton);
 			c.Register<IGetVariableName, GetSqlVariableName>(Lifestyle.Singleton);
 			c.Register<ICreateVariable, SqlVariableMgmt>(Lifestyle.Singleton);
+			c.Register<IGetReflectionOnlyType, GetReflectionOnlyType>(Lifestyle.Singleton);
+
 			c.Verify();
 			return c.GetInstance<IObjectFactory>();
 		}
