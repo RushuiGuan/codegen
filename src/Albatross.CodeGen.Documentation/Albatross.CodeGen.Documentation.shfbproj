@@ -13,7 +13,7 @@
     <RootNamespace>Albatross.CodeGen.Documentation</RootNamespace>
     <Name>Albatross.CodeGen.Documentation</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>Cross-platform (.NET Core/.NET Standard)</FrameworkVersion>
+    <FrameworkVersion>.NET Framework 4.6.2</FrameworkVersion>
     <OutputPath>..\..\docs\</OutputPath>
     <HtmlHelpName>Albatross.CodeGen.Documentation</HtmlHelpName>
     <Language>en-US</Language>
@@ -49,8 +49,8 @@
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
     <HelpTitle>Albatross Code Geneneration System</HelpTitle>
     <HelpFileVersion>1.0.0.0</HelpFileVersion>
-    <NamingMethod>HashedMemberName</NamingMethod>
-    <RootNamespaceContainer>True</RootNamespaceContainer>
+    <NamingMethod>MemberName</NamingMethod>
+    <RootNamespaceContainer>False</RootNamespaceContainer>
     <NamespaceGrouping>False</NamespaceGrouping>
     <MaximumGroupParts>2</MaximumGroupParts>
     <Preliminary>False</Preliminary>

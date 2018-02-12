@@ -1,0 +1,34 @@
+# BuiltInStringColumn Class
+ 
+
+\[Missing <summary> documentation for "T:Albatross.CodeGen.SqlServer.BuiltInStringColumn"\]
+
+
+## Inheritance Hierarchy
+<a href="T_Albatross_CodeGen_Database_BuiltInColumn.md">Albatross.CodeGen.Database.BuiltInColumn</a><br />&nbsp;&nbsp;Albatross.CodeGen.SqlServer.BuiltInStringColumn<br />
+**Namespace:**&nbsp;<a href="N_Albatross_CodeGen_SqlServer.md">Albatross.CodeGen.SqlServer</a><br />**Assembly:**&nbsp;Albatross.CodeGen.SqlServer (in Albatross.CodeGen.SqlServer.dll) Version: 1.0.6572.36036 (1.0.0.0)
+
+## Syntax
+
+**C#**<br />
+``` C#
+public class BuiltInStringColumn : BuiltInColumn
+```
+
+The BuiltInStringColumn type exposes the following members.
+
+
+## Constructors
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_Albatross_CodeGen_SqlServer_BuiltInStringColumn__ctor.md">BuiltInStringColumn</a></td><td>
+Initializes a new instance of the BuiltInStringColumn class</td></tr></table>&nbsp;
+<a href="#builtinstringcolumn-class">Back to Top</a>
+
+## Methods
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="M_Albatross_CodeGen_SqlServer_BuiltInStringColumn_Match.md">Match</a></td><td /></tr></table>&nbsp;
+<a href="#builtinstringcolumn-class">Back to Top</a>
+
+## See Also
+
+
+#### Reference
+<a href="N_Albatross_CodeGen_SqlServer.md">Albatross.CodeGen.SqlServer Namespace</a><br />
