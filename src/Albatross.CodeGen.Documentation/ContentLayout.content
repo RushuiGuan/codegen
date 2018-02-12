@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Topics>
-  <Topic id="11ea5c43-a58c-4b9a-9039-bc75b2cde823" visible="True" isDefault="true" isSelected="true" title="Welcome to the [TODO: Add project name]">
-    <HelpKeywords>
-      <HelpKeyword index="K" term="Welcome" />
-    </HelpKeywords>
-  </Topic>
+  <Topic id="11ea5c43-a58c-4b9a-9039-bc75b2cde823" visible="True" isDefault="true" isSelected="true" apiParentMode="InsertAsChild" title="Albatross Code Generator Documentation" />
   <Topic id="bcafe075-c63d-4b38-9bc5-b9b7f3499223" visible="True" isExpanded="true" title="Version History">
     <HelpKeywords>
       <HelpKeyword index="K" term="version, history" />
