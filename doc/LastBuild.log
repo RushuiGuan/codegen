@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder and Tools" version="2017.12.30.2" projectFile="C:\Workspace\GitHub\CodeGen\src\Albatross.CodeGen.Documentation\Albatross.CodeGen.Documentation.shfbproj" started="2/12/2018 12:17:21 AM">
+<shfbBuild product="Sandcastle Help File Builder and Tools" version="2017.12.30.2" projectFile="C:\Workspace\GitHub\CodeGen\src\Albatross.CodeGen.Documentation\Albatross.CodeGen.Documentation.shfbproj" started="2/12/2018 12:31:48 AM">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
@@ -49,7 +49,7 @@ SHFB: Warning BE0062: No documentation source XML comments files found.  The hel
 </buildStep>
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, English (United States))...
-    Last step completed in 00:00:00.0050
+    Last step completed in 00:00:00.0045
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
@@ -58,7 +58,7 @@ Generating API filter for MRefBuilder...
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - GenerateRefInfo.proj]
-Build started 2/12/2018 12:17:24 AM.
+Build started 2/12/2018 12:31:51 AM.
 Project &quot;C:\Workspace\GitHub\CodeGen\doc\Working\GenerateRefInfo.proj&quot; on node 1 (default targets).
 PrepareForBuild:
   Creating directory &quot;obj\Debug\&quot;.
@@ -71,19 +71,19 @@ GenerateRefInfo:
   Using automatic redirect &#39;Albatross.CodeGen.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null&#39; in place of &#39;Albatross.CodeGen, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null&#39;
   Using automatic redirect &#39;Albatross.CodeGen.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null&#39; in place of &#39;Albatross.CodeGen, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null&#39;
   Using automatic redirect &#39;Albatross.CodeGen.SqlServer, Version=1.0.6572.36036, Culture=neutral, PublicKeyToken=null&#39; in place of &#39;Albatross.CodeGen.SqlServer, Version=1.1.2.0, Culture=neutral, PublicKeyToken=null&#39;
-  Wrote information on 7 namespaces, 93 types, and 354 members
+  Wrote information on 8 namespaces, 128 types, and 480 members
   Copying file from &quot;reflection.org&quot; to &quot;reflection.all&quot;.
   XslTransform (v2017.12.30.2)
   Copyright c 2006-2017, Microsoft Corporation, All Rights Reserved.
   Portions Copyright c 2006-2016, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\MergeDuplicates.xsl&#39;.
 Done Building Project &quot;C:\Workspace\GitHub\CodeGen\doc\Working\GenerateRefInfo.proj&quot; (default targets).
-    Last step completed in 00:00:03.1472
+    Last step completed in 00:00:03.1716
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - TransformManifest.proj]
-Build started 2/12/2018 12:17:27 AM.
+Build started 2/12/2018 12:31:54 AM.
 Project &quot;C:\Workspace\GitHub\CodeGen\doc\Working\TransformManifest.proj&quot; on node 1 (default targets).
 TransformManifest:
   XslTransform (v2017.12.30.2)
@@ -95,16 +95,29 @@ TransformManifest:
   Copyright c 2006-2017, Microsoft Corporation, All Rights Reserved.
   Portions Copyright c 2006-2016, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\AddFilenames.xsl&#39;.
+    Unique name DEFDB77E generated for M:Albatross.CodeGen.ScenarioGenerator.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)
+    Unique name 9BAB9A2 generated for M:Albatross.CodeGen.Database.ColumnNotFoundException.#ctor(System.String,System.String)
+    Unique name 951FB9A2 generated for M:Albatross.CodeGen.Database.ColumnNotFoundException.#ctor(Albatross.CodeGen.Database.Table)
+    Unique name F09584D1 generated for M:Albatross.CodeGen.Database.IColumnSqlTypeBuilder.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Column)
+    Unique name C143AB44 generated for M:Albatross.CodeGen.Database.IdentityColumnNotFoundException.#ctor(System.String,System.String)
+    Unique name 1F14AB44 generated for M:Albatross.CodeGen.Database.IdentityColumnNotFoundException.#ctor(Albatross.CodeGen.Database.Table)
+    Unique name 77B65AB3 generated for M:Albatross.CodeGen.Database.IGetTableColumns.Get(Albatross.CodeGen.Database.Table)
+    Unique name A9B49457 generated for M:Albatross.CodeGen.Database.IGetTableIdentityColumn.Get(Albatross.CodeGen.Database.Table)
+    Unique name 7D3EB1A8 generated for M:Albatross.CodeGen.Database.IGetTablePrimaryKey.Get(Albatross.CodeGen.Database.Table)
+    Unique name 9167D35A generated for M:Albatross.CodeGen.Database.PrimaryKeyNotFoundException.#ctor(System.String,System.String)
+    Unique name 3396D35A generated for M:Albatross.CodeGen.Database.PrimaryKeyNotFoundException.#ctor(Albatross.CodeGen.Database.Table)
+    Unique name 2C46D0DC generated for M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)
+    Unique name 1FC496CF generated for M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)
   XslTransform (v2017.12.30.2)
   Copyright c 2006-2017, Microsoft Corporation, All Rights Reserved.
   Portions Copyright c 2006-2016, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\ReflectionToManifest.xsl&#39;.
 Done Building Project &quot;C:\Workspace\GitHub\CodeGen\doc\Working\TransformManifest.proj&quot; (default targets).
-    Last step completed in 00:00:01.1942
+    Last step completed in 00:00:01.3456
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00.1040
+    Last step completed in 00:00:00.1105
 </buildStep>
 <buildStep step="GenerateInheritedDocumentation">
 Generating inherited documentation...
@@ -125,12 +138,12 @@ Indexing C:\Workspace\GitHub\CodeGen\doc\Working\Moq.xml
 Indexing C:\Workspace\GitHub\CodeGen\doc\Working\Dapper.xml
 Indexing C:\Workspace\GitHub\CodeGen\doc\Working\Newtonsoft.Json.xml
 Indexing C:\Workspace\GitHub\CodeGen\doc\Working\_ProjNS_.xml
-Indexed 166102 members in 135 file(s).  8 file(s) to scan for &lt;inheritdoc /&gt; tags.
+Indexed 166103 members in 135 file(s).  8 file(s) to scan for &lt;inheritdoc /&gt; tags.
 Merging inherited documentation...
 
 
 Documentation merged successfully
-    Last step completed in 00:00:01.4017
+    Last step completed in 00:00:01.4273
 </buildStep>
 <buildStep step="CopyConceptualContent">
 Copying conceptual content...
@@ -145,28 +158,28 @@ Generating conceptual topic files
     C:\Workspace\GitHub\CodeGen\src\Albatross.CodeGen.Documentation\Content\VersionHistory\VersionHistory.aml -&gt; C:\Workspace\GitHub\CodeGen\doc\Working\ddueXml\bcafe075-c63d-4b38-9bc5-b9b7f3499223.xml
     Parsing topic file &#39;C:\Workspace\GitHub\CodeGen\src\Albatross.CodeGen.Documentation\Content\VersionHistory\v1.0.0.0.aml&#39;
     C:\Workspace\GitHub\CodeGen\src\Albatross.CodeGen.Documentation\Content\VersionHistory\v1.0.0.0.aml -&gt; C:\Workspace\GitHub\CodeGen\doc\Working\ddueXml\5389aeae-361b-4d3c-939a-ef489289e1fd.xml
-    Last step completed in 00:00:00.0390
+    Last step completed in 00:00:00.0405
 </buildStep>
 <buildStep step="CreateConceptualTopicConfigs">
 Creating conceptual topic configuration files...
     Companion files
     _ContentMetadata_.xml
     Merging topic IDs into manifest.xml
-    Last step completed in 00:00:00.0170
+    Last step completed in 00:00:00.0190
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
 C:\Workspace\GitHub\CodeGen\src\Albatross.CodeGen.Documentation\icons\Help.png -&gt; C:\Workspace\GitHub\CodeGen\doc\Working\Output\Markdown\icons\Help.png
-    Last step completed in 00:00:00.0045
+    Last step completed in 00:00:00.0050
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
-    Last step completed in 00:00:00.0005
+    Last step completed in 00:00:00.0000
 </buildStep>
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - GenerateIntermediateTOC.proj]
-Build started 2/12/2018 12:17:30 AM.
+Build started 2/12/2018 12:31:57 AM.
 Project &quot;C:\Workspace\GitHub\CodeGen\doc\Working\GenerateIntermediateTOC.proj&quot; on node 1 (default targets).
 GenerateIntermediateTOC:
   XslTransform (v2017.12.30.2)
@@ -175,12 +188,12 @@ GenerateIntermediateTOC:
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\CreateVSToc.xsl&#39;.
 Done Building Project &quot;C:\Workspace\GitHub\CodeGen\doc\Working\GenerateIntermediateTOC.proj&quot; (default targets).
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:00.4006
+    Last step completed in 00:00:00.4051
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
-    Last step completed in 00:00:00.2525
+    Last step completed in 00:00:00.2545
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
@@ -193,7 +206,7 @@ C:\Workspace\GitHub\CodeGen\doc\Working\sandcastle.config
 <buildStep step="BuildTopics">
 Building help topics...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - BuildTopics.proj]
-Build started 2/12/2018 12:17:31 AM.
+Build started 2/12/2018 12:31:57 AM.
 Project &quot;C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj&quot; on node 1 (default targets).
 BuildTopics:
   BuildAssembler (v2017.12.30.2)
@@ -769,6 +782,323 @@ BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.PowerShell
 BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.PowerShell.Transformation.String2LeafAttribute.Transform(System.Management.Automation.EngineIntrinsics,System.Object)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.PowerShell.Transformation.String2LeafAttribute.Transform(System.Management.Automation.EngineIntrinsics,System.Object)] Missing &lt;param name=&quot;engineIntrinsics&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.PowerShell.Transformation.String2LeafAttribute.Transform(System.Management.Automation.EngineIntrinsics,System.Object)] Missing &lt;param name=&quot;inputData&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [N:Albatross.CodeGen.SqlServer] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.BuildDeclareStatement] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.#ctor(Albatross.CodeGen.Database.IColumnSqlTypeBuilder)] Missing &lt;param name=&quot;typeBuilder&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.ParamCollection,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.ParamCollection,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.ParamCollection,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.ParamCollection,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;list&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.ParamCollection,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.ParamCollection,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Category] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.BuildDeclareStatement.SourceType] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.BuildDeclareStatement.Target] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.BuiltInColumnFactory] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuiltInColumnFactory.#ctor(System.Collections.Generic.IEnumerable{Albatross.CodeGen.Database.BuiltInColumn})] Missing &lt;param name=&quot;columns&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuiltInColumnFactory.Get(System.String)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuiltInColumnFactory.Get(System.String)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuiltInColumnFactory.Get(System.String)] Missing &lt;param name=&quot;name&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.BuiltInColumns] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [F:Albatross.CodeGen.SqlServer.BuiltInColumns.Items] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.BuiltInComposites] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [F:Albatross.CodeGen.SqlServer.BuiltInComposites.Composites] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.BuiltInDateTimeColumn] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuiltInDateTimeColumn.#ctor(System.String)] Missing &lt;param name=&quot;name&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuiltInDateTimeColumn.Match(Albatross.CodeGen.Database.Column)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuiltInDateTimeColumn.Match(Albatross.CodeGen.Database.Column)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuiltInDateTimeColumn.Match(Albatross.CodeGen.Database.Column)] Missing &lt;param name=&quot;c&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.BuiltInStringColumn] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuiltInStringColumn.#ctor(System.String)] Missing &lt;param name=&quot;name&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuiltInStringColumn.Match(Albatross.CodeGen.Database.Column)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuiltInStringColumn.Match(Albatross.CodeGen.Database.Column)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.BuiltInStringColumn.Match(Albatross.CodeGen.Database.Column)] Missing &lt;param name=&quot;c&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.ColumnEquityComparer] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.ColumnEquityComparer.Equals(Albatross.CodeGen.Database.Column,Albatross.CodeGen.Database.Column)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.ColumnEquityComparer.Equals(Albatross.CodeGen.Database.Column,Albatross.CodeGen.Database.Column)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.ColumnEquityComparer.Equals(Albatross.CodeGen.Database.Column,Albatross.CodeGen.Database.Column)] Missing &lt;param name=&quot;x&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.ColumnEquityComparer.Equals(Albatross.CodeGen.Database.Column,Albatross.CodeGen.Database.Column)] Missing &lt;param name=&quot;y&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.ColumnEquityComparer.GetHashCode(Albatross.CodeGen.Database.Column)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.ColumnEquityComparer.GetHashCode(Albatross.CodeGen.Database.Column)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.ColumnEquityComparer.GetHashCode(Albatross.CodeGen.Database.Column)] Missing &lt;param name=&quot;obj&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.ColumnSqlTypeBuilder] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.ColumnSqlTypeBuilder.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Column)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.ColumnSqlTypeBuilder.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Column)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.ColumnSqlTypeBuilder.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Column)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.ColumnSqlTypeBuilder.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Column)] Missing &lt;param name=&quot;c&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.GetSqlVariableName] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.GetSqlVariableName.Get(System.String)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.GetSqlVariableName.Get(System.String)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.GetSqlVariableName.Get(System.String)] Missing &lt;param name=&quot;name&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.GetTableColumns] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.GetTableColumns.Get(Albatross.CodeGen.Database.Table)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.GetTableColumns.Get(Albatross.CodeGen.Database.Table)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.GetTableColumns.Get(Albatross.CodeGen.Database.Table)] Missing &lt;param name=&quot;table&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.GetTableIdentityColumn] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.GetTableIdentityColumn.Get(Albatross.CodeGen.Database.Table)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.GetTableIdentityColumn.Get(Albatross.CodeGen.Database.Table)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.GetTableIdentityColumn.Get(Albatross.CodeGen.Database.Table)] Missing &lt;param name=&quot;table&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.GetTablePrimaryKey] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.GetTablePrimaryKey.Get(Albatross.CodeGen.Database.Table)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.GetTablePrimaryKey.Get(Albatross.CodeGen.Database.Table)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.GetTablePrimaryKey.Get(Albatross.CodeGen.Database.Table)] Missing &lt;param name=&quot;table&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableCodeGenerator] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableCodeGenerator.Build(System.Text.StringBuilder,System.Object,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableCodeGenerator.Category] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableCodeGenerator.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableCodeGenerator.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableCodeGenerator.SourceType] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableCodeGenerator.Target] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableDelete] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableDelete.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableDelete.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableDelete.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableDelete.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableDelete.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableDelete.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableDelete.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableDelete.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableInsert] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsert.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getTableColumns&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsert.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getVariableName&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsert.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsert.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsert.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsert.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;table&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsert.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsert.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableInsert.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableInsert.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableInsertWithAudit] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsertWithAudit.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IBuiltInColumnFactory)] Missing &lt;param name=&quot;getTableColumns&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsertWithAudit.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IBuiltInColumnFactory)] Missing &lt;param name=&quot;getVariableName&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsertWithAudit.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IBuiltInColumnFactory)] Missing &lt;param name=&quot;builtInColumnFactory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsertWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsertWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsertWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsertWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;table&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsertWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableInsertWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableInsertWithAudit.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableInsertWithAudit.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableMergeByID] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeByID.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeByID.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableMergeByPrimaryKey] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeByPrimaryKey.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeByPrimaryKey.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableMergeDelete] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeDelete.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeDelete.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeDelete.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeDelete.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeDelete.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeDelete.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeDelete.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeDelete.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableMergeInsert] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeInsert.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getColumns&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeInsert.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getVariableName&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeInsert.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeInsert.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeInsert.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeInsert.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeInsert.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeInsert.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeInsert.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeInsert.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableMergeJoinByID] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByID.#ctor(Albatross.CodeGen.Database.IGetTableIdentityColumn)] Missing &lt;param name=&quot;getIDColumn&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;table&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeJoinByID.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeJoinByID.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableMergeJoinByPrimaryKey] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByPrimaryKey.#ctor(Albatross.CodeGen.Database.IGetTablePrimaryKey)] Missing &lt;param name=&quot;getPrimaryKey&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;table&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeJoinByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeJoinByPrimaryKey.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeJoinByPrimaryKey.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableMergeSelect] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelect.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getColumns&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelect.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getVariableName&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;table&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeSelect.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeSelect.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableMergeSelectWithAudit] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelectWithAudit.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IBuiltInColumnFactory)] Missing &lt;param name=&quot;getColumns&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelectWithAudit.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IBuiltInColumnFactory)] Missing &lt;param name=&quot;getVariableName&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelectWithAudit.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IBuiltInColumnFactory)] Missing &lt;param name=&quot;builtInColumnFactory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelectWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelectWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelectWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelectWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;table&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelectWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeSelectWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeSelectWithAudit.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeSelectWithAudit.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableMergeUpdate] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdate.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getColumns&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdate.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getVariableName&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;table&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeUpdate.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeUpdate.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableMergeUpdateExcludePrimaryKey] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdateExcludePrimaryKey.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IGetTablePrimaryKey)] Missing &lt;param name=&quot;getColumns&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdateExcludePrimaryKey.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IGetTablePrimaryKey)] Missing &lt;param name=&quot;getVariableName&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdateExcludePrimaryKey.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IGetTablePrimaryKey)] Missing &lt;param name=&quot;getPrimaryKey&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdateExcludePrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdateExcludePrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdateExcludePrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdateExcludePrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;table&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdateExcludePrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeUpdateExcludePrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeUpdateExcludePrimaryKey.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeUpdateExcludePrimaryKey.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableMergeWithAuditByPrimaryKey] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeWithAuditByPrimaryKey.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableMergeWithAuditByPrimaryKey.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableSelect] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelect.#ctor(Albatross.CodeGen.Database.IGetTableColumns)] Missing &lt;param name=&quot;getTableColumns&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableSelect.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableSelect.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableSelectScopedIdentity] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelectScopedIdentity.#ctor(Albatross.CodeGen.Database.IGetTableIdentityColumn)] Missing &lt;param name=&quot;getIDColumn&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelectScopedIdentity.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelectScopedIdentity.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelectScopedIdentity.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelectScopedIdentity.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelectScopedIdentity.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableSelectScopedIdentity.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableSelectScopedIdentity.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableSelectScopedIdentity.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableUpdate] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdate.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getTableColumns&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdate.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getVariableName&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableUpdate.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableUpdate.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableUpdateExcludePrimaryKey] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateExcludePrimaryKey.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetTablePrimaryKey,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getTableColumns&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateExcludePrimaryKey.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetTablePrimaryKey,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getPrimary&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateExcludePrimaryKey.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetTablePrimaryKey,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getVariableName&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateExcludePrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateExcludePrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateExcludePrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateExcludePrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateExcludePrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateExcludePrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableUpdateExcludePrimaryKey.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableUpdateExcludePrimaryKey.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableUpdateWithAudit] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateWithAudit.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IBuiltInColumnFactory)] Missing &lt;param name=&quot;getTableColumns&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateWithAudit.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IBuiltInColumnFactory)] Missing &lt;param name=&quot;getVariableName&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateWithAudit.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IBuiltInColumnFactory)] Missing &lt;param name=&quot;builtInColumnFactory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableUpdateWithAudit.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableUpdateWithAudit.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableUpdateWithAudit.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableWhereByID] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByID.#ctor(Albatross.CodeGen.Database.IGetTableIdentityColumn,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getIDColumn&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByID.#ctor(Albatross.CodeGen.Database.IGetTableIdentityColumn,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getVariableName&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableWhereByID.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableWhereByID.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.SqlServer.TableWhereByPrimaryKey] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByPrimaryKey.#ctor(Albatross.CodeGen.Database.IGetTablePrimaryKey,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getPrimaryKey&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByPrimaryKey.#ctor(Albatross.CodeGen.Database.IGetTablePrimaryKey,Albatross.CodeGen.Database.IGetVariableName)] Missing &lt;param name=&quot;getVariableName&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;returns&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;sb&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;t&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;options&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.SqlServer.TableWhereByPrimaryKey.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)] Missing &lt;param name=&quot;factory&quot;/&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableWhereByPrimaryKey.Description] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
+BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.SqlServer.TableWhereByPrimaryKey.Name] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [N:Albatross.CodeGen.UnitTest] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [T:Albatross.CodeGen.UnitTest.CodeCheck] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.UnitTest.CodeCheck.FileCheck(System.String)] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
@@ -899,14 +1229,14 @@ BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.UnitTest.M
 BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.UnitTest.Mocking.TableMocking.Schema] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [M:Albatross.CodeGen.UnitTest.Mocking.TableMocking.Setup] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
 BuildAssembler : warning : ShowMissingComponent: [P:Albatross.CodeGen.UnitTest.Mocking.TableMocking.TableName] Missing &lt;summary&gt; documentation [C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj]
-  Processed 577 topic(s)
-  698 warning(s)
+  Processed 825 topic(s)
+  1015 warning(s)
   CopyFromIndexComponent: &quot;metadata&quot; in-memory cache entries used: 1 of 15.
   ResolveArtLinksComponent: Copying media files...
   CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 6 of 15.
   CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 2 of 30.
 Done Building Project &quot;C:\Workspace\GitHub\CodeGen\doc\Working\BuildTopics.proj&quot; (default targets).
-    Last step completed in 00:00:10.8813
+    Last step completed in 00:00:11.8760
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
@@ -955,7 +1285,7 @@ C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyle
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\Markdown\media\static.gif -&gt; C:\Workspace\GitHub\CodeGen\doc\Working\Output\Markdown\media\static.gif
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\Markdown\media\xna.gif -&gt; C:\Workspace\GitHub\CodeGen\doc\Working\Output\Markdown\media\xna.gif
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\Markdown\MarkdownContent\_Footer.md -&gt; C:\Workspace\GitHub\CodeGen\doc\Working\Output\Markdown\_Footer.md
-    Last step completed in 00:00:00.2330
+    Last step completed in 00:00:00.2290
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Executing informational Generate Table of Contents build step for plug-ins (not used for Markdown)
@@ -963,25 +1293,25 @@ Executing informational Generate Table of Contents build step for plug-ins (not 
 </buildStep>
 <buildStep step="GenerateHelpProject">
 Executing informational Generate Help Project build step for plug-ins (not used for Markdown)
-    Last step completed in 00:00:00.0005
+    Last step completed in 00:00:00.0010
 </buildStep>
 <buildStep step="CompilingHelpFile">
 Generating markdown content...
 [C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe - GenerateMarkdownContent.proj]
   500 topics generated
-  Finished generating 577 topics
+  Finished generating 825 topics
   Copying content to output folder...
   Copied 500 files
-  Finished copying 621 files
-    Last step completed in 00:00:08.2732
+  Finished copying 869 files
+    Last step completed in 00:00:12.3380
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:00.2955
+    Last step completed in 00:00:00.5001
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 2/12/2018 12:17:50 AM.  Total time: 00:00:29.1236
+Build completed successfully at 2/12/2018 12:32:22 AM.  Total time: 00:00:34.3361
 
 </buildStep>
 </shfbBuild>
