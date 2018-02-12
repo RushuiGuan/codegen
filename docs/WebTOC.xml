@@ -1,0 +1,1154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="afb262cd-bb0e-490a-ac05-be0edf69ef60" Title="Albatross.CodeGen" Url="html/N_Albatross_CodeGen.htm">
+    <HelpTOCNode Id="fa38f834-95be-4baa-9c4f-8b7cce82dbdb" Title="CodeGeneratorAttribute Class" Url="html/T_Albatross_CodeGen_CodeGeneratorAttribute.htm">
+      <HelpTOCNode Title="CodeGeneratorAttribute Constructor " Url="html/M_Albatross_CodeGen_CodeGeneratorAttribute__ctor.htm" />
+      <HelpTOCNode Title="CodeGeneratorAttribute Properties" Url="html/Properties_T_Albatross_CodeGen_CodeGeneratorAttribute.htm" />
+      <HelpTOCNode Title="CodeGeneratorAttribute Methods" Url="html/Methods_T_Albatross_CodeGen_CodeGeneratorAttribute.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="6d314c00-8e27-4fb8-9636-8cea162ed8a3" Title="CodeGenNotRegisteredException Class" Url="html/T_Albatross_CodeGen_CodeGenNotRegisteredException.htm">
+      <HelpTOCNode Title="CodeGenNotRegisteredException Constructor " Url="html/M_Albatross_CodeGen_CodeGenNotRegisteredException__ctor.htm" />
+      <HelpTOCNode Title="CodeGenNotRegisteredException Properties" Url="html/Properties_T_Albatross_CodeGen_CodeGenNotRegisteredException.htm" />
+      <HelpTOCNode Title="CodeGenNotRegisteredException Methods" Url="html/Methods_T_Albatross_CodeGen_CodeGenNotRegisteredException.htm" />
+      <HelpTOCNode Title="CodeGenNotRegisteredException Events" Url="html/Events_T_Albatross_CodeGen_CodeGenNotRegisteredException.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="e206a13b-9d9d-4cc5-8c19-6485d979d6b6" Title="Composite Class" Url="html/T_Albatross_CodeGen_Composite.htm">
+      <HelpTOCNode Title="Composite Constructor " Url="html/M_Albatross_CodeGen_Composite__ctor.htm" />
+      <HelpTOCNode Id="79e11f3b-1930-44b7-8f17-fd2999c67527" Title="Composite Properties" Url="html/Properties_T_Albatross_CodeGen_Composite.htm">
+        <HelpTOCNode Title="Category Property " Url="html/P_Albatross_CodeGen_Composite_Category.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_Composite_Description.htm" />
+        <HelpTOCNode Title="Generators Property " Url="html/P_Albatross_CodeGen_Composite_Generators.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_Composite_Name.htm" />
+        <HelpTOCNode Title="Seperator Property " Url="html/P_Albatross_CodeGen_Composite_Seperator.htm" />
+        <HelpTOCNode Title="SourceType Property " Url="html/P_Albatross_CodeGen_Composite_SourceType.htm" />
+        <HelpTOCNode Title="Target Property " Url="html/P_Albatross_CodeGen_Composite_Target.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Composite Methods" Url="html/Methods_T_Albatross_CodeGen_Composite.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="cfacd8fa-a7d0-46b0-96b4-695c97eddc6e" Title="CompositeCodeGenerator Class" Url="html/T_Albatross_CodeGen_CompositeCodeGenerator.htm">
+      <HelpTOCNode Title="CompositeCodeGenerator Constructor " Url="html/M_Albatross_CodeGen_CompositeCodeGenerator__ctor.htm" />
+      <HelpTOCNode Id="77fa7c15-200f-4cd2-83b7-f720e0a2167e" Title="CompositeCodeGenerator Properties" Url="html/Properties_T_Albatross_CodeGen_CompositeCodeGenerator.htm">
+        <HelpTOCNode Title="Category Property " Url="html/P_Albatross_CodeGen_CompositeCodeGenerator_Category.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_CompositeCodeGenerator_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_CompositeCodeGenerator_Name.htm" />
+        <HelpTOCNode Title="Seperator Property " Url="html/P_Albatross_CodeGen_CompositeCodeGenerator_Seperator.htm" />
+        <HelpTOCNode Title="SourceType Property " Url="html/P_Albatross_CodeGen_CompositeCodeGenerator_SourceType.htm" />
+        <HelpTOCNode Title="Target Property " Url="html/P_Albatross_CodeGen_CompositeCodeGenerator_Target.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="4322a015-38a3-4fe9-81a4-04f35c484666" Title="CompositeCodeGenerator Methods" Url="html/Methods_T_Albatross_CodeGen_CompositeCodeGenerator.htm">
+        <HelpTOCNode Title="Build Method " Url="html/M_Albatross_CodeGen_CompositeCodeGenerator_Build.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="fe0585a4-2f47-4341-b594-963d1983b725" Title="ContainerControlledCodeGenFactory Class" Url="html/T_Albatross_CodeGen_ContainerControlledCodeGenFactory.htm">
+      <HelpTOCNode Title="ContainerControlledCodeGenFactory Constructor " Url="html/M_Albatross_CodeGen_ContainerControlledCodeGenFactory__ctor.htm" />
+      <HelpTOCNode Id="8a86c290-8fb9-468a-9f38-134ba0a3c73f" Title="ContainerControlledCodeGenFactory Properties" Url="html/Properties_T_Albatross_CodeGen_ContainerControlledCodeGenFactory.htm">
+        <HelpTOCNode Title="Registrations Property " Url="html/P_Albatross_CodeGen_ContainerControlledCodeGenFactory_Registrations.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="39d3f24a-a7bf-4462-9996-b3ddcb1e96f3" Title="ContainerControlledCodeGenFactory Methods" Url="html/Methods_T_Albatross_CodeGen_ContainerControlledCodeGenFactory.htm">
+        <HelpTOCNode Id="70e31e3d-35df-42ce-9f0f-1c95c282abe5" Title="Get Method " Url="html/Overload_Albatross_CodeGen_ContainerControlledCodeGenFactory_Get.htm">
+          <HelpTOCNode Title="Get(T) Method (String)" Url="html/M_Albatross_CodeGen_ContainerControlledCodeGenFactory_Get__1.htm" />
+          <HelpTOCNode Title="Get Method (Type, String)" Url="html/M_Albatross_CodeGen_ContainerControlledCodeGenFactory_Get.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d37bf55c-7118-4217-b3fc-13e614484b27" Title="CSharpExtension Class" Url="html/T_Albatross_CodeGen_CSharpExtension.htm">
+      <HelpTOCNode Id="0a2ff137-8c74-441d-ba0f-0e94db72ae06" Title="CSharpExtension Methods" Url="html/Methods_T_Albatross_CodeGen_CSharpExtension.htm">
+        <HelpTOCNode Title="AsString Method " Url="html/M_Albatross_CodeGen_CSharpExtension_AsString.htm" />
+        <HelpTOCNode Title="BaseClass Method " Url="html/M_Albatross_CodeGen_CSharpExtension_BaseClass.htm" />
+        <HelpTOCNode Title="BindableGetter Method " Url="html/M_Albatross_CodeGen_CSharpExtension_BindableGetter.htm" />
+        <HelpTOCNode Title="BindableSetter Method " Url="html/M_Albatross_CodeGen_CSharpExtension_BindableSetter.htm" />
+        <HelpTOCNode Title="ClassName Method " Url="html/M_Albatross_CodeGen_CSharpExtension_ClassName.htm" />
+        <HelpTOCNode Title="CloseScope Method " Url="html/M_Albatross_CodeGen_CSharpExtension_CloseScope.htm" />
+        <HelpTOCNode Title="Constructor Method " Url="html/M_Albatross_CodeGen_CSharpExtension_Constructor.htm" />
+        <HelpTOCNode Title="EmptyScope Method " Url="html/M_Albatross_CodeGen_CSharpExtension_EmptyScope.htm" />
+        <HelpTOCNode Title="EndRegion Method " Url="html/M_Albatross_CodeGen_CSharpExtension_EndRegion.htm" />
+        <HelpTOCNode Title="GetTypeName Method " Url="html/M_Albatross_CodeGen_CSharpExtension_GetTypeName.htm" />
+        <HelpTOCNode Title="Join Method " Url="html/M_Albatross_CodeGen_CSharpExtension_Join.htm" />
+        <HelpTOCNode Title="Literal Method " Url="html/M_Albatross_CodeGen_CSharpExtension_Literal.htm" />
+        <HelpTOCNode Title="Method Method " Url="html/M_Albatross_CodeGen_CSharpExtension_Method.htm" />
+        <HelpTOCNode Id="c1de7ba9-5d7f-4757-8dcc-8c0806c6747b" Title="MethodParam Method " Url="html/Overload_Albatross_CodeGen_CSharpExtension_MethodParam.htm">
+          <HelpTOCNode Title="MethodParam(T) Method (StringBuilder, String)" Url="html/M_Albatross_CodeGen_CSharpExtension_MethodParam__1.htm" />
+          <HelpTOCNode Title="MethodParam Method (StringBuilder, Type, String)" Url="html/M_Albatross_CodeGen_CSharpExtension_MethodParam.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="OpenScope Method " Url="html/M_Albatross_CodeGen_CSharpExtension_OpenScope.htm" />
+        <HelpTOCNode Title="Override Method " Url="html/M_Albatross_CodeGen_CSharpExtension_Override.htm" />
+        <HelpTOCNode Title="Pad Method " Url="html/M_Albatross_CodeGen_CSharpExtension_Pad.htm" />
+        <HelpTOCNode Title="PropertyAssignment Method " Url="html/M_Albatross_CodeGen_CSharpExtension_PropertyAssignment.htm" />
+        <HelpTOCNode Title="Public Method " Url="html/M_Albatross_CodeGen_CSharpExtension_Public.htm" />
+        <HelpTOCNode Title="PublicClass Method " Url="html/M_Albatross_CodeGen_CSharpExtension_PublicClass.htm" />
+        <HelpTOCNode Title="PublicProperty Method " Url="html/M_Albatross_CodeGen_CSharpExtension_PublicProperty.htm" />
+        <HelpTOCNode Title="Region Method " Url="html/M_Albatross_CodeGen_CSharpExtension_Region.htm" />
+        <HelpTOCNode Title="Terminate Method " Url="html/M_Albatross_CodeGen_CSharpExtension_Terminate.htm" />
+        <HelpTOCNode Title="ToGenericTypeString Method " Url="html/M_Albatross_CodeGen_CSharpExtension_ToGenericTypeString.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="3a9b347d-11c5-47cf-9c08-087fb723defa" Title="Extension Class" Url="html/T_Albatross_CodeGen_Extension.htm">
+      <HelpTOCNode Id="b15ccb8d-ef7b-4337-b88a-0616f8af52e7" Title="Extension Methods" Url="html/Methods_T_Albatross_CodeGen_Extension.htm">
+        <HelpTOCNode Title="FindCodeGenerator Method " Url="html/M_Albatross_CodeGen_Extension_FindCodeGenerator.htm" />
+        <HelpTOCNode Title="GetAssemblyResource Method " Url="html/M_Albatross_CodeGen_Extension_GetAssemblyResource.htm" />
+        <HelpTOCNode Title="GetConnectionString Method " Url="html/M_Albatross_CodeGen_Extension_GetConnectionString.htm" />
+        <HelpTOCNode Title="GetGeneratorName Method " Url="html/M_Albatross_CodeGen_Extension_GetGeneratorName.htm" />
+        <HelpTOCNode Title="GetName Method " Url="html/M_Albatross_CodeGen_Extension_GetName.htm" />
+        <HelpTOCNode Title="GetSourceType Method " Url="html/M_Albatross_CodeGen_Extension_GetSourceType.htm" />
+        <HelpTOCNode Title="LoadType Method " Url="html/M_Albatross_CodeGen_Extension_LoadType.htm" />
+        <HelpTOCNode Title="NewSqlTableComposite Method " Url="html/M_Albatross_CodeGen_Extension_NewSqlTableComposite.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="903270ca-3050-49b0-b98e-9857ae464808" Title="ICodeGenerator Interface" Url="html/T_Albatross_CodeGen_ICodeGenerator.htm">
+      <HelpTOCNode Id="af537314-d6b1-4ef7-a750-1e26577cbe5f" Title="ICodeGenerator Properties" Url="html/Properties_T_Albatross_CodeGen_ICodeGenerator.htm">
+        <HelpTOCNode Title="Category Property " Url="html/P_Albatross_CodeGen_ICodeGenerator_Category.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_ICodeGenerator_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_ICodeGenerator_Name.htm" />
+        <HelpTOCNode Title="SourceType Property " Url="html/P_Albatross_CodeGen_ICodeGenerator_SourceType.htm" />
+        <HelpTOCNode Title="Target Property " Url="html/P_Albatross_CodeGen_ICodeGenerator_Target.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0bb03313-9873-4049-8cf6-fe4bf1714989" Title="ICodeGenerator Methods" Url="html/Methods_T_Albatross_CodeGen_ICodeGenerator.htm">
+        <HelpTOCNode Title="Build Method " Url="html/M_Albatross_CodeGen_ICodeGenerator_Build.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="0a180b52-6b54-483e-a537-f0857c64a021" Title="ICodeGenerator(T) Interface" Url="html/T_Albatross_CodeGen_ICodeGenerator_1.htm">
+      <HelpTOCNode Title="ICodeGenerator(T) Properties" Url="html/Properties_T_Albatross_CodeGen_ICodeGenerator_1.htm" />
+      <HelpTOCNode Id="dfcc8cbc-ae41-423a-bea3-6a80e9d72237" Title="ICodeGenerator(T) Methods" Url="html/Methods_T_Albatross_CodeGen_ICodeGenerator_1.htm">
+        <HelpTOCNode Id="6acd6fee-b7e5-4a76-9356-e7889b63eb2e" Title="Build Method " Url="html/Overload_Albatross_CodeGen_ICodeGenerator_1_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, T, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_ICodeGenerator_1_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="59ec7c76-ad13-4f25-8554-150c979856c0" Title="ICodeGeneratorFactory Interface" Url="html/T_Albatross_CodeGen_ICodeGeneratorFactory.htm">
+      <HelpTOCNode Id="87e0eb6f-dd9b-4b81-9c06-d281d7718a39" Title="ICodeGeneratorFactory Properties" Url="html/Properties_T_Albatross_CodeGen_ICodeGeneratorFactory.htm">
+        <HelpTOCNode Title="Registrations Property " Url="html/P_Albatross_CodeGen_ICodeGeneratorFactory_Registrations.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="2ddfae88-17aa-4edf-9053-09ed0bb5993f" Title="ICodeGeneratorFactory Methods" Url="html/Methods_T_Albatross_CodeGen_ICodeGeneratorFactory.htm">
+        <HelpTOCNode Id="c41c367b-c646-4b53-8501-0da83e91b98a" Title="Get Method " Url="html/Overload_Albatross_CodeGen_ICodeGeneratorFactory_Get.htm">
+          <HelpTOCNode Title="Get(T) Method (String)" Url="html/M_Albatross_CodeGen_ICodeGeneratorFactory_Get__1.htm" />
+          <HelpTOCNode Title="Get Method (Type, String)" Url="html/M_Albatross_CodeGen_ICodeGeneratorFactory_Get.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9d98ca0d-3f33-414d-a983-f59a9c8be7e5" Title="ISourceTypeFactory Interface" Url="html/T_Albatross_CodeGen_ISourceTypeFactory.htm">
+      <HelpTOCNode Id="de39c71d-73e3-4488-ad53-8e5e825d84ea" Title="ISourceTypeFactory Methods" Url="html/Methods_T_Albatross_CodeGen_ISourceTypeFactory.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_Albatross_CodeGen_ISourceTypeFactory_Get.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f22d4856-3a8b-4e92-81de-e3bccd242704" Title="Scenario Class" Url="html/T_Albatross_CodeGen_Scenario.htm">
+      <HelpTOCNode Title="Scenario Constructor " Url="html/M_Albatross_CodeGen_Scenario__ctor.htm" />
+      <HelpTOCNode Id="87011b0b-90fb-495c-ade3-bc18e1595dcf" Title="Scenario Properties" Url="html/Properties_T_Albatross_CodeGen_Scenario.htm">
+        <HelpTOCNode Title="Category Property " Url="html/P_Albatross_CodeGen_Scenario_Category.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_Scenario_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_Scenario_Name.htm" />
+        <HelpTOCNode Title="Steps Property " Url="html/P_Albatross_CodeGen_Scenario_Steps.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Scenario Methods" Url="html/Methods_T_Albatross_CodeGen_Scenario.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="a540c28a-01cc-4328-9a77-739d9a901bc7" Title="ScenarioGenerator Class" Url="html/T_Albatross_CodeGen_ScenarioGenerator.htm">
+      <HelpTOCNode Title="ScenarioGenerator Constructor " Url="html/M_Albatross_CodeGen_ScenarioGenerator__ctor.htm" />
+      <HelpTOCNode Id="46547a84-7ade-4f01-be88-781adb183005" Title="ScenarioGenerator Properties" Url="html/Properties_T_Albatross_CodeGen_ScenarioGenerator.htm">
+        <HelpTOCNode Title="Category Property " Url="html/P_Albatross_CodeGen_ScenarioGenerator_Category.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_ScenarioGenerator_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_ScenarioGenerator_Name.htm" />
+        <HelpTOCNode Title="SourceType Property " Url="html/P_Albatross_CodeGen_ScenarioGenerator_SourceType.htm" />
+        <HelpTOCNode Title="Target Property " Url="html/P_Albatross_CodeGen_ScenarioGenerator_Target.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="3a6811c5-77b3-4ec3-90fb-3615eb2505fe" Title="ScenarioGenerator Methods" Url="html/Methods_T_Albatross_CodeGen_ScenarioGenerator.htm">
+        <HelpTOCNode Id="3a8cbf74-63e9-43c5-a44c-c6224e548011" Title="Build Method " Url="html/Overload_Albatross_CodeGen_ScenarioGenerator_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Scenario, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_ScenarioGenerator_Build.htm" />
+          <HelpTOCNode Title="Build Method (StringBuilder, Object, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_ScenarioGenerator_Build_1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="eb93f651-9be7-4dd1-8f73-cc304fa7728b" Title="ScenarioNotRegisteredException Class" Url="html/T_Albatross_CodeGen_ScenarioNotRegisteredException.htm">
+      <HelpTOCNode Title="ScenarioNotRegisteredException Constructor " Url="html/M_Albatross_CodeGen_ScenarioNotRegisteredException__ctor.htm" />
+      <HelpTOCNode Title="ScenarioNotRegisteredException Properties" Url="html/Properties_T_Albatross_CodeGen_ScenarioNotRegisteredException.htm" />
+      <HelpTOCNode Title="ScenarioNotRegisteredException Methods" Url="html/Methods_T_Albatross_CodeGen_ScenarioNotRegisteredException.htm" />
+      <HelpTOCNode Title="ScenarioNotRegisteredException Events" Url="html/Events_T_Albatross_CodeGen_ScenarioNotRegisteredException.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="78299825-5641-4113-8e91-458c057bf6e1" Title="SourceType Class" Url="html/T_Albatross_CodeGen_SourceType.htm">
+      <HelpTOCNode Title="SourceType Constructor " Url="html/M_Albatross_CodeGen_SourceType__ctor.htm" />
+      <HelpTOCNode Id="f1febfbe-b595-4ed7-a467-03fc69fc2506" Title="SourceType Properties" Url="html/Properties_T_Albatross_CodeGen_SourceType.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SourceType_Description.htm" />
+        <HelpTOCNode Title="ObjectType Property " Url="html/P_Albatross_CodeGen_SourceType_ObjectType.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="SourceType Methods" Url="html/Methods_T_Albatross_CodeGen_SourceType.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="58bfa93e-bc81-443c-80d2-6ed98dd5dc79" Title="SourceTypeAttribute Class" Url="html/T_Albatross_CodeGen_SourceTypeAttribute.htm">
+      <HelpTOCNode Title="SourceTypeAttribute Constructor " Url="html/M_Albatross_CodeGen_SourceTypeAttribute__ctor.htm" />
+      <HelpTOCNode Id="86c18567-afe2-492c-b5c3-c4be2c13fbe2" Title="SourceTypeAttribute Properties" Url="html/Properties_T_Albatross_CodeGen_SourceTypeAttribute.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SourceTypeAttribute_Description.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="SourceTypeAttribute Methods" Url="html/Methods_T_Albatross_CodeGen_SourceTypeAttribute.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="2714cf89-6cb1-4828-a3ab-fdeb3526f201" Title="SQLExtension Class" Url="html/T_Albatross_CodeGen_SQLExtension.htm">
+      <HelpTOCNode Id="364583c4-b2e8-4573-b04e-97b92d2251b9" Title="SQLExtension Methods" Url="html/Methods_T_Albatross_CodeGen_SQLExtension.htm">
+        <HelpTOCNode Title="EscapeName Method " Url="html/M_Albatross_CodeGen_SQLExtension_EscapeName.htm" />
+        <HelpTOCNode Title="IsBoolean Method " Url="html/M_Albatross_CodeGen_SQLExtension_IsBoolean.htm" />
+        <HelpTOCNode Title="IsDateTime Method " Url="html/M_Albatross_CodeGen_SQLExtension_IsDateTime.htm" />
+        <HelpTOCNode Title="IsNumeric Method " Url="html/M_Albatross_CodeGen_SQLExtension_IsNumeric.htm" />
+        <HelpTOCNode Title="IsString Method " Url="html/M_Albatross_CodeGen_SQLExtension_IsString.htm" />
+        <HelpTOCNode Title="Match Method " Url="html/M_Albatross_CodeGen_SQLExtension_Match.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a6e5fd93-f4d8-4c9b-a85b-c27522a4b424" Title="Step Class" Url="html/T_Albatross_CodeGen_Step.htm">
+      <HelpTOCNode Title="Step Constructor " Url="html/M_Albatross_CodeGen_Step__ctor.htm" />
+      <HelpTOCNode Id="297ecd73-f8d5-42ce-96f7-60f818f8d33d" Title="Step Properties" Url="html/Properties_T_Albatross_CodeGen_Step.htm">
+        <HelpTOCNode Title="Generator Property " Url="html/P_Albatross_CodeGen_Step_Generator.htm" />
+        <HelpTOCNode Title="Options Property " Url="html/P_Albatross_CodeGen_Step_Options.htm" />
+        <HelpTOCNode Title="Source Property " Url="html/P_Albatross_CodeGen_Step_Source.htm" />
+        <HelpTOCNode Title="SourceType Property " Url="html/P_Albatross_CodeGen_Step_SourceType.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Step Methods" Url="html/Methods_T_Albatross_CodeGen_Step.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="f55b198d-6da9-4ef5-90bf-b4ecc21b28c7" Title="StepConverter Class" Url="html/T_Albatross_CodeGen_StepConverter.htm">
+      <HelpTOCNode Title="StepConverter Constructor " Url="html/M_Albatross_CodeGen_StepConverter__ctor.htm" />
+      <HelpTOCNode Id="2bb2f952-39fa-4603-9365-5831d17df6e8" Title="StepConverter Properties" Url="html/Properties_T_Albatross_CodeGen_StepConverter.htm">
+        <HelpTOCNode Title="CanRead Property " Url="html/P_Albatross_CodeGen_StepConverter_CanRead.htm" />
+        <HelpTOCNode Title="CanWrite Property " Url="html/P_Albatross_CodeGen_StepConverter_CanWrite.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6b76cda3-4464-4919-817b-71038d27e28c" Title="StepConverter Methods" Url="html/Methods_T_Albatross_CodeGen_StepConverter.htm">
+        <HelpTOCNode Title="CanConvert Method " Url="html/M_Albatross_CodeGen_StepConverter_CanConvert.htm" />
+        <HelpTOCNode Title="ReadJson Method " Url="html/M_Albatross_CodeGen_StepConverter_ReadJson.htm" />
+        <HelpTOCNode Title="WriteJson Method " Url="html/M_Albatross_CodeGen_StepConverter_WriteJson.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c875e7c2-214a-4c13-922a-b084ddb7f71d" Title="StringBuilderExtension Class" Url="html/T_Albatross_CodeGen_StringBuilderExtension.htm">
+      <HelpTOCNode Id="1b0d98d0-1f82-42f5-a712-56cc9e73e18a" Title="StringBuilderExtension Methods" Url="html/Methods_T_Albatross_CodeGen_StringBuilderExtension.htm">
+        <HelpTOCNode Title="AppendChar Method " Url="html/M_Albatross_CodeGen_StringBuilderExtension_AppendChar.htm" />
+        <HelpTOCNode Title="CloseParenthesis Method " Url="html/M_Albatross_CodeGen_StringBuilderExtension_CloseParenthesis.htm" />
+        <HelpTOCNode Title="CloseSquareBracket Method " Url="html/M_Albatross_CodeGen_StringBuilderExtension_CloseSquareBracket.htm" />
+        <HelpTOCNode Title="Comma Method " Url="html/M_Albatross_CodeGen_StringBuilderExtension_Comma.htm" />
+        <HelpTOCNode Title="Dot Method " Url="html/M_Albatross_CodeGen_StringBuilderExtension_Dot.htm" />
+        <HelpTOCNode Title="OpenParenthesis Method " Url="html/M_Albatross_CodeGen_StringBuilderExtension_OpenParenthesis.htm" />
+        <HelpTOCNode Title="OpenSquareBracket Method " Url="html/M_Albatross_CodeGen_StringBuilderExtension_OpenSquareBracket.htm" />
+        <HelpTOCNode Title="Semicolon Method " Url="html/M_Albatross_CodeGen_StringBuilderExtension_Semicolon.htm" />
+        <HelpTOCNode Title="Space Method " Url="html/M_Albatross_CodeGen_StringBuilderExtension_Space.htm" />
+        <HelpTOCNode Title="Tab Method " Url="html/M_Albatross_CodeGen_StringBuilderExtension_Tab.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="1498ea42-9ff4-4e52-985f-1a8dba4b666b" Title="Albatross.CodeGen.CSharp" Url="html/N_Albatross_CodeGen_CSharp.htm">
+    <HelpTOCNode Id="a132f284-053d-4880-acd0-0185bef58c8c" Title="Class1 Class" Url="html/T_Albatross_CodeGen_CSharp_Class1.htm">
+      <HelpTOCNode Title="Class1 Constructor " Url="html/M_Albatross_CodeGen_CSharp_Class1__ctor.htm" />
+      <HelpTOCNode Title="Class1 Methods" Url="html/Methods_T_Albatross_CodeGen_CSharp_Class1.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="958054b0-47b7-4bf1-bda3-ab787b552105" Title="ObjectType Class" Url="html/T_Albatross_CodeGen_CSharp_ObjectType.htm">
+      <HelpTOCNode Title="ObjectType Constructor " Url="html/M_Albatross_CodeGen_CSharp_ObjectType__ctor.htm" />
+      <HelpTOCNode Id="469a57b7-46a0-498a-82d3-cdb461dc4cd8" Title="ObjectType Properties" Url="html/Properties_T_Albatross_CodeGen_CSharp_ObjectType.htm">
+        <HelpTOCNode Title="AssemblyLocation Property " Url="html/P_Albatross_CodeGen_CSharp_ObjectType_AssemblyLocation.htm" />
+        <HelpTOCNode Title="ClassName Property " Url="html/P_Albatross_CodeGen_CSharp_ObjectType_ClassName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ObjectType Methods" Url="html/Methods_T_Albatross_CodeGen_CSharp_ObjectType.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="356d7a58-8a5c-49f1-8956-991ad4543f08" Title="Albatross.CodeGen.Database" Url="html/N_Albatross_CodeGen_Database.htm">
+    <HelpTOCNode Id="04afd824-cd7e-44eb-abf0-2b8f1eb6fca6" Title="BuiltInColumn Class" Url="html/T_Albatross_CodeGen_Database_BuiltInColumn.htm">
+      <HelpTOCNode Title="BuiltInColumn Constructor " Url="html/M_Albatross_CodeGen_Database_BuiltInColumn__ctor.htm" />
+      <HelpTOCNode Id="5ecdb751-1c0a-43c0-94c6-d12d1ce343f5" Title="BuiltInColumn Properties" Url="html/Properties_T_Albatross_CodeGen_Database_BuiltInColumn.htm">
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_Database_BuiltInColumn_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="dcf5de4f-b02e-4aab-89ca-802c71461f32" Title="BuiltInColumn Methods" Url="html/Methods_T_Albatross_CodeGen_Database_BuiltInColumn.htm">
+        <HelpTOCNode Title="Match Method " Url="html/M_Albatross_CodeGen_Database_BuiltInColumn_Match.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="7a73ea2d-0fbd-4e61-8ced-a098111c349d" Title="BuiltInColumnNotRegisteredException Class" Url="html/T_Albatross_CodeGen_Database_BuiltInColumnNotRegisteredException.htm">
+      <HelpTOCNode Title="BuiltInColumnNotRegisteredException Constructor " Url="html/M_Albatross_CodeGen_Database_BuiltInColumnNotRegisteredException__ctor.htm" />
+      <HelpTOCNode Title="BuiltInColumnNotRegisteredException Properties" Url="html/Properties_T_Albatross_CodeGen_Database_BuiltInColumnNotRegisteredException.htm" />
+      <HelpTOCNode Title="BuiltInColumnNotRegisteredException Methods" Url="html/Methods_T_Albatross_CodeGen_Database_BuiltInColumnNotRegisteredException.htm" />
+      <HelpTOCNode Title="BuiltInColumnNotRegisteredException Events" Url="html/Events_T_Albatross_CodeGen_Database_BuiltInColumnNotRegisteredException.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="3294a938-ff8c-469c-9b47-ec5853aec25a" Title="Column Class" Url="html/T_Albatross_CodeGen_Database_Column.htm">
+      <HelpTOCNode Title="Column Constructor " Url="html/M_Albatross_CodeGen_Database_Column__ctor.htm" />
+      <HelpTOCNode Id="591c6daa-d1ba-469f-9613-39214d65f1f2" Title="Column Properties" Url="html/Properties_T_Albatross_CodeGen_Database_Column.htm">
+        <HelpTOCNode Title="ComputedColumn Property " Url="html/P_Albatross_CodeGen_Database_Column_ComputedColumn.htm" />
+        <HelpTOCNode Title="DataType Property " Url="html/P_Albatross_CodeGen_Database_Column_DataType.htm" />
+        <HelpTOCNode Title="Expression Property " Url="html/P_Albatross_CodeGen_Database_Column_Expression.htm" />
+        <HelpTOCNode Title="IdentityColumn Property " Url="html/P_Albatross_CodeGen_Database_Column_IdentityColumn.htm" />
+        <HelpTOCNode Title="IsNullable Property " Url="html/P_Albatross_CodeGen_Database_Column_IsNullable.htm" />
+        <HelpTOCNode Title="MaxLength Property " Url="html/P_Albatross_CodeGen_Database_Column_MaxLength.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_Database_Column_Name.htm" />
+        <HelpTOCNode Title="OrdinalPosition Property " Url="html/P_Albatross_CodeGen_Database_Column_OrdinalPosition.htm" />
+        <HelpTOCNode Title="Precision Property " Url="html/P_Albatross_CodeGen_Database_Column_Precision.htm" />
+        <HelpTOCNode Title="Scale Property " Url="html/P_Albatross_CodeGen_Database_Column_Scale.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Column Methods" Url="html/Methods_T_Albatross_CodeGen_Database_Column.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="94b5c491-afde-463e-8d68-8db951e7488a" Title="ColumnNotFoundException Class" Url="html/T_Albatross_CodeGen_Database_ColumnNotFoundException.htm">
+      <HelpTOCNode Id="b6ce81ff-b157-4999-8f5b-1505c4a760e2" Title="ColumnNotFoundException Constructor " Url="html/Overload_Albatross_CodeGen_Database_ColumnNotFoundException__ctor.htm">
+        <HelpTOCNode Title="ColumnNotFoundException Constructor (DatabaseObject)" Url="html/M_Albatross_CodeGen_Database_ColumnNotFoundException__ctor.htm" />
+        <HelpTOCNode Title="ColumnNotFoundException Constructor (Table)" Url="html/M_Albatross_CodeGen_Database_ColumnNotFoundException__ctor_2.htm" />
+        <HelpTOCNode Title="ColumnNotFoundException Constructor (String, String)" Url="html/M_Albatross_CodeGen_Database_ColumnNotFoundException__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ColumnNotFoundException Properties" Url="html/Properties_T_Albatross_CodeGen_Database_ColumnNotFoundException.htm" />
+      <HelpTOCNode Title="ColumnNotFoundException Methods" Url="html/Methods_T_Albatross_CodeGen_Database_ColumnNotFoundException.htm" />
+      <HelpTOCNode Title="ColumnNotFoundException Events" Url="html/Events_T_Albatross_CodeGen_Database_ColumnNotFoundException.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="628a0a29-6ccd-4d5f-96b7-add1b8fda3fb" Title="DatabaseObject Class" Url="html/T_Albatross_CodeGen_Database_DatabaseObject.htm">
+      <HelpTOCNode Title="DatabaseObject Constructor " Url="html/M_Albatross_CodeGen_Database_DatabaseObject__ctor.htm" />
+      <HelpTOCNode Id="f9556f4d-cf58-4af9-88ac-be30d263ef98" Title="DatabaseObject Properties" Url="html/Properties_T_Albatross_CodeGen_Database_DatabaseObject.htm">
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_Database_DatabaseObject_Name.htm" />
+        <HelpTOCNode Title="Schema Property " Url="html/P_Albatross_CodeGen_Database_DatabaseObject_Schema.htm" />
+        <HelpTOCNode Title="Server Property " Url="html/P_Albatross_CodeGen_Database_DatabaseObject_Server.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="DatabaseObject Methods" Url="html/Methods_T_Albatross_CodeGen_Database_DatabaseObject.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Title="FilterOption Enumeration" Url="html/T_Albatross_CodeGen_Database_FilterOption.htm" />
+    <HelpTOCNode Id="193f37fe-6689-46ec-bfbf-11b781f1c3db" Title="IBuiltInColumnFactory Interface" Url="html/T_Albatross_CodeGen_Database_IBuiltInColumnFactory.htm">
+      <HelpTOCNode Id="c66e2b54-0a13-4817-96eb-f7f3d6cc447e" Title="IBuiltInColumnFactory Methods" Url="html/Methods_T_Albatross_CodeGen_Database_IBuiltInColumnFactory.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_Albatross_CodeGen_Database_IBuiltInColumnFactory_Get.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9b43813c-2d0d-4157-8181-d1d84202df3f" Title="IColumnSqlTypeBuilder Interface" Url="html/T_Albatross_CodeGen_Database_IColumnSqlTypeBuilder.htm">
+      <HelpTOCNode Id="21aba1db-0391-448d-90c6-2bb66a56ae35" Title="IColumnSqlTypeBuilder Methods" Url="html/Methods_T_Albatross_CodeGen_Database_IColumnSqlTypeBuilder.htm">
+        <HelpTOCNode Id="10958918-6053-4a3f-900e-03b6379b7372" Title="Build Method " Url="html/Overload_Albatross_CodeGen_Database_IColumnSqlTypeBuilder_Build.htm">
+          <HelpTOCNode Title="Build Method (Column)" Url="html/M_Albatross_CodeGen_Database_IColumnSqlTypeBuilder_Build.htm" />
+          <HelpTOCNode Title="Build Method (StringBuilder, Column)" Url="html/M_Albatross_CodeGen_Database_IColumnSqlTypeBuilder_Build_1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c9539f7a-8827-48f0-a4bb-da86b69bc734" Title="ICreateVariable Interface" Url="html/T_Albatross_CodeGen_Database_ICreateVariable.htm">
+      <HelpTOCNode Id="e34143f2-f2eb-4206-ba19-e3b015ad72cb" Title="ICreateVariable Methods" Url="html/Methods_T_Albatross_CodeGen_Database_ICreateVariable.htm">
+        <HelpTOCNode Title="Create Method " Url="html/M_Albatross_CodeGen_Database_ICreateVariable_Create.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2844b474-a252-45d4-99ea-25b71e1bd24b" Title="IdentityColumnNotFoundException Class" Url="html/T_Albatross_CodeGen_Database_IdentityColumnNotFoundException.htm">
+      <HelpTOCNode Id="b963caa2-d040-483c-927b-8d00e026f243" Title="IdentityColumnNotFoundException Constructor " Url="html/Overload_Albatross_CodeGen_Database_IdentityColumnNotFoundException__ctor.htm">
+        <HelpTOCNode Title="IdentityColumnNotFoundException Constructor (DatabaseObject)" Url="html/M_Albatross_CodeGen_Database_IdentityColumnNotFoundException__ctor.htm" />
+        <HelpTOCNode Title="IdentityColumnNotFoundException Constructor (Table)" Url="html/M_Albatross_CodeGen_Database_IdentityColumnNotFoundException__ctor_2.htm" />
+        <HelpTOCNode Title="IdentityColumnNotFoundException Constructor (String, String)" Url="html/M_Albatross_CodeGen_Database_IdentityColumnNotFoundException__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="IdentityColumnNotFoundException Properties" Url="html/Properties_T_Albatross_CodeGen_Database_IdentityColumnNotFoundException.htm" />
+      <HelpTOCNode Title="IdentityColumnNotFoundException Methods" Url="html/Methods_T_Albatross_CodeGen_Database_IdentityColumnNotFoundException.htm" />
+      <HelpTOCNode Title="IdentityColumnNotFoundException Events" Url="html/Events_T_Albatross_CodeGen_Database_IdentityColumnNotFoundException.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="cdc50da6-9350-4f68-a53e-aedce4f5191b" Title="IGetCSharpType Interface" Url="html/T_Albatross_CodeGen_Database_IGetCSharpType.htm">
+      <HelpTOCNode Id="40fd4204-4196-4f3a-9da4-84566751729f" Title="IGetCSharpType Methods" Url="html/Methods_T_Albatross_CodeGen_Database_IGetCSharpType.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_Albatross_CodeGen_Database_IGetCSharpType_Get.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6aa9f644-4353-401c-a474-1dbdb40848fd" Title="IGetTableColumns Interface" Url="html/T_Albatross_CodeGen_Database_IGetTableColumns.htm">
+      <HelpTOCNode Id="90885097-7ba2-4e16-83ea-b57a32115ff9" Title="IGetTableColumns Methods" Url="html/Methods_T_Albatross_CodeGen_Database_IGetTableColumns.htm">
+        <HelpTOCNode Id="e9e48972-edae-4c89-a114-a3c9b64fbe09" Title="Get Method " Url="html/Overload_Albatross_CodeGen_Database_IGetTableColumns_Get.htm">
+          <HelpTOCNode Title="Get Method (DatabaseObject)" Url="html/M_Albatross_CodeGen_Database_IGetTableColumns_Get.htm" />
+          <HelpTOCNode Title="Get Method (Table)" Url="html/M_Albatross_CodeGen_Database_IGetTableColumns_Get_1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e9184511-84d8-42b3-8494-8fc8d8919ed7" Title="IGetTableIdentityColumn Interface" Url="html/T_Albatross_CodeGen_Database_IGetTableIdentityColumn.htm">
+      <HelpTOCNode Id="0f0f96ff-6751-4792-a538-206f65689387" Title="IGetTableIdentityColumn Methods" Url="html/Methods_T_Albatross_CodeGen_Database_IGetTableIdentityColumn.htm">
+        <HelpTOCNode Id="2755aceb-c537-42c3-af9f-c8d72c13210a" Title="Get Method " Url="html/Overload_Albatross_CodeGen_Database_IGetTableIdentityColumn_Get.htm">
+          <HelpTOCNode Title="Get Method (DatabaseObject)" Url="html/M_Albatross_CodeGen_Database_IGetTableIdentityColumn_Get.htm" />
+          <HelpTOCNode Title="Get Method (Table)" Url="html/M_Albatross_CodeGen_Database_IGetTableIdentityColumn_Get_1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="af3a2d09-0d73-4fc2-a28e-f56f14dd47a0" Title="IGetTablePrimaryKey Interface" Url="html/T_Albatross_CodeGen_Database_IGetTablePrimaryKey.htm">
+      <HelpTOCNode Id="bfc53fd9-5f05-4831-a5ad-db6f29030edf" Title="IGetTablePrimaryKey Methods" Url="html/Methods_T_Albatross_CodeGen_Database_IGetTablePrimaryKey.htm">
+        <HelpTOCNode Id="bfc4f146-c246-446c-b3e1-d90ce984409c" Title="Get Method " Url="html/Overload_Albatross_CodeGen_Database_IGetTablePrimaryKey_Get.htm">
+          <HelpTOCNode Title="Get Method (DatabaseObject)" Url="html/M_Albatross_CodeGen_Database_IGetTablePrimaryKey_Get.htm" />
+          <HelpTOCNode Title="Get Method (Table)" Url="html/M_Albatross_CodeGen_Database_IGetTablePrimaryKey_Get_1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f6cfa4ce-f771-47be-86d9-86234b544c79" Title="IGetVariable Interface" Url="html/T_Albatross_CodeGen_Database_IGetVariable.htm">
+      <HelpTOCNode Id="46b451ea-ed8b-42a8-a403-3d4f59ad3742" Title="IGetVariable Methods" Url="html/Methods_T_Albatross_CodeGen_Database_IGetVariable.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_Albatross_CodeGen_Database_IGetVariable_Get.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a75ba3d9-dd22-4081-8b28-f17b5e4a7799" Title="IGetVariableName Interface" Url="html/T_Albatross_CodeGen_Database_IGetVariableName.htm">
+      <HelpTOCNode Id="66ce37b7-a3e5-4589-987a-ecafdfd95d3f" Title="IGetVariableName Methods" Url="html/Methods_T_Albatross_CodeGen_Database_IGetVariableName.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_Albatross_CodeGen_Database_IGetVariableName_Get.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d4c88a23-ae42-4a37-8679-3766c8ede07c" Title="ParamCollection Class" Url="html/T_Albatross_CodeGen_Database_ParamCollection.htm">
+      <HelpTOCNode Title="ParamCollection Constructor " Url="html/M_Albatross_CodeGen_Database_ParamCollection__ctor.htm" />
+      <HelpTOCNode Title="ParamCollection Properties" Url="html/Properties_T_Albatross_CodeGen_Database_ParamCollection.htm" />
+      <HelpTOCNode Title="ParamCollection Methods" Url="html/Methods_T_Albatross_CodeGen_Database_ParamCollection.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="b9d81b1b-70c1-49ff-bc4d-55f6781d969b" Title="PrimaryKeyNotFoundException Class" Url="html/T_Albatross_CodeGen_Database_PrimaryKeyNotFoundException.htm">
+      <HelpTOCNode Id="55ca3b55-5c74-437c-8c7c-92de85668c7f" Title="PrimaryKeyNotFoundException Constructor " Url="html/Overload_Albatross_CodeGen_Database_PrimaryKeyNotFoundException__ctor.htm">
+        <HelpTOCNode Title="PrimaryKeyNotFoundException Constructor (DatabaseObject)" Url="html/M_Albatross_CodeGen_Database_PrimaryKeyNotFoundException__ctor.htm" />
+        <HelpTOCNode Title="PrimaryKeyNotFoundException Constructor (Table)" Url="html/M_Albatross_CodeGen_Database_PrimaryKeyNotFoundException__ctor_2.htm" />
+        <HelpTOCNode Title="PrimaryKeyNotFoundException Constructor (String, String)" Url="html/M_Albatross_CodeGen_Database_PrimaryKeyNotFoundException__ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="PrimaryKeyNotFoundException Properties" Url="html/Properties_T_Albatross_CodeGen_Database_PrimaryKeyNotFoundException.htm" />
+      <HelpTOCNode Title="PrimaryKeyNotFoundException Methods" Url="html/Methods_T_Albatross_CodeGen_Database_PrimaryKeyNotFoundException.htm" />
+      <HelpTOCNode Title="PrimaryKeyNotFoundException Events" Url="html/Events_T_Albatross_CodeGen_Database_PrimaryKeyNotFoundException.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="b8ee4c4e-c420-401a-92a4-92a2b95a6d3b" Title="Server Class" Url="html/T_Albatross_CodeGen_Database_Server.htm">
+      <HelpTOCNode Title="Server Constructor " Url="html/M_Albatross_CodeGen_Database_Server__ctor.htm" />
+      <HelpTOCNode Id="e461239d-faf0-48ef-840a-9ea161a598b2" Title="Server Properties" Url="html/Properties_T_Albatross_CodeGen_Database_Server.htm">
+        <HelpTOCNode Title="ConnectionString Property " Url="html/P_Albatross_CodeGen_Database_Server_ConnectionString.htm" />
+        <HelpTOCNode Title="DataSource Property " Url="html/P_Albatross_CodeGen_Database_Server_DataSource.htm" />
+        <HelpTOCNode Title="InitialCatalog Property " Url="html/P_Albatross_CodeGen_Database_Server_InitialCatalog.htm" />
+        <HelpTOCNode Title="Password Property " Url="html/P_Albatross_CodeGen_Database_Server_Password.htm" />
+        <HelpTOCNode Title="SSPI Property " Url="html/P_Albatross_CodeGen_Database_Server_SSPI.htm" />
+        <HelpTOCNode Title="UserName Property " Url="html/P_Albatross_CodeGen_Database_Server_UserName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Server Methods" Url="html/Methods_T_Albatross_CodeGen_Database_Server.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="a8bf151f-b952-4459-a7c9-d23384797f68" Title="SqlQueryOption Class" Url="html/T_Albatross_CodeGen_Database_SqlQueryOption.htm">
+      <HelpTOCNode Title="SqlQueryOption Constructor " Url="html/M_Albatross_CodeGen_Database_SqlQueryOption__ctor.htm" />
+      <HelpTOCNode Id="f9bab3dc-9831-45f6-8f21-d1e4f51ba873" Title="SqlQueryOption Properties" Url="html/Properties_T_Albatross_CodeGen_Database_SqlQueryOption.htm">
+        <HelpTOCNode Title="ExcludePrimaryKey Property " Url="html/P_Albatross_CodeGen_Database_SqlQueryOption_ExcludePrimaryKey.htm" />
+        <HelpTOCNode Title="Expressions Property " Url="html/P_Albatross_CodeGen_Database_SqlQueryOption_Expressions.htm" />
+        <HelpTOCNode Title="Filter Property " Url="html/P_Albatross_CodeGen_Database_SqlQueryOption_Filter.htm" />
+        <HelpTOCNode Title="Variables Property " Url="html/P_Albatross_CodeGen_Database_SqlQueryOption_Variables.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="SqlQueryOption Methods" Url="html/Methods_T_Albatross_CodeGen_Database_SqlQueryOption.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="208ca24e-e791-4baa-99f0-3bef461699eb" Title="StoredProcedure Class" Url="html/T_Albatross_CodeGen_Database_StoredProcedure.htm">
+      <HelpTOCNode Title="StoredProcedure Constructor " Url="html/M_Albatross_CodeGen_Database_StoredProcedure__ctor.htm" />
+      <HelpTOCNode Id="4edde359-c937-430b-911c-7f7c62041572" Title="StoredProcedure Properties" Url="html/Properties_T_Albatross_CodeGen_Database_StoredProcedure.htm">
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_Database_StoredProcedure_Name.htm" />
+        <HelpTOCNode Title="Schema Property " Url="html/P_Albatross_CodeGen_Database_StoredProcedure_Schema.htm" />
+        <HelpTOCNode Title="Server Property " Url="html/P_Albatross_CodeGen_Database_StoredProcedure_Server.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="StoredProcedure Methods" Url="html/Methods_T_Albatross_CodeGen_Database_StoredProcedure.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="b58e1def-b0ad-4ec6-8284-9b8856aac426" Title="Table Class" Url="html/T_Albatross_CodeGen_Database_Table.htm">
+      <HelpTOCNode Title="Table Constructor " Url="html/M_Albatross_CodeGen_Database_Table__ctor.htm" />
+      <HelpTOCNode Id="7f71edc8-fe20-4542-9b31-285c5dc6a461" Title="Table Properties" Url="html/Properties_T_Albatross_CodeGen_Database_Table.htm">
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_Database_Table_Name.htm" />
+        <HelpTOCNode Title="Schema Property " Url="html/P_Albatross_CodeGen_Database_Table_Schema.htm" />
+        <HelpTOCNode Title="Server Property " Url="html/P_Albatross_CodeGen_Database_Table_Server.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="Table Methods" Url="html/Methods_T_Albatross_CodeGen_Database_Table.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="68f40fdd-91e9-4d46-8e9b-a37e509af197" Title="Albatross.CodeGen.PowerShell" Url="html/N_Albatross_CodeGen_PowerShell.htm">
+    <HelpTOCNode Id="51c08838-d5e1-430c-9550-486ee917039f" Title="BaseCmdlet(T) Class" Url="html/T_Albatross_CodeGen_PowerShell_BaseCmdlet_1.htm">
+      <HelpTOCNode Title="BaseCmdlet(T) Constructor " Url="html/M_Albatross_CodeGen_PowerShell_BaseCmdlet_1__ctor.htm" />
+      <HelpTOCNode Id="70a4b8aa-1f7e-4af0-a9b2-516432ff8563" Title="BaseCmdlet(T) Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_BaseCmdlet_1.htm">
+        <HelpTOCNode Title="Factory Property " Url="html/P_Albatross_CodeGen_PowerShell_BaseCmdlet_1_Factory.htm" />
+        <HelpTOCNode Title="Handle Property " Url="html/P_Albatross_CodeGen_PowerShell_BaseCmdlet_1_Handle.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="45934334-3c06-4a22-bc42-a2dcb1ae8862" Title="BaseCmdlet(T) Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_BaseCmdlet_1.htm">
+        <HelpTOCNode Title="BeginProcessing Method " Url="html/M_Albatross_CodeGen_PowerShell_BaseCmdlet_1_BeginProcessing.htm" />
+        <HelpTOCNode Title="GetHandle Method " Url="html/M_Albatross_CodeGen_PowerShell_BaseCmdlet_1_GetHandle.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="cd299c2b-9197-4066-b5f9-6e27e217b77a" Title="GetCodeGenerator Class" Url="html/T_Albatross_CodeGen_PowerShell_GetCodeGenerator.htm">
+      <HelpTOCNode Title="GetCodeGenerator Constructor " Url="html/M_Albatross_CodeGen_PowerShell_GetCodeGenerator__ctor.htm" />
+      <HelpTOCNode Id="169ad35a-7c43-429b-92c6-5c6f01622002" Title="GetCodeGenerator Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_GetCodeGenerator.htm">
+        <HelpTOCNode Title="Category Property " Url="html/P_Albatross_CodeGen_PowerShell_GetCodeGenerator_Category.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_PowerShell_GetCodeGenerator_Name.htm" />
+        <HelpTOCNode Title="Target Property " Url="html/P_Albatross_CodeGen_PowerShell_GetCodeGenerator_Target.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="ad9cdfa9-2740-4940-a9fa-299ee219b9c9" Title="GetCodeGenerator Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_GetCodeGenerator.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_GetCodeGenerator_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="eda976d5-8d28-4727-8a2c-dcd22d51edd0" Title="GetOptionType Class" Url="html/T_Albatross_CodeGen_PowerShell_GetOptionType.htm">
+      <HelpTOCNode Title="GetOptionType Constructor " Url="html/M_Albatross_CodeGen_PowerShell_GetOptionType__ctor.htm" />
+      <HelpTOCNode Id="aa0c0ff5-2806-4543-be3e-e664cea3e0cc" Title="GetOptionType Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_GetOptionType.htm">
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_PowerShell_GetOptionType_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b8bb289c-d95a-4dbf-a6a2-941291081c14" Title="GetOptionType Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_GetOptionType.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_GetOptionType_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b9e27f96-84e4-4f62-9afe-be56bd18f29f" Title="GetSourceType Class" Url="html/T_Albatross_CodeGen_PowerShell_GetSourceType.htm">
+      <HelpTOCNode Title="GetSourceType Constructor " Url="html/M_Albatross_CodeGen_PowerShell_GetSourceType__ctor.htm" />
+      <HelpTOCNode Id="8c099862-b2ef-4c41-967b-ddc8b9fa0596" Title="GetSourceType Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_GetSourceType.htm">
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_PowerShell_GetSourceType_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6afb9cf6-cffd-4d5a-b494-493b331c4302" Title="GetSourceType Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_GetSourceType.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_GetSourceType_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="0a0d1647-09fa-409b-865c-ba201cdd0601" Title="InvokeCodeGenerator Class" Url="html/T_Albatross_CodeGen_PowerShell_InvokeCodeGenerator.htm">
+      <HelpTOCNode Title="InvokeCodeGenerator Constructor " Url="html/M_Albatross_CodeGen_PowerShell_InvokeCodeGenerator__ctor.htm" />
+      <HelpTOCNode Id="da376241-a310-48b4-83f9-7909c8f1bd79" Title="InvokeCodeGenerator Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_InvokeCodeGenerator.htm">
+        <HelpTOCNode Title="Force Property " Url="html/P_Albatross_CodeGen_PowerShell_InvokeCodeGenerator_Force.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_PowerShell_InvokeCodeGenerator_Name.htm" />
+        <HelpTOCNode Title="Option Property " Url="html/P_Albatross_CodeGen_PowerShell_InvokeCodeGenerator_Option.htm" />
+        <HelpTOCNode Title="Output Property " Url="html/P_Albatross_CodeGen_PowerShell_InvokeCodeGenerator_Output.htm" />
+        <HelpTOCNode Title="Source Property " Url="html/P_Albatross_CodeGen_PowerShell_InvokeCodeGenerator_Source.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="313d40b6-1050-48c7-85c0-322339c594f3" Title="InvokeCodeGenerator Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_InvokeCodeGenerator.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_InvokeCodeGenerator_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="36c92e67-5077-490d-b4c2-94f901d11849" Title="InvokeComposite Class" Url="html/T_Albatross_CodeGen_PowerShell_InvokeComposite.htm">
+      <HelpTOCNode Title="InvokeComposite Constructor " Url="html/M_Albatross_CodeGen_PowerShell_InvokeComposite__ctor.htm" />
+      <HelpTOCNode Id="94e9dc8a-eded-4e03-8154-3935c99df609" Title="InvokeComposite Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_InvokeComposite.htm">
+        <HelpTOCNode Title="Branch Property " Url="html/P_Albatross_CodeGen_PowerShell_InvokeComposite_Branch.htm" />
+        <HelpTOCNode Title="Force Property " Url="html/P_Albatross_CodeGen_PowerShell_InvokeComposite_Force.htm" />
+        <HelpTOCNode Title="Option Property " Url="html/P_Albatross_CodeGen_PowerShell_InvokeComposite_Option.htm" />
+        <HelpTOCNode Title="Output Property " Url="html/P_Albatross_CodeGen_PowerShell_InvokeComposite_Output.htm" />
+        <HelpTOCNode Title="Source Property " Url="html/P_Albatross_CodeGen_PowerShell_InvokeComposite_Source.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="11fdf29c-83c0-4245-a54b-92fdef842d66" Title="InvokeComposite Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_InvokeComposite.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_InvokeComposite_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="7ca9437f-6ce1-4908-8b31-4707d215c4f7" Title="NewBranch Class" Url="html/T_Albatross_CodeGen_PowerShell_NewBranch.htm">
+      <HelpTOCNode Title="NewBranch Constructor " Url="html/M_Albatross_CodeGen_PowerShell_NewBranch__ctor.htm" />
+      <HelpTOCNode Id="ea6a9e84-3463-436a-aeb8-1a7aef09992b" Title="NewBranch Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_NewBranch.htm">
+        <HelpTOCNode Title="Nodes Property " Url="html/P_Albatross_CodeGen_PowerShell_NewBranch_Nodes.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6552bf20-d202-4de7-bd66-c9f114a8e787" Title="NewBranch Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_NewBranch.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_NewBranch_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c87010c1-adce-4825-a9cc-6f1d865efac1" Title="NewClassOption Class" Url="html/T_Albatross_CodeGen_PowerShell_NewClassOption.htm">
+      <HelpTOCNode Title="NewClassOption Constructor " Url="html/M_Albatross_CodeGen_PowerShell_NewClassOption__ctor.htm" />
+      <HelpTOCNode Id="d1775e99-0bdd-43da-ba93-596944bf4639" Title="NewClassOption Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_NewClassOption.htm">
+        <HelpTOCNode Title="AccessModifier Property " Url="html/P_Albatross_CodeGen_PowerShell_NewClassOption_AccessModifier.htm" />
+        <HelpTOCNode Title="BaseClass Property " Url="html/P_Albatross_CodeGen_PowerShell_NewClassOption_BaseClass.htm" />
+        <HelpTOCNode Title="Constructors Property " Url="html/P_Albatross_CodeGen_PowerShell_NewClassOption_Constructors.htm" />
+        <HelpTOCNode Title="Imports Property " Url="html/P_Albatross_CodeGen_PowerShell_NewClassOption_Imports.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_PowerShell_NewClassOption_Name.htm" />
+        <HelpTOCNode Title="Namespace Property " Url="html/P_Albatross_CodeGen_PowerShell_NewClassOption_Namespace.htm" />
+        <HelpTOCNode Title="Postfix Property " Url="html/P_Albatross_CodeGen_PowerShell_NewClassOption_Postfix.htm" />
+        <HelpTOCNode Title="Prefix Property " Url="html/P_Albatross_CodeGen_PowerShell_NewClassOption_Prefix.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="4f47b083-3afa-4864-8dbd-6f819b558694" Title="NewClassOption Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_NewClassOption.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_NewClassOption_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="685e06f4-1e9c-4c1d-bbfd-92fd6b80ed3c" Title="NewComposite Class" Url="html/T_Albatross_CodeGen_PowerShell_NewComposite.htm">
+      <HelpTOCNode Title="NewComposite Constructor " Url="html/M_Albatross_CodeGen_PowerShell_NewComposite__ctor.htm" />
+      <HelpTOCNode Id="54d14f8b-8cb9-46de-ab6f-05be5d3761e4" Title="NewComposite Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_NewComposite.htm">
+        <HelpTOCNode Title="Branch Property " Url="html/P_Albatross_CodeGen_PowerShell_NewComposite_Branch.htm" />
+        <HelpTOCNode Title="Category Property " Url="html/P_Albatross_CodeGen_PowerShell_NewComposite_Category.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_PowerShell_NewComposite_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_PowerShell_NewComposite_Name.htm" />
+        <HelpTOCNode Title="OptionType Property " Url="html/P_Albatross_CodeGen_PowerShell_NewComposite_OptionType.htm" />
+        <HelpTOCNode Title="SourceType Property " Url="html/P_Albatross_CodeGen_PowerShell_NewComposite_SourceType.htm" />
+        <HelpTOCNode Title="Target Property " Url="html/P_Albatross_CodeGen_PowerShell_NewComposite_Target.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="3027e017-6ac4-4a6f-9799-6a55a9a0c063" Title="NewComposite Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_NewComposite.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_NewComposite_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="949cc73b-1871-4f1a-8290-a28e339cb8a2" Title="NewDatabaseServer Class" Url="html/T_Albatross_CodeGen_PowerShell_NewDatabaseServer.htm">
+      <HelpTOCNode Title="NewDatabaseServer Constructor " Url="html/M_Albatross_CodeGen_PowerShell_NewDatabaseServer__ctor.htm" />
+      <HelpTOCNode Id="08b8457b-e3d0-46ab-9bc4-8a50b7555e95" Title="NewDatabaseServer Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_NewDatabaseServer.htm">
+        <HelpTOCNode Title="ConnectionString Property " Url="html/P_Albatross_CodeGen_PowerShell_NewDatabaseServer_ConnectionString.htm" />
+        <HelpTOCNode Title="DataSource Property " Url="html/P_Albatross_CodeGen_PowerShell_NewDatabaseServer_DataSource.htm" />
+        <HelpTOCNode Title="InitialCatalog Property " Url="html/P_Albatross_CodeGen_PowerShell_NewDatabaseServer_InitialCatalog.htm" />
+        <HelpTOCNode Title="IntegratedSecurity Property " Url="html/P_Albatross_CodeGen_PowerShell_NewDatabaseServer_IntegratedSecurity.htm" />
+        <HelpTOCNode Title="Password Property " Url="html/P_Albatross_CodeGen_PowerShell_NewDatabaseServer_Password.htm" />
+        <HelpTOCNode Title="User Property " Url="html/P_Albatross_CodeGen_PowerShell_NewDatabaseServer_User.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="1296bf7d-94cd-4a6e-9ec3-bd837686aac1" Title="NewDatabaseServer Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_NewDatabaseServer.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_NewDatabaseServer_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d845e937-6db5-42a9-9aac-de57963846ca" Title="NewDatabaseTable Class" Url="html/T_Albatross_CodeGen_PowerShell_NewDatabaseTable.htm">
+      <HelpTOCNode Title="NewDatabaseTable Constructor " Url="html/M_Albatross_CodeGen_PowerShell_NewDatabaseTable__ctor.htm" />
+      <HelpTOCNode Id="c312cd1d-08e8-433e-a1b3-eebeb888402b" Title="NewDatabaseTable Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_NewDatabaseTable.htm">
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_PowerShell_NewDatabaseTable_Name.htm" />
+        <HelpTOCNode Title="Schema Property " Url="html/P_Albatross_CodeGen_PowerShell_NewDatabaseTable_Schema.htm" />
+        <HelpTOCNode Title="Server Property " Url="html/P_Albatross_CodeGen_PowerShell_NewDatabaseTable_Server.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="208b4b95-5dd1-4566-9921-14ef03b04ed3" Title="NewDatabaseTable Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_NewDatabaseTable.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_NewDatabaseTable_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="744ad97a-8f04-4d2a-9c57-acbad50299da" Title="NewObjectType Class" Url="html/T_Albatross_CodeGen_PowerShell_NewObjectType.htm">
+      <HelpTOCNode Title="NewObjectType Constructor " Url="html/M_Albatross_CodeGen_PowerShell_NewObjectType__ctor.htm" />
+      <HelpTOCNode Id="491ea921-ff6f-4130-bcf5-beceda0b6548" Title="NewObjectType Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_NewObjectType.htm">
+        <HelpTOCNode Title="AssemblyLocation Property " Url="html/P_Albatross_CodeGen_PowerShell_NewObjectType_AssemblyLocation.htm" />
+        <HelpTOCNode Title="ClassName Property " Url="html/P_Albatross_CodeGen_PowerShell_NewObjectType_ClassName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="15af0975-48c1-4d74-bfa0-58b3f721a4fd" Title="NewObjectType Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_NewObjectType.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_NewObjectType_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="7810d3a4-706f-4922-ac5a-6e0395d53a30" Title="NewSqlQueryOption Class" Url="html/T_Albatross_CodeGen_PowerShell_NewSqlQueryOption.htm">
+      <HelpTOCNode Title="NewSqlQueryOption Constructor " Url="html/M_Albatross_CodeGen_PowerShell_NewSqlQueryOption__ctor.htm" />
+      <HelpTOCNode Id="82c73f64-bcc9-4581-bba0-0812a04fefe0" Title="NewSqlQueryOption Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_NewSqlQueryOption.htm">
+        <HelpTOCNode Title="ExcludePrimaryKey Property " Url="html/P_Albatross_CodeGen_PowerShell_NewSqlQueryOption_ExcludePrimaryKey.htm" />
+        <HelpTOCNode Title="Filter Property " Url="html/P_Albatross_CodeGen_PowerShell_NewSqlQueryOption_Filter.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="156e3dd8-3b32-43d8-a2e3-d5381bb72044" Title="NewSqlQueryOption Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_NewSqlQueryOption.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_NewSqlQueryOption_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="07cbc0de-f73a-4dee-89d4-18a062b2baca" Title="ObjectFactory Class" Url="html/T_Albatross_CodeGen_PowerShell_ObjectFactory.htm">
+      <HelpTOCNode Title="ObjectFactory Constructor " Url="html/M_Albatross_CodeGen_PowerShell_ObjectFactory__ctor.htm" />
+      <HelpTOCNode Id="f32483aa-d7e3-40b3-8e58-9c92f1f25f3c" Title="ObjectFactory Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_ObjectFactory.htm">
+        <HelpTOCNode Id="8d606fcc-1bcb-4aa8-8f4f-622018fd032c" Title="Create Method " Url="html/Overload_Albatross_CodeGen_PowerShell_ObjectFactory_Create.htm">
+          <HelpTOCNode Title="Create(T) Method " Url="html/M_Albatross_CodeGen_PowerShell_ObjectFactory_Create__1.htm" />
+          <HelpTOCNode Title="Create Method (Type)" Url="html/M_Albatross_CodeGen_PowerShell_ObjectFactory_Create.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="609566a9-85d9-4e16-a7fb-e033db2b814b" Title="RegisterAssembly Class" Url="html/T_Albatross_CodeGen_PowerShell_RegisterAssembly.htm">
+      <HelpTOCNode Title="RegisterAssembly Constructor " Url="html/M_Albatross_CodeGen_PowerShell_RegisterAssembly__ctor.htm" />
+      <HelpTOCNode Id="72318e06-0bcc-48e6-a0d6-ea0b1b37af8c" Title="RegisterAssembly Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_RegisterAssembly.htm">
+        <HelpTOCNode Title="Location Property " Url="html/P_Albatross_CodeGen_PowerShell_RegisterAssembly_Location.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0df91a5a-abcb-42ff-9f41-d7087794de7c" Title="RegisterAssembly Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_RegisterAssembly.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_RegisterAssembly_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8240729b-efb6-4da9-926b-90a46fc17ac0" Title="SetupIoc Class" Url="html/T_Albatross_CodeGen_PowerShell_SetupIoc.htm">
+      <HelpTOCNode Title="SetupIoc Constructor " Url="html/M_Albatross_CodeGen_PowerShell_SetupIoc__ctor.htm" />
+      <HelpTOCNode Id="f57bc295-22b1-430a-9d8b-f16ca61ca4ee" Title="SetupIoc Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_SetupIoc.htm">
+        <HelpTOCNode Title="Factory Property " Url="html/P_Albatross_CodeGen_PowerShell_SetupIoc_Factory.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="SetupIoc Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_SetupIoc.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="43bdf6b2-6e8a-4556-aeeb-50aae84a358b" Title="TestPipeline Class" Url="html/T_Albatross_CodeGen_PowerShell_TestPipeline.htm">
+      <HelpTOCNode Title="TestPipeline Constructor " Url="html/M_Albatross_CodeGen_PowerShell_TestPipeline__ctor.htm" />
+      <HelpTOCNode Id="0ffc6a15-a960-47f6-93ff-16cc19282fd4" Title="TestPipeline Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_TestPipeline.htm">
+        <HelpTOCNode Title="Input Property " Url="html/P_Albatross_CodeGen_PowerShell_TestPipeline_Input.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="23f624e2-a8ef-497f-85d2-6814652e8a66" Title="TestPipeline Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_TestPipeline.htm">
+        <HelpTOCNode Title="ProcessRecord Method " Url="html/M_Albatross_CodeGen_PowerShell_TestPipeline_ProcessRecord.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="87661308-01b1-4d05-acd0-1d1708b28c0a" Title="Albatross.CodeGen.PowerShell.Transformation" Url="html/N_Albatross_CodeGen_PowerShell_Transformation.htm">
+    <HelpTOCNode Id="6b56c62b-ddf1-416e-b44f-367d8cfaf070" Title="PathInfo2DirectoryInfoAttribute Class" Url="html/T_Albatross_CodeGen_PowerShell_Transformation_PathInfo2DirectoryInfoAttribute.htm">
+      <HelpTOCNode Title="PathInfo2DirectoryInfoAttribute Constructor " Url="html/M_Albatross_CodeGen_PowerShell_Transformation_PathInfo2DirectoryInfoAttribute__ctor.htm" />
+      <HelpTOCNode Title="PathInfo2DirectoryInfoAttribute Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_Transformation_PathInfo2DirectoryInfoAttribute.htm" />
+      <HelpTOCNode Id="2f31b7ea-b132-461d-b385-ee31e4488dd1" Title="PathInfo2DirectoryInfoAttribute Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_Transformation_PathInfo2DirectoryInfoAttribute.htm">
+        <HelpTOCNode Title="Transform Method " Url="html/M_Albatross_CodeGen_PowerShell_Transformation_PathInfo2DirectoryInfoAttribute_Transform.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f4a66db4-68cb-4a48-ae5e-6c90e501a0bf" Title="String2LeafAttribute Class" Url="html/T_Albatross_CodeGen_PowerShell_Transformation_String2LeafAttribute.htm">
+      <HelpTOCNode Title="String2LeafAttribute Constructor " Url="html/M_Albatross_CodeGen_PowerShell_Transformation_String2LeafAttribute__ctor.htm" />
+      <HelpTOCNode Title="String2LeafAttribute Properties" Url="html/Properties_T_Albatross_CodeGen_PowerShell_Transformation_String2LeafAttribute.htm" />
+      <HelpTOCNode Id="617b137c-41d0-4a69-9964-4fe374ef35c1" Title="String2LeafAttribute Methods" Url="html/Methods_T_Albatross_CodeGen_PowerShell_Transformation_String2LeafAttribute.htm">
+        <HelpTOCNode Title="Transform Method " Url="html/M_Albatross_CodeGen_PowerShell_Transformation_String2LeafAttribute_Transform.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="7813430f-edf3-493f-bb8f-480d2d384697" Title="Albatross.CodeGen.SqlServer" Url="html/N_Albatross_CodeGen_SqlServer.htm">
+    <HelpTOCNode Id="f899ae91-093d-4c3d-b9fa-97f54f20573f" Title="BuildDeclareStatement Class" Url="html/T_Albatross_CodeGen_SqlServer_BuildDeclareStatement.htm">
+      <HelpTOCNode Title="BuildDeclareStatement Constructor " Url="html/M_Albatross_CodeGen_SqlServer_BuildDeclareStatement__ctor.htm" />
+      <HelpTOCNode Id="7ea24a02-560a-4d54-b44c-ed7987ffa95f" Title="BuildDeclareStatement Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_BuildDeclareStatement.htm">
+        <HelpTOCNode Title="Category Property " Url="html/P_Albatross_CodeGen_SqlServer_BuildDeclareStatement_Category.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_BuildDeclareStatement_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_BuildDeclareStatement_Name.htm" />
+        <HelpTOCNode Title="SourceType Property " Url="html/P_Albatross_CodeGen_SqlServer_BuildDeclareStatement_SourceType.htm" />
+        <HelpTOCNode Title="Target Property " Url="html/P_Albatross_CodeGen_SqlServer_BuildDeclareStatement_Target.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="80843017-2a78-4031-99bb-69f06976f3c1" Title="BuildDeclareStatement Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_BuildDeclareStatement.htm">
+        <HelpTOCNode Id="d36e9f6d-616d-42d4-9eb2-375c9c5fb31c" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_BuildDeclareStatement_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, ParamCollection, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_BuildDeclareStatement_Build.htm" />
+          <HelpTOCNode Title="Build Method (StringBuilder, Object, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_BuildDeclareStatement_Build_1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="d210544f-adc5-4c7c-a00f-7f674ea1ac43" Title="BuiltInColumnFactory Class" Url="html/T_Albatross_CodeGen_SqlServer_BuiltInColumnFactory.htm">
+      <HelpTOCNode Title="BuiltInColumnFactory Constructor " Url="html/M_Albatross_CodeGen_SqlServer_BuiltInColumnFactory__ctor.htm" />
+      <HelpTOCNode Id="f53bc3a1-7c6e-4a8a-b519-cf5b2ac8e1fb" Title="BuiltInColumnFactory Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_BuiltInColumnFactory.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_Albatross_CodeGen_SqlServer_BuiltInColumnFactory_Get.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f3cb6305-d3ff-490b-af31-4f77d7750410" Title="BuiltInColumns Class" Url="html/T_Albatross_CodeGen_SqlServer_BuiltInColumns.htm">
+      <HelpTOCNode Id="7ed588f3-986c-4427-b696-cb584c83fbd4" Title="BuiltInColumns Fields" Url="html/Fields_T_Albatross_CodeGen_SqlServer_BuiltInColumns.htm">
+        <HelpTOCNode Title="Items Field" Url="html/F_Albatross_CodeGen_SqlServer_BuiltInColumns_Items.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="69f11633-f1e7-49bf-bf9f-41eba7a94daf" Title="BuiltInComposites Class" Url="html/T_Albatross_CodeGen_SqlServer_BuiltInComposites.htm">
+      <HelpTOCNode Title="BuiltInComposites Constructor " Url="html/M_Albatross_CodeGen_SqlServer_BuiltInComposites__ctor.htm" />
+      <HelpTOCNode Title="BuiltInComposites Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_BuiltInComposites.htm" />
+      <HelpTOCNode Id="8821c11c-5569-4ba2-8aaa-887ce786f45e" Title="BuiltInComposites Fields" Url="html/Fields_T_Albatross_CodeGen_SqlServer_BuiltInComposites.htm">
+        <HelpTOCNode Title="Composites Field" Url="html/F_Albatross_CodeGen_SqlServer_BuiltInComposites_Composites.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5cc0f892-134f-48ca-81c1-959073a4232f" Title="BuiltInDateTimeColumn Class" Url="html/T_Albatross_CodeGen_SqlServer_BuiltInDateTimeColumn.htm">
+      <HelpTOCNode Title="BuiltInDateTimeColumn Constructor " Url="html/M_Albatross_CodeGen_SqlServer_BuiltInDateTimeColumn__ctor.htm" />
+      <HelpTOCNode Id="12468cf7-602d-488f-937a-6139a1b222df" Title="BuiltInDateTimeColumn Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_BuiltInDateTimeColumn.htm">
+        <HelpTOCNode Title="Match Method " Url="html/M_Albatross_CodeGen_SqlServer_BuiltInDateTimeColumn_Match.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="cba3f97e-d727-4428-985a-4e05f54a832d" Title="BuiltInStringColumn Class" Url="html/T_Albatross_CodeGen_SqlServer_BuiltInStringColumn.htm">
+      <HelpTOCNode Title="BuiltInStringColumn Constructor " Url="html/M_Albatross_CodeGen_SqlServer_BuiltInStringColumn__ctor.htm" />
+      <HelpTOCNode Id="22fe24b9-10b7-4876-a76e-84bc9e285fa5" Title="BuiltInStringColumn Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_BuiltInStringColumn.htm">
+        <HelpTOCNode Title="Match Method " Url="html/M_Albatross_CodeGen_SqlServer_BuiltInStringColumn_Match.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="de90fe30-9303-4b30-bb8b-477c4cf0117a" Title="ColumnEquityComparer Class" Url="html/T_Albatross_CodeGen_SqlServer_ColumnEquityComparer.htm">
+      <HelpTOCNode Title="ColumnEquityComparer Constructor " Url="html/M_Albatross_CodeGen_SqlServer_ColumnEquityComparer__ctor.htm" />
+      <HelpTOCNode Id="00132a30-5ea9-4225-a23d-fb4a381f5cd7" Title="ColumnEquityComparer Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_ColumnEquityComparer.htm">
+        <HelpTOCNode Id="3dd83550-d965-4eeb-a495-3f5d673dcaa0" Title="Equals Method " Url="html/Overload_Albatross_CodeGen_SqlServer_ColumnEquityComparer_Equals.htm">
+          <HelpTOCNode Title="Equals Method (Column, Column)" Url="html/M_Albatross_CodeGen_SqlServer_ColumnEquityComparer_Equals.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="e98b6656-1319-48f6-a47b-1ca46f9af5c7" Title="GetHashCode Method " Url="html/Overload_Albatross_CodeGen_SqlServer_ColumnEquityComparer_GetHashCode.htm">
+          <HelpTOCNode Title="GetHashCode Method (Column)" Url="html/M_Albatross_CodeGen_SqlServer_ColumnEquityComparer_GetHashCode.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f04de009-5171-403f-8d49-adcf8891c2f4" Title="ColumnSqlTypeBuilder Class" Url="html/T_Albatross_CodeGen_SqlServer_ColumnSqlTypeBuilder.htm">
+      <HelpTOCNode Title="ColumnSqlTypeBuilder Constructor " Url="html/M_Albatross_CodeGen_SqlServer_ColumnSqlTypeBuilder__ctor.htm" />
+      <HelpTOCNode Id="2fdb7d5d-4156-447f-b35c-942ce62dabe9" Title="ColumnSqlTypeBuilder Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_ColumnSqlTypeBuilder.htm">
+        <HelpTOCNode Title="Build Method " Url="html/M_Albatross_CodeGen_SqlServer_ColumnSqlTypeBuilder_Build.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5ac74240-326f-46e3-94c7-10f0e2e2de1e" Title="GetSqlVariableName Class" Url="html/T_Albatross_CodeGen_SqlServer_GetSqlVariableName.htm">
+      <HelpTOCNode Title="GetSqlVariableName Constructor " Url="html/M_Albatross_CodeGen_SqlServer_GetSqlVariableName__ctor.htm" />
+      <HelpTOCNode Id="52c26e6f-e995-451c-9ffd-e36a0202049b" Title="GetSqlVariableName Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_GetSqlVariableName.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_Albatross_CodeGen_SqlServer_GetSqlVariableName_Get.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="07d0fa34-891b-4407-b55e-c1e4f4aaed14" Title="GetTableColumns Class" Url="html/T_Albatross_CodeGen_SqlServer_GetTableColumns.htm">
+      <HelpTOCNode Title="GetTableColumns Constructor " Url="html/M_Albatross_CodeGen_SqlServer_GetTableColumns__ctor.htm" />
+      <HelpTOCNode Id="310ad806-e51f-4f46-9a9a-4cdc698ee440" Title="GetTableColumns Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_GetTableColumns.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_Albatross_CodeGen_SqlServer_GetTableColumns_Get.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="fa567215-252c-41d0-a4c2-0ac5f0796a08" Title="GetTableIdentityColumn Class" Url="html/T_Albatross_CodeGen_SqlServer_GetTableIdentityColumn.htm">
+      <HelpTOCNode Title="GetTableIdentityColumn Constructor " Url="html/M_Albatross_CodeGen_SqlServer_GetTableIdentityColumn__ctor.htm" />
+      <HelpTOCNode Id="ba1167f2-6d59-4e78-b77e-d75515f53adc" Title="GetTableIdentityColumn Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_GetTableIdentityColumn.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_Albatross_CodeGen_SqlServer_GetTableIdentityColumn_Get.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="778010ca-d0d2-460e-bc31-851dc0fa2333" Title="GetTablePrimaryKey Class" Url="html/T_Albatross_CodeGen_SqlServer_GetTablePrimaryKey.htm">
+      <HelpTOCNode Title="GetTablePrimaryKey Constructor " Url="html/M_Albatross_CodeGen_SqlServer_GetTablePrimaryKey__ctor.htm" />
+      <HelpTOCNode Id="8e6bd04f-6de3-4b44-95aa-debae1647393" Title="GetTablePrimaryKey Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_GetTablePrimaryKey.htm">
+        <HelpTOCNode Title="Get Method " Url="html/M_Albatross_CodeGen_SqlServer_GetTablePrimaryKey_Get.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="03537f6b-e0c6-4220-8c43-e77af3b31ffc" Title="TableCodeGenerator Class" Url="html/T_Albatross_CodeGen_SqlServer_TableCodeGenerator.htm">
+      <HelpTOCNode Title="TableCodeGenerator Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableCodeGenerator__ctor.htm" />
+      <HelpTOCNode Id="e24ab69d-a8bb-4cb0-ae66-cb647414b0a5" Title="TableCodeGenerator Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableCodeGenerator.htm">
+        <HelpTOCNode Title="Category Property " Url="html/P_Albatross_CodeGen_SqlServer_TableCodeGenerator_Category.htm" />
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableCodeGenerator_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableCodeGenerator_Name.htm" />
+        <HelpTOCNode Title="SourceType Property " Url="html/P_Albatross_CodeGen_SqlServer_TableCodeGenerator_SourceType.htm" />
+        <HelpTOCNode Title="Target Property " Url="html/P_Albatross_CodeGen_SqlServer_TableCodeGenerator_Target.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0eeed5df-cc4b-4add-84fd-44e2bbe7281c" Title="TableCodeGenerator Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableCodeGenerator.htm">
+        <HelpTOCNode Id="1169066f-7af2-484f-9cc2-667ce54cae5f" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableCodeGenerator_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableCodeGenerator_Build.htm" />
+          <HelpTOCNode Title="Build Method (StringBuilder, Object, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableCodeGenerator_Build_1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="99e83cce-6871-447c-a166-8413c5d187c6" Title="TableDelete Class" Url="html/T_Albatross_CodeGen_SqlServer_TableDelete.htm">
+      <HelpTOCNode Title="TableDelete Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableDelete__ctor.htm" />
+      <HelpTOCNode Id="e8cab689-8a9c-4d7c-989c-188f0fcaef3a" Title="TableDelete Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableDelete.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableDelete_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableDelete_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="13511610-b7b3-47dc-bb7c-7271cedeff22" Title="TableDelete Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableDelete.htm">
+        <HelpTOCNode Id="72732f34-1c99-4759-acca-2161e5abdba2" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableDelete_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableDelete_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c06dce05-0163-450b-8244-e9d14331cbf6" Title="TableInsert Class" Url="html/T_Albatross_CodeGen_SqlServer_TableInsert.htm">
+      <HelpTOCNode Title="TableInsert Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableInsert__ctor.htm" />
+      <HelpTOCNode Id="a377fac6-dc20-4436-9bb2-bbda58a5600b" Title="TableInsert Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableInsert.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableInsert_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableInsert_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="be8b0875-cb44-4ee3-af71-19033b387066" Title="TableInsert Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableInsert.htm">
+        <HelpTOCNode Id="8086f743-c91f-4eef-a85e-b4c980debf9e" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableInsert_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableInsert_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a88d5cf0-d882-4360-a406-365372678df7" Title="TableInsertWithAudit Class" Url="html/T_Albatross_CodeGen_SqlServer_TableInsertWithAudit.htm">
+      <HelpTOCNode Title="TableInsertWithAudit Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableInsertWithAudit__ctor.htm" />
+      <HelpTOCNode Id="abe68e53-de2b-4e7b-bf51-1355c11a7cf7" Title="TableInsertWithAudit Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableInsertWithAudit.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableInsertWithAudit_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableInsertWithAudit_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="97abb276-e520-430d-9757-44bf84c1f5fd" Title="TableInsertWithAudit Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableInsertWithAudit.htm">
+        <HelpTOCNode Id="96609fae-9599-4edd-b2d1-26619e8771a2" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableInsertWithAudit_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableInsertWithAudit_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6b378b58-439a-46af-83ce-dd64383b7f31" Title="TableMergeByID Class" Url="html/T_Albatross_CodeGen_SqlServer_TableMergeByID.htm">
+      <HelpTOCNode Title="TableMergeByID Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableMergeByID__ctor.htm" />
+      <HelpTOCNode Id="b71b7314-e789-4e6b-b6ae-10d8005cf368" Title="TableMergeByID Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableMergeByID.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeByID_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeByID_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="dc49dadc-6c7c-45ea-acaa-83b3eae577f3" Title="TableMergeByID Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableMergeByID.htm">
+        <HelpTOCNode Id="c83cb531-157b-4339-a710-5591e10eda12" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableMergeByID_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableMergeByID_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="30d287d4-0c7c-4d35-a1e9-18d845aa8fd8" Title="TableMergeByPrimaryKey Class" Url="html/T_Albatross_CodeGen_SqlServer_TableMergeByPrimaryKey.htm">
+      <HelpTOCNode Title="TableMergeByPrimaryKey Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableMergeByPrimaryKey__ctor.htm" />
+      <HelpTOCNode Id="ed979c4f-8a60-469f-a946-1d33a108f1b6" Title="TableMergeByPrimaryKey Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableMergeByPrimaryKey.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeByPrimaryKey_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeByPrimaryKey_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="e25c3ccc-74f6-4778-8344-ac9d42344611" Title="TableMergeByPrimaryKey Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableMergeByPrimaryKey.htm">
+        <HelpTOCNode Id="028f5450-3963-4564-861b-bd72e338cecb" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableMergeByPrimaryKey_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableMergeByPrimaryKey_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6eaab256-fff4-4067-b1d1-906100a16125" Title="TableMergeDelete Class" Url="html/T_Albatross_CodeGen_SqlServer_TableMergeDelete.htm">
+      <HelpTOCNode Title="TableMergeDelete Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableMergeDelete__ctor.htm" />
+      <HelpTOCNode Id="464065ae-15c9-4c28-9e67-6acd59b912dc" Title="TableMergeDelete Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableMergeDelete.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeDelete_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeDelete_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d5e09a2c-ddd1-4d0b-bb63-7a9dc02239de" Title="TableMergeDelete Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableMergeDelete.htm">
+        <HelpTOCNode Id="aa111547-737a-4d08-8875-61669a04bf62" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableMergeDelete_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableMergeDelete_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8c230b2c-7fd2-4793-8e30-72c1dc051ecd" Title="TableMergeInsert Class" Url="html/T_Albatross_CodeGen_SqlServer_TableMergeInsert.htm">
+      <HelpTOCNode Title="TableMergeInsert Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableMergeInsert__ctor.htm" />
+      <HelpTOCNode Id="4f1a06c7-3f5b-4ca9-9355-9f57a328f432" Title="TableMergeInsert Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableMergeInsert.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeInsert_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeInsert_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="81db1f19-448f-4537-88c3-dc07bb51f3c1" Title="TableMergeInsert Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableMergeInsert.htm">
+        <HelpTOCNode Id="20e75511-39dc-43e5-822f-b210566406ce" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableMergeInsert_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableMergeInsert_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c698534f-fd45-4a63-b827-14707b26e548" Title="TableMergeJoinByID Class" Url="html/T_Albatross_CodeGen_SqlServer_TableMergeJoinByID.htm">
+      <HelpTOCNode Title="TableMergeJoinByID Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableMergeJoinByID__ctor.htm" />
+      <HelpTOCNode Id="22167193-687e-4d30-a501-d6f58c4ca22f" Title="TableMergeJoinByID Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableMergeJoinByID.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeJoinByID_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeJoinByID_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="44f9b858-cb2f-414a-8f76-6f65e6429732" Title="TableMergeJoinByID Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableMergeJoinByID.htm">
+        <HelpTOCNode Id="d7814c87-5c79-4502-9657-7938caec0234" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableMergeJoinByID_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableMergeJoinByID_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="89abc8e7-46a5-41be-80eb-9610101eac9a" Title="TableMergeJoinByPrimaryKey Class" Url="html/T_Albatross_CodeGen_SqlServer_TableMergeJoinByPrimaryKey.htm">
+      <HelpTOCNode Title="TableMergeJoinByPrimaryKey Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableMergeJoinByPrimaryKey__ctor.htm" />
+      <HelpTOCNode Id="cc15e55c-8683-4fff-a4dc-ee1e0852aab5" Title="TableMergeJoinByPrimaryKey Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableMergeJoinByPrimaryKey.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeJoinByPrimaryKey_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeJoinByPrimaryKey_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6095f322-8651-493f-b14c-95076350e2ea" Title="TableMergeJoinByPrimaryKey Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableMergeJoinByPrimaryKey.htm">
+        <HelpTOCNode Id="28b1c47a-2a3d-4be1-a64e-1974e739ad6f" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableMergeJoinByPrimaryKey_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableMergeJoinByPrimaryKey_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1b4b6299-956e-4500-8071-82d268539c54" Title="TableMergeSelect Class" Url="html/T_Albatross_CodeGen_SqlServer_TableMergeSelect.htm">
+      <HelpTOCNode Title="TableMergeSelect Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableMergeSelect__ctor.htm" />
+      <HelpTOCNode Id="0a488236-7d84-488f-94a2-881b322575ca" Title="TableMergeSelect Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableMergeSelect.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeSelect_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeSelect_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="4bd222af-a953-4bef-a7c1-07572e9812a7" Title="TableMergeSelect Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableMergeSelect.htm">
+        <HelpTOCNode Id="74fe3cd9-777f-4b9b-8804-296332eae86e" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableMergeSelect_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableMergeSelect_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5ddf135d-56a4-4620-8a54-794c39ddb047" Title="TableMergeSelectWithAudit Class" Url="html/T_Albatross_CodeGen_SqlServer_TableMergeSelectWithAudit.htm">
+      <HelpTOCNode Title="TableMergeSelectWithAudit Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableMergeSelectWithAudit__ctor.htm" />
+      <HelpTOCNode Id="60d840d6-93f5-4e80-9faf-fb6900565253" Title="TableMergeSelectWithAudit Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableMergeSelectWithAudit.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeSelectWithAudit_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeSelectWithAudit_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="0c1d0cdd-a178-465c-9982-5e382313fc94" Title="TableMergeSelectWithAudit Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableMergeSelectWithAudit.htm">
+        <HelpTOCNode Id="d6a40f50-67a0-4a74-99d3-b7bb1015f980" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableMergeSelectWithAudit_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableMergeSelectWithAudit_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="969b117b-85fe-4ff4-b57f-65e748803133" Title="TableMergeUpdate Class" Url="html/T_Albatross_CodeGen_SqlServer_TableMergeUpdate.htm">
+      <HelpTOCNode Title="TableMergeUpdate Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableMergeUpdate__ctor.htm" />
+      <HelpTOCNode Id="3792975e-4867-44cc-893e-0537a8058b71" Title="TableMergeUpdate Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableMergeUpdate.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeUpdate_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeUpdate_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="59f3f64f-52d7-422b-a39b-45874d943ce2" Title="TableMergeUpdate Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableMergeUpdate.htm">
+        <HelpTOCNode Id="e8bb14a3-eb4c-4f07-b40f-d879b8e24e6c" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableMergeUpdate_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableMergeUpdate_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e9325bce-a624-4afa-98ba-8bf149f3e611" Title="TableMergeUpdateExcludePrimaryKey Class" Url="html/T_Albatross_CodeGen_SqlServer_TableMergeUpdateExcludePrimaryKey.htm">
+      <HelpTOCNode Title="TableMergeUpdateExcludePrimaryKey Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableMergeUpdateExcludePrimaryKey__ctor.htm" />
+      <HelpTOCNode Id="97aebbb0-46c7-4835-af35-b642a492f087" Title="TableMergeUpdateExcludePrimaryKey Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableMergeUpdateExcludePrimaryKey.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeUpdateExcludePrimaryKey_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeUpdateExcludePrimaryKey_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="4acbc52c-8673-411b-a587-ec8af9526cf5" Title="TableMergeUpdateExcludePrimaryKey Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableMergeUpdateExcludePrimaryKey.htm">
+        <HelpTOCNode Id="709c1010-81dc-4267-83b5-fea4821c0a9f" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableMergeUpdateExcludePrimaryKey_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableMergeUpdateExcludePrimaryKey_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="bd246b20-f029-4b62-a816-d2defe275be6" Title="TableMergeWithAuditByID Class" Url="html/T_Albatross_CodeGen_SqlServer_TableMergeWithAuditByID.htm">
+      <HelpTOCNode Title="TableMergeWithAuditByID Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableMergeWithAuditByID__ctor.htm" />
+      <HelpTOCNode Id="cf6c703f-3b44-47ab-b69b-d6931fe71b8e" Title="TableMergeWithAuditByID Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableMergeWithAuditByID.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeWithAuditByID_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeWithAuditByID_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="5dae4a13-a49d-4ec1-81f9-c64aa4ada94c" Title="TableMergeWithAuditByID Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableMergeWithAuditByID.htm">
+        <HelpTOCNode Id="43fbefbc-0e90-445b-8f4a-ecf6d369ad8e" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableMergeWithAuditByID_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableMergeWithAuditByID_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="1d855b6d-5227-4edb-aacd-54d708ca740e" Title="TableMergeWithAuditByPrimaryKey Class" Url="html/T_Albatross_CodeGen_SqlServer_TableMergeWithAuditByPrimaryKey.htm">
+      <HelpTOCNode Title="TableMergeWithAuditByPrimaryKey Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableMergeWithAuditByPrimaryKey__ctor.htm" />
+      <HelpTOCNode Id="c0f877c9-21ba-4550-a2c6-619ea733664c" Title="TableMergeWithAuditByPrimaryKey Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableMergeWithAuditByPrimaryKey.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeWithAuditByPrimaryKey_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableMergeWithAuditByPrimaryKey_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="33d34d3f-30e6-446e-ae94-b9f2f987c42f" Title="TableMergeWithAuditByPrimaryKey Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableMergeWithAuditByPrimaryKey.htm">
+        <HelpTOCNode Id="de9e58d8-eeb6-479d-8271-bd2d192c65eb" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableMergeWithAuditByPrimaryKey_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableMergeWithAuditByPrimaryKey_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2cdaf66a-ae2b-4db5-a1c8-143ab1c98eee" Title="TableSelect Class" Url="html/T_Albatross_CodeGen_SqlServer_TableSelect.htm">
+      <HelpTOCNode Title="TableSelect Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableSelect__ctor.htm" />
+      <HelpTOCNode Id="4c45d9f1-f6e6-4edd-a9c2-923d9d3d3845" Title="TableSelect Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableSelect.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableSelect_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableSelect_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a4c910e4-cb3d-4b35-8907-9bd5a0463653" Title="TableSelect Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableSelect.htm">
+        <HelpTOCNode Id="858b55ed-759c-49e2-81bf-ddbcc58bf73d" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableSelect_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableSelect_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ff805332-f7ad-41f5-b9ba-ea683151b0fc" Title="TableSelectScopedIdentity Class" Url="html/T_Albatross_CodeGen_SqlServer_TableSelectScopedIdentity.htm">
+      <HelpTOCNode Title="TableSelectScopedIdentity Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableSelectScopedIdentity__ctor.htm" />
+      <HelpTOCNode Id="829cb741-dad3-4eb7-95c2-85ecafa5aad9" Title="TableSelectScopedIdentity Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableSelectScopedIdentity.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableSelectScopedIdentity_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableSelectScopedIdentity_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="9c0ddd43-14d2-4f80-9d09-a164a5fdd84c" Title="TableSelectScopedIdentity Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableSelectScopedIdentity.htm">
+        <HelpTOCNode Id="902daea1-80eb-49ca-b571-22a11921d2f8" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableSelectScopedIdentity_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableSelectScopedIdentity_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b203d1db-4828-4e35-8066-fae5af89450d" Title="TableUpdate Class" Url="html/T_Albatross_CodeGen_SqlServer_TableUpdate.htm">
+      <HelpTOCNode Title="TableUpdate Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableUpdate__ctor.htm" />
+      <HelpTOCNode Id="ec67579e-ab77-436c-bd4f-72b6d955bb54" Title="TableUpdate Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableUpdate.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableUpdate_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableUpdate_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="6d1b1d07-c542-4fab-970d-18c653aad6b7" Title="TableUpdate Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableUpdate.htm">
+        <HelpTOCNode Id="2bd2294c-bd4b-4477-afcc-af8869877031" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableUpdate_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableUpdate_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="23c2282f-0ccb-4176-8f0f-a9aa1d9d609a" Title="TableUpdateExcludePrimaryKey Class" Url="html/T_Albatross_CodeGen_SqlServer_TableUpdateExcludePrimaryKey.htm">
+      <HelpTOCNode Title="TableUpdateExcludePrimaryKey Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableUpdateExcludePrimaryKey__ctor.htm" />
+      <HelpTOCNode Id="a6370571-c2cd-4270-bf7c-31a42ad1d08f" Title="TableUpdateExcludePrimaryKey Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableUpdateExcludePrimaryKey.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableUpdateExcludePrimaryKey_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableUpdateExcludePrimaryKey_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="9d4b2998-bed7-4c48-acea-c8561726298f" Title="TableUpdateExcludePrimaryKey Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableUpdateExcludePrimaryKey.htm">
+        <HelpTOCNode Id="931e0fe6-e5be-44eb-a6b0-b10422bc50cf" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableUpdateExcludePrimaryKey_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableUpdateExcludePrimaryKey_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ee2de69d-2cd1-4cf5-9e3e-d38013f795f7" Title="TableUpdateWithAudit Class" Url="html/T_Albatross_CodeGen_SqlServer_TableUpdateWithAudit.htm">
+      <HelpTOCNode Title="TableUpdateWithAudit Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableUpdateWithAudit__ctor.htm" />
+      <HelpTOCNode Id="eb289571-812c-4dec-9d2b-3977187b7a62" Title="TableUpdateWithAudit Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableUpdateWithAudit.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableUpdateWithAudit_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableUpdateWithAudit_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="00fb315a-98cc-4c23-9885-470b1aee84a7" Title="TableUpdateWithAudit Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableUpdateWithAudit.htm">
+        <HelpTOCNode Id="e7f54322-6376-4077-b95a-8c7a321d6e84" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableUpdateWithAudit_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableUpdateWithAudit_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="08232310-26cd-484a-be5a-763d38304f1d" Title="TableWhereByID Class" Url="html/T_Albatross_CodeGen_SqlServer_TableWhereByID.htm">
+      <HelpTOCNode Title="TableWhereByID Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableWhereByID__ctor.htm" />
+      <HelpTOCNode Id="f758d029-774d-4304-9689-3e287ff3a16b" Title="TableWhereByID Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableWhereByID.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableWhereByID_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableWhereByID_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="02702d20-6b5b-44dc-8d9f-063a43d823ee" Title="TableWhereByID Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableWhereByID.htm">
+        <HelpTOCNode Id="720e37e6-0864-4133-a13a-33a3c44be816" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableWhereByID_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableWhereByID_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="47a1395f-dc66-4b81-91dd-8b9153cb73e5" Title="TableWhereByPrimaryKey Class" Url="html/T_Albatross_CodeGen_SqlServer_TableWhereByPrimaryKey.htm">
+      <HelpTOCNode Title="TableWhereByPrimaryKey Constructor " Url="html/M_Albatross_CodeGen_SqlServer_TableWhereByPrimaryKey__ctor.htm" />
+      <HelpTOCNode Id="c1c9a397-c697-4994-82f4-5d3a5598390e" Title="TableWhereByPrimaryKey Properties" Url="html/Properties_T_Albatross_CodeGen_SqlServer_TableWhereByPrimaryKey.htm">
+        <HelpTOCNode Title="Description Property " Url="html/P_Albatross_CodeGen_SqlServer_TableWhereByPrimaryKey_Description.htm" />
+        <HelpTOCNode Title="Name Property " Url="html/P_Albatross_CodeGen_SqlServer_TableWhereByPrimaryKey_Name.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="7a8e5857-1c21-4bae-bd72-bed681bdf8c4" Title="TableWhereByPrimaryKey Methods" Url="html/Methods_T_Albatross_CodeGen_SqlServer_TableWhereByPrimaryKey.htm">
+        <HelpTOCNode Id="16f2d688-6edf-492f-a97e-58643f64629b" Title="Build Method " Url="html/Overload_Albatross_CodeGen_SqlServer_TableWhereByPrimaryKey_Build.htm">
+          <HelpTOCNode Title="Build Method (StringBuilder, Table, Object, ICodeGeneratorFactory)" Url="html/M_Albatross_CodeGen_SqlServer_TableWhereByPrimaryKey_Build.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="bd5ffb11-2205-43a3-a2b6-d5eb11100f30" Title="Albatross.CodeGen.UnitTest" Url="html/N_Albatross_CodeGen_UnitTest.htm">
+    <HelpTOCNode Id="8d3f94dd-4de2-47dd-a671-95388d5e760f" Title="CodeCheck Class" Url="html/T_Albatross_CodeGen_UnitTest_CodeCheck.htm">
+      <HelpTOCNode Title="CodeCheck Constructor " Url="html/M_Albatross_CodeGen_UnitTest_CodeCheck__ctor.htm" />
+      <HelpTOCNode Id="b3d42b75-005c-4195-98f9-71f3fc4c415b" Title="CodeCheck Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_CodeCheck.htm">
+        <HelpTOCNode Title="FileCheck Method " Url="html/M_Albatross_CodeGen_UnitTest_CodeCheck_FileCheck.htm" />
+        <HelpTOCNode Title="GenericType Method " Url="html/M_Albatross_CodeGen_UnitTest_CodeCheck_GenericType.htm" />
+        <HelpTOCNode Title="PathCheck Method " Url="html/M_Albatross_CodeGen_UnitTest_CodeCheck_PathCheck.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b356ecb0-9a9e-4f1a-8fca-bda15725eb14" Title="ColumnSqlTypeBuilderTest Class" Url="html/T_Albatross_CodeGen_UnitTest_ColumnSqlTypeBuilderTest.htm">
+      <HelpTOCNode Title="ColumnSqlTypeBuilderTest Constructor " Url="html/M_Albatross_CodeGen_UnitTest_ColumnSqlTypeBuilderTest__ctor.htm" />
+      <HelpTOCNode Id="832d9cd0-c9b6-406f-9962-7a6217c0a070" Title="ColumnSqlTypeBuilderTest Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_ColumnSqlTypeBuilderTest.htm">
+        <HelpTOCNode Title="Run Method " Url="html/M_Albatross_CodeGen_UnitTest_ColumnSqlTypeBuilderTest_Run.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="da4c0d87-25fb-4b59-9e85-a615df0fbbc5" Title="CompositeGeneratorTest Class" Url="html/T_Albatross_CodeGen_UnitTest_CompositeGeneratorTest.htm">
+      <HelpTOCNode Title="CompositeGeneratorTest Constructor " Url="html/M_Albatross_CodeGen_UnitTest_CompositeGeneratorTest__ctor.htm" />
+      <HelpTOCNode Id="2195e0a8-7236-4c5d-adbc-a4a7bcb4c523" Title="CompositeGeneratorTest Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_CompositeGeneratorTest.htm">
+        <HelpTOCNode Title="CompositeTest Method " Url="html/M_Albatross_CodeGen_UnitTest_CompositeGeneratorTest_CompositeTest.htm" />
+        <HelpTOCNode Title="CompositeYieldTest Method " Url="html/M_Albatross_CodeGen_UnitTest_CompositeGeneratorTest_CompositeYieldTest.htm" />
+        <HelpTOCNode Title="EmptyYieldTest Method " Url="html/M_Albatross_CodeGen_UnitTest_CompositeGeneratorTest_EmptyYieldTest.htm" />
+        <HelpTOCNode Title="Setup Method " Url="html/M_Albatross_CodeGen_UnitTest_CompositeGeneratorTest_Setup.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="bc0e6694-6f81-4313-bc2f-c3ba4b1369ef" Title="CompositeGeneratorTest Fields" Url="html/Fields_T_Albatross_CodeGen_UnitTest_CompositeGeneratorTest.htm">
+        <HelpTOCNode Title="container Field" Url="html/F_Albatross_CodeGen_UnitTest_CompositeGeneratorTest_container.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="adabeaa3-2d48-4751-9698-8552d05b8c04" Title="DeclareStatementTest Class" Url="html/T_Albatross_CodeGen_UnitTest_DeclareStatementTest.htm">
+      <HelpTOCNode Title="DeclareStatementTest Constructor " Url="html/M_Albatross_CodeGen_UnitTest_DeclareStatementTest__ctor.htm" />
+      <HelpTOCNode Id="b41cdac4-8e0a-428f-85df-f1b883765f2d" Title="DeclareStatementTest Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_DeclareStatementTest.htm">
+        <HelpTOCNode Title="BuildDeclareStatement Method " Url="html/M_Albatross_CodeGen_UnitTest_DeclareStatementTest_BuildDeclareStatement.htm" />
+        <HelpTOCNode Title="DeclareStatementWithoutDeclare Method " Url="html/M_Albatross_CodeGen_UnitTest_DeclareStatementTest_DeclareStatementWithoutDeclare.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2c6ba0da-6c65-47b0-8bc2-32a50b6f85e2" Title="GetReflectionOnlyTypeTest Class" Url="html/T_Albatross_CodeGen_UnitTest_GetReflectionOnlyTypeTest.htm">
+      <HelpTOCNode Title="GetReflectionOnlyTypeTest Constructor " Url="html/M_Albatross_CodeGen_UnitTest_GetReflectionOnlyTypeTest__ctor.htm" />
+      <HelpTOCNode Id="7703b4d9-a1cb-4cc7-a7f8-744048ab8caf" Title="GetReflectionOnlyTypeTest Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_GetReflectionOnlyTypeTest.htm">
+        <HelpTOCNode Title="Test Method " Url="html/M_Albatross_CodeGen_UnitTest_GetReflectionOnlyTypeTest_Test.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e8b2ee5c-7b57-4453-88b1-b0394c0f8e91" Title="GetSqlVariableNameTest Class" Url="html/T_Albatross_CodeGen_UnitTest_GetSqlVariableNameTest.htm">
+      <HelpTOCNode Title="GetSqlVariableNameTest Constructor " Url="html/M_Albatross_CodeGen_UnitTest_GetSqlVariableNameTest__ctor.htm" />
+      <HelpTOCNode Id="b7ab171e-c06e-4bc0-ae3a-c0848420f0e1" Title="GetSqlVariableNameTest Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_GetSqlVariableNameTest.htm">
+        <HelpTOCNode Title="Test Method " Url="html/M_Albatross_CodeGen_UnitTest_GetSqlVariableNameTest_Test.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="22442566-6c1a-454a-a6d2-fadf618f9dc9" Title="Ioc Class" Url="html/T_Albatross_CodeGen_UnitTest_Ioc.htm">
+      <HelpTOCNode Id="d36c4863-199d-4cc1-a1d6-264076f27247" Title="Ioc Properties" Url="html/Properties_T_Albatross_CodeGen_UnitTest_Ioc.htm">
+        <HelpTOCNode Title="Container Property " Url="html/P_Albatross_CodeGen_UnitTest_Ioc_Container.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="48e0588d-4ebb-4954-b14c-836dad29bce5" Title="Ioc Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_Ioc.htm">
+        <HelpTOCNode Id="58766b96-6e8c-453e-b9b4-a95bdd903026" Title="Create Method " Url="html/Overload_Albatross_CodeGen_UnitTest_Ioc_Create.htm">
+          <HelpTOCNode Title="Create(T) Method " Url="html/M_Albatross_CodeGen_UnitTest_Ioc_Create__1.htm" />
+          <HelpTOCNode Title="Create Method (Type)" Url="html/M_Albatross_CodeGen_UnitTest_Ioc_Create.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="5b7fab47-6e70-49ef-b060-16b839e8874e" Title="Ioc Fields" Url="html/Fields_T_Albatross_CodeGen_UnitTest_Ioc.htm">
+        <HelpTOCNode Title="_lazy Field" Url="html/F_Albatross_CodeGen_UnitTest_Ioc__lazy.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="f443404d-01f7-4bad-b83b-d089bf9ffe4f" Title="Setup Class" Url="html/T_Albatross_CodeGen_UnitTest_Setup.htm">
+      <HelpTOCNode Title="Setup Constructor " Url="html/M_Albatross_CodeGen_UnitTest_Setup__ctor.htm" />
+      <HelpTOCNode Id="4cf138c8-a96b-4c24-9af4-2705ae3a4289" Title="Setup Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_Setup.htm">
+        <HelpTOCNode Title="Run Method " Url="html/M_Albatross_CodeGen_UnitTest_Setup_Run.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="72ce79c9-bad8-4e78-906e-3c654da3a97b" Title="TableInsertTest Class" Url="html/T_Albatross_CodeGen_UnitTest_TableInsertTest.htm">
+      <HelpTOCNode Title="TableInsertTest Constructor " Url="html/M_Albatross_CodeGen_UnitTest_TableInsertTest__ctor.htm" />
+      <HelpTOCNode Id="79b33888-77b0-420e-829e-3af08ac4d137" Title="TableInsertTest Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_TableInsertTest.htm">
+        <HelpTOCNode Title="TableInsert Method " Url="html/M_Albatross_CodeGen_UnitTest_TableInsertTest_TableInsert.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ba84f215-8c54-48dc-8ea6-270ba3992223" Title="TableMergeSelectTest Class" Url="html/T_Albatross_CodeGen_UnitTest_TableMergeSelectTest.htm">
+      <HelpTOCNode Title="TableMergeSelectTest Constructor " Url="html/M_Albatross_CodeGen_UnitTest_TableMergeSelectTest__ctor.htm" />
+      <HelpTOCNode Id="2d1fed54-51cc-4f96-a7bb-ad8042ed601a" Title="TableMergeSelectTest Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_TableMergeSelectTest.htm">
+        <HelpTOCNode Title="MergeSelect Method " Url="html/M_Albatross_CodeGen_UnitTest_TableMergeSelectTest_MergeSelect.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="75efbd85-f8b0-4163-b2a6-77b8bda33c3a" Title="TableMergeUpdateTest Class" Url="html/T_Albatross_CodeGen_UnitTest_TableMergeUpdateTest.htm">
+      <HelpTOCNode Title="TableMergeUpdateTest Constructor " Url="html/M_Albatross_CodeGen_UnitTest_TableMergeUpdateTest__ctor.htm" />
+      <HelpTOCNode Id="a7788b61-7877-4359-a269-4084cc17f847" Title="TableMergeUpdateTest Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_TableMergeUpdateTest.htm">
+        <HelpTOCNode Title="MergeUpdate Method " Url="html/M_Albatross_CodeGen_UnitTest_TableMergeUpdateTest_MergeUpdate.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ddaa39f1-c493-475d-a39f-928843e51dbd" Title="TableUpdateTest Class" Url="html/T_Albatross_CodeGen_UnitTest_TableUpdateTest.htm">
+      <HelpTOCNode Title="TableUpdateTest Constructor " Url="html/M_Albatross_CodeGen_UnitTest_TableUpdateTest__ctor.htm" />
+      <HelpTOCNode Id="7a25698e-6b7c-4f88-b9c4-ce540c067912" Title="TableUpdateTest Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_TableUpdateTest.htm">
+        <HelpTOCNode Title="Run Method " Url="html/M_Albatross_CodeGen_UnitTest_TableUpdateTest_Run.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="dc501fa0-366b-4cf9-8df2-d9e80eda9662" Title="TableWhereTest Class" Url="html/T_Albatross_CodeGen_UnitTest_TableWhereTest.htm">
+      <HelpTOCNode Title="TableWhereTest Constructor " Url="html/M_Albatross_CodeGen_UnitTest_TableWhereTest__ctor.htm" />
+      <HelpTOCNode Id="58b5abe5-0504-424b-b1f5-7d73b96b7774" Title="TableWhereTest Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_TableWhereTest.htm">
+        <HelpTOCNode Title="Run Method " Url="html/M_Albatross_CodeGen_UnitTest_TableWhereTest_Run.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a2f20c7b-ca94-4c68-90f6-13318abfedf6" Title="TestBase Class" Url="html/T_Albatross_CodeGen_UnitTest_TestBase.htm">
+      <HelpTOCNode Title="TestBase Constructor " Url="html/M_Albatross_CodeGen_UnitTest_TestBase__ctor.htm" />
+      <HelpTOCNode Id="e7f9f420-0bf4-479c-92bb-53619643ec62" Title="TestBase Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_TestBase.htm">
+        <HelpTOCNode Title="GetContainer Method " Url="html/M_Albatross_CodeGen_UnitTest_TestBase_GetContainer.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5b49ba80-f50a-45a1-9666-5eef52314829" Title="YieldTestCodeGenerator Class" Url="html/T_Albatross_CodeGen_UnitTest_YieldTestCodeGenerator.htm">
+      <HelpTOCNode Title="YieldTestCodeGenerator Constructor " Url="html/M_Albatross_CodeGen_UnitTest_YieldTestCodeGenerator__ctor.htm" />
+      <HelpTOCNode Id="6f4a8118-f322-4f52-992e-9b411dffcd2e" Title="YieldTestCodeGenerator Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_YieldTestCodeGenerator.htm">
+        <HelpTOCNode Title="Build Method " Url="html/M_Albatross_CodeGen_UnitTest_YieldTestCodeGenerator_Build.htm" />
+        <HelpTOCNode Title="Configure Method " Url="html/M_Albatross_CodeGen_UnitTest_YieldTestCodeGenerator_Configure.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d347ac63-1d9c-40cd-a934-a0b8c7876ba0" Title="YieldTestCodeGenerator Events" Url="html/Events_T_Albatross_CodeGen_UnitTest_YieldTestCodeGenerator.htm">
+        <HelpTOCNode Title="Yield Event" Url="html/E_Albatross_CodeGen_UnitTest_YieldTestCodeGenerator_Yield.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="78c8aaf7-cbcc-4f1e-90a7-b058411343e1" Title="Albatross.CodeGen.UnitTest.Mocking" Url="html/N_Albatross_CodeGen_UnitTest_Mocking.htm">
+    <HelpTOCNode Id="a867d943-b176-403f-9194-7889d285be95" Title="ContactTable Class" Url="html/T_Albatross_CodeGen_UnitTest_Mocking_ContactTable.htm">
+      <HelpTOCNode Title="ContactTable Constructor " Url="html/M_Albatross_CodeGen_UnitTest_Mocking_ContactTable__ctor.htm" />
+      <HelpTOCNode Id="0256a245-4346-416f-8829-2d9590c0c097" Title="ContactTable Properties" Url="html/Properties_T_Albatross_CodeGen_UnitTest_Mocking_ContactTable.htm">
+        <HelpTOCNode Title="Columns Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_ContactTable_Columns.htm" />
+        <HelpTOCNode Title="IdentityColumn Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_ContactTable_IdentityColumn.htm" />
+        <HelpTOCNode Title="PrimaryKeys Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_ContactTable_PrimaryKeys.htm" />
+        <HelpTOCNode Title="Schema Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_ContactTable_Schema.htm" />
+        <HelpTOCNode Title="TableName Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_ContactTable_TableName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="ContactTable Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_Mocking_ContactTable.htm" />
+      <HelpTOCNode Id="778b4dab-30df-4982-b291-7dc259c6add1" Title="ContactTable Fields" Url="html/Fields_T_Albatross_CodeGen_UnitTest_Mocking_ContactTable.htm">
+        <HelpTOCNode Title="Table Field" Url="html/F_Albatross_CodeGen_UnitTest_Mocking_ContactTable_Table.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ae74b61e-184f-44ac-9866-c0fd71d2c66f" Title="IMocking Interface" Url="html/T_Albatross_CodeGen_UnitTest_Mocking_IMocking.htm">
+      <HelpTOCNode Id="4e10956a-af9a-49e9-b274-4edbc80d6b69" Title="IMocking Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_Mocking_IMocking.htm">
+        <HelpTOCNode Title="Setup Method " Url="html/M_Albatross_CodeGen_UnitTest_Mocking_IMocking_Setup.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="2d8f4f73-f47d-4619-a444-134fefd7d5ad" Title="SymbolTable Class" Url="html/T_Albatross_CodeGen_UnitTest_Mocking_SymbolTable.htm">
+      <HelpTOCNode Title="SymbolTable Constructor " Url="html/M_Albatross_CodeGen_UnitTest_Mocking_SymbolTable__ctor.htm" />
+      <HelpTOCNode Id="8a6972c2-6b57-46c8-a869-d6b65fad17f5" Title="SymbolTable Properties" Url="html/Properties_T_Albatross_CodeGen_UnitTest_Mocking_SymbolTable.htm">
+        <HelpTOCNode Title="Columns Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_SymbolTable_Columns.htm" />
+        <HelpTOCNode Title="IdentityColumn Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_SymbolTable_IdentityColumn.htm" />
+        <HelpTOCNode Title="PrimaryKeys Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_SymbolTable_PrimaryKeys.htm" />
+        <HelpTOCNode Title="Schema Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_SymbolTable_Schema.htm" />
+        <HelpTOCNode Title="TableName Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_SymbolTable_TableName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="SymbolTable Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_Mocking_SymbolTable.htm" />
+      <HelpTOCNode Id="8a351229-55aa-49de-b300-554c0539957b" Title="SymbolTable Fields" Url="html/Fields_T_Albatross_CodeGen_UnitTest_Mocking_SymbolTable.htm">
+        <HelpTOCNode Title="Table Field" Url="html/F_Albatross_CodeGen_UnitTest_Mocking_SymbolTable_Table.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="e902955f-a569-46cb-b290-0a9cdd1abf91" Title="TableMocking Class" Url="html/T_Albatross_CodeGen_UnitTest_Mocking_TableMocking.htm">
+      <HelpTOCNode Title="TableMocking Constructor " Url="html/M_Albatross_CodeGen_UnitTest_Mocking_TableMocking__ctor.htm" />
+      <HelpTOCNode Id="149bf124-f5ec-4897-a356-4a91327515b4" Title="TableMocking Properties" Url="html/Properties_T_Albatross_CodeGen_UnitTest_Mocking_TableMocking.htm">
+        <HelpTOCNode Title="Columns Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_TableMocking_Columns.htm" />
+        <HelpTOCNode Title="IdentityColumn Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_TableMocking_IdentityColumn.htm" />
+        <HelpTOCNode Title="PrimaryKeys Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_TableMocking_PrimaryKeys.htm" />
+        <HelpTOCNode Title="Schema Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_TableMocking_Schema.htm" />
+        <HelpTOCNode Title="TableName Property " Url="html/P_Albatross_CodeGen_UnitTest_Mocking_TableMocking_TableName.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f61cd5ad-d6bb-44f0-8d69-9f0b77236f38" Title="TableMocking Methods" Url="html/Methods_T_Albatross_CodeGen_UnitTest_Mocking_TableMocking.htm">
+        <HelpTOCNode Title="Setup Method " Url="html/M_Albatross_CodeGen_UnitTest_Mocking_TableMocking_Setup.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Title="Welcome to the [TODO: Add project name]" Url="html/11ea5c43-a58c-4b9a-9039-bc75b2cde823.htm" />
+  <HelpTOCNode Id="d13b81dd-4a86-447b-837e-356a6f4c6427" Title="Version History" Url="html/bcafe075-c63d-4b38-9bc5-b9b7f3499223.htm">
+    <HelpTOCNode Title="Version 1.0.0.0" Url="html/5389aeae-361b-4d3c-939a-ef489289e1fd.htm" />
+  </HelpTOCNode>
+</HelpTOC>
