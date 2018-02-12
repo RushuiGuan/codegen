@@ -1,1 +1,0 @@
-﻿New-Composite -Name test -Category "test category" -Description "test desc" -Target sql -Generators a,b,c | Set-Composite -Confirm
