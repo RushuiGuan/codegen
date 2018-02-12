@@ -1,9 +1,9 @@
 # Step Constructor 
  
 
-Initializes a new instance of the <a href="97A19E51">Step</a> class
+Initializes a new instance of the <a href="97A19E51.md">Step</a> class
 
-**Namespace:**&nbsp;<a href="DCDDD28E">Albatross.CodeGen</a><br />**Assembly:**&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)
+**Namespace:**&nbsp;<a href="DCDDD28E.md">Albatross.CodeGen</a><br />**Assembly:**&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)
 
 ## Syntax
 
@@ -17,4 +17,4 @@ public Step()
 
 
 #### Reference
-<a href="97A19E51">Step Class</a><br /><a href="DCDDD28E">Albatross.CodeGen Namespace</a><br />
+<a href="97A19E51.md">Step Class</a><br /><a href="DCDDD28E.md">Albatross.CodeGen Namespace</a><br />

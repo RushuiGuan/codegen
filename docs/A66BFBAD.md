@@ -3,7 +3,7 @@
 
 \[Missing <summary> documentation for "M:Albatross.CodeGen.UnitTest.CompositeGeneratorTest.CompositeTest"\]
 
-**Namespace:**&nbsp;<a href="56BAD780">Albatross.CodeGen.UnitTest</a><br />**Assembly:**&nbsp;Albatross.CodeGen.UnitTest (in Albatross.CodeGen.UnitTest.dll) Version: 1.0.0
+**Namespace:**&nbsp;<a href="56BAD780.md">Albatross.CodeGen.UnitTest</a><br />**Assembly:**&nbsp;Albatross.CodeGen.UnitTest (in Albatross.CodeGen.UnitTest.dll) Version: 1.0.0
 
 ## Syntax
 
@@ -17,4 +17,4 @@ public void CompositeTest()
 
 
 #### Reference
-<a href="3EB7C71E">CompositeGeneratorTest Class</a><br /><a href="56BAD780">Albatross.CodeGen.UnitTest Namespace</a><br />
+<a href="3EB7C71E.md">CompositeGeneratorTest Class</a><br /><a href="56BAD780.md">Albatross.CodeGen.UnitTest Namespace</a><br />

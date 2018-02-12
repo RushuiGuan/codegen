@@ -3,7 +3,7 @@
 
 \[Missing <summary> documentation for "M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)"\]
 
-**Namespace:**&nbsp;<a href="9727DDEC">Albatross.CodeGen.SqlServer</a><br />**Assembly:**&nbsp;Albatross.CodeGen.SqlServer (in Albatross.CodeGen.SqlServer.dll) Version: 1.0.6572.36036 (1.0.0.0)
+**Namespace:**&nbsp;<a href="9727DDEC.md">Albatross.CodeGen.SqlServer</a><br />**Assembly:**&nbsp;Albatross.CodeGen.SqlServer (in Albatross.CodeGen.SqlServer.dll) Version: 1.0.6572.36036 (1.0.0.0)
 
 ## Syntax
 
@@ -19,7 +19,7 @@ public override StringBuilder Build(
 
 
 #### Parameters
-&nbsp;<dl><dt>sb</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/y9sxk6fy" target="_blank">System.Text.StringBuilder</a><br />\[Missing <param name="sb"/> documentation for "M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)"\]</dd><dt>t</dt><dd>Type: <a href="F8EC018E">Albatross.CodeGen.Database.Table</a><br />\[Missing <param name="t"/> documentation for "M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)"\]</dd><dt>options</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />\[Missing <param name="options"/> documentation for "M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)"\]</dd><dt>factory</dt><dd>Type: <a href="1FFDA092">Albatross.CodeGen.ICodeGeneratorFactory</a><br />\[Missing <param name="factory"/> documentation for "M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)"\]</dd></dl>
+&nbsp;<dl><dt>sb</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/y9sxk6fy" target="_blank">System.Text.StringBuilder</a><br />\[Missing <param name="sb"/> documentation for "M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)"\]</dd><dt>t</dt><dd>Type: <a href="F8EC018E.md">Albatross.CodeGen.Database.Table</a><br />\[Missing <param name="t"/> documentation for "M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)"\]</dd><dt>options</dt><dd>Type: <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />\[Missing <param name="options"/> documentation for "M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)"\]</dd><dt>factory</dt><dd>Type: <a href="1FFDA092.md">Albatross.CodeGen.ICodeGeneratorFactory</a><br />\[Missing <param name="factory"/> documentation for "M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)"\]</dd></dl>
 
 #### Return Value
 Type: <a href="http://msdn2.microsoft.com/en-us/library/y9sxk6fy" target="_blank">StringBuilder</a><br />\[Missing <returns> documentation for "M:Albatross.CodeGen.SqlServer.TableMergeWithAuditByID.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.Table,System.Object,Albatross.CodeGen.ICodeGeneratorFactory)"\]
@@ -28,4 +28,4 @@ Type: <a href="http://msdn2.microsoft.com/en-us/library/y9sxk6fy" target="_blank
 
 
 #### Reference
-<a href="ACBDA145">TableMergeWithAuditByID Class</a><br /><a href="FF3CD612">Build Overload</a><br /><a href="9727DDEC">Albatross.CodeGen.SqlServer Namespace</a><br />
+<a href="ACBDA145.md">TableMergeWithAuditByID Class</a><br /><a href="FF3CD612.md">Build Overload</a><br /><a href="9727DDEC.md">Albatross.CodeGen.SqlServer Namespace</a><br />

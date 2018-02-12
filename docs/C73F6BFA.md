@@ -6,7 +6,7 @@
 
 ## Inheritance Hierarchy
 <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;<a href="http://msdn2.microsoft.com/en-us/library/c18k6c59" target="_blank">System.Exception</a><br />&nbsp;&nbsp;&nbsp;&nbsp;Albatross.CodeGen.Database.PrimaryKeyNotFoundException<br />
-**Namespace:**&nbsp;<a href="E11F5D98">Albatross.CodeGen.Database</a><br />**Assemblies:**&nbsp;&nbsp;Albatross.CodeGen.Database (in Albatross.CodeGen.Database.dll) Version: 1.0.0<br />&nbsp;&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)<br />
+**Namespace:**&nbsp;<a href="E11F5D98.md">Albatross.CodeGen.Database</a><br />**Assemblies:**&nbsp;&nbsp;Albatross.CodeGen.Database (in Albatross.CodeGen.Database.dll) Version: 1.0.0<br />&nbsp;&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)<br />
 
 ## Syntax
 
@@ -19,9 +19,9 @@ The PrimaryKeyNotFoundException type exposes the following members.
 
 
 ## Constructors
-&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="7FF78716">PrimaryKeyNotFoundException(DatabaseObject)</a></td><td>
-Initializes a new instance of the PrimaryKeyNotFoundException class</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="3396D35A">PrimaryKeyNotFoundException(Table)</a></td><td>
-Initializes a new instance of the PrimaryKeyNotFoundException class</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="9167D35A">PrimaryKeyNotFoundException(String, String)</a></td><td>
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="7FF78716.md">PrimaryKeyNotFoundException(DatabaseObject)</a></td><td>
+Initializes a new instance of the PrimaryKeyNotFoundException class</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="3396D35A.md">PrimaryKeyNotFoundException(Table)</a></td><td>
+Initializes a new instance of the PrimaryKeyNotFoundException class</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="9167D35A.md">PrimaryKeyNotFoundException(String, String)</a></td><td>
 Initializes a new instance of the PrimaryKeyNotFoundException class</td></tr></table>&nbsp;
 <a href="#primarykeynotfoundexception-class">Back to Top</a>
 
@@ -75,4 +75,4 @@ Occurs when an exception is serialized to create an exception state object that 
 
 
 #### Reference
-<a href="E11F5D98">Albatross.CodeGen.Database Namespace</a><br />
+<a href="E11F5D98.md">Albatross.CodeGen.Database Namespace</a><br />

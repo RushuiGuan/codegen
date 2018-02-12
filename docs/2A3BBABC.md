@@ -1,7 +1,7 @@
 # SqlQueryOption Methods
  
 
-The <a href="922949C4">SqlQueryOption</a> type exposes the following members.
+The <a href="922949C4.md">SqlQueryOption</a> type exposes the following members.
 
 
 ## Methods
@@ -24,4 +24,4 @@ Returns a string that represents the current object.
 
 
 #### Reference
-<a href="922949C4">SqlQueryOption Class</a><br /><a href="E11F5D98">Albatross.CodeGen.Database Namespace</a><br />
+<a href="922949C4.md">SqlQueryOption Class</a><br /><a href="E11F5D98.md">Albatross.CodeGen.Database Namespace</a><br />

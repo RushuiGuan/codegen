@@ -3,7 +3,7 @@
 
 \[Missing <summary> documentation for "T:Albatross.CodeGen.Database.FilterOption"\]
 
-**Namespace:**&nbsp;<a href="E11F5D98">Albatross.CodeGen.Database</a><br />**Assembly:**&nbsp;Albatross.CodeGen.Database (in Albatross.CodeGen.Database.dll) Version: 1.0.0
+**Namespace:**&nbsp;<a href="E11F5D98.md">Albatross.CodeGen.Database</a><br />**Assembly:**&nbsp;Albatross.CodeGen.Database (in Albatross.CodeGen.Database.dll) Version: 1.0.0
 
 ## Syntax
 
@@ -21,4 +21,4 @@ public enum FilterOption
 
 
 #### Reference
-<a href="E11F5D98">Albatross.CodeGen.Database Namespace</a><br />
+<a href="E11F5D98.md">Albatross.CodeGen.Database Namespace</a><br />

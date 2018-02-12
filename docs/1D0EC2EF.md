@@ -1,7 +1,7 @@
 # ObjectType Methods
  
 
-The <a href="F5A8AC2F">ObjectType</a> type exposes the following members.
+The <a href="F5A8AC2F.md">ObjectType</a> type exposes the following members.
 
 
 ## Methods
@@ -21,11 +21,11 @@ Returns a string that represents the current object.
 <a href="#objecttype-methods">Back to Top</a>
 
 ## Extension Methods
-&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public Extension Method](media/pubextension.gif "Public Extension Method")</td><td><a href="6F6CA697">LoadType</a></td><td> (Defined by <a href="E0930E40">Extension</a>.)</td></tr></table>&nbsp;
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public Extension Method](media/pubextension.gif "Public Extension Method")</td><td><a href="6F6CA697.md">LoadType</a></td><td> (Defined by <a href="E0930E40.md">Extension</a>.)</td></tr></table>&nbsp;
 <a href="#objecttype-methods">Back to Top</a>
 
 ## See Also
 
 
 #### Reference
-<a href="F5A8AC2F">ObjectType Class</a><br /><a href="75D6657F">Albatross.CodeGen.CSharp Namespace</a><br />
+<a href="F5A8AC2F.md">ObjectType Class</a><br /><a href="75D6657F.md">Albatross.CodeGen.CSharp Namespace</a><br />

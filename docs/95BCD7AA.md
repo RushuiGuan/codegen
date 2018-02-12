@@ -1,7 +1,7 @@
 # ColumnNotFoundException Events
  
 
-The <a href="E7D5382F">ColumnNotFoundException</a> type exposes the following members.
+The <a href="E7D5382F.md">ColumnNotFoundException</a> type exposes the following members.
 
 
 ## Events
@@ -14,4 +14,4 @@ Occurs when an exception is serialized to create an exception state object that 
 
 
 #### Reference
-<a href="E7D5382F">ColumnNotFoundException Class</a><br /><a href="E11F5D98">Albatross.CodeGen.Database Namespace</a><br />
+<a href="E7D5382F.md">ColumnNotFoundException Class</a><br /><a href="E11F5D98.md">Albatross.CodeGen.Database Namespace</a><br />

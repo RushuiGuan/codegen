@@ -1,9 +1,9 @@
 # ColumnNotFoundException Constructor (String, String)
  
 
-Initializes a new instance of the <a href="E7D5382F">ColumnNotFoundException</a> class
+Initializes a new instance of the <a href="E7D5382F.md">ColumnNotFoundException</a> class
 
-**Namespace:**&nbsp;<a href="E11F5D98">Albatross.CodeGen.Database</a><br />**Assemblies:**&nbsp;&nbsp;Albatross.CodeGen.Database (in Albatross.CodeGen.Database.dll) Version: 1.0.0<br />&nbsp;&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)<br />
+**Namespace:**&nbsp;<a href="E11F5D98.md">Albatross.CodeGen.Database</a><br />**Assemblies:**&nbsp;&nbsp;Albatross.CodeGen.Database (in Albatross.CodeGen.Database.dll) Version: 1.0.0<br />&nbsp;&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)<br />
 
 ## Syntax
 
@@ -23,4 +23,4 @@ public ColumnNotFoundException(
 
 
 #### Reference
-<a href="E7D5382F">ColumnNotFoundException Class</a><br /><a href="FBFC8CA7">ColumnNotFoundException Overload</a><br /><a href="E11F5D98">Albatross.CodeGen.Database Namespace</a><br />
+<a href="E7D5382F.md">ColumnNotFoundException Class</a><br /><a href="FBFC8CA7.md">ColumnNotFoundException Overload</a><br /><a href="E11F5D98.md">Albatross.CodeGen.Database Namespace</a><br />

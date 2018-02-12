@@ -1,7 +1,7 @@
 # IdentityColumnNotFoundException Methods
  
 
-The <a href="5A7A6C19">IdentityColumnNotFoundException</a> type exposes the following members.
+The <a href="5A7A6C19.md">IdentityColumnNotFoundException</a> type exposes the following members.
 
 
 ## Methods
@@ -28,4 +28,4 @@ Creates and returns a string representation of the current exception.
 
 
 #### Reference
-<a href="5A7A6C19">IdentityColumnNotFoundException Class</a><br /><a href="E11F5D98">Albatross.CodeGen.Database Namespace</a><br />
+<a href="5A7A6C19.md">IdentityColumnNotFoundException Class</a><br /><a href="E11F5D98.md">Albatross.CodeGen.Database Namespace</a><br />

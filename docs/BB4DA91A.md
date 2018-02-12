@@ -3,7 +3,7 @@
 
 \[Missing <summary> documentation for "P:Albatross.CodeGen.SqlServer.TableMergeSelect.Description"\]
 
-**Namespace:**&nbsp;<a href="9727DDEC">Albatross.CodeGen.SqlServer</a><br />**Assembly:**&nbsp;Albatross.CodeGen.SqlServer (in Albatross.CodeGen.SqlServer.dll) Version: 1.0.6572.36036 (1.0.0.0)
+**Namespace:**&nbsp;<a href="9727DDEC.md">Albatross.CodeGen.SqlServer</a><br />**Assembly:**&nbsp;Albatross.CodeGen.SqlServer (in Albatross.CodeGen.SqlServer.dll) Version: 1.0.6572.36036 (1.0.0.0)
 
 ## Syntax
 
@@ -20,4 +20,4 @@ Type: <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank
 
 
 #### Reference
-<a href="D18E9108">TableMergeSelect Class</a><br /><a href="9727DDEC">Albatross.CodeGen.SqlServer Namespace</a><br />
+<a href="D18E9108.md">TableMergeSelect Class</a><br /><a href="9727DDEC.md">Albatross.CodeGen.SqlServer Namespace</a><br />

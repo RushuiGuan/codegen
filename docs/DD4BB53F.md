@@ -6,7 +6,7 @@
 
 ## Inheritance Hierarchy
 <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;Albatross.CodeGen.ContainerControlledCodeGenFactory<br />
-**Namespace:**&nbsp;<a href="DCDDD28E">Albatross.CodeGen</a><br />**Assembly:**&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)
+**Namespace:**&nbsp;<a href="DCDDD28E.md">Albatross.CodeGen</a><br />**Assembly:**&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)
 
 ## Syntax
 
@@ -19,12 +19,12 @@ The ContainerControlledCodeGenFactory type exposes the following members.
 
 
 ## Constructors
-&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="D7AFE545">ContainerControlledCodeGenFactory</a></td><td>
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="D7AFE545.md">ContainerControlledCodeGenFactory</a></td><td>
 Initializes a new instance of the ContainerControlledCodeGenFactory class</td></tr></table>&nbsp;
 <a href="#containercontrolledcodegenfactory-class">Back to Top</a>
 
 ## Properties
-&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="643AAF64">Registrations</a></td><td /></tr></table>&nbsp;
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="643AAF64.md">Registrations</a></td><td /></tr></table>&nbsp;
 <a href="#containercontrolledcodegenfactory-class">Back to Top</a>
 
 ## Methods
@@ -32,7 +32,7 @@ Initializes a new instance of the ContainerControlledCodeGenFactory class</td></
 Determines whether the specified object is equal to the current object.
  (Inherited from <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.)</td></tr><tr><td>![Protected method](media/protmethod.gif "Protected method")</td><td><a href="http://msdn2.microsoft.com/en-us/library/4k87zsw7" target="_blank">Finalize</a></td><td>
 Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.
- (Inherited from <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="57480A54">Get(Type, String)</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="7B141F9F">Get(T)(String)</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="http://msdn2.microsoft.com/en-us/library/zdee4b3y" target="_blank">GetHashCode</a></td><td>
+ (Inherited from <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="57480A54.md">Get(Type, String)</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="7B141F9F.md">Get(T)(String)</a></td><td /></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="http://msdn2.microsoft.com/en-us/library/zdee4b3y" target="_blank">GetHashCode</a></td><td>
 Serves as the default hash function.
  (Inherited from <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.)</td></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="http://msdn2.microsoft.com/en-us/library/dfwy45w9" target="_blank">GetType</a></td><td>
 Gets the <a href="http://msdn2.microsoft.com/en-us/library/42892f65" target="_blank">Type</a> of the current instance.
@@ -47,4 +47,4 @@ Returns a string that represents the current object.
 
 
 #### Reference
-<a href="DCDDD28E">Albatross.CodeGen Namespace</a><br />
+<a href="DCDDD28E.md">Albatross.CodeGen Namespace</a><br />

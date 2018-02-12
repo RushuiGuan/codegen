@@ -3,7 +3,7 @@
 
 \[Missing <summary> documentation for "P:Albatross.CodeGen.PowerShell.GetOptionType.Name"\]
 
-**Namespace:**&nbsp;<a href="73820E42">Albatross.CodeGen.PowerShell</a><br />**Assembly:**&nbsp;Albatross.CodeGen.PowerShell (in Albatross.CodeGen.PowerShell.dll) Version: 1.0.0
+**Namespace:**&nbsp;<a href="73820E42.md">Albatross.CodeGen.PowerShell</a><br />**Assembly:**&nbsp;Albatross.CodeGen.PowerShell (in Albatross.CodeGen.PowerShell.dll) Version: 1.0.0
 
 ## Syntax
 
@@ -20,4 +20,4 @@ Type: <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank
 
 
 #### Reference
-<a href="B01BF27C">GetOptionType Class</a><br /><a href="73820E42">Albatross.CodeGen.PowerShell Namespace</a><br />
+<a href="B01BF27C.md">GetOptionType Class</a><br /><a href="73820E42.md">Albatross.CodeGen.PowerShell Namespace</a><br />

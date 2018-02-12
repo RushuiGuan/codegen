@@ -3,7 +3,7 @@
 
 \[Missing <summary> documentation for "P:Albatross.CodeGen.Database.Column.IsNullable"\]
 
-**Namespace:**&nbsp;<a href="E11F5D98">Albatross.CodeGen.Database</a><br />**Assemblies:**&nbsp;&nbsp;Albatross.CodeGen.Database (in Albatross.CodeGen.Database.dll) Version: 1.0.0<br />&nbsp;&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)<br />
+**Namespace:**&nbsp;<a href="E11F5D98.md">Albatross.CodeGen.Database</a><br />**Assemblies:**&nbsp;&nbsp;Albatross.CodeGen.Database (in Albatross.CodeGen.Database.dll) Version: 1.0.0<br />&nbsp;&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)<br />
 
 ## Syntax
 
@@ -20,4 +20,4 @@ Type: <a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank
 
 
 #### Reference
-<a href="9459F463">Column Class</a><br /><a href="E11F5D98">Albatross.CodeGen.Database Namespace</a><br />
+<a href="9459F463.md">Column Class</a><br /><a href="E11F5D98.md">Albatross.CodeGen.Database Namespace</a><br />

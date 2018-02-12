@@ -3,7 +3,7 @@
 
 \[Missing <summary> documentation for "P:Albatross.CodeGen.CSharp.ObjectType.AssemblyLocation"\]
 
-**Namespace:**&nbsp;<a href="75D6657F">Albatross.CodeGen.CSharp</a><br />**Assembly:**&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)
+**Namespace:**&nbsp;<a href="75D6657F.md">Albatross.CodeGen.CSharp</a><br />**Assembly:**&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)
 
 ## Syntax
 
@@ -20,4 +20,4 @@ Type: <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank
 
 
 #### Reference
-<a href="F5A8AC2F">ObjectType Class</a><br /><a href="75D6657F">Albatross.CodeGen.CSharp Namespace</a><br />
+<a href="F5A8AC2F.md">ObjectType Class</a><br /><a href="75D6657F.md">Albatross.CodeGen.CSharp Namespace</a><br />

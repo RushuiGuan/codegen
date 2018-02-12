@@ -1,7 +1,7 @@
 # Step Methods
  
 
-The <a href="97A19E51">Step</a> type exposes the following members.
+The <a href="97A19E51.md">Step</a> type exposes the following members.
 
 
 ## Methods
@@ -24,4 +24,4 @@ Returns a string that represents the current object.
 
 
 #### Reference
-<a href="97A19E51">Step Class</a><br /><a href="DCDDD28E">Albatross.CodeGen Namespace</a><br />
+<a href="97A19E51.md">Step Class</a><br /><a href="DCDDD28E.md">Albatross.CodeGen Namespace</a><br />

@@ -6,7 +6,7 @@
 
 ## Inheritance Hierarchy
 <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">System.Object</a><br />&nbsp;&nbsp;Albatross.CodeGen.CSharp.ObjectType<br />
-**Namespace:**&nbsp;<a href="75D6657F">Albatross.CodeGen.CSharp</a><br />**Assembly:**&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)
+**Namespace:**&nbsp;<a href="75D6657F.md">Albatross.CodeGen.CSharp</a><br />**Assembly:**&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)
 
 ## Syntax
 
@@ -19,12 +19,12 @@ The ObjectType type exposes the following members.
 
 
 ## Constructors
-&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="47AE2006">ObjectType</a></td><td>
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public method](media/pubmethod.gif "Public method")</td><td><a href="47AE2006.md">ObjectType</a></td><td>
 Initializes a new instance of the ObjectType class</td></tr></table>&nbsp;
 <a href="#objecttype-class">Back to Top</a>
 
 ## Properties
-&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="FEF6B3A8">AssemblyLocation</a></td><td /></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="554A3410">ClassName</a></td><td /></tr></table>&nbsp;
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="FEF6B3A8.md">AssemblyLocation</a></td><td /></tr><tr><td>![Public property](media/pubproperty.gif "Public property")</td><td><a href="554A3410.md">ClassName</a></td><td /></tr></table>&nbsp;
 <a href="#objecttype-class">Back to Top</a>
 
 ## Methods
@@ -44,11 +44,11 @@ Returns a string that represents the current object.
 <a href="#objecttype-class">Back to Top</a>
 
 ## Extension Methods
-&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public Extension Method](media/pubextension.gif "Public Extension Method")</td><td><a href="6F6CA697">LoadType</a></td><td> (Defined by <a href="E0930E40">Extension</a>.)</td></tr></table>&nbsp;
+&nbsp;<table><tr><th></th><th>Name</th><th>Description</th></tr><tr><td>![Public Extension Method](media/pubextension.gif "Public Extension Method")</td><td><a href="6F6CA697.md">LoadType</a></td><td> (Defined by <a href="E0930E40.md">Extension</a>.)</td></tr></table>&nbsp;
 <a href="#objecttype-class">Back to Top</a>
 
 ## See Also
 
 
 #### Reference
-<a href="75D6657F">Albatross.CodeGen.CSharp Namespace</a><br />
+<a href="75D6657F.md">Albatross.CodeGen.CSharp Namespace</a><br />

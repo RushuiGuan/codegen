@@ -1,9 +1,9 @@
 # BuiltInColumn Constructor 
  
 
-Initializes a new instance of the <a href="5ACBCD3">BuiltInColumn</a> class
+Initializes a new instance of the <a href="5ACBCD3.md">BuiltInColumn</a> class
 
-**Namespace:**&nbsp;<a href="E11F5D98">Albatross.CodeGen.Database</a><br />**Assembly:**&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)
+**Namespace:**&nbsp;<a href="E11F5D98.md">Albatross.CodeGen.Database</a><br />**Assembly:**&nbsp;Albatross.CodeGen (in Albatross.CodeGen.dll) Version: 1.0.6571.41629 (1.0.0.0)
 
 ## Syntax
 
@@ -22,4 +22,4 @@ public BuiltInColumn(
 
 
 #### Reference
-<a href="5ACBCD3">BuiltInColumn Class</a><br /><a href="E11F5D98">Albatross.CodeGen.Database Namespace</a><br />
+<a href="5ACBCD3.md">BuiltInColumn Class</a><br /><a href="E11F5D98.md">Albatross.CodeGen.Database Namespace</a><br />

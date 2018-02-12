@@ -1,9 +1,9 @@
 # TableMergeUpdateTest Constructor 
  
 
-Initializes a new instance of the <a href="D5221DC1">TableMergeUpdateTest</a> class
+Initializes a new instance of the <a href="D5221DC1.md">TableMergeUpdateTest</a> class
 
-**Namespace:**&nbsp;<a href="56BAD780">Albatross.CodeGen.UnitTest</a><br />**Assembly:**&nbsp;Albatross.CodeGen.UnitTest (in Albatross.CodeGen.UnitTest.dll) Version: 1.0.0
+**Namespace:**&nbsp;<a href="56BAD780.md">Albatross.CodeGen.UnitTest</a><br />**Assembly:**&nbsp;Albatross.CodeGen.UnitTest (in Albatross.CodeGen.UnitTest.dll) Version: 1.0.0
 
 ## Syntax
 
@@ -17,4 +17,4 @@ public TableMergeUpdateTest()
 
 
 #### Reference
-<a href="D5221DC1">TableMergeUpdateTest Class</a><br /><a href="56BAD780">Albatross.CodeGen.UnitTest Namespace</a><br />
+<a href="D5221DC1.md">TableMergeUpdateTest Class</a><br /><a href="56BAD780.md">Albatross.CodeGen.UnitTest Namespace</a><br />
