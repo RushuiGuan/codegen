@@ -8,6 +8,7 @@ namespace Albatross.CodeGen
 		public const string Sql = "SQL";
 		public const string CSharp = "C#";
 		public const string Javascript = "Javascript";
+		public const string Html = "Html";
 		public const string Any = "any";
     }
 }

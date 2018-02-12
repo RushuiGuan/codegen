@@ -4,6 +4,10 @@
 		<TargetFramework>net462</TargetFramework>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DocumentationFile>..\..\doc\Albatross.CodeGen.UnitTest.xml</DocumentationFile>
+	</PropertyGroup>
+
 	<ItemGroup>
 	  <PackageReference Include="Dapper" Version="1.50.4" />
 	  <PackageReference Include="Moq" Version="4.8.1" />

@@ -4,6 +4,9 @@
 		<AssemblyVersion>1.1.9.0</AssemblyVersion>
 		<FileVersion>1.1.9.0</FileVersion>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DocumentationFile>..\..\doc\Albatross.CodeGen.PowerShell.xml</DocumentationFile>
+	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="SimpleInjector" Version="4.0.12" />
 	  <PackageReference Include="System.Management.Automation.dll" Version="10.0.10586" />
