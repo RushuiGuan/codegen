@@ -10,7 +10,7 @@ namespace Albatross.CodeGen.SqlServer
 		IGetTableColumns _getColumns;
 		IGetCSharpType _getCSharpType;
 
-		public override string GetClassName(DatabaseObject t) {
+		public override string GetClassName(DatabaseObject t, ClassOption option) {
 			return t.Name.Proper();
 		}
 

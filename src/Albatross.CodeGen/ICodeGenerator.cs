@@ -1,12 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Albatross.CodeGen {
+	/// <summary>
+	/// This interface is responsible for all code genration implementation.  A code generator requires two pieces of data. 1: source; 2: options.  The source indicates what the generator is running against such as a database table or a .net type.
+	/// The option indicates the supported options for the particular generator.  It could be the name of the generated class or whether the javascript output should use camel case.  CodeGenerator implementation are not expected to be thread safe,
+	/// since new instances will be created for each execution.  Instances of this interface will be created using an Ioc container.  Therefore its dependencies should be declared in its constructor.  Only a single constructor is supported.
+	/// </summary>
+	/// <typeparam name="T">Source type</typeparam>
+	/// <typeparam name="O">Option type</typeparam>
 	public interface ICodeGenerator<in T, in O> {
+
+		/// <summary>
+		/// Normal a generator is run against a source and doesn't need to contain states.  But there are exceptions such as <see cref="Albatross.CodeGen.CompositeCodeGenerator{T, O}"/> or <see cref="Albatross.CodeGen.StaticCodeGenerator"/>.  These
+		/// generators need to be configured because their main function is not to generate code using the source but to generate code based on a data configuration.
+		/// </summary>
+		/// <param name="data"></param>
 		void Configure(object data);
+		/// <summary>
+		/// The main code generation method.
+		/// </summary>
+		/// <param name="sb"></param>
+		/// <param name="source"></param>
+		/// <param name="option"></param>
+		/// <returns></returns>
 		IEnumerable<object> Build(StringBuilder sb, T source, O option);
 		event Func<StringBuilder, IEnumerable<object>> Yield;
 	}

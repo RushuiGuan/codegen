@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.CSharp {
 			this._getReflectionOnlyType = handle;
 		}
 
-		public override string GetClassName(ObjectType objType) {
+		public override string GetClassName(ObjectType objType, ClassOption option) {
 			return GetControllerName(_getReflectionOnlyType.Get(objType)) + "ClientApi";
 		}
 

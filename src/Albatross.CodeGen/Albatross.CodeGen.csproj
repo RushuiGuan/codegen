@@ -5,7 +5,8 @@
 		<FileVersion>1.1.0.0</FileVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-	  <DocumentationFile></DocumentationFile>
+	  <DocumentationFile>bin\Debug\netstandard2.0\Albatross.CodeGen.xml</DocumentationFile>
+	  <NoWarn>1701;1702;1705;1591</NoWarn>
 	</PropertyGroup>
 	
 	<ItemGroup>
