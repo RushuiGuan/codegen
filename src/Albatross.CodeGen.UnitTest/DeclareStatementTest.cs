@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.UnitTest {
 	public class DeclareStatementTest {
 		static IEnumerable<TestCaseData> BuildDeclareStatementTestCase() {
 			return new TestCaseData[] {
-				new TestCaseData(SymbolTable.Table, new SqlQueryOption{ Filter = FilterOption.ByIdentityColumn, }){ ExpectedResult=@"declare
+				new TestCaseData(SymbolTable.Table, new SqlCodeGenOption{ Filter = FilterOption.ByIdentityColumn, }){ ExpectedResult=@"declare
 	@cuID as int,
 	@outShares as bigint,
 	@coID as int,
@@ -30,7 +30,7 @@ update [test].[Symbol] set
 where
 	[SyID] = @syID" },
 
-				new TestCaseData(ContactTable.Table, new SqlQueryOption{Filter = FilterOption.ByPrimaryKey, }){ ExpectedResult=@"declare
+				new TestCaseData(ContactTable.Table, new SqlCodeGenOption{Filter = FilterOption.ByPrimaryKey, }){ ExpectedResult=@"declare
 	@firstName as nvarchar(100),
 	@lastName as nvarchar(100),
 	@middleName as nvarchar(100),
@@ -59,7 +59,7 @@ where
 	[Domain] = @domain
 	and [Login] = @login" },
 
-				new TestCaseData(ContactTable.Table, new SqlQueryOption{ Variables={ { "@user", "varchar(100)"} }, Filter= FilterOption.ByPrimaryKey, Expressions={ { "created", "getdate()"}, {"modified", "getdate()"}, { "createdBy", "@user"},{ "modifiedBy", "@user"} } }){ ExpectedResult=@"declare
+				new TestCaseData(ContactTable.Table, new SqlCodeGenOption{ Variables={ { "@user", "varchar(100)"} }, Filter= FilterOption.ByPrimaryKey, Expressions={ { "created", "getdate()"}, {"modified", "getdate()"}, { "createdBy", "@user"},{ "modifiedBy", "@user"} } }){ ExpectedResult=@"declare
 	@user as varchar(100),
 	@firstName as nvarchar(100),
 	@lastName as nvarchar(100),
@@ -88,24 +88,24 @@ where
 		}
 
 		[TestCaseSource(nameof(BuildDeclareStatementTestCase))]
-		public string BuildDeclareStatement(DatabaseObject table, SqlQueryOption option) {
+		public string BuildDeclareStatement(DatabaseObject table, SqlCodeGenOption option) {
 			Container c = Ioc.Container;
 			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
-			factory.Register(new Composite(typeof(DatabaseObject), typeof(SqlQueryOption)) {
+			factory.Register(new Composite(typeof(DatabaseObject), typeof(SqlCodeGenOption)) {
 				Name = "test",
 				Branch = new Branch(new Leaf("declare statement"), new Branch(new Leaf("newline"), new Leaf("table_update"), new Leaf("newline"), new Leaf("table_where"))),
 				Target = GeneratorTarget.Sql,
 			});
 
 			StringBuilder sb = new StringBuilder();
-			var handle = factory.Create<DatabaseObject, SqlQueryOption>("test");
+			var handle = factory.Create<DatabaseObject, SqlCodeGenOption>("test");
 			handle.Build(sb, table, option);
 			return sb.ToString();
 		}
 
 		static IEnumerable<TestCaseData> DeclareStatementWithoutDeclareTestCase() {
 			return new TestCaseData[] {
-				new TestCaseData(SymbolTable.Table, new SqlQueryOption{ Filter = FilterOption.ByIdentityColumn, }){ ExpectedResult=@"
+				new TestCaseData(SymbolTable.Table, new SqlCodeGenOption{ Filter = FilterOption.ByIdentityColumn, }){ ExpectedResult=@"
 select
 	[SyID],
 	[SyCode],
@@ -118,19 +118,19 @@ from [test].[Symbol]" },
 		}
 
 		[TestCaseSource(nameof(DeclareStatementWithoutDeclareTestCase))]
-		public string DeclareStatementWithoutDeclare(DatabaseObject table, SqlQueryOption option) {
+		public string DeclareStatementWithoutDeclare(DatabaseObject table, SqlCodeGenOption option) {
 			Container c = Ioc.Container;
 			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
 			typeof(DeclareStatement).Assembly.Register(factory, null, null);
 			factory.RegisterStatic();
-			factory.Register(new Composite(typeof(DatabaseObject), typeof(SqlQueryOption)) {
+			factory.Register(new Composite(typeof(DatabaseObject), typeof(SqlCodeGenOption)) {
 				Name = "test",
 				Branch = new Branch(new Leaf("declare statement"), new Branch(new Leaf("newline"), new Leaf("table_select"))),
 				Target = GeneratorTarget.Sql,
 			});
 
 			StringBuilder sb = new StringBuilder();
-			var handle = factory.Create<DatabaseObject, SqlQueryOption>("test");
+			var handle = factory.Create<DatabaseObject, SqlCodeGenOption>("test");
 			handle.Build(sb, table, option);
 			return sb.ToString();
 		}

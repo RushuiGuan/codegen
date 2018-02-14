@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options) {
+		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject table, SqlCodeGenOption options) {
 			foreach (var item in options.Variables) {
 				createVariable.Create(this, item.Key, item.Value);
 			}

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Albatross.CodeGen {
 	/// <summary>
-	/// This interface is responsible for all code genration implementation.  A code generator requires two pieces of data. 1: source; 2: options.  The source indicates what the generator is running against such as a database table or a .net type.
-	/// The option indicates the supported options for the particular generator.  It could be the name of the generated class or whether the javascript output should use camel case.  CodeGenerator implementation are not expected to be thread safe,
-	/// since new instances will be created for each execution.  Instances of this interface will be created using an Ioc container.  Therefore its dependencies should be declared in its constructor.  Only a single constructor is supported.
+	/// This interface is responsible for all code genration implementation.  A code generator requires a) A source; b) an option.  The source indicates what the generator is running against; for example, a database table or a .net type.  It defines the input of the generator.
+	/// The option indicates the supported options for the particular generator.  It could be the name of the generated class or whether the javascript output should use camel case.  Therefore it influences the output of the generator.  CodeGenerator implementation are not expected to be 
+	/// thread safe, since new instances will be created for each execution.  Instances of this interface will be created using an Ioc container.  Therefore its dependencies should be declared in its constructor.  Only a single constructor is supported.
 	/// </summary>
 	/// <typeparam name="T">Source type</typeparam>
 	/// <typeparam name="O">Option type</typeparam>

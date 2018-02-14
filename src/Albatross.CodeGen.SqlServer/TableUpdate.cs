@@ -24,7 +24,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject t, SqlQueryOption option) {
+		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject t, SqlCodeGenOption option) {
 			HashSet<string> keys = new HashSet<string>();
 			if (option.ExcludePrimaryKey) {
 				keys.AddRange(from item in getPrimary.Get(t) select item.Name);
