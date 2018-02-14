@@ -5,6 +5,9 @@ I have created numerous code generators over the last few years.  Some of them a
 
 ### Goal
 The aim of this project is to simply use code generator to speed up software development.  It allows users to setup composite generators that combine multiple generators using a hierarical tree.
+
+### Documentation
+[https://rushuiguan.github.io/CodeGen/]
 		
 ### How to use it
 In order to make it easier to use, I have created powershell cmdlets that allows users to quickly setup composites and execute them repeatly.
