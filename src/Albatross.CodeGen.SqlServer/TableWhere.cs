@@ -25,7 +25,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject t, SqlQueryOption option) {
+		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject t, SqlCodeGenOption option) {
 			sb.Append("where");
 			int count = 0;
 
@@ -48,7 +48,7 @@ namespace Albatross.CodeGen.SqlServer {
 			return new[] { this };
 		}
 
-		void AppendColumn(StringBuilder sb, Column c, int count, SqlQueryOption option) {
+		void AppendColumn(StringBuilder sb, Column c, int count, SqlCodeGenOption option) {
 			sb.AppendLine().Tab();
 			if (count > 0) { sb.Append("and "); }
 			string variable = getVariableName.Get(c.Name);

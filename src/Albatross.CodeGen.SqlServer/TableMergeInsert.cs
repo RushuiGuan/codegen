@@ -16,7 +16,7 @@ namespace Albatross.CodeGen.SqlServer {
 		}
 
 
-		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options) {
+		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject t, SqlCodeGenOption options) {
 			Column[] columns = (from c in _getColumns.Get(t)
 								orderby c.OrdinalPosition ascending, c.Name ascending
 								where !c.ComputedColumn && !c.IdentityColumn

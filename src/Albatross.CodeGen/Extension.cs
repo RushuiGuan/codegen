@@ -38,6 +38,15 @@ namespace Albatross.CodeGen {
 		public static string GetGeneratorKey(this Type type, string name) {
 				return $"{type.FullName}.{name}";
 		}
+
+		public static StringBuilder Tabify(this StringBuilder sb, string content, int count) {
+			sb.AppendChar('\t', count);
+			foreach (char c in content) {
+				sb.Append(c);
+				if (c == '\n') { sb.AppendChar('\t', count); }
+			}
+			return sb;
+		}
 		
 		#region registration helpers
 		public static IConfigurableCodeGenFactory RegisterStatic(this IConfigurableCodeGenFactory factory, string name, string target, string content, string category, string description) {

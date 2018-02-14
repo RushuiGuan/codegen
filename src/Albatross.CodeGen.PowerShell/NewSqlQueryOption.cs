@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.PowerShell {
 
 
 		protected override void ProcessRecord() {
-			var value = new SqlQueryOption {
+			var value = new SqlCodeGenOption {
 				ExcludePrimaryKey = ExcludePrimaryKey.ToBool(),
 				Filter = Filter,
 			};

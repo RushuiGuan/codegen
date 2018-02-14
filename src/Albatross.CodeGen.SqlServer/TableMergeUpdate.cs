@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.getPrimary = getPrimary;
 		}
 
-		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options) {
+		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject table, SqlCodeGenOption options) {
 
 			HashSet<string> keys = new HashSet<string>();
 			if (options.ExcludePrimaryKey) {

@@ -16,7 +16,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.getTableColumns = getTableColumns;
 		}
 
-		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject t, SqlQueryOption options) {
+		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject t, SqlCodeGenOption options) {
 			IEnumerable<Column> columns = getTableColumns.Get(t);
 			sb.Append("select").AppendLine();
 			foreach (Column c in columns) {

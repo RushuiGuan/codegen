@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject table, SqlQueryOption options) {
+		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject table, SqlCodeGenOption options) {
 			Column[] columns = _getColumns.Get(table).ToArray();
 			if (columns.Length == 0) {
 				throw new ColumnNotFoundException(table);
