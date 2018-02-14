@@ -1,349 +1,233 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="8e03dd73-5e4e-44f6-852f-588a39648afc" Title="Albatross.CodeGen" Url="html/DCDDD28E.htm">
-    <HelpTOCNode Id="3afff8a8-7f27-4af0-b2ac-893e8d2123e5" Title="Branch Class" Url="html/2D8F1A99.htm">
-      <HelpTOCNode Title="Branch Constructor " Url="html/D58DB1A5.htm" />
-      <HelpTOCNode Id="d38e3c97-a946-4a79-abf8-ee3eb2ba366c" Title="Branch Properties" Url="html/1053412D.htm">
-        <HelpTOCNode Title="IsLeaf Property " Url="html/C4C22CC.htm" />
-        <HelpTOCNode Title="Name Property " Url="html/BA6E8E15.htm" />
-        <HelpTOCNode Title="Nodes Property " Url="html/58C48E23.htm" />
+  <HelpTOCNode Id="9fe0cfbb-5a83-4775-a5a8-109e90980b62" Title="Albatross Code Generator Documentation" Url="html/11ea5c43-a58c-4b9a-9039-bc75b2cde823.htm">
+    <HelpTOCNode Id="d5536fcc-0f1c-4ebe-af67-5a7c73d696f3" Title="Albatross.CodeGen" Url="html/DCDDD28E.htm">
+      <HelpTOCNode Id="fc294046-46ea-4114-aade-250e7853b377" Title="CodeGeneratorAttribute Class" Url="html/811A94CE.htm">
+        <HelpTOCNode Title="CodeGeneratorAttribute Constructor " Url="html/8B06C8FC.htm" />
+        <HelpTOCNode Title="CodeGeneratorAttribute Properties" Url="html/F448E169.htm" />
+        <HelpTOCNode Title="CodeGeneratorAttribute Methods" Url="html/5B28FC20.htm" />
       </HelpTOCNode>
-      <HelpTOCNode Id="83ab0d72-9f83-4b71-9403-0619eee11c3a" Title="Branch Methods" Url="html/A671D079.htm">
-        <HelpTOCNode Title="GetEnumerator Method " Url="html/4B8C7FFB.htm" />
+      <HelpTOCNode Id="924ad6a3-b5fa-45b6-aa5f-31b655770547" Title="CodeGenNotRegisteredException Class" Url="html/11C3B4E3.htm">
+        <HelpTOCNode Title="CodeGenNotRegisteredException Constructor " Url="html/6B2E7BB9.htm" />
+        <HelpTOCNode Title="CodeGenNotRegisteredException Properties" Url="html/446B913A.htm" />
+        <HelpTOCNode Title="CodeGenNotRegisteredException Methods" Url="html/6B56BB80.htm" />
+        <HelpTOCNode Title="CodeGenNotRegisteredException Events" Url="html/7598E96B.htm" />
       </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="9f6e3d84-10e9-4169-910b-e3d2647bb416" Title="ClassGenerator(T) Class" Url="html/EF356CF9.htm">
-      <HelpTOCNode Title="ClassGenerator(T) Constructor " Url="html/3DE1F992.htm" />
-      <HelpTOCNode Id="4c110bae-4ec0-4d86-9fec-c4b19e7ec3da" Title="ClassGenerator(T) Methods" Url="html/75B64E27.htm">
-        <HelpTOCNode Title="Build Method " Url="html/F647FEE1.htm" />
-        <HelpTOCNode Title="Configure Method " Url="html/50E55AA9.htm" />
-        <HelpTOCNode Title="GetClassName Method " Url="html/B82D905.htm" />
-        <HelpTOCNode Title="RenderBody Method " Url="html/CB4B07F1.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="245c1ef1-bd52-4ceb-8412-206cd94af522" Title="ClassGenerator(T) Events" Url="html/7559F839.htm">
-        <HelpTOCNode Title="Yield Event" Url="html/EC3D29F2.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="c3c97318-9414-4715-a646-9c0beba19378" Title="ClassOption Class" Url="html/312793A.htm">
-      <HelpTOCNode Title="ClassOption Constructor " Url="html/A5C7A745.htm" />
-      <HelpTOCNode Id="0ee1cf88-6e47-4b0f-876f-d5798647797f" Title="ClassOption Properties" Url="html/C5FC51D.htm">
-        <HelpTOCNode Title="AccessModifier Property " Url="html/3F61B8ED.htm" />
-        <HelpTOCNode Title="BaseClass Property " Url="html/5F8A5FE9.htm" />
-        <HelpTOCNode Title="Constructors Property " Url="html/AFCBAE28.htm" />
-        <HelpTOCNode Title="Imports Property " Url="html/78848E91.htm" />
-        <HelpTOCNode Title="Name Property " Url="html/BBFD84E9.htm" />
-        <HelpTOCNode Title="Namespace Property " Url="html/BF98AC39.htm" />
-        <HelpTOCNode Title="Postfix Property " Url="html/EE5B1602.htm" />
-        <HelpTOCNode Title="Prefix Property " Url="html/D8136B33.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="ClassOption Methods" Url="html/9F989F3A.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="1813e4b8-6cdf-4ef9-a463-64aaa7723293" Title="CodeGenerator Class" Url="html/4DAE12ED.htm">
-      <HelpTOCNode Title="CodeGenerator Constructor " Url="html/D22F3341.htm" />
-      <HelpTOCNode Id="a5bf2264-8e89-4353-a2f6-a3aec17c1497" Title="CodeGenerator Properties" Url="html/AA6498C3.htm">
-        <HelpTOCNode Title="Category Property " Url="html/FE48B105.htm" />
-        <HelpTOCNode Title="Data Property " Url="html/C1D1B8C8.htm" />
-        <HelpTOCNode Title="Description Property " Url="html/D63A5146.htm" />
-        <HelpTOCNode Title="GeneratorType Property " Url="html/282BCFF5.htm" />
-        <HelpTOCNode Title="Key Property " Url="html/DCB99F50.htm" />
-        <HelpTOCNode Title="Name Property " Url="html/F1E0FD2D.htm" />
-        <HelpTOCNode Title="OptionType Property " Url="html/645D382B.htm" />
-        <HelpTOCNode Title="SourceType Property " Url="html/5C583E4F.htm" />
-        <HelpTOCNode Title="Target Property " Url="html/F8CAA2E6.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="CodeGenerator Methods" Url="html/94BC2782.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="03019ce1-0e64-447e-a23e-91a6bc55783d" Title="CodeGeneratorAttribute Class" Url="html/811A94CE.htm">
-      <HelpTOCNode Title="CodeGeneratorAttribute Constructor " Url="html/8B06C8FC.htm" />
-      <HelpTOCNode Id="e37ed8b2-9093-40d8-ae07-6b8b30d7f090" Title="CodeGeneratorAttribute Properties" Url="html/F448E169.htm">
-        <HelpTOCNode Title="Category Property " Url="html/97AB3097.htm" />
-        <HelpTOCNode Title="Description Property " Url="html/A23A290E.htm" />
-        <HelpTOCNode Title="GeneratorType Property " Url="html/506B6D80.htm" />
-        <HelpTOCNode Title="Name Property " Url="html/3583A5DA.htm" />
-        <HelpTOCNode Title="SourceType Property " Url="html/71387CF6.htm" />
-        <HelpTOCNode Title="Target Property " Url="html/2506BD33.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="CodeGeneratorAttribute Methods" Url="html/5B28FC20.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="81f48878-8c77-4355-a233-88c7cfe5cded" Title="CodeGeneratorFactory Class" Url="html/CB3388F8.htm">
-      <HelpTOCNode Title="CodeGeneratorFactory Constructor " Url="html/3D5B3FD0.htm" />
-      <HelpTOCNode Id="8e01899d-8358-414f-98a1-93ff5528d865" Title="CodeGeneratorFactory Properties" Url="html/621A075C.htm">
-        <HelpTOCNode Title="Registrations Property " Url="html/750C6F3E.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="6b7f6d1c-d985-4646-84f1-10bd272ef8f7" Title="CodeGeneratorFactory Methods" Url="html/E04BA0BA.htm">
-        <HelpTOCNode Title="Clear Method " Url="html/6A5A700B.htm" />
-        <HelpTOCNode Id="b0ecb09c-0b74-4ae3-8dd8-fcfd2fea115e" Title="Create Method " Url="html/8C5D4839.htm">
-          <HelpTOCNode Title="Create(T, O) Method (String)" Url="html/C17A78EA.htm" />
-          <HelpTOCNode Title="Create Method (Type, String)" Url="html/E9313C2B.htm" />
-        </HelpTOCNode>
-        <HelpTOCNode Title="Get Method " Url="html/8E6373C5.htm" />
-        <HelpTOCNode Title="Register Method " Url="html/E631C8EC.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="dde541cc-993c-467b-9a2b-dfb02466e950" Title="CodeGenNotRegisteredException Class" Url="html/11C3B4E3.htm">
-      <HelpTOCNode Title="CodeGenNotRegisteredException Constructor " Url="html/6B2E7BB9.htm" />
-      <HelpTOCNode Title="CodeGenNotRegisteredException Properties" Url="html/446B913A.htm" />
-      <HelpTOCNode Title="CodeGenNotRegisteredException Methods" Url="html/6B56BB80.htm" />
-      <HelpTOCNode Title="CodeGenNotRegisteredException Events" Url="html/7598E96B.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="4e8af9a9-0ec9-49e5-9683-514a89ffb6ef" Title="Composite Class" Url="html/9629588.htm">
-      <HelpTOCNode Id="8c1a3d45-0cef-4c17-abf5-637a0a276c84" Title="Composite Constructor " Url="html/439AC0FB.htm">
+      <HelpTOCNode Id="47c7d439-5dfc-4c59-8821-657ac1d2d67e" Title="Composite Class" Url="html/9629588.htm">
         <HelpTOCNode Title="Composite Constructor " Url="html/39ACF431.htm" />
-        <HelpTOCNode Title="Composite Constructor (Type, Type)" Url="html/735CF248.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="07752ce6-eb2e-4585-bd10-2073b76b56bd" Title="Composite Properties" Url="html/BC25F252.htm">
-        <HelpTOCNode Title="Branch Property " Url="html/FC1427D6.htm" />
-        <HelpTOCNode Title="Category Property " Url="html/F2601BC9.htm" />
-        <HelpTOCNode Title="Description Property " Url="html/4D40C8B0.htm" />
-        <HelpTOCNode Title="Name Property " Url="html/1DB346C5.htm" />
-        <HelpTOCNode Title="OptionType Property " Url="html/39983674.htm" />
-        <HelpTOCNode Title="SourceType Property " Url="html/A527736D.htm" />
-        <HelpTOCNode Title="Target Property " Url="html/C03714FF.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="Composite Methods" Url="html/85114B2E.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="adff1a34-7bcc-4fb2-a5ee-4f7709e7477e" Title="CompositeCodeGenerator(T, O) Class" Url="html/E866FC52.htm">
-      <HelpTOCNode Title="CompositeCodeGenerator(T, O) Constructor " Url="html/7160875E.htm" />
-      <HelpTOCNode Id="f15fa56d-c0d3-492e-8d81-f3ed3415b93b" Title="CompositeCodeGenerator(T, O) Methods" Url="html/7E8E067F.htm">
-        <HelpTOCNode Title="Build Method " Url="html/9C6E5475.htm" />
-        <HelpTOCNode Title="Configure Method " Url="html/B190FC39.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="e7872776-7db4-4f8a-a2d7-1467c644b440" Title="CompositeCodeGenerator(T, O) Events" Url="html/1649BF95.htm">
-        <HelpTOCNode Title="Yield Event" Url="html/79DE0815.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="f86f73ef-f62e-4dce-8a7c-3d970ed7d84f" Title="Extension Class" Url="html/E0930E40.htm">
-      <HelpTOCNode Id="3b68a002-7e1d-4812-8b36-fcf98e1df9c8" Title="Extension Methods" Url="html/CD14EBE7.htm">
-        <HelpTOCNode Title="AddRange(T) Method " Url="html/1804DA8E.htm" />
-        <HelpTOCNode Title="GetAssemblyResource Method " Url="html/C3ED44E1.htm" />
-        <HelpTOCNode Title="GetGeneratorKey Method " Url="html/B5BCD1CD.htm" />
-        <HelpTOCNode Title="GetMeta Method " Url="html/B5E56F25.htm" />
-        <HelpTOCNode Title="Proper Method " Url="html/62ADCB70.htm" />
-        <HelpTOCNode Id="13a3b37b-c705-40ac-9612-19accdf83cc6" Title="Register Method " Url="html/D3E0DFBA.htm">
-          <HelpTOCNode Title="Register Method (IConfigurableCodeGenFactory, Composite)" Url="html/CD12772D.htm" />
-          <HelpTOCNode Title="Register Method (Assembly, IConfigurableCodeGenFactory, IFactory(SourceType), IFactory(OptionType))" Url="html/D30B812.htm" />
+        <HelpTOCNode Id="01f6d969-f16e-486b-88de-7ea4550e49a2" Title="Composite Properties" Url="html/BC25F252.htm">
+          <HelpTOCNode Title="Category Property " Url="html/F2601BC9.htm" />
+          <HelpTOCNode Title="Description Property " Url="html/4D40C8B0.htm" />
+          <HelpTOCNode Title="Generators Property " Url="html/192ACEF5.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/1DB346C5.htm" />
+          <HelpTOCNode Title="Seperator Property " Url="html/D2EF9607.htm" />
+          <HelpTOCNode Title="SourceType Property " Url="html/A527736D.htm" />
+          <HelpTOCNode Title="Target Property " Url="html/C03714FF.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="0842caa7-2604-47c3-9ae6-631459565a25" Title="RegisterStatic Method " Url="html/FA71225A.htm">
-          <HelpTOCNode Title="RegisterStatic Method (IConfigurableCodeGenFactory)" Url="html/74CA074B.htm" />
-          <HelpTOCNode Title="RegisterStatic Method (IConfigurableCodeGenFactory, String, String, String, String, String)" Url="html/9A9640EB.htm" />
+        <HelpTOCNode Title="Composite Methods" Url="html/85114B2E.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="3cff5a52-7e04-4148-8607-e50bd17c025f" Title="CompositeCodeGenerator Class" Url="html/6822AF00.htm">
+        <HelpTOCNode Title="CompositeCodeGenerator Constructor " Url="html/17F532E7.htm" />
+        <HelpTOCNode Id="658b1949-a3bb-44e8-880b-1b7b91dcedaf" Title="CompositeCodeGenerator Properties" Url="html/CF1D0018.htm">
+          <HelpTOCNode Title="Category Property " Url="html/207EF351.htm" />
+          <HelpTOCNode Title="Description Property " Url="html/703E8371.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/705A7F7D.htm" />
+          <HelpTOCNode Title="Seperator Property " Url="html/473707EC.htm" />
+          <HelpTOCNode Title="SourceType Property " Url="html/6FFAE4C8.htm" />
+          <HelpTOCNode Title="Target Property " Url="html/AC176F7F.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="07dbd359-e7bc-4164-be84-8b1b32583787" Title="TryRegister Method " Url="html/34EC2296.htm">
-          <HelpTOCNode Title="TryRegister(T) Method (IConfigurableCodeGenFactory, String, String, String, String, Object)" Url="html/76C4BCC7.htm" />
-          <HelpTOCNode Title="TryRegister Method (IConfigurableCodeGenFactory, Type, String, String, String, String, Object)" Url="html/F65EBE0B.htm" />
+        <HelpTOCNode Id="c30dfc17-cb02-4658-8063-43bb503cfe43" Title="CompositeCodeGenerator Methods" Url="html/24C9FDDF.htm">
+          <HelpTOCNode Title="Build Method " Url="html/1AD9BE56.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="1de266f8-1aa2-4ff2-8cb8-825b10a4ba66" Title="Factory(T) Class" Url="html/D019D42E.htm">
-      <HelpTOCNode Title="Factory(T) Constructor " Url="html/D2F45E67.htm" />
-      <HelpTOCNode Id="4f30e26e-a4c8-492a-8f6e-6bb10fdd5dab" Title="Factory(T) Methods" Url="html/2C1E1D07.htm">
-        <HelpTOCNode Title="Clear Method " Url="html/C1E385B8.htm" />
-        <HelpTOCNode Title="List Method " Url="html/8FFC4079.htm" />
-        <HelpTOCNode Title="Register Method " Url="html/8150EB52.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="0a2b4371-1d71-4017-9416-a711bda43f00" Title="GeneratorCategory Class" Url="html/B3DE34CB.htm">
-      <HelpTOCNode Id="6cfccd95-4172-4fa9-9615-305ab7fc1a2c" Title="GeneratorCategory Fields" Url="html/E365A6AB.htm">
-        <HelpTOCNode Title="SQLServer Field" Url="html/7906882C.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="788aa270-bec8-403c-87b5-2851c90ad2ad" Title="GeneratorTarget Class" Url="html/F5E64871.htm">
-      <HelpTOCNode Id="4b8ce606-815d-4b65-ba88-b18584be72ab" Title="GeneratorTarget Fields" Url="html/BC5B442C.htm">
-        <HelpTOCNode Title="Any Field" Url="html/A21CB1EB.htm" />
-        <HelpTOCNode Title="CSharp Field" Url="html/7980EBA7.htm" />
-        <HelpTOCNode Title="Html Field" Url="html/F7B195D8.htm" />
-        <HelpTOCNode Title="Javascript Field" Url="html/49EAF4B3.htm" />
-        <HelpTOCNode Title="Sql Field" Url="html/8FBA0A5C.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="a2246107-1a2e-465f-b304-dbbf799bd386" Title="ICodeGenerator(T, O) Interface" Url="html/33CBCE29.htm">
-      <HelpTOCNode Id="b6bf23aa-124a-45fe-8e74-8f608895076c" Title="ICodeGenerator(T, O) Methods" Url="html/77B03B10.htm">
-        <HelpTOCNode Title="Build Method " Url="html/8A80220.htm" />
-        <HelpTOCNode Title="Configure Method " Url="html/313686B4.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="2fe4e43d-031f-4b52-b8d5-9778cace3a55" Title="ICodeGenerator(T, O) Events" Url="html/470F4511.htm">
-        <HelpTOCNode Title="Yield Event" Url="html/B38071F8.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="40c3f3ea-1675-40c2-886b-8bbdd3b88df9" Title="ICodeGeneratorFactory Interface" Url="html/1FFDA092.htm">
-      <HelpTOCNode Id="e809ef97-c0d0-411e-91f1-23e383fcdd92" Title="ICodeGeneratorFactory Properties" Url="html/61C419A5.htm">
-        <HelpTOCNode Title="Registrations Property " Url="html/A4AA91CA.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="14957f92-b815-4f51-9542-0aaf070eee7a" Title="ICodeGeneratorFactory Methods" Url="html/6BA9801C.htm">
-        <HelpTOCNode Id="79d9aeff-a074-470e-b225-5b2c641f454c" Title="Create Method " Url="html/F316089E.htm">
-          <HelpTOCNode Title="Create(T, O) Method (String)" Url="html/1A16A976.htm" />
-          <HelpTOCNode Title="Create Method (Type, String)" Url="html/42A9251.htm" />
+      <HelpTOCNode Id="53d62e42-26bd-482a-953a-f287b9be9393" Title="ContainerControlledCodeGenFactory Class" Url="html/DD4BB53F.htm">
+        <HelpTOCNode Title="ContainerControlledCodeGenFactory Constructor " Url="html/D7AFE545.htm" />
+        <HelpTOCNode Id="a12a283a-a7f4-4355-92aa-4b1364d9b566" Title="ContainerControlledCodeGenFactory Properties" Url="html/A173ED6D.htm">
+          <HelpTOCNode Title="Registrations Property " Url="html/643AAF64.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Title="Get Method " Url="html/F9200888.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="bfbfc45d-1fd2-4d19-9e9c-215f07a0c3f5" Title="IConfigurableCodeGenFactory Interface" Url="html/1F8E938.htm">
-      <HelpTOCNode Title="IConfigurableCodeGenFactory Properties" Url="html/34AC25E1.htm" />
-      <HelpTOCNode Id="795fc9fe-9b19-4118-9ad3-516ca7fc1896" Title="IConfigurableCodeGenFactory Methods" Url="html/5119EEB4.htm">
-        <HelpTOCNode Title="Clear Method " Url="html/3B786484.htm" />
-        <HelpTOCNode Title="Register Method " Url="html/97394A15.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="b419f3fc-f8fa-4e52-88b4-851c1784a8c5" Title="IFactory(T) Interface" Url="html/609BF8FB.htm">
-      <HelpTOCNode Id="8dd77dda-a0ac-4f99-bfd9-f2721a70b899" Title="IFactory(T) Methods" Url="html/F387246B.htm">
-        <HelpTOCNode Title="Clear Method " Url="html/D6060B06.htm" />
-        <HelpTOCNode Title="List Method " Url="html/B0E27A4C.htm" />
-        <HelpTOCNode Title="Register Method " Url="html/9FD70B96.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="967316f9-074d-4ab4-ba81-1fee2338d4b7" Title="INode Interface" Url="html/26EC0580.htm">
-      <HelpTOCNode Id="8afdd28f-da1d-4b04-859d-86864ddff6c0" Title="INode Properties" Url="html/6AEAB129.htm">
-        <HelpTOCNode Title="IsLeaf Property " Url="html/8E9ACAF.htm" />
-        <HelpTOCNode Title="Name Property " Url="html/1A6A65C0.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="f4de6c87-cfa3-47e1-a567-0b7b7e25861f" Title="InvalidOptionTypeException Class" Url="html/2F852C8E.htm">
-      <HelpTOCNode Title="InvalidOptionTypeException Constructor " Url="html/8DC8D03E.htm" />
-      <HelpTOCNode Title="InvalidOptionTypeException Properties" Url="html/C8437A2D.htm" />
-      <HelpTOCNode Title="InvalidOptionTypeException Methods" Url="html/252C2D82.htm" />
-      <HelpTOCNode Title="InvalidOptionTypeException Events" Url="html/54C6FBD4.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="da9dbc21-cf52-498b-a066-c80cf21cf0f8" Title="InvalidSourceTypeException Class" Url="html/E19F229E.htm">
-      <HelpTOCNode Title="InvalidSourceTypeException Constructor " Url="html/A3AB0376.htm" />
-      <HelpTOCNode Title="InvalidSourceTypeException Properties" Url="html/AC42309B.htm" />
-      <HelpTOCNode Title="InvalidSourceTypeException Methods" Url="html/CFD37997.htm" />
-      <HelpTOCNode Title="InvalidSourceTypeException Events" Url="html/D5EBC75F.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="926e3d0b-c626-41e4-925c-4bd56c98bff6" Title="IObjectFactory Interface" Url="html/550B0890.htm">
-      <HelpTOCNode Id="52fca88c-cd6b-49c0-9c38-c952be4abeca" Title="IObjectFactory Methods" Url="html/ED932376.htm">
-        <HelpTOCNode Id="0699886a-600f-424d-a719-7f78f7dbf50c" Title="Create Method " Url="html/E7FA31A9.htm">
-          <HelpTOCNode Title="Create(T) Method " Url="html/556C3998.htm" />
-          <HelpTOCNode Title="Create Method (Type)" Url="html/BC39FE56.htm" />
+        <HelpTOCNode Id="a08fee6b-f5d2-4cd1-9da1-7c0569e7efbb" Title="ContainerControlledCodeGenFactory Methods" Url="html/9BA3D712.htm">
+          <HelpTOCNode Id="51609a97-1dfb-4780-a968-befcf6ebcf8b" Title="Get Method " Url="html/1727EBC3.htm">
+            <HelpTOCNode Title="Get(T) Method (String)" Url="html/7B141F9F.htm" />
+            <HelpTOCNode Title="Get Method (Type, String)" Url="html/57480A54.htm" />
+          </HelpTOCNode>
         </HelpTOCNode>
       </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="be1fc017-5ae6-4030-8b36-d9b0fc1125ab" Title="IRunCodeGenerator Interface" Url="html/33263D97.htm">
-      <HelpTOCNode Id="eddd23ce-df17-47eb-a943-54465f7abf08" Title="IRunCodeGenerator Methods" Url="html/71907544.htm">
-        <HelpTOCNode Title="Run Method " Url="html/CCAFA86.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="6347a503-cef7-4dee-ac03-68d3739c0ee6" Title="Leaf Class" Url="html/82AA70DC.htm">
-      <HelpTOCNode Title="Leaf Constructor " Url="html/BAE04A9F.htm" />
-      <HelpTOCNode Id="5a417913-2b16-452b-93a1-e4ba2fc26716" Title="Leaf Properties" Url="html/D9559A36.htm">
-        <HelpTOCNode Title="IsLeaf Property " Url="html/99025866.htm" />
-        <HelpTOCNode Title="Name Property " Url="html/DDF7D0DE.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="Leaf Methods" Url="html/B692D9E6.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="671e6bce-75f6-4920-80b6-1171544dd56e" Title="ObjectType Class" Url="html/644FE34.htm">
-      <HelpTOCNode Title="ObjectType Constructor " Url="html/2B613277.htm" />
-      <HelpTOCNode Id="84d310b1-ca25-464d-94d4-998133f83048" Title="ObjectType Properties" Url="html/79A615E5.htm">
-        <HelpTOCNode Title="AssemblyLocation Property " Url="html/E63D1EC3.htm" />
-        <HelpTOCNode Title="ClassName Property " Url="html/59347A21.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="ObjectType Methods" Url="html/1D18A68F.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="d6597040-3c02-4930-b598-a55c79133af4" Title="OptionType Class" Url="html/6547F1AA.htm">
-      <HelpTOCNode Title="OptionType Constructor " Url="html/4F4A1F35.htm" />
-      <HelpTOCNode Id="9db333f7-3144-40b4-8ab5-a92e62bf207a" Title="OptionType Properties" Url="html/D261718D.htm">
-        <HelpTOCNode Title="Description Property " Url="html/43EA3B02.htm" />
-        <HelpTOCNode Title="ObjectType Property " Url="html/DAF8B105.htm" />
-        <HelpTOCNode Title="Title Property " Url="html/83CF2789.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="001b8a12-dcc9-4f6f-9e5f-701c3da5a8ff" Title="OptionType Methods" Url="html/FDCBAB35.htm">
-        <HelpTOCNode Title="Equals Method " Url="html/8DA4697E.htm" />
-        <HelpTOCNode Title="GetHashCode Method " Url="html/1D0007B1.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="f8024dbd-70f2-46fd-922e-6b046ad2ca9a" Title="OptionTypeAttribute Class" Url="html/41710F25.htm">
-      <HelpTOCNode Title="OptionTypeAttribute Constructor " Url="html/FD248AA5.htm" />
-      <HelpTOCNode Id="b33670d5-716f-42e5-9166-cad0efd684ee" Title="OptionTypeAttribute Properties" Url="html/900F6B35.htm">
-        <HelpTOCNode Title="Description Property " Url="html/8131FF0C.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="OptionTypeAttribute Methods" Url="html/B865B9AF.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="94eebe24-f3f3-4aa0-9046-b13021eaa359" Title="OptionTypeFactory Class" Url="html/12E2C275.htm">
-      <HelpTOCNode Title="OptionTypeFactory Constructor " Url="html/45DD8B06.htm" />
-      <HelpTOCNode Title="OptionTypeFactory Methods" Url="html/30AB6241.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="31a4113b-9b65-4f5a-ae56-06dc9f297a64" Title="RunCodeGenerator Class" Url="html/F57E984.htm">
-      <HelpTOCNode Title="RunCodeGenerator Constructor " Url="html/A5974DAC.htm" />
-      <HelpTOCNode Id="268653da-ff67-4a8d-b404-b964716ec544" Title="RunCodeGenerator Methods" Url="html/C5176696.htm">
-        <HelpTOCNode Title="Run Method " Url="html/CD82860F.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="2cc25911-a04d-47b0-9838-7591e9750b36" Title="SourceType Class" Url="html/A71CC876.htm">
-      <HelpTOCNode Title="SourceType Constructor " Url="html/B4C3B167.htm" />
-      <HelpTOCNode Id="30453cf7-a432-4c19-b467-67c80fffa274" Title="SourceType Properties" Url="html/A097DF62.htm">
-        <HelpTOCNode Title="Description Property " Url="html/4316E416.htm" />
-        <HelpTOCNode Title="ObjectType Property " Url="html/C54CACED.htm" />
-        <HelpTOCNode Title="Title Property " Url="html/EBA0AA28.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="911b31de-e064-4a3d-8ccc-ffb4a422e6a6" Title="SourceType Methods" Url="html/C03C6490.htm">
-        <HelpTOCNode Title="Equals Method " Url="html/59243511.htm" />
-        <HelpTOCNode Title="GetHashCode Method " Url="html/5D3BFCEB.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="d30ec885-b5a7-4ce2-8b1e-83974b6fa5cc" Title="SourceTypeAttribute Class" Url="html/9B16239.htm">
-      <HelpTOCNode Title="SourceTypeAttribute Constructor " Url="html/5259D1E8.htm" />
-      <HelpTOCNode Id="6b58882a-919e-4b9f-965b-6447aff679e6" Title="SourceTypeAttribute Properties" Url="html/4E4FA03E.htm">
-        <HelpTOCNode Title="Description Property " Url="html/F7418E02.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Title="SourceTypeAttribute Methods" Url="html/13CFA8D9.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="c57344e3-606c-489f-a67c-215542378f18" Title="SourceTypeFactory Class" Url="html/E2E11290.htm">
-      <HelpTOCNode Title="SourceTypeFactory Constructor " Url="html/7EAC8830.htm" />
-      <HelpTOCNode Title="SourceTypeFactory Methods" Url="html/E36C71B9.htm" />
-    </HelpTOCNode>
-    <HelpTOCNode Id="e23ef48e-08cf-4028-af3b-7d1a9d9cddde" Title="StaticCodeGenerator Class" Url="html/643E4F18.htm">
-      <HelpTOCNode Title="StaticCodeGenerator Constructor " Url="html/786F398F.htm" />
-      <HelpTOCNode Id="1bfdfff6-d804-445c-be63-7e85f05ed7fd" Title="StaticCodeGenerator Methods" Url="html/BD71D6C.htm">
-        <HelpTOCNode Title="Build Method " Url="html/F01C859B.htm" />
-        <HelpTOCNode Title="Configure Method " Url="html/534AE0AD.htm" />
-      </HelpTOCNode>
-      <HelpTOCNode Id="1c0f00f1-da20-4d32-83a1-bd5d91e1eb06" Title="StaticCodeGenerator Events" Url="html/BEDD2E00.htm">
-        <HelpTOCNode Title="Yield Event" Url="html/4DACC840.htm" />
-      </HelpTOCNode>
-    </HelpTOCNode>
-    <HelpTOCNode Id="bd75db01-99aa-4634-8c02-5781b9fb3413" Title="StringBuilderExtension Class" Url="html/6A4420F2.htm">
-      <HelpTOCNode Id="9c115bc4-ed45-47db-88a2-ad77f4caf4fd" Title="StringBuilderExtension Methods" Url="html/EABCF067.htm">
-        <HelpTOCNode Title="AppendChar Method " Url="html/EB48C483.htm" />
-        <HelpTOCNode Title="AsString Method " Url="html/D6811093.htm" />
-        <HelpTOCNode Title="BaseClass Method " Url="html/E329619.htm" />
-        <HelpTOCNode Title="BindableGetter Method " Url="html/F0AAF783.htm" />
-        <HelpTOCNode Title="BindableSetter Method " Url="html/5FAEF783.htm" />
-        <HelpTOCNode Title="ClassName Method " Url="html/E81AC22E.htm" />
-        <HelpTOCNode Title="CloseParenthesis Method " Url="html/97DA37EB.htm" />
-        <HelpTOCNode Title="CloseScope Method " Url="html/131D00B0.htm" />
-        <HelpTOCNode Title="CloseSquareBracket Method " Url="html/A90CDEC2.htm" />
-        <HelpTOCNode Title="Comma Method " Url="html/8743BAD.htm" />
-        <HelpTOCNode Title="Constructor Method " Url="html/59DCD316.htm" />
-        <HelpTOCNode Title="Dot Method " Url="html/76337BD7.htm" />
-        <HelpTOCNode Title="EmptyScope Method " Url="html/8347F1D6.htm" />
-        <HelpTOCNode Title="EndRegion Method " Url="html/ADDDB9BC.htm" />
-        <HelpTOCNode Title="GetTypeName Method " Url="html/EBD6CE8A.htm" />
-        <HelpTOCNode Title="Join Method " Url="html/761DDDC.htm" />
-        <HelpTOCNode Title="Literal Method " Url="html/945ACE85.htm" />
-        <HelpTOCNode Title="Method Method " Url="html/56C92BD5.htm" />
-        <HelpTOCNode Id="826dbd0c-db37-4c6c-931e-39cc265f59a2" Title="MethodParam Method " Url="html/FFDF42BF.htm">
-          <HelpTOCNode Title="MethodParam(T) Method (StringBuilder, String)" Url="html/7E93A791.htm" />
-          <HelpTOCNode Title="MethodParam Method (StringBuilder, Type, String)" Url="html/8F3E3C1F.htm" />
+      <HelpTOCNode Id="81b64251-0614-4cdb-8a5a-59a810feb95c" Title="CSharpExtension Class" Url="html/DC2EC11C.htm">
+        <HelpTOCNode Id="4d2b43b4-dd70-4135-bcac-230099266cdc" Title="CSharpExtension Methods" Url="html/A464C374.htm">
+          <HelpTOCNode Title="AsString Method " Url="html/7E1672F0.htm" />
+          <HelpTOCNode Title="BaseClass Method " Url="html/FE4E27A3.htm" />
+          <HelpTOCNode Title="BindableGetter Method " Url="html/81152B54.htm" />
+          <HelpTOCNode Title="BindableSetter Method " Url="html/81152CD8.htm" />
+          <HelpTOCNode Title="ClassName Method " Url="html/A020750A.htm" />
+          <HelpTOCNode Title="CloseScope Method " Url="html/C9FFA731.htm" />
+          <HelpTOCNode Title="Constructor Method " Url="html/78D7CEB5.htm" />
+          <HelpTOCNode Title="EmptyScope Method " Url="html/B35E3928.htm" />
+          <HelpTOCNode Title="EndRegion Method " Url="html/DB971B54.htm" />
+          <HelpTOCNode Title="GetTypeName Method " Url="html/102F33B5.htm" />
+          <HelpTOCNode Title="Join Method " Url="html/509A60DF.htm" />
+          <HelpTOCNode Title="Literal Method " Url="html/618E9076.htm" />
+          <HelpTOCNode Title="Method Method " Url="html/63AF9799.htm" />
+          <HelpTOCNode Id="c6f31903-6cee-47ec-a2d4-912bef0f0307" Title="MethodParam Method " Url="html/E5A6BD68.htm">
+            <HelpTOCNode Title="MethodParam(T) Method (StringBuilder, String)" Url="html/F7A20AC6.htm" />
+            <HelpTOCNode Title="MethodParam Method (StringBuilder, Type, String)" Url="html/2F8B01D6.htm" />
+          </HelpTOCNode>
+          <HelpTOCNode Title="OpenScope Method " Url="html/C4C6F5DC.htm" />
+          <HelpTOCNode Title="Override Method " Url="html/36FBF2E2.htm" />
+          <HelpTOCNode Title="Pad Method " Url="html/2584637E.htm" />
+          <HelpTOCNode Title="PropertyAssignment Method " Url="html/890BF60B.htm" />
+          <HelpTOCNode Title="Public Method " Url="html/94D490AC.htm" />
+          <HelpTOCNode Title="PublicClass Method " Url="html/C6301203.htm" />
+          <HelpTOCNode Title="PublicProperty Method " Url="html/675673E.htm" />
+          <HelpTOCNode Title="Region Method " Url="html/21FFD877.htm" />
+          <HelpTOCNode Title="Terminate Method " Url="html/AA331E78.htm" />
+          <HelpTOCNode Title="ToGenericTypeString Method " Url="html/3D072577.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Title="OpenParenthesis Method " Url="html/5FCF68D7.htm" />
-        <HelpTOCNode Title="OpenScope Method " Url="html/9F491FED.htm" />
-        <HelpTOCNode Title="OpenSquareBracket Method " Url="html/9EA5D21F.htm" />
-        <HelpTOCNode Title="Override Method " Url="html/124ED15C.htm" />
-        <HelpTOCNode Title="Pad Method " Url="html/5A077BCD.htm" />
-        <HelpTOCNode Title="PropertyAssignment Method " Url="html/FD3F0547.htm" />
-        <HelpTOCNode Title="Public Method " Url="html/F19DFB70.htm" />
-        <HelpTOCNode Title="PublicClass Method " Url="html/D23B7FF.htm" />
-        <HelpTOCNode Title="PublicProperty Method " Url="html/FC38613E.htm" />
-        <HelpTOCNode Title="Region Method " Url="html/336A06A.htm" />
-        <HelpTOCNode Title="Semicolon Method " Url="html/630D2A0.htm" />
-        <HelpTOCNode Title="Space Method " Url="html/9CCBDB18.htm" />
-        <HelpTOCNode Title="Tab Method " Url="html/2C717BCD.htm" />
-        <HelpTOCNode Title="Terminate Method " Url="html/7FE23440.htm" />
-        <HelpTOCNode Title="ToGenericTypeString Method " Url="html/C667D30A.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="88c4e419-3ce1-4584-bdb6-5de6c5963fa4" Title="Extension Class" Url="html/E0930E40.htm">
+        <HelpTOCNode Id="c8dc2a8b-06ee-44d9-be51-65cb6ae664a2" Title="Extension Methods" Url="html/CD14EBE7.htm">
+          <HelpTOCNode Title="FindCodeGenerator Method " Url="html/102DE2FB.htm" />
+          <HelpTOCNode Title="GetAssemblyResource Method " Url="html/C3ED44E1.htm" />
+          <HelpTOCNode Title="GetConnectionString Method " Url="html/A25F52E3.htm" />
+          <HelpTOCNode Title="GetGeneratorName Method " Url="html/B6268AD2.htm" />
+          <HelpTOCNode Title="GetName Method " Url="html/DD81418D.htm" />
+          <HelpTOCNode Title="GetSourceType Method " Url="html/5849F408.htm" />
+          <HelpTOCNode Title="LoadType Method " Url="html/6F6CA697.htm" />
+          <HelpTOCNode Title="NewSqlTableComposite Method " Url="html/E6F19C8E.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="4635e0df-f19a-4f19-ad2d-e3d59ecd607e" Title="ICodeGenerator Interface" Url="html/E61B69D.htm">
+        <HelpTOCNode Id="1438a9af-230b-4688-a7d1-078635177702" Title="ICodeGenerator Properties" Url="html/E219D362.htm">
+          <HelpTOCNode Title="Category Property " Url="html/2F35D1F2.htm" />
+          <HelpTOCNode Title="Description Property " Url="html/5A8F47D5.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/B3CC87C1.htm" />
+          <HelpTOCNode Title="SourceType Property " Url="html/E46B7675.htm" />
+          <HelpTOCNode Title="Target Property " Url="html/944ABB18.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="0802c689-d7dd-4180-adcc-d3e196ef4641" Title="ICodeGenerator Methods" Url="html/1896FC9F.htm">
+          <HelpTOCNode Title="Build Method " Url="html/3E8AA2A6.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="73423817-6d84-43a9-8f36-2c9608c362e6" Title="ICodeGenerator(T) Interface" Url="html/919CCE29.htm">
+        <HelpTOCNode Title="ICodeGenerator(T) Properties" Url="html/5B3D69CD.htm" />
+        <HelpTOCNode Id="f57bf537-721b-49c3-bb53-e4bfa124f2d5" Title="ICodeGenerator(T) Methods" Url="html/EC4B3B10.htm">
+          <HelpTOCNode Id="fca25015-aca5-4e6e-b134-bead5a930628" Title="Build Method " Url="html/4E5C1904.htm">
+            <HelpTOCNode Title="Build Method (StringBuilder, T, Object, ICodeGeneratorFactory)" Url="html/308F0220.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="31cca746-35df-42a4-920e-bc2151c5cdae" Title="ICodeGeneratorFactory Interface" Url="html/1FFDA092.htm">
+        <HelpTOCNode Id="7886d55a-669e-4ec1-916d-613e1892e272" Title="ICodeGeneratorFactory Properties" Url="html/61C419A5.htm">
+          <HelpTOCNode Title="Registrations Property " Url="html/A4AA91CA.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="838f9554-58cd-482c-b507-3df0238631be" Title="ICodeGeneratorFactory Methods" Url="html/6BA9801C.htm">
+          <HelpTOCNode Id="b3db2554-276c-481b-bd22-7d9147e9a851" Title="Get Method " Url="html/C0A98571.htm">
+            <HelpTOCNode Title="Get(T) Method (String)" Url="html/9A55CE6A.htm" />
+            <HelpTOCNode Title="Get Method (Type, String)" Url="html/F9200888.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="02864f5d-b289-4eb5-8efa-4fe4551b7385" Title="ISourceTypeFactory Interface" Url="html/69EEBFD8.htm">
+        <HelpTOCNode Id="d4740a0f-6093-445a-a94d-d3670e11f94e" Title="ISourceTypeFactory Methods" Url="html/6509B6B9.htm">
+          <HelpTOCNode Title="Get Method " Url="html/BE56B339.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="336f2d1f-b1ac-483f-939d-3e0cf60b1d5a" Title="Scenario Class" Url="html/C442B762.htm">
+        <HelpTOCNode Title="Scenario Constructor " Url="html/59E23365.htm" />
+        <HelpTOCNode Id="d25842ba-e14c-4a5c-99f4-a46b9b102c66" Title="Scenario Properties" Url="html/C7A6080C.htm">
+          <HelpTOCNode Title="Category Property " Url="html/4F5288CF.htm" />
+          <HelpTOCNode Title="Description Property " Url="html/580A3EC2.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/2C19A9EB.htm" />
+          <HelpTOCNode Title="Steps Property " Url="html/DFB63AB7.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Scenario Methods" Url="html/366B8F1E.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a2d6b988-ef73-4eb6-8723-4167a841cf26" Title="ScenarioGenerator Class" Url="html/E84A585A.htm">
+        <HelpTOCNode Title="ScenarioGenerator Constructor " Url="html/1B083B1.htm" />
+        <HelpTOCNode Id="a0895625-43fb-4a07-952c-93700c3b788d" Title="ScenarioGenerator Properties" Url="html/8110F0A5.htm">
+          <HelpTOCNode Title="Category Property " Url="html/4BD8623F.htm" />
+          <HelpTOCNode Title="Description Property " Url="html/3A16E22F.htm" />
+          <HelpTOCNode Title="Name Property " Url="html/BF869F11.htm" />
+          <HelpTOCNode Title="SourceType Property " Url="html/5FDFF4E.htm" />
+          <HelpTOCNode Title="Target Property " Url="html/4DF49793.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="497fb16f-a083-4c7d-95c8-da8a33128eb4" Title="ScenarioGenerator Methods" Url="html/46147EE9.htm">
+          <HelpTOCNode Id="ec455428-0360-47c0-9584-d33e37d9bdc2" Title="Build Method " Url="html/682C1A0A.htm">
+            <HelpTOCNode Title="Build Method (StringBuilder, Scenario, Object, ICodeGeneratorFactory)" Url="html/7CAA82D3.htm" />
+            <HelpTOCNode Title="Build Method (StringBuilder, Object, Object, ICodeGeneratorFactory)" Url="html/DEFDB77E.htm" />
+          </HelpTOCNode>
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="29f30083-db68-4ea2-9ef6-562132739b34" Title="ScenarioNotRegisteredException Class" Url="html/7143A45F.htm">
+        <HelpTOCNode Title="ScenarioNotRegisteredException Constructor " Url="html/509D99BB.htm" />
+        <HelpTOCNode Title="ScenarioNotRegisteredException Properties" Url="html/16AB6CC4.htm" />
+        <HelpTOCNode Title="ScenarioNotRegisteredException Methods" Url="html/46960CA5.htm" />
+        <HelpTOCNode Title="ScenarioNotRegisteredException Events" Url="html/18738C7A.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="17f8a05a-cd12-41f0-b2e7-32901703d069" Title="SourceType Class" Url="html/A71CC876.htm">
+        <HelpTOCNode Title="SourceType Constructor " Url="html/B4C3B167.htm" />
+        <HelpTOCNode Id="3d9b0a28-c502-4006-996b-4125d9167080" Title="SourceType Properties" Url="html/A097DF62.htm">
+          <HelpTOCNode Title="Description Property " Url="html/4316E416.htm" />
+          <HelpTOCNode Title="ObjectType Property " Url="html/C54CACED.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="SourceType Methods" Url="html/C03C6490.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="b3401567-cdad-4945-8d23-ab4a1ebfea8f" Title="SourceTypeAttribute Class" Url="html/9B16239.htm">
+        <HelpTOCNode Title="SourceTypeAttribute Constructor " Url="html/5259D1E8.htm" />
+        <HelpTOCNode Id="d5a563b3-e978-4a4a-b914-fbb6cc0260cd" Title="SourceTypeAttribute Properties" Url="html/4E4FA03E.htm">
+          <HelpTOCNode Title="Description Property " Url="html/F7418E02.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="SourceTypeAttribute Methods" Url="html/13CFA8D9.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="faaf9d9b-9f31-4123-8d5b-fa9b79d1f0c2" Title="SQLExtension Class" Url="html/D4C0DEE8.htm">
+        <HelpTOCNode Id="48cd0923-354c-4beb-9bd5-d11fc558bb98" Title="SQLExtension Methods" Url="html/601E44D4.htm">
+          <HelpTOCNode Title="EscapeName Method " Url="html/12D84933.htm" />
+          <HelpTOCNode Title="IsBoolean Method " Url="html/B03E2CF4.htm" />
+          <HelpTOCNode Title="IsDateTime Method " Url="html/C2A6D52.htm" />
+          <HelpTOCNode Title="IsNumeric Method " Url="html/5F2B4939.htm" />
+          <HelpTOCNode Title="IsString Method " Url="html/93F876F4.htm" />
+          <HelpTOCNode Title="Match Method " Url="html/31EE9B78.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="3ee92e16-1774-4234-a961-e310173de3a0" Title="Step Class" Url="html/97A19E51.htm">
+        <HelpTOCNode Title="Step Constructor " Url="html/E8F1AF0.htm" />
+        <HelpTOCNode Id="5eaf8972-876d-49e1-8ccb-1a8834d2bd7c" Title="Step Properties" Url="html/F0AECD2B.htm">
+          <HelpTOCNode Title="Generator Property " Url="html/C8D096C2.htm" />
+          <HelpTOCNode Title="Options Property " Url="html/C602184E.htm" />
+          <HelpTOCNode Title="Source Property " Url="html/EC727BC5.htm" />
+          <HelpTOCNode Title="SourceType Property " Url="html/C240978E.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="Step Methods" Url="html/3BEDAC3D.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="37f09cec-0613-4d4f-a67e-de1bd9db0e2b" Title="StepConverter Class" Url="html/2B39026A.htm">
+        <HelpTOCNode Title="StepConverter Constructor " Url="html/233E996.htm" />
+        <HelpTOCNode Id="7fa0e6aa-6565-48ae-949e-3e7d5330b1a8" Title="StepConverter Properties" Url="html/61288561.htm">
+          <HelpTOCNode Title="CanRead Property " Url="html/9C226647.htm" />
+          <HelpTOCNode Title="CanWrite Property " Url="html/29A1A7EC.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="930d91b7-9904-4ad8-8c68-74fb83c4eab4" Title="StepConverter Methods" Url="html/6CF604CC.htm">
+          <HelpTOCNode Title="CanConvert Method " Url="html/7A6C7BC8.htm" />
+          <HelpTOCNode Title="ReadJson Method " Url="html/B8B7B758.htm" />
+          <HelpTOCNode Title="WriteJson Method " Url="html/F8048E22.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="1691a6b0-ce5b-401a-b40e-32b631d885b4" Title="StringBuilderExtension Class" Url="html/6A4420F2.htm">
+        <HelpTOCNode Id="8cb0c090-8fdf-48d0-89f1-4766b8d5cdb2" Title="StringBuilderExtension Methods" Url="html/EABCF067.htm">
+          <HelpTOCNode Title="AppendChar Method " Url="html/EB48C483.htm" />
+          <HelpTOCNode Title="CloseParenthesis Method " Url="html/97DA37EB.htm" />
+          <HelpTOCNode Title="CloseSquareBracket Method " Url="html/A90CDEC2.htm" />
+          <HelpTOCNode Title="Comma Method " Url="html/8743BAD.htm" />
+          <HelpTOCNode Title="Dot Method " Url="html/76337BD7.htm" />
+          <HelpTOCNode Title="OpenParenthesis Method " Url="html/5FCF68D7.htm" />
+          <HelpTOCNode Title="OpenSquareBracket Method " Url="html/9EA5D21F.htm" />
+          <HelpTOCNode Title="Semicolon Method " Url="html/630D2A0.htm" />
+          <HelpTOCNode Title="Space Method " Url="html/9CCBDB18.htm" />
+          <HelpTOCNode Title="Tab Method " Url="html/2C717BCD.htm" />
+        </HelpTOCNode>
       </HelpTOCNode>
     </HelpTOCNode>
   </HelpTOCNode>
-  <HelpTOCNode Title="Welcome to the [TODO: Add project name]" Url="html/11ea5c43-a58c-4b9a-9039-bc75b2cde823.htm" />
-  <HelpTOCNode Id="08412a99-3993-46c8-9da7-3d1cb22c9c0c" Title="Version History" Url="html/bcafe075-c63d-4b38-9bc5-b9b7f3499223.htm">
+  <HelpTOCNode Id="356f2cba-dce2-4bd3-ade5-ae0e8ea7939a" Title="Version History" Url="html/bcafe075-c63d-4b38-9bc5-b9b7f3499223.htm">
     <HelpTOCNode Title="Version 1.0.0.0" Url="html/5389aeae-361b-4d3c-939a-ef489289e1fd.htm" />
   </HelpTOCNode>
 </HelpTOC>
