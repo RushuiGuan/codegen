@@ -15,6 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.PowerShel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.Database", "Albatross.CodeGen.Database\Albatross.CodeGen.Database.csproj", "{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SamplePowerShellScripts", "SamplePowerShellScripts", "{8709515D-4D2B-484E-BEA0-D53854C86353}"
+	ProjectSection(SolutionItems) = preProject
+		SamplePowerShellScripts\Sql Table Insert Script.ps1 = SamplePowerShellScripts\Sql Table Insert Script.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,7 +81,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGToold = {DC66FBE3-16F6-4FE3-BA4F-D3C380D2AB75}
 		SolutionGuid = {8E6AD19A-703E-4DCE-92B7-50652D34EE15}
+		SolutionGToold = {DC66FBE3-16F6-4FE3-BA4F-D3C380D2AB75}
 	EndGlobalSection
 EndGlobal

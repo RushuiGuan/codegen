@@ -1,14 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
 		<AssemblyVersion>1.1.2.0</AssemblyVersion>
 		<FileVersion>1.1.0.0</FileVersion>
 	</PropertyGroup>
+
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-	  <DocumentationFile>bin\Debug\netstandard2.0\Albatross.CodeGen.xml</DocumentationFile>
-	  <NoWarn>1701;1702;1705;1591</NoWarn>
 	</PropertyGroup>
-	
 	<ItemGroup>
 		<PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
 	</ItemGroup>
