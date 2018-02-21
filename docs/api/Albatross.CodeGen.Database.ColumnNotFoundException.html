@@ -84,11 +84,15 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><span class="xref">System.Runtime.Serialization.ISerializable</span></div>
+    <div><span class="xref">System.Runtime.InteropServices._Exception</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
       <span class="xref">System.Exception.GetBaseException()</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.ToString()</span>
     </div>
     <div>
       <span class="xref">System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)</span>
@@ -97,31 +101,28 @@
       <span class="xref">System.Exception.GetType()</span>
     </div>
     <div>
-      <span class="xref">System.Exception.ToString()</span>
+      <span class="xref">System.Exception.Message</span>
     </div>
     <div>
       <span class="xref">System.Exception.Data</span>
     </div>
     <div>
-      <span class="xref">System.Exception.HelpLink</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.HResult</span>
-    </div>
-    <div>
       <span class="xref">System.Exception.InnerException</span>
     </div>
     <div>
-      <span class="xref">System.Exception.Message</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.Source</span>
+      <span class="xref">System.Exception.TargetSite</span>
     </div>
     <div>
       <span class="xref">System.Exception.StackTrace</span>
     </div>
     <div>
-      <span class="xref">System.Exception.TargetSite</span>
+      <span class="xref">System.Exception.HelpLink</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.Source</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.HResult</span>
     </div>
     <div>
       <span class="xref">System.Exception.SerializeObjectState</span>
@@ -131,7 +132,7 @@
   <h6><strong>Assembly</strong>: Albatross.CodeGen.Database.dll</h6>
   <h5 id="Albatross_CodeGen_Database_ColumnNotFoundException_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ColumnNotFoundException : Exception, ISerializable</code></pre>
+    <pre><code class="lang-csharp hljs">public class ColumnNotFoundException : Exception, ISerializable, _Exception</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -207,6 +208,9 @@
   <h3 id="implements">Implements</h3>
   <div>
       <span class="xref">System.Runtime.Serialization.ISerializable</span>
+  </div>
+  <div>
+      <span class="xref">System.Runtime.InteropServices._Exception</span>
   </div>
 </article>
           </div>

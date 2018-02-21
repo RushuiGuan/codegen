@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CodeGenNotRegisteredException.html",
-          "hash": "rU86Fw5FsAGtsGzeYcqf2g=="
+          "hash": "SsBBrTLKQOgXIA1QnNuGwg=="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CodeGeneratorAttribute.html",
-          "hash": "xwiVIxHVduztBtnMzF3+hA=="
+          "hash": "SJrcJYAOXWl2W37JTuyBBA=="
         }
       },
       "is_incremental": false,
@@ -177,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.ColumnNotFoundException.html",
-          "hash": "JGN6gaDMuIHEzy4djgvmSA=="
+          "hash": "7pr2uGxEWJISgq/pFV92dw=="
         }
       },
       "is_incremental": false,
@@ -309,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.IdentityColumnNotFoundException.html",
-          "hash": "90mVWDADyyrNUtngb5bWSA=="
+          "hash": "sVVBDcJ5HSCW+9uVeH5JwA=="
         }
       },
       "is_incremental": false,
@@ -321,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.PrimaryKeyNotFoundException.html",
-          "hash": "63hkB/yux/DTpVJlxQhMOg=="
+          "hash": "M/KyQlHNH05G9FpPRgb8MA=="
         }
       },
       "is_incremental": false,
@@ -501,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.InvalidOptionTypeException.html",
-          "hash": "rVCkiEeDjbpciyJJWwqppw=="
+          "hash": "x46v4dWQcXb52WiAejKwRw=="
         }
       },
       "is_incremental": false,
@@ -513,7 +513,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.InvalidSourceTypeException.html",
-          "hash": "MPfWtJbx3zijBNjsZ4KQLw=="
+          "hash": "E2BBjmZkIzefyvjohvtVBQ=="
         }
       },
       "is_incremental": false,
@@ -561,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.OptionTypeAttribute.html",
-          "hash": "ZMJn0VfLTYx9LQy52sxWMA=="
+          "hash": "yz0Zq1B0lwJ/T+Q5gxqSUQ=="
         }
       },
       "is_incremental": false,
@@ -861,7 +861,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SourceTypeAttribute.html",
-          "hash": "fF+fI5wPiS0P4rSFCg5tkA=="
+          "hash": "WwnXM/oQIgsMTE3J5Qj49g=="
         }
       },
       "is_incremental": false,
