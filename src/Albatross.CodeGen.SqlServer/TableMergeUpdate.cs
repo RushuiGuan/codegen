@@ -7,12 +7,12 @@ using System.Text;
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_merge_update", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Table merge update clause")]
 	public class TableMergeUpdate : TableQueryGenerator {
-		IGetTableColumns getColumns;
+		IGetTableColumn getColumns;
 		IGetVariableName getVariableName;
 		IGetTablePrimaryKey getPrimary;
 		IColumnSqlTypeBuilder typeBuilder;
 
-		public TableMergeUpdate(IGetTableColumns getColumns, IGetVariableName getVariableName, IColumnSqlTypeBuilder typeBuilder, IGetTablePrimaryKey getPrimary) {
+		public TableMergeUpdate(IGetTableColumn getColumns, IGetVariableName getVariableName, IColumnSqlTypeBuilder typeBuilder, IGetTablePrimaryKey getPrimary) {
 			this.getColumns = getColumns;
 			this.getVariableName = getVariableName;
 			this.typeBuilder = typeBuilder;

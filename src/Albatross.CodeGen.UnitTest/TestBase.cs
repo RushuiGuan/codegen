@@ -10,7 +10,7 @@ namespace Albatross.CodeGen.UnitTest {
 			Container container = new Container();
 			container.Options.AllowOverridingRegistrations = true;
 
-			container.RegisterSingleton<IGetTableColumns, GetTableColumns>();
+			container.RegisterSingleton<IGetTableColumn, GetTableColumn>();
 			container.RegisterSingleton<IGetVariableName, GetSqlVariableName>();
 			container.RegisterSingleton<IGetTablePrimaryKey, GetTablePrimaryKey>();
 			container.RegisterSingleton<IGetTableIdentityColumn, GetTableIdentityColumn>();

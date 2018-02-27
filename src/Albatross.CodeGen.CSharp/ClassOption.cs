@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albatross.CodeGen{
+namespace Albatross.CodeGen.CSharp{
 	[OptionType("C# Class Option")]
 	public class ClassOption {
 		public ClassOption() {

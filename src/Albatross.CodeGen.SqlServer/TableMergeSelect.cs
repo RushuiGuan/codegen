@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_merge_select", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Merge statement select clause")]
 	public class TableMergeSelect : TableQueryGenerator {
-		IGetTableColumns _getColumns;
+		IGetTableColumn _getColumns;
 		IGetVariableName _getVariableName;
 		IColumnSqlTypeBuilder typeBuilder;
 		ICreateVariable createVariable;
 
-		public TableMergeSelect(IGetTableColumns getColumns, IGetVariableName getVariableName, IColumnSqlTypeBuilder typeBuilder, ICreateVariable createVariable) {
+		public TableMergeSelect(IGetTableColumn getColumns, IGetVariableName getVariableName, IColumnSqlTypeBuilder typeBuilder, ICreateVariable createVariable) {
 			_getColumns = getColumns;
 			_getVariableName = getVariableName;
 			this.typeBuilder = typeBuilder;
@@ -37,7 +37,7 @@ namespace Albatross.CodeGen.SqlServer {
 				} else {
 					string name = _getVariableName.Get(column.Name);
 					sb.Append(name);
-					createVariable.Create(this, name, typeBuilder.Build(column));
+					createVariable.Create(this, column.GetVariable());
 				}
 				sb.Append(" as ").EscapeName(column.Name);
 				if (column != columns.Last()) {

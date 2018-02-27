@@ -32,7 +32,7 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 
 
 	public class ContactTable : TableMocking {
-		public ContactTable(Mock<IGetTableColumns> getTableColumns, Mock<IGetTablePrimaryKey> getPrimaryKeys, Mock<IGetTableIdentityColumn> getIdentityColumn) : base(getTableColumns, getPrimaryKeys, getIdentityColumn) {
+		public ContactTable(Mock<IGetTableColumn> getTableColumns, Mock<IGetTablePrimaryKey> getPrimaryKeys, Mock<IGetTableIdentityColumn> getIdentityColumn) : base(getTableColumns, getPrimaryKeys, getIdentityColumn) {
 		}
 
 		public readonly static DatabaseObject Table = new DatabaseObject { Name = "Contact", Schema = "test" };

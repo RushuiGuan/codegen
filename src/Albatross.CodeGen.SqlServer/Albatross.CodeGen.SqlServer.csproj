@@ -12,22 +12,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="GetTableColumns.sql" />
-    <None Remove="GetTableIdentityColumn.sql" />
-    <None Remove="GetTablePrimaryKey.sql" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="GetTableColumns.sql" />
-    <EmbeddedResource Include="GetTableIdentityColumn.sql" />
-    <EmbeddedResource Include="GetTablePrimaryKey.sql" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Albatross.CodeGen.CSharp\Albatross.CodeGen.CSharp.csproj" />
     <ProjectReference Include="..\Albatross.CodeGen.Database\Albatross.CodeGen.Database.csproj" />
     <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
   </ItemGroup>

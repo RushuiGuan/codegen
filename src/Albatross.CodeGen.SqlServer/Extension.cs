@@ -59,5 +59,17 @@ namespace Albatross.CodeGen.SqlServer {
 				|| dataType == "smallmoney";
 		}
 		#endregion
+
+		#region variable
+		public static Variable GetVariable(this Column column) {
+			return new Variable {
+				Name = column.Name,
+				Type = column.DataType,
+				MaxLength = column.MaxLength,
+				Precision = column.Precision,
+				Scale = column.Scale,
+			};
+		}
+		#endregion
 	}
 }

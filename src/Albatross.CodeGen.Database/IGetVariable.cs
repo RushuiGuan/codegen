@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albatross.CodeGen.Database
-{
+namespace Albatross.CodeGen.Database{
+	/// <summary>
+	/// return all the variables created by the creator
+	/// </summary>
     public interface IGetVariable
     {
-		IDictionary<string, string> Get(object creator);
+		IEnumerable<Variable> Get(object creator);
     }
 }

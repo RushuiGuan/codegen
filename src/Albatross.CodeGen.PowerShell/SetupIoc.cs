@@ -26,7 +26,7 @@ namespace Albatross.CodeGen.PowerShell {
 			c.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 
 			c.Register<IColumnSqlTypeBuilder, ColumnSqlTypeBuilder>(Lifestyle.Singleton);
-			c.Register<IGetTableColumns, GetTableColumns>(Lifestyle.Singleton);
+			c.Register<IGetTableColumn, GetTableColumn>(Lifestyle.Singleton);
 			c.Register<IGetTableIdentityColumn, GetTableIdentityColumn>(Lifestyle.Singleton);
 			c.Register<IGetTablePrimaryKey, GetTablePrimaryKey>(Lifestyle.Singleton);
 			c.Register<IGetVariableName, GetSqlVariableName>(Lifestyle.Singleton);

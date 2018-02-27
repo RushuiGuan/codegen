@@ -28,7 +28,7 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 		};
 
 
-		public SymbolTable(Mock<IGetTableColumns> getTableColumns, Mock<IGetTablePrimaryKey> getPrimaryKeys, Mock<IGetTableIdentityColumn> getIdentityColumn) : base(getTableColumns, getPrimaryKeys, getIdentityColumn) {
+		public SymbolTable(Mock<IGetTableColumn> getTableColumns, Mock<IGetTablePrimaryKey> getPrimaryKeys, Mock<IGetTableIdentityColumn> getIdentityColumn) : base(getTableColumns, getPrimaryKeys, getIdentityColumn) {
 		}
 
 		public override string TableName => Table.Name;

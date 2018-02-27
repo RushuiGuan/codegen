@@ -53,7 +53,7 @@ namespace Albatross.CodeGen.SqlServer {
 			if (count > 0) { sb.Append("and "); }
 			string variable = getVariableName.Get(c.Name);
 			sb.EscapeName(c.Name).Append(" = ").Append(variable);
-			createVariable.Create(this, variable, typeBuilder.Build(c));
+			createVariable.Create(this, c.GetVariable());
 		}
 	}
 }

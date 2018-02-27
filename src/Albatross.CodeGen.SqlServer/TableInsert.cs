@@ -7,12 +7,12 @@ using System.Text;
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_insert", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Insert statement that excludes the computed columns")]
 	public class TableInsert : TableQueryGenerator {
-		IGetTableColumns getTableColumns;
+		IGetTableColumn getTableColumns;
 		IGetVariableName getVariableName;
 		IColumnSqlTypeBuilder sqlTypeBuilder;
 		ICreateVariable createVariable;
 
-		public TableInsert(IGetTableColumns getTableColumns, IGetVariableName getVariableName, IColumnSqlTypeBuilder sqlTypeBuilder, ICreateVariable createVariable) {
+		public TableInsert(IGetTableColumn getTableColumns, IGetVariableName getVariableName, IColumnSqlTypeBuilder sqlTypeBuilder, ICreateVariable createVariable) {
 			this.getTableColumns = getTableColumns;
 			this.getVariableName = getVariableName;
 			this.sqlTypeBuilder = sqlTypeBuilder;
@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.SqlServer {
 
 		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject table, SqlCodeGenOption options) {
 			foreach (var item in options.Variables) {
-				createVariable.Create(this, item.Key, item.Value);
+				createVariable.Create(this, item);
 			}
 
 			Column[] columns = (from c in getTableColumns.Get(table) where !c.IdentityColumn && !c.ComputedColumn select c).ToArray();
@@ -40,7 +40,7 @@ namespace Albatross.CodeGen.SqlServer {
 				} else {
 					string name = getVariableName.Get(c.Name);
 					sb.Append(name);
-					createVariable.Create(this, name, sqlTypeBuilder.Build(c));
+					createVariable.Create(this, c.GetVariable());
 				}
 				if (c != columns.Last()) { sb.Comma().Space(); }
 			}

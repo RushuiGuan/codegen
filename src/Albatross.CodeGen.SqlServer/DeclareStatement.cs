@@ -12,10 +12,12 @@ namespace Albatross.CodeGen.SqlServer {
 
 		IColumnSqlTypeBuilder typeBuilder;
 		IGetVariable getVariable;
+		IBuildVariable buildVariable;
 
-		public DeclareStatement(IColumnSqlTypeBuilder typeBuilder, IGetVariable getVariable) {
+		public DeclareStatement(IColumnSqlTypeBuilder typeBuilder, IGetVariable getVariable, IBuildVariable buildVariable) {
 			this.typeBuilder = typeBuilder;
 			this.getVariable = getVariable;
+			this.buildVariable = buildVariable;
 		}
 
 		public string Name => "declare statement";
@@ -34,17 +36,15 @@ namespace Albatross.CodeGen.SqlServer {
 			StringBuilder child = new StringBuilder();
 			var items = Yield?.Invoke(child);
 
-			Dictionary<string, string> variables = new Dictionary<string, string>();
+			IEnumerable<Variable> variables = new Variable[0];
 			foreach (var item in items) {
-				foreach (var pair in getVariable.Get(item)) {
-					variables.Add(pair.Key, pair.Value);
-				}
+				variables.Union(getVariable.Get(item));
 			}
-			if (variables.Count > 0) {
+			if (variables.Count() > 0) {
 				sb.AppendLine("declare");
 				foreach (var variable in variables) {
-					sb.Tab().Append(variable.Key).Append(" as ").Append(variable.Value);
-					if (variable.Key == variables.Last().Key) {
+					buildVariable.Build(sb.Tab(), variable);
+					if (variable == variables.Last()) {
 						sb.Semicolon().AppendLine();
 					} else {
 						sb.Comma().AppendLine();

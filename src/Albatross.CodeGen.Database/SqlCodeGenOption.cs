@@ -28,7 +28,7 @@ namespace Albatross.CodeGen.Database {
 		/// <summary>
 		/// Specify arbitrary sql variables.  the key is the variable name and should be prefixed with @.  The value should be a valid sql data type.
 		/// </summary>
-		public Dictionary<string, string> Variables { get; } = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+		public IEnumerable<Variable> Variables { get; } = new Variable[0];
 
 		public Dictionary<string, string> Expressions { get; } = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
 	}

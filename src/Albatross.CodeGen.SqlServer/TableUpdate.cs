@@ -10,17 +10,15 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_update", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Update statement that excludes the computed columns.  Will exclude the primary key by default unless ExcludePrimaryKey flag is set to false in the option")]
 	public class TableUpdate : TableQueryGenerator {
-		IGetTableColumns getTableColumns;
+		IGetTableColumn getTableColumns;
 		IGetVariableName getVariableName;
 		IGetTablePrimaryKey getPrimary;
-		IColumnSqlTypeBuilder typeBuilder;
 		ICreateVariable createVariable;
 
-		public TableUpdate(IGetTableColumns getTableColumns, IGetTablePrimaryKey getPrimary, IGetVariableName getVariableName, IColumnSqlTypeBuilder typeBuilder, ICreateVariable createVariable) {
+		public TableUpdate(IGetTableColumn getTableColumns, IGetTablePrimaryKey getPrimary, IGetVariableName getVariableName, ICreateVariable createVariable) {
 			this.getTableColumns = getTableColumns;
 			this.getVariableName = getVariableName;
 			this.getPrimary = getPrimary;
-			this.typeBuilder = typeBuilder;
 			this.createVariable = createVariable;
 		}
 
@@ -37,7 +35,7 @@ namespace Albatross.CodeGen.SqlServer {
 
 			string name;
 			foreach (var item in option.Variables) {
-				createVariable.Create(this, item.Key, item.Value);
+				createVariable.Create(this, item);
 			}
 			foreach (Column c in columns) {
 				name = getVariableName.Get(c.Name);
@@ -45,7 +43,7 @@ namespace Albatross.CodeGen.SqlServer {
 				if (option.Expressions.TryGetValue(c.Name, out string expression)) {
 					sb.Append(expression);
 				} else {
-					createVariable.Create(this, name,typeBuilder.Build(c));
+					createVariable.Create(this, c.GetVariable());
 					sb.Append(name);
 				}
 				if (c != columns.Last()) {

@@ -6,21 +6,21 @@ using System.Text;
 namespace Albatross.CodeGen.SqlServer
 {
 	public class SqlVariableMgmt : ICreateVariable, IGetVariable {
-		Dictionary<object, Dictionary<string, string>> created = new Dictionary<object, Dictionary<string, string>>();
+		Dictionary<object, Dictionary<string, Variable>> created = new Dictionary<object, Dictionary<string, Variable>>();
 
-		public void Create(object creator, string name, string type) {
-			if (!created.TryGetValue(creator, out Dictionary<string, string> values)) {
-				values = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+		public void Create(object creator, Variable variable) {
+			if (!created.TryGetValue(creator, out Dictionary<string, Variable> values)) {
+				values = new Dictionary<string, Variable>(StringComparer.InvariantCultureIgnoreCase);
 				created.Add(creator, values);
 			}
-			values[name] = type;
+			values[variable.Name] = variable;
 		}
 
-		public IDictionary<string, string> Get(object creator) {
-			if (created.TryGetValue(creator, out Dictionary<string, string> values)) {
-				return values;
+		public IEnumerable<Variable> Get(object creator) {
+			if (created.TryGetValue(creator, out Dictionary<string, Variable> values)) {
+				return values.Values;
 			} else {
-				return new Dictionary<string, string>();
+				return new Variable[0];
 			}
 		}
 	}

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Database {
-	public interface IGetTableColumns {
-		IEnumerable<Column> Get(DatabaseObject table);
+	public interface IGetTableColumn {
+		IEnumerable<Column> Get(Server server, string schema, string name);
 	}
 }

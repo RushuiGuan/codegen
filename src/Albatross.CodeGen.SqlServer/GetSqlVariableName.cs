@@ -2,6 +2,9 @@
 using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
+	/// <summary>
+	/// Create a variable name that is camel cased, with spaces replaced by _ (underline)
+	/// </summary>
 	public class GetSqlVariableName : IGetVariableName {
 		enum LetterCasing {
 			None,

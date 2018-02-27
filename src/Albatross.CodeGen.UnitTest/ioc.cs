@@ -40,16 +40,16 @@ namespace Albatross.CodeGen.UnitTest {
 			container.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 
 			container.Register<IColumnSqlTypeBuilder, ColumnSqlTypeBuilder>(Lifestyle.Singleton);
-			container.Register<IGetTableColumns, GetTableColumns>(Lifestyle.Singleton);
+			container.Register<IGetTableColumn, GetTableColumn>(Lifestyle.Singleton);
 			container.Register<IGetTableIdentityColumn, GetTableIdentityColumn>(Lifestyle.Singleton);
 			container.Register<IGetTablePrimaryKey, GetTablePrimaryKey>(Lifestyle.Singleton);
 			container.Register<IGetVariableName, GetSqlVariableName>(Lifestyle.Singleton);
 
 			container.Register<ICreateVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 
-			var mock_getTableColumns = new Mock<IGetTableColumns>();
-			container.RegisterSingleton<Mock<IGetTableColumns>>(mock_getTableColumns);
-			container.RegisterSingleton<IGetTableColumns>(mock_getTableColumns.Object);
+			var mock_getTableColumns = new Mock<IGetTableColumn>();
+			container.RegisterSingleton<Mock<IGetTableColumn>>(mock_getTableColumns);
+			container.RegisterSingleton<IGetTableColumn>(mock_getTableColumns.Object);
 
 			var mock_getTableIdentityColumn = new Mock<IGetTableIdentityColumn>();
 			container.RegisterSingleton<Mock<IGetTableIdentityColumn>>(mock_getTableIdentityColumn);

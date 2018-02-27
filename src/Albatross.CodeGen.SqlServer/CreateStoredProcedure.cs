@@ -11,9 +11,11 @@ namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("create stored procedure", target: GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Create a SQL server stored procedure", SourceType = typeof(DatabaseObject))]
 	public class CreateStoredProcedure : ICodeGenerator<DatabaseObject, Database.SqlCodeGenOption> {
 		IGetVariable getVariable;
+		IBuildVariable buildVariable;
 
-		public CreateStoredProcedure(IGetVariable getVariable) {
+		public CreateStoredProcedure(IGetVariable getVariable, IBuildVariable buildVariable) {
 			this.getVariable = getVariable;
+			this.buildVariable = buildVariable;
 		}
 
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
@@ -25,19 +27,16 @@ namespace Albatross.CodeGen.SqlServer {
 				items = new object[0];
 			}
 
-			Dictionary<string, string> variables = new Dictionary<string, string>();
+			IEnumerable<Variable> variables = new Variable[0];
 
 			foreach (var item in items) {
-				var dict = getVariable.Get(item);
-				foreach (var v in dict) {
-					variables.Add(v.Key, v.Value);
-				}
+				variables = variables.Union(getVariable.Get(item));
 			}
 
 			sb.Append("create procedure ").EscapeName(option.Schema).Dot().EscapeName(option.Name).Space().OpenParenthesis().AppendLine();
-			foreach (string key in variables.Keys) {
-				sb.Tab().Append(key).Append(" as ").Append(variables[key]);
-				if (key != variables.Keys.Last()) {
+			foreach (var item in variables) {
+				buildVariable.Build(sb.Tab(), item);
+				if (item != variables.Last()) {
 					sb.Comma().AppendLine();
 				}
 			}

@@ -16,11 +16,11 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 		public abstract IEnumerable<Column> Columns { get; }
 		public abstract Column IdentityColumn { get; }
 
-		Mock<IGetTableColumns> getTableColumns;
+		Mock<IGetTableColumn> getTableColumns;
 		Mock<IGetTablePrimaryKey> getPrimaryKeys;
 		Mock<IGetTableIdentityColumn> getIdentityColumn;
 
-		public TableMocking(Mock<IGetTableColumns> getTableColumns, Mock<IGetTablePrimaryKey> getPrimaryKeys, Mock<IGetTableIdentityColumn> getIdentityColumn) {
+		public TableMocking(Mock<IGetTableColumn> getTableColumns, Mock<IGetTablePrimaryKey> getPrimaryKeys, Mock<IGetTableIdentityColumn> getIdentityColumn) {
 			this.getTableColumns = getTableColumns;
 			this.getPrimaryKeys = getPrimaryKeys;
 			this.getIdentityColumn = getIdentityColumn;

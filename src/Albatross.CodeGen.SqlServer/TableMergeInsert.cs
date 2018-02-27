@@ -7,10 +7,10 @@ using System.Text;
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_merge_insert", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Merge statement insert clause")]
 	public class TableMergeInsert : TableQueryGenerator {
-		IGetTableColumns _getColumns;
+		IGetTableColumn _getColumns;
 		IGetVariableName _getVariableName;
 
-		public TableMergeInsert(IGetTableColumns getColumns, IGetVariableName getVariableName) {
+		public TableMergeInsert(IGetTableColumn getColumns, IGetVariableName getVariableName) {
 			_getColumns = getColumns;
 			_getVariableName = getVariableName;
 		}

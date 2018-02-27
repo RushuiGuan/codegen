@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.Database
 {
     public interface IGetTablePrimaryKey {
-		IEnumerable<Column> Get(DatabaseObject table);
+		IEnumerable<Column> Get(Server server, string schema, string name);
     }
 }

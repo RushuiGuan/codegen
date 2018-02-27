@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Albatross.CodeGen.Database
 {
-	public interface IGetCSharpType {
-		SqlType Get(Column c);
-	}
+    public interface IGetSchema
+    {
+		Schema Get(Server server, string name);
+    }
 }

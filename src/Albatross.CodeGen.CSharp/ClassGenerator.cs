@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albatross.CodeGen {
+namespace Albatross.CodeGen.CSharp {
 	/// <summary>
-	/// ClassGenerator is an abstract class for C# class code generation.  It uses a fixed option type <see cref="Albatross.CodeGen.ClassOption" /> but the Source Type is left open.  It will take care of 
-	/// namespace, class scope, class name and constructor generation using the information provided by the <see cref="Albatross.CodeGen.ClassOption" /> object.  It leaves the rest of the body creation to a abstract 
-	/// method <see cref="Albatross.CodeGen.ClassGenerator{T}.RenderBody(StringBuilder, int, T, ClassOption)"/>.
+	/// ClassGenerator is an abstract class for C# class code generation.  It uses a fixed option type <see cref="Albatross.CodeGen.CSharp.ClassOption" /> but the Source Type is left open.  It will take care of 
+	/// namespace, class scope, class name and constructor generation using the information provided by the <see cref="Albatross.CodeGen.CSharp.ClassOption" /> object.  It leaves the rest of the body creation to a abstract 
+	/// method <see cref="Albatross.CodeGen.CSharp.ClassGenerator{T}.RenderBody(StringBuilder, int, T, ClassOption)"/>.
 	/// </summary>
 	/// <typeparam name="T">the source type</typeparam>
 	public abstract class ClassGenerator<T> : ICodeGenerator<T, ClassOption> where T : class {
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
 		/// <summary>
-		/// Return the name of the class.  By default, it will use the <see cref="Albatross.CodeGen.ClassOption.Name"/> property.  Override this method to change the behavior.
+		/// Return the name of the class.  By default, it will use the <see cref="Albatross.CodeGen.CSharp.ClassOption.Name"/> property.  Override this method to change the behavior.
 		/// </summary>
 		/// <param name="t">Source input</param>
 		/// <param name="option">Option input</param>
