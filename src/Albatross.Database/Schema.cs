@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albatross.CodeGen.Database
+namespace Albatross.Database
 {
-    public class Table
+    public class Schema
     {
 		public string Name { get; set; }
-		public int Object_Id { get; set; }
 		public int Schema_Id { get; set; }
-		public char Type { get; set; }
+		public int Principal_Id { get; set; }
 	}
 }

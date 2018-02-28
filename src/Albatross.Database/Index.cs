@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albatross.CodeGen.Database
+namespace Albatross.Database
 {
     public class Index
     {

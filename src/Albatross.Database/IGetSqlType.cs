@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albatross.CodeGen.Database
+namespace Albatross.Database
 {
     public interface IGetSqlType
     {
-		SqlType Get(int id);
+		SqlType Get(string name);
     }
 }
