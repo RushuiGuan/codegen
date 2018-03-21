@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen;
 using Albatross.CodeGen.Database;
+using Albatross.Database;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,26 +8,26 @@ using System.Text;
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_insert", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Insert statement that excludes the computed columns")]
 	public class TableInsert : TableQueryGenerator {
-		IGetTableColumn getTableColumns;
-		IGetVariableName getVariableName;
-		IColumnSqlTypeBuilder sqlTypeBuilder;
+		IGetTable getTable;
+		ICreateVariableName getVariableName;
+		IBuildSqlType buildSqlType;
 		ICreateVariable createVariable;
 
-		public TableInsert(IGetTableColumn getTableColumns, IGetVariableName getVariableName, IColumnSqlTypeBuilder sqlTypeBuilder, ICreateVariable createVariable) {
-			this.getTableColumns = getTableColumns;
+		public TableInsert(IGetTable getTable, ICreateVariableName getVariableName, IBuildSqlType buildSqlType, ICreateVariable createVariable) {
+			this.getTable = getTable;
 			this.getVariableName = getVariableName;
-			this.sqlTypeBuilder = sqlTypeBuilder;
+			this.buildSqlType = buildSqlType;
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject table, SqlCodeGenOption options) {
+		public override IEnumerable<object> Build(StringBuilder sb, Table table, SqlCodeGenOption options) {
 			foreach (var item in options.Variables) {
 				createVariable.Create(this, item);
 			}
 
-			Column[] columns = (from c in getTableColumns.Get(table) where !c.IdentityColumn && !c.ComputedColumn select c).ToArray();
+			Column[] columns = (from c in table.Columns where !c.IsIdentity && !c.IsComputed select c).ToArray();
 			if (columns.Length == 0) {
-				throw new ColumnNotFoundException(table.Schema, table.Name);
+				throw new CodeGenException("Editable column not found");
 			}
 			sb.Append($"insert into [{table.Schema}].[{table.Name}] ").OpenParenthesis();
 			foreach (Column c in columns) {
@@ -40,7 +41,7 @@ namespace Albatross.CodeGen.SqlServer {
 				} else {
 					string name = getVariableName.Get(c.Name);
 					sb.Append(name);
-					createVariable.Create(this, c.GetVariable());
+					createVariable.Create(this, c.GetVariable()); 
 				}
 				if (c != columns.Last()) { sb.Comma().Space(); }
 			}

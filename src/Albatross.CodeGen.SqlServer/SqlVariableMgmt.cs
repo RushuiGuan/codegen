@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.Database;
+using Albatross.Database;
 using System;
 using System.Collections.Generic;
 using System.Text;

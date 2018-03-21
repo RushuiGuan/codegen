@@ -4,7 +4,7 @@ namespace Albatross.CodeGen.PowerShell {
 	public class BaseCmdlet<T> : PSCmdlet where T:class{
 		protected T Handle { get; private set; }
 
-		protected IObjectFactory Factory => SetupIoc.Factory;
+		protected IObjectFactory Factory => Setup.Factory;
 
 		public BaseCmdlet() {
 		}

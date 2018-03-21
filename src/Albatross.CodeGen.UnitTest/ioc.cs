@@ -39,11 +39,11 @@ namespace Albatross.CodeGen.UnitTest {
 			container.Register<ICodeGeneratorFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 			container.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 
-			container.Register<IColumnSqlTypeBuilder, ColumnSqlTypeBuilder>(Lifestyle.Singleton);
+			container.Register<IColumnSqlTypeBuilder, BuildSqlType>(Lifestyle.Singleton);
 			container.Register<IGetTableColumn, GetTableColumn>(Lifestyle.Singleton);
 			container.Register<IGetTableIdentityColumn, GetTableIdentityColumn>(Lifestyle.Singleton);
 			container.Register<IGetTablePrimaryKey, GetTablePrimaryKey>(Lifestyle.Singleton);
-			container.Register<IGetVariableName, GetSqlVariableName>(Lifestyle.Singleton);
+			container.Register<ICreateVariableName, CreateSqlVariableName>(Lifestyle.Singleton);
 
 			container.Register<ICreateVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 

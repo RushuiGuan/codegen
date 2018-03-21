@@ -2,6 +2,7 @@
 using Albatross.CodeGen;
 using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
+using Albatross.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,17 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_select_scope_identity", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Select the Scope_Identity() of the previous insert operation.  Typically used after the insert operation.")]
 	public class TableSelectScopedIdentity : TableQueryGenerator {
-		IGetTableIdentityColumn _getIDColumn;
+		IGetTable getTable;
 
-		public TableSelectScopedIdentity(IGetTableIdentityColumn getIDColumn) {
-			_getIDColumn = getIDColumn;
+		public TableSelectScopedIdentity(IGetTable getTable) {
+			this.getTable = getTable;
 		}
 
-		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject t, SqlCodeGenOption options) {
-			Column identityColumn = _getIDColumn.Get(t);
+		public override IEnumerable<object> Build(StringBuilder sb, Table t, SqlCodeGenOption options) {
+			t = getTable.Get(t.Database, t.Schema, t.Name);
+			Column identityColumn = t.IdentityColumn;
 			if (identityColumn == null) {
-				throw new IdentityColumnNotFoundException(t);
+				throw new CodeGenException("Identity Column doesn't exist");
 			}
 			sb.Append("select scope_identity() as ").EscapeName(identityColumn.Name);
 			return new[] { this };

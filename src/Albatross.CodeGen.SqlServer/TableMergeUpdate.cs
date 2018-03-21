@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen;
 using Albatross.CodeGen.Database;
+using Albatross.Database;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,28 +8,27 @@ using System.Text;
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_merge_update", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Table merge update clause")]
 	public class TableMergeUpdate : TableQueryGenerator {
-		IGetTableColumn getColumns;
-		IGetVariableName getVariableName;
-		IGetTablePrimaryKey getPrimary;
-		IColumnSqlTypeBuilder typeBuilder;
+		IGetTable getTable;
+		ICreateVariableName createVariableName;
+		IBuildSqlType buildSqlType;
 
-		public TableMergeUpdate(IGetTableColumn getColumns, IGetVariableName getVariableName, IColumnSqlTypeBuilder typeBuilder, IGetTablePrimaryKey getPrimary) {
-			this.getColumns = getColumns;
-			this.getVariableName = getVariableName;
-			this.typeBuilder = typeBuilder;
-			this.getPrimary = getPrimary;
+		public TableMergeUpdate(IGetTable getTable, ICreateVariableName createVariableName, IBuildSqlType buildSqlType) {
+			this.getTable = getTable;
+			this.createVariableName = createVariableName;
+			this.buildSqlType = buildSqlType;
 		}
 
-		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject table, SqlCodeGenOption options) {
+		public override IEnumerable<object>  Build(StringBuilder sb, Table table, SqlCodeGenOption options) {
+			table = getTable.Get(table.Database, table.Schema, table.Name);
 
 			HashSet<string> keys = new HashSet<string>();
 			if (options.ExcludePrimaryKey) {
-				keys.AddRange(from item in getPrimary.Get(table) select item.Name);
+				keys.AddRange(from item in table.PrimaryKeys select item.Name);
 			}
 
-			Column[] columns = (from c in getColumns.Get(table)
+			Column[] columns = (from c in table.Columns
 								orderby c.OrdinalPosition ascending, c.Name ascending
-								where !c.ComputedColumn && !c.IdentityColumn && !keys.Contains(c.Name)
+								where !c.IsComputed && !c.IsIdentity && !keys.Contains(c.Name)
 								select c).ToArray();
 			if (columns.Length == 0) {
 				//merge without update is OK

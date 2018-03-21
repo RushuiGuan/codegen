@@ -2,6 +2,7 @@
 using Albatross.CodeGen;
 using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
+using Albatross.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,36 +12,35 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_where", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Table where clause, can handle identity column and\\or primary keys.  Use the SqlQueryOption.Filter flag to indicate filter method")]
 	public class TableWhere : TableQueryGenerator {
-		IGetTableIdentityColumn getIDColumn;
-		IGetVariableName getVariableName;
-		IGetTablePrimaryKey getPrimary;
-		IColumnSqlTypeBuilder typeBuilder;
+		IGetTable getTable;
+		ICreateVariableName getVariableName;
+		IBuildSqlType buildSqlType;
 		ICreateVariable createVariable;
 
-		public TableWhere(IGetTableIdentityColumn getIDColumn, IGetVariableName getVariableName, IGetTablePrimaryKey getPrimary, IColumnSqlTypeBuilder typeBuilder, ICreateVariable createVariable) {
-			this.getIDColumn = getIDColumn;
+		public TableWhere(IGetTable getTable, ICreateVariableName getVariableName, IBuildSqlType typeBuilder, ICreateVariable createVariable) {
+			this.getTable = getTable;
 			this.getVariableName = getVariableName;
-			this.getPrimary = getPrimary;
-			this.typeBuilder = typeBuilder;
+			this.buildSqlType = typeBuilder;
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object> Build(StringBuilder sb, DatabaseObject t, SqlCodeGenOption option) {
+		public override IEnumerable<object> Build(StringBuilder sb, Table t, SqlCodeGenOption option) {
+			getTable.Get(ref t);
 			sb.Append("where");
 			int count = 0;
 
 			if ((option.Filter & FilterOption.ByIdentityColumn) > 0){
-				Column column = getIDColumn.Get(t);
+				Column column = t.IdentityColumn;
 				if (column == null) {
-					throw new IdentityColumnNotFoundException(t);
+					throw new CodeGenException("Identity Column doesn't exist");
 				}
 				AppendColumn(sb, column, count, option);
 				count++;
 			}
 
 			if ((option.Filter & FilterOption.ByPrimaryKey) > 0) {
-				var columns = getPrimary.Get(t);
-				foreach (var column in columns) {
+				var columns = t.PrimaryKeys;
+				foreach (var column in t.GetPrimaryKeyColumns()) {
 					AppendColumn(sb, column, count, option);
 					count++;
 				}

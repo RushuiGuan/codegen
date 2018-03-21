@@ -47,7 +47,7 @@ namespace Albatross.CodeGen.PowerShell {
 
 			if (base.ParameterSetName == PSName_ByComponent) {
 				WriteObject(
-					new Server {
+					new Albatross.Database.Database{
 						DataSource = DataSource,
 						InitialCatalog = InitialCatalog,
 						SSPI = IntegratedSecurity.ToBool(),
@@ -56,7 +56,7 @@ namespace Albatross.CodeGen.PowerShell {
 					}
 				);
 			} else {
-				WriteObject(new Server { ConnectionString = ConnectionString, });
+				WriteObject(new Albatross.Database.Database { ConnectionString = ConnectionString, });
 			}
 		}
 	}

@@ -1,49 +1,43 @@
-﻿using Albatross.CodeGen.Database;
+﻿using System.Linq;
+using Albatross.Database;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
 	public static class Extension
     {
-		public static string GetConnectionString(this DatabaseObject table) {
-			SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder {
-				DataSource = table.Server.DataSource,
-				InitialCatalog = table.Server.InitialCatalog,
-				IntegratedSecurity = true
-			};
-			return builder.ToString();
-		}
-
-		public static Composite NewSqlTableComposite(string name, string description, Branch branch) {
-			return new Composite(typeof(DatabaseObject), typeof(SqlCodeGenOption)){
-				Name = name,
-				Description = description,
-				Category = "Sql Server",
-				Branch = branch,
-				Target = "sql",
-			};
-		}
-
 		public static StringBuilder EscapeName(this StringBuilder sb, string name) {
 			return sb.Append('[').Append(name).Append(']');
 		}
 
+		#region table
+		public static void Get(this IGetTable handle, ref Table table) {
+			table = handle.Get(table.Database, table.Schema, table.Name);
+		}
+		public static IEnumerable<Column> GetPrimaryKeyColumns(this Table table) {
+			if (table.PrimaryKeys != null) {
+				return from c in table.Columns join i in table.PrimaryKeys on c.Name equals i.Name select c;
+			} else {
+				return new Column[0];
+			}
+		}
+		#endregion
+
 
 		#region columns
-		public static bool IsString(this Column c) {
-			string dataType = c.DataType.ToLower();
+		public static bool IsString(this SqlType type) {
+			string dataType = type.Name.ToLower();
 			return dataType == "nvarchar" || dataType == "varchar" || dataType == "char" || dataType == "nchar";
 		}
-		public static bool IsDateTime(this Column c) {
-			string dataType = c.DataType.ToLower();
+		public static bool IsDateTime(this SqlType type) {
+			string dataType = type.Name.ToLower();
 			return dataType == "datetime" || dataType == "datetime2" || dataType == "smalldatetime";
 		}
-		public static bool IsBoolean(this Column c) {
-			return c.DataType.ToLower() == "bit";
+		public static bool IsBoolean(this SqlType type) {
+			return type.Name.ToLower() == "bit";
 		}
-		public static bool IsNumeric(this Column c) {
-			string dataType = c.DataType.ToLower();
+		public static bool IsNumeric(this SqlType type) {
+			string dataType = type.Name.ToLower();
 			return
 				dataType == "tinyint"
 				|| dataType == "smallint"
@@ -64,10 +58,8 @@ namespace Albatross.CodeGen.SqlServer {
 		public static Variable GetVariable(this Column column) {
 			return new Variable {
 				Name = column.Name,
-				Type = column.DataType,
-				MaxLength = column.MaxLength,
-				Precision = column.Precision,
-				Scale = column.Scale,
+				Type = column.Type,
+				Direction = System.Data.ParameterDirection.Input,
 			};
 		}
 		#endregion

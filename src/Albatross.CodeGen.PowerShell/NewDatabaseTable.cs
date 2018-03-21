@@ -1,10 +1,5 @@
-﻿using Albatross.CodeGen.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Albatross.Database;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsCommon.New, "DatabaseTable")]
@@ -17,14 +12,14 @@ namespace Albatross.CodeGen.PowerShell {
 		public string Schema { get; set; }
 
 		[Parameter(Position = 2, Mandatory = true, ValueFromPipeline = true)]
-		public Albatross.CodeGen.Database.Server Server { get; set; }
+		public Albatross.Database.Database Database { get; set; }
 
 
 		protected override void ProcessRecord() {
-			var table = new Albatross.CodeGen.Database.DatabaseObject {
+			var table = new Table {
 				Name = Name,
 				Schema = Schema,
-				Server = Server,
+				Database = Database,
 			};
 			WriteObject(table);
 		}

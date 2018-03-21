@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen;
 using Albatross.CodeGen.Database;
+using Albatross.Database;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,22 +8,24 @@ using System.Text;
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_merge_insert", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Merge statement insert clause")]
 	public class TableMergeInsert : TableQueryGenerator {
-		IGetTableColumn _getColumns;
-		IGetVariableName _getVariableName;
+		IGetTable getTable;
+		ICreateVariableName createVariableName;
 
-		public TableMergeInsert(IGetTableColumn getColumns, IGetVariableName getVariableName) {
-			_getColumns = getColumns;
-			_getVariableName = getVariableName;
+		public TableMergeInsert(IGetTable getTable, ICreateVariableName createVariableName) {
+			this.getTable = getTable;
+			this.createVariableName = createVariableName;
 		}
 
 
-		public override IEnumerable<object>  Build(StringBuilder sb, DatabaseObject t, SqlCodeGenOption options) {
-			Column[] columns = (from c in _getColumns.Get(t)
+		public override IEnumerable<object>  Build(StringBuilder sb, Table t, SqlCodeGenOption options) {
+			t = getTable.Get(t.Database, t.Schema, t.Name);
+
+			Column[] columns = (from c in t.Columns
 								orderby c.OrdinalPosition ascending, c.Name ascending
-								where !c.ComputedColumn && !c.IdentityColumn
+								where !c.IsComputed && !c.IsIdentity
 								select c).ToArray();
 			if (columns.Length == 0) {
-				throw new ColumnNotFoundException(t.Schema, t.Name);
+				throw new CodeGenException("Editable column not found");
 			}
 			sb.Append("when not matched by target then insert ").OpenParenthesis().AppendLine();
 			foreach (var column in columns) {

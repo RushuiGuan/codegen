@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Database {
 	/// <summary>
-	/// create a valid sql variable name
+	/// Given a string, create a valid sql variable name
 	/// </summary>
-	public interface IGetVariableName {
+	public interface ICreateVariableName {
 		string Get(string name);
 	}
 }

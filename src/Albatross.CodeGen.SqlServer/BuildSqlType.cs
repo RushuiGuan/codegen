@@ -1,10 +1,11 @@
 using System.Text;
 using Albatross.CodeGen.Database;
+using Albatross.Database;
 
 namespace Albatross.CodeGen.SqlServer {
-	public class ColumnSqlTypeBuilder : IColumnSqlTypeBuilder {
-		public string Build(Column c) {
-			string dataType = c.DataType?.ToLower();
+	public class BuildSqlType : IBuildSqlType  {
+		public string Build(SqlType type) {
+			string dataType = type.Name.ToLower();
 			switch (dataType) {
 				case "ntext":
 					return "nvarchar(max)";
@@ -17,25 +18,25 @@ namespace Albatross.CodeGen.SqlServer {
 				case "binary":
 				case "char":
 				case "nchar":
-					return $"{dataType}({c.MaxLength})";
+					return $"{dataType}({type.MaxLength})";
 
 				case "nvarchar":
 				case "varbinary":
 				case "varchar":
-					if (c.MaxLength == -1) {
+					if (type.MaxLength == -1) {
 						return $"{dataType}(max)";
 					} else {
-						return $"{dataType}({c.MaxLength})";
+						return $"{dataType}({type.MaxLength})";
 					}
 
 				case "datetime2":
 				case "datetimeoffset":
 				case "float":
-					return $"{dataType}({c.Precision})";
+					return $"{dataType}({type.Precision})";
 
 				case "decimal":
 				case "numeric":
-					return $"{dataType}({c.Precision}, {c.Scale})";
+					return $"{dataType}({type.Precision}, {type.Scale})";
 				default:
 					return dataType;
 			}

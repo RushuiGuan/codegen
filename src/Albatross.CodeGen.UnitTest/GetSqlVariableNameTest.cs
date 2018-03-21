@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCase("apple sauce", ExpectedResult = "@appleSauce")]
 		[TestCase("apple  sauce", ExpectedResult = "@appleSauce")]
 		public string Test(string name) {
-			return new GetSqlVariableName().Get(name);
+			return new CreateSqlVariableName().Get(name);
 		}
     }
 }
