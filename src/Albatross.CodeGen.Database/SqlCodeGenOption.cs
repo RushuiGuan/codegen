@@ -27,9 +27,14 @@ namespace Albatross.CodeGen.Database {
 		public string Schema { get; set; }
 
 		/// <summary>
-		/// Specify arbitrary sql variables.  the key is the variable name and should be prefixed with @.  The value should be a valid sql data type.
+		/// Specify arbitrary sql variables. />
 		/// </summary>
 		public IEnumerable<Variable> Variables { get; set; } = new Variable[0];
+
+		/// <summary>
+		/// Specify arbitrary sql parameters. />
+		/// </summary>
+		public IEnumerable<Parameter> Parameters { get; set; } = new Parameter[0];
 
 		/// <summary>
 		/// Replace certain variables using an expression

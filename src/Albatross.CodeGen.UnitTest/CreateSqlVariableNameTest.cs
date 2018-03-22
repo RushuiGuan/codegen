@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Albatross.CodeGen.UnitTest {
 	[TestFixture]
-    public class GetSqlVariableNameTest{
+    public class CreateSqlVariableNameTest{
 
 		[TestCase("1Apple", ExpectedResult = "@1Apple")]
 		[TestCase("Apple 1", ExpectedResult = "@apple1")]

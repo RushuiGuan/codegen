@@ -83,7 +83,7 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="Albatross.CodeGen.ICodeGenerator-2.html">ICodeGenerator</a>&lt;<a class="xref" href="Albatross.CodeGen.Database.DatabaseObject.html">DatabaseObject</a>, <a class="xref" href="Albatross.CodeGen.Database.SqlCodeGenOption.html">SqlCodeGenOption</a>&gt;</div>
+    <div><a class="xref" href="Albatross.CodeGen.ICodeGenerator-2.html">ICodeGenerator</a>&lt;<span class="xref">Albatross.Database.Table</span>, <a class="xref" href="Albatross.CodeGen.Database.SqlCodeGenOption.html">SqlCodeGenOption</a>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -111,24 +111,24 @@
   <h5 id="Albatross_CodeGen_SqlServer_TableMergeUpdate_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[CodeGenerator(&quot;table_merge_update&quot;, &quot;SQL&quot;, Category = &quot;Sql Server Table&quot;, Description = &quot;Table merge update clause&quot;)]
-public class TableMergeUpdate : TableQueryGenerator, ICodeGenerator&lt;DatabaseObject, SqlCodeGenOption&gt;</code></pre>
+public class TableMergeUpdate : TableQueryGenerator, ICodeGenerator&lt;Table, SqlCodeGenOption&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_TableMergeUpdate__ctor_Albatross_CodeGen_Database_IGetTableColumns_Albatross_CodeGen_Database_IGetVariableName_Albatross_CodeGen_Database_IColumnSqlTypeBuilder_Albatross_CodeGen_Database_IGetTablePrimaryKey_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.TableMergeUpdate.%23ctor(Albatross.CodeGen.Database.IGetTableColumns%2CAlbatross.CodeGen.Database.IGetVariableName%2CAlbatross.CodeGen.Database.IColumnSqlTypeBuilder%2CAlbatross.CodeGen.Database.IGetTablePrimaryKey)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_TableMergeUpdate__ctor_Albatross_Database_IGetTable_Albatross_CodeGen_Database_ICreateVariableName_Albatross_CodeGen_Database_IBuildSqlType_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.TableMergeUpdate.%23ctor(Albatross.Database.IGetTable%2CAlbatross.CodeGen.Database.ICreateVariableName%2CAlbatross.CodeGen.Database.IBuildSqlType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/TableMergeUpdate.cs/#L15">View Source</a>
   </span>
   <a id="Albatross_CodeGen_SqlServer_TableMergeUpdate__ctor_" data-uid="Albatross.CodeGen.SqlServer.TableMergeUpdate.#ctor*"></a>
-  <h4 id="Albatross_CodeGen_SqlServer_TableMergeUpdate__ctor_Albatross_CodeGen_Database_IGetTableColumns_Albatross_CodeGen_Database_IGetVariableName_Albatross_CodeGen_Database_IColumnSqlTypeBuilder_Albatross_CodeGen_Database_IGetTablePrimaryKey_" data-uid="Albatross.CodeGen.SqlServer.TableMergeUpdate.#ctor(Albatross.CodeGen.Database.IGetTableColumns,Albatross.CodeGen.Database.IGetVariableName,Albatross.CodeGen.Database.IColumnSqlTypeBuilder,Albatross.CodeGen.Database.IGetTablePrimaryKey)">TableMergeUpdate(IGetTableColumns, IGetVariableName, IColumnSqlTypeBuilder, IGetTablePrimaryKey)</h4>
+  <h4 id="Albatross_CodeGen_SqlServer_TableMergeUpdate__ctor_Albatross_Database_IGetTable_Albatross_CodeGen_Database_ICreateVariableName_Albatross_CodeGen_Database_IBuildSqlType_" data-uid="Albatross.CodeGen.SqlServer.TableMergeUpdate.#ctor(Albatross.Database.IGetTable,Albatross.CodeGen.Database.ICreateVariableName,Albatross.CodeGen.Database.IBuildSqlType)">TableMergeUpdate(IGetTable, ICreateVariableName, IBuildSqlType)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TableMergeUpdate(IGetTableColumns getColumns, IGetVariableName getVariableName, IColumnSqlTypeBuilder typeBuilder, IGetTablePrimaryKey getPrimary)</code></pre>
+    <pre><code class="lang-csharp hljs">public TableMergeUpdate(IGetTable getTable, ICreateVariableName createVariableName, IBuildSqlType buildSqlType)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -141,23 +141,18 @@ public class TableMergeUpdate : TableQueryGenerator, ICodeGenerator&lt;DatabaseO
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Database.IGetTableColumns.html">IGetTableColumns</a></td>
-        <td><span class="parametername">getColumns</span></td>
+        <td><span class="xref">Albatross.Database.IGetTable</span></td>
+        <td><span class="parametername">getTable</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Database.IGetVariableName.html">IGetVariableName</a></td>
-        <td><span class="parametername">getVariableName</span></td>
+        <td><a class="xref" href="Albatross.CodeGen.Database.ICreateVariableName.html">ICreateVariableName</a></td>
+        <td><span class="parametername">createVariableName</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Database.IColumnSqlTypeBuilder.html">IColumnSqlTypeBuilder</a></td>
-        <td><span class="parametername">typeBuilder</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Database.IGetTablePrimaryKey.html">IGetTablePrimaryKey</a></td>
-        <td><span class="parametername">getPrimary</span></td>
+        <td><a class="xref" href="Albatross.CodeGen.Database.IBuildSqlType.html">IBuildSqlType</a></td>
+        <td><span class="parametername">buildSqlType</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -166,18 +161,18 @@ public class TableMergeUpdate : TableQueryGenerator, ICodeGenerator&lt;DatabaseO
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_TableMergeUpdate_Build_System_Text_StringBuilder_Albatross_CodeGen_Database_DatabaseObject_Albatross_CodeGen_Database_SqlCodeGenOption_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.TableMergeUpdate.Build(System.Text.StringBuilder%2CAlbatross.CodeGen.Database.DatabaseObject%2CAlbatross.CodeGen.Database.SqlCodeGenOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_TableMergeUpdate_Build_System_Text_StringBuilder_Albatross_Database_Table_Albatross_CodeGen_Database_SqlCodeGenOption_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.TableMergeUpdate.Build(System.Text.StringBuilder%2CAlbatross.Database.Table%2CAlbatross.CodeGen.Database.SqlCodeGenOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/TableMergeUpdate.cs/#L22">View Source</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/TableMergeUpdate.cs/#L21">View Source</a>
   </span>
   <a id="Albatross_CodeGen_SqlServer_TableMergeUpdate_Build_" data-uid="Albatross.CodeGen.SqlServer.TableMergeUpdate.Build*"></a>
-  <h4 id="Albatross_CodeGen_SqlServer_TableMergeUpdate_Build_System_Text_StringBuilder_Albatross_CodeGen_Database_DatabaseObject_Albatross_CodeGen_Database_SqlCodeGenOption_" data-uid="Albatross.CodeGen.SqlServer.TableMergeUpdate.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.DatabaseObject,Albatross.CodeGen.Database.SqlCodeGenOption)">Build(StringBuilder, DatabaseObject, SqlCodeGenOption)</h4>
+  <h4 id="Albatross_CodeGen_SqlServer_TableMergeUpdate_Build_System_Text_StringBuilder_Albatross_Database_Table_Albatross_CodeGen_Database_SqlCodeGenOption_" data-uid="Albatross.CodeGen.SqlServer.TableMergeUpdate.Build(System.Text.StringBuilder,Albatross.Database.Table,Albatross.CodeGen.Database.SqlCodeGenOption)">Build(StringBuilder, Table, SqlCodeGenOption)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override IEnumerable&lt;object&gt; Build(StringBuilder sb, DatabaseObject table, SqlCodeGenOption options)</code></pre>
+    <pre><code class="lang-csharp hljs">public override IEnumerable&lt;object&gt; Build(StringBuilder sb, Table table, SqlCodeGenOption options)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -195,7 +190,7 @@ public class TableMergeUpdate : TableQueryGenerator, ICodeGenerator&lt;DatabaseO
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Database.DatabaseObject.html">DatabaseObject</a></td>
+        <td><span class="xref">Albatross.Database.Table</span></td>
         <td><span class="parametername">table</span></td>
         <td></td>
       </tr>
@@ -222,7 +217,7 @@ public class TableMergeUpdate : TableQueryGenerator, ICodeGenerator&lt;DatabaseO
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Albatross.CodeGen.SqlServer.TableQueryGenerator.html#Albatross_CodeGen_SqlServer_TableQueryGenerator_Build_System_Text_StringBuilder_Albatross_CodeGen_Database_DatabaseObject_Albatross_CodeGen_Database_SqlCodeGenOption_">TableQueryGenerator.Build(StringBuilder, DatabaseObject, SqlCodeGenOption)</a></div>
+  <div><a class="xref" href="Albatross.CodeGen.SqlServer.TableQueryGenerator.html#Albatross_CodeGen_SqlServer_TableQueryGenerator_Build_System_Text_StringBuilder_Albatross_Database_Table_Albatross_CodeGen_Database_SqlCodeGenOption_">TableQueryGenerator.Build(StringBuilder, Table, SqlCodeGenOption)</a></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Albatross.CodeGen.ICodeGenerator-2.html">ICodeGenerator&lt;T, O&gt;</a>
@@ -238,7 +233,7 @@ public class TableMergeUpdate : TableQueryGenerator, ICodeGenerator&lt;DatabaseO
                     <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_TableMergeUpdate.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.TableMergeUpdate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/TableMergeUpdate.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/TableMergeUpdate.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

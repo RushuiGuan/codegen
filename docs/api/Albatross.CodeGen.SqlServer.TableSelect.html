@@ -83,7 +83,7 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="Albatross.CodeGen.ICodeGenerator-2.html">ICodeGenerator</a>&lt;<a class="xref" href="Albatross.CodeGen.Database.DatabaseObject.html">DatabaseObject</a>, <a class="xref" href="Albatross.CodeGen.Database.SqlCodeGenOption.html">SqlCodeGenOption</a>&gt;</div>
+    <div><a class="xref" href="Albatross.CodeGen.ICodeGenerator-2.html">ICodeGenerator</a>&lt;<span class="xref">Albatross.Database.Table</span>, <a class="xref" href="Albatross.CodeGen.Database.SqlCodeGenOption.html">SqlCodeGenOption</a>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -111,24 +111,24 @@
   <h5 id="Albatross_CodeGen_SqlServer_TableSelect_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[CodeGenerator(&quot;table_select&quot;, &quot;SQL&quot;, Category = &quot;Sql Server Table&quot;, Description = &quot;Select statement sorted by ordinal position&quot;)]
-public class TableSelect : TableQueryGenerator, ICodeGenerator&lt;DatabaseObject, SqlCodeGenOption&gt;</code></pre>
+public class TableSelect : TableQueryGenerator, ICodeGenerator&lt;Table, SqlCodeGenOption&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_TableSelect__ctor_Albatross_CodeGen_Database_IGetTableColumns_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.TableSelect.%23ctor(Albatross.CodeGen.Database.IGetTableColumns)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_TableSelect__ctor_Albatross_Database_IGetTable_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.TableSelect.%23ctor(Albatross.Database.IGetTable)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/TableSelect.cs/#L15">View Source</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/TableSelect.cs/#L16">View Source</a>
   </span>
   <a id="Albatross_CodeGen_SqlServer_TableSelect__ctor_" data-uid="Albatross.CodeGen.SqlServer.TableSelect.#ctor*"></a>
-  <h4 id="Albatross_CodeGen_SqlServer_TableSelect__ctor_Albatross_CodeGen_Database_IGetTableColumns_" data-uid="Albatross.CodeGen.SqlServer.TableSelect.#ctor(Albatross.CodeGen.Database.IGetTableColumns)">TableSelect(IGetTableColumns)</h4>
+  <h4 id="Albatross_CodeGen_SqlServer_TableSelect__ctor_Albatross_Database_IGetTable_" data-uid="Albatross.CodeGen.SqlServer.TableSelect.#ctor(Albatross.Database.IGetTable)">TableSelect(IGetTable)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TableSelect(IGetTableColumns getTableColumns)</code></pre>
+    <pre><code class="lang-csharp hljs">public TableSelect(IGetTable getTable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -141,8 +141,8 @@ public class TableSelect : TableQueryGenerator, ICodeGenerator&lt;DatabaseObject
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Database.IGetTableColumns.html">IGetTableColumns</a></td>
-        <td><span class="parametername">getTableColumns</span></td>
+        <td><span class="xref">Albatross.Database.IGetTable</span></td>
+        <td><span class="parametername">getTable</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -151,18 +151,18 @@ public class TableSelect : TableQueryGenerator, ICodeGenerator&lt;DatabaseObject
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_TableSelect_Build_System_Text_StringBuilder_Albatross_CodeGen_Database_DatabaseObject_Albatross_CodeGen_Database_SqlCodeGenOption_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.TableSelect.Build(System.Text.StringBuilder%2CAlbatross.CodeGen.Database.DatabaseObject%2CAlbatross.CodeGen.Database.SqlCodeGenOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_TableSelect_Build_System_Text_StringBuilder_Albatross_Database_Table_Albatross_CodeGen_Database_SqlCodeGenOption_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.TableSelect.Build(System.Text.StringBuilder%2CAlbatross.Database.Table%2CAlbatross.CodeGen.Database.SqlCodeGenOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/TableSelect.cs/#L19">View Source</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/TableSelect.cs/#L20">View Source</a>
   </span>
   <a id="Albatross_CodeGen_SqlServer_TableSelect_Build_" data-uid="Albatross.CodeGen.SqlServer.TableSelect.Build*"></a>
-  <h4 id="Albatross_CodeGen_SqlServer_TableSelect_Build_System_Text_StringBuilder_Albatross_CodeGen_Database_DatabaseObject_Albatross_CodeGen_Database_SqlCodeGenOption_" data-uid="Albatross.CodeGen.SqlServer.TableSelect.Build(System.Text.StringBuilder,Albatross.CodeGen.Database.DatabaseObject,Albatross.CodeGen.Database.SqlCodeGenOption)">Build(StringBuilder, DatabaseObject, SqlCodeGenOption)</h4>
+  <h4 id="Albatross_CodeGen_SqlServer_TableSelect_Build_System_Text_StringBuilder_Albatross_Database_Table_Albatross_CodeGen_Database_SqlCodeGenOption_" data-uid="Albatross.CodeGen.SqlServer.TableSelect.Build(System.Text.StringBuilder,Albatross.Database.Table,Albatross.CodeGen.Database.SqlCodeGenOption)">Build(StringBuilder, Table, SqlCodeGenOption)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override IEnumerable&lt;object&gt; Build(StringBuilder sb, DatabaseObject t, SqlCodeGenOption options)</code></pre>
+    <pre><code class="lang-csharp hljs">public override IEnumerable&lt;object&gt; Build(StringBuilder sb, Table t, SqlCodeGenOption options)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -180,7 +180,7 @@ public class TableSelect : TableQueryGenerator, ICodeGenerator&lt;DatabaseObject
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Database.DatabaseObject.html">DatabaseObject</a></td>
+        <td><span class="xref">Albatross.Database.Table</span></td>
         <td><span class="parametername">t</span></td>
         <td></td>
       </tr>
@@ -207,7 +207,7 @@ public class TableSelect : TableQueryGenerator, ICodeGenerator&lt;DatabaseObject
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Albatross.CodeGen.SqlServer.TableQueryGenerator.html#Albatross_CodeGen_SqlServer_TableQueryGenerator_Build_System_Text_StringBuilder_Albatross_CodeGen_Database_DatabaseObject_Albatross_CodeGen_Database_SqlCodeGenOption_">TableQueryGenerator.Build(StringBuilder, DatabaseObject, SqlCodeGenOption)</a></div>
+  <div><a class="xref" href="Albatross.CodeGen.SqlServer.TableQueryGenerator.html#Albatross_CodeGen_SqlServer_TableQueryGenerator_Build_System_Text_StringBuilder_Albatross_Database_Table_Albatross_CodeGen_Database_SqlCodeGenOption_">TableQueryGenerator.Build(StringBuilder, Table, SqlCodeGenOption)</a></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Albatross.CodeGen.ICodeGenerator-2.html">ICodeGenerator&lt;T, O&gt;</a>
@@ -223,7 +223,7 @@ public class TableSelect : TableQueryGenerator, ICodeGenerator&lt;DatabaseObject
                     <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_TableSelect.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.TableSelect%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/TableSelect.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/TableSelect.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

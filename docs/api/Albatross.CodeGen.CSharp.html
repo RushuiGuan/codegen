@@ -79,12 +79,26 @@
   </h3>
       <h4><a class="xref" href="Albatross.CodeGen.CSharp.BuildWebApiProxy.html">BuildWebApiProxy</a></h4>
       <section></section>
+      <h4><a class="xref" href="Albatross.CodeGen.CSharp.ClassGenerator-1.html">ClassGenerator&lt;T&gt;</a></h4>
+      <section><p>ClassGenerator is an abstract class for C# class code generation.  It uses a fixed option type <a class="xref" href="Albatross.CodeGen.CSharp.ClassOption.html">ClassOption</a> but the Source Type is left open.  It will take care of 
+namespace, class scope, class name and constructor generation using the information provided by the <a class="xref" href="Albatross.CodeGen.CSharp.ClassOption.html">ClassOption</a> object.  It leaves the rest of the body creation to a abstract 
+method <a class="xref" href="Albatross.CodeGen.CSharp.ClassGenerator-1.html#Albatross_CodeGen_CSharp_ClassGenerator_1_RenderBody_System_Text_StringBuilder_System_Int32__0_Albatross_CodeGen_CSharp_ClassOption_">RenderBody(StringBuilder, Int32, T, ClassOption)</a>.</p>
+</section>
+      <h4><a class="xref" href="Albatross.CodeGen.CSharp.ClassOption.html">ClassOption</a></h4>
+      <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.CSharp.GetReflectionOnlyType.html">GetReflectionOnlyType</a></h4>
+      <section><p>This implementation of <a class="xref" href="Albatross.CodeGen.CSharp.IGetReflectionOnlyType.html">IGetReflectionOnlyType</a> will try to load all assemblies and executables in the same
+folder of the target assembly.  It will load the target assembly last hoping that its dependencies have already been loaded.  It also subscribed
+to the ReflectionOnlyAssemblyResolve event on the current domain.  As the last resort, the event handler will try to load the missing dependency by name.</p>
+</section>
+      <h4><a class="xref" href="Albatross.CodeGen.CSharp.ObjectType.html">ObjectType</a></h4>
       <section></section>
     <h3 id="interfaces">Interfaces
   </h3>
       <h4><a class="xref" href="Albatross.CodeGen.CSharp.IGetReflectionOnlyType.html">IGetReflectionOnlyType</a></h4>
-      <section></section>
+      <section><p>The interface will perform a reflection only load on the input type parameter.  It requires a specific implementation because .NET will only
+load the specified assembly and will not load any dependencies automatically.</p>
+</section>
 </article>
           </div>
           

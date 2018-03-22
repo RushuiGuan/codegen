@@ -16,6 +16,7 @@ namespace Albatross.CodeGen.Ioc{
 
 			container.Register<IBuildSqlType, BuildSqlType>(Lifestyle.Singleton);
 			container.Register<IBuildVariable, BuildSqlVariable>(Lifestyle.Singleton);
+			container.Register<IBuildParameter, BuildProcedureParameter>(Lifestyle.Singleton);
 			container.Register<IStoreVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<IGetVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<ICreateVariableName, CreateSqlVariableName>(Lifestyle.Singleton);

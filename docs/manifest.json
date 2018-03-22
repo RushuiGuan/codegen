@@ -21,7 +21,31 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CSharp.BuildWebApiProxy.html",
-          "hash": "pPDHNoHsIH3VR/TXAFFFlA=="
+          "hash": "llgkI6VvIu9OjOiZETkBiQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Albatross.CodeGen.CSharp.ClassGenerator-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Albatross.CodeGen.CSharp.ClassGenerator-1.html",
+          "hash": "nmsyjACN/TFExHYoZgvLkQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Albatross.CodeGen.CSharp.ClassOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Albatross.CodeGen.CSharp.ClassOption.html",
+          "hash": "/TjfFE1fYaD0ztP+j9L+fQ=="
         }
       },
       "is_incremental": false,
@@ -33,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CSharp.GetReflectionOnlyType.html",
-          "hash": "P8lTeCfutT2+KPBBuOMJPg=="
+          "hash": "7jIasZRTWth3aNKK5thWXg=="
         }
       },
       "is_incremental": false,
@@ -45,7 +69,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CSharp.IGetReflectionOnlyType.html",
-          "hash": "LaqPkfNqI3c2hwYIOnds4w=="
+          "hash": "0Oxdi7nYHZPL4xkLRCyEMQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Albatross.CodeGen.CSharp.ObjectType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Albatross.CodeGen.CSharp.ObjectType.html",
+          "hash": "1nLIy8thd9Bw5ElqBH/vwg=="
         }
       },
       "is_incremental": false,
@@ -57,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CSharp.html",
-          "hash": "o6brdxKa8tzG+4IAjtNFOA=="
+          "hash": "UavnHlt0GRB+U6uztK9rTA=="
         }
       },
       "is_incremental": false,
@@ -65,23 +101,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.ClassGenerator-1.yml",
+      "source_relative_path": "api/Albatross.CodeGen.CodeGenException.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.ClassGenerator-1.html",
-          "hash": "nj2q7X8rMXyy6KmWXyX+Rg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.ClassOption.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.ClassOption.html",
-          "hash": "rRtJSfdPoeQ+8Cg76kLFtQ=="
+          "relative_path": "api/Albatross.CodeGen.CodeGenException.html",
+          "hash": "Zw3ghBoSagHVjFs+mEloQw=="
         }
       },
       "is_incremental": false,
@@ -129,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CodeGeneratorFactory.html",
-          "hash": "Bc/Ag8Phl0z5pDG3IgFang=="
+          "hash": "QB8QJGLbkW5IdKnbURZnGQ=="
         }
       },
       "is_incremental": false,
@@ -161,42 +185,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Database.Column.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.Database.Column.html",
-          "hash": "zGAyocQ0x6kR2G4uy3uoyw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Database.ColumnNotFoundException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.Database.ColumnNotFoundException.html",
-          "hash": "7pr2uGxEWJISgq/pFV92dw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Database.DatabaseObject.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.Database.DatabaseObject.html",
-          "hash": "ijyplVKNBeAHx9T3ibdReQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Albatross.CodeGen.Database.FilterOption.yml",
       "output": {
         ".html": {
@@ -209,11 +197,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Database.IColumnSqlTypeBuilder.yml",
+      "source_relative_path": "api/Albatross.CodeGen.Database.IBuildParameter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.Database.IColumnSqlTypeBuilder.html",
-          "hash": "0s70EnmNiLVrWiFCII5FsQ=="
+          "relative_path": "api/Albatross.CodeGen.Database.IBuildParameter.html",
+          "hash": "JjX+RJucopBAee6YQjPNnQ=="
         }
       },
       "is_incremental": false,
@@ -221,11 +209,35 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Database.ICreateVariable.yml",
+      "source_relative_path": "api/Albatross.CodeGen.Database.IBuildSqlType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.Database.ICreateVariable.html",
-          "hash": "4rZGBXaZ+WcOJqqWBqNxxQ=="
+          "relative_path": "api/Albatross.CodeGen.Database.IBuildSqlType.html",
+          "hash": "5RChLXLDRC0bOqcs+DPL6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Albatross.CodeGen.Database.IBuildVariable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Albatross.CodeGen.Database.IBuildVariable.html",
+          "hash": "P6cySqBupcfj5Aa6z/OS7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Albatross.CodeGen.Database.ICreateVariableName.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Albatross.CodeGen.Database.ICreateVariableName.html",
+          "hash": "iUQ9unttMpBZTA93FwhZfw=="
         }
       },
       "is_incremental": false,
@@ -237,43 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.IGetCSharpType.html",
-          "hash": "Z+nkFZ5GYrjB5nLtnAovfA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Database.IGetTableColumns.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.Database.IGetTableColumns.html",
-          "hash": "6eejTjGtWhLIBNHKR+NL0Q=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Database.IGetTableIdentityColumn.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.Database.IGetTableIdentityColumn.html",
-          "hash": "spD2IqeTm4jAOcR0imINUw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Database.IGetTablePrimaryKey.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.Database.IGetTablePrimaryKey.html",
-          "hash": "OlYDbGDYKQndeKfMw2JUZg=="
+          "hash": "GJpPxwjYLb08mwNtLFedKA=="
         }
       },
       "is_incremental": false,
@@ -285,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.IGetVariable.html",
-          "hash": "Wc15mqOCs1vZekmozNN1WA=="
+          "hash": "WkdiNPRVuMgIwWUo8VIkVA=="
         }
       },
       "is_incremental": false,
@@ -293,47 +269,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Database.IGetVariableName.yml",
+      "source_relative_path": "api/Albatross.CodeGen.Database.IStoreVariable.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.Database.IGetVariableName.html",
-          "hash": "ouAALP/JGumm1c9G9SKhOA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Database.IdentityColumnNotFoundException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.Database.IdentityColumnNotFoundException.html",
-          "hash": "sVVBDcJ5HSCW+9uVeH5JwA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Database.PrimaryKeyNotFoundException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.Database.PrimaryKeyNotFoundException.html",
-          "hash": "M/KyQlHNH05G9FpPRgb8MA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Database.Server.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.Database.Server.html",
-          "hash": "J3kV1Q2Ajg5NYcqWASDpZg=="
+          "relative_path": "api/Albatross.CodeGen.Database.IStoreVariable.html",
+          "hash": "4SAZ7IdyEunCAORcZSfOpw=="
         }
       },
       "is_incremental": false,
@@ -345,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.SqlCodeGenOption.html",
-          "hash": "s6P3uClcavxwGMTskws1jw=="
+          "hash": "LruaGCua2AUujmyZt8FfRw=="
         }
       },
       "is_incremental": false,
@@ -357,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.html",
-          "hash": "YyessfSSGwKl1U3c9CzOIw=="
+          "hash": "ILtDvBEztBMzSi0IOViTHw=="
         }
       },
       "is_incremental": false,
@@ -369,19 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Extension.html",
-          "hash": "XYMrN3F3UlschIDmg+zQSQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Factory-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.Factory-1.html",
-          "hash": "uxOMi2WAZNco9lANuDCYMw=="
+          "hash": "iEN6LZYJSTZD0jOmY2cAiQ=="
         }
       },
       "is_incremental": false,
@@ -441,19 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.IConfigurableCodeGenFactory.html",
-          "hash": "FOxlmUHVV23dd0EcqelPLw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.IFactory-1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.IFactory-1.html",
-          "hash": "Y5sflrxzsYxUszJTxPi/sA=="
+          "hash": "gjV0/DRA69OQyRAFCM562g=="
         }
       },
       "is_incremental": false,
@@ -521,11 +437,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.Leaf.yml",
+      "source_relative_path": "api/Albatross.CodeGen.Ioc.SimpleInjectorPackage.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.Leaf.html",
-          "hash": "nzJVPAXAClw/PIWdLbWS5A=="
+          "relative_path": "api/Albatross.CodeGen.Ioc.SimpleInjectorPackage.html",
+          "hash": "eK87QPlCl0+IU3AvC0V8tg=="
         }
       },
       "is_incremental": false,
@@ -533,11 +449,23 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.ObjectType.yml",
+      "source_relative_path": "api/Albatross.CodeGen.Ioc.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.ObjectType.html",
-          "hash": "DQtjpOANoW3Cb/yQTt5+oA=="
+          "relative_path": "api/Albatross.CodeGen.Ioc.html",
+          "hash": "Lx52yR6yMWoxlbx3SGCwjw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Albatross.CodeGen.Leaf.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Albatross.CodeGen.Leaf.html",
+          "hash": "nzJVPAXAClw/PIWdLbWS5A=="
         }
       },
       "is_incremental": false,
@@ -569,23 +497,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.OptionTypeFactory.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.OptionTypeFactory.html",
-          "hash": "TnoC514A0kRMtro1sAoU+g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/Albatross.CodeGen.PowerShell.BaseCmdlet-1.yml",
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.BaseCmdlet-1.html",
-          "hash": "oLWrsndOfQTMAN5O0XczkQ=="
+          "hash": "jI6aSYBJz9jMv9dbp6DZeg=="
         }
       },
       "is_incremental": false,
@@ -598,30 +514,6 @@
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.GetCodeGenerator.html",
           "hash": "LB5c2IVggb1onu83VLenWw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.PowerShell.GetOptionType.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.PowerShell.GetOptionType.html",
-          "hash": "jAoSGnShkmr3fRsdBsZVnw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.PowerShell.GetSourceType.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.PowerShell.GetSourceType.html",
-          "hash": "PkV+AjvDwlchetqnoToM2Q=="
         }
       },
       "is_incremental": false,
@@ -669,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.NewClassOption.html",
-          "hash": "AWvWtiIEHQ7jHd0zsX/5IA=="
+          "hash": "JW8SJDpTZXZrTTD3mUbgow=="
         }
       },
       "is_incremental": false,
@@ -705,7 +597,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.NewDatabaseTable.html",
-          "hash": "t1ZCuxIMT7xeHq7fQTJuRA=="
+          "hash": "EmqGXzUFWlAF7pKXPJlgPQ=="
         }
       },
       "is_incremental": false,
@@ -717,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.NewObjectType.html",
-          "hash": "rshbkd52KpygzL4LoLI2Zg=="
+          "hash": "+MHKmme9Z8TX4tWEsWIyZA=="
         }
       },
       "is_incremental": false,
@@ -761,11 +653,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.PowerShell.SetupIoc.yml",
+      "source_relative_path": "api/Albatross.CodeGen.PowerShell.Setup.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.PowerShell.SetupIoc.html",
-          "hash": "vkB0BZCBkTKU/x4zx0qQZw=="
+          "relative_path": "api/Albatross.CodeGen.PowerShell.Setup.html",
+          "hash": "1g9Y4TpWwjhkcpDp8DZE+A=="
         }
       },
       "is_incremental": false,
@@ -825,7 +717,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.html",
-          "hash": "PynAey8ImZUcTpxyj+Xz2w=="
+          "hash": "UqVzoH2ydlrX1rSYtHSgYA=="
         }
       },
       "is_incremental": false,
@@ -869,11 +761,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.SourceTypeFactory.yml",
+      "source_relative_path": "api/Albatross.CodeGen.SqlServer.BuildProcedureParameter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.SourceTypeFactory.html",
-          "hash": "TaCAMYTFDXaX8I07qGXvQg=="
+          "relative_path": "api/Albatross.CodeGen.SqlServer.BuildProcedureParameter.html",
+          "hash": "3GhQN8qgdY84bWIuX7seog=="
         }
       },
       "is_incremental": false,
@@ -881,11 +773,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.SqlServer.BuildSQLTableClass.Column.yml",
+      "source_relative_path": "api/Albatross.CodeGen.SqlServer.BuildSqlType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.SqlServer.BuildSQLTableClass.Column.html",
-          "hash": "FSM+EKW5SEZmMHC3ubsYSQ=="
+          "relative_path": "api/Albatross.CodeGen.SqlServer.BuildSqlType.html",
+          "hash": "8y6wCz0lLGX8eUNC0HtmOQ=="
         }
       },
       "is_incremental": false,
@@ -893,11 +785,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.SqlServer.BuildSQLTableClass.yml",
+      "source_relative_path": "api/Albatross.CodeGen.SqlServer.BuildSqlVariable.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.SqlServer.BuildSQLTableClass.html",
-          "hash": "GCJsT68tJUb/quC9k27Ogg=="
+          "relative_path": "api/Albatross.CodeGen.SqlServer.BuildSqlVariable.html",
+          "hash": "cRl4ZARpZbgS3HbNbpSTDQ=="
         }
       },
       "is_incremental": false,
@@ -905,11 +797,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.SqlServer.ColumnEquityComparer.yml",
+      "source_relative_path": "api/Albatross.CodeGen.SqlServer.CSharpClassFromTable.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.SqlServer.ColumnEquityComparer.html",
-          "hash": "ZIUB8r8+ZnvrbbkHeNgElw=="
+          "relative_path": "api/Albatross.CodeGen.SqlServer.CSharpClassFromTable.html",
+          "hash": "e7SVH9LQh5uaQsEzsONSdw=="
         }
       },
       "is_incremental": false,
@@ -917,11 +809,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.SqlServer.ColumnSqlTypeBuilder.yml",
+      "source_relative_path": "api/Albatross.CodeGen.SqlServer.CreateSqlVariableName.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.SqlServer.ColumnSqlTypeBuilder.html",
-          "hash": "BJ8IcRFAhO+66O9lSs5xlQ=="
+          "relative_path": "api/Albatross.CodeGen.SqlServer.CreateSqlVariableName.html",
+          "hash": "lvhSo0ILOfdOA2CYzz9haQ=="
         }
       },
       "is_incremental": false,
@@ -933,7 +825,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.CreateStoredProcedure.html",
-          "hash": "M3GlQ/Bk+5Mb7cswdmpAaA=="
+          "hash": "d4kqoQwpmqN6P1I7y5Eb6Q=="
         }
       },
       "is_incremental": false,
@@ -945,7 +837,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.DeclareStatement.html",
-          "hash": "DknCLBHkVXrIfSDOlPNRKQ=="
+          "hash": "tDu5kDCMj3G8DF6KttM8uA=="
         }
       },
       "is_incremental": false,
@@ -957,67 +849,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.Extension.html",
-          "hash": "TopOff/rCSrGoFv1/DSeGw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.SqlServer.GenerateClassByDatabaseTable.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.SqlServer.GenerateClassByDatabaseTable.html",
-          "hash": "5QnXgYPwE2ByAYaUY7cWCg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.SqlServer.GetSqlVariableName.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.SqlServer.GetSqlVariableName.html",
-          "hash": "H6rqVQ8M0CfOqfld5DzKqA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.SqlServer.GetTableColumns.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.SqlServer.GetTableColumns.html",
-          "hash": "4Oy1FKUIViFtRwD6QH7i0g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.SqlServer.GetTableIdentityColumn.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.SqlServer.GetTableIdentityColumn.html",
-          "hash": "vIziuzEk4V5Crwn5rb1tSA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.SqlServer.GetTablePrimaryKey.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.SqlServer.GetTablePrimaryKey.html",
-          "hash": "wwvLgFHqDWPrjFwz63nW6g=="
+          "hash": "1sHynigjJanEYorA4KLlkg=="
         }
       },
       "is_incremental": false,
@@ -1029,7 +861,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.SqlVariableMgmt.html",
-          "hash": "m261HmzO1GuuTAoGpjfn5w=="
+          "hash": "iG5KnChdVr7HThdXmcS5Jw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Albatross.CodeGen.SqlServer.StoredProcedureProxy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Albatross.CodeGen.SqlServer.StoredProcedureProxy.html",
+          "hash": "LD6yIFf3BidjfYRsEDuPzw=="
         }
       },
       "is_incremental": false,
@@ -1041,7 +885,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableDelete.html",
-          "hash": "dA5eOAM/wrPU66/XS+mnWw=="
+          "hash": "6cPrormEiwE6g60616qPJg=="
         }
       },
       "is_incremental": false,
@@ -1053,7 +897,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableInsert.html",
-          "hash": "TebOUt7bkLdWw7fmPaji9A=="
+          "hash": "q2lD56+brzye7QPwuJ5Wlg=="
         }
       },
       "is_incremental": false,
@@ -1065,7 +909,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableMergeDelete.html",
-          "hash": "6qpZRnC6pYbspipSAaDRCA=="
+          "hash": "KurjDdeNLeqtB44XnK2Mrg=="
         }
       },
       "is_incremental": false,
@@ -1077,7 +921,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableMergeInsert.html",
-          "hash": "ez1QY9IuWpzny0uneFHI2Q=="
+          "hash": "1WELApu11E2MRO+ytOe3CA=="
         }
       },
       "is_incremental": false,
@@ -1089,7 +933,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableMergeJoinByID.html",
-          "hash": "l7sVyGQTOPjXiVb4mb2Upg=="
+          "hash": "lv+owkzHxHZW2VCPhmnBNw=="
         }
       },
       "is_incremental": false,
@@ -1101,7 +945,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableMergeSelect.html",
-          "hash": "bMvT1dy5EhPi7R2Xlh7fgg=="
+          "hash": "2DNqR7QXigCJAuKs0Csgag=="
         }
       },
       "is_incremental": false,
@@ -1113,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableMergeUpdate.html",
-          "hash": "dJwPS2ZhR6pXK06Zrbq2RA=="
+          "hash": "gZwYvpgacal4O96jpnX4Wg=="
         }
       },
       "is_incremental": false,
@@ -1125,7 +969,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableQueryGenerator.html",
-          "hash": "wdKQA0gNfcAu/ZTGGcsOBw=="
+          "hash": "1oeyT2ln3H5xa6dHXj8GBA=="
         }
       },
       "is_incremental": false,
@@ -1137,7 +981,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableSelect.html",
-          "hash": "S4gr9fDDSWeZRNYzzUMgTA=="
+          "hash": "zDeMB+WOgcH9pnunEd5JIw=="
         }
       },
       "is_incremental": false,
@@ -1149,7 +993,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableSelectScopedIdentity.html",
-          "hash": "FjP7SwGjtn+UnZ2nR3hfYA=="
+          "hash": "iROIqGro/IuR7AOdkSAYqQ=="
         }
       },
       "is_incremental": false,
@@ -1161,7 +1005,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableUpdate.html",
-          "hash": "YGg+wZCXf9nL9Ie6JTPY9g=="
+          "hash": "qrSUTQDPR8dH3T7mPx7fUQ=="
         }
       },
       "is_incremental": false,
@@ -1173,7 +1017,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableWhere.html",
-          "hash": "DQgJaZgGUXDh1l7bqhlWhQ=="
+          "hash": "A9e8NaehaxrR+yNm94RJqQ=="
         }
       },
       "is_incremental": false,
@@ -1185,7 +1029,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.html",
-          "hash": "H2NFLO31y9nHiXjclD9c6Q=="
+          "hash": "xLdY8eSMZPkQCx/YvQf4WQ=="
         }
       },
       "is_incremental": false,
@@ -1209,7 +1053,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.StringBuilderExtension.html",
-          "hash": "6K6RRVO23/ZVoiVd746Fsw=="
+          "hash": "FPxz8qvjPWouuYbre+dWlA=="
         }
       },
       "is_incremental": false,
@@ -1229,11 +1073,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.UnitTest.ColumnSqlTypeBuilderTest.yml",
+      "source_relative_path": "api/Albatross.CodeGen.UnitTest.CompositeGeneratorTest.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.UnitTest.ColumnSqlTypeBuilderTest.html",
-          "hash": "eKDRg9Ju34GWlrr2X9FthA=="
+          "relative_path": "api/Albatross.CodeGen.UnitTest.CompositeGeneratorTest.html",
+          "hash": "lqA7QPsU2N5aZFJYPJGE3w=="
         }
       },
       "is_incremental": false,
@@ -1241,11 +1085,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.UnitTest.CompositeGeneratorTest.yml",
+      "source_relative_path": "api/Albatross.CodeGen.UnitTest.CreateSqlVariableNameTest.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.UnitTest.CompositeGeneratorTest.html",
-          "hash": "Dwd81vwVOBJUA1g6A0MbpA=="
+          "relative_path": "api/Albatross.CodeGen.UnitTest.CreateSqlVariableNameTest.html",
+          "hash": "P4hROD7xvvj4l0z/plTlSQ=="
         }
       },
       "is_incremental": false,
@@ -1257,7 +1101,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.html",
-          "hash": "t4MvcJOQLhXKKTZb8qhs+Q=="
+          "hash": "yGVkBuk8jo5rEwMCcHo+1A=="
         }
       },
       "is_incremental": false,
@@ -1269,7 +1113,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.DeclareStatementTest.html",
-          "hash": "JtyXrL/MKfJF1EU9bDq6OQ=="
+          "hash": "jkGrevFsduB9s2F/hoGO7g=="
         }
       },
       "is_incremental": false,
@@ -1277,11 +1121,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.UnitTest.GetReflectionOnlyTypeTest.yml",
+      "source_relative_path": "api/Albatross.CodeGen.UnitTest.Extension.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.UnitTest.GetReflectionOnlyTypeTest.html",
-          "hash": "1sLZ/5xWvlYH3xmysZe7kA=="
+          "relative_path": "api/Albatross.CodeGen.UnitTest.Extension.html",
+          "hash": "VQuowJmDceFIJDBO33HPkg=="
         }
       },
       "is_incremental": false,
@@ -1289,11 +1133,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.UnitTest.GetSqlVariableNameTest.yml",
+      "source_relative_path": "api/Albatross.CodeGen.UnitTest.GeneralUnitTest.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Albatross.CodeGen.UnitTest.GetSqlVariableNameTest.html",
-          "hash": "WZB6Y7belvqF1IxOj0lNuw=="
+          "relative_path": "api/Albatross.CodeGen.UnitTest.GeneralUnitTest.html",
+          "hash": "Q9pG71M3mJ+N2NotjuTRlw=="
         }
       },
       "is_incremental": false,
@@ -1305,7 +1149,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Ioc.html",
-          "hash": "yjIRetw3AF8g6LL5kjbRmA=="
+          "hash": "pqUNg/Y0HbyfHBFdEslghw=="
         }
       },
       "is_incremental": false,
@@ -1317,7 +1161,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Mocking.ContactTable.html",
-          "hash": "EJNUq5SoXB8goeRDy3xCww=="
+          "hash": "Dfi1N5YJ9SUp+pAWdTy1Dw=="
         }
       },
       "is_incremental": false,
@@ -1341,7 +1185,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Mocking.SymbolTable.html",
-          "hash": "FTtg8orfAFXQcud4SuG2og=="
+          "hash": "YJO2BAZlbpVAf/7MrSygqw=="
         }
       },
       "is_incremental": false,
@@ -1353,7 +1197,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Mocking.TableMocking.html",
-          "hash": "hTDWIJBYI2SOAk5m4Oul/g=="
+          "hash": "sLryg5iNPICpS5uLmjKQAg=="
         }
       },
       "is_incremental": false,
@@ -1365,7 +1209,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Mocking.html",
-          "hash": "RhBHsoqvwZPqMLtHbJNSDw=="
+          "hash": "XYayM+50gk2zD9YpUaNaEQ=="
         }
       },
       "is_incremental": false,
@@ -1377,7 +1221,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Setup.html",
-          "hash": "NaMgNYT3OzTieVsayGezvg=="
+          "hash": "9JAsjUy7EZoduroN7IT4Dw=="
         }
       },
       "is_incremental": false,
@@ -1389,7 +1233,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.TableInsertTest.html",
-          "hash": "dMCHY+i94u0bynG04cLqVw=="
+          "hash": "1wwYq7N9eEbbRteAHwtmEg=="
         }
       },
       "is_incremental": false,
@@ -1401,7 +1245,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.TableMergeSelectTest.html",
-          "hash": "+YNWxnkAy3P5sjC7J06UTQ=="
+          "hash": "oRqXsfclBkeOGD8Au1a1nA=="
         }
       },
       "is_incremental": false,
@@ -1413,7 +1257,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.TableMergeUpdateTest.html",
-          "hash": "+hFXTmQTrfk9xy0EFvKFfg=="
+          "hash": "z5oy/JSvDZLNx/fgBGxSdA=="
         }
       },
       "is_incremental": false,
@@ -1425,7 +1269,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.TableUpdateTest.html",
-          "hash": "01QNofKyY+GS9GU4mIgE/Q=="
+          "hash": "gx+5EGe7DQjMjoHav+MZBg=="
         }
       },
       "is_incremental": false,
@@ -1437,19 +1281,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.TableWhereTest.html",
-          "hash": "ehcyjuYh6VQWFU1jojwnFA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Albatross.CodeGen.UnitTest.TestBase.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Albatross.CodeGen.UnitTest.TestBase.html",
-          "hash": "DTE2cUvwRaAmKNC4vx/2lg=="
+          "hash": "+WRgNSWDcaWWFstZ0C2MNA=="
         }
       },
       "is_incremental": false,
@@ -1473,7 +1305,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.html",
-          "hash": "6lmrLfmWZK893zHp1VtAdQ=="
+          "hash": "3t85lD+bJpSUdIuq8qt7Rw=="
         }
       },
       "is_incremental": false,
@@ -1485,7 +1317,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.html",
-          "hash": "Towk34POxMIH4TIvj5W6Lw=="
+          "hash": "NpeBe7uq6LT5DMeVvN4/yQ=="
         }
       },
       "is_incremental": false,
@@ -1509,7 +1341,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Pc+c7pMjV18rX1PDVTqqoA=="
+          "hash": "uv7zvbmjlaLYrdyaVuffsA=="
         }
       },
       "is_incremental": false,

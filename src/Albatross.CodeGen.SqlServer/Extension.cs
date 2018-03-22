@@ -57,7 +57,6 @@ namespace Albatross.CodeGen.SqlServer {
 			return new Variable {
 				Name = column.Name,
 				Type = column.Type,
-				Direction = System.Data.ParameterDirection.Input,
 			};
 		}
 		#endregion

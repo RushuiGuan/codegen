@@ -13,10 +13,12 @@ namespace Albatross.CodeGen.SqlServer {
 	public class CreateStoredProcedure : ICodeGenerator<object, Database.SqlCodeGenOption> {
 		IGetVariable getVariable;
 		IBuildVariable buildVariable;
+		IBuildParameter buildParameter;
 
-		public CreateStoredProcedure(IGetVariable getVariable, IBuildVariable buildVariable) {
+		public CreateStoredProcedure(IGetVariable getVariable, IBuildVariable buildVariable, IBuildParameter buildParameter) {
 			this.getVariable = getVariable;
 			this.buildVariable = buildVariable;
+			this.buildParameter = buildParameter;
 		}
 
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
@@ -35,6 +37,13 @@ namespace Albatross.CodeGen.SqlServer {
 			}
 
 			sb.Append("create procedure ").EscapeName(option.Schema).Dot().EscapeName(option.Name).AppendLine();
+			foreach (var param in option.Parameters) {
+				buildParameter.Build(sb.Tab(), param);
+				if (variables.Count() > 0 || param != option.Parameters.Last()) {
+					sb.Comma();
+				}
+				sb.AppendLine();
+			}
 			foreach (var variable in variables) {
 				buildVariable.Build(sb.Tab(), variable);
 

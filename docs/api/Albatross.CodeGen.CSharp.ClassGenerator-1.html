@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ClassGenerator&lt;T&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ClassGenerator&lt;T&gt;
+   ">
+    <meta name="generator" content="docfx 2.31.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Albatross.CodeGen.CSharp.ClassGenerator`1">
+  
+  
+  <h1 id="Albatross_CodeGen_CSharp_ClassGenerator_1" data-uid="Albatross.CodeGen.CSharp.ClassGenerator`1" class="text-break">Class ClassGenerator&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>ClassGenerator is an abstract class for C# class code generation.  It uses a fixed option type <a class="xref" href="Albatross.CodeGen.CSharp.ClassOption.html">ClassOption</a> but the Source Type is left open.  It will take care of 
+namespace, class scope, class name and constructor generation using the information provided by the <a class="xref" href="Albatross.CodeGen.CSharp.ClassOption.html">ClassOption</a> object.  It leaves the rest of the body creation to a abstract 
+method <a class="xref" href="Albatross.CodeGen.CSharp.ClassGenerator-1.html#Albatross_CodeGen_CSharp_ClassGenerator_1_RenderBody_System_Text_StringBuilder_System_Int32__0_Albatross_CodeGen_CSharp_ClassOption_">RenderBody(StringBuilder, Int32, T, ClassOption)</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ClassGenerator&lt;T&gt;</span></div>
+      <div class="level2"><a class="xref" href="Albatross.CodeGen.CSharp.BuildWebApiProxy.html">BuildWebApiProxy</a></div>
+      <div class="level2"><a class="xref" href="Albatross.CodeGen.SqlServer.CSharpClassFromTable.html">CSharpClassFromTable</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Albatross.CodeGen.ICodeGenerator-2.html">ICodeGenerator</a>&lt;T, <a class="xref" href="Albatross.CodeGen.CSharp.ClassOption.html">ClassOption</a>&gt;</div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Albatross.CodeGen.CSharp.html">Albatross.CodeGen.CSharp</a></h6>
+  <h6><strong>Assembly</strong>: Albatross.CodeGen.CSharp.dll</h6>
+  <h5 id="Albatross_CodeGen_CSharp_ClassGenerator_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class ClassGenerator&lt;T&gt; : ICodeGenerator&lt;T, ClassOption&gt; where T : class</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>the source type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_CSharp_ClassGenerator_1_Build_System_Text_StringBuilder__0_Albatross_CodeGen_CSharp_ClassOption_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.CSharp.ClassGenerator%601.Build(System.Text.StringBuilder%2C%600%2CAlbatross.CodeGen.CSharp.ClassOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.CSharp/ClassGenerator.cs/#L30">View Source</a>
+  </span>
+  <a id="Albatross_CodeGen_CSharp_ClassGenerator_1_Build_" data-uid="Albatross.CodeGen.CSharp.ClassGenerator`1.Build*"></a>
+  <h4 id="Albatross_CodeGen_CSharp_ClassGenerator_1_Build_System_Text_StringBuilder__0_Albatross_CodeGen_CSharp_ClassOption_" data-uid="Albatross.CodeGen.CSharp.ClassGenerator`1.Build(System.Text.StringBuilder,`0,Albatross.CodeGen.CSharp.ClassOption)">Build(StringBuilder, T, ClassOption)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;object&gt; Build(StringBuilder sb, T t, ClassOption option)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.StringBuilder</span></td>
+        <td><span class="parametername">sb</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">t</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Albatross.CodeGen.CSharp.ClassOption.html">ClassOption</a></td>
+        <td><span class="parametername">option</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_CSharp_ClassGenerator_1_Configure_System_Object_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.CSharp.ClassGenerator%601.Configure(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.CSharp/ClassGenerator.cs/#L59">View Source</a>
+  </span>
+  <a id="Albatross_CodeGen_CSharp_ClassGenerator_1_Configure_" data-uid="Albatross.CodeGen.CSharp.ClassGenerator`1.Configure*"></a>
+  <h4 id="Albatross_CodeGen_CSharp_ClassGenerator_1_Configure_System_Object_" data-uid="Albatross.CodeGen.CSharp.ClassGenerator`1.Configure(System.Object)">Configure(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Configure(object data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_CSharp_ClassGenerator_1_GetClassName__0_Albatross_CodeGen_CSharp_ClassOption_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.CSharp.ClassGenerator%601.GetClassName(%600%2CAlbatross.CodeGen.CSharp.ClassOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.CSharp/ClassGenerator.cs/#L25">View Source</a>
+  </span>
+  <a id="Albatross_CodeGen_CSharp_ClassGenerator_1_GetClassName_" data-uid="Albatross.CodeGen.CSharp.ClassGenerator`1.GetClassName*"></a>
+  <h4 id="Albatross_CodeGen_CSharp_ClassGenerator_1_GetClassName__0_Albatross_CodeGen_CSharp_ClassOption_" data-uid="Albatross.CodeGen.CSharp.ClassGenerator`1.GetClassName(`0,Albatross.CodeGen.CSharp.ClassOption)">GetClassName(T, ClassOption)</h4>
+  <div class="markdown level1 summary"><p>Return the name of the class.  By default, it will use the <a class="xref" href="Albatross.CodeGen.CSharp.ClassOption.html#Albatross_CodeGen_CSharp_ClassOption_Name">Name</a> property.  Override this method to change the behavior.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string GetClassName(T t, ClassOption option)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">t</span></td>
+        <td><p>Source input</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Albatross.CodeGen.CSharp.ClassOption.html">ClassOption</a></td>
+        <td><span class="parametername">option</span></td>
+        <td><p>Option input</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name for this class</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_CSharp_ClassGenerator_1_RenderBody_System_Text_StringBuilder_System_Int32__0_Albatross_CodeGen_CSharp_ClassOption_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.CSharp.ClassGenerator%601.RenderBody(System.Text.StringBuilder%2CSystem.Int32%2C%600%2CAlbatross.CodeGen.CSharp.ClassOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.CSharp/ClassGenerator.cs/#L28">View Source</a>
+  </span>
+  <a id="Albatross_CodeGen_CSharp_ClassGenerator_1_RenderBody_" data-uid="Albatross.CodeGen.CSharp.ClassGenerator`1.RenderBody*"></a>
+  <h4 id="Albatross_CodeGen_CSharp_ClassGenerator_1_RenderBody_System_Text_StringBuilder_System_Int32__0_Albatross_CodeGen_CSharp_ClassOption_" data-uid="Albatross.CodeGen.CSharp.ClassGenerator`1.RenderBody(System.Text.StringBuilder,System.Int32,`0,Albatross.CodeGen.CSharp.ClassOption)">RenderBody(StringBuilder, Int32, T, ClassOption)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void RenderBody(StringBuilder sb, int tabLevel, T t, ClassOption options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Text.StringBuilder</span></td>
+        <td><span class="parametername">sb</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">tabLevel</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">t</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Albatross.CodeGen.CSharp.ClassOption.html">ClassOption</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_CSharp_ClassGenerator_1_Yield.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.CSharp.ClassGenerator%601.Yield%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.CSharp/ClassGenerator.cs/#L16">View Source</a>
+  </span>
+  <h4 id="Albatross_CodeGen_CSharp_ClassGenerator_1_Yield" data-uid="Albatross.CodeGen.CSharp.ClassGenerator`1.Yield">Yield</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Func&lt;StringBuilder, IEnumerable&lt;object&gt;&gt; Yield</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Text.StringBuilder</span>, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Albatross.CodeGen.ICodeGenerator-2.html">ICodeGenerator&lt;T, O&gt;</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_CSharp_ClassGenerator_1.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.CSharp.ClassGenerator%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.CSharp/ClassGenerator.cs/#L13" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

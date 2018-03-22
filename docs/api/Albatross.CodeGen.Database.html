@@ -77,38 +77,30 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
-      <h4><a class="xref" href="Albatross.CodeGen.Database.Column.html">Column</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.Database.ColumnNotFoundException.html">ColumnNotFoundException</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.Database.DatabaseObject.html">DatabaseObject</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.Database.IdentityColumnNotFoundException.html">IdentityColumnNotFoundException</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.Database.PrimaryKeyNotFoundException.html">PrimaryKeyNotFoundException</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.Database.Server.html">Server</a></h4>
-      <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.Database.SqlCodeGenOption.html">SqlCodeGenOption</a></h4>
       <section></section>
     <h3 id="interfaces">Interfaces
   </h3>
-      <h4><a class="xref" href="Albatross.CodeGen.Database.IColumnSqlTypeBuilder.html">IColumnSqlTypeBuilder</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.Database.ICreateVariable.html">ICreateVariable</a></h4>
-      <section></section>
+      <h4><a class="xref" href="Albatross.CodeGen.Database.IBuildParameter.html">IBuildParameter</a></h4>
+      <section><p>This interface will generate the sql query for a <span class="xref">Albatross.Database.Parameter</span> object.</p>
+</section>
+      <h4><a class="xref" href="Albatross.CodeGen.Database.IBuildSqlType.html">IBuildSqlType</a></h4>
+      <section><p>The interface will generate the sql text for a <span class="xref">Albatross.Database.SqlType</span> object</p>
+</section>
+      <h4><a class="xref" href="Albatross.CodeGen.Database.IBuildVariable.html">IBuildVariable</a></h4>
+      <section><p>This interface will generate the sql query for a <span class="xref">Albatross.Database.Variable</span> object.</p>
+</section>
+      <h4><a class="xref" href="Albatross.CodeGen.Database.ICreateVariableName.html">ICreateVariableName</a></h4>
+      <section><p>Given a string, create a valid sql variable name</p>
+</section>
       <h4><a class="xref" href="Albatross.CodeGen.Database.IGetCSharpType.html">IGetCSharpType</a></h4>
       <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.Database.IGetTableColumns.html">IGetTableColumns</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.Database.IGetTableIdentityColumn.html">IGetTableIdentityColumn</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.Database.IGetTablePrimaryKey.html">IGetTablePrimaryKey</a></h4>
-      <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.Database.IGetVariable.html">IGetVariable</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.Database.IGetVariableName.html">IGetVariableName</a></h4>
-      <section></section>
+      <section><p>The interface will retrieve all <span class="xref">Albatross.Database.Variable</span> stored by the specified owner /&gt;.  This interface works with <a class="xref" href="Albatross.CodeGen.Database.IStoreVariable.html">IStoreVariable</a></p>
+</section>
+      <h4><a class="xref" href="Albatross.CodeGen.Database.IStoreVariable.html">IStoreVariable</a></h4>
+      <section><p>The interface allow the code generator to stored a variable that can be retrieved later by using the <a class="xref" href="Albatross.CodeGen.Database.IGetVariable.html">IGetVariable</a> interface.</p>
+</section>
     <h3 id="enums">Enums
   </h3>
       <h4><a class="xref" href="Albatross.CodeGen.Database.FilterOption.html">FilterOption</a></h4>

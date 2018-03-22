@@ -93,7 +93,7 @@
     <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_EscapeName_System_Text_StringBuilder_System_String_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.EscapeName(System.Text.StringBuilder%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L28">View Source</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L8">View Source</a>
   </span>
   <a id="Albatross_CodeGen_SqlServer_Extension_EscapeName_" data-uid="Albatross.CodeGen.SqlServer.Extension.EscapeName*"></a>
   <h4 id="Albatross_CodeGen_SqlServer_Extension_EscapeName_System_Text_StringBuilder_System_String_" data-uid="Albatross.CodeGen.SqlServer.Extension.EscapeName(System.Text.StringBuilder,System.String)">EscapeName(StringBuilder, String)</h4>
@@ -142,18 +142,18 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_GetConnectionString_Albatross_CodeGen_Database_DatabaseObject_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.GetConnectionString(Albatross.CodeGen.Database.DatabaseObject)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_Get_Albatross_Database_IGetTable_Albatross_Database_Table__.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.Get(Albatross.Database.IGetTable%2CAlbatross.Database.Table%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L9">View Source</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L13">View Source</a>
   </span>
-  <a id="Albatross_CodeGen_SqlServer_Extension_GetConnectionString_" data-uid="Albatross.CodeGen.SqlServer.Extension.GetConnectionString*"></a>
-  <h4 id="Albatross_CodeGen_SqlServer_Extension_GetConnectionString_Albatross_CodeGen_Database_DatabaseObject_" data-uid="Albatross.CodeGen.SqlServer.Extension.GetConnectionString(Albatross.CodeGen.Database.DatabaseObject)">GetConnectionString(DatabaseObject)</h4>
+  <a id="Albatross_CodeGen_SqlServer_Extension_Get_" data-uid="Albatross.CodeGen.SqlServer.Extension.Get*"></a>
+  <h4 id="Albatross_CodeGen_SqlServer_Extension_Get_Albatross_Database_IGetTable_Albatross_Database_Table__" data-uid="Albatross.CodeGen.SqlServer.Extension.Get(Albatross.Database.IGetTable,Albatross.Database.Table@)">Get(IGetTable, ref Table)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string GetConnectionString(this DatabaseObject table)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void Get(this IGetTable handle, ref Table table)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -166,7 +166,44 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Database.DatabaseObject.html">DatabaseObject</a></td>
+        <td><span class="xref">Albatross.Database.IGetTable</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Albatross.Database.Table</span></td>
+        <td><span class="parametername">table</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_GetPrimaryKeyColumns_Albatross_Database_Table_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.GetPrimaryKeyColumns(Albatross.Database.Table)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L16">View Source</a>
+  </span>
+  <a id="Albatross_CodeGen_SqlServer_Extension_GetPrimaryKeyColumns_" data-uid="Albatross.CodeGen.SqlServer.Extension.GetPrimaryKeyColumns*"></a>
+  <h4 id="Albatross_CodeGen_SqlServer_Extension_GetPrimaryKeyColumns_Albatross_Database_Table_" data-uid="Albatross.CodeGen.SqlServer.Extension.GetPrimaryKeyColumns(Albatross.Database.Table)">GetPrimaryKeyColumns(Table)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;Column&gt; GetPrimaryKeyColumns(this Table table)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Albatross.Database.Table</span></td>
         <td><span class="parametername">table</span></td>
         <td></td>
       </tr>
@@ -182,25 +219,25 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">Albatross.Database.Column</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_IsBoolean_Albatross_CodeGen_Database_Column_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.IsBoolean(Albatross.CodeGen.Database.Column)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_GetVariable_Albatross_Database_Column_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.GetVariable(Albatross.Database.Column)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L42">View Source</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L56">View Source</a>
   </span>
-  <a id="Albatross_CodeGen_SqlServer_Extension_IsBoolean_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsBoolean*"></a>
-  <h4 id="Albatross_CodeGen_SqlServer_Extension_IsBoolean_Albatross_CodeGen_Database_Column_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsBoolean(Albatross.CodeGen.Database.Column)">IsBoolean(Column)</h4>
+  <a id="Albatross_CodeGen_SqlServer_Extension_GetVariable_" data-uid="Albatross.CodeGen.SqlServer.Extension.GetVariable*"></a>
+  <h4 id="Albatross_CodeGen_SqlServer_Extension_GetVariable_Albatross_Database_Column_" data-uid="Albatross.CodeGen.SqlServer.Extension.GetVariable(Albatross.Database.Column)">GetVariable(Column)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool IsBoolean(this Column c)</code></pre>
+    <pre><code class="lang-csharp hljs">public static Variable GetVariable(this Column column)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -213,8 +250,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Database.Column.html">Column</a></td>
-        <td><span class="parametername">c</span></td>
+        <td><span class="xref">Albatross.Database.Column</span></td>
+        <td><span class="parametername">column</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -229,119 +266,25 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="xref">Albatross.Database.Variable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_IsDateTime_Albatross_CodeGen_Database_Column_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.IsDateTime(Albatross.CodeGen.Database.Column)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L38">View Source</a>
-  </span>
-  <a id="Albatross_CodeGen_SqlServer_Extension_IsDateTime_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsDateTime*"></a>
-  <h4 id="Albatross_CodeGen_SqlServer_Extension_IsDateTime_Albatross_CodeGen_Database_Column_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsDateTime(Albatross.CodeGen.Database.Column)">IsDateTime(Column)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool IsDateTime(this Column c)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Database.Column.html">Column</a></td>
-        <td><span class="parametername">c</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_IsNumeric_Albatross_CodeGen_Database_Column_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.IsNumeric(Albatross.CodeGen.Database.Column)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L45">View Source</a>
-  </span>
-  <a id="Albatross_CodeGen_SqlServer_Extension_IsNumeric_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsNumeric*"></a>
-  <h4 id="Albatross_CodeGen_SqlServer_Extension_IsNumeric_Albatross_CodeGen_Database_Column_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsNumeric(Albatross.CodeGen.Database.Column)">IsNumeric(Column)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool IsNumeric(this Column c)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Database.Column.html">Column</a></td>
-        <td><span class="parametername">c</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_IsString_Albatross_CodeGen_Database_Column_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.IsString(Albatross.CodeGen.Database.Column)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_IsBoolean_Albatross_Database_SqlType_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.IsBoolean(Albatross.Database.SqlType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L34">View Source</a>
   </span>
-  <a id="Albatross_CodeGen_SqlServer_Extension_IsString_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsString*"></a>
-  <h4 id="Albatross_CodeGen_SqlServer_Extension_IsString_Albatross_CodeGen_Database_Column_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsString(Albatross.CodeGen.Database.Column)">IsString(Column)</h4>
+  <a id="Albatross_CodeGen_SqlServer_Extension_IsBoolean_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsBoolean*"></a>
+  <h4 id="Albatross_CodeGen_SqlServer_Extension_IsBoolean_Albatross_Database_SqlType_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsBoolean(Albatross.Database.SqlType)">IsBoolean(SqlType)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool IsString(this Column c)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool IsBoolean(this SqlType type)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -354,8 +297,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Database.Column.html">Column</a></td>
-        <td><span class="parametername">c</span></td>
+        <td><span class="xref">Albatross.Database.SqlType</span></td>
+        <td><span class="parametername">type</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -377,18 +320,18 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_NewSqlTableComposite_System_String_System_String_Albatross_CodeGen_Branch_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.NewSqlTableComposite(System.String%2CSystem.String%2CAlbatross.CodeGen.Branch)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_IsDateTime_Albatross_Database_SqlType_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.IsDateTime(Albatross.Database.SqlType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L18">View Source</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L30">View Source</a>
   </span>
-  <a id="Albatross_CodeGen_SqlServer_Extension_NewSqlTableComposite_" data-uid="Albatross.CodeGen.SqlServer.Extension.NewSqlTableComposite*"></a>
-  <h4 id="Albatross_CodeGen_SqlServer_Extension_NewSqlTableComposite_System_String_System_String_Albatross_CodeGen_Branch_" data-uid="Albatross.CodeGen.SqlServer.Extension.NewSqlTableComposite(System.String,System.String,Albatross.CodeGen.Branch)">NewSqlTableComposite(String, String, Branch)</h4>
+  <a id="Albatross_CodeGen_SqlServer_Extension_IsDateTime_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsDateTime*"></a>
+  <h4 id="Albatross_CodeGen_SqlServer_Extension_IsDateTime_Albatross_Database_SqlType_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsDateTime(Albatross.Database.SqlType)">IsDateTime(SqlType)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Composite NewSqlTableComposite(string name, string description, Branch branch)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool IsDateTime(this SqlType type)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -401,18 +344,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">description</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Branch.html">Branch</a></td>
-        <td><span class="parametername">branch</span></td>
+        <td><span class="xref">Albatross.Database.SqlType</span></td>
+        <td><span class="parametername">type</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -427,7 +360,101 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Albatross.CodeGen.Composite.html">Composite</a></td>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_IsNumeric_Albatross_Database_SqlType_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.IsNumeric(Albatross.Database.SqlType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L37">View Source</a>
+  </span>
+  <a id="Albatross_CodeGen_SqlServer_Extension_IsNumeric_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsNumeric*"></a>
+  <h4 id="Albatross_CodeGen_SqlServer_Extension_IsNumeric_Albatross_Database_SqlType_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsNumeric(Albatross.Database.SqlType)">IsNumeric(SqlType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsNumeric(this SqlType type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Albatross.Database.SqlType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_Extension_IsString_Albatross_Database_SqlType_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.Extension.IsString(Albatross.Database.SqlType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/Extension.cs/#L26">View Source</a>
+  </span>
+  <a id="Albatross_CodeGen_SqlServer_Extension_IsString_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsString*"></a>
+  <h4 id="Albatross_CodeGen_SqlServer_Extension_IsString_Albatross_Database_SqlType_" data-uid="Albatross.CodeGen.SqlServer.Extension.IsString(Albatross.Database.SqlType)">IsString(SqlType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool IsString(this SqlType type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Albatross.Database.SqlType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>

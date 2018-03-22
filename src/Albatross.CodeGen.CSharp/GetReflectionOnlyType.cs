@@ -7,6 +7,11 @@ using System.Reflection;
 using System.Text;
 
 namespace Albatross.CodeGen.CSharp{
+	/// <summary>
+	/// This implementation of <see cref="Albatross.CodeGen.CSharp.IGetReflectionOnlyType"/> will try to load all assemblies and executables in the same
+	/// folder of the target assembly.  It will load the target assembly last hoping that its dependencies have already been loaded.  It also subscribed
+	/// to the ReflectionOnlyAssemblyResolve event on the current domain.  As the last resort, the event handler will try to load the missing dependency by name.
+	/// </summary>
 	public class GetReflectionOnlyType : IGetReflectionOnlyType {
 		public GetReflectionOnlyType() {
 			AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve += CurrentDomain_ReflectionOnlyAssemblyResolve;

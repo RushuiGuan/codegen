@@ -7,7 +7,7 @@ using System.Text;
 namespace Albatross.CodeGen.UnitTest {
 	[TestFixture]
 		public class GeneralUnitTest {
-			static TestCaseData[] GetTestCase() {
+			static TestCaseData[] GetBuildSqlTypeTestCase() {
 				return new TestCaseData[] {
 					new TestCaseData(new SqlType(){ Name = "bigint", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "bigint" },
 					new TestCaseData(new SqlType(){ Name = "binary", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "binary(8)" },
@@ -43,13 +43,46 @@ namespace Albatross.CodeGen.UnitTest {
 					new TestCaseData(new SqlType(){ Name = "varbinary", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "varbinary(8)" },
 					new TestCaseData(new SqlType(){ Name = "varchar", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "varchar(8)" },
 					new TestCaseData(new SqlType(){ Name = "xml", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "xml" },
+					new TestCaseData(new SqlType(){ Name = "SvcRef", Schema="dyn", IsTableType = true, }){ ExpectedResult = "[dyn].[SvcRef]" },
 			};
 		}
 
-		[TestCaseSource(nameof(GetTestCase))]
+		[TestCaseSource(nameof(GetBuildSqlTypeTestCase))]
 		public string BuildSqlTypeTest(SqlType type) {
 			BuildSqlType builder = new BuildSqlType();
 			return builder.Build(type);
+		}
+
+		static TestCaseData[] GetBuildSqlVariableTestCase() {
+			return new TestCaseData[] {
+					new TestCaseData(new Variable{ Name="name",  Type=  new SqlType(){ Name = "varchar", MaxLength = 8, Precision = 3, Scale = 2 } }){ ExpectedResult = "@name as varchar(8)" } ,
+					new TestCaseData(new Variable{ Name = "svc", Type = new SqlType(){ Name = "SvcRef", Schema="dyn", IsTableType = true, } }){ ExpectedResult = "@svc as [dyn].[SvcRef]" },
+			};
+		}
+
+		[TestOf(typeof(BuildSqlVariable))]
+		[TestCaseSource(nameof(GetBuildSqlVariableTestCase))]
+		public string BuildSqlVariableTest(Variable variable) {
+			BuildSqlVariable b = new BuildSqlVariable(new BuildSqlType(), new CreateSqlVariableName());
+			StringBuilder sb = new StringBuilder();
+			b.Build(sb, variable);
+			return sb.ToString();
+		}
+
+		static TestCaseData[] BuildProcedureParameterTestCase() {
+			return new TestCaseData[] {
+					new TestCaseData(new Parameter{ Name="name",  Type=  new SqlType(){ Name = "varchar", MaxLength = 8, Precision = 3, Scale = 2 } }){ ExpectedResult = "@name as varchar(8)" } ,
+					new TestCaseData(new Parameter{ Name = "svc", Type = new SqlType(){ Name = "SvcRef", Schema="dyn", IsTableType = true, } }){ ExpectedResult = "@svc as [dyn].[SvcRef] readonly" },
+			};
+		}
+
+		[TestOf(typeof(BuildProcedureParameter))]
+		[TestCaseSource(nameof(BuildProcedureParameterTestCase))]
+		public string BuildProcedureParameterTest(Parameter param) {
+			BuildProcedureParameter b = new BuildProcedureParameter(new BuildSqlType(), new CreateSqlVariableName());
+			StringBuilder sb = new StringBuilder();
+			b.Build(sb, param);
+			return sb.ToString();
 		}
 	}
 }

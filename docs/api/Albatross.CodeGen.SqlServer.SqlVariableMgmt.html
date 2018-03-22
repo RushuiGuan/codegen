@@ -82,65 +82,23 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="Albatross.CodeGen.Database.ICreateVariable.html">ICreateVariable</a></div>
+    <div><a class="xref" href="Albatross.CodeGen.Database.IStoreVariable.html">IStoreVariable</a></div>
     <div><a class="xref" href="Albatross.CodeGen.Database.IGetVariable.html">IGetVariable</a></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Albatross.CodeGen.SqlServer.html">Albatross.CodeGen.SqlServer</a></h6>
   <h6><strong>Assembly</strong>: Albatross.CodeGen.SqlServer.dll</h6>
   <h5 id="Albatross_CodeGen_SqlServer_SqlVariableMgmt_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SqlVariableMgmt : ICreateVariable, IGetVariable</code></pre>
+    <pre><code class="lang-csharp hljs">public class SqlVariableMgmt : IStoreVariable, IGetVariable</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_SqlVariableMgmt_Create_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.SqlVariableMgmt.Create(System.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/SqlVariableMgmt.cs/#L11">View Source</a>
-  </span>
-  <a id="Albatross_CodeGen_SqlServer_SqlVariableMgmt_Create_" data-uid="Albatross.CodeGen.SqlServer.SqlVariableMgmt.Create*"></a>
-  <h4 id="Albatross_CodeGen_SqlServer_SqlVariableMgmt_Create_System_Object_System_String_System_String_" data-uid="Albatross.CodeGen.SqlServer.SqlVariableMgmt.Create(System.Object,System.String,System.String)">Create(Object, String, String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Create(object creator, string name, string type)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">creator</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">type</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_SqlVariableMgmt_Get_System_Object_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.SqlVariableMgmt.Get(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/SqlVariableMgmt.cs/#L19">View Source</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/SqlVariableMgmt.cs/#L20">View Source</a>
   </span>
   <a id="Albatross_CodeGen_SqlServer_SqlVariableMgmt_Get_" data-uid="Albatross.CodeGen.SqlServer.SqlVariableMgmt.Get*"></a>
   <h4 id="Albatross_CodeGen_SqlServer_SqlVariableMgmt_Get_System_Object_" data-uid="Albatross.CodeGen.SqlServer.SqlVariableMgmt.Get(System.Object)">Get(Object)</h4>
@@ -148,7 +106,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, string&gt; Get(object creator)</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;Variable&gt; Get(object creator)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -177,14 +135,51 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">Albatross.Database.Variable</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_SqlVariableMgmt_Store_System_Object_Albatross_Database_Variable_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.SqlVariableMgmt.Store(System.Object%2CAlbatross.Database.Variable)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/SqlVariableMgmt.cs/#L12">View Source</a>
+  </span>
+  <a id="Albatross_CodeGen_SqlServer_SqlVariableMgmt_Store_" data-uid="Albatross.CodeGen.SqlServer.SqlVariableMgmt.Store*"></a>
+  <h4 id="Albatross_CodeGen_SqlServer_SqlVariableMgmt_Store_System_Object_Albatross_Database_Variable_" data-uid="Albatross.CodeGen.SqlServer.SqlVariableMgmt.Store(System.Object,Albatross.Database.Variable)">Store(Object, Variable)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Store(object creator, Variable variable)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">creator</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Albatross.Database.Variable</span></td>
+        <td><span class="parametername">variable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="Albatross.CodeGen.Database.ICreateVariable.html">ICreateVariable</a>
+      <a class="xref" href="Albatross.CodeGen.Database.IStoreVariable.html">IStoreVariable</a>
   </div>
   <div>
       <a class="xref" href="Albatross.CodeGen.Database.IGetVariable.html">IGetVariable</a>
@@ -200,7 +195,7 @@
                     <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_SqlVariableMgmt.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.SqlVariableMgmt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/SqlVariableMgmt.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/SqlVariableMgmt.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
