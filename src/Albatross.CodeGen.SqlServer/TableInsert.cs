@@ -11,9 +11,9 @@ namespace Albatross.CodeGen.SqlServer {
 		IGetTable getTable;
 		ICreateVariableName getVariableName;
 		IBuildSqlType buildSqlType;
-		ICreateVariable createVariable;
+		IStoreVariable createVariable;
 
-		public TableInsert(IGetTable getTable, ICreateVariableName getVariableName, IBuildSqlType buildSqlType, ICreateVariable createVariable) {
+		public TableInsert(IGetTable getTable, ICreateVariableName getVariableName, IBuildSqlType buildSqlType, IStoreVariable createVariable) {
 			this.getTable = getTable;
 			this.getVariableName = getVariableName;
 			this.buildSqlType = buildSqlType;
@@ -21,10 +21,7 @@ namespace Albatross.CodeGen.SqlServer {
 		}
 
 		public override IEnumerable<object> Build(StringBuilder sb, Table table, SqlCodeGenOption options) {
-			foreach (var item in options.Variables) {
-				createVariable.Create(this, item);
-			}
-
+			table = getTable.Get(table.Database, table.Schema, table.Name);
 			Column[] columns = (from c in table.Columns where !c.IsIdentity && !c.IsComputed select c).ToArray();
 			if (columns.Length == 0) {
 				throw new CodeGenException("Editable column not found");
@@ -36,12 +33,12 @@ namespace Albatross.CodeGen.SqlServer {
 			}
 			sb.CloseParenthesis().AppendLine().Append("values ").OpenParenthesis();
 			foreach (Column c in columns) {
-				if (options.Expressions.TryGetValue(c.Name, out string expression)) {
+				string name = getVariableName.Get(c.Name);
+				if (options.Expressions.TryGetValue(name, out string expression)) {
 					sb.Append(expression);
 				} else {
-					string name = getVariableName.Get(c.Name);
 					sb.Append(name);
-					createVariable.Create(this, c.GetVariable()); 
+					createVariable.Store(this, c.GetVariable()); 
 				}
 				if (c != columns.Last()) { sb.Comma().Space(); }
 			}

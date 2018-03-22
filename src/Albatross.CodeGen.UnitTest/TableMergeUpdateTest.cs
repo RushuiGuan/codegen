@@ -1,6 +1,7 @@
 ﻿using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
 using Albatross.CodeGen.UnitTest.Mocking;
+using Albatross.Database;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -19,7 +20,7 @@ namespace Albatross.CodeGen.UnitTest {
 		}
 
 		[TestCaseSource(nameof(MergeUpdateTestCase))]
-		public string MergeUpdate(DatabaseObject table, SqlCodeGenOption option) {
+		public string MergeUpdate(Table table, SqlCodeGenOption option) {
 			StringBuilder sb = new StringBuilder();
 			Ioc.Container.GetInstance<TableMergeUpdate>().Build(sb, table, option);
 			return sb.ToString();

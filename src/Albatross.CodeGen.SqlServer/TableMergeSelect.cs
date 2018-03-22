@@ -11,9 +11,9 @@ namespace Albatross.CodeGen.SqlServer {
 		IGetTable getTable;
 		ICreateVariableName getVariableName;
 		IBuildSqlType buildSqlType;
-		ICreateVariable createVariable;
+		IStoreVariable createVariable;
 
-		public TableMergeSelect(IGetTable getTable, ICreateVariableName getVariableName, IBuildSqlType buildSqlType, ICreateVariable createVariable) {
+		public TableMergeSelect(IGetTable getTable, ICreateVariableName getVariableName, IBuildSqlType buildSqlType, IStoreVariable createVariable) {
 			this.getTable = getTable;
 			this.getVariableName = getVariableName;
 			this.buildSqlType = buildSqlType;
@@ -29,12 +29,12 @@ namespace Albatross.CodeGen.SqlServer {
 			sb.Tab().AppendLine("select");
 			foreach (var column in table.Columns) {
 				sb.Tab(2);
-				if (options.Expressions.TryGetValue(column.Name, out string expression)) {
+				string name = getVariableName.Get(column.Name);
+				if (options.Expressions.TryGetValue(name, out string expression)) {
 					sb.Append(expression);
 				} else {
-					string name = getVariableName.Get(column.Name);
 					sb.Append(name);
-					createVariable.Create(this, column.GetVariable());
+					createVariable.Store(this, column.GetVariable());
 				}
 				sb.Append(" as ").EscapeName(column.Name);
 				if (column != table.Columns.Last()) {

@@ -13,9 +13,9 @@ namespace Albatross.CodeGen.SqlServer {
 	public class TableUpdate : TableQueryGenerator {
 		IGetTable getTable;
 		ICreateVariableName getVariableName;
-		ICreateVariable createVariable;
+		IStoreVariable createVariable;
 
-		public TableUpdate(IGetTable getTable, ICreateVariableName getVariableName, ICreateVariable createVariable) {
+		public TableUpdate(IGetTable getTable, ICreateVariableName getVariableName, IStoreVariable createVariable) {
 			this.getTable = getTable;
 			this.getVariableName = getVariableName;
 			this.createVariable = createVariable;
@@ -35,16 +35,14 @@ namespace Albatross.CodeGen.SqlServer {
 								select c).ToArray();
 
 			string name;
-			foreach (var item in option.Variables) {
-				createVariable.Create(this, item);
-			}
 			foreach (Column c in columns) {
 				name = getVariableName.Get(c.Name);
 				sb.Tab().EscapeName(c.Name).Append(" = ");
-				if (option.Expressions.TryGetValue(c.Name, out string expression)) {
+
+				if (option.Expressions.TryGetValue(name, out string expression)) {
 					sb.Append(expression);
 				} else {
-					createVariable.Create(this, c.GetVariable());
+					createVariable.Store(this, c.GetVariable());
 					sb.Append(name);
 				}
 				if (c != columns.Last()) {

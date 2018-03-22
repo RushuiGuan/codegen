@@ -15,23 +15,6 @@ namespace Albatross.CodeGen.PowerShell {
 			new Albatross.Database.Ioc.SimpleInjectorSqlServerPackage().RegisterServices(container);
 			container.Verify();
 
-
-			IFactory<SourceType> factory = container.GetInstance<IFactory<SourceType>>();
-			factory.Register(new SourceType {
-				 ObjectType = typeof(Albatross.Database.Table),
-				 Description = "A Database Table",
-			});
-
-			factory.Register(new SourceType {
-				ObjectType = typeof(Albatross.Database.Procedure),
-				Description = "A Database Stored Procedure",
-			});
-
-			factory.Register(new SourceType {
-				ObjectType = typeof(Albatross.Database.Database),
-				Description = "A Database",
-			});
-
 			return container.GetInstance<IObjectFactory>();
 		}
 

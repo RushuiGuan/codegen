@@ -1,6 +1,7 @@
 ﻿using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
 using Albatross.CodeGen.UnitTest.Mocking;
+using Albatross.Database;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -26,7 +27,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 
 		[TestCaseSource(nameof(GetTestCases))]
-		public string Run(DatabaseObject table, SqlCodeGenOption option) {
+		public string Run(Table table, SqlCodeGenOption option) {
 			StringBuilder sb = new StringBuilder();
 			Ioc.Container.GetInstance<TableWhere>().Build(sb, table, option);
 			return sb.ToString();

@@ -6,10 +6,10 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer
 {
-	public class SqlVariableMgmt : ICreateVariable, IGetVariable {
+	public class SqlVariableMgmt : IStoreVariable, IGetVariable {
 		Dictionary<object, Dictionary<string, Variable>> created = new Dictionary<object, Dictionary<string, Variable>>();
 
-		public void Create(object creator, Variable variable) {
+		public void Store(object creator, Variable variable) {
 			if (!created.TryGetValue(creator, out Dictionary<string, Variable> values)) {
 				values = new Dictionary<string, Variable>(StringComparer.InvariantCultureIgnoreCase);
 				created.Add(creator, values);

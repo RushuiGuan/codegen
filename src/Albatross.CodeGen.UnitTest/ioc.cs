@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
+using Albatross.Database;
 using Moq;
 using SimpleInjector;
 using System;
@@ -22,42 +23,13 @@ namespace Albatross.CodeGen.UnitTest {
 
 		void Setup() {
 			container.Options.AllowOverridingRegistrations = true;
-
-			//logging
 			container.RegisterSingleton<IObjectFactory>(this);
-			/*
-			container.RegisterSingleton<GetLog4NetLoggerRepositoryByXmlConfig>();
-			container.Register<IGetLog4NetLoggerRepository, GetDefaultLog4NetLoggerRepository>(Lifestyle.Singleton);
-			container.Register<ILoggerRepository>(() => container.GetInstance<IGetLog4NetLoggerRepository>().Get(), Lifestyle.Singleton);
-			container.Register<ILogFactory, Log4netLogFactory>(Lifestyle.Singleton);
-			*/
-			container.Register<IGetVariable, SqlVariableMgmt>(Lifestyle.Singleton);
-			container.Register<ICreateVariable, SqlVariableMgmt>(Lifestyle.Singleton);
+			new Albatross.CodeGen.Ioc.SimpleInjectorPackage().RegisterServices(container);
+			new Albatross.Database.Ioc.SimpleInjectorSqlServerPackage().RegisterServices(container);
 
-			container.Register<IFactory<SourceType>, SourceTypeFactory>();
-			container.Register<IFactory<OptionType>, OptionTypeFactory>();
-			container.Register<ICodeGeneratorFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
-			container.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
-
-			container.Register<IColumnSqlTypeBuilder, BuildSqlType>(Lifestyle.Singleton);
-			container.Register<IGetTableColumn, GetTableColumn>(Lifestyle.Singleton);
-			container.Register<IGetTableIdentityColumn, GetTableIdentityColumn>(Lifestyle.Singleton);
-			container.Register<IGetTablePrimaryKey, GetTablePrimaryKey>(Lifestyle.Singleton);
-			container.Register<ICreateVariableName, CreateSqlVariableName>(Lifestyle.Singleton);
-
-			container.Register<ICreateVariable, SqlVariableMgmt>(Lifestyle.Singleton);
-
-			var mock_getTableColumns = new Mock<IGetTableColumn>();
-			container.RegisterSingleton<Mock<IGetTableColumn>>(mock_getTableColumns);
-			container.RegisterSingleton<IGetTableColumn>(mock_getTableColumns.Object);
-
-			var mock_getTableIdentityColumn = new Mock<IGetTableIdentityColumn>();
-			container.RegisterSingleton<Mock<IGetTableIdentityColumn>>(mock_getTableIdentityColumn);
-			container.RegisterSingleton<IGetTableIdentityColumn>(mock_getTableIdentityColumn.Object);
-
-			var mock_getTablePrimaryKey = new Mock<IGetTablePrimaryKey>();
-			container.RegisterSingleton<Mock<IGetTablePrimaryKey>>(mock_getTablePrimaryKey);
-			container.RegisterSingleton<IGetTablePrimaryKey>(mock_getTablePrimaryKey.Object);
+			var mock_getTable = new Mock<IGetTable>();
+			container.RegisterSingleton<Mock<IGetTable>>(mock_getTable);
+			container.RegisterSingleton<IGetTable>(mock_getTable.Object);
 		}
 
 		

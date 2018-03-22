@@ -40,6 +40,14 @@ namespace Albatross.CodeGen {
 		public static StringBuilder Semicolon(this StringBuilder sb, int count = 1) {
 			return sb.AppendChar(';', count);
 		}
+		public static StringBuilder Tabify(this StringBuilder sb, string content, int count) {
+			sb.AppendChar('\t', count);
+			foreach (char c in content) {
+				sb.Append(c);
+				if (c == '\n') { sb.AppendChar('\t', count); }
+			}
+			return sb;
+		}
 		#endregion
 
 		#region C# code generation

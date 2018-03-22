@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
+using Albatross.Database;
 using Moq;
 using NUnit.Framework;
 using SimpleInjector;
@@ -24,15 +25,15 @@ namespace Albatross.CodeGen.UnitTest {
 			factory.RegisterStatic("test2", GeneratorTarget.Any, "test2", null, null);
 			factory.RegisterStatic("test3", GeneratorTarget.Any, "test3", null, null);
 			factory.RegisterStatic("test4", GeneratorTarget.Any, "test4", null, null);
-			factory.Register(new Composite(typeof(DatabaseObject), typeof(SqlCodeGenOption)) {
+			factory.Register(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
 				Name = "test",
 				Branch = new Branch(new Leaf("test1"), new Leaf("test2")),
 				Target = GeneratorTarget.Sql,
 			});
 
-			var handle = factory.Create<DatabaseObject, SqlCodeGenOption>("test");
+			var handle = factory.Create<Table, SqlCodeGenOption>("test");
 			StringBuilder sb = new StringBuilder();
-			var used = handle.Build(sb, new DatabaseObject(), new SqlCodeGenOption());
+			var used = handle.Build(sb, new Table(), new SqlCodeGenOption());
 			Assert.AreEqual("test1test2", sb.ToString());
 			Assert.Greater(used.Count(), 1);
 		}
@@ -74,15 +75,15 @@ namespace Albatross.CodeGen.UnitTest {
 			factory.RegisterStatic("test3", GeneratorTarget.Any, "test3", null, null);
 			factory.RegisterStatic("test4", GeneratorTarget.Any, "test4", null, null);
 			factory.RegisterStatic("test4", GeneratorTarget.Any, "test4", null, null);
-			factory.Register(new Composite(typeof(DatabaseObject), typeof(SqlCodeGenOption)) {
+			factory.Register(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
 				Name = "test",
 				Branch = new Branch(new Leaf("test0"), new Leaf("test1"), new Leaf("newline"), new Leaf("test2")),
 				Target = GeneratorTarget.Sql,
 			});
 
-			var handle = factory.Create<DatabaseObject, SqlCodeGenOption>("test");
+			var handle = factory.Create<Table, SqlCodeGenOption>("test");
 			StringBuilder sb = new StringBuilder();
-			IEnumerable<object> used= handle.Build(sb, new DatabaseObject(), new SqlCodeGenOption());
+			IEnumerable<object> used= handle.Build(sb, new Table(), new SqlCodeGenOption());
 			Assert.AreEqual(@"begin
 	test1	
 	test2

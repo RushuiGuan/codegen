@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Albatross.CodeGen.CSharp {
@@ -10,7 +11,11 @@ namespace Albatross.CodeGen.CSharp {
 	/// </summary>
 	/// <typeparam name="T">the source type</typeparam>
 	public abstract class ClassGenerator<T> : ICodeGenerator<T, ClassOption> where T : class {
+
+#pragma warning disable 0067
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
+#pragma warning restore 0067
+
 		/// <summary>
 		/// Return the name of the class.  By default, it will use the <see cref="Albatross.CodeGen.CSharp.ClassOption.Name"/> property.  Override this method to change the behavior.
 		/// </summary>

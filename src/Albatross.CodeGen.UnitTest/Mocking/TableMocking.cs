@@ -1,36 +1,30 @@
-﻿using Albatross.CodeGen.Database;
-using Albatross.CodeGen.SqlServer;
+﻿using Albatross.Database;
 using Moq;
-using SimpleInjector;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.UnitTest.Mocking {
 	public abstract class TableMocking: IMocking {
 		public abstract string TableName { get; }
 		public abstract string Schema { get; }
-		public abstract IEnumerable<Column> PrimaryKeys { get; }
+		public abstract IEnumerable<IndexColumn> PrimaryKeys { get; }
 		public abstract IEnumerable<Column> Columns { get; }
 		public abstract Column IdentityColumn { get; }
 
-		Mock<IGetTableColumn> getTableColumns;
-		Mock<IGetTablePrimaryKey> getPrimaryKeys;
-		Mock<IGetTableIdentityColumn> getIdentityColumn;
+		Mock<IGetTable> getTable;
 
-		public TableMocking(Mock<IGetTableColumn> getTableColumns, Mock<IGetTablePrimaryKey> getPrimaryKeys, Mock<IGetTableIdentityColumn> getIdentityColumn) {
-			this.getTableColumns = getTableColumns;
-			this.getPrimaryKeys = getPrimaryKeys;
-			this.getIdentityColumn = getIdentityColumn;
+		public TableMocking(Mock<IGetTable> getTable) {
+			this.getTable = getTable;
 		}
 
 
 		public void Setup() {
-			getTableColumns.Setup(args => args.Get(It.Is<DatabaseObject>(t=>t.Name == TableName))).Returns(Columns);
-			getPrimaryKeys.Setup(args => args.Get(It.Is<DatabaseObject>(t=>t.Name == TableName))).Returns(PrimaryKeys);
-			getIdentityColumn.Setup(args => args.Get(It.Is<DatabaseObject>(t=>t.Name == TableName))).Returns(IdentityColumn);
+			getTable.Setup(args => args.Get(It.IsAny<Albatross.Database.Database>(), It.Is<string>(schema=> schema == Schema), It.Is<string>(name=>name == TableName))).Returns(new Table {
+				Schema = Schema,
+				Name= TableName,
+				Columns = Columns,
+				IdentityColumn = IdentityColumn,
+				PrimaryKeys = PrimaryKeys,
+			});
 		}
 	}
 }

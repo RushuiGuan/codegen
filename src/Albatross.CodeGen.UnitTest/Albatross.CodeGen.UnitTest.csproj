@@ -15,6 +15,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\database\src\Albatross.Database.Ioc\Albatross.Database.Ioc.csproj" />
+	  <ProjectReference Include="..\..\..\database\src\Albatross.Database\Albatross.Database.csproj" />
 	  <ProjectReference Include="..\Albatross.CodeGen.CSharp\Albatross.CodeGen.CSharp.csproj" />
 	  <ProjectReference Include="..\Albatross.CodeGen.Database\Albatross.CodeGen.Database.csproj" />
 	  <ProjectReference Include="..\Albatross.CodeGen.Ioc\Albatross.CodeGen.Ioc.csproj" />

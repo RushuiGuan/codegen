@@ -22,31 +22,35 @@ namespace Albatross.CodeGen.SqlServer {
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
 
 		public IEnumerable<object> Build(StringBuilder sb, object source, SqlCodeGenOption option) {
-			StringBuilder text = new StringBuilder();
-			var items = Yield?.Invoke(text);
+			StringBuilder content = new StringBuilder();
+			var items = Yield?.Invoke(content);
 			if (items == null) {
 				items = new object[0];
 			}
 
-			IEnumerable<Variable> variables = new Variable[0];
+			IEnumerable<Variable> variables = option.Variables?? new Variable[0];
 
 			foreach (var item in items) {
 				variables = variables.Union(getVariable.Get(item));
 			}
 
-			sb.Append("create procedure ").EscapeName(option.Schema).Dot().EscapeName(option.Name).Space().OpenParenthesis().AppendLine();
-			foreach (var item in variables) {
-				buildVariable.Build(sb.Tab(), item);
-				if (item != variables.Last()) {
-					sb.Comma().AppendLine();
+			sb.Append("create procedure ").EscapeName(option.Schema).Dot().EscapeName(option.Name).AppendLine();
+			foreach (var variable in variables) {
+				buildVariable.Build(sb.Tab(), variable);
+
+				if (variable != variables.Last()) {
+					sb.Comma();
 				}
+				sb.AppendLine();
 			}
-			sb.AppendLine().CloseParenthesis().Append(" as ").AppendLine();
+			sb.Append("as").AppendLine();
 
-			sb.Tabify(text.ToString(), 1);
-
-			sb.AppendLine();
-			sb.AppendLine("go");
+			string text = content.ToString();
+			if (!string.IsNullOrEmpty(text)) {
+				sb.Tabify(text, 1);
+				sb.AppendLine();
+			}
+			sb.Append("go");
 
 			return new[] { this }.Union(items);
 		}

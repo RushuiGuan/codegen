@@ -15,9 +15,9 @@ namespace Albatross.CodeGen.SqlServer {
 		IGetTable getTable;
 		ICreateVariableName getVariableName;
 		IBuildSqlType buildSqlType;
-		ICreateVariable createVariable;
+		IStoreVariable createVariable;
 
-		public TableWhere(IGetTable getTable, ICreateVariableName getVariableName, IBuildSqlType typeBuilder, ICreateVariable createVariable) {
+		public TableWhere(IGetTable getTable, ICreateVariableName getVariableName, IBuildSqlType typeBuilder, IStoreVariable createVariable) {
 			this.getTable = getTable;
 			this.getVariableName = getVariableName;
 			this.buildSqlType = typeBuilder;
@@ -53,7 +53,7 @@ namespace Albatross.CodeGen.SqlServer {
 			if (count > 0) { sb.Append("and "); }
 			string variable = getVariableName.Get(c.Name);
 			sb.EscapeName(c.Name).Append(" = ").Append(variable);
-			createVariable.Create(this, c.GetVariable());
+			createVariable.Store(this, c.GetVariable());
 		}
 	}
 }

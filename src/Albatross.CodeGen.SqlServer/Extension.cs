@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
-	public static class Extension
-    {
+	public static class Extension {
 		public static StringBuilder EscapeName(this StringBuilder sb, string name) {
 			return sb.Append('[').Append(name).Append(']');
 		}
@@ -22,7 +21,6 @@ namespace Albatross.CodeGen.SqlServer {
 			}
 		}
 		#endregion
-
 
 		#region columns
 		public static bool IsString(this SqlType type) {
