@@ -2911,12 +2911,12 @@ references:
   commentId: T:Albatross.CodeGen.SqlServer.CreateStoredProcedure
   fullName: Albatross.CodeGen.SqlServer.CreateStoredProcedure
   nameWithType: CreateStoredProcedure
-- uid: Albatross.CodeGen.SqlServer.CreateStoredProcedure.#ctor(Albatross.CodeGen.Database.IGetVariable,Albatross.CodeGen.Database.IBuildVariable)
-  name: CreateStoredProcedure(IGetVariable, IBuildVariable)
-  href: api/Albatross.CodeGen.SqlServer.CreateStoredProcedure.html#Albatross_CodeGen_SqlServer_CreateStoredProcedure__ctor_Albatross_CodeGen_Database_IGetVariable_Albatross_CodeGen_Database_IBuildVariable_
-  commentId: M:Albatross.CodeGen.SqlServer.CreateStoredProcedure.#ctor(Albatross.CodeGen.Database.IGetVariable,Albatross.CodeGen.Database.IBuildVariable)
-  fullName: Albatross.CodeGen.SqlServer.CreateStoredProcedure.CreateStoredProcedure(Albatross.CodeGen.Database.IGetVariable, Albatross.CodeGen.Database.IBuildVariable)
-  nameWithType: CreateStoredProcedure.CreateStoredProcedure(IGetVariable, IBuildVariable)
+- uid: Albatross.CodeGen.SqlServer.CreateStoredProcedure.#ctor(Albatross.CodeGen.Database.IGetVariable,Albatross.CodeGen.Database.IBuildVariable,Albatross.CodeGen.Database.IBuildParameter)
+  name: CreateStoredProcedure(IGetVariable, IBuildVariable, IBuildParameter)
+  href: api/Albatross.CodeGen.SqlServer.CreateStoredProcedure.html#Albatross_CodeGen_SqlServer_CreateStoredProcedure__ctor_Albatross_CodeGen_Database_IGetVariable_Albatross_CodeGen_Database_IBuildVariable_Albatross_CodeGen_Database_IBuildParameter_
+  commentId: M:Albatross.CodeGen.SqlServer.CreateStoredProcedure.#ctor(Albatross.CodeGen.Database.IGetVariable,Albatross.CodeGen.Database.IBuildVariable,Albatross.CodeGen.Database.IBuildParameter)
+  fullName: Albatross.CodeGen.SqlServer.CreateStoredProcedure.CreateStoredProcedure(Albatross.CodeGen.Database.IGetVariable, Albatross.CodeGen.Database.IBuildVariable, Albatross.CodeGen.Database.IBuildParameter)
+  nameWithType: CreateStoredProcedure.CreateStoredProcedure(IGetVariable, IBuildVariable, IBuildParameter)
 - uid: Albatross.CodeGen.SqlServer.CreateStoredProcedure.#ctor*
   name: CreateStoredProcedure
   href: api/Albatross.CodeGen.SqlServer.CreateStoredProcedure.html#Albatross_CodeGen_SqlServer_CreateStoredProcedure__ctor_
@@ -4216,12 +4216,12 @@ references:
   commentId: T:Albatross.CodeGen.UnitTest.CreateStoredProcedureTest
   fullName: Albatross.CodeGen.UnitTest.CreateStoredProcedureTest
   nameWithType: CreateStoredProcedureTest
-- uid: Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateEmptyProcedure(System.String,System.String)
-  name: CreateEmptyProcedure(String, String)
-  href: api/Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.html#Albatross_CodeGen_UnitTest_CreateStoredProcedureTest_CreateEmptyProcedure_System_String_System_String_
-  commentId: M:Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateEmptyProcedure(System.String,System.String)
-  fullName: Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateEmptyProcedure(System.String, System.String)
-  nameWithType: CreateStoredProcedureTest.CreateEmptyProcedure(String, String)
+- uid: Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateEmptyProcedure(Albatross.CodeGen.Database.SqlCodeGenOption)
+  name: CreateEmptyProcedure(SqlCodeGenOption)
+  href: api/Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.html#Albatross_CodeGen_UnitTest_CreateStoredProcedureTest_CreateEmptyProcedure_Albatross_CodeGen_Database_SqlCodeGenOption_
+  commentId: M:Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateEmptyProcedure(Albatross.CodeGen.Database.SqlCodeGenOption)
+  fullName: Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateEmptyProcedure(Albatross.CodeGen.Database.SqlCodeGenOption)
+  nameWithType: CreateStoredProcedureTest.CreateEmptyProcedure(SqlCodeGenOption)
 - uid: Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateEmptyProcedure*
   name: CreateEmptyProcedure
   href: api/Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.html#Albatross_CodeGen_UnitTest_CreateStoredProcedureTest_CreateEmptyProcedure_

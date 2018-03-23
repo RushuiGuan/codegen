@@ -27,7 +27,7 @@
       <header>
         
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
+          <div class="container-fluid">
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -50,15 +50,15 @@
           </div>
         </nav>
         
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
+        <div class="subnav container-fluid navbar navbar-default">
+          <div class="hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
               <li></li>
             </ul>
           </div>
         </div>
       </header>
-      <div role="main" class="container body-content hide-when-search">
+      <div role="main" class="container-fluid body-content hide-when-search">
         
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
@@ -91,19 +91,19 @@ public class CreateStoredProcedureTest</code></pre>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_UnitTest_CreateStoredProcedureTest_CreateEmptyProcedure_System_String_System_String_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateEmptyProcedure(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_UnitTest_CreateStoredProcedureTest_CreateEmptyProcedure_Albatross_CodeGen_Database_SqlCodeGenOption_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateEmptyProcedure(Albatross.CodeGen.Database.SqlCodeGenOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.UnitTest/CreateStoredProcedureTest.cs/#L27">View Source</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.UnitTest/CreateStoredProcedureTest.cs/#L25">View Source</a>
   </span>
   <a id="Albatross_CodeGen_UnitTest_CreateStoredProcedureTest_CreateEmptyProcedure_" data-uid="Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateEmptyProcedure*"></a>
-  <h4 id="Albatross_CodeGen_UnitTest_CreateStoredProcedureTest_CreateEmptyProcedure_System_String_System_String_" data-uid="Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateEmptyProcedure(System.String,System.String)">CreateEmptyProcedure(String, String)</h4>
+  <h4 id="Albatross_CodeGen_UnitTest_CreateStoredProcedureTest_CreateEmptyProcedure_Albatross_CodeGen_Database_SqlCodeGenOption_" data-uid="Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateEmptyProcedure(Albatross.CodeGen.Database.SqlCodeGenOption)">CreateEmptyProcedure(SqlCodeGenOption)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[TestCase(&quot;dbo&quot;, &quot;test&quot;, ExpectedResult = &quot;create procedure [dbo].[test]\r\nas\r\ngo&quot;)]
-public string CreateEmptyProcedure(string schema, string name)</code></pre>
+    <pre><code class="lang-csharp hljs">[TestCaseSource(&quot;CreateEmptyProcedureTestCase&quot;)]
+public string CreateEmptyProcedure(SqlCodeGenOption option)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -116,13 +116,8 @@ public string CreateEmptyProcedure(string schema, string name)</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">schema</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
+        <td><a class="xref" href="Albatross.CodeGen.Database.SqlCodeGenOption.html">SqlCodeGenOption</a></td>
+        <td><span class="parametername">option</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -147,7 +142,7 @@ public string CreateEmptyProcedure(string schema, string name)</code></pre>
     <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_UnitTest_CreateStoredProcedureTest_CreateProcedure_Albatross_Database_Table_Albatross_CodeGen_Database_SqlCodeGenOption_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateProcedure(Albatross.Database.Table%2CAlbatross.CodeGen.Database.SqlCodeGenOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.UnitTest/CreateStoredProcedureTest.cs/#L39">View Source</a>
+    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.UnitTest/CreateStoredProcedureTest.cs/#L41">View Source</a>
   </span>
   <a id="Albatross_CodeGen_UnitTest_CreateStoredProcedureTest_CreateProcedure_" data-uid="Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateProcedure*"></a>
   <h4 id="Albatross_CodeGen_UnitTest_CreateStoredProcedureTest_CreateProcedure_Albatross_Database_Table_Albatross_CodeGen_Database_SqlCodeGenOption_" data-uid="Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.CreateProcedure(Albatross.Database.Table,Albatross.CodeGen.Database.SqlCodeGenOption)">CreateProcedure(Table, SqlCodeGenOption)</h4>
@@ -155,7 +150,7 @@ public string CreateEmptyProcedure(string schema, string name)</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[TestCaseSource(&quot;TableInsertTestCase&quot;)]
+    <pre><code class="lang-csharp hljs">[TestCaseSource(&quot;CreateProcedureTestCase&quot;)]
 public string CreateProcedure(Table table, SqlCodeGenOption option)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -221,7 +216,7 @@ public string CreateProcedure(Table table, SqlCodeGenOption option)</code></pre>
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
-          <div class="container">
+          <div class="container-fluid">
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
