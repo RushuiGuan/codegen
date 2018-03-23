@@ -78,24 +78,29 @@
     <h3 id="classes">Classes
   </h3>
       <h4><a class="xref" href="Albatross.CodeGen.UnitTest.Mocking.ContactTable.html">ContactTable</a></h4>
-      <section><p>create the following table by mocking the following interfaces: IGetTableColumns, IGetTableIdentityColumn, IGetTablePrimaryKey</p>
-<p>create table test.Contact(
-ContactID int identity(1,1) not null,
-constraint UQ_Contact_SyID unique(SyID),</p>
-<p>Domain varchar(100),
-Login varchar(100),
-constraint PK_Contact primary key clustered (Domain, Login),</p>
-<p>FirstName nvarchar(100) not null,
-LastName nvarchar(100) not null,
-MiddleName nvarchar(100),</p>
-<p>Gender char(20) not null,
-Cell varchar(50),
-Address nvarchar(200),</p>
-<p>Created datetime not null,
-CreatedBy varchar(100) not null,
-Modified datetime not null,
-ModifiedBy varchar(100) not null,
-)</p>
+      <section><p>create the following table by mocking <span class="xref">Albatross.Database.IGetTable</span></p>
+<pre><code>create table test.Contact(
+    ContactID int identity(1,1) not null,
+    constraint UQ_Contact_SyID unique(SyID),
+
+    Domain varchar(100),
+    Login varchar(100),
+    constraint PK_Contact primary key clustered (Domain, Login),
+
+    FirstName nvarchar(100) not null,
+    LastName nvarchar(100) not null,
+    MiddleName nvarchar(100),
+
+    Gender char(20) not null,
+    Cell varchar(50),
+    Address nvarchar(200),
+
+
+    Created datetime not null,
+    CreatedBy varchar(100) not null,
+    Modified datetime not null,
+    ModifiedBy varchar(100) not null,
+)</code></pre>
 </section>
       <h4><a class="xref" href="Albatross.CodeGen.UnitTest.Mocking.SymbolTable.html">SymbolTable</a></h4>
       <section><p>create the following table by mocking the following interfaces: IGetTableColumns, IGetTableIdentityColumn, IGetTablePrimaryKey</p>

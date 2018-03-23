@@ -73,24 +73,29 @@
   
   <h1 id="Albatross_CodeGen_UnitTest_Mocking_ContactTable" data-uid="Albatross.CodeGen.UnitTest.Mocking.ContactTable" class="text-break">Class ContactTable
   </h1>
-  <div class="markdown level0 summary"><p>create the following table by mocking the following interfaces: IGetTableColumns, IGetTableIdentityColumn, IGetTablePrimaryKey</p>
-<p>create table test.Contact(
-ContactID int identity(1,1) not null,
-constraint UQ_Contact_SyID unique(SyID),</p>
-<p>Domain varchar(100),
-Login varchar(100),
-constraint PK_Contact primary key clustered (Domain, Login),</p>
-<p>FirstName nvarchar(100) not null,
-LastName nvarchar(100) not null,
-MiddleName nvarchar(100),</p>
-<p>Gender char(20) not null,
-Cell varchar(50),
-Address nvarchar(200),</p>
-<p>Created datetime not null,
-CreatedBy varchar(100) not null,
-Modified datetime not null,
-ModifiedBy varchar(100) not null,
-)</p>
+  <div class="markdown level0 summary"><p>create the following table by mocking <span class="xref">Albatross.Database.IGetTable</span></p>
+<pre><code>create table test.Contact(
+    ContactID int identity(1,1) not null,
+    constraint UQ_Contact_SyID unique(SyID),
+
+    Domain varchar(100),
+    Login varchar(100),
+    constraint PK_Contact primary key clustered (Domain, Login),
+
+    FirstName nvarchar(100) not null,
+    LastName nvarchar(100) not null,
+    MiddleName nvarchar(100),
+
+    Gender char(20) not null,
+    Cell varchar(50),
+    Address nvarchar(200),
+
+
+    Created datetime not null,
+    CreatedBy varchar(100) not null,
+    Modified datetime not null,
+    ModifiedBy varchar(100) not null,
+)</code></pre>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">

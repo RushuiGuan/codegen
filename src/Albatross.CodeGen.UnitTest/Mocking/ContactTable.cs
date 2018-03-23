@@ -6,8 +6,9 @@ using System.Collections.Generic;
 
 namespace Albatross.CodeGen.UnitTest.Mocking {
 	/// <summary>
-	/// create the following table by mocking the following interfaces: IGetTableColumns, IGetTableIdentityColumn, IGetTablePrimaryKey
-	/// 
+	/// create the following table by mocking <see cref="Albatross.Database.IGetTable"/>
+	///
+	/// <code>
 	/// create table test.Contact(
 	///		ContactID int identity(1,1) not null,
 	///		constraint UQ_Contact_SyID unique(SyID),
@@ -30,9 +31,8 @@ namespace Albatross.CodeGen.UnitTest.Mocking {
 	///		Modified datetime not null,
 	///		ModifiedBy varchar(100) not null,
 	/// )
+	/// </code>
 	/// </summary>
-
-
 	public class ContactTable : TableMocking {
 		public ContactTable(Mock<IGetTable> getTable) : base(getTable) {
 		}
