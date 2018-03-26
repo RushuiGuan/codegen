@@ -21,13 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SamplePowerShellScripts", "
 		sys types to POCO.ps1 = sys types to POCO.ps1
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.Database", "..\..\database\src\Albatross.Database\Albatross.Database.csproj", "{06EC4E63-2B2D-4598-AA09-FD5C1B0CC20A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.Database.SqlServer", "..\..\database\src\Albatross.Database.SqlServer\Albatross.Database.SqlServer.csproj", "{AD580B54-9B28-499A-AB01-2E8BA3236E56}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.Database.Ioc", "..\..\database\src\Albatross.Database.Ioc\Albatross.Database.Ioc.csproj", "{052CF117-DDA5-4B87-A461-A41AE30E3DC3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.Ioc", "Albatross.CodeGen.Ioc\Albatross.CodeGen.Ioc.csproj", "{1A49E3C5-2436-4C3A-A546-4072167F602E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.Ioc", "Albatross.CodeGen.Ioc\Albatross.CodeGen.Ioc.csproj", "{1A49E3C5-2436-4C3A-A546-4072167F602E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,30 +79,6 @@ Global
 		{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}.Release|Any CPU.Build.0 = Release|Any CPU
 		{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}.Release|x64.ActiveCfg = Release|Any CPU
 		{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}.Release|x64.Build.0 = Release|Any CPU
-		{06EC4E63-2B2D-4598-AA09-FD5C1B0CC20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06EC4E63-2B2D-4598-AA09-FD5C1B0CC20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06EC4E63-2B2D-4598-AA09-FD5C1B0CC20A}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{06EC4E63-2B2D-4598-AA09-FD5C1B0CC20A}.Debug|x64.Build.0 = Debug|Any CPU
-		{06EC4E63-2B2D-4598-AA09-FD5C1B0CC20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06EC4E63-2B2D-4598-AA09-FD5C1B0CC20A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{06EC4E63-2B2D-4598-AA09-FD5C1B0CC20A}.Release|x64.ActiveCfg = Release|Any CPU
-		{06EC4E63-2B2D-4598-AA09-FD5C1B0CC20A}.Release|x64.Build.0 = Release|Any CPU
-		{AD580B54-9B28-499A-AB01-2E8BA3236E56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD580B54-9B28-499A-AB01-2E8BA3236E56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD580B54-9B28-499A-AB01-2E8BA3236E56}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{AD580B54-9B28-499A-AB01-2E8BA3236E56}.Debug|x64.Build.0 = Debug|Any CPU
-		{AD580B54-9B28-499A-AB01-2E8BA3236E56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD580B54-9B28-499A-AB01-2E8BA3236E56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD580B54-9B28-499A-AB01-2E8BA3236E56}.Release|x64.ActiveCfg = Release|Any CPU
-		{AD580B54-9B28-499A-AB01-2E8BA3236E56}.Release|x64.Build.0 = Release|Any CPU
-		{052CF117-DDA5-4B87-A461-A41AE30E3DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{052CF117-DDA5-4B87-A461-A41AE30E3DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{052CF117-DDA5-4B87-A461-A41AE30E3DC3}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{052CF117-DDA5-4B87-A461-A41AE30E3DC3}.Debug|x64.Build.0 = Debug|Any CPU
-		{052CF117-DDA5-4B87-A461-A41AE30E3DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{052CF117-DDA5-4B87-A461-A41AE30E3DC3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{052CF117-DDA5-4B87-A461-A41AE30E3DC3}.Release|x64.ActiveCfg = Release|Any CPU
-		{052CF117-DDA5-4B87-A461-A41AE30E3DC3}.Release|x64.Build.0 = Release|Any CPU
 		{1A49E3C5-2436-4C3A-A546-4072167F602E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1A49E3C5-2436-4C3A-A546-4072167F602E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A49E3C5-2436-4C3A-A546-4072167F602E}.Debug|x64.ActiveCfg = Debug|Any CPU

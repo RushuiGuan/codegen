@@ -1,7 +1,4 @@
-﻿using Albatross.CodeGen.CSharp;
-using Albatross.CodeGen.Database;
-using Albatross.CodeGen.SqlServer;
-using SimpleInjector;
+﻿using SimpleInjector;
 using System;
 
 namespace Albatross.CodeGen.PowerShell {
@@ -12,7 +9,7 @@ namespace Albatross.CodeGen.PowerShell {
 			container.Register<IObjectFactory>(() => new ObjectFactory(container), Lifestyle.Singleton);
 
 			new Albatross.CodeGen.Ioc.SimpleInjectorPackage().RegisterServices(container);
-			new Albatross.Database.Ioc.SimpleInjectorSqlServerPackage().RegisterServices(container);
+			new Albatross.Database.Ioc.SimpleInjector.SqlServerPackage().RegisterServices(container);
 			container.Verify();
 
 			return container.GetInstance<IObjectFactory>();
