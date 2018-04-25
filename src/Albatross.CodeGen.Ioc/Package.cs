@@ -5,7 +5,7 @@ using SimpleInjector;
 using SimpleInjector.Packaging;
 using System;
 
-namespace Albatross.CodeGen.Ioc{
+namespace Albatross.CodeGen.SimpleInjector {
 
 	public class SimpleInjectorPackage : IPackage {
 		public void RegisterServices(Container container) {

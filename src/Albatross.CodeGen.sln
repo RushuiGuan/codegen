@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SamplePowerShellScripts", "
 		sys types to POCO.ps1 = sys types to POCO.ps1
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.Ioc", "Albatross.CodeGen.Ioc\Albatross.CodeGen.Ioc.csproj", "{1A49E3C5-2436-4C3A-A546-4072167F602E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.SimpleInjector", "Albatross.CodeGen.Ioc\Albatross.CodeGen.SimpleInjector.csproj", "{1A49E3C5-2436-4C3A-A546-4072167F602E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,7 +92,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8E6AD19A-703E-4DCE-92B7-50652D34EE15}
 		SolutionGToold = {DC66FBE3-16F6-4FE3-BA4F-D3C380D2AB75}
+		SolutionGuid = {8E6AD19A-703E-4DCE-92B7-50652D34EE15}
 	EndGlobalSection
 EndGlobal
