@@ -1,18 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>net462</TargetFramework>
-		<AssemblyVersion>1.1.9.0</AssemblyVersion>
-		<FileVersion>1.1.9.0</FileVersion>
-	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Albatross.Database.SqlServer.SimpleInjector" Version="1.0.4" />
-		<PackageReference Include="SimpleInjector" Version="4.0.12" />
-		<PackageReference Include="System.Management.Automation.dll" Version="10.0.10586" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\Albatross.CodeGen.Database\Albatross.CodeGen.Database.csproj" />
-		<ProjectReference Include="..\Albatross.CodeGen.Ioc\Albatross.CodeGen.SimpleInjector.csproj" />
-		<ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
-	</ItemGroup>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+    <AssemblyVersion>1.1.9.1</AssemblyVersion>
+    <FileVersion>1.1.9.1</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Albatross.Database.SqlServer.SimpleInjector" Version="1.0.4" />
+    <PackageReference Include="SimpleInjector" Version="4.0.12" />
+    <PackageReference Include="System.Management.Automation.dll" Version="10.0.10586" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Albatross.CodeGen.Database\Albatross.CodeGen.Database.csproj" />
+    <ProjectReference Include="..\Albatross.CodeGen.Ioc\Albatross.CodeGen.SimpleInjector.csproj" />
+    <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
+  </ItemGroup>
 </Project>
