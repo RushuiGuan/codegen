@@ -7,7 +7,7 @@ using System;
 
 namespace Albatross.CodeGen.SimpleInjector {
 
-	public class SimpleInjectorPackage : IPackage {
+	public class Pack : IPackage {
 		public void RegisterServices(Container container) {
 			container.Register<ICodeGeneratorFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 			container.Register<IRunCodeGenerator, RunCodeGenerator>(Lifestyle.Singleton);
