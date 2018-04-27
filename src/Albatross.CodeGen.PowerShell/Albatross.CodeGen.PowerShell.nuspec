@@ -14,6 +14,12 @@
     <releaseNotes>Initial Release</releaseNotes>
     <copyright>Copyright 2018</copyright>
     <tags>code generator c# sql codegen powershell database csharp</tags>
+		<dependencies>
+			<dependency id="Albatross.CodeGen.SimpleInjector" />
+			<dependency id="SimpleInjector" version="4.0.12" />
+			<dependency id="System.Management.Automation.dll" version="10.0.10586" />
+			<dependency id="Albatross.Database.SqlServer.SimpleInjector" version="1.0.4" />
+		</dependencies>
   </metadata>
   <files>
     <file src=".\bin\Release\net462\*.config" target="tools" />
