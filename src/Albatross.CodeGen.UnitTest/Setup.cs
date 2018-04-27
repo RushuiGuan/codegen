@@ -19,6 +19,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			Ioc.Container.GetInstance<Mocking.SymbolTable>().Setup();
 			Ioc.Container.GetInstance<Mocking.ContactTable>().Setup();
+			Ioc.Container.GetInstance<Mocking.GetCompanyProcedure>().Setup();
 
 			var codeGenFactory = Ioc.Container.GetInstance<IConfigurableCodeGenFactory>();
 

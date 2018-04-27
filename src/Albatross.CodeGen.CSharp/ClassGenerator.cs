@@ -26,8 +26,14 @@ namespace Albatross.CodeGen.CSharp {
 			return option.Name;
 		}
 		public abstract void RenderBody(StringBuilder sb, int tabLevel, T t, ClassOption options);
+		public virtual void RenderConstructor(StringBuilder sb, int tabLevel, T t, ClassOption options) {
+			string className = GetClassName(t, options);
+			foreach (string constructor in options.Constructors) {
+				sb.Tab(tabLevel).Public().Append(className).Append(constructor).EmptyScope();
+			}
+		}
 
-		public IEnumerable<object>  Build(StringBuilder sb, T t, ClassOption option) {
+		public IEnumerable<object> Build(StringBuilder sb, T t, ClassOption option) {
 			if (option.Imports != null) {
 				foreach (var ns in option.Imports) {
 					sb.Append("using ").Append(ns).Terminate();
@@ -42,10 +48,7 @@ namespace Albatross.CodeGen.CSharp {
 			sb.Tab(level).Append(option.AccessModifier).Append(" class ").Append(className).Append(" : ").Append(option.BaseClass).OpenScope();
 			level++;
 
-			foreach (string constructor in option.Constructors) {
-				sb.Tab(level).Public().Append(className).Append(constructor).EmptyScope();
-			}
-
+			RenderConstructor(sb, level, t, option);
 			RenderBody(sb, level, t, option);
 
 			level--;
