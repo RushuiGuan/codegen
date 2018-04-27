@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
-    <AssemblyVersion>1.1.9.3</AssemblyVersion>
-    <FileVersion>1.1.9.3</FileVersion>
+    <AssemblyVersion>1.1.9.4</AssemblyVersion>
+    <FileVersion>1.1.9.4</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Albatross.Database.SqlServer.SimpleInjector" Version="1.0.4.1" />
