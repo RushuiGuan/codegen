@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Workspace/github/CodeGen/docfx_project",
+  "source_base_path": "C:/github/CodeGen/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,10 +9,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Branch.html",
-          "hash": "iYaql+O81ZrzSo3BMadcpA=="
+          "hash": "ZsHcj9m1d/D/ivUUpVzK2g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CSharp.BuildWebApiProxy.html",
-          "hash": "kI6gHq42AR+bNkcqgc8Clg=="
+          "hash": "e843pJtNtoN0kVQ2Im9tAg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -33,10 +33,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CSharp.ClassGenerator-1.html",
-          "hash": "4Y6qEJrmy5DLI4o5jfCC+A=="
+          "hash": "BQVLkyQtoB136/x4QZ8yDQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -45,10 +45,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CSharp.ClassOption.html",
-          "hash": "GNc03PSGyTlXM3gHiWmwiQ=="
+          "hash": "jHJ2DyblvB/GlHFdpZ3Gug=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CSharp.GetReflectionOnlyType.html",
-          "hash": "8L2r9QX2nNJw1cBOjgNKTw=="
+          "hash": "8Agqyar0trs7YXhqG9O7wg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -69,10 +69,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CSharp.IGetReflectionOnlyType.html",
-          "hash": "jM9B2LvYIk/G95OSlTkkhA=="
+          "hash": "T6ue2YtNPnT3Fto+7pHCUA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -81,10 +81,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CSharp.ObjectType.html",
-          "hash": "39DjmcIL0o28qPNpc+Kjfw=="
+          "hash": "hNmqXH1/BVBlXw6MtLSFbw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CSharp.html",
-          "hash": "F6NEWwdAK1zYarIeoeeORA=="
+          "hash": "CXU/4olfWTSqEWWORXLzRg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -105,10 +105,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CodeGenException.html",
-          "hash": "klEALFP26zrKUOXlXV3d2A=="
+          "hash": "hDTfK0mpAvsMK2zITuzpmw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -117,10 +117,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CodeGenNotRegisteredException.html",
-          "hash": "clOZYC2qdq6IF5Wdr1GVWw=="
+          "hash": "8INPqKSOSE1CFNpuAOV9vQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -129,10 +129,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CodeGenerator.html",
-          "hash": "dgW+vIjta2nV/PYrsLBv5Q=="
+          "hash": "9A2k0P+QEAZa/hqCI4RTeA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CodeGeneratorAttribute.html",
-          "hash": "SAWo6r1X18WFW+abzegcUQ=="
+          "hash": "7hgcSJ8S46apIjk+4+xMQA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -153,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CodeGeneratorFactory.html",
-          "hash": "hVSrw6/hX3EETta90vprYQ=="
+          "hash": "SBrKa7QnLj+e4kDHBSZ5cg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -165,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Composite.html",
-          "hash": "QTPqQPY8tkyyBLgLUTPXCg=="
+          "hash": "bObYEjgDBQ8ReU8VreBI6A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -177,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.CompositeCodeGenerator-2.html",
-          "hash": "BRLYNJug/uZ2LhqagkpykQ=="
+          "hash": "GBX8GhTQSYqQbFFxs+cx2Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -189,10 +189,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.FilterOption.html",
-          "hash": "XbIRB9Ar0d0U4m4OZa5hOg=="
+          "hash": "jVlL1BmW5beAoJvI/75yJw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -201,10 +201,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.IBuildParameter.html",
-          "hash": "LVv32jdEpg7yME3TFypmlw=="
+          "hash": "iymRvMY0rySOWiqiY/+PIw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -213,10 +213,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.IBuildSqlType.html",
-          "hash": "aBBoen5W7k8WgvIzDMm3Pw=="
+          "hash": "Gb2/id4drUHIYcgh2Fc0pA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -225,10 +225,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.IBuildVariable.html",
-          "hash": "ozfo6xTPNv9QBOICNcemIA=="
+          "hash": "iclw3wvIdIncp/L/PZuvHA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -237,10 +237,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.ICreateVariableName.html",
-          "hash": "vCwCtaO/zHa19MkK1lfang=="
+          "hash": "cFXfaT4QR+Bur1ClwBlg3w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -249,10 +249,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.IGetCSharpType.html",
-          "hash": "myvafZwhE8b3nLMIZzw4qg=="
+          "hash": "PhFIHRxjAkHvhFpC1YCKHQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -261,10 +261,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.IGetVariable.html",
-          "hash": "AVZ+gcHxBjtAYJqVABkH1Q=="
+          "hash": "SwwT+fcU9JRuo1pTTVue/A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -273,10 +273,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.IStoreVariable.html",
-          "hash": "9yLY3u0nDG/SB0yQ/e0r2w=="
+          "hash": "RyWMffNLW62iSluFcZdnyg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -285,10 +285,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.SqlCodeGenOption.html",
-          "hash": "ITwZKWfzq++cUfw4ce9lpw=="
+          "hash": "8IN0d8ceUMfwxEY11LXluw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -297,10 +297,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Database.html",
-          "hash": "r5JSicnPIVjBRdv6ABS3gA=="
+          "hash": "JegZ6TYjFjtFLj6xHHmOBA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -309,10 +309,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Extension.html",
-          "hash": "yot5eitz96ZDaoHp3nsmKg=="
+          "hash": "dXwRnNhO48NaGMQD9vfxOg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -321,10 +321,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.GeneratorCategory.html",
-          "hash": "HLcym3n+PZugeDhiOpCdFw=="
+          "hash": "lpvyJEw+dJuEfLMrQVAAzg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -333,10 +333,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.GeneratorTarget.html",
-          "hash": "4QlVlFmHxDg6gm/cwO6H9g=="
+          "hash": "kiYeRJzKTha1xH36je7I3w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -345,10 +345,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.ICodeGenerator-2.html",
-          "hash": "E/Ci09c97Md9XGbBS4wM/A=="
+          "hash": "vQv4OKavJITed3+Z++Gr8g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -357,10 +357,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.ICodeGeneratorFactory.html",
-          "hash": "vVRMSjhcgzUFPEEXLrYArQ=="
+          "hash": "ZtjuNObLhp4uNnSzya3+0w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -369,10 +369,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.IConfigurableCodeGenFactory.html",
-          "hash": "YyebHhoAgNr6B0T58aPeMg=="
+          "hash": "JzJ123gM92l4i4IKcSCcSw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -381,10 +381,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.INode.html",
-          "hash": "fZjeVdx+rDM++vSaQPW88g=="
+          "hash": "6aTf2CSEJ+D3PDimPl/ueQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -393,10 +393,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.IObjectFactory.html",
-          "hash": "48+2X/PJpUJ38IwMtjtVoA=="
+          "hash": "4l8aUbsCjgrm+P+s4QDhOw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -405,10 +405,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.IRunCodeGenerator.html",
-          "hash": "4ZK5IYPUwgddY378EiYySQ=="
+          "hash": "zxCvbraOqrNK7KgbEPK3Bw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -417,10 +417,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.InvalidOptionTypeException.html",
-          "hash": "llzr+bX9i59MeJ+d8bsJuw=="
+          "hash": "tCeq44GBUBLtjRqD6oeolA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -429,10 +429,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.InvalidSourceTypeException.html",
-          "hash": "j9gDz0yGOip1bgPFMI7QHA=="
+          "hash": "NRM37ZKUenJNbanjRv7OXA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -441,10 +441,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Ioc.SimpleInjectorPackage.html",
-          "hash": "VVKl60Sln2xaqtRDb2lBHw=="
+          "hash": "uSPzxeoZIFUIlRy9CkYAZg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -453,10 +453,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Ioc.html",
-          "hash": "MR9nLTQU5cPNVGIj4s+sAA=="
+          "hash": "9Ojp3O+Y1QIMhlNUwl4mvg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -465,10 +465,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.Leaf.html",
-          "hash": "is5sTsOPkrIpVBdK9j+n6g=="
+          "hash": "pP9uv8HY0zI/iAUPQ+TyQA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -477,10 +477,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.OptionType.html",
-          "hash": "2oI3Zzhw/KL3GqYtziExYg=="
+          "hash": "eXkaDXuOPuxnXKU9RDTRlA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -489,10 +489,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.OptionTypeAttribute.html",
-          "hash": "oVh986yFGO/jyxVjby4maw=="
+          "hash": "t9wj3ess9I+l979BokxCXw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -501,10 +501,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.BaseCmdlet-1.html",
-          "hash": "1euc9USGtLna2CGU5/ynzQ=="
+          "hash": "UZeYHfwpAGgs9QZwrwdNew=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -513,10 +513,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.GetCodeGenerator.html",
-          "hash": "MOO7Xh2zFIVJ7f6gbBUz0Q=="
+          "hash": "u08oeGM9G/2fOyEAndHzhQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -525,10 +525,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.InvokeCodeGenerator.html",
-          "hash": "snefunr/4oGpCMGCjN9bDA=="
+          "hash": "GkuddjtYG5olUAyCYqANQA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -537,10 +537,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.InvokeComposite.html",
-          "hash": "PJqlKAC/d8GeA4NdPFR19w=="
+          "hash": "wQgIZcBAsvyfkAb5pax87w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -549,10 +549,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.NewBranch.html",
-          "hash": "msdPS9JleLGwLJ9npkM3zw=="
+          "hash": "/jreNVnxuUxa2LRmH4xpKw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -561,10 +561,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.NewClassOption.html",
-          "hash": "7g8oa+It5LjGJQ7EnubysQ=="
+          "hash": "trfPeQ87tQo3zNIBko/Qyw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -573,10 +573,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.NewComposite.html",
-          "hash": "FVuNW1u6Ru1foaGveJslFQ=="
+          "hash": "wqAg8vfJMMRW2ehjdg6xvQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -585,10 +585,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.NewDatabaseServer.html",
-          "hash": "kBRoQZxHoO2Fs2+5y/HmvA=="
+          "hash": "C69g2cTqT/ITtsSHzSZEkA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -597,10 +597,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.NewDatabaseTable.html",
-          "hash": "y19wU/L4hevulbQoOwbFrg=="
+          "hash": "memZaEAMhoPzC9nvVs6RXQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -609,10 +609,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.NewObjectType.html",
-          "hash": "b6jDNN+D7BJzjCINJub/1Q=="
+          "hash": "WycsYI2g3r8rKAZ7E8HZdQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -621,10 +621,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.NewSqlQueryOption.html",
-          "hash": "Kjkcsjv7tsWFBKsBeejviQ=="
+          "hash": "I+ljUDBZVGZV37w/EwKvdA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -633,10 +633,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.ObjectFactory.html",
-          "hash": "O6p87hS6C83+0yFNpbuidA=="
+          "hash": "mVoEItmyWu4ggu4vUrYTzw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -645,10 +645,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.RegisterAssembly.html",
-          "hash": "CSLcd0ojOtAmAKJFe4CPnA=="
+          "hash": "bssmgYusEm4TuJfV4+Naqw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -657,10 +657,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.Setup.html",
-          "hash": "FZNNgI8qQBbwGpEy/9sg8g=="
+          "hash": "FTYFGmz/APb+eXyasK3PYg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -669,10 +669,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.TestPipeline.html",
-          "hash": "OuypSR61XcfNwk3YOCzkug=="
+          "hash": "ndW63XAI7wh1ycd/btp1YQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -681,10 +681,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.Transformation.PathInfo2DirectoryInfoAttribute.html",
-          "hash": "f9ItE3xVtlXwKAY4sZGtlA=="
+          "hash": "dJ+wCANg+zrY24bbz/By0g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -693,10 +693,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.Transformation.String2LeafAttribute.html",
-          "hash": "69b58T+He7JF9hWSWkoWlg=="
+          "hash": "pWFL1kIeLeh+8WsC8CJufA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -705,10 +705,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.Transformation.html",
-          "hash": "FHtH08thVu5GhXtR1OnPrw=="
+          "hash": "6PIj77TOBWZxEHxKF3CJiQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -717,10 +717,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.PowerShell.html",
-          "hash": "Dol9hms1aLRcJgLUOJtS4Q=="
+          "hash": "hd++UIA93yq1AvGm0uEAGg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -729,10 +729,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.RunCodeGenerator.html",
-          "hash": "XZWt88UfFsCuavjr++QzoA=="
+          "hash": "C7cWk/i+1LABaBN0QWy43w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -741,10 +741,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SourceType.html",
-          "hash": "JXiUvpvGMb4JjTZ9rXakzg=="
+          "hash": "icmeEhQK94mITGzMhyC9RQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -753,10 +753,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SourceTypeAttribute.html",
-          "hash": "G0hQeCGpE1P7o9wYQcHraQ=="
+          "hash": "tRB02yYcY7E621qJ1u379w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -765,10 +765,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.BuildProcedureParameter.html",
-          "hash": "8ZAb/zzApbkVHwzHCASgEQ=="
+          "hash": "K8vYli4c6BCDsDBFuok81A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -777,10 +777,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.BuildSqlType.html",
-          "hash": "tif51MaJRZgpxgnCP8RUbg=="
+          "hash": "YcLK6Yky4juIp1aPQmO9TA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -789,10 +789,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.BuildSqlVariable.html",
-          "hash": "dCaXXD/bfDH9DrJgEL0uiQ=="
+          "hash": "uGAGM3E2jjTURmOnmCT0oQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -801,10 +801,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.CSharpClassFromTable.html",
-          "hash": "X/Xy9dEwAISk3kZJCdJXyg=="
+          "hash": "m3OepWyUNE4GnOY3xNpcRw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -813,10 +813,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.CreateSqlVariableName.html",
-          "hash": "erR+XUhY2MEzyVPEymr93Q=="
+          "hash": "ItA0OxcYQJJ4tgqejZ/+aQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -825,10 +825,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.CreateStoredProcedure.html",
-          "hash": "d+sJUuamn+fCPPV1Wjj3Kw=="
+          "hash": "7X65qe+UvI6OzHXTwY3r+Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -837,10 +837,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.DeclareStatement.html",
-          "hash": "7CaqBXdRfrYOMNJCQGUV2A=="
+          "hash": "A6+h7fmncAa/73Gb+DLHow=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -849,10 +849,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.Extension.html",
-          "hash": "xKSCtpdp85DkaKygHrwqaw=="
+          "hash": "dso9eViyuAGbIuE3wJDzHA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -861,10 +861,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.SqlVariableMgmt.html",
-          "hash": "DnzcB/tiaDbi4MnQ3o/bTA=="
+          "hash": "COE0lTywxLzZdjdIX2zv/g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -873,10 +873,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.StoredProcedureProxy.html",
-          "hash": "TZZXFW324bDCbp4+lOzc8w=="
+          "hash": "b8HJiUlLJne3mloGmRSqtA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -885,10 +885,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableDelete.html",
-          "hash": "2plGwuNRTZm9ouLqBbIGfg=="
+          "hash": "GWPa+B2nwXWr/6a1pO6tRA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -897,10 +897,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableInsert.html",
-          "hash": "UELZE8hIf+T4YN+rnyH9mA=="
+          "hash": "QdvqiZB1Eh7RIm+vGzHomQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -909,10 +909,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableMergeDelete.html",
-          "hash": "OqyeDFR9taLA9aG9y6PrZw=="
+          "hash": "xQEuTiMIXQiKzBFG0v6Alg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -921,10 +921,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableMergeInsert.html",
-          "hash": "zShsDzeY/+oYoFrGzXObuQ=="
+          "hash": "0ZVRkgxTGd3gxaYyPYCGzA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -933,10 +933,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableMergeJoinByID.html",
-          "hash": "7Kk59faMwMyARPCaYBOsYw=="
+          "hash": "B/01Vvi1knSi8d1Cp+/3TA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -945,10 +945,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableMergeSelect.html",
-          "hash": "Go1KpolTm8gibL9aXVTGPg=="
+          "hash": "VhSzWK0L/DEXNs4Zx+eD7g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -957,10 +957,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableMergeUpdate.html",
-          "hash": "9TD5iy1yHYfDQwtSaXPvNw=="
+          "hash": "zZ9VHnngSb/X0i909Zaplg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -969,10 +969,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableQueryGenerator.html",
-          "hash": "0WWLv6BKndL1yIryhuJ4zA=="
+          "hash": "fgrGE8thobMZl2gsn8hWDg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -981,10 +981,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableSelect.html",
-          "hash": "1rfZJEIUE1SM3Bf1aST1KA=="
+          "hash": "biz6/3SrxhPfKq7cGM6u8Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -993,10 +993,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableSelectScopedIdentity.html",
-          "hash": "tEABwKqhAse6sNdt+/IH0Q=="
+          "hash": "i/26lq6gv0RxbSQqfJPbUw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1005,10 +1005,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableUpdate.html",
-          "hash": "8uNuDPKSv4q/SdIYF/bDFA=="
+          "hash": "jUecvop3anEuYldq3AvJPQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1017,10 +1017,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.TableWhere.html",
-          "hash": "60oiZt9h/EriuGOgEwxSlg=="
+          "hash": "a7Nijr7Gda3Vr5KHHn4CkA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1029,10 +1029,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.SqlServer.html",
-          "hash": "eERZz1zsb+Ost99DHBsCzA=="
+          "hash": "OiGM5VrlOlbpYRAWzLVD+A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1041,10 +1041,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.StaticCodeGenerator.html",
-          "hash": "5UJmvlJboWY9cEkEeGrvrQ=="
+          "hash": "LHpUFTiiFD/kAKaFNlDXDQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1053,10 +1053,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.StringBuilderExtension.html",
-          "hash": "ExzxyBjeBvEGlL/+8oztkQ=="
+          "hash": "e0VGLTAnraTbqdrKrHZ4bw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1065,10 +1065,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.CodeCheck.html",
-          "hash": "aI+9mQAz8FVd9fw7wj+Veg=="
+          "hash": "KK8P3j7xkPVdlS1dCoeEuA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1077,10 +1077,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.CompositeGeneratorTest.html",
-          "hash": "P6NzTWedXxPtyj8zJ+5AFA=="
+          "hash": "3isdM45N1gbVnfDjcN9AbQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1089,10 +1089,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.CreateSqlVariableNameTest.html",
-          "hash": "AxFugz/Z2piKp2jo/RSuZg=="
+          "hash": "XgX+0alfNsjaJK29WhPwDQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1101,10 +1101,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.CreateStoredProcedureTest.html",
-          "hash": "oHD9qPM1S6VcYGfknKUuIA=="
+          "hash": "7CV7805lqLZc8ngIuLT8QA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1113,10 +1113,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.DeclareStatementTest.html",
-          "hash": "RadguefeOpuruG5UlYCYlQ=="
+          "hash": "188th4h2K867+wwYM8iWwQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1125,10 +1125,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Extension.html",
-          "hash": "BH0VJvcvzPmxq0nygnsREQ=="
+          "hash": "/lBMNHHK/LnoZart/O9svA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1137,10 +1137,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.GeneralUnitTest.html",
-          "hash": "2kYWKYvihxgmGeATLYpxmw=="
+          "hash": "QuN+OxZNSd7XrCsKcQw5sA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1149,10 +1149,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Ioc.html",
-          "hash": "XYoCm2SKY3eAnaTBh8jiFQ=="
+          "hash": "UgUO/S1lWKVLVSxF7gw3wQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1161,7 +1161,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Mocking.ContactTable.html",
-          "hash": "fdYwkamOSiMrnT6oIKC88w=="
+          "hash": "0N0V0BiY1257I36A6C4xOA=="
         }
       },
       "is_incremental": false,
@@ -1173,10 +1173,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Mocking.IMocking.html",
-          "hash": "R9MEzyqZIOjApfASBdxDdg=="
+          "hash": "rKfAaEtvlnTTlmDVhqEfew=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1185,7 +1185,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Mocking.SymbolTable.html",
-          "hash": "7Gvoqj52O/FxyogLVbfHxw=="
+          "hash": "1bIaOZHPSMKQrrymODPMRA=="
         }
       },
       "is_incremental": false,
@@ -1197,7 +1197,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Mocking.TableMocking.html",
-          "hash": "rVoBMAd6Fl8qE+vPKZsNkA=="
+          "hash": "zSsr4D4cBz9Fssd0f4rNCA=="
         }
       },
       "is_incremental": false,
@@ -1209,7 +1209,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Mocking.html",
-          "hash": "MtiE/RahWYdZss4aGm4PlQ=="
+          "hash": "HVtqWjUbDFdA4vp0cdIbMQ=="
         }
       },
       "is_incremental": false,
@@ -1221,10 +1221,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.Setup.html",
-          "hash": "lmat5UQG0Ms+avuy5+K8OA=="
+          "hash": "KyYF9Z7zPchVPZp2fs+82Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1233,10 +1233,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.TableInsertTest.html",
-          "hash": "IgvUiS4vi1Ly39usgcqOBg=="
+          "hash": "X0yYork8AcCXR6gOA4JyfQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1245,10 +1245,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.TableMergeSelectTest.html",
-          "hash": "2TFl1MMl7/N6MONRNZ5l4w=="
+          "hash": "2mZKtdI+szrcAW+QMk+haA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1257,10 +1257,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.TableMergeUpdateTest.html",
-          "hash": "Ko2fOJhxKSlXe1DioSHm3A=="
+          "hash": "Sl1j15wdnAkgDpvqZiMEPA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1269,10 +1269,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.TableUpdateTest.html",
-          "hash": "NxfPb8Q2TW2cRXpPEq5SiA=="
+          "hash": "zlp2zxINCN6HrTbSRF8Pug=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1281,10 +1281,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.TableWhereTest.html",
-          "hash": "GpTI6uq7tICjMeKlLl/B+A=="
+          "hash": "LhsdRKa8RqSSyyKOTkzopg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1293,10 +1293,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.YieldTestCodeGenerator.html",
-          "hash": "kPowBUYsneMl7IaPhe8PRQ=="
+          "hash": "VGwfGlMtmDpU4g3U/MxfqQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1305,10 +1305,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.UnitTest.html",
-          "hash": "WTpP9gBGKjyk9U0zCX+frw=="
+          "hash": "DskZsl6uxHGmzL5Eiy7cyA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1317,10 +1317,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Albatross.CodeGen.html",
-          "hash": "aEzShMenvxPLVqfhXgIeXg=="
+          "hash": "h6QITG2rMoL2EmDNHYxf/g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1329,10 +1329,10 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "HvWI0bQATCWPyYBx+vH5SA=="
+          "hash": "FktT2P0i9/0FhjnVDlGn6g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1353,10 +1353,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "Z6tVZwm41PaZI22NmWA7pA=="
+          "hash": "FJmGSRMWaiu+I0eWsNjQvg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1377,10 +1377,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "vbfkKUmoUouVXeq3yHte3Q=="
+          "hash": "fJn+tvcptcqh1R/unwk1tQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1399,29 +1399,30 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
         "incrementalPhase": "build"
       },
       "processors": {
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build"
-        },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build"
-        },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
           "incrementalPhase": "build"
         }
       }
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
         "incrementalPhase": "postProcessing"
       },
       "processors": {}
