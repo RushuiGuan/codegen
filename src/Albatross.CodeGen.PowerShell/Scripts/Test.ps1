@@ -3,7 +3,7 @@
 Register-Assembly
 
 $server = New-DatabaseServer -DataSource localhost -InitialCatalog albatross -IntegratedSecurity;
-$table = New-DatabaseTable -Name Contact -Schema crm  -Server $server;
+$table = New-DatabaseTable -Name Contact -Schema crm  -Database $server;
 $option = New-SqlQueryOption -Filter ByPrimaryKey
 
 
