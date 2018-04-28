@@ -5,8 +5,8 @@ Import-Module .\src\Albatross.CodeGen.PowerShell\bin\debug\net462\Albatross.Code
 register-assembly;
 
 $db = New-DatabaseServer -DataSource localhost -InitialCatalog Content -IntegratedSecurity;
-$table = New-DatabaseTable -Server $db -Schema sys -Name types;
+$table = New-DatabaseTable -Database $db -Schema sys -Name types;
 $option = New-SqlQueryOption 
+# Invoke-CodeGenerator -Name "table_insert" -Source $table -Option $option;
 
-
-Invoke-CodeGenerator -Name table_insert -Source $table -Option $option;
+Get-CodeGenerator -Name "table_insert";

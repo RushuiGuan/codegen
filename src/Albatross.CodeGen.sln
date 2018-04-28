@@ -15,13 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.PowerShel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.Database", "Albatross.CodeGen.Database\Albatross.CodeGen.Database.csproj", "{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SamplePowerShellScripts", "SamplePowerShellScripts", "{8709515D-4D2B-484E-BEA0-D53854C86353}"
-	ProjectSection(SolutionItems) = preProject
-		SamplePowerShellScripts\Sql Table Insert Script.ps1 = SamplePowerShellScripts\Sql Table Insert Script.ps1
-		sys types to POCO.ps1 = sys types to POCO.ps1
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.SimpleInjector", "Albatross.CodeGen.Ioc\Albatross.CodeGen.SimpleInjector.csproj", "{1A49E3C5-2436-4C3A-A546-4072167F602E}"
+EndProject
+Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Scripts", "Scripts\Scripts.pssproj", "{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,12 +83,20 @@ Global
 		{1A49E3C5-2436-4C3A-A546-4072167F602E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A49E3C5-2436-4C3A-A546-4072167F602E}.Release|x64.ActiveCfg = Release|Any CPU
 		{1A49E3C5-2436-4C3A-A546-4072167F602E}.Release|x64.Build.0 = Release|Any CPU
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Debug|x64.Build.0 = Debug|Any CPU
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Release|x64.ActiveCfg = Release|Any CPU
+		{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGToold = {DC66FBE3-16F6-4FE3-BA4F-D3C380D2AB75}
 		SolutionGuid = {8E6AD19A-703E-4DCE-92B7-50652D34EE15}
+		SolutionGToold = {DC66FBE3-16F6-4FE3-BA4F-D3C380D2AB75}
 	EndGlobalSection
 EndGlobal

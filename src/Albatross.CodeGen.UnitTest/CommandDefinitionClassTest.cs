@@ -10,7 +10,13 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.UnitTest
 {
 	[TestFixture]
-    public class CommandDefinitionClassTest
+    public class CommandDefinitionClassTest: TestBase
     {
+		public static IEnumerable<TestCaseData> Get() {
+			IGetProcedure getProcedure = 
+			return new TestCaseData[] {
+
+			};
+		}
     }
 }

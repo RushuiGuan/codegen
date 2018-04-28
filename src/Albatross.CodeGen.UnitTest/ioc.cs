@@ -30,6 +30,12 @@ namespace Albatross.CodeGen.UnitTest {
 			var mock_getTable = new Mock<IGetTable>();
 			container.RegisterSingleton<Mock<IGetTable>>(mock_getTable);
 			container.RegisterSingleton<IGetTable>(mock_getTable.Object);
+
+			var mock_getProcedure = new Mock<IGetProcedure>();
+			container.RegisterSingleton<Mock<IGetProcedure>>(mock_getProcedure);
+			container.RegisterSingleton<IGetProcedure>(mock_getProcedure.Object);
+
+
 		}
 
 		
