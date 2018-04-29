@@ -35,13 +35,21 @@ namespace Albatross.CodeGen.UnitTest {
 			container.RegisterSingleton<Mock<IGetProcedure>>(mock_getProcedure);
 			container.RegisterSingleton<IGetProcedure>(mock_getProcedure.Object);
 
+			container.GetInstance<Mocking.SymbolTable>().Setup();
+			container.GetInstance<Mocking.ContactTable>().Setup();
+			container.GetInstance<Mocking.GetCompanyProcedure>().Setup();
 
+			var codeGenFactory = container.GetInstance<IConfigurableCodeGenFactory>();
+
+			typeof(Albatross.CodeGen.ICodeGeneratorFactory).Assembly.Register(codeGenFactory);
+			typeof(Albatross.CodeGen.CSharp.ClassGenerator<object>).Assembly.Register(codeGenFactory);
+			typeof(Albatross.CodeGen.Database.SqlCodeGenOption).Assembly.Register(codeGenFactory);
+			typeof(Albatross.CodeGen.SqlServer.BuildSqlType).Assembly.Register(codeGenFactory);
+
+			codeGenFactory.RegisterStatic();
 		}
 
-		
-
 		public static Lazy<Ioc> _lazy = new Lazy<Ioc>(()=>new Ioc());
-
 		public static Container Container { get { return _lazy.Value.container; } }
 	}
 }

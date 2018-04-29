@@ -15,6 +15,7 @@ namespace Albatross.CodeGen.UnitTest
     {
 		public static IEnumerable<TestCaseData> GetTestCases() {
 			IGetProcedure getProcedure = Ioc.Container.GetInstance<IGetProcedure>();
+
 			return new TestCaseData[] {
 				new TestCaseData(getProcedure.Get(new Albatross.Database.Database(), "ac", "getcompany"), new ClassOption()){
 					ExpectedResult = "",

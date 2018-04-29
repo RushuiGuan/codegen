@@ -17,20 +17,9 @@ namespace Albatross.CodeGen.UnitTest {
 	public class Setup {
 		[OneTimeSetUp]
 		public void Run() {
-			Ioc.Container.GetInstance<Mocking.SymbolTable>().Setup();
-			Ioc.Container.GetInstance<Mocking.ContactTable>().Setup();
-			Ioc.Container.GetInstance<Mocking.GetCompanyProcedure>().Setup();
+			
 
-			var codeGenFactory = Ioc.Container.GetInstance<IConfigurableCodeGenFactory>();
-
-			typeof(Albatross.CodeGen.ICodeGeneratorFactory).Assembly.Register(codeGenFactory);
-			typeof(Albatross.CodeGen.CSharp.ClassGenerator<object>).Assembly.Register(codeGenFactory);
-			typeof(Albatross.CodeGen.Database.SqlCodeGenOption).Assembly.Register(codeGenFactory);
-			typeof(Albatross.CodeGen.SqlServer.BuildSqlType).Assembly.Register(codeGenFactory);
-
-
-
-			codeGenFactory.RegisterStatic();
+			
 		}
 	}
 }
