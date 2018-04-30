@@ -1,12 +1,9 @@
-﻿
-using Albatross.CodeGen;
-using Albatross.CodeGen.Database;
+﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.Generation;
 using Albatross.Database;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_select", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Select statement sorted by ordinal position")]

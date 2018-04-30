@@ -9,11 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.UnitTest"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.SqlServer", "Albatross.CodeGen.SqlServer\Albatross.CodeGen.SqlServer.csproj", "{0BD5819B-933B-4704-8AA4-D64153F819DA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.CSharp", "Albatross.CodeGen.CSharp\Albatross.CodeGen.CSharp.csproj", "{4742DBB1-B468-43EA-9717-55E612EF79F5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.PowerShell", "Albatross.CodeGen.PowerShell\Albatross.CodeGen.PowerShell.csproj", "{2068C6BB-91E1-4D88-A220-756A5495E669}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.Database", "Albatross.CodeGen.Database\Albatross.CodeGen.Database.csproj", "{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.SimpleInjector", "Albatross.CodeGen.Ioc\Albatross.CodeGen.SimpleInjector.csproj", "{1A49E3C5-2436-4C3A-A546-4072167F602E}"
 EndProject
@@ -51,14 +47,6 @@ Global
 		{0BD5819B-933B-4704-8AA4-D64153F819DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0BD5819B-933B-4704-8AA4-D64153F819DA}.Release|x64.ActiveCfg = Release|Any CPU
 		{0BD5819B-933B-4704-8AA4-D64153F819DA}.Release|x64.Build.0 = Release|Any CPU
-		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Debug|x64.Build.0 = Debug|Any CPU
-		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Release|x64.ActiveCfg = Release|Any CPU
-		{4742DBB1-B468-43EA-9717-55E612EF79F5}.Release|x64.Build.0 = Release|Any CPU
 		{2068C6BB-91E1-4D88-A220-756A5495E669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2068C6BB-91E1-4D88-A220-756A5495E669}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2068C6BB-91E1-4D88-A220-756A5495E669}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -67,14 +55,6 @@ Global
 		{2068C6BB-91E1-4D88-A220-756A5495E669}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2068C6BB-91E1-4D88-A220-756A5495E669}.Release|x64.ActiveCfg = Release|Any CPU
 		{2068C6BB-91E1-4D88-A220-756A5495E669}.Release|x64.Build.0 = Release|Any CPU
-		{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}.Debug|x64.Build.0 = Debug|Any CPU
-		{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}.Release|Any CPU.Build.0 = Release|Any CPU
-		{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}.Release|x64.ActiveCfg = Release|Any CPU
-		{97BD527B-D9D2-4C46-A4FA-C19A22DB0197}.Release|x64.Build.0 = Release|Any CPU
 		{1A49E3C5-2436-4C3A-A546-4072167F602E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1A49E3C5-2436-4C3A-A546-4072167F602E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A49E3C5-2436-4C3A-A546-4072167F602E}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -96,7 +76,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8E6AD19A-703E-4DCE-92B7-50652D34EE15}
 		SolutionGToold = {DC66FBE3-16F6-4FE3-BA4F-D3C380D2AB75}
+		SolutionGuid = {8E6AD19A-703E-4DCE-92B7-50652D34EE15}
 	EndGlobalSection
 EndGlobal

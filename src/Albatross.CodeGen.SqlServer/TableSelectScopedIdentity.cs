@@ -1,13 +1,8 @@
-﻿
-using Albatross.CodeGen;
-using Albatross.CodeGen.Database;
-using Albatross.CodeGen.SqlServer;
+﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.Generation;
 using Albatross.Database;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_select_scope_identity", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Select the Scope_Identity() of the previous insert operation.  Typically used after the insert operation.")]

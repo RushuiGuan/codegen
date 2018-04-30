@@ -6,6 +6,7 @@ using System.Management.Automation;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Albatross.CodeGen.Core;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsLifecycle.Invoke, "CodeGenerator")]

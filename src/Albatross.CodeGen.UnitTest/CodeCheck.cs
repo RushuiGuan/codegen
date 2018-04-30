@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Albatross.CodeGen.Core;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;

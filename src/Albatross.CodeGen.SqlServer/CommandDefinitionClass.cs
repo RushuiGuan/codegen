@@ -5,6 +5,8 @@ using System.Text;
 using Albatross.CodeGen.CSharp;
 using Albatross.CodeGen.Database;
 using Albatross.Database;
+using Albatross.CodeGen.Core;
+using Albatross.CodeGen.Generation;
 
 namespace Albatross.CodeGen.SqlServer {
 	/// <summary>

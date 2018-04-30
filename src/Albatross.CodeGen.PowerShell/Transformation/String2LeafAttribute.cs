@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using Albatross.CodeGen.Core;
+using System;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Albatross.CodeGen.PowerShell.Transformation
-{
+namespace Albatross.CodeGen.PowerShell.Transformation {
 	public class String2LeafAttribute : ArgumentTransformationAttribute {
 		public override object Transform(EngineIntrinsics engineIntrinsics, object inputData) {
 			if (inputData is PSObject) {

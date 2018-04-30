@@ -1,7 +1,6 @@
-﻿using Albatross.CodeGen.Database;
-using Albatross.CodeGen.SqlServer;
+﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.Generation;
 using Albatross.Database;
-using Moq;
 using NUnit.Framework;
 using SimpleInjector;
 using System.Collections.Generic;

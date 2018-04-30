@@ -1,10 +1,6 @@
 ﻿using Albatross.CodeGen.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Albatross.CodeGen.Generation;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsCommon.New, "SqlQueryOption")]

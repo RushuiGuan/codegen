@@ -1,14 +1,11 @@
 ﻿using Albatross.CodeGen.Database;
+using Albatross.CodeGen.Generation;
 using Albatross.CodeGen.SqlServer;
 using Albatross.CodeGen.UnitTest.Mocking;
 using Albatross.Database;
-using Moq;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.UnitTest {
 	[TestFixture(TestOf =typeof(TableWhere))]

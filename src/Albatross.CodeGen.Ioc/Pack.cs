@@ -1,4 +1,5 @@
-﻿using Albatross.CodeGen.CSharp;
+﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.CSharp;
 using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
 using SimpleInjector;

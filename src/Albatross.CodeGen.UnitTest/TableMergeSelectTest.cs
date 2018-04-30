@@ -1,13 +1,10 @@
-﻿using static Albatross.CodeGen.UnitTest.Extension;
-using Albatross.CodeGen.Database;
-using Albatross.CodeGen.SqlServer;
+﻿using Albatross.CodeGen.SqlServer;
 using Albatross.CodeGen.UnitTest.Mocking;
 using Albatross.Database;
-using Moq;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Text;
+using Albatross.CodeGen.Generation;
 
 namespace Albatross.CodeGen.UnitTest {
 	[TestFixture(TestOf = typeof(TableMergeSelect))]

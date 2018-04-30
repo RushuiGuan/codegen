@@ -1,4 +1,5 @@
 ﻿using System;
+using Albatross.CodeGen.Core;
 using SimpleInjector;
 
 namespace Albatross.CodeGen.PowerShell {

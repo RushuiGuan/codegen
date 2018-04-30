@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Albatross.CodeGen.Core;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

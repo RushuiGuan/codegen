@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.CSharp;
+using Albatross.CodeGen.Generation;
 using Albatross.CodeGen.SqlServer;
 using Albatross.Database;
 using NUnit.Framework;

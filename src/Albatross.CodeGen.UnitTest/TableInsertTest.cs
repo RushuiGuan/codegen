@@ -1,11 +1,10 @@
-﻿using static Albatross.CodeGen.UnitTest.Extension;
-using Albatross.CodeGen.UnitTest.Mocking;
-using Albatross.CodeGen.Database;
+﻿using Albatross.CodeGen.UnitTest.Mocking;
 using Albatross.CodeGen.SqlServer;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Text;
 using Albatross.Database;
+using Albatross.CodeGen.Generation;
 
 namespace Albatross.CodeGen.UnitTest {
 	[TestFixture]

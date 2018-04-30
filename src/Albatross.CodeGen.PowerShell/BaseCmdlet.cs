@@ -1,4 +1,5 @@
-﻿using System.Management.Automation;
+﻿using Albatross.CodeGen.Core;
+using System.Management.Automation;
 
 namespace Albatross.CodeGen.PowerShell {
 	public class BaseCmdlet<T> : PSCmdlet where T:class{

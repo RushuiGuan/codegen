@@ -1,5 +1,5 @@
-﻿using Albatross.CodeGen.Database;
-using Albatross.CodeGen.SqlServer;
+﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.Generation;
 using Albatross.Database;
 using Moq;
 using SimpleInjector;
@@ -41,9 +41,9 @@ namespace Albatross.CodeGen.UnitTest {
 
 			var codeGenFactory = container.GetInstance<IConfigurableCodeGenFactory>();
 
-			typeof(Albatross.CodeGen.ICodeGeneratorFactory).Assembly.Register(codeGenFactory);
-			typeof(Albatross.CodeGen.CSharp.ClassGenerator<object>).Assembly.Register(codeGenFactory);
-			typeof(Albatross.CodeGen.Database.SqlCodeGenOption).Assembly.Register(codeGenFactory);
+			typeof(ICodeGeneratorFactory).Assembly.Register(codeGenFactory);
+			typeof(ClassGenerator<object>).Assembly.Register(codeGenFactory);
+			typeof(SqlCodeGenOption).Assembly.Register(codeGenFactory);
 			typeof(Albatross.CodeGen.SqlServer.BuildSqlType).Assembly.Register(codeGenFactory);
 
 			codeGenFactory.RegisterStatic();

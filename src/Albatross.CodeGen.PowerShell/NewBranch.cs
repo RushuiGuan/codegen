@@ -1,4 +1,5 @@
-﻿using Albatross.CodeGen.PowerShell.Transformation;
+﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.PowerShell.Transformation;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using System.Text;
 using Albatross.CodeGen.Database;
 using Albatross.Database;
+using Albatross.CodeGen.Core;
+using Albatross.CodeGen.Generation;
 
 namespace Albatross.CodeGen.SqlServer {
 	/// <summary>
 	/// Create a stored procedure based on the variables produced by the next generator in a composite generator.  The generator will yield for 1 turn.
 	/// </summary>
 	[CodeGenerator("create stored procedure", target: GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Create a SQL server stored procedure", SourceType = typeof(object))]
-	public class CreateStoredProcedure : ICodeGenerator<object, Database.SqlCodeGenOption> {
+	public class CreateStoredProcedure : ICodeGenerator<object, SqlCodeGenOption> {
 		IGetVariable getVariable;
 		IBuildVariable buildVariable;
 		IBuildParameter buildParameter;

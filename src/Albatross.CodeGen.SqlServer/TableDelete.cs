@@ -1,5 +1,5 @@
-﻿using Albatross.CodeGen;
-using Albatross.CodeGen.Database;
+﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.Generation;
 using Albatross.Database;
 using System.Collections.Generic;
 using System.Text;

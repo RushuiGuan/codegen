@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.Faults;
+using System;
 using System.Collections.Generic;
 
 namespace Albatross.CodeGen {

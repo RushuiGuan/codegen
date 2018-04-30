@@ -1,13 +1,9 @@
-﻿
-using Albatross.CodeGen;
+﻿using Albatross.CodeGen.Core;
 using Albatross.CodeGen.Database;
-using Albatross.CodeGen.SqlServer;
+using Albatross.CodeGen.Generation;
 using Albatross.Database;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_where", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Table where clause, can handle identity column and\\or primary keys.  Use the SqlQueryOption.Filter flag to indicate filter method")]

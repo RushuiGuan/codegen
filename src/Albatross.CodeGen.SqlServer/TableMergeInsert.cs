@@ -1,5 +1,6 @@
-﻿using Albatross.CodeGen;
+﻿using Albatross.CodeGen.Core;
 using Albatross.CodeGen.Database;
+using Albatross.CodeGen.Generation;
 using Albatross.Database;
 using System.Collections.Generic;
 using System.Linq;
