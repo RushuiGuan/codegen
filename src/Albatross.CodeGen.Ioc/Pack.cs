@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.SimpleInjector {
 			container.Register<IStoreVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<IGetVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<ICreateVariableName, CreateSqlVariableName>(Lifestyle.Singleton);
-			container.Register<IGetCSharpType, GetCSharpType>(Lifestyle.Singleton);
+			container.Register<IConvertDataType, ConvertDataType>(Lifestyle.Singleton);
 
 		}
 	}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Linq;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
@@ -45,7 +46,18 @@ namespace Albatross.CodeGen.CSharp {
 			int level = 0;
 			sb.Tab(level).Append("namespace ").Append(option.Namespace).OpenScope();
 			level++;
-			sb.Tab(level).Append(option.AccessModifier).Append(" class ").Append(className).Append(" : ").Append(option.BaseClass).OpenScope();
+			sb.Tab(level).Append(option.AccessModifier).Append(" class ").Append(className);
+			if(option.Inheritance?.Count() > 0) { 
+				foreach (var item in option.Inheritance) {
+					if (item == option.Inheritance.First()) {
+						sb.Append(" : ");
+					} else {
+						sb.Comma().Space();
+					}
+					sb.Append(item);
+				}
+			}
+			sb.OpenScope();
 			level++;
 
 			RenderConstructor(sb, level, t, option);

@@ -25,10 +25,10 @@ namespace Albatross.CodeGen.SqlServer {
 	/// </summary>
 	[CodeGenerator("sp_command_definition", GeneratorTarget.CSharp, Category = GeneratorCategory.SQLServer, Description = "Generate Dapper Command Definition for stored procedures")]
 	public class CommandDefinitionClass : ClassGenerator<Procedure> {
-		IGetCSharpType getCSharpType;
+		IConvertDataType convertDataType;
 
-		public CommandDefinitionClass(IGetCSharpType getCSharpType) {
-			this.getCSharpType = getCSharpType;
+		public CommandDefinitionClass(IConvertDataType getCSharpType) {
+			this.convertDataType = getCSharpType;
 		}
 
 		public override string GetClassName(Procedure t, ClassOption option) {
@@ -39,21 +39,22 @@ namespace Albatross.CodeGen.SqlServer {
 			string className = GetClassName(t, options);
 			sb.Tab(tabLevel).Public().Append(className).OpenParenthesis();
 			foreach (var item in t.Parameters) {
-				Type type = getCSharpType.Get(item.Type);
-				sb.Append(type.FullName).Space().Append(item.Name);
+				Type type = convertDataType.GetDotNetType(item.Type);
+				sb.Append(type.FullName).Space().Append(item.Name).Comma().Space();
 			}
 			sb.Append("IDbTransaction transaction = null").CloseParenthesis().OpenScope();
 			tabLevel++;
-			sb.Tab(tabLevel).Append("DynamicParameters dynamicParameters = new DynamicParameters();");
+			sb.Tab(tabLevel).AppendLine("DynamicParameters dynamicParameters = new DynamicParameters();");
 			foreach (var item in t.Parameters) {
-				sb.Tab(tabLevel).Append("dynamicParameters.Add").OpenParenthesis().Literal(item.Name).Space().Comma().Space().Append("@").Append(item.Name).CloseParenthesis().AppendLine();
-				Type type = getCSharpType.Get(item.Type);
-				sb.Append(type.FullName).Space().Append(item.Name);
+				sb.Tab(tabLevel).Append("dynamicParameters.Add").OpenParenthesis().Literal(item.Name).Space().Comma().Space().Append("@").Append(item.Name).Comma().Space().Append("dbType:System.Data.DbType.").Append(convertDataType.GetDbType(item.Type)).CloseParenthesis().Terminate();
 			}
-			sb.CloseScope();
+			sb.Tab(tabLevel).Append($"definition = new CommandDefinition(\"[{t.Schema}].[{t.Name}]\", dynamicParameters, commandType:CommandType.StoredProcedure, transaction:transaction);").AppendLine();
+			tabLevel--;
+			sb.Tab(tabLevel).CloseScope();
 		}
 
 		public override void RenderBody(StringBuilder sb, int tabLevel, Procedure t, ClassOption options) {
+			sb.Tab(tabLevel).AppendLine("CommandDefinition definition;");
 			sb.Tab(tabLevel).AppendLine("public CommandDefinition Get() => definition;");
 		}
 	}

@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.PowerShell {
 
 		[Parameter]
 		[Alias("b")]
-		public string BaseClass { get; set; }
+		public string[] Inheritance { get; set; }
 
 		[Parameter]
 		[Alias("i")]
@@ -44,7 +44,7 @@ namespace Albatross.CodeGen.PowerShell {
 				Postfix = Postfix,
 			};
 
-			if (!string.IsNullOrEmpty(BaseClass)) { meta.BaseClass = BaseClass; }
+			meta.Inheritance = Inheritance;
 			if (!string.IsNullOrEmpty(AccessModifier)) { meta.AccessModifier = AccessModifier; }
 			if (!string.IsNullOrEmpty(Namespace)) { meta.Namespace = Namespace; }
 			if (Constructors != null) { meta.Constructors = Constructors; }

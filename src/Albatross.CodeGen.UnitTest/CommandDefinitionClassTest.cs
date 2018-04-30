@@ -26,7 +26,7 @@ namespace Albatross.CodeGen.UnitTest
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(Procedure p, ClassOption option) {
 			StringBuilder sb = new StringBuilder();
-			new CommandDefinitionClass(new GetCSharpType()).Build(sb, p, option);
+			new CommandDefinitionClass(new ConvertDataType()).Build(sb, p, option);
 			return sb.ToString();
 		}
     }

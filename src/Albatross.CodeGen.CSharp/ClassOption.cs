@@ -6,7 +6,7 @@ namespace Albatross.CodeGen.CSharp{
 	[OptionType("C# Class Option")]
 	public class ClassOption {
 		public ClassOption() {
-			BaseClass = "System.Object";
+			Inheritance = null;
 			Imports = new string[0];
 			AccessModifier = "public";
 			Namespace = "GeneratedCode";
@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.CSharp{
 		public string Prefix { get; set; }
 		public string Postfix { get; set; }
 
-		public string BaseClass { get; set; }
+		public IEnumerable<string> Inheritance { get; set; }
 		public IEnumerable<string> Imports { get; set; }
 		public string AccessModifier { get; set; }
 		public string Namespace { get; set; }

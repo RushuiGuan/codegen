@@ -10,13 +10,13 @@ namespace Albatross.CodeGen.SqlServer
 	[CodeGenerator("table_to_class", GeneratorTarget.CSharp, Category = GeneratorCategory.SQLServer, Description = "Generate a C# class from a sql server table")]
 	public class CSharpClassFromTable : ClassGenerator<Table> {
 		IGetTable getTable;
-		IGetCSharpType getCSharpType;
+		IConvertDataType getCSharpType;
 
 		public override string GetClassName(Table t, ClassOption option) {
 			return t.Name.Proper();
 		}
 
-		public CSharpClassFromTable(IGetTable getTable, IGetCSharpType getCSharpType) {
+		public CSharpClassFromTable(IGetTable getTable, IConvertDataType getCSharpType) {
 			this.getTable = getTable;
 			this.getCSharpType = getCSharpType;
 		}
