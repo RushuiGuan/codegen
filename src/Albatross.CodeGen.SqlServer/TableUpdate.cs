@@ -10,10 +10,10 @@ namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_update", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Update statement that excludes the computed columns.  Will exclude the primary key by default unless ExcludePrimaryKey flag is set to false in the option")]
 	public class TableUpdate : TableQueryGenerator {
 		IGetTable getTable;
-		ICreateVariableName getVariableName;
-		IStoreVariable createVariable;
+		ICreateSqlVariableName getVariableName;
+		IStoreSqlVariable createVariable;
 
-		public TableUpdate(IGetTable getTable, ICreateVariableName getVariableName, IStoreVariable createVariable) {
+		public TableUpdate(IGetTable getTable, ICreateSqlVariableName getVariableName, IStoreSqlVariable createVariable) {
 			this.getTable = getTable;
 			this.getVariableName = getVariableName;
 			this.createVariable = createVariable;

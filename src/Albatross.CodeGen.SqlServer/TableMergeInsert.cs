@@ -10,9 +10,9 @@ namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_merge_insert", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Merge statement insert clause")]
 	public class TableMergeInsert : TableQueryGenerator {
 		IGetTable getTable;
-		ICreateVariableName createVariableName;
+		ICreateSqlVariableName createVariableName;
 
-		public TableMergeInsert(IGetTable getTable, ICreateVariableName createVariableName) {
+		public TableMergeInsert(IGetTable getTable, ICreateSqlVariableName createVariableName) {
 			this.getTable = getTable;
 			this.createVariableName = createVariableName;
 		}

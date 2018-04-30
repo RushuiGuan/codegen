@@ -9,11 +9,11 @@ namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_where", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Table where clause, can handle identity column and\\or primary keys.  Use the SqlQueryOption.Filter flag to indicate filter method")]
 	public class TableWhere : TableQueryGenerator {
 		IGetTable getTable;
-		ICreateVariableName getVariableName;
+		ICreateSqlVariableName getVariableName;
 		IBuildSqlType buildSqlType;
-		IStoreVariable createVariable;
+		IStoreSqlVariable createVariable;
 
-		public TableWhere(IGetTable getTable, ICreateVariableName getVariableName, IBuildSqlType typeBuilder, IStoreVariable createVariable) {
+		public TableWhere(IGetTable getTable, ICreateSqlVariableName getVariableName, IBuildSqlType typeBuilder, IStoreSqlVariable createVariable) {
 			this.getTable = getTable;
 			this.getVariableName = getVariableName;
 			this.buildSqlType = typeBuilder;

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer
 {
-	public class SqlVariableMgmt : IStoreVariable, IGetVariable {
+	public class SqlVariableMgmt : IStoreSqlVariable, IGetSqlVariable {
 		Dictionary<object, Dictionary<string, Variable>> created = new Dictionary<object, Dictionary<string, Variable>>();
 
 		public void Store(object creator, Variable variable) {

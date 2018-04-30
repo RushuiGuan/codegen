@@ -10,11 +10,11 @@ namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_merge_select", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Merge statement select clause")]
 	public class TableMergeSelect : TableQueryGenerator {
 		IGetTable getTable;
-		ICreateVariableName getVariableName;
+		ICreateSqlVariableName getVariableName;
 		IBuildSqlType buildSqlType;
-		IStoreVariable createVariable;
+		IStoreSqlVariable createVariable;
 
-		public TableMergeSelect(IGetTable getTable, ICreateVariableName getVariableName, IBuildSqlType buildSqlType, IStoreVariable createVariable) {
+		public TableMergeSelect(IGetTable getTable, ICreateSqlVariableName getVariableName, IBuildSqlType buildSqlType, IStoreSqlVariable createVariable) {
 			this.getTable = getTable;
 			this.getVariableName = getVariableName;
 			this.buildSqlType = buildSqlType;

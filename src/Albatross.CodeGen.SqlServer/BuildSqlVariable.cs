@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer
 {
-	public class BuildSqlVariable : IBuildVariable {
+	public class BuildSqlVariable : IBuildSqlVariable {
 		IBuildSqlType buildSqlType;
-		ICreateVariableName createVariableName;
+		ICreateSqlVariableName createVariableName;
 
-		public BuildSqlVariable(IBuildSqlType buildSqlType, ICreateVariableName createVariableName) {
+		public BuildSqlVariable(IBuildSqlType buildSqlType, ICreateSqlVariableName createVariableName) {
 			this.buildSqlType = buildSqlType;
 			this.createVariableName = createVariableName;
 		}

@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.CSharp;
 using Albatross.CodeGen.Generation;
 using Albatross.CodeGen.SqlServer;
 using System.IO;
@@ -13,8 +14,6 @@ namespace Albatross.CodeGen.PowerShell {
 
 		protected override void ProcessRecord() {
 			typeof(ICodeGeneratorFactory).Assembly.Register(Handle);
-			typeof(ClassGenerator<object>).Assembly.Register(Handle);
-			typeof(SqlCodeGenOption).Assembly.Register(Handle);
 			typeof(BuildSqlType).Assembly.Register(Handle);
 
 			Handle.RegisterStatic();

@@ -38,7 +38,7 @@ namespace Albatross.CodeGen.PowerShell {
 		public string[] Constructors{ get; set; }
 
 		protected override void ProcessRecord() {
-			var meta = new ClassOption {
+			var meta = new CSharpClassOption {
 				Name = Name,
 				Prefix = Prefix,
 				Postfix = Postfix,

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.Database
 {
-	public interface IConvertDataType {
+	public interface IConvertSqlDataType {
 		Type GetDotNetType(SqlType sqlType);
 		DbType GetDbType(SqlType sqlType);
 	}

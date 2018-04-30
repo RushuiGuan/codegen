@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.Database
 	/// <summary>
 	/// This interface will generate the sql query for a <see cref="Albatross.Database.Variable"/> object.
 	/// </summary>
-    public interface IBuildVariable
+    public interface IBuildSqlVariable
     {
 		StringBuilder Build(StringBuilder sb, Variable variable);
     }

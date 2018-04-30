@@ -16,13 +16,13 @@ namespace Albatross.CodeGen.SimpleInjector {
 			container.Register<IGetReflectionOnlyType, GetReflectionOnlyType>(Lifestyle.Singleton);
 
 			container.Register<IBuildSqlType, BuildSqlType>(Lifestyle.Singleton);
-			container.Register<IBuildVariable, BuildSqlVariable>(Lifestyle.Singleton);
-			container.Register<IBuildParameter, BuildProcedureParameter>(Lifestyle.Singleton);
-			container.Register<IStoreVariable, SqlVariableMgmt>(Lifestyle.Singleton);
-			container.Register<IGetVariable, SqlVariableMgmt>(Lifestyle.Singleton);
-			container.Register<ICreateVariableName, CreateSqlVariableName>(Lifestyle.Singleton);
-			container.Register<IConvertDataType, ConvertDataType>(Lifestyle.Singleton);
-
+			container.Register<IBuildSqlVariable, BuildSqlVariable>(Lifestyle.Singleton);
+			container.Register<IBuildSqlParameter, BuildProcedureParameter>(Lifestyle.Singleton);
+			container.Register<IStoreSqlVariable, SqlVariableMgmt>(Lifestyle.Singleton);
+			container.Register<IGetSqlVariable, SqlVariableMgmt>(Lifestyle.Singleton);
+			container.Register<ICreateSqlVariableName, CreateSqlVariableName>(Lifestyle.Singleton);
+			container.Register<IConvertSqlDataType, ConvertDataType>(Lifestyle.Singleton);
+			container.Register<IRenderDotNetType, RenderDotNetType>(Lifestyle.Singleton);
 		}
 	}
 }

@@ -10,10 +10,10 @@ namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_merge_update", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Table merge update clause")]
 	public class TableMergeUpdate : TableQueryGenerator {
 		IGetTable getTable;
-		ICreateVariableName createVariableName;
+		ICreateSqlVariableName createVariableName;
 		IBuildSqlType buildSqlType;
 
-		public TableMergeUpdate(IGetTable getTable, ICreateVariableName createVariableName, IBuildSqlType buildSqlType) {
+		public TableMergeUpdate(IGetTable getTable, ICreateSqlVariableName createVariableName, IBuildSqlType buildSqlType) {
 			this.getTable = getTable;
 			this.createVariableName = createVariableName;
 			this.buildSqlType = buildSqlType;

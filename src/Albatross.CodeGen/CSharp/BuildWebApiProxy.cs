@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp {
 	[CodeGenerator("asp.net webapi proxy", GeneratorTarget.CSharp, Category = "WebApi Proxy", Description = "Create a web api proxy class by using the reflection against the controller")]
-	public class BuildWebApiProxy : ClassGenerator<ObjectType> {
+	public class BuildWebApiProxy : CSharpClassGenerator<ObjectType> {
 
 		const string ControllerPostfix = "Controller";
 		IGetReflectionOnlyType _getReflectionOnlyType;
@@ -16,7 +16,7 @@ namespace Albatross.CodeGen.CSharp {
 			this._getReflectionOnlyType = handle;
 		}
 
-		public override string GetClassName(ObjectType objType, ClassOption option) {
+		public override string GetClassName(ObjectType objType, CSharpClassOption option) {
 			return GetControllerName(_getReflectionOnlyType.Get(objType)) + "ClientApi";
 		}
 
@@ -33,18 +33,18 @@ namespace Albatross.CodeGen.CSharp {
 		const string HttpPutAttribName = "System.Web.Http.HttpPutAttribute";
 
 
-		public override void RenderBody(StringBuilder sb, int tabLevel, ObjectType objType, ClassOption options) {
+		public override void RenderBody(StringBuilder sb, ObjectType objType, CSharpClassOption options) {
 			Type controllerType = _getReflectionOnlyType.Get(objType);
 			foreach (MethodInfo method in controllerType.GetMethods(BindingFlags.Public | BindingFlags.Instance)) {
 				foreach (CustomAttributeData data in method.GetCustomAttributesData()) {
 					if (data.AttributeType.FullName == HttpGetAttribName) {
-						BuildGetDelete(sb, tabLevel, method, "Get", controllerType);
+						BuildGetDelete(sb, options.TabLevel, method, "Get", controllerType);
 					} else if (data.AttributeType.FullName == HttpDeleteAttribName) {
-						BuildGetDelete(sb, tabLevel, method, "Delete", controllerType);
+						BuildGetDelete(sb, options.TabLevel, method, "Delete", controllerType);
 					} else if (data.AttributeType.FullName == HttpPostAttribName) {
-						BuildPostPut(sb, tabLevel, method, "Post", controllerType);
+						BuildPostPut(sb, options.TabLevel, method, "Post", controllerType);
 					} else if (data.AttributeType.FullName == HttpPutAttribName) {
-						BuildPostPut(sb, tabLevel, method, "Put", controllerType);
+						BuildPostPut(sb, options.TabLevel, method, "Put", controllerType);
 					}
 				}
 			}

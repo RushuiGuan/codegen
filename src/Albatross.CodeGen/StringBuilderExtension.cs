@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Linq;
+using Albatross.CodeGen.Core;
 
 namespace Albatross.CodeGen {
 	public static class StringBuilderExtension {
@@ -76,12 +77,8 @@ namespace Albatross.CodeGen {
 		public static StringBuilder OpenScope(this StringBuilder sb) {
 			return sb.Append(" {").AppendLine();
 		}
-		public static StringBuilder CloseScope(this StringBuilder sb, bool terminate = false) {
-			if (terminate) {
-				return sb.Append("}").Terminate();
-			} else {
-				return sb.AppendLine("}");
-			}
+		public static StringBuilder CloseScope(this StringBuilder sb) {
+			return sb.AppendLine("}");
 		}
 		public static StringBuilder Terminate(this StringBuilder sb) {
 			return sb.AppendLine(";");
@@ -134,17 +131,15 @@ namespace Albatross.CodeGen {
 			sb.AppendLine("{ }");
 			return sb;
 		}
-		public static StringBuilder PublicProperty(this StringBuilder sb, Type propertyType, string name) {
-			return sb.Append("public ").GetTypeName(propertyType).Space().Append(name).OpenScope();
-		}
-
-		public static StringBuilder BindableGetter(this StringBuilder sb, Type type, string name) {
-			sb.Append("get { return GetProperty<").GetTypeName(type).Append(">(()=>").Append(name).Append("); ").CloseScope();
+		public static StringBuilder PublicGetSet (this StringBuilder sb, IRenderDotNetType renderDotNetType, Type propertyType, string name) {
+			sb.Public();
+			renderDotNetType.Render(sb, propertyType, false).Space().Append(name).AppendLine(" { get; set; }");
 			return sb;
 		}
 
-		public static StringBuilder BindableSetter(this StringBuilder sb, Type type, string name) {
-			sb.Append("set { SetProperty<").GetTypeName(type).Append(">(()=>").Append(name).Append(", value); ").CloseScope();
+		public static StringBuilder PublicProperty(this StringBuilder sb, IRenderDotNetType renderDotNetType, Type propertyType, string name) {
+			sb.Public();
+			renderDotNetType.Render(sb, propertyType, false).Space().Append(name).OpenScope();
 			return sb;
 		}
 

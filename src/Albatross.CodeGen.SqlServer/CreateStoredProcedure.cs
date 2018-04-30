@@ -13,11 +13,11 @@ namespace Albatross.CodeGen.SqlServer {
 	/// </summary>
 	[CodeGenerator("create stored procedure", target: GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Create a SQL server stored procedure", SourceType = typeof(object))]
 	public class CreateStoredProcedure : ICodeGenerator<object, SqlCodeGenOption> {
-		IGetVariable getVariable;
-		IBuildVariable buildVariable;
-		IBuildParameter buildParameter;
+		IGetSqlVariable getVariable;
+		IBuildSqlVariable buildVariable;
+		IBuildSqlParameter buildParameter;
 
-		public CreateStoredProcedure(IGetVariable getVariable, IBuildVariable buildVariable, IBuildParameter buildParameter) {
+		public CreateStoredProcedure(IGetSqlVariable getVariable, IBuildSqlVariable buildVariable, IBuildSqlParameter buildParameter) {
 			this.getVariable = getVariable;
 			this.buildVariable = buildVariable;
 			this.buildParameter = buildParameter;

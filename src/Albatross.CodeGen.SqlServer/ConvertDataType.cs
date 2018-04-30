@@ -6,7 +6,7 @@ using System.Data;
 using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
-	public class ConvertDataType : IConvertDataType {
+	public class ConvertDataType : IConvertSqlDataType {
 		public ConvertDataType() {
 			Init();
 		}

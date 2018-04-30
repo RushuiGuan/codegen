@@ -6,24 +6,17 @@ namespace Albatross.CodeGen.Generation {
 	/// Options class for CSharp class generation
 	/// </summary>
 	[OptionType("C# Class Option")]
-	public class ClassOption {
-		public ClassOption() {
-			Inheritance = null;
-			Imports = new string[0];
-			AccessModifier = "public";
-			Namespace = "GeneratedCode";
-			Constructors = new string[0];
-		}
-
-
+	public class CSharpClassOption {
 		public string Name { get; set; }
 		public string Prefix { get; set; }
 		public string Postfix { get; set; }
+		public int TabLevel { get; set; }
+
 
 		public IEnumerable<string> Inheritance { get; set; }
-		public IEnumerable<string> Imports { get; set; }
-		public string AccessModifier { get; set; }
+		public IEnumerable<string> Imports { get; set; } = new string[] { "System" };
+		public string AccessModifier { get; set; } = "public";
 		public string Namespace { get; set; }
-		public IEnumerable<string> Constructors { get; set; }
+		public IEnumerable<string> Constructors { get; set; } = new string[0];
 	}
 }

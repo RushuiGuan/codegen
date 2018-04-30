@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.Database {
 	/// <summary>
 	/// Given a string, create a valid sql variable name
 	/// </summary>
-	public interface ICreateVariableName {
+	public interface ICreateSqlVariableName {
 		string Get(string name);
 	}
 }

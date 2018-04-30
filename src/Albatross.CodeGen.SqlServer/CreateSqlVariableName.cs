@@ -5,7 +5,7 @@ namespace Albatross.CodeGen.SqlServer {
 	/// <summary>
 	/// Create a variable name that is camel cased, with spaces replaced by _ (underline)
 	/// </summary>
-	public class CreateSqlVariableName : ICreateVariableName {
+	public class CreateSqlVariableName : ICreateSqlVariableName {
 		enum LetterCasing {
 			None,
 			Lower,

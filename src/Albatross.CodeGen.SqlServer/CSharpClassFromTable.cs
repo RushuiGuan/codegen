@@ -10,23 +10,23 @@ using System.Text;
 namespace Albatross.CodeGen.SqlServer
 {
 	[CodeGenerator("table_to_class", GeneratorTarget.CSharp, Category = GeneratorCategory.SQLServer, Description = "Generate a C# class from a sql server table")]
-	public class CSharpClassFromTable : ClassGenerator<Table> {
+	public class CSharpClassFromTable : CSharpClassGenerator<Table> {
 		IGetTable getTable;
-		IConvertDataType getCSharpType;
+		IConvertSqlDataType getCSharpType;
 
-		public override string GetClassName(Table t, ClassOption option) {
+		public override string GetClassName(Table t, CSharpClassOption option) {
 			return t.Name.Proper();
 		}
 
-		public CSharpClassFromTable(IGetTable getTable, IConvertDataType getCSharpType) {
+		public CSharpClassFromTable(IGetTable getTable, IConvertSqlDataType getCSharpType) {
 			this.getTable = getTable;
 			this.getCSharpType = getCSharpType;
 		}
 
-		public override void RenderBody(StringBuilder sb, int tabLevel, Table t, ClassOption options) {
+		public override void RenderBody(StringBuilder sb, Table t, CSharpClassOption options) {
 			t = getTable.Get(t.Database, t.Schema, t.Name);
 			foreach (var item in t.Columns) {
-				sb.Tab(tabLevel).Append("public ").Append(t.Name.Proper());
+				sb.Tab(options.TabLevel).Append("public ").Append(t.Name.Proper());
 			}
 		}
 	}

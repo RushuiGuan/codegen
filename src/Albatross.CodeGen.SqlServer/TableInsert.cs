@@ -10,11 +10,11 @@ namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table_insert", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Insert statement that excludes the computed columns")]
 	public class TableInsert : TableQueryGenerator {
 		IGetTable getTable;
-		ICreateVariableName getVariableName;
+		ICreateSqlVariableName getVariableName;
 		IBuildSqlType buildSqlType;
-		IStoreVariable createVariable;
+		IStoreSqlVariable createVariable;
 
-		public TableInsert(IGetTable getTable, ICreateVariableName getVariableName, IBuildSqlType buildSqlType, IStoreVariable createVariable) {
+		public TableInsert(IGetTable getTable, ICreateSqlVariableName getVariableName, IBuildSqlType buildSqlType, IStoreSqlVariable createVariable) {
 			this.getTable = getTable;
 			this.getVariableName = getVariableName;
 			this.buildSqlType = buildSqlType;
