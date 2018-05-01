@@ -2,8 +2,8 @@
 using System.Management.Automation;
 
 namespace Albatross.CodeGen.PowerShell {
-	[Cmdlet(VerbsCommon.New, "ClassOption")]
-	public class NewClassOption : PSCmdlet {
+	[Cmdlet(VerbsCommon.New, "CSharpClassOption")]
+	public class NewCSharpClassOption : PSCmdlet {
 
 
 		[Parameter]
@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.PowerShell {
 		public string Postfix { get; set; }
 
 		[Parameter]
-		[Alias("b")]
+		[Alias("h")]
 		public string[] Inheritance { get; set; }
 
 		[Parameter]
@@ -42,14 +42,12 @@ namespace Albatross.CodeGen.PowerShell {
 				Name = Name,
 				Prefix = Prefix,
 				Postfix = Postfix,
+				Inheritance = Inheritance ?? new string[0],
+				Namespace = Namespace,
+				Constructors = Constructors ?? new string[0],
+				Imports = Imports??new string[0],
+				AccessModifier = AccessModifier ?? "public",
 			};
-
-			meta.Inheritance = Inheritance;
-			if (!string.IsNullOrEmpty(AccessModifier)) { meta.AccessModifier = AccessModifier; }
-			if (!string.IsNullOrEmpty(Namespace)) { meta.Namespace = Namespace; }
-			if (Constructors != null) { meta.Constructors = Constructors; }
-			if(Imports != null) { meta.Imports = Imports; }
-			
 			WriteObject(meta);
 		}
 	}
