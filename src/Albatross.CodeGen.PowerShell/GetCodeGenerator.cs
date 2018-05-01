@@ -1,24 +1,29 @@
-﻿using Albatross.CodeGen.Core;
+﻿using SimpleInjector;
+using Albatross.CodeGen.Core;
+using Albatross.PowerShell;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsCommon.Get, "CodeGenerator")]
-	public class GetCodeGenerator: BaseCmdlet<ICodeGeneratorFactory> {
+	public class GetCodeGenerator: PSCmdlet{
 		[Parameter(Position = 0, ValueFromPipeline = true)]
 		public string Name { get; set; }
 
+		protected override void BeginProcessing() {
+			base.BeginProcessing();
+			new AssemblyRediret().Register<Container>();
+		}
+
 		protected override void ProcessRecord() {
+			ICodeGeneratorFactory factory = Ioc.Get<ICodeGeneratorFactory>();
+
 			if (string.IsNullOrEmpty(Name)) {
-				foreach (var item in Handle.Registrations) {
+				foreach (var item in factory.Registrations) {
 					WriteObject(item);
 				}
 			} else {
-				foreach (var item in Handle.Registrations) {
+				foreach (var item in factory.Registrations) {
 					if (string.Equals(item.Name, Name, StringComparison.InvariantCultureIgnoreCase)) {
 						WriteObject(item);
 					}

@@ -7,10 +7,12 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Albatross.CodeGen.Core;
+using Albatross.PowerShell;
+using SimpleInjector;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsLifecycle.Invoke, "Composite")]
-	public class InvokeComposite: BaseCmdlet<IRunCodeGenerator> {
+	public class InvokeComposite: PSCmdlet{
 		[Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true)]
 		[Alias("b")]
 		public Branch Branch { get; set; }
@@ -28,8 +30,14 @@ namespace Albatross.CodeGen.PowerShell {
 		[Parameter]
 		public SwitchParameter Force { get; set; }
 
+		protected override void BeginProcessing() {
+			base.BeginProcessing();
+			new AssemblyRediret().Register<Container>();
+		}
 
 		protected override void ProcessRecord() {
+			IRunCodeGenerator codeGen = Ioc.Get<IRunCodeGenerator>();
+
 			StringBuilder sb = new StringBuilder();
 			if(Source is PSObject) { Source = ((PSObject)Source).BaseObject; }
 			if (Option is PSObject) { Option = ((PSObject)Option).BaseObject; }
@@ -37,7 +45,7 @@ namespace Albatross.CodeGen.PowerShell {
 				Branch = Branch,
 			};
 			var meta = c.GetMeta();
-			Handle.Run(meta, sb, Source, Option);
+			codeGen.Run(meta, sb, Source, Option);
 			WriteObject(sb.ToString());
 			if (Output != null) {
 				if (!Output.Exists || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning")) {

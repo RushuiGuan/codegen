@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
-    <AssemblyVersion>1.1.9.11</AssemblyVersion>
-    <FileVersion>1.1.9.11</FileVersion>
+    <AssemblyVersion>1.1.9.12</AssemblyVersion>
+    <FileVersion>1.1.9.12</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Albatross.Database.SqlServer.SimpleInjector" Version="1.0.4.2" />
@@ -13,4 +13,5 @@
     <ProjectReference Include="..\Albatross.CodeGen.Ioc\Albatross.CodeGen.SimpleInjector.csproj" />
     <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
   </ItemGroup>
+  <Import Project="..\..\..\powershell\Albatross.PowerShell\Albatross.PowerShell.projitems" Label="Shared" />
 </Project>

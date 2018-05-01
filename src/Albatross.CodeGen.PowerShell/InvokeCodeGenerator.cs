@@ -7,10 +7,12 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Albatross.CodeGen.Core;
+using Albatross.PowerShell;
+using SimpleInjector;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsLifecycle.Invoke, "CodeGenerator")]
-	public class InvokeCodeGenerator : BaseCmdlet<ICodeGeneratorFactory> {
+	public class InvokeCodeGenerator : PSCmdlet {
 		[Parameter(Position = 0)]
 		[Alias("n")]
 		public string Name { get; set; }
@@ -30,16 +32,22 @@ namespace Albatross.CodeGen.PowerShell {
 		[Parameter]
 		public SwitchParameter Force { get; set; }
 
+		protected override void BeginProcessing() {
+			base.BeginProcessing();
+			new AssemblyRediret().Register<Container>();
+		}
+
 		protected override void ProcessRecord() {
+			ICodeGeneratorFactory factory = Ioc.Get<ICodeGeneratorFactory>();
 			if (Source is PSObject) { Source = ((PSObject)Source).BaseObject; }
 			if (Option is PSObject) { Option = ((PSObject)Option).BaseObject; }
 			Type sourceType = Source.GetType();
 
-			IRunCodeGenerator runHandle = base.Factory.Create<IRunCodeGenerator>();
-			var meta = Handle.Get(sourceType, Name);
+			IRunCodeGenerator codeGen = Ioc.Get<IRunCodeGenerator>();
+			var meta = factory.Get(sourceType, Name);
 			StringBuilder sb = new StringBuilder();
 
-			runHandle.Run(meta, sb, Source, Option);
+			codeGen.Run(meta, sb, Source, Option);
 			WriteObject(sb.ToString());
 			if (Output != null) {
 				if (!Output.Exists || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning")) {
