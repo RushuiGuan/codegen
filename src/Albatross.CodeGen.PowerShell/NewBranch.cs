@@ -13,9 +13,7 @@ namespace Albatross.CodeGen.PowerShell
     public class NewBranch : Cmdlet   {
 
 		[Parameter(Mandatory =true, Position =0, ValueFromPipeline =true)]
-		[String2Leaf]
 		public INode[] Nodes{ get; set; }
-		
 
 		protected override void ProcessRecord() {
 			WriteObject(new Branch(Nodes));
