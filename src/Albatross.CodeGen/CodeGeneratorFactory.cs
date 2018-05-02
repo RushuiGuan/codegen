@@ -25,29 +25,32 @@ namespace Albatross.CodeGen {
 
 		public void Register(CodeGenerator gen) {
 			lock (_sync) {
-				_registration[gen.Key] = gen;
+				_registration[gen.Name] = gen;
 			}
 		}
 
-		public ICodeGenerator<T, O> Create<T, O>(string name) {
+		public ICodeGenerator<T, O> Create<T, O>(string name) where T:class where O:class {
 			CodeGenerator codeGenerator = Get(typeof(T), name);
 			var handle = (ICodeGenerator<T, O>)factory.Create(codeGenerator.GeneratorType);
 			handle.Configure(codeGenerator.Data);
 			return handle;
 		}
 
-		public object Create(Type srcType, string name) {
-			CodeGenerator codeGenerator = Get(srcType, name);
+		public object Create(Type type, string name) {
+			CodeGenerator codeGenerator = Get(type, name);
 			var handle = factory.Create(codeGenerator.GeneratorType);
-			handle.GetType().GetMethod(nameof(ICodeGenerator<int, int>.Configure)).Invoke(handle, new[] { codeGenerator.Data });
+			handle.GetType().GetMethod(nameof(ICodeGenerator<object, object>.Configure)).Invoke(handle, new[] { codeGenerator.Data });
 			return handle;
 		}
 
-		public CodeGenerator Get(Type srcType, string name) {
-			if (_registration.TryGetValue(srcType.GetGeneratorKey(name), out CodeGenerator codeGenerator) || _registration.TryGetValue(typeof(object).GetGeneratorKey(name), out codeGenerator)) {
+		public CodeGenerator Get(Type type, string name) {
+			if (_registration.TryGetValue(name, out CodeGenerator codeGenerator)) {
+				if (!codeGenerator.SourceType.IsAssignableFrom(type)) {
+					throw new InvalidSourceTypeException(codeGenerator.SourceType, type, codeGenerator.Name);
+				}
 				return codeGenerator;
 			} else {
-				throw new CodeGenNotRegisteredException(srcType, name);
+				throw new CodeGenNotRegisteredException(name);
 			}
 		}
 	}

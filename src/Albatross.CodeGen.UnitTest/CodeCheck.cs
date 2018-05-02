@@ -29,5 +29,12 @@ namespace Albatross.CodeGen.UnitTest {
 			Type type = typeof(ICodeGenerator<,>);
 			type.ToString();
 		}
+
+		[Test]
+		public void CovarianceTest() {
+			ICodeGenerator<object, object> a = null;
+			ICodeGenerator<string, string> b = a;
+			Assert.True(typeof(object).IsAssignableFrom(typeof(string)));
+		}
 	}
 }

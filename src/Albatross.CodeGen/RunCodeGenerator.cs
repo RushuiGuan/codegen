@@ -29,9 +29,16 @@ namespace Albatross.CodeGen
 			MethodInfo method = meta.GeneratorType.GetMethod(nameof(ICodeGenerator<object, object>.Configure));
 			method.Invoke(gen, new[] { meta.Data });
 			method = meta.GeneratorType.GetMethod(nameof(ICodeGenerator<object, object>.Build));
-			var used = method.Invoke(gen, new[] { sb, source, option }) as IEnumerable<object>;
-			if (used == null) { used = new object[0]; }
-			return used;
+			try {
+				var used = method.Invoke(gen, new[] { sb, source, option }) as IEnumerable<object>;
+				if (used == null) { used = new object[0]; }
+				return used;
+			} catch (Exception err) {
+				while (err.InnerException != null) {
+					err = err.InnerException;
+				}
+				throw err;
+			}
 		}
 	}
 }

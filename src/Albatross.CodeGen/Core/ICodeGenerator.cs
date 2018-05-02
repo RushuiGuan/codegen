@@ -10,7 +10,7 @@ namespace Albatross.CodeGen.Core {
 	/// </summary>
 	/// <typeparam name="T">Source type</typeparam>
 	/// <typeparam name="O">Option type</typeparam>
-	public interface ICodeGenerator<in T, in O> {
+	public interface ICodeGenerator<in T, in O> where T:class where O:class {
 
 		/// <summary>
 		/// Normal a generator is run against a source and doesn't need to contain states.  But there are exceptions such as <see cref="Albatross.CodeGen.CompositeCodeGenerator{T, O}"/> or <see cref="Albatross.CodeGen.StaticCodeGenerator"/>.  These

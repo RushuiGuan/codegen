@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.Core {
 	public interface ICodeGeneratorFactory {
-		CodeGenerator Get(Type sourceType, string name);
-		ICodeGenerator<T, O> Create<T, O>(string name);
-		object Create(Type srcType, string name);
+		CodeGenerator Get(Type type, string name);
+		ICodeGenerator<T, O> Create<T, O>(string name) where T:class where O:class;
+		object Create(Type type, string name);
 		IEnumerable<CodeGenerator> Registrations { get; }
 	}
 }

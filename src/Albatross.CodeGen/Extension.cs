@@ -28,10 +28,6 @@ namespace Albatross.CodeGen {
 			}
 		}
 
-		public static string GetGeneratorKey(this Type type, string name) {
-				return $"{type.FullName}.{name}";
-		}
-
 		#region registration helpers
 		public static IConfigurableCodeGenFactory RegisterStatic(this IConfigurableCodeGenFactory factory, string name, string target, string content, string category, string description) {
 			factory.Register(new CodeGenerator {

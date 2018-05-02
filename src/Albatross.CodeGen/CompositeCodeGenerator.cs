@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace Albatross.CodeGen {
-	public class CompositeCodeGenerator<T, O> : ICodeGenerator<T, O> {
+	public class CompositeCodeGenerator<T, O> : ICodeGenerator<T, O> where T : class where O : class {
 		ICodeGeneratorFactory factory;
 		Branch branch;
 		public event Func<StringBuilder, IEnumerable<object>> Yield { add { } remove { } }
@@ -20,13 +20,9 @@ namespace Albatross.CodeGen {
 
 			foreach (var item in branch) {
 				if (item is Leaf leaf) {
-					var gen = factory.Create<T, O>(leaf.Name);
-					T leafSource;
-					if (leaf.Source is T) {
-						leafSource = (T)leaf.Source;
-					} else {
-						leafSource = source;
-					}
+					object leafSource = leaf.Source ?? source;
+					var gen = factory.Create(leafSource.GetType(), leaf.Name);
+
 					gen.Yield += (scoped_sb) => OnYield(queue, scoped_sb, leafSource, option);
 					queue.Enqueue(gen);
 				} else {
