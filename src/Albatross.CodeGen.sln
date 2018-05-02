@@ -15,12 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.SimpleInj
 EndProject
 Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Scripts", "Scripts\Scripts.pssproj", "{6CAFC0C6-A428-4D30-A9F9-700E829FEA51}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Albatross.PowerShell", "..\..\powershell\Albatross.PowerShell\Albatross.PowerShell.shproj", "{4A35C77D-A9B7-4E61-9715-26F8B932B77D}"
-EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\..\powershell\Albatross.PowerShell\Albatross.PowerShell.projitems*{4a35c77d-a9b7-4e61-9715-26f8b932b77d}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -81,7 +76,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8E6AD19A-703E-4DCE-92B7-50652D34EE15}
 		SolutionGToold = {DC66FBE3-16F6-4FE3-BA4F-D3C380D2AB75}
+		SolutionGuid = {8E6AD19A-703E-4DCE-92B7-50652D34EE15}
 	EndGlobalSection
 EndGlobal

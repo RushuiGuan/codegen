@@ -28,7 +28,7 @@
   <ItemGroup />
   <ItemGroup>
     <Compile Include="Setup.ps1" />
-    <Compile Include="Sql Table Insert Script.ps1" />
+    <Compile Include="procedure.ps1" />
     <Compile Include="sys types to POCO.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

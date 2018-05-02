@@ -1,13 +1,8 @@
 ﻿using System.IO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using Albatross.CodeGen.Core;
-using Albatross.PowerShell;
 using SimpleInjector;
 
 namespace Albatross.CodeGen.PowerShell {

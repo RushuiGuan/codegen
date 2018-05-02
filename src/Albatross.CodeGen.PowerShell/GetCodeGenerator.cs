@@ -1,6 +1,5 @@
 ﻿using SimpleInjector;
 using Albatross.CodeGen.Core;
-using Albatross.PowerShell;
 using System;
 using System.Management.Automation;
 
