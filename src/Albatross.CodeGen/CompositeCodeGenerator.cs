@@ -19,9 +19,15 @@ namespace Albatross.CodeGen {
 			List<object> list = new List<object>();
 
 			foreach (var item in branch) {
-				if (item.IsLeaf) {
-					var gen = factory.Create<T, O>(item.Name);
-					gen.Yield += (scoped_sb) => OnYield(queue, scoped_sb, source, option);
+				if (item is Leaf leaf) {
+					var gen = factory.Create<T, O>(leaf.Name);
+					T leafSource;
+					if (leaf.Source is T) {
+						leafSource = (T)leaf.Source;
+					} else {
+						leafSource = source;
+					}
+					gen.Yield += (scoped_sb) => OnYield(queue, scoped_sb, leafSource, option);
 					queue.Enqueue(gen);
 				} else {
 					var gen = new CompositeCodeGenerator<T, O>(factory);

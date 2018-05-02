@@ -18,8 +18,6 @@ namespace Albatross.CodeGen.Core {
 		public IEnumerable<INode> Nodes { get; private set; }
 
 
-		public bool IsLeaf => false;
-
 		public string Name => string.Empty;
 
 		public IEnumerator<INode> GetEnumerator() {

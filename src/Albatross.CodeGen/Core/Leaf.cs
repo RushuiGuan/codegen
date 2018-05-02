@@ -8,6 +8,7 @@ namespace Albatross.CodeGen.Core {
 			Name = name;
 		}
 		public string Name { get; private set; }
-		public bool IsLeaf => true;
+
+		public object Source { get; set; }
 	}
 }
