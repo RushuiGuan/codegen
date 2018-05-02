@@ -12,7 +12,7 @@ namespace Albatross.CodeGen.PowerShell {
 		[Alias("n")]
 		public string Name { get; set; }
 
-		[Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true)]
+		[Parameter(Position = 1, Mandatory = false, ValueFromPipeline = true)]
 		[Alias("s")]
 		public object Source { get; set; }
 

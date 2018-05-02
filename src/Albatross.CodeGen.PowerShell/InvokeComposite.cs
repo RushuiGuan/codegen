@@ -11,7 +11,7 @@ namespace Albatross.CodeGen.PowerShell {
 		[Alias("b")]
 		public Branch Branch { get; set; }
 
-		[Parameter(Position = 1, Mandatory = true)]
+		[Parameter(Position = 1, Mandatory = false)]
 		public object Source{ get; set; }
 
 		[Parameter(Position = 2, Mandatory = true)]
