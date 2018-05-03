@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.Core {
-    public interface INode {
+	public interface INode {
 		string Name { get; }
-    }
+
+		object Source { get; }
+		object Option { get; }
+		ICodeGenerator CodeGenerator { get; }
+	}
 }

@@ -48,9 +48,14 @@ namespace Albatross.CodeGen {
 			factory.RegisterStatic("Tab", GeneratorTarget.Any, "\r\n", "Tab", null);
 		}
 
+		/// <summary>
+		/// if the source type is System.Object, MultiSourceCompositeCodeGenerator will be used.  Otherwise use MonoSourceCompositeCodeGenerator
+		/// </summary>
+		/// <param name="item"></param>
+		/// <returns></returns>
 		public static CodeGenerator GetMeta(this Composite item) {
 			Type type;
-			if (item.SourceType == typeof(object) && item.OptionType == typeof(object)) {
+			if (item.SourceType == typeof(object)) {
 				type = typeof(MultiSourceCompositeCodeGenerator);
 			} else {
 				type = typeof(MonoSourceCompositeCodeGenerator<,>);

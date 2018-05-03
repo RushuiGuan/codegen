@@ -17,15 +17,16 @@ namespace Albatross.CodeGen.Core {
 		/// </summary>
 		public IEnumerable<INode> Nodes { get; private set; }
 
-
+		#region INode
 		public string Name => string.Empty;
+		public object Source { get; set; }
+		public object Option { get; set; }
+		public ICodeGenerator CodeGenerator { get; set; }
+		#endregion
 
-		public IEnumerator<INode> GetEnumerator() {
-			return Nodes.GetEnumerator();
-		}
-
-		IEnumerator IEnumerable.GetEnumerator() {
-			return Nodes.GetEnumerator();
-		}
+		#region IEnumerable
+		public IEnumerator<INode> GetEnumerator() { return Nodes.GetEnumerator(); }
+		IEnumerator IEnumerable.GetEnumerator() { return Nodes.GetEnumerator(); }
+		#endregion
 	}
 }

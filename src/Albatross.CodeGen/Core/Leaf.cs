@@ -11,5 +11,6 @@ namespace Albatross.CodeGen.Core {
 
 		public object Source { get; set; }
 		public object Option { get; set; }
+		public ICodeGenerator CodeGenerator { get; set; }
 	}
 }

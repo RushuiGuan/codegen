@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.PowerShell.Transformation;
 using System.Management.Automation;
 
 namespace Albatross.CodeGen.PowerShell {
@@ -9,9 +10,11 @@ namespace Albatross.CodeGen.PowerShell {
 		public string Name { get; set; }
 
 		[Parameter(Mandatory = false, Position = 1, ValueFromPipeline = true)]
+		[PSObject2ObjectAttribute]
 		public object Source { get; set; }
 
 		[Parameter(Mandatory = false, Position = 2)]
+		[PSObject2ObjectAttribute]
 		public object Option { get; set; }
 
 		protected override void ProcessRecord() {
