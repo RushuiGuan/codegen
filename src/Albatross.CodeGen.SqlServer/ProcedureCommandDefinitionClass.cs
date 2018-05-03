@@ -13,15 +13,14 @@ namespace Albatross.CodeGen.SqlServer {
 	/// Create a The following class
 	/// <code>
 	/// public class StoredProcedureName{
-	///		CommandDefinition definition;
 	///		public StoredProcedureName(type1 param1, type2 param2, type3 param3, IDbTransaction transaction = null){
 	///			DynamicParameters dynamicParameters = new DynamicParameters();
 	///			dynamicParameters.Add("param1", @param1, dbType:DbType.String);	
 	///			dynamicParameters.Add("param2", @param2, dbType:DbType.String);	
 	///			dynamicParameters.Add("param3", @param3, dbType:DbType.String);	
-	///			definition = new CommandDefinition("spname", dynamicParameters, commandType:CommandType.StoredProcedure, transaction:transaction));
+	///			Definition = new CommandDefinition("spname", dynamicParameters, commandType:CommandType.StoredProcedure, transaction:transaction));
 	///		}
-	///		public CommandDefinition Get() => definition;
+	///		public CommandDefinition Definition { get; private set;}
 	///	}
 	/// </code>
 	/// </summary>
@@ -46,20 +45,19 @@ namespace Albatross.CodeGen.SqlServer {
 				Type type = convertDataType.GetDotNetType(item.Type);
 				renderDotNetType.Render(sb, type, true).Space().Append(item.Name).Comma().Space();
 			}
-			sb.Append("IDbTransaction transaction = null").CloseParenthesis().OpenScope();
+			sb.Append("System.Data.IDbTransaction transaction = null").CloseParenthesis().OpenScope();
 			options.TabLevel++;
 			sb.Tab(options.TabLevel).AppendLine("DynamicParameters dynamicParameters = new DynamicParameters();");
 			foreach (var item in t.Parameters) {
 				sb.Tab(options.TabLevel).Append("dynamicParameters.Add").OpenParenthesis().Literal(item.Name).Space().Comma().Space().Append(item.Name).Comma().Space().Append("dbType:System.Data.DbType.").Append(convertDataType.GetDbType(item.Type)).CloseParenthesis().Terminate();
 			}
-			sb.Tab(options.TabLevel).Append($"definition = new CommandDefinition(\"[{t.Schema}].[{t.Name}]\", dynamicParameters, commandType:CommandType.StoredProcedure, transaction:transaction);").AppendLine();
+			sb.Tab(options.TabLevel).Append($"Definition = new CommandDefinition(\"[{t.Schema}].[{t.Name}]\", dynamicParameters, commandType:CommandType.StoredProcedure, transaction:transaction);").AppendLine();
 			options.TabLevel--;
 			sb.Tab(options.TabLevel).CloseScope();
 		}
 
 		public override void RenderBody(StringBuilder sb, Procedure t, CSharpClassOption options) {
-			sb.Tab(options.TabLevel).AppendLine("CommandDefinition definition;");
-			sb.Tab(options.TabLevel).AppendLine("public CommandDefinition Get() => definition;");
+			sb.Tab(options.TabLevel).AppendLine("public CommandDefinition Definition { get; private set; }");
 		}
 	}
 }

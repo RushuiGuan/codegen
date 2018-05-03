@@ -17,7 +17,7 @@
       <dependency id="Albatross.CodeGen" version="1.1.2.11" />
       <dependency id="Albatross.CodeGen.Database" version="1.1.2.3" />
       <dependency id="Albatross.CodeGen.CSharp" version="1.1.6.4" />
-      <dependency id="Albatross.CodeGen.SqlServer" version="1.1.2.10" />
+      <dependency id="Albatross.CodeGen.SqlServer" version="1.1.2.11" />
     </dependencies>
   </metadata>
   <files>
