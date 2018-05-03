@@ -66,6 +66,10 @@ namespace Albatross.CodeGen.SqlServer {
 			return new[] { this }.Union(items);
 		}
 
+		public IEnumerable<object> Build(StringBuilder sb, object source, object option) {
+			return this.ValidateNBuild(sb, source, option);
+		}
+
 		public void Configure(object data) {
 		}
 	}

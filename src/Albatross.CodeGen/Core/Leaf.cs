@@ -10,5 +10,6 @@ namespace Albatross.CodeGen.Core {
 		public string Name { get; private set; }
 
 		public object Source { get; set; }
+		public object Option { get; set; }
 	}
 }

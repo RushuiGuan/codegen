@@ -10,14 +10,8 @@ namespace Albatross.CodeGen.Core {
 	/// </summary>
 	/// <typeparam name="T">Source type</typeparam>
 	/// <typeparam name="O">Option type</typeparam>
-	public interface ICodeGenerator<in T, in O> where T:class where O:class {
+	public interface ICodeGenerator<in T, in O> : ICodeGenerator where T:class where O:class {
 
-		/// <summary>
-		/// Normal a generator is run against a source and doesn't need to contain states.  But there are exceptions such as <see cref="Albatross.CodeGen.CompositeCodeGenerator{T, O}"/> or <see cref="Albatross.CodeGen.StaticCodeGenerator"/>.  These
-		/// generators need to be configured because their main function is not to generate code using the source but to generate code based on a data configuration.
-		/// </summary>
-		/// <param name="data"></param>
-		void Configure(object data);
 		/// <summary>
 		/// The main code generation method.
 		/// </summary>
@@ -26,6 +20,18 @@ namespace Albatross.CodeGen.Core {
 		/// <param name="option"></param>
 		/// <returns></returns>
 		IEnumerable<object> Build(StringBuilder sb, T source, O option);
+	}
+
+
+	public interface ICodeGenerator {
+		/// <summary>
+		/// Normal a generator is run against a source and doesn't need to contain states.  But there are exceptions such as <see cref="Albatross.CodeGen.MultiSourceCompositeCodeGenerator{T, O}"/> or <see cref="Albatross.CodeGen.StaticCodeGenerator"/>.  These
+		/// generators need to be configured because their main function is not to generate code using the source but to generate code based on a data configuration.
+		/// </summary>
+		/// <param name="data"></param>
+		void Configure(object data);
 		event Func<StringBuilder, IEnumerable<object>> Yield;
+
+		IEnumerable<object> Build(StringBuilder sb, object source, object option);
 	}
 }

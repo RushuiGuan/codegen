@@ -34,6 +34,7 @@ public class Test {
 							"(int a) { this.a = a; }"
 						},
 						Imports = new string[]{
+							"System",
 							"Dapper"
 						},
 					}){ ExpectedResult = @"using System;

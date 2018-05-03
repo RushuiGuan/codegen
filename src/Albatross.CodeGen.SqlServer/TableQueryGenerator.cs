@@ -17,6 +17,10 @@ namespace Albatross.CodeGen.SqlServer {
 		public event Func<StringBuilder, IEnumerable<object>> Yield { add { } remove { } }
 		public abstract IEnumerable<object> Build(StringBuilder sb, Table table, SqlCodeGenOption option);
 
+		public IEnumerable<object> Build(StringBuilder sb, object source, object option) {
+			return this.ValidateNBuild(sb, source, option);
+		}
+
 		public void Configure(object data) { }
 	}
 }

@@ -18,10 +18,9 @@ namespace Albatross.CodeGen.UnitTest
 			IGetProcedure getProcedure = Ioc.Container.GetInstance<IGetProcedure>();
 
 			return new TestCaseData[] {
-				new TestCaseData(getProcedure.Get(new Albatross.Database.Database(), "ac", "getcompany"), new CSharpClassOption{ Namespace = "test", Imports = new string[]{ "Dapper" } }){
+				new TestCaseData(getProcedure.Get(new Albatross.Database.Database(), "ac", "getcompany"), new CSharpClassOption{ Namespace = "test", Imports = new string[]{ "System", "Dapper" } }){
 					ExpectedResult = @"using System;
 using Dapper;
-
 namespace test {
 	public class GetCompany {
 		public GetCompany(string user, IDbTransaction transaction = null) {

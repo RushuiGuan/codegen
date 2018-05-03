@@ -1,16 +1,16 @@
 ﻿using Albatross.CodeGen.Core;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace Albatross.CodeGen {
-	public class CompositeCodeGenerator<T, O> : ICodeGenerator<T, O> where T : class where O : class {
+namespace Albatross.CodeGen
+{
+	public class MonoSourceCompositeCodeGenerator<T, O> : ICodeGenerator<T, O>  where T:class where O:class{
 		ICodeGeneratorFactory factory;
 		Branch branch;
 		public event Func<StringBuilder, IEnumerable<object>> Yield { add { } remove { } }
 
-		public CompositeCodeGenerator(ICodeGeneratorFactory factory) {
+		public MonoSourceCompositeCodeGenerator(ICodeGeneratorFactory factory) {
 			this.factory = factory;
 		}
 
@@ -20,13 +20,11 @@ namespace Albatross.CodeGen {
 
 			foreach (var item in branch) {
 				if (item is Leaf leaf) {
-					object leafSource = leaf.Source ?? source;
-					var gen = factory.Create(leafSource.GetType(), leaf.Name);
-
-					gen.Yield += (scoped_sb) => OnYield(queue, scoped_sb, leafSource, option);
+					var gen = factory.Create<T, O>(item.Name);
+					gen.Yield += (scoped_sb) => OnYield(queue, scoped_sb, source, option);
 					queue.Enqueue(gen);
 				} else {
-					var gen = new CompositeCodeGenerator<T, O>(factory);
+					var gen = new MonoSourceCompositeCodeGenerator<T, O>(factory);
 					gen.Configure(item);
 					queue.Enqueue(gen);
 				}
@@ -52,6 +50,10 @@ namespace Albatross.CodeGen {
 			} else {
 				return new object[0];
 			}
+		}
+
+		public IEnumerable<object> Build(StringBuilder sb, object source, object option) {
+			return this.ValidateNBuild(sb, source, option);
 		}
 	}
 }

@@ -39,7 +39,7 @@ namespace Albatross.CodeGen.PowerShell {
 			Type sourceType = Source.GetType();
 
 			IRunCodeGenerator codeGen = Ioc.Get<IRunCodeGenerator>();
-			var meta = factory.Get(sourceType, Name);
+			var meta = factory.Get(Name);
 			StringBuilder sb = new StringBuilder();
 
 			codeGen.Run(meta, sb, Source, Option);

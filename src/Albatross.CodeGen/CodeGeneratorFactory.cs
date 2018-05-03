@@ -30,24 +30,22 @@ namespace Albatross.CodeGen {
 		}
 
 		public ICodeGenerator<T, O> Create<T, O>(string name) where T:class where O:class {
-			CodeGenerator codeGenerator = Get(typeof(T), name);
+			CodeGenerator codeGenerator = Get(name);
+			codeGenerator.Validate(typeof(T), typeof(O));
 			var handle = (ICodeGenerator<T, O>)factory.Create(codeGenerator.GeneratorType);
 			handle.Configure(codeGenerator.Data);
 			return handle;
 		}
 
-		public object Create(Type type, string name) {
-			CodeGenerator codeGenerator = Get(type, name);
-			var handle = factory.Create(codeGenerator.GeneratorType);
-			handle.GetType().GetMethod(nameof(ICodeGenerator<object, object>.Configure)).Invoke(handle, new[] { codeGenerator.Data });
+		public ICodeGenerator Create(string name) {
+			CodeGenerator codeGenerator = Get(name);
+			var handle = (ICodeGenerator)factory.Create(codeGenerator.GeneratorType);
+			handle.Configure(codeGenerator.Data);
 			return handle;
 		}
 
-		public CodeGenerator Get(Type type, string name) {
+		public CodeGenerator Get(string name) {
 			if (_registration.TryGetValue(name, out CodeGenerator codeGenerator)) {
-				if (!codeGenerator.SourceType.IsAssignableFrom(type)) {
-					throw new InvalidSourceTypeException(codeGenerator.SourceType, type, codeGenerator.Name);
-				}
 				return codeGenerator;
 			} else {
 				throw new CodeGenNotRegisteredException(name);

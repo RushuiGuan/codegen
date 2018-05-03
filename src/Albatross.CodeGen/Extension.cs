@@ -49,13 +49,19 @@ namespace Albatross.CodeGen {
 		}
 
 		public static CodeGenerator GetMeta(this Composite item) {
-			Type type = typeof(CompositeCodeGenerator<,>);
+			Type type;
+			if (item.SourceType == typeof(object) && item.OptionType == typeof(object)) {
+				type = typeof(MultiSourceCompositeCodeGenerator);
+			} else {
+				type = typeof(MonoSourceCompositeCodeGenerator<,>);
+				type = type.MakeGenericType(item.SourceType, item.OptionType);
+			}
 			var meta = new CodeGenerator {
 				Name = item.Name,
 				Target = item.Target,
 				Category = item.Category,
 				Description = item.Description,
-				GeneratorType = type.MakeGenericType(item.SourceType, item.OptionType),
+				GeneratorType = type,
 				SourceType = item.SourceType,
 				OptionType = item.OptionType,
 				Data = item.Branch,
@@ -96,5 +102,25 @@ namespace Albatross.CodeGen {
 			}
 		}
 		#endregion
+
+		#region source option type validation
+		public static void Validate(this CodeGenerator codeGenerator, Type sourceType, Type optionType) {
+			if (!codeGenerator.SourceType.IsAssignableFrom(sourceType)) {
+				throw new Faults.InvalidSourceTypeException(codeGenerator.SourceType, sourceType);
+			}
+			if (!codeGenerator.OptionType.IsAssignableFrom(optionType)) {
+				throw new Faults.InvalidOptionTypeException(codeGenerator.SourceType, optionType);
+			}
+		}
+		public static IEnumerable<object> ValidateNBuild<T, O>(this ICodeGenerator<T, O> codeGenerator, StringBuilder sb, object source, object option) where T : class where O : class {
+			if (source != null && !typeof(T).IsAssignableFrom(source.GetType())) {
+				throw new Faults.InvalidSourceTypeException(typeof(T), source.GetType());
+			}
+			if (option != null && !typeof(O).IsAssignableFrom(option.GetType())) {
+				throw new Faults.InvalidOptionTypeException(typeof(O), option.GetType());
+			}
+			return codeGenerator.Build(sb, (T)source, (O)option);
+			#endregion
+		}
 	}
 }

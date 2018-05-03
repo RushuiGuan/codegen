@@ -5,7 +5,7 @@ using System.Text;
 namespace Albatross.CodeGen.Faults {
     public class InvalidSourceTypeException : Exception    {
 		public InvalidSourceTypeException() { }
-		public InvalidSourceTypeException(Type registered, Type requested, string name) : base($"Code Generator \"{name}\" has a registered source type of {registered.FullName} but received {requested.FullName} instead") {
+		public InvalidSourceTypeException(Type registered, Type requested) : base($"Invalid code generator source type; registered:{registered.FullName}; received:{requested.FullName}") {
 		}
     }
 }

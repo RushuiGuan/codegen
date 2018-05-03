@@ -11,8 +11,11 @@ namespace Albatross.CodeGen.PowerShell {
 		[Parameter(Mandatory = false, Position = 1, ValueFromPipeline = true)]
 		public object Source { get; set; }
 
+		[Parameter(Mandatory = false, Position = 2)]
+		public object Option { get; set; }
+
 		protected override void ProcessRecord() {
-			WriteObject(new Leaf(Name) { Source = Source, });
+			WriteObject(new Leaf(Name) { Source = Source, Option = Option,});
 		}
 	}
 }
