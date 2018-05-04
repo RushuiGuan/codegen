@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.PowerShell {
 			IConfigurableCodeGenFactory factory = Ioc.Get<IConfigurableCodeGenFactory>();
 
 			typeof(ICodeGeneratorFactory).Assembly.Register(factory);
-			typeof(BuildSqlType).Assembly.Register(factory);
+			typeof(RenderSqlType).Assembly.Register(factory);
 			factory.RegisterStatic();
 
 			if (File.Exists(Location?.FullName)) {

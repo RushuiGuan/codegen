@@ -1,0 +1,15 @@
+﻿using Albatross.Database;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Albatross.CodeGen.Database
+{
+	/// <summary>
+	/// This interface will generate the sql query for a <see cref="Albatross.Database.Variable"/> object.
+	/// </summary>
+    public interface IRenderSqlVariable
+    {
+		StringBuilder Render(StringBuilder sb, Variable variable);
+    }
+}

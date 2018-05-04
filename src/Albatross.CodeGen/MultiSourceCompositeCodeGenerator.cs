@@ -23,7 +23,7 @@ namespace Albatross.CodeGen {
 					if(leaf.Source == null) { leaf.Source = source; }
 					if(leaf.Option == null) { leaf.Option = option; }
 					leaf.CodeGenerator = factory.Create(leaf.Name);
-					leaf.CodeGenerator.Yield += (scoped_sb) => OnYield(queue, scoped_sb);
+					leaf.CodeGenerator.Yield += (scoped_sb) => OnGreedyYield(queue, scoped_sb);
 					queue.Enqueue(leaf);
 				} else {
 					Branch branch = (Branch)item;
@@ -47,6 +47,16 @@ namespace Albatross.CodeGen {
 			branch = data as Branch;
 		}
 
+		private IEnumerable<object> OnGreedyYield(Queue<INode> queue, StringBuilder sb) {
+			List<object> list = new List<object>();
+
+			while(queue.Count > 0) {
+				INode node = queue.Dequeue();
+				var items = node.CodeGenerator.Build(sb, node.Source, node.Option);
+				list.AddRange(items);
+			}
+			return list;
+		}
 		private IEnumerable<object> OnYield(Queue<INode> queue, StringBuilder sb) {
 			if (queue.Count > 0) {
 				INode node = queue.Dequeue();

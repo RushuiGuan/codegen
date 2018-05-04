@@ -49,8 +49,8 @@ namespace Albatross.CodeGen.UnitTest {
 
 		[TestCaseSource(nameof(GetBuildSqlTypeTestCase))]
 		public string BuildSqlTypeTest(SqlType type) {
-			BuildSqlType builder = new BuildSqlType();
-			return builder.Build(type);
+			RenderSqlType builder = new RenderSqlType();
+			return builder.Render(type);
 		}
 
 		static TestCaseData[] GetBuildSqlVariableTestCase() {
@@ -60,12 +60,12 @@ namespace Albatross.CodeGen.UnitTest {
 			};
 		}
 
-		[TestOf(typeof(BuildSqlVariable))]
+		[TestOf(typeof(RenderSqlVariable))]
 		[TestCaseSource(nameof(GetBuildSqlVariableTestCase))]
 		public string BuildSqlVariableTest(Variable variable) {
-			BuildSqlVariable b = new BuildSqlVariable(new BuildSqlType(), new CreateSqlVariableName());
+			RenderSqlVariable b = new RenderSqlVariable(new RenderSqlType(), new CreateSqlVariableName());
 			StringBuilder sb = new StringBuilder();
-			b.Build(sb, variable);
+			b.Render(sb, variable);
 			return sb.ToString();
 		}
 
@@ -76,12 +76,12 @@ namespace Albatross.CodeGen.UnitTest {
 			};
 		}
 
-		[TestOf(typeof(BuildProcedureParameter))]
+		[TestOf(typeof(RenderSqlParameter))]
 		[TestCaseSource(nameof(BuildProcedureParameterTestCase))]
 		public string BuildProcedureParameterTest(Parameter param) {
-			BuildProcedureParameter b = new BuildProcedureParameter(new BuildSqlType(), new CreateSqlVariableName());
+			RenderSqlParameter b = new RenderSqlParameter(new RenderSqlType(), new CreateSqlVariableName());
 			StringBuilder sb = new StringBuilder();
-			b.Build(sb, param);
+			b.Render(sb, param);
 			return sb.ToString();
 		}
 	}

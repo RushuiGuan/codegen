@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp
 {
-	[CodeGenerator("csharp namespace", GeneratorTarget.CSharp, Category = "DotNet CSharp", Description = "Generating C# Namespace") ]
+	[CodeGenerator("csharp.namespace", GeneratorTarget.CSharp, Category = "DotNet CSharp", Description = "Generating C# Namespace") ]
 	public class CSharpNamespace : ICodeGenerator<object, CSharpClassOption> {
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
 

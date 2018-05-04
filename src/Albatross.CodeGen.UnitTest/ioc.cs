@@ -45,7 +45,7 @@ namespace Albatross.CodeGen.UnitTest {
 			typeof(ICodeGeneratorFactory).Assembly.Register(codeGenFactory);
 			typeof(CSharpClassGenerator<object>).Assembly.Register(codeGenFactory);
 			typeof(SqlCodeGenOption).Assembly.Register(codeGenFactory);
-			typeof(Albatross.CodeGen.SqlServer.BuildSqlType).Assembly.Register(codeGenFactory);
+			typeof(Albatross.CodeGen.SqlServer.RenderSqlType).Assembly.Register(codeGenFactory);
 
 			codeGenFactory.RegisterStatic();
 		}

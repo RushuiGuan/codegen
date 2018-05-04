@@ -42,5 +42,9 @@ namespace Albatross.CodeGen.Generation {
 		/// Replace certain variables using an expression
 		/// </summary>
 		public Dictionary<string, string> Expressions { get; } = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+
+		public string Principals{ get; set; }
+
+		public bool GrantPermission { get; set; }
 	}
 }

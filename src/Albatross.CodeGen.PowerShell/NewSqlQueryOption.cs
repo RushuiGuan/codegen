@@ -30,6 +30,12 @@ namespace Albatross.CodeGen.PowerShell {
 		[Parameter]
 		public Hashtable Expressions { get; set; }
 
+		[Parameter]
+		public SwitchParameter GrantPermission { get; set; }
+
+		[Parameter]
+		public string Principals { get; set; }
+
 
 		protected override void ProcessRecord() {
 			var value = new SqlCodeGenOption {
@@ -39,6 +45,9 @@ namespace Albatross.CodeGen.PowerShell {
 				Schema = Schema,
 				Variables = Variables,
 				Parameters = Parameters,
+				GrantPermission = GrantPermission.ToBool(),
+				Principals = Principals,
+
 			};
 			if (Expressions != null) {
 				foreach (var key in Expressions.Keys) {

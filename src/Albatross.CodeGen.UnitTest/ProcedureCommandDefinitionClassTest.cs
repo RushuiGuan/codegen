@@ -23,13 +23,12 @@ namespace Albatross.CodeGen.UnitTest
 using Dapper;
 namespace test {
 	public class GetCompany {
-		public GetCompany(string user, IDbTransaction transaction = null) {
+		public GetCompany(string user, System.Data.IDbTransaction transaction = null) {
 			DynamicParameters dynamicParameters = new DynamicParameters();
-			dynamicParameters.Add(""user"" , @user, dbType:System.Data.DbType.AnsiString);
-			definition = new CommandDefinition(""[ac].[GetCompany]"", dynamicParameters, commandType:CommandType.StoredProcedure, transaction:transaction);
+			dynamicParameters.Add(""user"" , user, dbType:System.Data.DbType.AnsiString);
+			Definition = new CommandDefinition(""[ac].[GetCompany]"", dynamicParameters, commandType:CommandType.StoredProcedure, transaction:transaction);
 		}
-		CommandDefinition definition;
-		public CommandDefinition Get() => definition;
+		public CommandDefinition Definition { get; private set; }
 	}
 }
 ",

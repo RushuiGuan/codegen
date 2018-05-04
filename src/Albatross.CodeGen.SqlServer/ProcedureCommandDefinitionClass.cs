@@ -24,7 +24,7 @@ namespace Albatross.CodeGen.SqlServer {
 	///	}
 	/// </code>
 	/// </summary>
-	[CodeGenerator("procedure command definition", GeneratorTarget.CSharp, Category = GeneratorCategory.SQLServer, Description = "Generate Dapper Command Definition for stored procedures")]
+	[CodeGenerator("sql.procedure.dapper", GeneratorTarget.CSharp, Category = GeneratorCategory.SQLServer, Description = "Generate Dapper Command Definition for stored procedures")]
 	public class ProcedureCommandDefinitionClass : CSharpClassGenerator<Procedure> {
 		IConvertSqlDataType convertDataType;
 		IRenderDotNetType renderDotNetType;

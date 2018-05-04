@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture(TestOf = typeof(TableMergeUpdate))]
+	[TestFixture(TestOf = typeof(MergeUpdate))]
 	public class TableMergeUpdateTest {
 
 		static IEnumerable<TestCaseData> MergeUpdateTestCase() {
@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(MergeUpdateTestCase))]
 		public string MergeUpdate(Table table, SqlCodeGenOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<TableMergeUpdate>().Build(sb, table, option);
+			Ioc.Container.GetInstance<MergeUpdate>().Build(sb, table, option);
 			return sb.ToString();
 		}
 	}

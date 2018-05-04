@@ -1,4 +1,5 @@
-﻿using Albatross.Database;
+﻿using Albatross.CodeGen.PowerShell.Transformation;
+using Albatross.Database;
 using System.Management.Automation;
 
 namespace Albatross.CodeGen.PowerShell {
@@ -10,6 +11,7 @@ namespace Albatross.CodeGen.PowerShell {
 		public string Name { get; set; }
 
 		[Parameter(Position = 1, Mandatory = true)]
+		[String2SqlType]
 		public Albatross.Database.SqlType Type { get; set; }
 
 

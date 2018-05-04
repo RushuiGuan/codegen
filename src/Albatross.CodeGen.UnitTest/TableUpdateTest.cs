@@ -7,7 +7,7 @@ using System.Text;
 using Albatross.CodeGen.Generation;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture(TestOf =typeof(TableUpdate))]
+	[TestFixture(TestOf =typeof(UpdateStatement))]
 	public class TableUpdateTest {
 		static IEnumerable<TestCaseData> GetTestCases() {
 			return new TestCaseData[] {
@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(Table table, SqlCodeGenOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<TableUpdate>().Build(sb, table, option);
+			Ioc.Container.GetInstance<UpdateStatement>().Build(sb, table, option);
 			return sb.ToString();
 		}
 	}

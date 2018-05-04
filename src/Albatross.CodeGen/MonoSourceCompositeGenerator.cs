@@ -21,7 +21,7 @@ namespace Albatross.CodeGen
 			foreach (var item in branch) {
 				if (item is Leaf leaf) {
 					var gen = factory.Create<T, O>(item.Name);
-					gen.Yield += (scoped_sb) => OnYield(queue, scoped_sb, source, option);
+					gen.Yield += (scoped_sb) => OnGreedyYield(queue, scoped_sb, source, option);
 					queue.Enqueue(gen);
 				} else {
 					var gen = new MonoSourceCompositeCodeGenerator<T, O>(factory);
@@ -43,7 +43,25 @@ namespace Albatross.CodeGen
 
 		}
 
-		private IEnumerable<object> OnYield(Queue<ICodeGenerator<T, O>> queue, StringBuilder sb, T source, O option) {
+		private IEnumerable<object> OnGreedyYield(Queue<ICodeGenerator<T, O>> queue, StringBuilder sb, T source, O option) {
+			List<object> list = new List<object>();
+			while (queue.Count > 0) {
+				var handle = queue.Dequeue();
+				var items = handle.Build(sb, source, option);
+				list.AddRange(items);
+			}
+			return list;
+
+			/*
+			if (queue.Count > 0) {
+				var handle = queue.Dequeue();
+				return handle.Build(sb, source, option);
+			} else {
+				return new object[0];
+			}
+			*/
+		}
+		private IEnumerable<object> OnSingleYield(Queue<ICodeGenerator<T, O>> queue, StringBuilder sb, T source, O option) {
 			if (queue.Count > 0) {
 				var handle = queue.Dequeue();
 				return handle.Build(sb, source, option);

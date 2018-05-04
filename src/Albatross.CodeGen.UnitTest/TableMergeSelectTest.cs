@@ -7,7 +7,7 @@ using System.Text;
 using Albatross.CodeGen.Generation;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture(TestOf = typeof(TableMergeSelect))]
+	[TestFixture(TestOf = typeof(MergeSelect))]
 	public class TableMergeSelectTest {
 
 		static IEnumerable<TestCaseData> MergeSelectTestCase() {
@@ -22,7 +22,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(MergeSelectTestCase))]
 		public string MergeSelect(Table table, SqlCodeGenOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<TableMergeSelect>().Build(sb, table, option);
+			Ioc.Container.GetInstance<MergeSelect>().Build(sb, table, option);
 			return sb.ToString();
 		}
 	}

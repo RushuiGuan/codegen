@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer
 {
-	public class SqlVariableMgmt : IStoreSqlVariable, IGetSqlVariable {
+	public class SqlVariableMgmt : IStoreSqlVariable, IRetrieveSqlVariable {
 		Dictionary<object, Dictionary<string, Variable>> created = new Dictionary<object, Dictionary<string, Variable>>();
 
 		public void Store(object creator, Variable variable) {
@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.SqlServer
 			values[variable.Name] = variable;
 		}
 
-		public IEnumerable<Variable> Get(object creator) {
+		public IEnumerable<Variable> Retrieve(object creator) {
 			if (created.TryGetValue(creator, out Dictionary<string, Variable> values)) {
 				return values.Values;
 			} else {

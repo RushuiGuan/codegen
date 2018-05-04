@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture(TestOf =typeof(TableWhere))]
+	[TestFixture(TestOf =typeof(WhereClause))]
 	public class TableWhereTest {
 		static IEnumerable<TestCaseData> GetTestCases() {
 			return new TestCaseData[] {
@@ -26,7 +26,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(Table table, SqlCodeGenOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<TableWhere>().Build(sb, table, option);
+			Ioc.Container.GetInstance<WhereClause>().Build(sb, table, option);
 			return sb.ToString();
 		}
 	}

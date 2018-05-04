@@ -93,7 +93,7 @@ where
 			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
 			factory.Register(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
 				Name = "test",
-				Branch = new Branch(new Leaf("declare statement"), new Branch(new Leaf("newline"), new Leaf("table_update"), new Leaf("newline"), new Leaf("table_where"))),
+				Branch = new Branch(new Leaf("sql.declare"), new Branch(new Leaf("newline"), new Leaf("sql.update"), new Leaf("newline"), new Leaf("sql.where.table"))),
 				Target = GeneratorTarget.Sql,
 			});
 
@@ -125,7 +125,7 @@ from [test].[Symbol]" },
 			factory.RegisterStatic();
 			factory.Register(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
 				Name = "test",
-				Branch = new Branch(new Leaf("declare statement"), new Branch(new Leaf("newline"), new Leaf("table_select"))),
+				Branch = new Branch(new Leaf("sql.declare"), new Branch(new Leaf("newline"), new Leaf("sql.select.table"))),
 				Target = GeneratorTarget.Sql,
 			});
 
