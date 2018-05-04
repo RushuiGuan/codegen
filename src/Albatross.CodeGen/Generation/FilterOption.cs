@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albatross.CodeGen.Database{
+namespace Albatross.CodeGen.Generation {
 	[Flags]
     public enum FilterOption {
 		None = 0,

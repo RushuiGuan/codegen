@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Albatross.CodeGen.SqlServer</id>
-    <version>1.1.2.11</version>
+    <version>1.1.2.12</version>
     <title>Albatross.CodeGen.SqlServer</title>
     <authors>Rushui Guan</authors>
     <owners>Rushui Guan</owners>
@@ -14,7 +14,7 @@
     <copyright>Copyright 2017</copyright>
     <tags>code generator c# sql codegen powershell database csharp</tags>
     <dependencies>
-      <dependency id="Albatross.CodeGen" version="1.1.2.11" />
+      <dependency id="Albatross.CodeGen" version="1.1.2.12" />
       <dependency id="Albatross.CodeGen.Database" version="1.1.2.3" />
     </dependencies>
   </metadata>

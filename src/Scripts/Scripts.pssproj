@@ -27,8 +27,9 @@
   </PropertyGroup>
   <ItemGroup />
   <ItemGroup>
-    <Compile Include="Setup.ps1" />
-    <Compile Include="procedure.ps1" />
+    <Compile Include="CRUD Stored Procedures.ps1" />
+    <Compile Include="setup.ps1" />
+    <Compile Include="Procedure Proxy.ps1" />
     <Compile Include="sys types to POCO.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

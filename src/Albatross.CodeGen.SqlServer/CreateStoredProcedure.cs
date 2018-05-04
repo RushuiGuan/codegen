@@ -39,12 +39,14 @@ namespace Albatross.CodeGen.SqlServer {
 			}
 
 			sb.Append("create procedure ").EscapeName(option.Schema).Dot().EscapeName(option.Name).AppendLine();
-			foreach (var param in option.Parameters) {
-				buildParameter.Build(sb.Tab(), param);
-				if (variables.Count() > 0 || param != option.Parameters.Last()) {
-					sb.Comma();
+			if (option.Parameters != null) {
+				foreach (var param in option.Parameters) {
+					buildParameter.Build(sb.Tab(), param);
+					if (variables.Count() > 0 || param != option.Parameters.Last()) {
+						sb.Comma();
+					}
+					sb.AppendLine();
 				}
-				sb.AppendLine();
 			}
 			foreach (var variable in variables) {
 				buildVariable.Build(sb.Tab(), variable);
