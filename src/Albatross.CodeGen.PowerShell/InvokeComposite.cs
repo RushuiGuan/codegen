@@ -2,12 +2,14 @@
 using System.Management.Automation;
 using System.Text;
 using Albatross.CodeGen.Core;
+using Albatross.CodeGen.PowerShell.Transformation;
 using SimpleInjector;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsLifecycle.Invoke, "Composite")]
 	public class InvokeComposite: PSCmdlet{
 		[Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true)]
+		[Array2Branch]
 		[Alias("b")]
 		public Branch Branch { get; set; }
 

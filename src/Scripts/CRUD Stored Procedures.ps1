@@ -11,7 +11,7 @@ Get-DatabaseTable -DbName ac -Criteria ac.% | Where-Object -Property IdentityCol
             "@modifiedBy" = "@user";
         } -Parameter $user -GrantPermission -Principals app_svc -Filter ByIdentityColumn;
 
-    New-Branch -Nodes sql.procedure, sql.insert, newline, sql.select.identity | Invoke-Composite -Source $_ -Option $option;
+    Invoke-Composite -Source $_ -Option $option -b sql.procedure, sql.insert, newline, sql.select.identity;
     
     $option = New-SqlQueryOption -Name "Update$($_.Name)" -Schema "ac" -Expressions @{
             "@modified" ="sysutcdatetime()";
