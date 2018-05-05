@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.Faults;
 using Albatross.CodeGen.Generation;
 using Albatross.Database;
 using System.Collections.Generic;
@@ -13,11 +14,11 @@ namespace Albatross.CodeGen.SqlServer {
 			this.getTable = getTable;
 		}
 
-		public override IEnumerable<object> Build(StringBuilder sb, Table t, SqlCodeGenOption options) {
+		public override IEnumerable<object> Generate(StringBuilder sb, Table t, SqlCodeGenOption options) {
 			t = getTable.Get(t.Database, t.Schema, t.Name);
 			Column identityColumn = t.IdentityColumn;
 			if (identityColumn == null) {
-				throw new CodeGenException("Identity Column doesn't exist");
+				throw new CodeGeneratorException("Identity Column doesn't exist");
 			}
 			sb.Append("select scope_identity() as ").EscapeName(identityColumn.Name);
 			return new[] { this };

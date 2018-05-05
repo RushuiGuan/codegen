@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(Table table, SqlCodeGenOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<UpdateStatement>().Build(sb, table, option);
+			Ioc.Container.GetInstance<UpdateStatement>().Generate(sb, table, option);
 			return sb.ToString();
 		}
 	}

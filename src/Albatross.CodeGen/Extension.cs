@@ -124,7 +124,7 @@ namespace Albatross.CodeGen {
 			if (option != null && !typeof(O).IsAssignableFrom(option.GetType())) {
 				throw new Faults.InvalidOptionTypeException(typeof(O), option.GetType());
 			}
-			return codeGenerator.Build(sb, (T)source, (O)option);
+			return codeGenerator.Generate(sb, (T)source, (O)option);
 			#endregion
 		}
 	}

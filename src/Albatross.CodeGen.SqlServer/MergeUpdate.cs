@@ -19,15 +19,13 @@ namespace Albatross.CodeGen.SqlServer {
 			this.buildSqlType = buildSqlType;
 		}
 
-		public override IEnumerable<object>  Build(StringBuilder sb, Table table, SqlCodeGenOption options) {
-			table = getTable.Get(table.Database, table.Schema, table.Name);
-
+		public override IEnumerable<object>  Generate(StringBuilder sb, Table table, SqlCodeGenOption options) {
 			HashSet<string> keys = new HashSet<string>();
 			if (options.ExcludePrimaryKey) {
 				keys.AddRange(from item in table.PrimaryKeys select item.Name);
 			}
 
-			Column[] columns = (from c in table.Columns
+			Column[] columns = (from c in table.Columns ?? new Column[0]
 								orderby c.OrdinalPosition ascending, c.Name ascending
 								where !c.IsComputed && !c.IsIdentity && !keys.Contains(c.Name)
 								select c).ToArray();

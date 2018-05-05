@@ -14,7 +14,7 @@ namespace Albatross.CodeGen {
 			this.factory = factory;
 		}
 
-		public IEnumerable<object> Build(StringBuilder sb, object source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
 			Queue<INode> queue = new Queue<INode>();
 			List<object> list = new List<object>();
 
@@ -37,7 +37,7 @@ namespace Albatross.CodeGen {
 
 			while (queue.Count > 0) {
 				var node = queue.Dequeue();
-				var used = node.CodeGenerator.Build(sb, node.Source, node.Option);
+				var used = node.CodeGenerator.Generate(sb, node.Source, node.Option);
 				list.AddRange(used);
 			}
 			return list;
@@ -52,7 +52,7 @@ namespace Albatross.CodeGen {
 
 			while(queue.Count > 0) {
 				INode node = queue.Dequeue();
-				var items = node.CodeGenerator.Build(sb, node.Source, node.Option);
+				var items = node.CodeGenerator.Generate(sb, node.Source, node.Option);
 				list.AddRange(items);
 			}
 			return list;
@@ -60,7 +60,7 @@ namespace Albatross.CodeGen {
 		private IEnumerable<object> OnYield(Queue<INode> queue, StringBuilder sb) {
 			if (queue.Count > 0) {
 				INode node = queue.Dequeue();
-				return node.CodeGenerator.Build(sb, node.Source, node.Option);
+				return node.CodeGenerator.Generate(sb, node.Source, node.Option);
 			} else {
 				return new object[0];
 			}

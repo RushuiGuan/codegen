@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.SqlServer {
 
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
 
-		public IEnumerable<object>  Build(StringBuilder sb, object src, SqlCodeGenOption options) {
+		public IEnumerable<object>  Generate(StringBuilder sb, object src, SqlCodeGenOption options) {
 			List<object> list = new List<object> { this };
 
 			StringBuilder child = new StringBuilder();
@@ -48,7 +48,7 @@ namespace Albatross.CodeGen.SqlServer {
 			return list;
 		}
 
-		public IEnumerable<object> Build(StringBuilder sb, object source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
 			return this.ValidateNBuild(sb, source, option);
 		}
 

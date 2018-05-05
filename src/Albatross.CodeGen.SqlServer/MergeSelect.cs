@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.Core;
 using Albatross.CodeGen.Database;
+using Albatross.CodeGen.Faults;
 using Albatross.CodeGen.Generation;
 using Albatross.Database;
 using System.Collections.Generic;
@@ -21,10 +22,9 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object>  Build(StringBuilder sb, Table table, SqlCodeGenOption options) {
-			table = getTable.Get(table.Database, table.Schema, table.Name);
-			if (table.Columns.Count() == 0) {
-				throw new CodeGenException("Editor column doesn't exist");
+		public override IEnumerable<object>  Generate(StringBuilder sb, Table table, SqlCodeGenOption options) {
+			if (!(table.Columns?.Count() > 0)) {
+				throw new CodeGeneratorException("Editor column doesn't exist");
 			}
 			sb.Append("using ").OpenParenthesis().AppendLine();
 			sb.Tab().AppendLine("select");

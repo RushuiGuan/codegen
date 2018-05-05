@@ -22,7 +22,7 @@ namespace Albatross.CodeGen
 			if (option == null) { option = Activator.CreateInstance(meta.OptionType); }
 			ICodeGenerator gen = (ICodeGenerator)objectFactory.Create(meta.GeneratorType);
 			gen.Configure(meta.Data);
-			return gen.Build(sb, source, option);
+			return gen.Generate(sb, source, option);
 		}
 	}
 }

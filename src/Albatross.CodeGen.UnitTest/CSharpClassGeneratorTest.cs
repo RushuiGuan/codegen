@@ -52,7 +52,7 @@ namespace Albatross.Test {
 		[TestCaseSource(nameof(GetTestCases))]
 		public string RunClassGeneratorTest(CSharpClassOption option) {
 			StringBuilder sb = new StringBuilder();
-			new TestCSharpClass(new RenderDotNetType()).Build(sb, null, option);
+			new TestCSharpClass(new RenderDotNetType()).Generate(sb, null, option);
 			return sb.ToString();
 		}
 	}

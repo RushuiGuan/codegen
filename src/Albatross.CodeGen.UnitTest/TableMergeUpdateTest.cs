@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(MergeUpdateTestCase))]
 		public string MergeUpdate(Table table, SqlCodeGenOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<MergeUpdate>().Build(sb, table, option);
+			Ioc.Container.GetInstance<MergeUpdate>().Generate(sb, table, option);
 			return sb.ToString();
 		}
 	}

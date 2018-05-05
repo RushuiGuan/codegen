@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.Core;
 using Albatross.CodeGen.Database;
+using Albatross.CodeGen.Faults;
 using Albatross.CodeGen.Generation;
 using Albatross.Database;
 using System.Collections.Generic;
@@ -19,19 +20,20 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object>  Build(StringBuilder sb, Table t, SqlCodeGenOption option) {
-			t = getTable.Get(t.Database, t.Schema, t.Name);
-
+		public override IEnumerable<object>  Generate(StringBuilder sb, Table t, SqlCodeGenOption option) {
 			HashSet<string> keys = new HashSet<string>();
 			if (option.ExcludePrimaryKey) {
 				keys.AddRange(from item in t.PrimaryKeys select item.Name);
 			}
 
 			sb.Append($"update [{t.Schema}].[{t.Name}] set").AppendLine();
-			Column[] columns = (from c in t.Columns.ToArray()
+			Column[] columns = (from c in t.Columns ?? new Column[0]
 								where !c.IsIdentity && !c.IsComputed && !keys.Contains(c.Name)
 								select c).ToArray();
 
+			if (columns.Length == 0) {
+				throw new CodeGeneratorException("No editable column found");
+			}
 			string name;
 			foreach (Column c in columns) {
 				name = getVariableName.Get(c.Name);

@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.Core;
 using Albatross.CodeGen.Database;
+using Albatross.CodeGen.Faults;
 using Albatross.CodeGen.Generation;
 using Albatross.Database;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object> Build(StringBuilder sb, Table t, SqlCodeGenOption option) {
+		public override IEnumerable<object> Generate(StringBuilder sb, Table t, SqlCodeGenOption option) {
 			getTable.Get(ref t);
 			sb.Append("where");
 			int count = 0;
@@ -28,7 +29,7 @@ namespace Albatross.CodeGen.SqlServer {
 			if ((option.Filter & FilterOption.ByIdentityColumn) > 0){
 				Column column = t.IdentityColumn;
 				if (column == null) {
-					throw new CodeGenException("Identity Column doesn't exist");
+					throw new CodeGeneratorException("Identity Column doesn't exist");
 				}
 				AppendColumn(sb, column, count, option);
 				count++;

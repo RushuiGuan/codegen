@@ -8,7 +8,7 @@ namespace Albatross.CodeGen {
 		string content;
 
 		public event Func<StringBuilder, IEnumerable<object>> Yield { add { } remove { } }
-		public IEnumerable<object>  Build(StringBuilder sb, object source, object option) {
+		public IEnumerable<object>  Generate(StringBuilder sb, object source, object option) {
 			sb.Append(content);
 			return new[] { this };
 		}

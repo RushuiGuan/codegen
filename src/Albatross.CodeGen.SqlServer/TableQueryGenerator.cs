@@ -15,9 +15,9 @@ namespace Albatross.CodeGen.SqlServer {
 		public Type OptionType => typeof(SqlCodeGenOption);
 
 		public event Func<StringBuilder, IEnumerable<object>> Yield { add { } remove { } }
-		public abstract IEnumerable<object> Build(StringBuilder sb, Table table, SqlCodeGenOption option);
+		public abstract IEnumerable<object> Generate(StringBuilder sb, Table table, SqlCodeGenOption option);
 
-		public IEnumerable<object> Build(StringBuilder sb, object source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
 			return this.ValidateNBuild(sb, source, option);
 		}
 

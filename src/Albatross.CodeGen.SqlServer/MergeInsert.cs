@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.Core;
 using Albatross.CodeGen.Database;
+using Albatross.CodeGen.Faults;
 using Albatross.CodeGen.Generation;
 using Albatross.Database;
 using System.Collections.Generic;
@@ -18,15 +19,13 @@ namespace Albatross.CodeGen.SqlServer {
 		}
 
 
-		public override IEnumerable<object>  Build(StringBuilder sb, Table t, SqlCodeGenOption options) {
-			t = getTable.Get(t.Database, t.Schema, t.Name);
-
-			Column[] columns = (from c in t.Columns
+		public override IEnumerable<object>  Generate(StringBuilder sb, Table t, SqlCodeGenOption options) {
+			Column[] columns = (from c in t.Columns??new Column[0]
 								orderby c.OrdinalPosition ascending, c.Name ascending
 								where !c.IsComputed && !c.IsIdentity
 								select c).ToArray();
 			if (columns.Length == 0) {
-				throw new CodeGenException("Editable column not found");
+				throw new CodeGeneratorException("Editable column not found");
 			}
 			sb.Append("when not matched by target then insert ").OpenParenthesis().AppendLine();
 			foreach (var column in columns) {

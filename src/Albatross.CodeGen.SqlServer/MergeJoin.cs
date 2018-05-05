@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.Faults;
 using Albatross.CodeGen.Generation;
 using Albatross.Database;
 using System.Collections.Generic;
@@ -14,11 +15,10 @@ namespace Albatross.CodeGen.SqlServer {
 			this.getTable = getTable;
 		}
 
-		public override IEnumerable<object> Build(StringBuilder sb, Table table, SqlCodeGenOption options) {
-			table = getTable.Get(table.Database, table.Schema, table.Name);
+		public override IEnumerable<object> Generate(StringBuilder sb, Table table, SqlCodeGenOption options) {
 			if ((options.Filter & FilterOption.ByIdentityColumn) > 0) {
 				if (table.IdentityColumn == null) {
-					throw new CodeGenException("Identity column doesn't exist");
+					throw new CodeGeneratorException("Identity column doesn't exist");
 				}
 				sb.Append("on src.").EscapeName(table.IdentityColumn.Name).Append(" = dst.").EscapeName(table.IdentityColumn.Name);
 			} else if ((options.Filter & FilterOption.ByPrimaryKey) > 0) {
@@ -32,7 +32,7 @@ namespace Albatross.CodeGen.SqlServer {
 						sb.Append("src.").EscapeName(item.Name).Append(" = dst.").EscapeName(item.Name);
 					}
 				} else {
-					throw new CodeGenException("Primary key doesn't exist");
+					throw new CodeGeneratorException("Primary key doesn't exist");
 				}
 			}
 			

@@ -99,7 +99,7 @@ where
 
 			StringBuilder sb = new StringBuilder();
 			var handle = factory.Create<Table, SqlCodeGenOption>("test");
-			handle.Build(sb, table, option);
+			handle.Generate(sb, table, option);
 			return sb.ToString();
 		}
 
@@ -131,7 +131,7 @@ from [test].[Symbol]" },
 
 			StringBuilder sb = new StringBuilder();
 			var handle = factory.Create<Table, SqlCodeGenOption>("test");
-			handle.Build(sb, table, option);
+			handle.Generate(sb, table, option);
 			return sb.ToString();
 		}
 	}

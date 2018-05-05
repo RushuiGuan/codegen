@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.Faults;
 using Albatross.CodeGen.Generation;
 using Albatross.Database;
 using System.Collections.Generic;
@@ -14,9 +15,11 @@ namespace Albatross.CodeGen.SqlServer {
 			this.getTable = getTable;
 		}
 
-		public override IEnumerable<object> Build(StringBuilder sb, Table t, SqlCodeGenOption options) {
-			t = getTable.Get(t.Database, t.Schema, t.Name);
-			IEnumerable<Column> columns = t.Columns;
+		public override IEnumerable<object> Generate(StringBuilder sb, Table t, SqlCodeGenOption options) {
+			IEnumerable<Column> columns = t.Columns ?? new Column[0];
+			if (columns.Count() == 0) {
+				throw new CodeGeneratorException($"Table doesn't have any columns");
+			}
 			sb.Append("select").AppendLine();
 			foreach (Column c in columns) {
 				sb.Tab().EscapeName(c.Name);
