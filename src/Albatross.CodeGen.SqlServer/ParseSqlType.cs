@@ -22,26 +22,29 @@ namespace Albatross.CodeGen.SqlServer {
 				SqlType type = new SqlType {
 					Name = match.Groups[1].Value.Trim(),
 				};
-				int? precision = null, scale = null;
+				int? firstParam = null, secondParam = null;
 				int i;
 
 				if (int.TryParse(match.Groups[5].Value, out i)) {
-					scale = i;
+					secondParam = i;
 				}
 
 				if (int.TryParse(match.Groups[3].Value, out i)) {
-					precision = i;
+					firstParam = i;
 					switch (type.Name) {
 						case "datetime2":
 						case "datetimeoffset":
+							type.Precision = null;
+							type.Scale = firstParam;
+							break;
 						case "float":
 						case "decimal":
 						case "numeric":
-							type.Precision = precision;
-							type.Scale = scale;
+							type.Precision = firstParam;
+							type.Scale = secondParam;
 							break;
 						default:
-							type.MaxLength = precision;
+							type.MaxLength = firstParam;
 							break;
 					}
 				}

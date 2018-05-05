@@ -5,8 +5,8 @@ using Albatross.Database;
 
 namespace Albatross.CodeGen.SqlServer {
 	public class RenderSqlType : IRenderSqlType  {
-		const int default_datetime2_Precision = 7;
-		const int default_datetimeoffset_Precision = 7;
+		const int default_datetime2_Scale = 7;
+		const int default_datetimeoffset_Scale = 7;
 
 		const int default_float_Precision = 53;
 		const int default_decimal_Precision = 18;
@@ -45,10 +45,10 @@ namespace Albatross.CodeGen.SqlServer {
 
 					case "datetime2":
 					case "datetimeoffset":
-						if (type.Precision == default_datetime2_Precision || type.Precision == null) {
+						if (type.Scale == default_datetime2_Scale || type.Scale == null) {
 							return dataType;
 						} else {
-							return $"{dataType}({type.Precision})";
+							return $"{dataType}({type.Scale})";
 						}
 					case "float":
 						if (type.Precision == default_float_Precision || type.Precision == null) {

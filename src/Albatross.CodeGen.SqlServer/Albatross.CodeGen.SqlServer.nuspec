@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Albatross.CodeGen.SqlServer</id>
-    <version>1.1.2.14</version>
+    <version>1.1.2.15</version>
     <title>Albatross.CodeGen.SqlServer</title>
     <authors>Rushui Guan</authors>
     <owners>Rushui Guan</owners>
