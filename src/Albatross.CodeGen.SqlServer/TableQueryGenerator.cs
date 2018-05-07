@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public abstract IEnumerable<object> Generate(StringBuilder sb, Table table, SqlCodeGenOption option);
 
 		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
-			return this.ValidateNBuild(sb, source, option);
+			return this.ValidateNGenerate(sb, source, option);
 		}
 
 		public void Configure(object data) { }

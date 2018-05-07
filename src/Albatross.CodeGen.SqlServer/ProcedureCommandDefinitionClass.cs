@@ -25,7 +25,7 @@ namespace Albatross.CodeGen.SqlServer {
 	/// </code>
 	/// </summary>
 	[CodeGenerator("csharp.procedure.dapper", GeneratorTarget.CSharp, Category = GeneratorCategory.SQLServer, Description = "Generate Dapper Command Definition for stored procedures")]
-	public class ProcedureCommandDefinitionClass : CSharpClassGenerator<Procedure> {
+	public class ProcedureCommandDefinitionClass : CSharpClassGenerator<Albatross.Database.Procedure> {
 		IConvertSqlDataType convertDataType;
 		IRenderDotNetType renderDotNetType;
 
@@ -34,11 +34,11 @@ namespace Albatross.CodeGen.SqlServer {
 			this.renderDotNetType = renderDotNetType;
 		}
 
-		public override string GetClassName(Procedure t, CSharpClassOption option) {
+		public override string GetClassName(Albatross.Database.Procedure t, CSharpClassOption option) {
 			return t.Name;
 		}
 
-		public override void RenderConstructor(StringBuilder sb, Procedure t, CSharpClassOption options) {
+		public override void RenderConstructor(StringBuilder sb, Albatross.Database.Procedure t, CSharpClassOption options) {
 			string className = GetClassName(t, options);
 			sb.Tab(options.TabLevel).Public().Append(className).OpenParenthesis();
 			foreach (var item in t.Parameters) {
@@ -56,7 +56,7 @@ namespace Albatross.CodeGen.SqlServer {
 			sb.Tab(options.TabLevel).CloseScope();
 		}
 
-		public override void RenderBody(StringBuilder sb, Procedure t, CSharpClassOption options) {
+		public override void RenderBody(StringBuilder sb, Albatross.Database.Procedure t, CSharpClassOption options) {
 			sb.Tab(options.TabLevel).AppendLine("public CommandDefinition Definition { get; private set; }");
 		}
 	}

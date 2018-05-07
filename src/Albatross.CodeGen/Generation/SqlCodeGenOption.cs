@@ -45,6 +45,6 @@ namespace Albatross.CodeGen.Generation {
 
 		public string Principals{ get; set; }
 
-		public bool GrantPermission { get; set; }
+		public bool AlterProcedure { get; set; }
 	}
 }

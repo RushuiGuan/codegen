@@ -1,0 +1,20 @@
+﻿using Albatross.Database;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Albatross.CodeGen.PowerShell {
+	[Cmdlet(VerbsData.Publish, "Procedure")]
+	public class PublishProcedure : PSCmdlet {
+		[Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true)]
+		[Alias("p")]
+		public Procedure Procedure { get; set; }
+
+		protected override void ProcessRecord() {
+			Ioc.Get<IDeployProcedure>().Deploy(Procedure);
+		}
+	}
+}

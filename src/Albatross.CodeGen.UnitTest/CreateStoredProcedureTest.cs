@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(CreateEmptyProcedureTestCase))]
 		public string CreateEmptyProcedure(SqlCodeGenOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<StoredProcedure>().Generate(sb, null, option);
+			Ioc.Container.GetInstance<SqlServer.CreateAlterProcedure>().Generate(sb, null, option);
 			return sb.ToString();
 		}
 
@@ -41,7 +41,7 @@ namespace Albatross.CodeGen.UnitTest {
 			Container container = Ioc.Container;
 			var factory = container.GetInstance<IConfigurableCodeGenFactory>();
 			factory.Register(new CodeGenerator {
-				GeneratorType = typeof(StoredProcedure),
+				GeneratorType = typeof(SqlServer.CreateAlterProcedure),
 				SourceType = typeof(Table),
 				OptionType = typeof(SqlCodeGenOption),
 				Name = "sql.procedure",

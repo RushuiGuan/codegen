@@ -12,12 +12,12 @@ namespace Albatross.CodeGen.SqlServer {
 	/// Create a stored procedure based on the variables produced by the next generator in a composite generator.  The generator will yield for 1 turn.
 	/// </summary>
 	[CodeGenerator("sql.procedure", target: GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Create a SQL server stored procedure", SourceType = typeof(object))]
-	public class StoredProcedure : ICodeGenerator<object, SqlCodeGenOption> {
+	public class CreateAlterProcedure : ICodeGenerator<object, SqlCodeGenOption> {
 		IRetrieveSqlVariable getVariable;
 		IRenderSqlVariable renderVariable;
 		IRenderSqlParameter renderParameter;
 
-		public StoredProcedure(IRetrieveSqlVariable getVariable, IRenderSqlVariable renderVariable, IRenderSqlParameter renderParameter) {
+		public CreateAlterProcedure(IRetrieveSqlVariable getVariable, IRenderSqlVariable renderVariable, IRenderSqlParameter renderParameter) {
 			this.getVariable = getVariable;
 			this.renderVariable = renderVariable;
 			this.renderParameter = renderParameter;
@@ -39,7 +39,12 @@ namespace Albatross.CodeGen.SqlServer {
 				variables = variables.Union(getVariable.Retrieve(item));
 			}
 
-			sb.Append("create procedure ").EscapeName(option.Schema).Dot().EscapeName(option.Name).AppendLine();
+			if (option.AlterProcedure) {
+				sb.Append("alter ");
+			} else {
+				sb.Append("create ");
+			}
+			sb.Append("procedure ").EscapeName(option.Schema).Dot().EscapeName(option.Name).AppendLine();
 			foreach (var variable in variables) {
 				renderVariable.Render(sb.Tab(), variable);
 
@@ -62,18 +67,11 @@ namespace Albatross.CodeGen.SqlServer {
 				sb.Tabify(text, 1);
 				sb.AppendLine();
 			}
-			sb.Append("go");
-
-			if (option.GrantPermission) {
-				sb.AppendLine();
-				sb.Append("grant exec on ").EscapeName(option.Schema).Dot().EscapeName(option.Name).Append(" to ").Append(option.Principals).AppendLine();
-				sb.AppendLine("go");
-			}
 			return new[] { this }.Union(items);
 		}
 
 		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
-			return this.ValidateNBuild(sb, source, option);
+			return this.ValidateNGenerate(sb, source, option);
 		}
 
 		public void Configure(object data) {

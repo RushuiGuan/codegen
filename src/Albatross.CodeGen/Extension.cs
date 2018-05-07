@@ -117,7 +117,7 @@ namespace Albatross.CodeGen {
 				throw new Faults.InvalidOptionTypeException(codeGenerator.SourceType, optionType);
 			}
 		}
-		public static IEnumerable<object> ValidateNBuild<T, O>(this ICodeGenerator<T, O> codeGenerator, StringBuilder sb, object source, object option) where T : class where O : class {
+		public static IEnumerable<object> ValidateNGenerate<T, O>(this ICodeGenerator<T, O> codeGenerator, StringBuilder sb, object source, object option) where T : class where O : class {
 			if (source != null && !typeof(T).IsAssignableFrom(source.GetType())) {
 				throw new Faults.InvalidSourceTypeException(typeof(T), source.GetType());
 			}
