@@ -36,7 +36,6 @@ namespace Albatross.CodeGen.PowerShell {
 			ICodeGeneratorFactory factory = Ioc.Get<ICodeGeneratorFactory>();
 			if (Source is PSObject) { Source = ((PSObject)Source).BaseObject; }
 			if (Option is PSObject) { Option = ((PSObject)Option).BaseObject; }
-			Type sourceType = Source.GetType();
 
 			IRunCodeGenerator codeGen = Ioc.Get<IRunCodeGenerator>();
 			var meta = factory.Get(Name);

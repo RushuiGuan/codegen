@@ -18,7 +18,6 @@ namespace Albatross.CodeGen
 
 
 		public IEnumerable<object> Run(CodeGenerator meta, StringBuilder sb, object source, object option) {
-			meta.Validate(source?.GetType(), option?.GetType());
 			if (option == null) { option = Activator.CreateInstance(meta.OptionType); }
 			ICodeGenerator gen = (ICodeGenerator)objectFactory.Create(meta.GeneratorType);
 			gen.Configure(meta.Data);

@@ -41,15 +41,19 @@ namespace Albatross.CodeGen.SqlServer {
 		public override void RenderConstructor(StringBuilder sb, Albatross.Database.Procedure t, CSharpClassOption options) {
 			string className = GetClassName(t, options);
 			sb.Tab(options.TabLevel).Public().Append(className).OpenParenthesis();
-			foreach (var item in t.Parameters) {
-				Type type = convertDataType.GetDotNetType(item.Type);
-				renderDotNetType.Render(sb, type, true).Space().Append(item.Name).Comma().Space();
+			if (t.Parameters != null) {
+				foreach (var item in t.Parameters) {
+					Type type = convertDataType.GetDotNetType(item.Type);
+					renderDotNetType.Render(sb, type, true).Space().Append(item.Name).Comma().Space();
+				}
 			}
 			sb.Append("System.Data.IDbTransaction transaction = null").CloseParenthesis().OpenScope();
 			options.TabLevel++;
 			sb.Tab(options.TabLevel).AppendLine("DynamicParameters dynamicParameters = new DynamicParameters();");
-			foreach (var item in t.Parameters) {
-				sb.Tab(options.TabLevel).Append("dynamicParameters.Add").OpenParenthesis().Literal(item.Name).Space().Comma().Space().Append(item.Name).Comma().Space().Append("dbType:System.Data.DbType.").Append(convertDataType.GetDbType(item.Type)).CloseParenthesis().Terminate();
+			if (t.Parameters != null) {
+				foreach (var item in t.Parameters) {
+					sb.Tab(options.TabLevel).Append("dynamicParameters.Add").OpenParenthesis().Literal(item.Name).Space().Comma().Space().Append(item.Name).Comma().Space().Append("dbType:System.Data.DbType.").Append(convertDataType.GetDbType(item.Type)).CloseParenthesis().Terminate();
+				}
 			}
 			sb.Tab(options.TabLevel).Append($"Definition = new CommandDefinition(\"[{t.Schema}].[{t.Name}]\", dynamicParameters, commandType:CommandType.StoredProcedure, transaction:transaction);").AppendLine();
 			options.TabLevel--;

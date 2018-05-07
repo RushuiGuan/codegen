@@ -17,13 +17,16 @@ namespace Albatross.CodeGen.PowerShell {
 		public object GenSource { get; set; }
 
 		[Parameter]
+		[Alias("d")]
 		public Albatross.Database.Database Database { get; set; }
 
 		[Parameter]
 		[Array2Branch]
+		[Alias("b")]
 		public Branch Branch { get; set; }
 
 		[Parameter]
+		[Alias("p")]
 		public DatabasePermission[] Permissions { get; set; }
 
 
@@ -31,15 +34,19 @@ namespace Albatross.CodeGen.PowerShell {
 		const string PSName_ByFields = "ByFields";
 
 		[Parameter(Mandatory = true, ParameterSetName = PSName_ByFields)]
+		[Alias("n")]
 		public string Name { get; set; }
 
 		[Parameter(Mandatory = true, ParameterSetName = PSName_ByFields)]
+		[Alias("s")]
 		public string Schema{ get; set; }
 
 		[Parameter(ParameterSetName = PSName_ByFields)]
+		[Alias("f")]
 		public FilterOption Filter { get; set; }
 
 		[Parameter(ParameterSetName = PSName_ByObject)]
+		[Alias("o")]
 		public SqlCodeGenOption Option { get; set; }
 
 		protected override void ProcessRecord() {

@@ -9,18 +9,26 @@ namespace Albatross.CodeGen.PowerShell {
 		const string DefaultServer = "localhost";
 		const string ByName = "ByName";
 		const string ByObject = "ByObject";
+		const string ByRefresh = "ByRefresh";
 
-		[Parameter(Position = 0)]
+		[Parameter]
+		[Alias("c")]
 		public string Criteria { get; set; }
 
-		[Parameter(Position = 1, Mandatory = true, ParameterSetName = ByName)]
-		public string DbName { get; set; }
+		[Parameter(Mandatory = true, ParameterSetName = ByName)]
+		[Alias("ds")]
+		public string DataSource { get; set; }
 
-		[Parameter(Position = 1, Mandatory = false, ParameterSetName = ByName)]
+		[Parameter(Mandatory = false, ParameterSetName = ByName)]
+		[Alias("s")]
 		public string Server { get; set; }
 
-		[Parameter(Position = 2, ValueFromPipeline = true, Mandatory = true, ParameterSetName = ByObject)]
+		[Parameter(Mandatory = true, ParameterSetName = ByObject)]
 		public Albatross.Database.Database Database { get; set; }
+
+		[Parameter(Mandatory = true, ParameterSetName = ByRefresh)]
+		[Alias("p")]
+		public Procedure Procedure{ get; set; }
 
 		protected override void BeginProcessing() {
 			base.BeginProcessing();
@@ -34,10 +42,13 @@ namespace Albatross.CodeGen.PowerShell {
 				db = new Albatross.Database.Database {
 					SSPI = true,
 					DataSource = DefaultServer,
-					InitialCatalog = DbName,
+					InitialCatalog = DataSource,
 				};
-			} else {
+			} else if (base.ParameterSetName == ByObject) {
 				db = Database;
+			} else {
+				db = Procedure.Database;
+				Criteria = $"{Procedure.Schema}.{Procedure.Name}";
 			}
 
 			var items = Ioc.Get<IListProcedure>().Get(db, Criteria);

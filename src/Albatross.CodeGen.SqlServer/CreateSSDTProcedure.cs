@@ -13,6 +13,9 @@ namespace Albatross.CodeGen.SqlServer {
 		}
 
 		public IEnumerable<object> Generate(StringBuilder sb, Procedure source, object option) {
+			if (source == null) {
+				throw new Faults.CodeGeneratorException("missing source");
+			}
 			if (string.IsNullOrEmpty(source.CreateScript)) {
 				throw new Faults.CodeGeneratorException("missing stored procedure create script");
 			} else {
