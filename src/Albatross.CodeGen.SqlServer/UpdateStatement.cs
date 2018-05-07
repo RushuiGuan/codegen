@@ -38,13 +38,8 @@ namespace Albatross.CodeGen.SqlServer {
 			foreach (Column c in columns) {
 				name = getVariableName.Get(c.Name);
 				sb.Tab().EscapeName(c.Name).Append(" = ");
-
-				if (option.Expressions.TryGetValue(name, out string expression)) {
-					sb.Append(expression);
-				} else {
-					createVariable.Store(this, c.GetVariable());
-					sb.Append(name);
-				}
+				createVariable.Store(this, c.GetVariable());
+				sb.Append(name);
 				if (c != columns.Last()) {
 					sb.Comma().AppendLine();
 				}

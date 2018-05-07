@@ -58,32 +58,6 @@ update [test].[Contact] set
 where
 	[Domain] = @domain
 	and [Login] = @login" },
-
-				new TestCaseData(ContactTable.Table, new SqlCodeGenOption{ Variables= new Variable[]{ NonUnicodeStringVariable("user", 100) }, Filter= FilterOption.ByPrimaryKey, Expressions={ { "@created", "getdate()"}, {"@modified", "getdate()"}, { "@createdBy", "@user"},{ "@modifiedBy", "@user"} } }){ ExpectedResult=@"declare
-	@user as varchar(100),
-	@firstName as nvarchar(100),
-	@lastName as nvarchar(100),
-	@middleName as nvarchar(100),
-	@gender as char(20),
-	@cell as varchar(50),
-	@address as nvarchar(200),
-	@domain as varchar(100),
-	@login as varchar(100);
-
-update [test].[Contact] set
-	[FirstName] = @firstName,
-	[LastName] = @lastName,
-	[MiddleName] = @middleName,
-	[Gender] = @gender,
-	[Cell] = @cell,
-	[Address] = @address,
-	[Created] = getdate(),
-	[CreatedBy] = @user,
-	[Modified] = getdate(),
-	[ModifiedBy] = @user
-where
-	[Domain] = @domain
-	and [Login] = @login" },
 			};
 		}
 

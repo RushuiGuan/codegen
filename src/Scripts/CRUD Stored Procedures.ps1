@@ -1,3 +1,4 @@
+cls
 & $PSScriptRoot\setup.ps1
 Register-Assembly;
 
@@ -5,24 +6,19 @@ Get-DatabaseTable -DbName ac -Criteria ac.% | Where-Object -Property IdentityCol
 	[string]$schema = "ac";
 	[string]$name = "Create$($_.Name)";
 	
-    $createOption = New-SqlQueryOption -Name $name -Schema $schema -Expressions @{
-            "@created" = "sysutcdatetime()"; 
-            "@modified" ="sysutcdatetime()";
-            "@createdBy" = "@user";
-            "@modifiedBy" = "@user";
-        } -Parameter (New-SqlParameter -name user -type "varchar(100)") -Filter ByIdentityColumn;
-
-	$procedure = New-StoredProcedure -name $name -schema "ac" -database $_.Database -CreateScript (Invoke-Composite -Source $_ -Option $option -b sql.procedure, sql.insert, newline, sql.select.identity) -alterScript (Invoke-Composite -Source $_ -Option $option -b sql.procedure, sql.insert, newline, sql.select.identity);
+    $createOption = New-SqlQueryOption -Name $name -Schema $schema -Filter ByIdentityColumn;
+	$alterOption = New-SqlQueryOption -Name $name -Schema $schema -Filter ByIdentityColumn -AlterProcedure;
+	[Albatross.Database.Procedure]$procedure = New-StoredProcedure -name $name -schema $schema -database $_.Database 
+	$procedure.CreateScript = Invoke-Composite -Source $_ -Option $createOption -b sql.procedure, sql.insert, newline, sql.select.identity;
+	$procedure.AlterScript = Invoke-Composite -Source $_ -Option $alterOption -b sql.procedure, sql.insert, newline, sql.select.identity;
+	$procedure.Permissions = ,(new-databasePermission -state grant -permission execute -principal app_svc);
 	publish-procedure $procedure;
 
     
-    $option = New-SqlQueryOption -Name "Update$($_.Name)" -Schema "ac" -Expressions @{
-            "@modified" ="sysutcdatetime()";
-            "@modifiedBy" = "@user";
-        } -Parameter $user -Filter ByIdentityColumn;
+    $option = New-SqlQueryOption -Name "Update$($_.Name)" -Schema "ac" -Filter ByIdentityColumn;
     New-Branch -Nodes sql.procedure, sql.update, newline, sql.where.table | Invoke-Composite -Source $_ -Option $option;
 
-    $option = New-SqlQueryOption -Name "Delete$($_.Name)" -Schema "ac" -Parameter $user -Filter ByIdentityColumn;
+    $option = New-SqlQueryOption -Name "Delete$($_.Name)" -Schema "ac" -Filter ByIdentityColumn;
     New-Branch -Nodes sql.procedure, sql.delete, newline, sql.where.table | Invoke-Composite -Source $_ -Option $option;
 
     $option = New-SqlQueryOption -Name "Get$($_.Name)" -Schema "ac" -Filter ByIdentityColumn;

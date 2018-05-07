@@ -35,12 +35,8 @@ namespace Albatross.CodeGen.SqlServer {
 			sb.CloseParenthesis().AppendLine().Append("values ").OpenParenthesis();
 			foreach (Column c in columns) {
 				string name = getVariableName.Get(c.Name);
-				if (options.Expressions.TryGetValue(name, out string expression)) {
-					sb.Append(expression);
-				} else {
-					sb.Append(name);
-					createVariable.Store(this, c.GetVariable()); 
-				}
+				sb.Append(name);
+				createVariable.Store(this, c.GetVariable()); 
 				if (c != columns.Last()) { sb.Comma().Space(); }
 			}
 			sb.CloseParenthesis();

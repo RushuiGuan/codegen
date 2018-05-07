@@ -22,13 +22,7 @@ namespace Albatross.CodeGen.PowerShell {
 		public string Schema{ get; set; }
 
 		[Parameter]
-		public Variable[] Variables { get; set; }
-
-		[Parameter]
-		public Parameter[] Parameters { get; set; }
-
-		[Parameter]
-		public Hashtable Expressions { get; set; }
+		public SwitchParameter AlterProcedure { get; set; }
 
 
 		protected override void ProcessRecord() {
@@ -37,14 +31,8 @@ namespace Albatross.CodeGen.PowerShell {
 				Filter = Filter,
 				Name = Name,
 				Schema = Schema,
-				Variables = Variables,
-				Parameters = Parameters,
+				AlterProcedure = AlterProcedure.ToBool(),
 			};
-			if (Expressions != null) {
-				foreach (var key in Expressions.Keys) {
-					value.Expressions.Add(Convert.ToString(key), Convert.ToString(Expressions[key]));
-				}
-			}
 			WriteObject(value);
 		}
 	}

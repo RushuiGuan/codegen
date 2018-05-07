@@ -38,11 +38,6 @@ namespace Albatross.CodeGen.Generation {
 		/// </summary>
 		public IEnumerable<Parameter> Parameters { get; set; } = new Parameter[0];
 
-		/// <summary>
-		/// Replace certain variables using an expression
-		/// </summary>
-		public Dictionary<string, string> Expressions { get; } = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-
 		public string Principals{ get; set; }
 
 		public bool AlterProcedure { get; set; }
