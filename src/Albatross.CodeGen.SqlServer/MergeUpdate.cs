@@ -21,9 +21,7 @@ namespace Albatross.CodeGen.SqlServer {
 
 		public override IEnumerable<object>  Generate(StringBuilder sb, Table table, SqlCodeGenOption options) {
 			HashSet<string> keys = new HashSet<string>();
-			if (options.ExcludePrimaryKey) {
-				keys.AddRange(from item in table.PrimaryKeys select item.Name);
-			}
+			keys.AddRange(from item in table.PrimaryKeys select item.Name);
 
 			Column[] columns = (from c in table.Columns ?? new Column[0]
 								orderby c.OrdinalPosition ascending, c.Name ascending

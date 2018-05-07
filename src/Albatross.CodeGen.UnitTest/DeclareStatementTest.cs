@@ -63,8 +63,8 @@ where
 
 		[TestCaseSource(nameof(BuildDeclareStatementTestCase))]
 		public string BuildDeclareStatement(Table table, SqlCodeGenOption option) {
-			Container c = Ioc.Container;
-			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
+			var factory = Ioc.Container.GetInstance<IConfigurableCodeGenFactory>();
+			table = Ioc.Container.GetInstance<IGetTable>().Get(table.Database, table.Schema, table.Name);
 			factory.Register(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
 				Name = "test",
 				Branch = new Branch(new Leaf("sql.declare"), new Branch(new Leaf("newline"), new Leaf("sql.update"), new Leaf("newline"), new Leaf("sql.where.table"))),
@@ -93,8 +93,7 @@ from [test].[Symbol]" },
 
 		[TestCaseSource(nameof(DeclareStatementWithoutDeclareTestCase))]
 		public string DeclareStatementWithoutDeclare(Table table, SqlCodeGenOption option) {
-			Container c = Ioc.Container;
-			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
+			var factory = Ioc.Container.GetInstance<IConfigurableCodeGenFactory>();
 			typeof(DeclareStatement).Assembly.Register(factory);
 			factory.RegisterStatic();
 			factory.Register(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
@@ -102,7 +101,7 @@ from [test].[Symbol]" },
 				Branch = new Branch(new Leaf("sql.declare"), new Branch(new Leaf("newline"), new Leaf("sql.select.table"))),
 				Target = GeneratorTarget.Sql,
 			});
-
+			table = Ioc.Container.GetInstance<IGetTable>().Get(table.Database, table.Schema, table.Name);
 			StringBuilder sb = new StringBuilder();
 			var handle = factory.Create<Table, SqlCodeGenOption>("test");
 			handle.Generate(sb, table, option);

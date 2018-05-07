@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.UnitTest {
 	public class ParseSqlTypeTest {
 		public static IEnumerable<TestCaseData> SuccessTestCases() {
 			return new TestCaseData[] {
-				new TestCaseData("datetime2(1)"){ ExpectedResult = new SqlType{ Name = "datetime2", Precision = 1 } },
+				new TestCaseData("datetime2(1)"){ ExpectedResult = new SqlType{ Name = "datetime2", Scale = 1 } },
 				new TestCaseData("datetime2"){ ExpectedResult = new SqlType{ Name = "datetime2" } },
 				new TestCaseData("varchar"){ ExpectedResult = new SqlType{ Name = "varchar" } },
 				new TestCaseData("varchar(100)"){ ExpectedResult = new SqlType{ Name = "varchar", MaxLength = 100 } },

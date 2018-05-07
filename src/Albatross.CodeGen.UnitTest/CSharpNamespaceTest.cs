@@ -36,7 +36,7 @@ namespace Albatross.Test {
 			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
 			factory.Register(new Composite(typeof(object), typeof(CSharpClassOption)) {
 				Name = "test",
-				Branch = new Branch(new Leaf("csharp namespace"), new Branch(new Leaf("csharp test class"), new Leaf("csharp test class"))),
+				Branch = new Branch(new Leaf("csharp.namespace"), new Branch(new Leaf("csharp.class.test"), new Leaf("csharp.class.test"))),
 				Target = GeneratorTarget.Sql,
 			});
 

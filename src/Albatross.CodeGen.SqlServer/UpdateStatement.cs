@@ -22,9 +22,7 @@ namespace Albatross.CodeGen.SqlServer {
 
 		public override IEnumerable<object>  Generate(StringBuilder sb, Table t, SqlCodeGenOption option) {
 			HashSet<string> keys = new HashSet<string>();
-			if (option.ExcludePrimaryKey) {
-				keys.AddRange(from item in t.PrimaryKeys select item.Name);
-			}
+			keys.AddRange(from item in t.PrimaryKeys select item.Name);
 
 			sb.Append($"update [{t.Schema}].[{t.Name}] set").AppendLine();
 			Column[] columns = (from c in t.Columns ?? new Column[0]

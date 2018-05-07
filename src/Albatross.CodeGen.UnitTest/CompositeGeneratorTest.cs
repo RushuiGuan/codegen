@@ -52,7 +52,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			StringBuilder sb = new StringBuilder();
 			IEnumerable<object> used = handle.Generate(sb, string.Empty, string.Empty);
-			Assert.AreEqual("begin\r\n\r\nend", sb.ToString());
+			Assert.AreEqual("begin\r\n\t\r\nend", sb.ToString());
 			Assert.AreEqual(1, used.Count());
 		}
 
@@ -84,7 +84,7 @@ namespace Albatross.CodeGen.UnitTest {
 			StringBuilder sb = new StringBuilder();
 			IEnumerable<object> used= handle.Generate(sb, new Table(), new SqlCodeGenOption());
 			Assert.AreEqual(@"begin
-	test1	
+	test1
 	test2
 end", sb.ToString());
 			Assert.Greater(used.Count(), 1);

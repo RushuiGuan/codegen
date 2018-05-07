@@ -13,17 +13,10 @@ namespace Albatross.CodeGen.UnitTest {
 			sb.AppendLine("begin");
 			IEnumerable<object> objects;
 			List<object> list = new List<object> { this };
-
-			while (true) {
-				sb.Tab();
-				objects = Yield?.Invoke(sb);
-				if (objects?.Count() > 0) {
-					list.AddRange(objects);
-				} else {
-					sb.Length--;
-					break;
-				}
-			}
+			StringBuilder scoped = new StringBuilder();
+			objects = Yield?.Invoke(scoped);
+			if (objects != null) { list.AddRange(objects); }
+			sb.Tabify(scoped.ToString(), 1);
 			sb.AppendLine();
 			sb.Append("end");
 			return list;

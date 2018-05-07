@@ -8,11 +8,7 @@ using Albatross.CodeGen.Core;
 using Albatross.CodeGen.Generation;
 
 namespace Albatross.CodeGen.SqlServer {
-	/// <summary>
-	/// Create a stored procedure based on the variables produced by the next generator in a composite generator.  The generator will yield for 1 turn.
-	/// </summary>
-	[CodeGenerator("sql.procedure", target: GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Create a SQL server stored procedure", SourceType = typeof(object))]
-	public class CreateAlterProcedure : ICodeGenerator<object, SqlCodeGenOption> {
+	public abstract class CreateAlterProcedure : ICodeGenerator<object, SqlCodeGenOption> {
 		IRetrieveSqlVariable getVariable;
 		IRenderSqlVariable renderVariable;
 		IRenderSqlParameter renderParameter;
@@ -22,6 +18,8 @@ namespace Albatross.CodeGen.SqlServer {
 			this.renderVariable = renderVariable;
 			this.renderParameter = renderParameter;
 		}
+
+		public abstract string Action { get; }
 
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
 
@@ -39,12 +37,7 @@ namespace Albatross.CodeGen.SqlServer {
 				variables = variables.Union(getVariable.Retrieve(item));
 			}
 
-			if (option.AlterProcedure) {
-				sb.Append("alter ");
-			} else {
-				sb.Append("create ");
-			}
-			sb.Append("procedure ").EscapeName(option.Schema).Dot().EscapeName(option.Name).AppendLine();
+			sb.Append(Action).Append(" procedure ").EscapeName(option.Schema).Dot().EscapeName(option.Name).AppendLine();
 			foreach (var variable in variables) {
 				renderVariable.Render(sb.Tab(), variable);
 
@@ -60,13 +53,14 @@ namespace Albatross.CodeGen.SqlServer {
 				}
 				sb.AppendLine();
 			}
-			sb.Append("as").AppendLine();
+			sb.Append("as begin").AppendLine();
 
 			string text = content.ToString();
 			if (!string.IsNullOrEmpty(text)) {
 				sb.Tabify(text, 1);
 				sb.AppendLine();
 			}
+			sb.AppendLine("end");
 			return new[] { this }.Union(items);
 		}
 

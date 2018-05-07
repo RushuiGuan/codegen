@@ -9,11 +9,6 @@ namespace Albatross.CodeGen.Generation {
 	[OptionType("Sql Code Generation Options")]
 	public class SqlCodeGenOption {
 		/// <summary>
-		/// Option to exclude primary key for certain operations such as generating an update statement
-		/// </summary>
-		public bool ExcludePrimaryKey { get; set; } = true;
-
-		/// <summary>
 		/// where clause filter options
 		/// </summary>
 		public FilterOption Filter { get; set; }
@@ -37,9 +32,5 @@ namespace Albatross.CodeGen.Generation {
 		/// Specify arbitrary sql parameters. />
 		/// </summary>
 		public IEnumerable<Parameter> Parameters { get; set; } = new Parameter[0];
-
-		public string Principals{ get; set; }
-
-		public bool AlterProcedure { get; set; }
 	}
 }

@@ -11,17 +11,15 @@ namespace Albatross.CodeGen.UnitTest {
 	public class TableUpdateTest {
 		static IEnumerable<TestCaseData> GetTestCases() {
 			return new TestCaseData[] {
-				new TestCaseData(SymbolTable.Table, new SqlCodeGenOption{ ExcludePrimaryKey = false, }){ ExpectedResult = "update [test].[Symbol] set\r\n\t[SyCode] = @syCode,\r\n\t[CuID] = @cuID,\r\n\t[OutShares] = @outShares,\r\n\t[CoID] = @coID,\r\n\t[SnID] = @snID"},
-				new TestCaseData(SymbolTable.Table, new SqlCodeGenOption{ ExcludePrimaryKey = true, }){ ExpectedResult = "update [test].[Symbol] set\r\n\t[CuID] = @cuID,\r\n\t[OutShares] = @outShares,\r\n\t[CoID] = @coID,\r\n\t[SnID] = @snID"},
-				new TestCaseData(ContactTable.Table, new SqlCodeGenOption{ ExcludePrimaryKey = false, }){ ExpectedResult = "update [test].[Contact] set\r\n\t[Domain] = @domain,\r\n\t[Login] = @login,\r\n\t[FirstName] = @firstName,\r\n\t[LastName] = @lastName,\r\n\t[MiddleName] = @middleName,\r\n\t[Gender] = @gender,\r\n\t[Cell] = @cell,\r\n\t[Address] = @address,\r\n\t[Created] = @created,\r\n\t[CreatedBy] = @createdBy,\r\n\t[Modified] = @modified,\r\n\t[ModifiedBy] = @modifiedBy"},
-				new TestCaseData(ContactTable.Table, new SqlCodeGenOption{ ExcludePrimaryKey = true, }){ ExpectedResult = "update [test].[Contact] set\r\n\t[FirstName] = @firstName,\r\n\t[LastName] = @lastName,\r\n\t[MiddleName] = @middleName,\r\n\t[Gender] = @gender,\r\n\t[Cell] = @cell,\r\n\t[Address] = @address,\r\n\t[Created] = @created,\r\n\t[CreatedBy] = @createdBy,\r\n\t[Modified] = @modified,\r\n\t[ModifiedBy] = @modifiedBy"},
-				new TestCaseData(ContactTable.Table, new SqlCodeGenOption{ ExcludePrimaryKey = true, Expressions={ {"@created", "getdate()" }, { "@createdBy", "@user"}, { "@modified","getdate()"}, { "@modifiedBy", "@user"} } }){ ExpectedResult = "update [test].[Contact] set\r\n\t[FirstName] = @firstName,\r\n\t[LastName] = @lastName,\r\n\t[MiddleName] = @middleName,\r\n\t[Gender] = @gender,\r\n\t[Cell] = @cell,\r\n\t[Address] = @address,\r\n\t[Created] = getdate(),\r\n\t[CreatedBy] = @user,\r\n\t[Modified] = getdate(),\r\n\t[ModifiedBy] = @user"},
+				new TestCaseData(SymbolTable.Table, new SqlCodeGenOption()){ ExpectedResult = "update [test].[Symbol] set\r\n\t[CuID] = @cuID,\r\n\t[OutShares] = @outShares,\r\n\t[CoID] = @coID,\r\n\t[SnID] = @snID"},
+				new TestCaseData(ContactTable.Table, new SqlCodeGenOption()){ ExpectedResult = "update [test].[Contact] set\r\n\t[FirstName] = @firstName,\r\n\t[LastName] = @lastName,\r\n\t[MiddleName] = @middleName,\r\n\t[Gender] = @gender,\r\n\t[Cell] = @cell,\r\n\t[Address] = @address,\r\n\t[Created] = @created,\r\n\t[CreatedBy] = @createdBy,\r\n\t[Modified] = @modified,\r\n\t[ModifiedBy] = @modifiedBy"},
 			};
 		}
 
 
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(Table table, SqlCodeGenOption option) {
+			table = Ioc.Container.GetInstance<IGetTable>().Get(table.Database, table.Schema, table.Name);
 			StringBuilder sb = new StringBuilder();
 			Ioc.Container.GetInstance<UpdateStatement>().Generate(sb, table, option);
 			return sb.ToString();

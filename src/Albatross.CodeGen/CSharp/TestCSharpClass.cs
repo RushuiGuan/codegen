@@ -5,7 +5,7 @@ using Albatross.CodeGen.Core;
 using Albatross.CodeGen.Generation;
 
 namespace Albatross.CodeGen.CSharp {
-	[CodeGenerator("csharp test class", GeneratorTarget.CSharp, Category = "DotNet CSharp", Description = "Generating test C# class")]
+	[CodeGenerator("csharp.class.test", GeneratorTarget.CSharp, Category = "DotNet CSharp", Description = "Generating test C# class")]
 	public class TestCSharpClass : CSharpClassGenerator<object> {
 		IRenderDotNetType renderDotNetType;
 

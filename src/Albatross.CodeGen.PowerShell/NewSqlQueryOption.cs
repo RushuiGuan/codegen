@@ -10,9 +10,6 @@ namespace Albatross.CodeGen.PowerShell {
 	public class NewSqlQueryOption : Cmdlet {
 
 		[Parameter]
-		public SwitchParameter ExcludePrimaryKey { get; set; }
-
-		[Parameter]
 		public FilterOption Filter { get; set; }
 
 		[Parameter]
@@ -21,17 +18,11 @@ namespace Albatross.CodeGen.PowerShell {
 		[Parameter]
 		public string Schema{ get; set; }
 
-		[Parameter]
-		public SwitchParameter AlterProcedure { get; set; }
-
-
 		protected override void ProcessRecord() {
 			var value = new SqlCodeGenOption {
-				ExcludePrimaryKey = ExcludePrimaryKey.ToBool(),
 				Filter = Filter,
 				Name = Name,
 				Schema = Schema,
-				AlterProcedure = AlterProcedure.ToBool(),
 			};
 			WriteObject(value);
 		}
