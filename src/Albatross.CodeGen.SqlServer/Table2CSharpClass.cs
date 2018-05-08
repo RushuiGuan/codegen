@@ -9,24 +9,26 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer
 {
-	[CodeGenerator("sql.table.class", GeneratorTarget.CSharp, Category = GeneratorCategory.SQLServer, Description = "Generate a C# class from a sql server table")]
+	[CodeGenerator("csharp.table.class", GeneratorTarget.CSharp, Category = GeneratorCategory.SQLServer, Description = "Generate a C# class from a sql server table")]
 	public class Table2CSharpClass : CSharpClassGenerator<Table> {
-		IGetTable getTable;
-		IConvertSqlDataType getCSharpType;
+		IConvertSqlDataType typeConverter;
+		IRenderDotNetType renderDotNetType;
 
 		public override string GetClassName(Table t, CSharpClassOption option) {
 			return t.Name.Proper();
 		}
 
-		public Table2CSharpClass(IGetTable getTable, IConvertSqlDataType getCSharpType) {
-			this.getTable = getTable;
-			this.getCSharpType = getCSharpType;
+		public Table2CSharpClass( IConvertSqlDataType getCSharpType, IRenderDotNetType renderDotNetType) {
+			this.typeConverter = getCSharpType;
+			this.renderDotNetType = renderDotNetType;
 		}
 
 		public override void RenderBody(StringBuilder sb, Table t, CSharpClassOption options) {
-			t = getTable.Get(t.Database, t.Schema, t.Name);
 			foreach (var item in t.Columns) {
-				sb.Tab(options.TabLevel).Append("public ").Append(t.Name.Proper());
+				sb.Tab(options.TabLevel).Append("public ");
+				Type type = typeConverter.GetDotNetType(item.Type);
+				renderDotNetType.Render(sb, type, item.IsNullable);
+				sb.Space().Append(item.Name.Proper()).Space().AppendLine("{ get; set; }");
 			}
 		}
 	}

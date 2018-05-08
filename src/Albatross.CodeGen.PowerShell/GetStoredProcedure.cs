@@ -7,26 +7,30 @@ namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsCommon.Get, "StoredProcedure")]
 	public class GetStoredProcedure : PSCmdlet {
 		const string DefaultServer = "localhost";
-		const string ByName = "ByName";
-		const string ByObject = "ByObject";
-		const string ByRefresh = "ByRefresh";
+
+		//Criteria, DataSource, Server
+		const string Set1 = "Set1";
+		//Criteria, Database object
+		const string Set2 = "Set2";
+		//Procedure object
+		const string Set3 = "Set3";
 
 		[Parameter]
 		[Alias("c")]
 		public string Criteria { get; set; }
 
-		[Parameter(Mandatory = true, ParameterSetName = ByName)]
+		[Parameter(Mandatory = true, ParameterSetName = Set1)]
 		[Alias("ds")]
 		public string DataSource { get; set; }
 
-		[Parameter(Mandatory = false, ParameterSetName = ByName)]
+		[Parameter(Mandatory = false, ParameterSetName = Set1)]
 		[Alias("s")]
 		public string Server { get; set; }
 
-		[Parameter(Mandatory = true, ParameterSetName = ByObject)]
+		[Parameter(Mandatory = true, ParameterSetName = Set2)]
 		public Albatross.Database.Database Database { get; set; }
 
-		[Parameter(Mandatory = true, ParameterSetName = ByRefresh)]
+		[Parameter(Mandatory = true, ParameterSetName = Set3, ValueFromPipeline =true)]
 		[Alias("p")]
 		public Procedure Procedure{ get; set; }
 
@@ -38,13 +42,13 @@ namespace Albatross.CodeGen.PowerShell {
 		protected override void ProcessRecord() {
 			Albatross.Database.Database db;
 
-			if (base.ParameterSetName == ByName) {
+			if (base.ParameterSetName == Set1) {
 				db = new Albatross.Database.Database {
 					SSPI = true,
 					DataSource = DefaultServer,
 					InitialCatalog = DataSource,
 				};
-			} else if (base.ParameterSetName == ByObject) {
+			} else if (base.ParameterSetName == Set2) {
 				db = Database;
 			} else {
 				db = Procedure.Database;

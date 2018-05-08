@@ -35,7 +35,7 @@ namespace Albatross.CodeGen.SqlServer {
 		}
 
 		public override string GetClassName(Albatross.Database.Procedure t, CSharpClassOption option) {
-			return t.Name;
+			return t.Name.Proper();
 		}
 
 		public override void RenderConstructor(StringBuilder sb, Albatross.Database.Procedure t, CSharpClassOption options) {

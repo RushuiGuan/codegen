@@ -15,6 +15,8 @@ namespace Albatross.CodeGen.PowerShell {
 
 		protected override void ProcessRecord() {
 			Ioc.Get<IDeployProcedure>().Deploy(Procedure);
+			Procedure = Ioc.Get<IGetProcedure>().Get(Procedure.Database, Procedure.Schema, Procedure.Name);
+			WriteObject(Procedure);
 		}
 	}
 }

@@ -8,11 +8,11 @@ namespace Albatross.CodeGen.PowerShell {
 		const string PSName_ByComponent = "ByComponent";
 		const string PSName_ByConnectionString = "ByConnectionString";
 
-		[Alias("s")]
+		[Alias("server")]
 		[Parameter(ParameterSetName = PSName_ByComponent, Mandatory = true)]
 		public string DataSource { get; set; }
 
-		[Alias("d")]
+		[Alias("database")]
 		[Parameter(ParameterSetName = PSName_ByComponent)]
 		public string InitialCatalog { get; set; }
 
