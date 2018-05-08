@@ -22,7 +22,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object>  Generate(StringBuilder sb, Table table, SqlCodeGenOption options) {
+		public override IEnumerable<object>  Generate(StringBuilder sb, IDictionary<string, string> customCode, Table table, SqlCodeGenOption options) {
 			if (!(table.Columns?.Count() > 0)) {
 				throw new CodeGeneratorException("Editor column doesn't exist");
 			}

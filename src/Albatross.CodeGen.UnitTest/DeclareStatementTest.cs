@@ -73,7 +73,7 @@ where
 
 			StringBuilder sb = new StringBuilder();
 			var handle = factory.Create<Table, SqlCodeGenOption>("test");
-			handle.Generate(sb, table, option);
+			handle.Generate(sb, new Dictionary<string, string>(), table, option);
 			return sb.ToString();
 		}
 
@@ -104,7 +104,7 @@ from [test].[Symbol]" },
 			table = Ioc.Container.GetInstance<IGetTable>().Get(table.Database, table.Schema, table.Name);
 			StringBuilder sb = new StringBuilder();
 			var handle = factory.Create<Table, SqlCodeGenOption>("test");
-			handle.Generate(sb, table, option);
+			handle.Generate(sb, new Dictionary<string, string>(), table, option);
 			return sb.ToString();
 		}
 	}

@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.UnitTest {
 		public string MergeSelect(Table table, SqlCodeGenOption option) {
 			table = Ioc.Container.GetInstance<IGetTable>().Get(table.Database, table.Schema, table.Name);
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<MergeSelect>().Generate(sb, table, option);
+			Ioc.Container.GetInstance<MergeSelect>().Generate(sb, new Dictionary<string, string>(), table, option);
 			return sb.ToString();
 		}
 	}

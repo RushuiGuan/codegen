@@ -9,7 +9,7 @@ namespace Albatross.CodeGen.UnitTest {
 	public class YieldTestCodeGenerator : ICodeGenerator<object, object> {
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
 
-		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, object option) {
 			sb.AppendLine("begin");
 			IEnumerable<object> objects;
 			List<object> list = new List<object> { this };

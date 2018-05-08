@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.Core {
 		/// <param name="source"></param>
 		/// <param name="option"></param>
 		/// <returns></returns>
-		IEnumerable<object> Generate(StringBuilder sb, T source, O option);
+		IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, T source, O option);
 	}
 
 

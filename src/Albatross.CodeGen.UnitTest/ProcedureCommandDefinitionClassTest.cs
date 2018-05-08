@@ -39,7 +39,7 @@ namespace test {
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(Procedure p, CSharpClassOption option) {
 			StringBuilder sb = new StringBuilder();
-			new ProcedureCommandDefinitionClass(new ConvertDataType(), new RenderDotNetType()).Generate(sb, p, option);
+			new ProcedureCommandDefinitionClass(new ConvertDataType(), new RenderDotNetType()).Generate(sb, new Dictionary<string, string>(), p, option);
 			return sb.ToString();
 		}
     }

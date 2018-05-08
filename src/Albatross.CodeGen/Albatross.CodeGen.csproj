@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
-    <AssemblyVersion>1.1.2.22</AssemblyVersion>
-    <FileVersion>1.1.0.22</FileVersion>
+    <AssemblyVersion>1.1.2.23</AssemblyVersion>
+    <FileVersion>1.1.0.23</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Albatross.Database" Version="1.0.4.5" />

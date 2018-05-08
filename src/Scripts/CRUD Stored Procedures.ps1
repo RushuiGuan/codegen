@@ -6,10 +6,10 @@ $options = New-Object Albatross.CodeGen.Generation.CRUDProjectOptions
 $options.Schema = "ac";
 $options.Name = "Principal";
 $options.Database = New-Database -server localhost -database ac -i;
-$options.InterfaceLocation = $root\src\Albatross.AccessControl.Core;
-$options.ClassLocation = $root\src\Albatross.AccessControl.Core;
-$options.StoredProcedureLocation = $root\src\ac-db\Principal
-$options.DataLayerApiLocation = $root\src\Albatross.AccessControl.DataLayer;
+$options.InterfaceLocation = "$root\src\Albatross.AccessControl.Core";
+$options.ClassLocation = "$root\src\Albatross.AccessControl.Core";
+$options.StoredProcedureLocation = "$root\src\ac-db\Principal";
+$options.DataLayerApiLocation = "$root\src\Albatross.AccessControl.DataLayer";
 
 $table = Get-DatabaseTable -database $option.Database -schema $option.Schema -name $option.Name;
 # CSharp Class object

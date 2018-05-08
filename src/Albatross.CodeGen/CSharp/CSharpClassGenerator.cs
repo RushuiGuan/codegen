@@ -36,7 +36,7 @@ namespace Albatross.CodeGen.CSharp {
 			}
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, T t, CSharpClassOption option) {
+		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, T t, CSharpClassOption option) {
 			HashSet<string> imports = new HashSet<string>();
 			if (option.Imports != null) { imports.AddRange(option.Imports); }
 			foreach (var ns in imports) {
@@ -79,8 +79,8 @@ namespace Albatross.CodeGen.CSharp {
 
 		public void Configure(object data) { }
 
-		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
-			return this.ValidateNGenerate(sb, source, option);
+		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, object option) {
+			return this.ValidateNGenerate(sb, customCode, source, option);
 		}
 	}
 }

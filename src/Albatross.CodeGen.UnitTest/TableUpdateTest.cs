@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.UnitTest {
 		public string Run(Table table, SqlCodeGenOption option) {
 			table = Ioc.Container.GetInstance<IGetTable>().Get(table.Database, table.Schema, table.Name);
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<UpdateStatement>().Generate(sb, table, option);
+			Ioc.Container.GetInstance<UpdateStatement>().Generate(sb, new Dictionary<string, string>(), table, option);
 			return sb.ToString();
 		}
 	}

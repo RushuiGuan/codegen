@@ -117,14 +117,14 @@ namespace Albatross.CodeGen {
 				throw new Faults.InvalidOptionTypeException(codeGenerator.SourceType, optionType);
 			}
 		}
-		public static IEnumerable<object> ValidateNGenerate<T, O>(this ICodeGenerator<T, O> codeGenerator, StringBuilder sb, object source, object option) where T : class where O : class {
+		public static IEnumerable<object> ValidateNGenerate<T, O>(this ICodeGenerator<T, O> codeGenerator, StringBuilder sb, IDictionary<string, string> customCode, object source, object option) where T : class where O : class {
 			if (source != null && !typeof(T).IsAssignableFrom(source.GetType())) {
 				throw new Faults.InvalidSourceTypeException(typeof(T), source.GetType());
 			}
 			if (option != null && !typeof(O).IsAssignableFrom(option.GetType())) {
 				throw new Faults.InvalidOptionTypeException(typeof(O), option.GetType());
 			}
-			return codeGenerator.Generate(sb, (T)source, (O)option);
+			return codeGenerator.Generate(sb, customCode, (T)source, (O)option);
 			#endregion
 		}
 	}

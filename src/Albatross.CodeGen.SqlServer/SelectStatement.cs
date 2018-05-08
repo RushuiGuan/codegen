@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.getTable = getTable;
 		}
 
-		public override IEnumerable<object> Generate(StringBuilder sb, Table t, SqlCodeGenOption options) {
+		public override IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, Table t, SqlCodeGenOption options) {
 			IEnumerable<Column> columns = t.Columns ?? new Column[0];
 			if (columns.Count() == 0) {
 				throw new CodeGeneratorException($"Table doesn't have any columns");

@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.SqlServer {
 
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
 
-		public IEnumerable<object> Generate(StringBuilder sb, object source, SqlCodeGenOption option) {
+		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, SqlCodeGenOption option) {
 			StringBuilder content = new StringBuilder();
 			var items = Yield?.Invoke(content);
 			if (items == null) {
@@ -64,8 +64,8 @@ namespace Albatross.CodeGen.SqlServer {
 			return new[] { this }.Union(items);
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
-			return this.ValidateNGenerate(sb, source, option);
+		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, object option) {
+			return this.ValidateNGenerate(sb, customCode, source, option);
 		}
 
 		public void Configure(object data) {

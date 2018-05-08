@@ -4,6 +4,7 @@ using System.Management.Automation;
 using System.Text;
 using Albatross.CodeGen.Core;
 using SimpleInjector;
+using System.Collections.Generic;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsLifecycle.Invoke, "CodeGenerator")]
@@ -41,7 +42,7 @@ namespace Albatross.CodeGen.PowerShell {
 			var meta = factory.Get(Name);
 			StringBuilder sb = new StringBuilder();
 
-			codeGen.Run(meta, sb, Source, Option);
+			codeGen.Run(meta, sb, new Dictionary<string, string>(), Source, Option);
 			WriteObject(sb.ToString());
 			if (Output != null) {
 				if (!Output.Exists || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning")) {

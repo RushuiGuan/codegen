@@ -17,11 +17,11 @@ namespace Albatross.CodeGen
 		}
 
 
-		public IEnumerable<object> Run(CodeGenerator meta, StringBuilder sb, object source, object option) {
+		public IEnumerable<object> Run(CodeGenerator meta, StringBuilder sb, IDictionary<string, string> customCode, object source, object option) {
 			if (option == null) { option = Activator.CreateInstance(meta.OptionType); }
 			ICodeGenerator gen = (ICodeGenerator)objectFactory.Create(meta.GeneratorType);
 			gen.Configure(meta.Data);
-			return gen.Generate(sb, source, option);
+			return gen.Generate(sb, customCode, source, option);
 		}
 	}
 }

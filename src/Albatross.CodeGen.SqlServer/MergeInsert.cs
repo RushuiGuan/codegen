@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.SqlServer {
 		}
 
 
-		public override IEnumerable<object>  Generate(StringBuilder sb, Table t, SqlCodeGenOption options) {
+		public override IEnumerable<object>  Generate(StringBuilder sb, IDictionary<string, string> customCode, Table t, SqlCodeGenOption options) {
 			Column[] columns = (from c in t.Columns??new Column[0]
 								orderby c.OrdinalPosition ascending, c.Name ascending
 								where !c.IsComputed && !c.IsIdentity
