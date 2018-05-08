@@ -32,6 +32,6 @@ namespace Albatross.CodeGen.Core {
 		void Configure(object data);
 		event Func<StringBuilder, IEnumerable<object>> Yield;
 
-		IEnumerable<object> Generate(StringBuilder sb, object source, object option);
+		IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, object option);
 	}
 }

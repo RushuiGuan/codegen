@@ -12,11 +12,11 @@ namespace Albatross.CodeGen.Generation {
 		public string Postfix { get; set; }
 		public int TabLevel { get; set; }
 
-
+		public string Namespace { get; set; }
+		public string AccessModifier { get; set; } = "public";
 		public IEnumerable<string> Inheritance { get; set; }
 		public IEnumerable<string> Imports { get; set; } = new string[] { "System" };
-		public string AccessModifier { get; set; } = "public";
-		public string Namespace { get; set; }
 		public IEnumerable<string> Constructors { get; set; } = new string[0];
+		public bool PartialClass { get; set; }
 	}
 }
