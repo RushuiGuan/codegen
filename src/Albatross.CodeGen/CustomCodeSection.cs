@@ -18,8 +18,10 @@ namespace Albatross.CodeGen {
 
 		Regex startTag, endTag;
 
-		public Dictionary<string, string> Read(string code) {
-			Dictionary<string, string> dict = new Dictionary<string, string>();
+		Dictionary<string, string> data = new Dictionary<string, string>();
+
+		public void Load(string code) {
+			data.Clear();
 			using (StringReader reader = new StringReader(code)) {
 				Stack<Tuple<string, StringBuilder>> stack = new Stack<Tuple<string, StringBuilder>>();
 				for(string line = reader.ReadLine(); line != null; line = reader.ReadLine()) {
@@ -29,7 +31,7 @@ namespace Albatross.CodeGen {
 					}else if(IsEndTag(line)) {
 						if (stack.Count > 0) {
 							var tuple = stack.Pop();
-							dict[tuple.Item1] = tuple.Item2.ToString();
+							data[tuple.Item1] = tuple.Item2.ToString();
 						}
 					} else {
 						if (stack.Count > 0) {
@@ -38,7 +40,6 @@ namespace Albatross.CodeGen {
 					}
 				}
 			}
-			return dict;
 		}
 
 		protected virtual bool TryGetBeginTag(string input, out string tag) {
@@ -53,5 +54,11 @@ namespace Albatross.CodeGen {
 		}
 
 		public abstract void Write(string name, StringBuilder sb);
+
+		public string Read(string name) {
+			string content = null;
+			data.TryGetValue(name, out content);
+			return content;
+		}
 	}
 }

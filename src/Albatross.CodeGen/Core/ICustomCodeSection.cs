@@ -7,7 +7,8 @@ namespace Albatross.CodeGen.Core
 {
     public interface ICustomCodeSection {
 		string ApplyTo { get; }
-		Dictionary<string, string> Read(string code);
+		string Read(string name);
 		void Write(string name, StringBuilder sb);
+		void Load(string content);
 	}
 }

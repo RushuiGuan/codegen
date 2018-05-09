@@ -28,8 +28,9 @@ namespace Albatross.CodeGen.UnitTest {
 #endregion</albatross.codegen.csharp>", "123 xyz & ^ % $ \"", ExpectedResult = "\ttest\r\n")]
 
 		public string ReadCSharpCustomCodeTest(string text, string tag) {
-			Dictionary<string, string> dict = new CSharpCustomCodeSection().Read(text);
-			return dict[tag];
+			CSharpCustomCodeSection item = new CSharpCustomCodeSection();
+			item.Load(text);
+			return item.Read(tag);
 		}
 	}
 }
