@@ -42,7 +42,7 @@ namespace Albatross.Test {
 
 			StringBuilder sb = new StringBuilder();
 			var handle = factory.Create<object, CSharpClassOption>("test");
-			handle.Generate(sb, new Dictionary<string, string>(), null, option);
+			handle.Generate(sb, null, option);
 			return sb.ToString();
 		}
 	}

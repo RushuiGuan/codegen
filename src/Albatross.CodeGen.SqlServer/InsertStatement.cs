@@ -22,7 +22,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, Table table, SqlCodeGenOption options) {
+		public override IEnumerable<object> Generate(StringBuilder sb, Table table, SqlCodeGenOption options) {
 			Column[] columns = (from c in table.Columns?? new Column[0] where !c.IsIdentity && !c.IsComputed select c).ToArray();
 			if (columns.Length == 0) {
 				throw new CodeGeneratorException("Editable column not found");

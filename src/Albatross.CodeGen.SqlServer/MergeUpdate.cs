@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.buildSqlType = buildSqlType;
 		}
 
-		public override IEnumerable<object>  Generate(StringBuilder sb, IDictionary<string, string> customCode, Table table, SqlCodeGenOption options) {
+		public override IEnumerable<object>  Generate(StringBuilder sb, Table table, SqlCodeGenOption options) {
 			HashSet<string> keys = new HashSet<string>();
 			keys.AddRange(from item in table.PrimaryKeys select item.Name);
 

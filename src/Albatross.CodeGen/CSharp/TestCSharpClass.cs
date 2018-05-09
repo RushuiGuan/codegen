@@ -9,7 +9,7 @@ namespace Albatross.CodeGen.CSharp {
 	public class TestCSharpClass : CSharpClassGenerator<object> {
 		IRenderDotNetType renderDotNetType;
 
-		public TestCSharpClass(IRenderDotNetType renderDotNetType) {
+		public TestCSharpClass(IRenderDotNetType renderDotNetType, ICustomCodeSectionStrategy strategy): base(strategy) {
 			this.renderDotNetType = renderDotNetType;
 		}
 

@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.SqlServer
 			return t.Name.Proper();
 		}
 
-		public Table2CSharpClass( IConvertSqlDataType getCSharpType, IRenderDotNetType renderDotNetType) {
+		public Table2CSharpClass( IConvertSqlDataType getCSharpType, IRenderDotNetType renderDotNetType, ICustomCodeSectionStrategy strategy):base(strategy) {
 			this.typeConverter = getCSharpType;
 			this.renderDotNetType = renderDotNetType;
 		}

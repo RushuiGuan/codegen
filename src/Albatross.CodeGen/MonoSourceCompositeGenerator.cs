@@ -14,14 +14,14 @@ namespace Albatross.CodeGen
 			this.factory = factory;
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, T source, O option) {
+		public IEnumerable<object> Generate(StringBuilder sb, T source, O option) {
 			Queue<ICodeGenerator<T, O>> queue = new Queue<ICodeGenerator<T, O>>();
 			List<object> list = new List<object>();
 
 			foreach (var item in branch) {
 				if (item is Leaf leaf) {
 					var gen = factory.Create<T, O>(item.Name);
-					gen.Yield += (scoped_sb) => OnGreedyYield(queue, scoped_sb, customCode, source, option);
+					gen.Yield += (scoped_sb) => OnGreedyYield(queue, scoped_sb, source, option);
 					queue.Enqueue(gen);
 				} else {
 					var gen = new MonoSourceCompositeCodeGenerator<T, O>(factory);
@@ -32,7 +32,7 @@ namespace Albatross.CodeGen
 
 			while (queue.Count > 0) {
 				var item = queue.Dequeue();
-				var used = item.Generate(sb, customCode, source, option);
+				var used = item.Generate(sb, source, option);
 				list.AddRange(used);
 			}
 			return list;
@@ -43,11 +43,11 @@ namespace Albatross.CodeGen
 
 		}
 
-		private IEnumerable<object> OnGreedyYield(Queue<ICodeGenerator<T, O>> queue, StringBuilder sb, IDictionary<string, string> customCode, T source, O option) {
+		private IEnumerable<object> OnGreedyYield(Queue<ICodeGenerator<T, O>> queue, StringBuilder sb, T source, O option) {
 			List<object> list = new List<object>();
 			while (queue.Count > 0) {
 				var handle = queue.Dequeue();
-				var items = handle.Generate(sb, customCode, source, option);
+				var items = handle.Generate(sb, source, option);
 				list.AddRange(items);
 			}
 			return list;
@@ -61,17 +61,17 @@ namespace Albatross.CodeGen
 			}
 			*/
 		}
-		private IEnumerable<object> OnSingleYield(Queue<ICodeGenerator<T, O>> queue, StringBuilder sb, IDictionary<string, string> customCode, T source, O option) {
+		private IEnumerable<object> OnSingleYield(Queue<ICodeGenerator<T, O>> queue, StringBuilder sb, T source, O option) {
 			if (queue.Count > 0) {
 				var handle = queue.Dequeue();
-				return handle.Generate(sb, customCode, source, option);
+				return handle.Generate(sb, source, option);
 			} else {
 				return new object[0];
 			}
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, object option) {
-			return this.ValidateNGenerate(sb, customCode, source, option);
+		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+			return this.ValidateNGenerate(sb, source, option);
 		}
 	}
 }

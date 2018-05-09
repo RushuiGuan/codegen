@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.getTable = getTable;
 		}
 
-		public override IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, Table t, SqlCodeGenOption options) {
+		public override IEnumerable<object> Generate(StringBuilder sb, Table t, SqlCodeGenOption options) {
 			t = getTable.Get(t.Database, t.Schema, t.Name);
 			Column identityColumn = t.IdentityColumn;
 			if (identityColumn == null) {

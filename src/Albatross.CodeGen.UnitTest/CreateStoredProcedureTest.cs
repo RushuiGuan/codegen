@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(CreateEmptyProcedureTestCase))]
 		public string CreateEmptyProcedure(SqlCodeGenOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<SqlServer.CreateProcedure>().Generate(sb, new Dictionary<string, string>(), null, option);
+			Ioc.Container.GetInstance<SqlServer.CreateProcedure>().Generate(sb, null, option);
 			return sb.ToString();
 		}
 
@@ -54,7 +54,7 @@ namespace Albatross.CodeGen.UnitTest {
 			MonoSourceCompositeCodeGenerator<Table, SqlCodeGenOption> compositeCodeGenerator = new MonoSourceCompositeCodeGenerator<Table, SqlCodeGenOption>(factory);
 			compositeCodeGenerator.Configure(new Branch(new Leaf("sql.procedure.create"), new Leaf("insert")));
 			StringBuilder sb = new StringBuilder();
-			compositeCodeGenerator.Generate(sb, new Dictionary<string, string>(), table, option);
+			compositeCodeGenerator.Generate(sb, table, option);
 			return sb.ToString();
 		}
 	}

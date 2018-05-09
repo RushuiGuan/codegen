@@ -12,7 +12,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public void Configure(object data) {
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, Procedure source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, Procedure source, object option) {
 			if (source == null) {
 				throw new Faults.CodeGeneratorException("missing source");
 			}
@@ -29,8 +29,8 @@ namespace Albatross.CodeGen.SqlServer {
 			return new object[] { this, };
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, object option) {
-			return this.ValidateNGenerate(sb, customCode, source, option);
+		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+			return this.ValidateNGenerate(sb, source, option);
 		}
 	}
 }

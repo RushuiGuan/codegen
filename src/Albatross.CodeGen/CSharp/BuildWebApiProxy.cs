@@ -13,7 +13,7 @@ namespace Albatross.CodeGen.CSharp {
 		IGetReflectionOnlyType getReflectionOnlyType;
 		IRenderDotNetType renderDotNetType;
 
-		public BuildWebApiProxy(IGetReflectionOnlyType getReflectionOnlyType, IRenderDotNetType renderDotNetType) {
+		public BuildWebApiProxy(IGetReflectionOnlyType getReflectionOnlyType, IRenderDotNetType renderDotNetType, ICustomCodeSectionStrategy strategy):base(strategy) {
 			this.getReflectionOnlyType = getReflectionOnlyType;
 			this.renderDotNetType = renderDotNetType;
 		}

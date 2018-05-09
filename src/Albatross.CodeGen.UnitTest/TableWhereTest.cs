@@ -26,7 +26,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(Table table, SqlCodeGenOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<WhereClause>().Generate(sb, new Dictionary<string, string>(), table, option);
+			Ioc.Container.GetInstance<WhereClause>().Generate(sb, table, option);
 			return sb.ToString();
 		}
 	}

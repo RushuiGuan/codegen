@@ -24,6 +24,13 @@ namespace Albatross.CodeGen.SimpleInjector {
 			container.Register<IConvertSqlDataType, ConvertDataType>(Lifestyle.Singleton);
 			container.Register<IRenderDotNetType, RenderDotNetType>(Lifestyle.Singleton);
 			container.Register<IParseSqlType, ParseSqlType>(Lifestyle.Singleton);
+
+			var items = new Registration[] {
+				Lifestyle.Singleton.CreateRegistration<CSharpCustomCodeSection>(container),
+				Lifestyle.Singleton.CreateRegistration<SqlCustomCodeSection>(container),
+			};
+			container.RegisterCollection<ICustomCodeSection>(items);
+			container.Register<ICustomCodeSectionStrategy, CustomCodeSectionStrategy>(Lifestyle.Singleton);
 		}
 	}
 }

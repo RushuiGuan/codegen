@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.UnitTest {
 		public string MergeUpdate(Table table, SqlCodeGenOption option) {
 			table = Ioc.Container.GetInstance<IGetTable>().Get(table.Database, table.Schema, table.Name);
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<MergeUpdate>().Generate(sb, new Dictionary<string, string>(), table, option);
+			Ioc.Container.GetInstance<MergeUpdate>().Generate(sb, table, option);
 			return sb.ToString();
 		}
 	}

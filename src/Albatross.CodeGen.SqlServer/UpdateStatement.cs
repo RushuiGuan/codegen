@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object>  Generate(StringBuilder sb, IDictionary<string, string> customCode, Table t, SqlCodeGenOption option) {
+		public override IEnumerable<object>  Generate(StringBuilder sb, Table t, SqlCodeGenOption option) {
 			HashSet<string> keys = new HashSet<string>();
 			keys.AddRange(from item in t.PrimaryKeys select item.Name);
 

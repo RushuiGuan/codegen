@@ -10,7 +10,7 @@ namespace Albatross.CodeGen.CSharp
 	public class CSharpNamespace : ICodeGenerator<object, CSharpClassOption> {
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, CSharpClassOption option) {
+		public IEnumerable<object> Generate(StringBuilder sb, object source, CSharpClassOption option) {
 			HashSet<string> imports = new HashSet<string>();
 			imports.Add("System");
 			if (option.Imports != null) { imports.AddRange(option.Imports); }
@@ -27,8 +27,8 @@ namespace Albatross.CodeGen.CSharp
 			return new object[] { this, };
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, object option) {
-			return this.ValidateNGenerate(sb, customCode, source, option);
+		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+			return this.ValidateNGenerate(sb, source, option);
 		}
 
 		public void Configure(object data) {

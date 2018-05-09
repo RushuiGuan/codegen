@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.createVariable = createVariable;
 		}
 
-		public override IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, Table t, SqlCodeGenOption option) {
+		public override IEnumerable<object> Generate(StringBuilder sb, Table t, SqlCodeGenOption option) {
 			getTable.Get(ref t);
 			sb.Append("where");
 			int count = 0;

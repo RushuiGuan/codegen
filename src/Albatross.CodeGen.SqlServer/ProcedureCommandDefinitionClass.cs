@@ -29,7 +29,7 @@ namespace Albatross.CodeGen.SqlServer {
 		IConvertSqlDataType convertDataType;
 		IRenderDotNetType renderDotNetType;
 
-		public ProcedureCommandDefinitionClass(IConvertSqlDataType getCSharpType,  IRenderDotNetType renderDotNetType) {
+		public ProcedureCommandDefinitionClass(IConvertSqlDataType getCSharpType,  IRenderDotNetType renderDotNetType, ICustomCodeSectionStrategy strategy) : base(strategy) {
 			this.convertDataType = getCSharpType;
 			this.renderDotNetType = renderDotNetType;
 		}

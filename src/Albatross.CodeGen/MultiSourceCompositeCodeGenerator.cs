@@ -14,7 +14,7 @@ namespace Albatross.CodeGen {
 			this.factory = factory;
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
 			Queue<INode> queue = new Queue<INode>();
 			List<object> list = new List<object>();
 
@@ -23,7 +23,7 @@ namespace Albatross.CodeGen {
 					if(leaf.Source == null) { leaf.Source = source; }
 					if(leaf.Option == null) { leaf.Option = option; }
 					leaf.CodeGenerator = factory.Create(leaf.Name);
-					leaf.CodeGenerator.Yield += (scoped_sb) => OnGreedyYield(queue, scoped_sb, customCode);
+					leaf.CodeGenerator.Yield += (scoped_sb) => OnGreedyYield(queue, scoped_sb);
 					queue.Enqueue(leaf);
 				} else {
 					Branch branch = (Branch)item;
@@ -37,7 +37,7 @@ namespace Albatross.CodeGen {
 
 			while (queue.Count > 0) {
 				var node = queue.Dequeue();
-				var used = node.CodeGenerator.Generate(sb, customCode, node.Source, node.Option);
+				var used = node.CodeGenerator.Generate(sb, node.Source, node.Option);
 				list.AddRange(used);
 			}
 			return list;
@@ -47,20 +47,20 @@ namespace Albatross.CodeGen {
 			branch = data as Branch;
 		}
 
-		private IEnumerable<object> OnGreedyYield(Queue<INode> queue, StringBuilder sb, IDictionary<string, string> customCode) {
+		private IEnumerable<object> OnGreedyYield(Queue<INode> queue, StringBuilder sb) {
 			List<object> list = new List<object>();
 
 			while(queue.Count > 0) {
 				INode node = queue.Dequeue();
-				var items = node.CodeGenerator.Generate(sb, customCode, node.Source, node.Option);
+				var items = node.CodeGenerator.Generate(sb, node.Source, node.Option);
 				list.AddRange(items);
 			}
 			return list;
 		}
-		private IEnumerable<object> OnYield(Queue<INode> queue, StringBuilder sb, IDictionary<string, string> customCode) {
+		private IEnumerable<object> OnYield(Queue<INode> queue, StringBuilder sb) {
 			if (queue.Count > 0) {
 				INode node = queue.Dequeue();
-				return node.CodeGenerator.Generate(sb, customCode, node.Source, node.Option);
+				return node.CodeGenerator.Generate(sb, node.Source, node.Option);
 			} else {
 				return new object[0];
 			}

@@ -13,7 +13,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public void Configure(object data) {
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, IDatabaseObject source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, IDatabaseObject source, object option) {
 
 			if (source.Permissions?.Count() > 0) {
 				foreach (var permission in source.Permissions) {
@@ -23,8 +23,8 @@ namespace Albatross.CodeGen.SqlServer {
 			return new object[] { this };
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, object option) {
-			return this.ValidateNGenerate(sb, customCode, source, option);
+		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+			return this.ValidateNGenerate(sb, source, option);
 		}
 	}
 }

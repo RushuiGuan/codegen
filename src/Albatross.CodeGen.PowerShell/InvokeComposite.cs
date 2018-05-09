@@ -42,7 +42,7 @@ namespace Albatross.CodeGen.PowerShell {
 				Branch = Branch,
 			};
 			var meta = c.GetMeta();
-			codeGen.Run(meta, sb, new Dictionary<string, string>(), Source, Option);
+			codeGen.Run(meta, sb, Source, Option);
 			WriteObject(sb.ToString());
 			if (Output != null) {
 				if (!Output.Exists || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning")) {

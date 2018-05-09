@@ -15,10 +15,10 @@ namespace Albatross.CodeGen.SqlServer {
 		public Type OptionType => typeof(SqlCodeGenOption);
 
 		public event Func<StringBuilder, IEnumerable<object>> Yield { add { } remove { } }
-		public abstract IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, Table table, SqlCodeGenOption option);
+		public abstract IEnumerable<object> Generate(StringBuilder sb, Table table, SqlCodeGenOption option);
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, object option) {
-			return this.ValidateNGenerate(sb, customCode, source, option);
+		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+			return this.ValidateNGenerate(sb, source, option);
 		}
 
 		public void Configure(object data) { }

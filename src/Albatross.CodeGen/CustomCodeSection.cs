@@ -6,11 +6,12 @@ using System.Text;
 using System;
 
 namespace Albatross.CodeGen {
-	public abstract class ReadCustomCode : IReadCustomCode {
+	public abstract class CustomCodeSection : ICustomCodeSection {
+		public abstract string ApplyTo { get; }
 		public abstract string StartTagPattern { get; }
 		public abstract string EndTagPattern { get; }
 
-		public ReadCustomCode() {
+		public CustomCodeSection() {
 			startTag = new Regex(StartTagPattern, RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 			endTag = new Regex(EndTagPattern, RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 		}
@@ -50,5 +51,7 @@ namespace Albatross.CodeGen {
 			Match match = endTag.Match(input);
 			return match.Success;
 		}
+
+		public abstract void Write(string name, StringBuilder sb);
 	}
 }

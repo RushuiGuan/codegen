@@ -32,7 +32,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			var handle = factory.Create<Table, SqlCodeGenOption>("test");
 			StringBuilder sb = new StringBuilder();
-			var used = handle.Generate(sb, new Dictionary<string, string>(), new Table(), new SqlCodeGenOption());
+			var used = handle.Generate(sb, new Table(), new SqlCodeGenOption());
 			Assert.AreEqual("test1test2", sb.ToString());
 			Assert.Greater(used.Count(), 1);
 		}
@@ -51,7 +51,7 @@ namespace Albatross.CodeGen.UnitTest {
 			var handle = factory.Create<string, string>("test0");
 
 			StringBuilder sb = new StringBuilder();
-			IEnumerable<object> used = handle.Generate(sb, new Dictionary<string, string>(), string.Empty, string.Empty);
+			IEnumerable<object> used = handle.Generate(sb, string.Empty, string.Empty);
 			Assert.AreEqual("begin\r\n\t\r\nend", sb.ToString());
 			Assert.AreEqual(1, used.Count());
 		}
@@ -82,7 +82,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			var handle = factory.Create<Table, SqlCodeGenOption>("test");
 			StringBuilder sb = new StringBuilder();
-			IEnumerable<object> used= handle.Generate(sb, new Dictionary<string, string>(), new Table(), new SqlCodeGenOption());
+			IEnumerable<object> used= handle.Generate(sb, new Table(), new SqlCodeGenOption());
 			Assert.AreEqual(@"begin
 	test1
 	test2

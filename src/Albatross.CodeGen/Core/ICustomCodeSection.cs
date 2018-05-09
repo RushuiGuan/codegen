@@ -5,7 +5,9 @@ using System.Text;
 
 namespace Albatross.CodeGen.Core
 {
-    public interface IReadCustomCode {
+    public interface ICustomCodeSection {
+		string ApplyTo { get; }
 		Dictionary<string, string> Read(string code);
-    }
+		void Write(string name, StringBuilder sb);
+	}
 }

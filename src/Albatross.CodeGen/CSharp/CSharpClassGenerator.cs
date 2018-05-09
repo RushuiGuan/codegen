@@ -14,6 +14,10 @@ namespace Albatross.CodeGen.CSharp {
 	/// </summary>
 	/// <typeparam name="T">the source type</typeparam>
 	public abstract class CSharpClassGenerator<T> : ICodeGenerator<T, CSharpClassOption> where T : class {
+		protected ICustomCodeSection customCodeSection;
+		public CSharpClassGenerator(ICustomCodeSectionStrategy customCodeSectionStrategy) {
+			customCodeSection = customCodeSectionStrategy.Get(GeneratorTarget.CSharp);
+		}
 
 #pragma warning disable 0067
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
@@ -36,7 +40,7 @@ namespace Albatross.CodeGen.CSharp {
 			}
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, T t, CSharpClassOption option) {
+		public IEnumerable<object> Generate(StringBuilder sb, T t, CSharpClassOption option) {
 			HashSet<string> imports = new HashSet<string>();
 			if (option.Imports != null) { imports.AddRange(option.Imports); }
 			foreach (var ns in imports) {
@@ -49,7 +53,11 @@ namespace Albatross.CodeGen.CSharp {
 			}
 
 			string className = GetClassName(t, option);
-			sb.Tab(option.TabLevel).Append(option.AccessModifier).Append(" class ").Append(className);
+			sb.Tab(option.TabLevel).Append(option.AccessModifier).Space();
+			if (option.PartialClass) {
+				sb.Append("partial ");
+			} 
+			sb.Append("class ").Append(className);
 			if(option.Inheritance?.Count() > 0) { 
 				foreach (var item in option.Inheritance) {
 					if (item == option.Inheritance.First()) {
@@ -64,6 +72,7 @@ namespace Albatross.CodeGen.CSharp {
 			option.TabLevel++;
 
 			RenderConstructor(sb, t, option);
+			customCodeSection.Write("body", sb);
 			RenderBody(sb, t, option);
 
 			option.TabLevel--;
@@ -79,8 +88,8 @@ namespace Albatross.CodeGen.CSharp {
 
 		public void Configure(object data) { }
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, object source, object option) {
-			return this.ValidateNGenerate(sb, customCode, source, option);
+		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+			return this.ValidateNGenerate(sb, source, option);
 		}
 	}
 }

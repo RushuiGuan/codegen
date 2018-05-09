@@ -73,7 +73,7 @@ namespace Albatross.CodeGen.PowerShell {
 					Branch = new  Branch(new Leaf("sql.procedure.create"), Branch),
 				};
 				var meta = c.GetMeta();
-				codeGen.Run(meta, sb, new Dictionary<string, string>(), GenSource, Option);
+				codeGen.Run(meta, sb, GenSource, Option);
 				procedure.CreateScript = sb.ToString();
 
 				sb.Length = 0;
@@ -81,11 +81,11 @@ namespace Albatross.CodeGen.PowerShell {
 					Branch = new Branch(new Leaf("sql.procedure.alter"), Branch),
 				};
 				meta = c.GetMeta();
-				codeGen.Run(meta, sb, new Dictionary<string, string>(), GenSource, Option);
+				codeGen.Run(meta, sb, GenSource, Option);
 				procedure.AlterScript = sb.ToString();
 
 				sb.Length = 0;
-				Ioc.Get<Albatross.CodeGen.Core.ICodeGeneratorFactory>().Create("sql.permission").Generate(sb, new Dictionary<string, string>(), procedure, null);
+				Ioc.Get<Albatross.CodeGen.Core.ICodeGeneratorFactory>().Create("sql.permission").Generate(sb, procedure, null);
 				procedure.PermissionScript = sb.ToString();
 			}
 

@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.SqlServer {
 			this.getTable = getTable;
 		}
 
-		public override IEnumerable<object> Generate(StringBuilder sb, IDictionary<string, string> customCode, Table table, SqlCodeGenOption options) {
+		public override IEnumerable<object> Generate(StringBuilder sb, Table table, SqlCodeGenOption options) {
 			if ((options.Filter & FilterOption.ByIdentityColumn) > 0) {
 				if (table.IdentityColumn == null) {
 					throw new CodeGeneratorException("Identity column doesn't exist");

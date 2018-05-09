@@ -18,8 +18,17 @@ namespace Albatross.CodeGen.UnitTest {
 	test2
 #endregion</albatross.codegen.csharp>", "body", ExpectedResult = "\ttest1\r\n\ttest2\r\n")]
 
+		[TestCase(@"#region <albatross.codegen.csharp name=""wield name"">
+	test
+#endregion</albatross.codegen.csharp>", "wield name", ExpectedResult = "\ttest\r\n")]
+
+
+		[TestCase(@"#region <albatross.codegen.csharp name=""123 xyz & ^ % $ """">
+	test
+#endregion</albatross.codegen.csharp>", "123 xyz & ^ % $ \"", ExpectedResult = "\ttest\r\n")]
+
 		public string ReadCSharpCustomCodeTest(string text, string tag) {
-			Dictionary<string, string> dict = new ReadCSharpCustomCode().Read(text);
+			Dictionary<string, string> dict = new CSharpCustomCodeSection().Read(text);
 			return dict[tag];
 		}
 	}

@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Albatross.CodeGen.PowerShell</id>
-    <version>1.1.9.28</version>
+    <version>1.1.9.29</version>
     <title>Albatross Code Generator PowerShell Utilities</title>
     <authors>Rushui Guan</authors>
     <owners>Rushui Guan</owners>
