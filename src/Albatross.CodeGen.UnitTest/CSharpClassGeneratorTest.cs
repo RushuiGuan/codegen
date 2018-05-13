@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture(TestOf =typeof(CSharpClassGenerator<>))]
+	[TestFixture(TestOf =typeof(ClassInterfaceGenerator<>))]
 	public class CSharpClassGeneratorTest {
 
 		public static IEnumerable<TestCaseData> GetTestCases() {

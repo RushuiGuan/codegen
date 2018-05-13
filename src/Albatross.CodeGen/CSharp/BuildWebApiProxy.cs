@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp {
 	[CodeGenerator("asp.net webapi proxy", GeneratorTarget.CSharp, Category = "WebApi Proxy", Description = "Create a web api proxy class by using the reflection against the controller")]
-	public class BuildWebApiProxy : CSharpClassGenerator<ObjectType> {
+	public class BuildWebApiProxy : ClassInterfaceGenerator<ObjectType> {
 
 		const string ControllerPostfix = "Controller";
 		IGetReflectionOnlyType getReflectionOnlyType;
@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.CSharp {
 			this.renderDotNetType = renderDotNetType;
 		}
 
-		public override string GetClassName(ObjectType objType, CSharpClassOption option) {
+		public override string GetName(ObjectType objType, CSharpClassOption option) {
 			return GetControllerName(getReflectionOnlyType.Get(objType)) + "ClientApi";
 		}
 

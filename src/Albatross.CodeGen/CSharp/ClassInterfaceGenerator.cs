@@ -10,12 +10,12 @@ namespace Albatross.CodeGen.CSharp {
 	/// <summary>
 	/// ClassGenerator is an abstract class for C# class code generation.  It uses a fixed option type <see cref="Albatross.CodeGen.CSharp.ClassOption" /> but the Source Type is left open.  It will take care of 
 	/// namespace, class scope, class name and constructor generation using the information provided by the <see cref="Albatross.CodeGen.CSharp.ClassOption" /> object.  It leaves the rest of the body creation to a abstract 
-	/// method <see cref="Albatross.CodeGen.CSharp.CSharpClassGenerator{T}.RenderBody(StringBuilder, int, T, CSharpClassOption)"/>.
+	/// method <see cref="Albatross.CodeGen.CSharp.ClassInterfaceGenerator{T}.RenderBody(StringBuilder, int, T, CSharpClassOption)"/>.
 	/// </summary>
 	/// <typeparam name="T">the source type</typeparam>
-	public abstract class CSharpClassGenerator<T> : ICodeGenerator<T, CSharpClassOption> where T : class {
+	public abstract class ClassInterfaceGenerator<T> : ICodeGenerator<T, CSharpClassOption> where T : class {
 		protected ICustomCodeSection customCodeSection;
-		public CSharpClassGenerator(ICustomCodeSectionStrategy customCodeSectionStrategy) {
+		public ClassInterfaceGenerator(ICustomCodeSectionStrategy customCodeSectionStrategy) {
 			customCodeSection = customCodeSectionStrategy.Get(GeneratorTarget.CSharp);
 		}
 
@@ -24,23 +24,25 @@ namespace Albatross.CodeGen.CSharp {
 #pragma warning restore 0067
 
 		/// <summary>
-		/// Return the name of the class.  By default, it will use the <see cref="Albatross.CodeGen.CSharp.ClassOption.Name"/> property.  Override this method to change the behavior.
+		/// Return the name of the class or interface.  By default, it will use the <see cref="Albatross.CodeGen.CSharp.ClassOption.Name"/> property.  Override this method to change the behavior.
 		/// </summary>
 		/// <param name="t">Source input</param>
 		/// <param name="option">Option input</param>
 		/// <returns>The name for this class</returns>
-		public virtual string GetClassName(T t, CSharpClassOption option) {
+		public virtual string GetName(T t, CSharpClassOption option) {
 			return option.Name;
 		}
 		public abstract void RenderBody(StringBuilder sb, T t, CSharpClassOption options);
 		public virtual void RenderConstructor(StringBuilder sb, T t, CSharpClassOption options) {
-			string className = GetClassName(t, options);
+			string className = GetName(t, options);
 			foreach (string constructor in options.Constructors) {
 				sb.Tab(options.TabLevel).Public().Append(className).AppendLine(constructor);
 			}
 		}
+		public virtual bool IsInterface { get { return false; } }
 
 		public IEnumerable<object> Generate(StringBuilder sb, T t, CSharpClassOption option) {
+			if (t == null) { throw new Faults.CodeGeneratorException($"Source of type {typeof(T).FullName} Required"); }
 			HashSet<string> imports = new HashSet<string>();
 			if (option.Imports != null) { imports.AddRange(option.Imports); }
 			foreach (var ns in imports) {
@@ -52,12 +54,17 @@ namespace Albatross.CodeGen.CSharp {
 				option.TabLevel++;
 			}
 
-			string className = GetClassName(t, option);
+			string name = GetName(t, option);
 			sb.Tab(option.TabLevel).Append(option.AccessModifier).Space();
-			if (option.PartialClass) {
-				sb.Append("partial ");
-			} 
-			sb.Append("class ").Append(className);
+			if (IsInterface) {
+				sb.Append("interface ");
+			} else {
+				if (option.PartialClass) {
+					sb.Append("partial ");
+				}
+				sb.Append("class ");
+			}
+			sb.Append(name);
 			if(option.Inheritance?.Count() > 0) { 
 				foreach (var item in option.Inheritance) {
 					if (item == option.Inheritance.First()) {
@@ -72,8 +79,7 @@ namespace Albatross.CodeGen.CSharp {
 			option.TabLevel++;
 
 			RenderConstructor(sb, t, option);
-			customCodeSection.Write("body", sb);
-			sb.AppendLine(customCodeSection.Read("body"));
+			customCodeSection.Write("body", option.TabLevel, sb);
 			RenderBody(sb, t, option);
 
 			option.TabLevel--;

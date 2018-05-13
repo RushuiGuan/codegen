@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.Core
     public interface ICustomCodeSection {
 		string ApplyTo { get; }
 		string Read(string name);
-		void Write(string name, StringBuilder sb);
+		void Write(string name, int tabCount, StringBuilder sb);
 		void Load(string content);
 	}
 }

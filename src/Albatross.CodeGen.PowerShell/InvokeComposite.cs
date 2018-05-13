@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Text;
@@ -37,7 +38,11 @@ namespace Albatross.CodeGen.PowerShell {
 
 			StringBuilder sb = new StringBuilder();
 			if(Source is PSObject) { Source = ((PSObject)Source).BaseObject; }
+			if(Source == null) { Source = new object(); }
+
 			if (Option is PSObject) { Option = ((PSObject)Option).BaseObject; }
+			if (Option == null) { Option = new object(); }
+
 			Composite c = new Composite(Source.GetType(), Option.GetType()) {
 				Branch = Branch,
 			};

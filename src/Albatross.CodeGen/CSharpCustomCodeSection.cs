@@ -19,10 +19,15 @@ namespace Albatross.CodeGen {
 		public override string StartTagPattern => @"^\s*\#region\s*<\s*albatross\.codegen\.csharp\s+name\s*=\s*""(.+.*)""\s*>";
 		public override string EndTagPattern => @"^\s*\#endregion\s*</albatross\.codegen\.csharp>";
 
-		public override void Write(string name, StringBuilder sb) {
-			sb.AppendLine($"#region <albatross.codegen.csharp name=\"{name}\">");
-			sb.AppendLine("// Write your custom csharp code here");
-			sb.AppendLine($"#endregion </albatross.codegen.csharp>");
+		public override void Write(string name, int tabCount, StringBuilder sb) {
+			sb.Tab(tabCount).AppendLine($"#region <albatross.codegen.csharp name=\"{name}\">");
+			string data = Read(name);
+			if (string.IsNullOrEmpty(data)) {
+				sb.Tab(tabCount).AppendLine("// Write your custom csharp code here");
+			} else {
+				sb.AppendLine(data);
+			}
+			sb.Tab(tabCount).AppendLine($"#endregion </albatross.codegen.csharp>");
 		}
 	}
 }

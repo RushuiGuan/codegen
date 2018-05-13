@@ -49,7 +49,9 @@ namespace Albatross.CodeGen
 			return sb.Append(name);
 		}
 		public StringBuilder Render(StringBuilder sb, Type type, bool nullable) {
-			if (type.IsGenericType) {
+			if (type == null) {
+				sb.Append("void");
+			}else if (type.IsGenericType) {
 				Type[] arguments = type.GetGenericArguments();
 				Type genericType = type.GetGenericTypeDefinition();
 				if (genericType == typeof(Nullable<>)) {

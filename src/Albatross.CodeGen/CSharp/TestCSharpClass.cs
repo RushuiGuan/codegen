@@ -6,14 +6,14 @@ using Albatross.CodeGen.Generation;
 
 namespace Albatross.CodeGen.CSharp {
 	[CodeGenerator("csharp.class.test", GeneratorTarget.CSharp, Category = "DotNet CSharp", Description = "Generating test C# class")]
-	public class TestCSharpClass : CSharpClassGenerator<object> {
+	public class TestCSharpClass : ClassInterfaceGenerator<object> {
 		IRenderDotNetType renderDotNetType;
 
 		public TestCSharpClass(IRenderDotNetType renderDotNetType, ICustomCodeSectionStrategy strategy): base(strategy) {
 			this.renderDotNetType = renderDotNetType;
 		}
 
-		public override string GetClassName(object t, CSharpClassOption option) {
+		public override string GetName(object t, CSharpClassOption option) {
 			return "Test";
 		}
 		public override void RenderBody(StringBuilder sb, object t, CSharpClassOption options) {

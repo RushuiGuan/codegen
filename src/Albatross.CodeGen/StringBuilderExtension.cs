@@ -8,6 +8,25 @@ using Albatross.CodeGen.Core;
 namespace Albatross.CodeGen {
 	public static class StringBuilderExtension {
 		#region standard
+		public static StringBuilder Proper(this StringBuilder sb, string text) {
+			if (!string.IsNullOrEmpty(text)) {
+				sb.Append(text.Substring(0, 1).ToUpper());
+				if (text.Length > 1) {
+					sb.Append(text.Substring(1));
+				}
+			}
+			return sb;
+		}
+		public static StringBuilder ProperVariable(this StringBuilder sb, string text) {
+			if (!string.IsNullOrEmpty(text)) {
+				sb.Append(text.Substring(0, 1).ToLower());
+				if (text.Length > 1) {
+					sb.Append(text.Substring(1));
+				}
+			}
+			return sb;
+		}
+
 		public static StringBuilder AppendChar(this StringBuilder sb, char c, int count = 1) {
 			for (int i = 0; i < count; i++) {
 				sb.Append(c);
@@ -133,6 +152,10 @@ namespace Albatross.CodeGen {
 		}
 		public static StringBuilder AsString(this StringBuilder sb) {
 			return sb.Append(".ToString()");
+		}
+		public static StringBuilder Void(this StringBuilder sb) {
+			sb.Append("void ");
+			return sb;
 		}
 		#endregion
 	}

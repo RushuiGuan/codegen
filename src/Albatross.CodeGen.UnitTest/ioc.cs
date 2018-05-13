@@ -43,7 +43,7 @@ namespace Albatross.CodeGen.UnitTest {
 			var codeGenFactory = container.GetInstance<IConfigurableCodeGenFactory>();
 
 			typeof(ICodeGeneratorFactory).Assembly.Register(codeGenFactory);
-			typeof(CSharpClassGenerator<object>).Assembly.Register(codeGenFactory);
+			typeof(ClassInterfaceGenerator<object>).Assembly.Register(codeGenFactory);
 			typeof(SqlCodeGenOption).Assembly.Register(codeGenFactory);
 			typeof(Albatross.CodeGen.SqlServer.RenderSqlType).Assembly.Register(codeGenFactory);
 

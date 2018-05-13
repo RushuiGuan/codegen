@@ -53,7 +53,7 @@ namespace Albatross.CodeGen {
 			return match.Success;
 		}
 
-		public abstract void Write(string name, StringBuilder sb);
+		public abstract void Write(string name, int tabCount, StringBuilder sb);
 
 		public string Read(string name) {
 			string content = null;

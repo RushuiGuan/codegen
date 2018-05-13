@@ -19,10 +19,15 @@ namespace Albatross.CodeGen {
 		public override string StartTagPattern => @"$\s*--\s*<albatross.codegen.sql name=""([a-zA-Z_][a-zA-Z0-9_]*)"">";
 		public override string EndTagPattern => @"$\s*--\s*</albatross.codegen.sql>";
 
-		public override void Write(string name, StringBuilder sb) {
-			sb.AppendLine($"-- <albatross.codegen.sql name=\"{name}\">");
-			sb.AppendLine("-- Write your custom sql code here");
-			sb.AppendLine($"-- </albatross.codegen.sql>");
+		public override void Write(string name, int tabCount, StringBuilder sb) {
+			sb.Tab(tabCount).AppendLine($"-- <albatross.codegen.sql name=\"{name}\">");
+			string content = Read(name);
+			if (string.IsNullOrEmpty(content)) {
+				sb.Tab(tabCount).AppendLine("-- Write your custom sql code here");
+			} else {
+				sb.AppendLine(content);
+			}
+			sb.Tab(tabCount).AppendLine($"-- </albatross.codegen.sql>");
 		}
 	}
 }

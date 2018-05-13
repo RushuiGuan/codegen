@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsLifecycle.Invoke, "CodeGenerator")]
 	public class InvokeCodeGenerator : PSCmdlet {
-		[Parameter(Position = 0)]
+		[Parameter(Position = 0, Mandatory =true)]
 		[Alias("n")]
 		public string Name { get; set; }
 
@@ -36,7 +36,10 @@ namespace Albatross.CodeGen.PowerShell {
 		protected override void ProcessRecord() {
 			ICodeGeneratorFactory factory = Ioc.Get<ICodeGeneratorFactory>();
 			if (Source is PSObject) { Source = ((PSObject)Source).BaseObject; }
+			if (Source == null) { Source = new object(); }
+
 			if (Option is PSObject) { Option = ((PSObject)Option).BaseObject; }
+			if (Option == null) { Option = new object(); }
 
 			IRunCodeGenerator codeGen = Ioc.Get<IRunCodeGenerator>();
 			var meta = factory.Get(Name);

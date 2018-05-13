@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.Generation;
+using System.Collections;
 using System.Management.Automation;
 
 namespace Albatross.CodeGen.PowerShell {
@@ -37,6 +38,10 @@ namespace Albatross.CodeGen.PowerShell {
 		[Alias("c")]
 		public string[] Constructors{ get; set; }
 
+		[Parameter]
+		[Alias("overrides")]
+		public Hashtable PropertyTypeOverrides { get; set; }
+
 		protected override void ProcessRecord() {
 			var meta = new CSharpClassOption {
 				Name = Name,
@@ -48,6 +53,11 @@ namespace Albatross.CodeGen.PowerShell {
 				Imports = Imports??new string[0],
 				AccessModifier = AccessModifier ?? "public",
 			};
+			if (PropertyTypeOverrides != null) {
+				foreach (object key in PropertyTypeOverrides.Keys) {
+					meta.PropertyTypeOverrides[System.Convert.ToString(key)] = System.Convert.ToString(PropertyTypeOverrides[key]);
+				}
+			}
 			WriteObject(meta);
 		}
 	}

@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.Core;
+using System;
 using System.Collections.Generic;
 
 namespace Albatross.CodeGen.Generation {
@@ -18,5 +19,10 @@ namespace Albatross.CodeGen.Generation {
 		public IEnumerable<string> Imports { get; set; } = new string[] { "System" };
 		public IEnumerable<string> Constructors { get; set; } = new string[0];
 		public bool PartialClass { get; set; }
+		public Type DefaultIdentityColumnType { get; set; } = typeof(int);
+		/// <summary>
+		/// Force a type on a property.  Useful when Enum types are used on a property.
+		/// </summary>
+		public Dictionary<string, string> PropertyTypeOverrides { get; set; } = new Dictionary<string, string>();
 	}
 }

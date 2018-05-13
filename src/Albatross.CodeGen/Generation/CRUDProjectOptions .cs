@@ -16,17 +16,21 @@ namespace Albatross.CodeGen.Generation {
 	/// </list>
 	/// </summary>
 	public class CRUDProjectOptions {
-		public string TypeScriptLocation { get; set; }
-		public string InterfaceLocation { get; set; }
-		public string ClassLocation { get; set; }
-		public string StoredProcedureLocation { get; set; }
-		public string DataLayerApiLocation { get; set; }
+		public string RootPath { get; set; }
+		public string TypeScriptPath { get; set; }
+		public string InterfacePath { get; set; }
+		public string ClassPath { get; set; }
+		public string StoredProcedurePath { get; set; }
+		public string DataLayerApiPath { get; set; }
 
 
 		/// <summary>
 		/// Database and server
 		/// </summary>
-		public Albatross.Database.Database Database { get; set; }
+		public Albatross.Database.Database Database { get; set; } = new Albatross.Database.Database();
+		public CSharpClassOption ClassOption { get; set; } = new CSharpClassOption();
+		public Albatross.Database.DatabasePermission[] DatabasePermissions { get; set; }
+
 		/// <summary>
 		/// Table name
 		/// </summary>

@@ -1,44 +1,38 @@
+cls
 & $PSScriptRoot\setup.ps1
 Register-Assembly;
+$root = get-item $PSScriptRoot\..\..\..;
 
-$location = Get-Item $PSScriptRoot\..\ac-db\principal;
-$table = Get-DatabaseTable -DbName ac -Criteria ac.Principal;
+$options = New-Object Albatross.CodeGen.Generation.CRUDProjectOptions 
+$options.Schema = "ac";
+$options.Name = "Principal";
+$options.Database = New-Database -server localhost -database ac -i;
+$options.InterfacePath = "$root\ac\src\Albatross.AccessControl.Core";
+$options.ClassPath = "$root\ac\src\Albatross.AccessControl.Core";
+$options.StoredProcedurePath = "$root\ac\src\ac-db\Principal";
+$options.DataLayerApiPath = "$root\ac\src\Albatross.AccessControl.DataLayer";
 
-$user_parameter = New-SqlParameter -name user -type "varchar(100)";
-$option = New-SqlQueryOption -Name "Create$($table.Name)" -Schema "ac" -Expressions @{
-    "@created" = "sysutcdatetime()"; 
-    "@modified" ="sysutcdatetime()";
-    "@createdBy" = "@user";
-    "@modifiedBy" = "@user";
-} -Parameter $user_parameter -GrantPermission -Principals app_svc -Filter ByIdentityColumn;
-Invoke-Composite -Source $table -Option $option -b sql.procedure, sql.insert, newline, sql.select.identity -Output "$location\Create$($table.Name).sql" -Force;
+$options.ClassOption = new-CSharpClassOption -name $options.Name -namespace Albatross.AccessControl.Core -imports System -overrides @{ PrincipalType = "PrincipalType" };
+$options.DatabasePermissions = @(new-databasepermission -state grant -permission execute -principal app_svc);
 
-$option = New-SqlQueryOption -Name "Update$($table.Name)" -Schema "ac" -Expressions @{
-    "@modified" ="sysutcdatetime()";
-    "@modifiedBy" = "@user";
-} -Parameter $user_parameter -GrantPermission -Principals app_svc -Filter ByIdentityColumn;
-Invoke-Composite -Source $table -Option $option -b sql.procedure, sql.update, newline, sql.where.table  -Output "$location\Update$($table.Name).sql" -Force;
+[Albatross.Database.Table]$table = Get-DatabaseTable -database $options.Database -criteria "$($options.Schema).$($options.Name)";
+# C# Class
+Invoke-Composite -Source $table -Option $options.ClassOption -b csharp.namespace, csharp.table.class -Output "$($options.ClassPath)\$($options.Name).cs" -Force;
 
-$option = New-SqlQueryOption -Name "Delete$($table.Name)" -Schema "ac" -Parameter $user_parameter -GrantPermission -Principals app_svc -Filter ByIdentityColumn;
-Invoke-Composite -Source $table -Option $option -b sql.procedure, sql.delete, newline, sql.where.table  -Output "$location\Delete$($table.Name).sql" -Force;
+# Create Stored Procedure
+$procedure = New-StoredProcedure -name "Create$($options.Name)" -schema $options.Schema -filter ByIdentityColumn -database $options.Database -permission $options.DatabasePermissions -gs $table -branch sql.insert, newline, sql.select.identity
+$procedure = publish-StoredProcedure $procedure;
 
-$option = New-SqlQueryOption -Name "Get$($table.Name)" -Schema "ac" -GrantPermission -Principals app_svc -Filter ByIdentityColumn;
-Invoke-Composite -Source $table -Option $option -b sql.procedure, sql.select.table, newline, sql.where.table  -Output "$location\Get$($table.Name).sql" -Force;
+# Create Stored Procedure Proxy
+$classOption = new-CSharpClassOption -name "Create$($options.Name)" -namespace Albatross.AccessControl.DataLayer -imports System, Dapper, System.Data;
+Invoke-Composite -Source $procedure -Option $classOption -b csharp.namespace, csharp.procedure.dapper -Output "$($options.DataLayerApiPath)\$($classOption.Name).cs" -Force;
 
+# Create interfaces
+$classOption = new-CSharpClassOption -name $options.Name -namespace Albatross.AccessControl.Core -imports System,System.Collections.Generic;
+Invoke-CodeGenerator -Option $classOption -n csharp.crud.create.interface -Output "$($options.InterfacePath)\ICreate$($classOption.Name).cs" -Force;
+Invoke-CodeGenerator -Option $classOption -n csharp.crud.update.interface -Output "$($options.InterfacePath)\IUpdate$($classOption.Name).cs" -Force;
+Invoke-CodeGenerator -Option $classOption -n csharp.crud.get.interface -Output "$($options.InterfacePath)\IGet$($classOption.Name).cs" -Force;
+Invoke-CodeGenerator -Option $classOption -n csharp.crud.delete.interface -Output "$($options.InterfacePath)\IDelete$($classOption.Name).cs" -Force;
+Invoke-CodeGenerator -Option $classOption -n csharp.crud.list.interface -Output "$($options.InterfacePath)\IDelete$($classOption.Name).cs" -Force;
 
-<#
-Get-DatabaseTable -DbName ac -Criteria ac.% | Where-Object -Property IdentityColumn -EQ $null | Sort-Object -Property Name | ForEach-Object{
-	$user_parameter = New-SqlParameter -name user -type "varchar(100)";
-
-    $option = New-SqlQueryOption -Name "Create$($table.Name)" -Schema "ac" -Expressions @{
-            "@created" = "sysutcdatetime()"; 
-            "@modified" ="sysutcdatetime()";
-            "@createdBy" = "@user";
-            "@modifiedBy" = "@user";
-        } -Parameter $user_parameter -GrantPermission -Principals app_svc -Filter ByPrimaryKey;
-
-    New-Branch -Nodes sql.procedure, sql.insert | Invoke-Composite -Source $table -Option $option;
-}
-#>
-
-
+# Create Implementations
