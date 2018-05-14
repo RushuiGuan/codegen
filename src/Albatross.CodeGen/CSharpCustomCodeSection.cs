@@ -25,7 +25,7 @@ namespace Albatross.CodeGen {
 			if (string.IsNullOrEmpty(data)) {
 				sb.Tab(tabCount).AppendLine("// Write your custom csharp code here");
 			} else {
-				sb.AppendLine(data);
+				sb.Append(data);
 			}
 			sb.Tab(tabCount).AppendLine($"#endregion </albatross.codegen.csharp>");
 		}

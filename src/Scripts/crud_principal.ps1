@@ -8,6 +8,7 @@ $options.Schema = "ac";
 $options.Name = "Principal";
 $options.Database = New-Database -server localhost -database ac -i;
 $options.InterfacePath = "$root\ac\src\Albatross.AccessControl.Core";
+$options.ImplementationPath = "$root\ac\src\Albatross.AccessControl";
 $options.ClassPath = "$root\ac\src\Albatross.AccessControl.Core";
 $options.StoredProcedurePath = "$root\ac\src\ac-db\Principal";
 $options.DataLayerApiPath = "$root\ac\src\Albatross.AccessControl.DataLayer";
@@ -29,10 +30,27 @@ Invoke-Composite -Source $procedure -Option $classOption -b csharp.namespace, cs
 
 # Create interfaces
 $classOption = new-CSharpClassOption -name $options.Name -namespace Albatross.AccessControl.Core -imports System,System.Collections.Generic;
-Invoke-CodeGenerator -Option $classOption -n csharp.crud.create.interface -Output "$($options.InterfacePath)\ICreate$($classOption.Name).cs" -Force;
-Invoke-CodeGenerator -Option $classOption -n csharp.crud.update.interface -Output "$($options.InterfacePath)\IUpdate$($classOption.Name).cs" -Force;
-Invoke-CodeGenerator -Option $classOption -n csharp.crud.get.interface -Output "$($options.InterfacePath)\IGet$($classOption.Name).cs" -Force;
-Invoke-CodeGenerator -Option $classOption -n csharp.crud.delete.interface -Output "$($options.InterfacePath)\IDelete$($classOption.Name).cs" -Force;
-Invoke-CodeGenerator -Option $classOption -n csharp.crud.list.interface -Output "$($options.InterfacePath)\IDelete$($classOption.Name).cs" -Force;
+Invoke-CodeGenerator -Option $classOption -n csharp.crud.create.interface -Output "$($options.InterfacePath)\ICreate$($options.Name).cs" -Force;
+Invoke-CodeGenerator -Option $classOption -n csharp.crud.update.interface -Output "$($options.InterfacePath)\IUpdate$($options.Name).cs" -Force;
+Invoke-CodeGenerator -Option $classOption -n csharp.crud.get.interface -Output "$($options.InterfacePath)\IGet$($options.Name).cs" -Force;
+Invoke-CodeGenerator -Option $classOption -n csharp.crud.delete.interface -Output "$($options.InterfacePath)\IDelete$($options.Name).cs" -Force;
+Invoke-CodeGenerator -Option $classOption -n csharp.crud.list.interface -Output "$($options.InterfacePath)\IListe$($options.Name).cs" -Force;
+
+
+$classOption = new-CSharpClassOption -name $options.Name -namespace Albatross.AccessControl -imports System,System.Collections.Generic,Albatross.AccessControl.Core,Dapper,System.Data -typecasts @{ PrincipalType = "int" } -inheritance "ICreate$($options.Name)";
+$source = new-crudOperation -t $table -p $procedure
+Invoke-CodeGenerator -s $source -Option $classOption -n csharp.crud.create -Output "$($options.ImplementationPath)\Create$($classOption.Name).cs" -Force;
+
+$classOption = new-CSharpClassOption -name $options.Name -namespace Albatross.AccessControl -imports System,System.Collections.Generic,Albatross.AccessControl.Core,Dapper,System.Data -typecasts @{ PrincipalType = "int" };
+$source = new-crudOperation -t $table -p $procedure
+Invoke-CodeGenerator -s $source -Option $classOption -n csharp.crud.update -Output "$($options.ImplementationPath)\Update$($classOption.Name).cs" -Force;
+
+#$classOption = new-CSharpClassOption -name $options.Name -namespace Albatross.AccessControl -imports System,System.Collections.Generic,Albatross.AccessControl.Core,Dapper,System.Data -typecasts @{ PrincipalType = "int" };
+#$source = new-crudOperation -t $table -p $procedure
+#Invoke-CodeGenerator -s $source -Option $classOption -n csharp.crud.get -Output "$($options.ImplementationPath)\Create$($classOption.Name).cs" -Force;
+
+#$classOption = new-CSharpClassOption -name $options.Name -namespace Albatross.AccessControl -imports System,System.Collections.Generic,Albatross.AccessControl.Core,Dapper,System.Data -typecasts @{ PrincipalType = "int" };
+#$source = new-crudOperation -t $table -p $procedure
+#Invoke-CodeGenerator -s $source -Option $classOption -n csharp.crud.delete -Output "$($options.ImplementationPath)\Create$($classOption.Name).cs" -Force;
 
 # Create Implementations

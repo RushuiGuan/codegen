@@ -79,7 +79,7 @@ namespace Albatross.CodeGen {
 			return sb;
 		}
 		public static StringBuilder OpenScope(this StringBuilder sb) {
-			return sb.Append(" {").AppendLine();
+			return sb.AppendLine(" {");
 		}
 		public static StringBuilder CloseScope(this StringBuilder sb) {
 			return sb.AppendLine("}");
@@ -155,6 +155,18 @@ namespace Albatross.CodeGen {
 		}
 		public static StringBuilder Void(this StringBuilder sb) {
 			sb.Append("void ");
+			return sb;
+		}
+
+		public static StringBuilder Generic(this IRenderDotNetType renderDotNetType, StringBuilder sb, params Type[] types) {
+			sb.Append("<");
+			for (int i = 0; i < types.Length; i++) {
+				renderDotNetType.Render(sb, types[i], false);
+				if (i != types.Length - 1) {
+					sb.Comma().Space();
+				}
+			}
+			sb.Append(">");
 			return sb;
 		}
 		#endregion

@@ -24,5 +24,7 @@ namespace Albatross.CodeGen.Generation {
 		/// Force a type on a property.  Useful when Enum types are used on a property.
 		/// </summary>
 		public Dictionary<string, string> PropertyTypeOverrides { get; set; } = new Dictionary<string, string>();
+
+		public Dictionary<string, string> TypeCasts { get; set; } = new Dictionary<string, string>();
 	}
 }

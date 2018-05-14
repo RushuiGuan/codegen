@@ -19,6 +19,7 @@ namespace Albatross.CodeGen.Generation {
 		public string RootPath { get; set; }
 		public string TypeScriptPath { get; set; }
 		public string InterfacePath { get; set; }
+		public string ImplementationPath { get; set; }
 		public string ClassPath { get; set; }
 		public string StoredProcedurePath { get; set; }
 		public string DataLayerApiPath { get; set; }

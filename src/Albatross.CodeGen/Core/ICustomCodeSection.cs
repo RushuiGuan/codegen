@@ -10,5 +10,6 @@ namespace Albatross.CodeGen.Core
 		string Read(string name);
 		void Write(string name, int tabCount, StringBuilder sb);
 		void Load(string content);
+		void Clear();
 	}
 }

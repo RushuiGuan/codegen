@@ -79,7 +79,9 @@ namespace Albatross.CodeGen.CSharp {
 			option.TabLevel++;
 
 			RenderConstructor(sb, t, option);
-			customCodeSection.Write("body", option.TabLevel, sb);
+			sb.AppendLine();
+			customCodeSection.Write("custom", option.TabLevel, sb);
+			sb.AppendLine();
 			RenderBody(sb, t, option);
 
 			option.TabLevel--;

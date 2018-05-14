@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
-    <AssemblyVersion>1.1.2.26</AssemblyVersion>
-    <FileVersion>1.1.0.26</FileVersion>
+    <AssemblyVersion>1.1.2.27</AssemblyVersion>
+    <FileVersion>1.1.0.27</FileVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Albatross.Database" Version="1.0.4.5" />
+    <PackageReference Include="Albatross.Database" Version="1.1.4.9" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 </Project>

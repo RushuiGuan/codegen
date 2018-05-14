@@ -42,6 +42,9 @@ namespace Albatross.CodeGen.PowerShell {
 		[Alias("overrides")]
 		public Hashtable PropertyTypeOverrides { get; set; }
 
+		[Parameter]
+		public Hashtable TypeCasts{ get; set; }
+
 		protected override void ProcessRecord() {
 			var meta = new CSharpClassOption {
 				Name = Name,
@@ -56,6 +59,11 @@ namespace Albatross.CodeGen.PowerShell {
 			if (PropertyTypeOverrides != null) {
 				foreach (object key in PropertyTypeOverrides.Keys) {
 					meta.PropertyTypeOverrides[System.Convert.ToString(key)] = System.Convert.ToString(PropertyTypeOverrides[key]);
+				}
+			}
+			if (TypeCasts != null) {
+				foreach (object key in TypeCasts.Keys) {
+					meta.TypeCasts[System.Convert.ToString(key)] = System.Convert.ToString(TypeCasts[key]);
 				}
 			}
 			WriteObject(meta);

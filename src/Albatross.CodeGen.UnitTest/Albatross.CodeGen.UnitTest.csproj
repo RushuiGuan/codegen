@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
-    <AssemblyVersion>1.0.0.21</AssemblyVersion>
-    <FileVersion>1.0.0.21</FileVersion>
+    <AssemblyVersion>1.0.0.22</AssemblyVersion>
+    <FileVersion>1.0.0.22</FileVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Albatross.Database.SqlServer.SimpleInjector" Version="1.0.4.9" />
+    <PackageReference Include="Albatross.Database.SqlServer.SimpleInjector" Version="1.1.4.13" />
     <PackageReference Include="Dapper" Version="1.50.4" />
     <PackageReference Include="Moq" Version="4.8.1" />
     <PackageReference Include="NUnit" Version="3.9.0" />

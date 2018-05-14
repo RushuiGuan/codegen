@@ -60,5 +60,9 @@ namespace Albatross.CodeGen {
 			data.TryGetValue(name, out content);
 			return content;
 		}
+
+		public void Clear() {
+			data.Clear();
+		}
 	}
 }

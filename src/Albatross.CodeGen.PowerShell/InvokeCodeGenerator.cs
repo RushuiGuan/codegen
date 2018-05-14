@@ -45,6 +45,14 @@ namespace Albatross.CodeGen.PowerShell {
 			var meta = factory.Get(Name);
 			StringBuilder sb = new StringBuilder();
 
+			ICustomCodeSection section = Ioc.Get<ICustomCodeSectionStrategy>().Get(meta.Target);
+			if (Output.Exists) {
+				using (StreamReader reader = new StreamReader(Output.FullName)) {
+					section.Load(reader.ReadToEnd());
+				}
+			} else {
+			}
+
 			codeGen.Run(meta, sb, Source, Option);
 			WriteObject(sb.ToString());
 			if (Output != null) {

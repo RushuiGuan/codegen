@@ -39,7 +39,7 @@ namespace test {
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(Procedure p, CSharpClassOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance< ProcedureCommandDefinitionClass >().Generate(sb, p, option);
+			Ioc.Container.GetInstance< ProcedureDapperCommandDefinition >().Generate(sb, p, option);
 			return sb.ToString();
 		}
     }
