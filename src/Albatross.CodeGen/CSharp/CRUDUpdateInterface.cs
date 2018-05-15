@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.CSharp {
 			return "IUpdate" + option.Name;
 		}
 		public override void RenderBody(StringBuilder sb, object t, CSharpClassOption options) {
-			sb.Tab(options.TabLevel).Void().Append("Update").OpenParenthesis().Proper(options.Name).Space().ProperVariable(options.Name).CloseParenthesis().Terminate();
+			sb.Tab(TabLevel).Void().Append("Update").OpenParenthesis().Proper(options.Name).Space().ProperVariable(options.Name).CloseParenthesis().Terminate();
 		}
 	}
 }

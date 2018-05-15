@@ -6,8 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.Generation {
-	[OptionType("Sql Code Generation Options")]
-	public class SqlCodeGenOption {
+	public class SqlCodeGenOption : ICodeGeneratorOption {
 		/// <summary>
 		/// where clause filter options
 		/// </summary>
@@ -32,5 +31,7 @@ namespace Albatross.CodeGen.Generation {
 		/// Specify arbitrary sql parameters. />
 		/// </summary>
 		public IEnumerable<Parameter> Parameters { get; set; } = new Parameter[0];
+
+		public bool AllowCustomCode { get; set; }
 	}
 }

@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.UnitTest {
-	public class YieldTestCodeGenerator : ICodeGenerator<object, object> {
+	public class YieldTestCodeGenerator : ICodeGenerator<object, ICodeGeneratorOption> {
+		public int TabLevel { get; set; }
 		public event Func<StringBuilder, IEnumerable<object>> Yield;
 
-		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, object source, ICodeGeneratorOption option) {
 			sb.AppendLine("begin");
 			IEnumerable<object> objects;
 			List<object> list = new List<object> { this };
@@ -17,7 +18,6 @@ namespace Albatross.CodeGen.UnitTest {
 			objects = Yield?.Invoke(scoped);
 			if (objects != null) { list.AddRange(objects); }
 			sb.Tabify(scoped.ToString(), 1);
-			sb.AppendLine();
 			sb.Append("end");
 			return list;
 		}

@@ -7,7 +7,7 @@ namespace Albatross.CodeGen.Core {
 		string Name { get; }
 
 		object Source { get; }
-		object Option { get; }
+		ICodeGeneratorOption Option { get; }
 		ICodeGenerator CodeGenerator { get; }
 	}
 }

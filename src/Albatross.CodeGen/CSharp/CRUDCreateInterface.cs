@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.CSharp {
 			return "ICreate" + option.Name;
 		}
 		public override void RenderBody(StringBuilder sb, object t, CSharpClassOption options) {
-			sb.Tab(options.TabLevel);
+			sb.Tab(TabLevel);
 			renderDotNetType.Render(sb, options.DefaultIdentityColumnType, false).Space().Append("Create").OpenParenthesis().Proper(options.Name).Space().ProperVariable(options.Name).CloseParenthesis().Terminate();
 		}
 	}

@@ -36,25 +36,15 @@ namespace Albatross.CodeGen {
 			factory.RegisterStatic("Tab", GeneratorTarget.Any, "\r\n", "Tab", null);
 		}
 
-		/// <summary>
-		/// if the source type is System.Object, MultiSourceCompositeCodeGenerator will be used.  Otherwise use MonoSourceCompositeCodeGenerator
-		/// </summary>
 		/// <param name="item"></param>
 		/// <returns></returns>
 		public static CodeGenerator GetMeta(this Composite item) {
-			Type type;
-			if (item.SourceType == typeof(object)) {
-				type = typeof(MultiSourceCompositeCodeGenerator);
-			} else {
-				type = typeof(MonoSourceCompositeCodeGenerator<,>);
-				type = type.MakeGenericType(item.SourceType, item.OptionType);
-			}
 			var meta = new CodeGenerator {
 				Name = item.Name,
 				Target = item.Target,
 				Category = item.Category,
 				Description = item.Description,
-				GeneratorType = type,
+				GeneratorType = typeof(CompositeCodeGenerator),
 				SourceType = item.SourceType,
 				OptionType = item.OptionType,
 				Data = item.Branch,
@@ -105,7 +95,7 @@ namespace Albatross.CodeGen {
 				throw new Faults.InvalidOptionTypeException(codeGenerator.SourceType, optionType);
 			}
 		}
-		public static IEnumerable<object> ValidateNGenerate<T, O>(this ICodeGenerator<T, O> codeGenerator, StringBuilder sb, object source, object option) where T : class where O : class {
+		public static IEnumerable<object> ValidateNGenerate<T, O>(this ICodeGenerator<T, O> codeGenerator, StringBuilder sb, object source, ICodeGeneratorOption option) where T : class where O : class, ICodeGeneratorOption {
 			if (source != null && !typeof(T).IsAssignableFrom(source.GetType())) {
 				throw new Faults.InvalidSourceTypeException(typeof(T), source.GetType());
 			}

@@ -13,6 +13,7 @@ namespace Albatross.CodeGen.SqlServer {
 
 		IRenderSqlVariable buildVariable;
 		IRetrieveSqlVariable getVariable;
+		public int TabLevel { get; set; }
 
 		public DeclareStatement(IRenderSqlVariable buildVariable, IRetrieveSqlVariable getVariable) {
 			this.buildVariable = buildVariable;
@@ -48,7 +49,7 @@ namespace Albatross.CodeGen.SqlServer {
 			return list;
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, object source, ICodeGeneratorOption option) {
 			return this.ValidateNGenerate(sb, source, option);
 		}
 

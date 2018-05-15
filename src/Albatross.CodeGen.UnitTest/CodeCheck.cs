@@ -34,8 +34,8 @@ namespace Albatross.CodeGen.UnitTest {
 
 		[Test]
 		public void CovarianceTest() {
-			ICodeGenerator<object, object> a = null;
-			ICodeGenerator<string, string> b = a;
+			ICodeGenerator<object, ICodeGeneratorOption> a = null;
+			ICodeGenerator<string, ICodeGeneratorOption> b = a;
 			Assert.True(typeof(object).IsAssignableFrom(typeof(string)));
 		}
 

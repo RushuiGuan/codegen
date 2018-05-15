@@ -10,7 +10,7 @@ namespace Albatross.CodeGen.Core {
 	/// </summary>
 	/// <typeparam name="T">Source type</typeparam>
 	/// <typeparam name="O">Option type</typeparam>
-	public interface ICodeGenerator<in T, in O> : ICodeGenerator where T:class where O:class {
+	public interface ICodeGenerator<in T, in O> : ICodeGenerator where T:class where O:class, ICodeGeneratorOption {
 
 		/// <summary>
 		/// The main code generation method.
@@ -31,7 +31,7 @@ namespace Albatross.CodeGen.Core {
 		/// <param name="data"></param>
 		void Configure(object data);
 		event Func<StringBuilder, IEnumerable<object>> Yield;
-
-		IEnumerable<object> Generate(StringBuilder sb, object source, object option);
+		IEnumerable<object> Generate(StringBuilder sb, object source, ICodeGeneratorOption option);
+		int TabLevel { get; set; }
 	}
 }

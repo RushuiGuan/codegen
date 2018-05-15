@@ -16,7 +16,7 @@ namespace Albatross.CodeGen.CSharp {
 			return "IList" + option.Name;
 		}
 		public override void RenderBody(StringBuilder sb, object t, CSharpClassOption options) {
-			sb.Tab(options.TabLevel).Append("IEnumerable<").Proper(options.Name).Append(">").Space().Append("List").OpenParenthesis().CloseParenthesis().Terminate();
+			sb.Tab(TabLevel).Append("IEnumerable<").Proper(options.Name).Append(">").Space().Append("List").OpenParenthesis().CloseParenthesis().Terminate();
 		}
 	}
 }

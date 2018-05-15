@@ -25,7 +25,7 @@ namespace Albatross.CodeGen.SqlServer
 
 		public override void RenderBody(StringBuilder sb, Table t, CSharpClassOption options) {
 			foreach (var item in t.Columns) {
-				sb.Tab(options.TabLevel).Append("public ");
+				sb.Tab(TabLevel).Append("public ");
 				if (options?.PropertyTypeOverrides?.ContainsKey(item.Name) == true) {
 					string type = options.PropertyTypeOverrides[item.Name];
 					sb.Append(type);

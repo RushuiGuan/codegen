@@ -12,6 +12,7 @@ namespace Albatross.CodeGen.SqlServer {
 		IRetrieveSqlVariable getVariable;
 		IRenderSqlVariable renderVariable;
 		IRenderSqlParameter renderParameter;
+		public int TabLevel { get; set; }
 
 		public CreateAlterProcedure(IRetrieveSqlVariable getVariable, IRenderSqlVariable renderVariable, IRenderSqlParameter renderParameter) {
 			this.getVariable = getVariable;
@@ -57,14 +58,13 @@ namespace Albatross.CodeGen.SqlServer {
 
 			string text = content.ToString();
 			if (!string.IsNullOrEmpty(text)) {
-				sb.Tabify(text, 1);
-				sb.AppendLine();
+				sb.Tabify(text, TabLevel + 1);
 			}
 			sb.AppendLine("end");
 			return new[] { this }.Union(items);
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, object source, ICodeGeneratorOption option) {
 			return this.ValidateNGenerate(sb, source, option);
 		}
 

@@ -29,7 +29,7 @@ namespace Albatross.CodeGen {
 			}
 		}
 
-		public ICodeGenerator<T, O> Create<T, O>(string name) where T:class where O:class {
+		public ICodeGenerator<T, O> Create<T, O>(string name) where T:class where O:class, ICodeGeneratorOption {
 			CodeGenerator codeGenerator = Get(name);
 			codeGenerator.Validate(typeof(T), typeof(O));
 			var handle = (ICodeGenerator<T, O>)factory.Create(codeGenerator.GeneratorType);

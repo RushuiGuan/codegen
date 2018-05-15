@@ -7,13 +7,14 @@ using System.Linq;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("sql.permission", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Generate sql permission for an object")]
-	public class RenderDatabasePermission : ICodeGenerator<IDatabaseObject, Object> {
+	public class RenderDatabasePermission : ICodeGenerator<IDatabaseObject, ICodeGeneratorOption> {
 		public event Func<StringBuilder, IEnumerable<object>> Yield { add { } remove { } }
+		public int TabLevel { get; set; }
 
 		public void Configure(object data) {
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, IDatabaseObject source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, IDatabaseObject source, ICodeGeneratorOption option) {
 
 			if (source.Permissions?.Count() > 0) {
 				foreach (var permission in source.Permissions) {
@@ -23,7 +24,7 @@ namespace Albatross.CodeGen.SqlServer {
 			return new object[] { this };
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, object source, ICodeGeneratorOption option) {
 			return this.ValidateNGenerate(sb, source, option);
 		}
 	}

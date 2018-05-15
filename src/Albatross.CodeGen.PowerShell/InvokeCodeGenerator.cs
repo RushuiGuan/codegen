@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.PowerShell {
 
 		[Parameter(Position = 2, Mandatory = false)]
 		[Alias("o")]
-		public object Option { get; set; }
+		public ICodeGeneratorOption Option { get; set; }
 
 		[Parameter(Position = 3, Mandatory = false)]
 		[Alias("t")]
@@ -35,25 +35,22 @@ namespace Albatross.CodeGen.PowerShell {
 
 		protected override void ProcessRecord() {
 			ICodeGeneratorFactory factory = Ioc.Get<ICodeGeneratorFactory>();
+			var meta = factory.Get(Name);
+
 			if (Source is PSObject) { Source = ((PSObject)Source).BaseObject; }
 			if (Source == null) { Source = new object(); }
-
-			if (Option is PSObject) { Option = ((PSObject)Option).BaseObject; }
-			if (Option == null) { Option = new object(); }
+			if(Option == null) { Option = (ICodeGeneratorOption)Activator.CreateInstance(meta.OptionType); }
 
 			IRunCodeGenerator codeGen = Ioc.Get<IRunCodeGenerator>();
-			var meta = factory.Get(Name);
 			StringBuilder sb = new StringBuilder();
-
 			ICustomCodeSection section = Ioc.Get<ICustomCodeSectionStrategy>().Get(meta.Target);
 			if (Output.Exists) {
 				using (StreamReader reader = new StreamReader(Output.FullName)) {
 					section.Load(reader.ReadToEnd());
 				}
-			} else {
 			}
-
 			codeGen.Run(meta, sb, Source, Option);
+
 			WriteObject(sb.ToString());
 			if (Output != null) {
 				if (!Output.Exists || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning")) {

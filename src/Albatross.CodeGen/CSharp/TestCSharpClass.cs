@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.CSharp {
 			return "Test";
 		}
 		public override void RenderBody(StringBuilder sb, object t, CSharpClassOption options) {
-			sb.Tab(options.TabLevel).PublicGetSet(renderDotNetType, typeof(string), "Name");
+			sb.Tab(TabLevel).PublicGetSet(renderDotNetType, typeof(string), "Name");
 		}
 	}
 }

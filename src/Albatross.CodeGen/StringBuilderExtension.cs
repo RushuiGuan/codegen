@@ -61,10 +61,13 @@ namespace Albatross.CodeGen {
 			return sb.AppendChar(';', count);
 		}
 		public static StringBuilder Tabify(this StringBuilder sb, string content, int count) {
-			sb.AppendChar('\t', count);
-			foreach (char c in content) {
-				sb.Append(c);
-				if (c == '\n') { sb.AppendChar('\t', count); }
+			using (StringReader reader = new StringReader(content)) {
+				for (string line = reader.ReadLine(); line != null; line = reader.ReadLine()) {
+					if (!string.IsNullOrWhiteSpace(line)) {
+						sb.AppendChar('\t', count);
+					}
+					sb.AppendLine(line);
+				}
 			}
 			return sb;
 		}

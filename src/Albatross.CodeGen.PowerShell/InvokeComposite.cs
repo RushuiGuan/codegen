@@ -16,10 +16,12 @@ namespace Albatross.CodeGen.PowerShell {
 		public Branch Branch { get; set; }
 
 		[Parameter(Position = 1, Mandatory = false)]
+		[Alias("s")]
 		public object Source{ get; set; }
 
 		[Parameter(Position = 2, Mandatory = true)]
-		public object Option { get; set; }
+		[Alias("o")]
+		public ICodeGeneratorOption Option { get; set; }
 
 		[Parameter(Position = 3, Mandatory = false)]
 		[Alias("t")]
@@ -39,9 +41,6 @@ namespace Albatross.CodeGen.PowerShell {
 			StringBuilder sb = new StringBuilder();
 			if(Source is PSObject) { Source = ((PSObject)Source).BaseObject; }
 			if(Source == null) { Source = new object(); }
-
-			if (Option is PSObject) { Option = ((PSObject)Option).BaseObject; }
-			if (Option == null) { Option = new object(); }
 
 			Composite c = new Composite(Source.GetType(), Option.GetType()) {
 				Branch = Branch,

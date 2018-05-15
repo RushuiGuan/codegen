@@ -40,22 +40,22 @@ namespace Albatross.CodeGen.CSharp {
 			foreach (MethodInfo method in controllerType.GetMethods(BindingFlags.Public | BindingFlags.Instance)) {
 				foreach (CustomAttributeData data in method.GetCustomAttributesData()) {
 					if (data.AttributeType.FullName == HttpGetAttribName) {
-						BuildGetDelete(sb, options.TabLevel, method, "Get", controllerType);
+						BuildGetDelete(sb, method, "Get", controllerType);
 					} else if (data.AttributeType.FullName == HttpDeleteAttribName) {
-						BuildGetDelete(sb, options.TabLevel, method, "Delete", controllerType);
+						BuildGetDelete(sb, method, "Delete", controllerType);
 					} else if (data.AttributeType.FullName == HttpPostAttribName) {
-						BuildPostPut(sb, options.TabLevel, method, "Post", controllerType);
+						BuildPostPut(sb, method, "Post", controllerType);
 					} else if (data.AttributeType.FullName == HttpPutAttribName) {
-						BuildPostPut(sb, options.TabLevel, method, "Put", controllerType);
+						BuildPostPut(sb, method, "Put", controllerType);
 					}
 				}
 			}
 		}
 
 
-		public StringBuilder BuildGetDelete(StringBuilder sb, int tabLevel, MethodInfo methodInfo, string method, Type controllerType) {
+		public StringBuilder BuildGetDelete(StringBuilder sb, MethodInfo methodInfo, string method, Type controllerType) {
 			string controller = GetControllerName(controllerType);
-			sb.Tab(tabLevel).Public().Append("async ");
+			sb.Tab(TabLevel).Public().Append("async ");
 			if (methodInfo.ReturnType == typeof(void)) {
 				sb.Append("Task");
 			} else {
@@ -71,24 +71,24 @@ namespace Albatross.CodeGen.CSharp {
 			}
 
 			sb.CloseParenthesis().OpenScope();
-			tabLevel++;
-			sb.Tab(tabLevel).Append("string url = new StringBuilder().Action(").Literal(controller).Comma().Space().Literal(methodInfo.Name).CloseParenthesis();
+			TabLevel++;
+			sb.Tab(TabLevel).Append("string url = new StringBuilder().Action(").Literal(controller).Comma().Space().Literal(methodInfo.Name).CloseParenthesis();
 			foreach (var param in parameters) {
 				sb.Append(".BuildParam(").Literal(param.Name).Comma().Append(param.Name).CloseParenthesis();
 			}
 			sb.AsString().Terminate();
-			sb.Tab(tabLevel).Append(@"var response = await HttpClient.").Append(method).Append("Async(url);").AppendLine();
+			sb.Tab(TabLevel).Append(@"var response = await HttpClient.").Append(method).Append("Async(url);").AppendLine();
 			if (methodInfo.ReturnType.FullName == "System.Void") {
-				sb.Tab(tabLevel).Append("await response.Handle()").Terminate();
+				sb.Tab(TabLevel).Append("await response.Handle()").Terminate();
 			} else {
-				sb.Tab(tabLevel).Return().Await().Variable("response").GenericMethod(renderDotNetType, "Handle", methodInfo.ReturnType).EmptyParenthesis().Terminate();
+				sb.Tab(TabLevel).Return().Await().Variable("response").GenericMethod(renderDotNetType, "Handle", methodInfo.ReturnType).EmptyParenthesis().Terminate();
 			}
-			tabLevel--;
-			return sb.Tab(tabLevel).CloseScope();
+			TabLevel--;
+			return sb.Tab(TabLevel).CloseScope();
 		}
-		public StringBuilder BuildPostPut(StringBuilder sb, int tabLevel, MethodInfo methodInfo, string method, Type controllerType) {
+		public StringBuilder BuildPostPut(StringBuilder sb, MethodInfo methodInfo, string method, Type controllerType) {
 			string controller = GetControllerName(controllerType);
-			sb.Tab(tabLevel).Public().Append("async ");
+			sb.Tab(TabLevel).Public().Append("async ");
 			if (methodInfo.ReturnType == typeof(void)) {
 				sb.Append("Task");
 			} else {
@@ -100,9 +100,9 @@ namespace Albatross.CodeGen.CSharp {
 				renderDotNetType.Render(sb, param.ParameterType, false).Space().Append(param.Name);
 			}
 			sb.CloseParenthesis().OpenScope();
-			tabLevel++;
-			sb.Tab(tabLevel).Append("string url = new StringBuilder().Action(").Literal(controller).Comma().Space().Literal(methodInfo.Name).CloseParenthesis().AsString().Terminate();
-			sb.Tab(tabLevel).Append(@"var response = await HttpClient.").Append(method);
+			TabLevel++;
+			sb.Tab(TabLevel).Append("string url = new StringBuilder().Action(").Literal(controller).Comma().Space().Literal(methodInfo.Name).CloseParenthesis().AsString().Terminate();
+			sb.Tab(TabLevel).Append(@"var response = await HttpClient.").Append(method);
 			if (param != null) {
 				sb.GenericMethod(renderDotNetType, "AsJsonAsync", param.ParameterType).OpenParenthesis().Append("url, ").Append(param.Name).CloseParenthesis().Terminate();
 			} else {
@@ -110,12 +110,12 @@ namespace Albatross.CodeGen.CSharp {
 			}
 
 			if (methodInfo.ReturnType.FullName == "System.Void") {
-				sb.Tab(tabLevel).Append("await response.Handle()").Terminate();
+				sb.Tab(TabLevel).Append("await response.Handle()").Terminate();
 			} else {
-				sb.Tab(tabLevel).Append("return await response").GenericMethod(renderDotNetType, "Handle", methodInfo.ReturnType).EmptyParenthesis().Terminate();
+				sb.Tab(TabLevel).Append("return await response").GenericMethod(renderDotNetType, "Handle", methodInfo.ReturnType).EmptyParenthesis().Terminate();
 			}
-			tabLevel--;
-			return sb.Tab(tabLevel).CloseScope();
+			TabLevel--;
+			return sb.Tab(TabLevel).CloseScope();
 		}
 	}
 }

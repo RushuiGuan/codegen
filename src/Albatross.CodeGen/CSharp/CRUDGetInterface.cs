@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.CSharp {
 			return "IGet" + option.Name;
 		}
 		public override void RenderBody(StringBuilder sb, object t, CSharpClassOption options) {
-			sb.Tab(options.TabLevel).Proper(options.Name).Space().Append("Get").OpenParenthesis();
+			sb.Tab(TabLevel).Proper(options.Name).Space().Append("Get").OpenParenthesis();
 			renderDotNetType.Render(sb, options.DefaultIdentityColumnType, false).Space().ProperVariable(options.Name).Append("ID").CloseParenthesis().Terminate();
 		}
 	}

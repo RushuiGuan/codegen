@@ -26,15 +26,16 @@ namespace Albatross.CodeGen.CSharp
 		}
 
 		public override void RenderBody(StringBuilder sb, CRUDOperation crud, CSharpClassOption options) {
-			sb.Tab(options.TabLevel).Public();
+			int tabLevel = 0;
+			sb.Tab(tabLevel).Public();
 			Type type = convertSqlDataType.GetDotNetType(crud.Table.IdentityColumn.Type);
 			renderDotNetType.Render(sb, type, false).Space().Append("Create").OpenParenthesis().Proper(crud.Table.Name).Space().ProperVariable(crud.Table.Name).CloseParenthesis().OpenScope();
-			options.TabLevel++;
-			customCodeSection.Write("create", options.TabLevel, sb);
+			tabLevel++;
+			customCodeSection.Write("create", tabLevel, sb);
 			sb.AppendLine();
-			sb.Tab(options.TabLevel).Append("using (var db = GetDatabaseConnection()) ").OpenScope();
-			options.TabLevel++;
-			sb.Tab(options.TabLevel).Append("var commandDefinition = new DataLayer.").Proper(crud.Procedure.Name).OpenParenthesis();
+			sb.Tab(tabLevel).Append("using (var db = GetDatabaseConnection()) ").OpenScope();
+			tabLevel++;
+			sb.Tab(tabLevel).Append("var commandDefinition = new DataLayer.").Proper(crud.Procedure.Name).OpenParenthesis();
 			var parameters = from p in crud.Procedure.Parameters
 							 join c in crud.Table.Columns
 							 on p.Name.Substring(1).ToLower() equals c.Name.ToLower()
@@ -51,14 +52,14 @@ namespace Albatross.CodeGen.CSharp
 			}
 			sb.CloseParenthesis().Terminate();
 
-			sb.Tab(options.TabLevel).Append("return db.QueryFirst");
+			sb.Tab(tabLevel).Append("return db.QueryFirst");
 			renderDotNetType.Generic(sb, convertSqlDataType.GetDotNetType(crud.Table.IdentityColumn.Type));
 			sb.OpenParenthesis().Append("commandDefinition.Definition").CloseParenthesis().Terminate();
 
-			options.TabLevel--;
-			sb.Tab(options.TabLevel).CloseScope();
-			options.TabLevel--;
-			sb.Tab(options.TabLevel).CloseScope();
+			tabLevel--;
+			sb.Tab(tabLevel).CloseScope();
+			tabLevel--;
+			sb.Tab(tabLevel).CloseScope();
 		}
 	}
 }

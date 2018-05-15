@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.PowerShell {
 
 		[Parameter(Mandatory = false, Position = 2)]
 		[PSObject2ObjectAttribute]
-		public object Option { get; set; }
+		public ICodeGeneratorOption Option { get; set; }
 
 		protected override void ProcessRecord() {
 			WriteObject(new Leaf(Name) { Source = Source, Option = Option,});

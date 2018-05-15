@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.Core {
 		#region INode
 		public string Name => string.Empty;
 		public object Source { get; set; }
-		public object Option { get; set; }
+		public ICodeGeneratorOption Option { get; set; }
 		public ICodeGenerator CodeGenerator { get; set; }
 		#endregion
 

@@ -40,7 +40,7 @@ namespace Albatross.CodeGen.SqlServer {
 
 		public override void RenderConstructor(StringBuilder sb, Albatross.Database.Procedure t, CSharpClassOption options) {
 			string className = GetName(t, options);
-			sb.Tab(options.TabLevel).Public().Append(className).OpenParenthesis();
+			sb.Tab(TabLevel).Public().Append(className).OpenParenthesis();
 			if (t.Parameters != null) {
 				foreach (var item in t.Parameters) {
 					Type type = convertDataType.GetDotNetType(item.Type);
@@ -48,20 +48,20 @@ namespace Albatross.CodeGen.SqlServer {
 				}
 			}
 			sb.Append("System.Data.IDbTransaction transaction = null").CloseParenthesis().OpenScope();
-			options.TabLevel++;
-			sb.Tab(options.TabLevel).AppendLine("DynamicParameters dynamicParameters = new DynamicParameters();");
+			TabLevel++;
+			sb.Tab(TabLevel).AppendLine("DynamicParameters dynamicParameters = new DynamicParameters();");
 			if (t.Parameters != null) {
 				foreach (var item in t.Parameters) {
-					sb.Tab(options.TabLevel).Append("dynamicParameters.Add").OpenParenthesis().Literal(item.Name).Space().Comma().Space().Append(item.Name).Comma().Space().Append("dbType:System.Data.DbType.").Append(convertDataType.GetDbType(item.Type)).CloseParenthesis().Terminate();
+					sb.Tab(TabLevel).Append("dynamicParameters.Add").OpenParenthesis().Literal(item.Name).Space().Comma().Space().Append(item.Name).Comma().Space().Append("dbType:System.Data.DbType.").Append(convertDataType.GetDbType(item.Type)).CloseParenthesis().Terminate();
 				}
 			}
-			sb.Tab(options.TabLevel).Append($"Definition = new CommandDefinition(\"[{t.Schema}].[{t.Name}]\", dynamicParameters, commandType:CommandType.StoredProcedure, transaction:transaction);").AppendLine();
-			options.TabLevel--;
-			sb.Tab(options.TabLevel).CloseScope();
+			sb.Tab(TabLevel).Append($"Definition = new CommandDefinition(\"[{t.Schema}].[{t.Name}]\", dynamicParameters, commandType:CommandType.StoredProcedure, transaction:transaction);").AppendLine();
+			TabLevel--;
+			sb.Tab(TabLevel).CloseScope();
 		}
 
 		public override void RenderBody(StringBuilder sb, Albatross.Database.Procedure t, CSharpClassOption options) {
-			sb.Tab(options.TabLevel).AppendLine("public CommandDefinition Definition { get; private set; }");
+			sb.Tab(TabLevel).AppendLine("public CommandDefinition Definition { get; private set; }");
 		}
 	}
 }

@@ -6,13 +6,14 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("sql.procedure.ssdt", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "create procedure statement for ssdt environment")]
-	public class CreateSSDTProcedure : ICodeGenerator<Procedure, object> {
+	public class CreateSSDTProcedure : ICodeGenerator<Procedure, ICodeGeneratorOption> {
 		public event Func<StringBuilder, IEnumerable<object>> Yield { add { } remove { } }
+		public int TabLevel { get; set; }
 
 		public void Configure(object data) {
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, Procedure source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, Procedure source, ICodeGeneratorOption option) {
 			if (source == null) {
 				throw new Faults.CodeGeneratorException("missing source");
 			}
@@ -29,7 +30,7 @@ namespace Albatross.CodeGen.SqlServer {
 			return new object[] { this, };
 		}
 
-		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, object source, ICodeGeneratorOption option) {
 			return this.ValidateNGenerate(sb, source, option);
 		}
 	}

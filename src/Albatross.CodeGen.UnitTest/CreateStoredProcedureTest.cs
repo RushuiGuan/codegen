@@ -16,8 +16,8 @@ namespace Albatross.CodeGen.UnitTest {
 
 		static IEnumerable<TestCaseData> CreateEmptyProcedureTestCase() {
 			return new TestCaseData[] {
-				new TestCaseData(new SqlCodeGenOption{ Schema = "dbo", Name = "test" }){ ExpectedResult="create procedure [dbo].[test]\r\nas\r\n" },
-				new TestCaseData(new SqlCodeGenOption{ Schema="dbo", Name="test", Parameters = new Parameter[]{ new Parameter{ Name = "user", Type = NonUnicodeString(100), } } }){ ExpectedResult="create procedure [dbo].[test]\r\n\t@user as varchar(100)\r\nas\r\n" },
+				new TestCaseData(new SqlCodeGenOption{ Schema = "dbo", Name = "test" }){ ExpectedResult="create procedure [dbo].[test]\r\nas begin\r\nend\r\n" },
+				new TestCaseData(new SqlCodeGenOption{ Schema="dbo", Name="test", Parameters = new Parameter[]{ new Parameter{ Name = "user", Type = NonUnicodeString(100), } } }){ ExpectedResult="create procedure [dbo].[test]\r\n\t@user as varchar(100)\r\nas begin\r\nend\r\n" },
 			};
 		}
 		[TestCaseSource(nameof(CreateEmptyProcedureTestCase))]
@@ -30,8 +30,35 @@ namespace Albatross.CodeGen.UnitTest {
 
 		static IEnumerable<TestCaseData> CreateProcedureTestCase() {
 			return new TestCaseData[] {
-				new TestCaseData(SymbolTable.Table, new SqlCodeGenOption{ Schema = "dbo", Name = "test" }){ ExpectedResult="create procedure [dbo].[test]\r\n\t@syCode as varchar(100),\r\n\t@cuID as int,\r\n\t@outShares as bigint,\r\n\t@coID as int,\r\n\t@snID as int\r\nas\r\n\tinsert into [test].[Symbol] ([SyCode], [CuID], [OutShares], [CoID], [SnID])\r\n\tvalues (@syCode, @cuID, @outShares, @coID, @snID)\r\n" },
-				new TestCaseData(ContactTable.Table, new SqlCodeGenOption{ Schema = "dbo", Name = "test" }){ ExpectedResult="create procedure [dbo].[test]\r\n\t@domain as varchar(100),\r\n\t@login as varchar(100),\r\n\t@firstName as nvarchar(100),\r\n\t@lastName as nvarchar(100),\r\n\t@middleName as nvarchar(100),\r\n\t@gender as char(20),\r\n\t@cell as varchar(50),\r\n\t@address as nvarchar(200),\r\n\t@created as datetime,\r\n\t@createdBy as varchar(100),\r\n\t@modified as datetime,\r\n\t@modifiedBy as varchar(100)\r\nas\r\n\tinsert into [test].[Contact] ([Domain], [Login], [FirstName], [LastName], [MiddleName], [Gender], [Cell], [Address], [Created], [CreatedBy], [Modified], [ModifiedBy])\r\n\tvalues (@domain, @login, @firstName, @lastName, @middleName, @gender, @cell, @address, @created, @createdBy, @modified, @modifiedBy)\r\n" },
+				new TestCaseData(SymbolTable.Table, new SqlCodeGenOption{ Schema = "dbo", Name = "test" }){ ExpectedResult=@"create procedure [dbo].[test]
+	@syCode as varchar(100),
+	@cuID as int,
+	@outShares as bigint,
+	@coID as int,
+	@snID as int
+as begin
+	insert into [test].[Symbol] ([SyCode], [CuID], [OutShares], [CoID], [SnID])
+	values (@syCode, @cuID, @outShares, @coID, @snID)
+end
+" },
+				new TestCaseData(ContactTable.Table, new SqlCodeGenOption{ Schema = "dbo", Name = "test" }){ ExpectedResult=@"create procedure [dbo].[test]
+	@domain as varchar(100),
+	@login as varchar(100),
+	@firstName as nvarchar(100),
+	@lastName as nvarchar(100),
+	@middleName as nvarchar(100),
+	@gender as char(20),
+	@cell as varchar(50),
+	@address as nvarchar(200),
+	@created as datetime,
+	@createdBy as varchar(100),
+	@modified as datetime,
+	@modifiedBy as varchar(100)
+as begin
+	insert into [test].[Contact] ([Domain], [Login], [FirstName], [LastName], [MiddleName], [Gender], [Cell], [Address], [Created], [CreatedBy], [Modified], [ModifiedBy])
+	values (@domain, @login, @firstName, @lastName, @middleName, @gender, @cell, @address, @created, @createdBy, @modified, @modifiedBy)
+end
+" },
 			};
 		}
 
@@ -51,7 +78,7 @@ namespace Albatross.CodeGen.UnitTest {
 				Name = "insert",
 			});
 			table = Ioc.Container.GetInstance<IGetTable>().Get(table.Database, table.Schema, table.Name);
-			MonoSourceCompositeCodeGenerator<Table, SqlCodeGenOption> compositeCodeGenerator = new MonoSourceCompositeCodeGenerator<Table, SqlCodeGenOption>(factory);
+			CompositeCodeGenerator compositeCodeGenerator = new CompositeCodeGenerator(factory);
 			compositeCodeGenerator.Configure(new Branch(new Leaf("sql.procedure.create"), new Leaf("insert")));
 			StringBuilder sb = new StringBuilder();
 			compositeCodeGenerator.Generate(sb, table, option);

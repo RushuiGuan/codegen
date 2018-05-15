@@ -6,12 +6,10 @@ namespace Albatross.CodeGen.Generation {
 	/// <summary>
 	/// Options class for CSharp class generation
 	/// </summary>
-	[OptionType("C# Class Option")]
-	public class CSharpClassOption {
+	public class CSharpClassOption : ICodeGeneratorOption{
 		public string Name { get; set; }
 		public string Prefix { get; set; }
 		public string Postfix { get; set; }
-		public int TabLevel { get; set; }
 
 		public string Namespace { get; set; }
 		public string AccessModifier { get; set; } = "public";
@@ -26,5 +24,7 @@ namespace Albatross.CodeGen.Generation {
 		public Dictionary<string, string> PropertyTypeOverrides { get; set; } = new Dictionary<string, string>();
 
 		public Dictionary<string, string> TypeCasts { get; set; } = new Dictionary<string, string>();
+
+		public bool AllowCustomCode { get; set; }
 	}
 }

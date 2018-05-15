@@ -15,6 +15,7 @@ namespace Albatross.CodeGen.CSharp {
 	/// <typeparam name="T">the source type</typeparam>
 	public abstract class ClassInterfaceGenerator<T> : ICodeGenerator<T, CSharpClassOption> where T : class {
 		protected ICustomCodeSection customCodeSection;
+		public int TabLevel { get; set; }
 		public ClassInterfaceGenerator(ICustomCodeSectionStrategy customCodeSectionStrategy) {
 			customCodeSection = customCodeSectionStrategy.Get(GeneratorTarget.CSharp);
 		}
@@ -36,7 +37,7 @@ namespace Albatross.CodeGen.CSharp {
 		public virtual void RenderConstructor(StringBuilder sb, T t, CSharpClassOption options) {
 			string className = GetName(t, options);
 			foreach (string constructor in options.Constructors) {
-				sb.Tab(options.TabLevel).Public().Append(className).AppendLine(constructor);
+				sb.Tab(TabLevel).Public().Append(className).AppendLine(constructor);
 			}
 		}
 		public virtual bool IsInterface { get { return false; } }
@@ -50,12 +51,12 @@ namespace Albatross.CodeGen.CSharp {
 			}
 			bool hasNamespace = !string.IsNullOrEmpty(option.Namespace);
 			if (hasNamespace) {
-				sb.Tab(option.TabLevel).Append("namespace ").Append(option.Namespace).OpenScope();
-				option.TabLevel++;
+				sb.Tab(TabLevel).Append("namespace ").Append(option.Namespace).OpenScope();
+				TabLevel++;
 			}
 
 			string name = GetName(t, option);
-			sb.Tab(option.TabLevel).Append(option.AccessModifier).Space();
+			sb.Tab(TabLevel).Append(option.AccessModifier).Space();
 			if (IsInterface) {
 				sb.Append("interface ");
 			} else {
@@ -76,19 +77,23 @@ namespace Albatross.CodeGen.CSharp {
 				}
 			}
 			sb.OpenScope();
-			option.TabLevel++;
+			TabLevel++;
 
 			RenderConstructor(sb, t, option);
-			sb.AppendLine();
-			customCodeSection.Write("custom", option.TabLevel, sb);
-			sb.AppendLine();
+
+			if (option.AllowCustomCode) {
+				sb.AppendLine();
+				customCodeSection.Write("custom", TabLevel, sb);
+				sb.AppendLine();
+			}
+
 			RenderBody(sb, t, option);
 
-			option.TabLevel--;
-			sb.Tab(option.TabLevel).CloseScope();
+			TabLevel--;
+			sb.Tab(TabLevel).CloseScope();
 
 			if (hasNamespace) {
-				option.TabLevel--;
+				TabLevel--;
 				sb.CloseScope();
 			}
 
@@ -97,7 +102,7 @@ namespace Albatross.CodeGen.CSharp {
 
 		public void Configure(object data) { }
 
-		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, object source, ICodeGeneratorOption option) {
 			return this.ValidateNGenerate(sb, source, option);
 		}
 	}

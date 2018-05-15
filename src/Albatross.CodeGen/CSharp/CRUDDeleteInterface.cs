@@ -16,7 +16,7 @@ namespace Albatross.CodeGen.CSharp {
 			return "IDelete" + option.Name;
 		}
 		public override void RenderBody(StringBuilder sb, object t, CSharpClassOption options) {
-			sb.Tab(options.TabLevel).Void().Append("Delete").OpenParenthesis().Proper(options.Name).Space().ProperVariable(options.Name).CloseParenthesis().Terminate();
+			sb.Tab(TabLevel).Void().Append("Delete").OpenParenthesis().Proper(options.Name).Space().ProperVariable(options.Name).CloseParenthesis().Terminate();
 		}
 	}
 }

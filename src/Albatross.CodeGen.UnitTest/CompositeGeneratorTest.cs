@@ -44,15 +44,15 @@ namespace Albatross.CodeGen.UnitTest {
 			factory.Register(new CodeGenerator {
 				GeneratorType = typeof(YieldTestCodeGenerator),
 				SourceType = typeof(object),
-				OptionType = typeof(object),
+				OptionType = typeof(ICodeGeneratorOption),
 				Target = GeneratorTarget.Any,
 				Name = "test0",
 			});
-			var handle = factory.Create<string, string>("test0");
+			var handle = factory.Create<string, ICodeGeneratorOption>("test0");
 
 			StringBuilder sb = new StringBuilder();
-			IEnumerable<object> used = handle.Generate(sb, string.Empty, string.Empty);
-			Assert.AreEqual("begin\r\n\t\r\nend", sb.ToString());
+			IEnumerable<object> used = handle.Generate(sb, string.Empty, null);
+			Assert.AreEqual("begin\r\nend", sb.ToString());
 			Assert.AreEqual(1, used.Count());
 		}
 

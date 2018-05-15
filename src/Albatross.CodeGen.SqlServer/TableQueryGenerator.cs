@@ -7,6 +7,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
 	public abstract class TableQueryGenerator : ICodeGenerator<Table, SqlCodeGenOption> {
+		public int TabLevel { get; set; }
 
 		public string Category => "Sql Server";
 		public string Target => "sql";
@@ -17,7 +18,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public event Func<StringBuilder, IEnumerable<object>> Yield { add { } remove { } }
 		public abstract IEnumerable<object> Generate(StringBuilder sb, Table table, SqlCodeGenOption option);
 
-		public IEnumerable<object> Generate(StringBuilder sb, object source, object option) {
+		public IEnumerable<object> Generate(StringBuilder sb, object source, ICodeGeneratorOption option) {
 			return this.ValidateNGenerate(sb, source, option);
 		}
 
