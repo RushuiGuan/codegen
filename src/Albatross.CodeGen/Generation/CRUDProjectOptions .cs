@@ -28,17 +28,12 @@ namespace Albatross.CodeGen.Generation {
 		/// <summary>
 		/// Database and server
 		/// </summary>
-		public Albatross.Database.Database Database { get; set; } = new Albatross.Database.Database();
 		public CSharpClassOption ClassOption { get; set; } = new CSharpClassOption();
-		public Albatross.Database.DatabasePermission[] DatabasePermissions { get; set; }
+		public Albatross.Database.DatabasePermission[] ProcedurePermissions { get; set; }
+		public string RootNamespace { get; set; }
 
-		/// <summary>
-		/// Table name
-		/// </summary>
 		public string Name { get; set; }
-		/// <summary>
-		/// Table schema
-		/// </summary>
 		public string Schema { get; set; }
+		public string Server { get; set; }
 	}
 }
