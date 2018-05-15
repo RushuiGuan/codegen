@@ -24,6 +24,7 @@ namespace Albatross.CodeGen.SimpleInjector {
 			container.Register<IConvertSqlDataType, ConvertDataType>(Lifestyle.Singleton);
 			container.Register<IRenderDotNetType, RenderDotNetType>(Lifestyle.Singleton);
 			container.Register<IParseSqlType, ParseSqlType>(Lifestyle.Singleton);
+			container.Register<IConvertTableToPocoClass, ConvertTableToPocoClass>(Lifestyle.Singleton);
 
 			var items = new Registration[] {
 				Lifestyle.Singleton.CreateRegistration<CSharpCustomCodeSection>(container),

@@ -22,20 +22,22 @@ namespace Albatross.CodeGen {
 
 		public void Load(string code) {
 			data.Clear();
+			if (!string.IsNullOrEmpty(code)) { 
 			using (StringReader reader = new StringReader(code)) {
 				Stack<Tuple<string, StringBuilder>> stack = new Stack<Tuple<string, StringBuilder>>();
-				for(string line = reader.ReadLine(); line != null; line = reader.ReadLine()) {
-					string tag;
-					if (TryGetBeginTag(line, out tag)) {
-						stack.Push(new Tuple<string, StringBuilder>(tag, new StringBuilder()));
-					}else if(IsEndTag(line)) {
-						if (stack.Count > 0) {
-							var tuple = stack.Pop();
-							data[tuple.Item1] = tuple.Item2.ToString();
-						}
-					} else {
-						if (stack.Count > 0) {
-							stack.Peek().Item2.AppendLine(line);
+					for (string line = reader.ReadLine(); line != null; line = reader.ReadLine()) {
+						string tag;
+						if (TryGetBeginTag(line, out tag)) {
+							stack.Push(new Tuple<string, StringBuilder>(tag, new StringBuilder()));
+						} else if (IsEndTag(line)) {
+							if (stack.Count > 0) {
+								var tuple = stack.Pop();
+								data[tuple.Item1] = tuple.Item2.ToString();
+							}
+						} else {
+							if (stack.Count > 0) {
+								stack.Peek().Item2.AppendLine(line);
+							}
 						}
 					}
 				}

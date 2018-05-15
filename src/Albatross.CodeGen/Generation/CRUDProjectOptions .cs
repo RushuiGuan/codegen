@@ -24,16 +24,18 @@ namespace Albatross.CodeGen.Generation {
 		public string StoredProcedurePath { get; set; }
 		public string DataLayerApiPath { get; set; }
 
-
-		/// <summary>
-		/// Database and server
-		/// </summary>
-		public CSharpClassOption ClassOption { get; set; } = new CSharpClassOption();
 		public Albatross.Database.DatabasePermission[] ProcedurePermissions { get; set; }
+		public Dictionary<string, string> ClassPropertyTypeOverrides { get; set; } = new Dictionary<string, string>();
+
 		public string RootNamespace { get; set; }
+		public string InterfaceNamespace { get; set; }
+		public string ImplementationNamespace { get; set; }
+		public string ClassNamespace { get; set; }
+		public string DataLayerApiNamespace { get; set; }
 
 		public string Name { get; set; }
 		public string Schema { get; set; }
 		public string Server { get; set; }
+		public string Database { get; set; }
 	}
 }
