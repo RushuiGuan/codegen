@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.Core;
+using Albatross.CodeGen.Database;
 using Albatross.CodeGen.Generation;
 using System;
 using System.Collections.Generic;
@@ -13,21 +14,20 @@ namespace Albatross.CodeGen.CSharp {
 			return t.Name;
 		}
 
-		public PocoClassGenerator(IRenderDotNetType renderDotNetType, ICustomCodeSectionStrategy strategy) : base(strategy) {
+        public PocoClassGenerator(IRenderDotNetType renderDotNetType, ICustomCodeSectionStrategy strategy) : base(strategy) {
 			this.renderDotNetType = renderDotNetType;
 		}
 
 		public override void RenderBody(StringBuilder sb, PocoClass t, CSharpClassOption options) {
 			foreach (var item in t.Properties) {
 				sb.Tab(TabLevel).Append("public ");
-				if (options?.PropertyTypeOverrides?.ContainsKey(item.Name) == true) {
-					string type = options.PropertyTypeOverrides[item.Name];
+                if (options?.PropertyTypeOverrides?.ContainsKey(item.Key) == true) {
+					string type = options.PropertyTypeOverrides[item.Key];
 					sb.Append(type);
 				} else {
-					Type type = typeConverter.GetDotNetType(item.Type);
-					renderDotNetType.Render(sb, type, item.IsNullable);
+                    renderDotNetType.Render(sb, item.Value, false);
 				}
-				sb.Space().Proper(item.Name).Space().AppendLine("{ get; set; }");
+				sb.Space().Proper(item.Key).Space().AppendLine("{ get; set; }");
 			}
 		}
 	}
