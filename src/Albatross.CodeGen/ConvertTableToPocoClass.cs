@@ -12,14 +12,20 @@ namespace Albatross.CodeGen {
 			this.convertSqlDataType = convertSqlDataType;
 		}
 		public PocoClass Convert(Table table, IDictionary<string, string> propertyTypeOverrides) {
+            var properties = new List<DotNetProperty>();
 			var result = new PocoClass {
 				Name = table.Name.Proper(),
-				TypeOverrides = propertyTypeOverrides ?? new Dictionary<string, string>(),
-				Properties = new Dictionary<string, Type>(),
+                Properties = properties,
 			};
 
 			foreach (var column in table.Columns) {
-				result.Properties.Add(column.Name.Proper(), GetDotNetType(column.Type));
+                propertyTypeOverrides.TryGetValue(column.Name, out string typeOverride);
+                DotNetProperty property = new DotNetProperty { 
+                    Name = column.Name,
+                    Type = GetDotNetType(column.Type),
+                    TypeOverride = typeOverride
+                };
+                properties.Add(property);
 			}
 			return result;
 		}
