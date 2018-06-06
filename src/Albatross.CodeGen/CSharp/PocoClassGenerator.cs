@@ -21,19 +21,6 @@ namespace Albatross.CodeGen.CSharp {
             this.customCodeSectionStrategy = customCodeSectionStrategy;
 		}
 
-<<<<<<< HEAD
-		public override void RenderBody(StringBuilder sb, PocoClass t, CSharpClassOption options) {
-			foreach (var item in t.Properties) {
-				sb.Tab(TabLevel).Append("public ");
-				if (options?.PropertyTypeOverrides?.ContainsKey(item.Key) == true) {
-					string type = options.PropertyTypeOverrides[item.Key];
-					sb.Append(type);
-				} else {
-					renderDotNetType.Render(sb, item.Value, false);
-				}
-				sb.Space().Proper(item.Key).Space().AppendLine("{ get; set; }");
-			}
-=======
         public IEnumerable<object> Generate(StringBuilder sb, PocoClass source, CSharpClassOption option) {
             if (option.Imports != null) {
                 foreach (var import in option.Imports) {
@@ -68,7 +55,6 @@ namespace Albatross.CodeGen.CSharp {
                 TabLevel--;
             }
             return new object[] { this };
->>>>>>> 5d4b9fad7a72eb4d0df0e6cb36049d57ad7218df
 		}
 
 

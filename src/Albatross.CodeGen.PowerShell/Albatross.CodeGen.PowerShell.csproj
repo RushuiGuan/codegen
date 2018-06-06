@@ -1,10 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-<<<<<<< HEAD
-    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
-=======
     <TargetFramework>netstandard2.0</TargetFramework>
->>>>>>> 5d4b9fad7a72eb4d0df0e6cb36049d57ad7218df
     <AssemblyVersion>1.1.9.34</AssemblyVersion>
     <FileVersion>1.1.9.34</FileVersion>
 	  <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
@@ -12,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Albatross.Database.SqlServer.SimpleInjector" Version="1.1.4.13" />
     <PackageReference Include="SimpleInjector" Version="4.0.12" />
-    <PackageReference Include="System.Management.Automation.dll" Version="10.0.10586" />
+    <PackageReference Include="System.Management.Automation" Version="6.1.0-preview.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Albatross.CodeGen.Ioc\Albatross.CodeGen.SimpleInjector.csproj" />
