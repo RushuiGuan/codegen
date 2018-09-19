@@ -32,10 +32,9 @@ namespace Albatross.CodeGen.PowerShell {
 		protected override void ProcessRecord() {
 			if (Source is PSObject) { Source = ((PSObject)Source).BaseObject; }
 			if (Option is PSObject) { Option = ((PSObject)Option).BaseObject; }
-			Type sourceType = Source.GetType();
 
 			IRunCodeGenerator runHandle = base.Factory.Create<IRunCodeGenerator>();
-			var meta = Handle.Get(sourceType, Name);
+			var meta = Handle.Get(Name);
 			StringBuilder sb = new StringBuilder();
 
 			runHandle.Run(meta, sb, Source, Option);

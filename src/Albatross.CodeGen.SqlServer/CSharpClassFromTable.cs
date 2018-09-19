@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer
 {
-	[CodeGenerator("table_to_class", GeneratorTarget.CSharp, Category = GeneratorCategory.SQLServer, Description = "Generate a C# class from a sql server table")]
+	[CodeGenerator("table-to-class", GeneratorTarget.CSharp, Category = GeneratorCategory.SQLServer, Description = "Generate a C# class from a sql server table")]
 	public class CSharpClassFromTable : ClassGenerator<Table> {
 		IGetTable getTable;
 		IGetCSharpType getCSharpType;

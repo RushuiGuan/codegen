@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator("table_select", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Select statement sorted by ordinal position")]
+	[CodeGenerator("table-select", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Select statement sorted by ordinal position")]
 	public class TableSelect : TableQueryGenerator {
 		IGetTable getTable;
 

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator("table_merge_insert", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Merge statement insert clause")]
+	[CodeGenerator("table-merge-insert", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Merge statement insert clause")]
 	public class TableMergeInsert : TableQueryGenerator {
 		IGetTable getTable;
 		ICreateVariableName createVariableName;

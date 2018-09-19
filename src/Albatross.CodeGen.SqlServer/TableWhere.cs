@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator("table_where", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Table where clause, can handle identity column and\\or primary keys.  Use the SqlQueryOption.Filter flag to indicate filter method")]
+	[CodeGenerator("table-where", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Table where clause, can handle identity column and\\or primary keys.  Use the SqlQueryOption.Filter flag to indicate filter method")]
 	public class TableWhere : TableQueryGenerator {
 		IGetTable getTable;
 		ICreateVariableName getVariableName;

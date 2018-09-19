@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator("table_select_scope_identity", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Select the Scope_Identity() of the previous insert operation.  Typically used after the insert operation.")]
+	[CodeGenerator("table-select-scope-identity", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Select the Scope_Identity() of the previous insert operation.  Typically used after the insert operation.")]
 	public class TableSelectScopedIdentity : TableQueryGenerator {
 		IGetTable getTable;
 

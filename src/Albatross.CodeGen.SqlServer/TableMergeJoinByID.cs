@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator("table_merge_join_by_id", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Merge statement source join clause by the identity column")]
+	[CodeGenerator("table-merge-join-by-id", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Merge statement source join clause by the identity column")]
 	public class TableMergeJoinByID : TableQueryGenerator {
 		IGetTable getTable;
 
