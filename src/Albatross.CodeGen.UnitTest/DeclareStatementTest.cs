@@ -1,14 +1,16 @@
 ﻿using static Albatross.CodeGen.UnitTest.Extension;
+using Albatross.CodeGen;
 using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
 using Albatross.CodeGen.UnitTest.Mocking;
 using Albatross.Database;
 using NUnit.Framework;
 using SimpleInjector;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using Albatross.CodeGen.Core;
-using Albatross.CodeGen.Generation;
+using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.UnitTest {
 	[TestFixture]
@@ -58,22 +60,48 @@ update [test].[Contact] set
 where
 	[Domain] = @domain
 	and [Login] = @login" },
+
+				new TestCaseData(ContactTable.Table, new SqlCodeGenOption{ Variables= new Variable[]{ NonUnicodeStringVariable("user", 100) }, Filter= FilterOption.ByPrimaryKey, Expressions={ { "@created", "getdate()"}, {"@modified", "getdate()"}, { "@createdBy", "@user"},{ "@modifiedBy", "@user"} } }){ ExpectedResult=@"declare
+	@user as varchar(100),
+	@firstName as nvarchar(100),
+	@lastName as nvarchar(100),
+	@middleName as nvarchar(100),
+	@gender as char(20),
+	@cell as varchar(50),
+	@address as nvarchar(200),
+	@domain as varchar(100),
+	@login as varchar(100);
+
+update [test].[Contact] set
+	[FirstName] = @firstName,
+	[LastName] = @lastName,
+	[MiddleName] = @middleName,
+	[Gender] = @gender,
+	[Cell] = @cell,
+	[Address] = @address,
+	[Created] = getdate(),
+	[CreatedBy] = @user,
+	[Modified] = getdate(),
+	[ModifiedBy] = @user
+where
+	[Domain] = @domain
+	and [Login] = @login" },
 			};
 		}
 
 		[TestCaseSource(nameof(BuildDeclareStatementTestCase))]
 		public string BuildDeclareStatement(Table table, SqlCodeGenOption option) {
-			var factory = Ioc.Container.GetInstance<IConfigurableCodeGenFactory>();
-			table = Ioc.Container.GetInstance<IGetTable>().Get(table.Database, table.Schema, table.Name);
+			Container c = Ioc.Container;
+			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
 			factory.Register(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
 				Name = "test",
-				Branch = new Branch(new Leaf("sql.declare"), new Branch(new Leaf("newline"), new Leaf("sql.update"), new Leaf("newline"), new Leaf("sql.where.table"))),
+				Branch = new Branch(new Leaf("declare statement"), new Branch(new Leaf("newline"), new Leaf("table_update"), new Leaf("newline"), new Leaf("table_where"))),
 				Target = GeneratorTarget.Sql,
 			});
 
 			StringBuilder sb = new StringBuilder();
 			var handle = factory.Create<Table, SqlCodeGenOption>("test");
-			handle.Generate(sb, table, option);
+			handle.Build(sb, table, option);
 			return sb.ToString();
 		}
 
@@ -93,18 +121,19 @@ from [test].[Symbol]" },
 
 		[TestCaseSource(nameof(DeclareStatementWithoutDeclareTestCase))]
 		public string DeclareStatementWithoutDeclare(Table table, SqlCodeGenOption option) {
-			var factory = Ioc.Container.GetInstance<IConfigurableCodeGenFactory>();
+			Container c = Ioc.Container;
+			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
 			typeof(DeclareStatement).Assembly.Register(factory);
 			factory.RegisterStatic();
 			factory.Register(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
 				Name = "test",
-				Branch = new Branch(new Leaf("sql.declare"), new Branch(new Leaf("newline"), new Leaf("sql.select.table"))),
+				Branch = new Branch(new Leaf("declare statement"), new Branch(new Leaf("newline"), new Leaf("table_select"))),
 				Target = GeneratorTarget.Sql,
 			});
-			table = Ioc.Container.GetInstance<IGetTable>().Get(table.Database, table.Schema, table.Name);
+
 			StringBuilder sb = new StringBuilder();
 			var handle = factory.Create<Table, SqlCodeGenOption>("test");
-			handle.Generate(sb, table, option);
+			handle.Build(sb, table, option);
 			return sb.ToString();
 		}
 	}

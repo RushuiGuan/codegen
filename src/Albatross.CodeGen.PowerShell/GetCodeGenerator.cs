@@ -1,31 +1,36 @@
-﻿using SimpleInjector;
-using Albatross.CodeGen.Core;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsCommon.Get, "CodeGenerator")]
-	public class GetCodeGenerator: PSCmdlet{
-		[Parameter(Position = 0, ValueFromPipeline = true)]
+	public class GetCodeGenerator: BaseCmdlet<ICodeGeneratorFactory> {
+		[Parameter(Position = 0)]
 		public string Name { get; set; }
 
-		protected override void BeginProcessing() {
-			base.BeginProcessing();
-			new AssemblyRediret().Register<Container>();
-		}
+		[Parameter]
+		[Alias("t")]
+		public string Target { get; set; }
+
+		[Parameter]
+		[Alias("c")]
+		public string Category { get; set; }
+
 
 		protected override void ProcessRecord() {
-			ICodeGeneratorFactory factory = Ioc.Get<ICodeGeneratorFactory>();
-
-			if (string.IsNullOrEmpty(Name)) {
-				foreach (var item in factory.Registrations) {
+			foreach (var item in Handle.Registrations) {
+				if (string.Equals(item.Name, Name, StringComparison.InvariantCultureIgnoreCase)) {
 					WriteObject(item);
-				}
-			} else {
-				foreach (var item in factory.Registrations) {
-					if (string.Equals(item.Name, Name, StringComparison.InvariantCultureIgnoreCase)) {
-						WriteObject(item);
-					}
+					return;
+				} else if (string.Equals(item.Target, Target, StringComparison.InvariantCultureIgnoreCase)) {
+					WriteObject(item);
+				} else if (string.Equals(item.Category, Category, StringComparison.InvariantCultureIgnoreCase)) {
+					WriteObject(item);
+				} else if (string.IsNullOrEmpty(Name) && string.IsNullOrEmpty(Target) && string.IsNullOrEmpty(Category)) {
+					WriteObject(item);
 				}
 			}
 		}

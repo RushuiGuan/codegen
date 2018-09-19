@@ -1,6 +1,7 @@
-﻿using Albatross.CodeGen.Core;
-using Albatross.CodeGen.Generation;
+﻿using Albatross.CodeGen.Database;
+using Albatross.CodeGen.SqlServer;
 using Albatross.Database;
+using Moq;
 using NUnit.Framework;
 using SimpleInjector;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 			var handle = factory.Create<Table, SqlCodeGenOption>("test");
 			StringBuilder sb = new StringBuilder();
-			var used = handle.Generate(sb, new Table(), new SqlCodeGenOption());
+			var used = handle.Build(sb, new Table(), new SqlCodeGenOption());
 			Assert.AreEqual("test1test2", sb.ToString());
 			Assert.Greater(used.Count(), 1);
 		}
@@ -44,15 +45,15 @@ namespace Albatross.CodeGen.UnitTest {
 			factory.Register(new CodeGenerator {
 				GeneratorType = typeof(YieldTestCodeGenerator),
 				SourceType = typeof(object),
-				OptionType = typeof(ICodeGeneratorOption),
+				OptionType = typeof(object),
 				Target = GeneratorTarget.Any,
 				Name = "test0",
 			});
-			var handle = factory.Create<string, ICodeGeneratorOption>("test0");
+			var handle = factory.Create<string, string>("test0");
 
 			StringBuilder sb = new StringBuilder();
-			IEnumerable<object> used = handle.Generate(sb, string.Empty, null);
-			Assert.AreEqual("begin\r\nend", sb.ToString());
+			IEnumerable<object> used = handle.Build(sb, string.Empty, string.Empty);
+			Assert.AreEqual("begin\r\n\r\nend", sb.ToString());
 			Assert.AreEqual(1, used.Count());
 		}
 
@@ -82,9 +83,9 @@ namespace Albatross.CodeGen.UnitTest {
 
 			var handle = factory.Create<Table, SqlCodeGenOption>("test");
 			StringBuilder sb = new StringBuilder();
-			IEnumerable<object> used= handle.Generate(sb, new Table(), new SqlCodeGenOption());
+			IEnumerable<object> used= handle.Build(sb, new Table(), new SqlCodeGenOption());
 			Assert.AreEqual(@"begin
-	test1
+	test1	
 	test2
 end", sb.ToString());
 			Assert.Greater(used.Count(), 1);

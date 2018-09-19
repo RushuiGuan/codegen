@@ -1,14 +1,17 @@
 ﻿using Albatross.CodeGen.Database;
-using Albatross.CodeGen.Generation;
 using Albatross.CodeGen.SqlServer;
 using Albatross.CodeGen.UnitTest.Mocking;
 using Albatross.Database;
+using Moq;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture(TestOf =typeof(WhereClause))]
+	[TestFixture(TestOf =typeof(TableWhere))]
 	public class TableWhereTest {
 		static IEnumerable<TestCaseData> GetTestCases() {
 			return new TestCaseData[] {
@@ -26,7 +29,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(Table table, SqlCodeGenOption option) {
 			StringBuilder sb = new StringBuilder();
-			Ioc.Container.GetInstance<WhereClause>().Generate(sb, table, option);
+			Ioc.Container.GetInstance<TableWhere>().Build(sb, table, option);
 			return sb.ToString();
 		}
 	}

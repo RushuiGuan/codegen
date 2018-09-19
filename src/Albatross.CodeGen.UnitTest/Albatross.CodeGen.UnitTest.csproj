@@ -1,21 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyVersion>1.0.0.24</AssemblyVersion>
-    <FileVersion>1.0.0.24</FileVersion>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Albatross.Database.SqlServer.SimpleInjector" Version="1.1.4.13" />
-    <PackageReference Include="Dapper" Version="1.50.4" />
-    <PackageReference Include="Moq" Version="4.8.1" />
-    <PackageReference Include="NUnit" Version="3.9.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
-    <PackageReference Include="SimpleInjector" Version="4.0.12" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Albatross.CodeGen.Ioc\Albatross.CodeGen.SimpleInjector.csproj" />
-    <ProjectReference Include="..\Albatross.CodeGen.SqlServer\Albatross.CodeGen.SqlServer.csproj" />
-    <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
-  </ItemGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.1</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Dapper" Version="1.50.4" />
+	  <PackageReference Include="Moq" Version="4.8.1" />
+	  <PackageReference Include="NUnit" Version="3.9.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+		<PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
+	  <PackageReference Include="SimpleInjector" Version="4.0.12" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Albatross.CodeGen.CSharp\Albatross.CodeGen.CSharp.csproj" />
+	  <ProjectReference Include="..\Albatross.CodeGen.Database\Albatross.CodeGen.Database.csproj" />
+	  <ProjectReference Include="..\Albatross.CodeGen.SimpleInjector\Albatross.CodeGen.SimpleInjector.csproj" />
+	  <ProjectReference Include="..\Albatross.CodeGen.SqlServer\Albatross.CodeGen.SqlServer.csproj" />
+	  <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
+	</ItemGroup>
+
 </Project>

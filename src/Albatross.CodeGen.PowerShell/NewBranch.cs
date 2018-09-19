@@ -1,5 +1,4 @@
-﻿using Albatross.CodeGen.Core;
-using Albatross.CodeGen.PowerShell.Transformation;
+﻿using Albatross.CodeGen.PowerShell.Transformation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +14,7 @@ namespace Albatross.CodeGen.PowerShell
 		[Parameter(Mandatory =true, Position =0, ValueFromPipeline =true)]
 		[String2Leaf]
 		public INode[] Nodes{ get; set; }
+		
 
 		protected override void ProcessRecord() {
 			WriteObject(new Branch(Nodes));

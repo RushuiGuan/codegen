@@ -2,7 +2,6 @@
 using System.Management.Automation;
 
 namespace Albatross.CodeGen.PowerShell {
-
 	[Cmdlet(VerbsCommon.New, "DatabaseTable")]
 	public class NewDatabaseTable : Cmdlet {
 
@@ -12,6 +11,7 @@ namespace Albatross.CodeGen.PowerShell {
 		[Parameter(Position = 1, Mandatory = true)]
 		public string Schema { get; set; }
 
+		[Parameter(Position = 2, Mandatory = true, ValueFromPipeline = true)]
 		public Albatross.Database.Database Database { get; set; }
 
 

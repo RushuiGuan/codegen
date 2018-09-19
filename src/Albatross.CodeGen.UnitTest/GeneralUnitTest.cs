@@ -15,18 +15,18 @@ namespace Albatross.CodeGen.UnitTest {
 					new TestCaseData(new SqlType(){ Name = "char", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "char(8)" },
 					new TestCaseData(new SqlType(){ Name = "date", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "date" },
 					new TestCaseData(new SqlType(){ Name = "datetime", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "datetime" },
-					new TestCaseData(new SqlType(){ Name = "datetime2", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "datetime2(2)" },
-					new TestCaseData(new SqlType(){ Name = "datetimeoffset", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "datetimeoffset(2)" },
+					new TestCaseData(new SqlType(){ Name = "datetime2", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "datetime2(3)" },
+					new TestCaseData(new SqlType(){ Name = "datetimeoffset", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "datetimeoffset(3)" },
 					new TestCaseData(new SqlType(){ Name = "decimal", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "decimal(3, 2)" },
 					new TestCaseData(new SqlType(){ Name = "float", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "float(3)" },
 					new TestCaseData(new SqlType(){ Name = "geography", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "geography" },
 					new TestCaseData(new SqlType(){ Name = "geometry", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "geometry" },
 					new TestCaseData(new SqlType(){ Name = "hierarchyid", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "hierarchyid" },
-					new TestCaseData(new SqlType(){ Name = "image", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "image" },
+					new TestCaseData(new SqlType(){ Name = "image", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "varbinary(max)" },
 					new TestCaseData(new SqlType(){ Name = "int", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "int" },
 					new TestCaseData(new SqlType(){ Name = "money", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "money" },
 					new TestCaseData(new SqlType(){ Name = "nchar", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "nchar(8)" },
-					new TestCaseData(new SqlType(){ Name = "ntext", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "ntext" },
+					new TestCaseData(new SqlType(){ Name = "ntext", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "nvarchar(max)" },
 					new TestCaseData(new SqlType(){ Name = "numeric", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "numeric(3, 2)" },
 					new TestCaseData(new SqlType(){ Name = "nvarchar", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "nvarchar(8)" },
 					new TestCaseData(new SqlType(){ Name = "real", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "real" },
@@ -35,7 +35,7 @@ namespace Albatross.CodeGen.UnitTest {
 					new TestCaseData(new SqlType(){ Name = "smallmoney", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "smallmoney" },
 					new TestCaseData(new SqlType(){ Name = "sql_variant", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "sql_variant" },
 					new TestCaseData(new SqlType(){ Name = "sysname", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "sysname" },
-					new TestCaseData(new SqlType(){ Name = "text", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "text" },
+					new TestCaseData(new SqlType(){ Name = "text", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "varchar(max)" },
 					new TestCaseData(new SqlType(){ Name = "time", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "time" },
 					new TestCaseData(new SqlType(){ Name = "timestamp", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "timestamp" },
 					new TestCaseData(new SqlType(){ Name = "tinyint", MaxLength = 8, Precision = 3, Scale = 2 }){ ExpectedResult = "tinyint" },
@@ -49,8 +49,8 @@ namespace Albatross.CodeGen.UnitTest {
 
 		[TestCaseSource(nameof(GetBuildSqlTypeTestCase))]
 		public string BuildSqlTypeTest(SqlType type) {
-			RenderSqlType builder = new RenderSqlType();
-			return builder.Render(type);
+			BuildSqlType builder = new BuildSqlType();
+			return builder.Build(type);
 		}
 
 		static TestCaseData[] GetBuildSqlVariableTestCase() {
@@ -60,12 +60,12 @@ namespace Albatross.CodeGen.UnitTest {
 			};
 		}
 
-		[TestOf(typeof(RenderSqlVariable))]
+		[TestOf(typeof(BuildSqlVariable))]
 		[TestCaseSource(nameof(GetBuildSqlVariableTestCase))]
 		public string BuildSqlVariableTest(Variable variable) {
-			RenderSqlVariable b = new RenderSqlVariable(new RenderSqlType(), new CreateSqlVariableName());
+			BuildSqlVariable b = new BuildSqlVariable(new BuildSqlType(), new CreateSqlVariableName());
 			StringBuilder sb = new StringBuilder();
-			b.Render(sb, variable);
+			b.Build(sb, variable);
 			return sb.ToString();
 		}
 
@@ -76,12 +76,12 @@ namespace Albatross.CodeGen.UnitTest {
 			};
 		}
 
-		[TestOf(typeof(RenderSqlParameter))]
+		[TestOf(typeof(BuildProcedureParameter))]
 		[TestCaseSource(nameof(BuildProcedureParameterTestCase))]
 		public string BuildProcedureParameterTest(Parameter param) {
-			RenderSqlParameter b = new RenderSqlParameter(new RenderSqlType(), new CreateSqlVariableName());
+			BuildProcedureParameter b = new BuildProcedureParameter(new BuildSqlType(), new CreateSqlVariableName());
 			StringBuilder sb = new StringBuilder();
-			b.Render(sb, param);
+			b.Build(sb, param);
 			return sb.ToString();
 		}
 	}

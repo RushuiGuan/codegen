@@ -1,31 +1,32 @@
-﻿using Albatross.CodeGen.Core;
+﻿using Albatross.CodeGen.CSharp;
+using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
-using SimpleInjector;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsLifecycle.Register, "Assembly")]
-	public class RegisterAssembly : PSCmdlet{
+	public class RegisterAssembly : BaseCmdlet<IConfigurableCodeGenFactory> {
 		[Parameter(Position = 0, ValueFromPipeline = true)]
 		public FileInfo Location { get; set; }
 
-		protected override void BeginProcessing() {
-			base.BeginProcessing();
-			new AssemblyRediret().Register<Container>();
-		}
-
 		protected override void ProcessRecord() {
-			IConfigurableCodeGenFactory factory = Ioc.Get<IConfigurableCodeGenFactory>();
+			typeof(Albatross.CodeGen.ICodeGeneratorFactory).Assembly.Register(Handle);
+			typeof(Albatross.CodeGen.CSharp.ClassGenerator<object>).Assembly.Register(Handle);
+			typeof(Albatross.CodeGen.Database.SqlCodeGenOption).Assembly.Register(Handle);
+			typeof(Albatross.CodeGen.SqlServer.BuildSqlType).Assembly.Register(Handle);
 
-			typeof(ICodeGeneratorFactory).Assembly.Register(factory);
-			typeof(RenderSqlType).Assembly.Register(factory);
-			factory.RegisterStatic();
+			Handle.RegisterStatic();
 
 			if (File.Exists(Location?.FullName)) {
 				Assembly asm = Assembly.LoadFile(Location.FullName);
-				asm.Register(factory);
+				asm.Register(Handle);
 			}
 		}
 	}

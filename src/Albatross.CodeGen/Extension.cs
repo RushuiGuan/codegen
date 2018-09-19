@@ -1,5 +1,4 @@
-﻿using Albatross.CodeGen.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,12 +7,28 @@ using System.Text;
 
 namespace Albatross.CodeGen {
 	public static class Extension {
+		public static string Proper(this string text) {
+			if (!string.IsNullOrEmpty(text)) {
+				string result = text.Substring(0, 1).ToUpper();
+				if (text.Length > 1) {
+					result = result + text.Substring(1);
+				}
+				return result;
+			} else {
+				return text;
+			}
+		}
+
 		public static void AddRange<T>(this HashSet<T> list, IEnumerable<T> items) {
 			if (items != null) {
 				foreach (var item in items) {
 					list.Add(item);
 				}
 			}
+		}
+
+		public static string GetGeneratorKey(this Type type, string name) {
+				return $"{type.FullName}.{name}";
 		}
 
 		#region registration helpers
@@ -36,15 +51,14 @@ namespace Albatross.CodeGen {
 			factory.RegisterStatic("Tab", GeneratorTarget.Any, "\r\n", "Tab", null);
 		}
 
-		/// <param name="item"></param>
-		/// <returns></returns>
 		public static CodeGenerator GetMeta(this Composite item) {
+			Type type = typeof(CompositeCodeGenerator<,>);
 			var meta = new CodeGenerator {
 				Name = item.Name,
 				Target = item.Target,
 				Category = item.Category,
 				Description = item.Description,
-				GeneratorType = typeof(CompositeCodeGenerator),
+				GeneratorType = type.MakeGenericType(item.SourceType, item.OptionType),
 				SourceType = item.SourceType,
 				OptionType = item.OptionType,
 				Data = item.Branch,
@@ -85,25 +99,5 @@ namespace Albatross.CodeGen {
 			}
 		}
 		#endregion
-
-		#region source option type validation
-		public static void Validate(this CodeGenerator codeGenerator, Type sourceType, Type optionType) {
-			if (!codeGenerator.SourceType.IsAssignableFrom(sourceType)) {
-				throw new Faults.InvalidSourceTypeException(codeGenerator.SourceType, sourceType);
-			}
-			if (!codeGenerator.OptionType.IsAssignableFrom(optionType)) {
-				throw new Faults.InvalidOptionTypeException(codeGenerator.SourceType, optionType);
-			}
-		}
-		public static IEnumerable<object> ValidateNGenerate<T, O>(this ICodeGenerator<T, O> codeGenerator, StringBuilder sb, object source, ICodeGeneratorOption option) where T : class where O : class, ICodeGeneratorOption {
-			if (source != null && !typeof(T).IsAssignableFrom(source.GetType())) {
-				throw new Faults.InvalidSourceTypeException(typeof(T), source.GetType());
-			}
-			if (option != null && !typeof(O).IsAssignableFrom(option.GetType())) {
-				throw new Faults.InvalidOptionTypeException(typeof(O), option.GetType());
-			}
-			return codeGenerator.Generate(sb, (T)source, (O)option);
-			#endregion
-		}
 	}
 }

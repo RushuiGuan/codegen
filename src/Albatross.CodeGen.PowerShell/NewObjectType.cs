@@ -1,4 +1,4 @@
-﻿using Albatross.CodeGen.Generation;
+﻿using Albatross.CodeGen.CSharp;
 using System.Management.Automation;
 
 namespace Albatross.CodeGen.PowerShell {

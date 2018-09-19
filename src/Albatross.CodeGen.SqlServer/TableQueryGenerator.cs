@@ -1,13 +1,14 @@
-﻿using Albatross.CodeGen.Core;
-using Albatross.CodeGen.Generation;
+﻿using Albatross.CodeGen;
+using Albatross.CodeGen.Database;
 using Albatross.Database;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	public abstract class TableQueryGenerator : ICodeGenerator<Table, SqlCodeGenOption> {
-		public int TabLevel { get; set; }
 
 		public string Category => "Sql Server";
 		public string Target => "sql";
@@ -16,11 +17,7 @@ namespace Albatross.CodeGen.SqlServer {
 		public Type OptionType => typeof(SqlCodeGenOption);
 
 		public event Func<StringBuilder, IEnumerable<object>> Yield { add { } remove { } }
-		public abstract IEnumerable<object> Generate(StringBuilder sb, Table table, SqlCodeGenOption option);
-
-		public IEnumerable<object> Generate(StringBuilder sb, object source, ICodeGeneratorOption option) {
-			return this.ValidateNGenerate(sb, source, option);
-		}
+		public abstract IEnumerable<object> Build(StringBuilder sb, Table table, SqlCodeGenOption option);
 
 		public void Configure(object data) { }
 	}
