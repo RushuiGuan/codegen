@@ -24,8 +24,8 @@ namespace Albatross.CodeGen.UnitTest {
 		void Setup() {
 			container.Options.AllowOverridingRegistrations = true;
 			container.RegisterSingleton<IObjectFactory>(this);
-			new Albatross.CodeGen.Ioc.SimpleInjectorPackage().RegisterServices(container);
-			new Albatross.Database.Ioc.SimpleInjector.SqlServerPackage().RegisterServices(container);
+			new Albatross.CodeGen.SimpleInjector .Pack().RegisterServices(container);
+			new Albatross.Database.SqlServer.SimpleInjector.Pack().RegisterServices(container);
 
 			var mock_getTable = new Mock<IGetTable>();
 			container.RegisterSingleton<Mock<IGetTable>>(mock_getTable);

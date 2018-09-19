@@ -10,8 +10,6 @@
 	  <PackageReference Include="System.Management.Automation.dll" Version="10.0.10586" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\Albatross.CodeGen.Database\Albatross.CodeGen.Database.csproj" />
-	  <ProjectReference Include="..\Albatross.CodeGen.Ioc\Albatross.CodeGen.Ioc.csproj" />
-	  <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
+	  <ProjectReference Include="..\Albatross.CodeGen.SimpleInjector\Albatross.CodeGen.SimpleInjector.csproj" />
 	</ItemGroup>
 </Project>

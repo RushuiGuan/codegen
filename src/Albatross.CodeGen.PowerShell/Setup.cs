@@ -8,8 +8,8 @@ namespace Albatross.CodeGen.PowerShell {
 			Container container = new Container();
 			container.Register<IObjectFactory>(() => new ObjectFactory(container), Lifestyle.Singleton);
 
-			new Albatross.CodeGen.Ioc.SimpleInjectorPackage().RegisterServices(container);
-			new Albatross.Database.Ioc.SimpleInjector.SqlServerPackage().RegisterServices(container);
+			new Albatross.CodeGen.SimpleInjector.Pack().RegisterServices(container);
+			new Albatross.Database.SqlServer.SimpleInjector.Pack().RegisterServices(container);
 			container.Verify();
 
 			return container.GetInstance<IObjectFactory>();
