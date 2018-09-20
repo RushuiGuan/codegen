@@ -7,7 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Albatross.Database.SqlServer.SimpleInjector" Version="1.0-*" />
-    <PackageReference Include="Dapper" Version="1.50.4" />
+    <PackageReference Include="Dapper" Version="1.50.5" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Albatross.CodeGen.CSharp\Albatross.CodeGen.CSharp.csproj" />
