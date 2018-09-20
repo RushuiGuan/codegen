@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
-    <AssemblyVersion>1.1.2.1</AssemblyVersion>
-    <FileVersion>1.1.2.1</FileVersion>
-    <Version>1.1.2-alpha</Version>
+    <AssemblyVersion>1.1.2.2</AssemblyVersion>
+    <FileVersion>1.1.2.2</FileVersion>
+    <Version>1.1.2-alpha.0</Version>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Albatross.Database" Version="1.1.4-alpha" />
+    <PackageReference Include="Albatross.Database" Version="1.1-*" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
