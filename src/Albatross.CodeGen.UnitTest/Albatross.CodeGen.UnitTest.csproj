@@ -5,12 +5,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Dapper" Version="1.50.4" />
-	  <PackageReference Include="Moq" Version="4.8.1" />
-	  <PackageReference Include="NUnit" Version="3.9.0" />
+		<PackageReference Include="Albatross.Test" Version="1.0-*" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
 		<PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
-	  <PackageReference Include="SimpleInjector" Version="4.0.12" />
 	</ItemGroup>
 
 	<ItemGroup>
