@@ -17,16 +17,16 @@ namespace Albatross.CodeGen.PowerShell {
 		public FileInfo Location { get; set; }
 
 		protected override void ProcessRecord() {
-			typeof(Albatross.CodeGen.ICodeGeneratorFactory).Assembly.Register(Handle);
-			typeof(Albatross.CodeGen.CSharp.ClassGenerator<object>).Assembly.Register(Handle);
-			typeof(Albatross.CodeGen.Database.SqlCodeGenOption).Assembly.Register(Handle);
-			typeof(Albatross.CodeGen.SqlServer.BuildSqlType).Assembly.Register(Handle);
+			Handle.RegisterAssembly(typeof(Albatross.CodeGen.ICodeGeneratorFactory).Assembly);
+			Handle.RegisterAssembly(typeof(Albatross.CodeGen.CSharp.ClassGenerator<object>).Assembly);
+			Handle.RegisterAssembly(typeof(Albatross.CodeGen.Database.SqlCodeGenOption).Assembly);
+			Handle.RegisterAssembly(typeof(Albatross.CodeGen.SqlServer.BuildSqlType).Assembly);
 
-			Handle.RegisterStatic();
+			Handle.RegisterConstant();
 
 			if (File.Exists(Location?.FullName)) {
 				Assembly asm = Assembly.LoadFile(Location.FullName);
-				asm.Register(Handle);
+				Handle.RegisterAssembly(asm);
 			}
 		}
 	}

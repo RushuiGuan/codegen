@@ -22,14 +22,12 @@ namespace Albatross.CodeGen.UnitTest {
 
 			var codeGenFactory = Ioc.Container.GetInstance<IConfigurableCodeGenFactory>();
 
-			typeof(Albatross.CodeGen.ICodeGeneratorFactory).Assembly.Register(codeGenFactory);
-			typeof(Albatross.CodeGen.CSharp.ClassGenerator<object>).Assembly.Register(codeGenFactory);
-			typeof(Albatross.CodeGen.Database.SqlCodeGenOption).Assembly.Register(codeGenFactory);
-			typeof(Albatross.CodeGen.SqlServer.BuildSqlType).Assembly.Register(codeGenFactory);
+			codeGenFactory.RegisterAssembly(typeof(Albatross.CodeGen.ICodeGeneratorFactory).Assembly);
+			codeGenFactory.RegisterAssembly(typeof(Albatross.CodeGen.CSharp.ClassGenerator<object>).Assembly);
+			codeGenFactory.RegisterAssembly(typeof(Albatross.CodeGen.Database.SqlCodeGenOption).Assembly);
+			codeGenFactory.RegisterAssembly(typeof(Albatross.CodeGen.SqlServer.BuildSqlType).Assembly);
 
-
-
-			codeGenFactory.RegisterStatic();
+			codeGenFactory.RegisterConstant();
 		}
 	}
 }

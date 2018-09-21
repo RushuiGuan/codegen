@@ -28,5 +28,13 @@ namespace Albatross.CodeGen.UnitTest {
 			Type type = typeof(ICodeGenerator<,>);
 			type.ToString();
 		}
+
+		[Test]
+		public void TestAssignable() {
+			Type string_type = typeof(string);
+			Type object_type = typeof(object);
+			//Assert.True(string_type.IsAssignableFrom(object_type));
+			Assert.True(object_type.IsAssignableFrom(string_type));
+		}
 	}
 }

@@ -32,7 +32,8 @@ namespace Albatross.CodeGen.PowerShell {
 			StringBuilder sb = new StringBuilder();
 			if(Source is PSObject) { Source = ((PSObject)Source).BaseObject; }
 			if (Option is PSObject) { Option = ((PSObject)Option).BaseObject; }
-			Composite c = new Composite(Source.GetType(), Option.GetType()) {
+
+			Composite c = new Composite(Source?.GetType(), Option?.GetType()) {
 				Branch = Branch,
 			};
 			var meta = c.GetMeta();

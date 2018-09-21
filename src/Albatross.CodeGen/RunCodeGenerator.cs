@@ -14,15 +14,14 @@ namespace Albatross.CodeGen
 			this.codeGeneratorFactory = codeGeneratorFactory;
 		}
 
-
 		public IEnumerable<object> Run(CodeGenerator meta, StringBuilder sb, object source, object option) {
-			Type sourceType = source?.GetType();
-			if (sourceType != meta.SourceType) { throw new InvalidSourceTypeException(); }
-			if (option == null) {
-				option = Activator.CreateInstance(meta.OptionType);
-			} else {
-				if (meta.OptionType != option.GetType()) { throw new InvalidOptionTypeException(); }
+			if (source != null && !meta.SourceType.IsAssignableFrom(source.GetType())){
+				throw new InvalidSourceTypeException();
 			}
+			if (option != null && !meta.OptionType.IsAssignableFrom(option.GetType())) {
+				throw new InvalidOptionTypeException();
+			}
+
 			object gen = objectFactory.Create(meta.GeneratorType);
 			MethodInfo method = meta.GeneratorType.GetMethod(nameof(ICodeGenerator<object, object>.Configure));
 			method.Invoke(gen, new[] { meta.Data });

@@ -20,7 +20,22 @@ namespace Albatross.CodeGen.SimpleInjector {
 			container.Register<IStoreVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<IGetVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<ICreateVariableName, CreateSqlVariableName>(Lifestyle.Singleton);
+			container.RegisterInstance<IObjectFactory>(new ObjectFactory(container));
+		}
 
+		public class ObjectFactory : IObjectFactory {
+			Container container;
+			public ObjectFactory(Container container) {
+				this.container = container;
+			}
+
+			public T Create<T>() where T : class {
+				return container.GetInstance<T>();
+			}
+
+			public object Create(Type type) {
+				return container.GetInstance(type);
+			}
 		}
 	}
 }

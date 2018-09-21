@@ -93,7 +93,7 @@ where
 		public string BuildDeclareStatement(Table table, SqlCodeGenOption option) {
 			Container c = Ioc.Container;
 			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
-			factory.Register(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
+			factory.RegisterComposite(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
 				Name = "test",
 				Branch = new Branch(new Leaf("declare statement"), new Branch(new Leaf("newline"), new Leaf("table_update"), new Leaf("newline"), new Leaf("table_where"))),
 				Target = GeneratorTarget.Sql,
@@ -123,9 +123,9 @@ from [test].[Symbol]" },
 		public string DeclareStatementWithoutDeclare(Table table, SqlCodeGenOption option) {
 			Container c = Ioc.Container;
 			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
-			typeof(DeclareStatement).Assembly.Register(factory);
-			factory.RegisterStatic();
-			factory.Register(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
+			factory.RegisterAssembly(typeof(DeclareStatement).Assembly);
+			factory.RegisterConstant();
+			factory.RegisterComposite(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
 				Name = "test",
 				Branch = new Branch(new Leaf("declare statement"), new Branch(new Leaf("newline"), new Leaf("table_select"))),
 				Target = GeneratorTarget.Sql,

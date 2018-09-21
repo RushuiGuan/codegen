@@ -13,7 +13,7 @@ namespace Albatross.CodeGen {
 	public interface ICodeGenerator<in T, in O> {
 
 		/// <summary>
-		/// Normal a generator is run against a source and doesn't need to contain states.  But there are exceptions such as <see cref="Albatross.CodeGen.CompositeCodeGenerator{T, O}"/> or <see cref="Albatross.CodeGen.StaticCodeGenerator"/>.  These
+		/// Normal a generator is run against a source and doesn't need to contain states.  But there are exceptions such as <see cref="Albatross.CodeGen.CompositeCodeGenerator{T, O}"/> or <see cref="Albatross.CodeGen.ConstantCodeGenerator"/>.  These
 		/// generators need to be configured because their main function is not to generate code using the source but to generate code based on a data configuration.
 		/// </summary>
 		/// <param name="data"></param>
