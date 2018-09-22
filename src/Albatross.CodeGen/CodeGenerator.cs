@@ -16,5 +16,6 @@ namespace Albatross.CodeGen {
 		public Type OptionType { get; set; }
 		public Type GeneratorType { get; set; }
 		public object Data { get; set; }
+		public Func<ICodeGenerator> Func { get; set; }
 	}
 }

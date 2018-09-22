@@ -55,7 +55,7 @@ namespace Albatross.CodeGen.UnitTest {
 				Name = "insert",
 			});
 
-			CompositeCodeGenerator<Table, SqlCodeGenOption> compositeCodeGenerator = new CompositeCodeGenerator<Table, SqlCodeGenOption>(factory);
+			CompositeCodeGenerator compositeCodeGenerator = new CompositeCodeGenerator(factory);
 			compositeCodeGenerator.Configure(new Branch(new Leaf("create procedure"), new Leaf("insert")));
 			StringBuilder sb = new StringBuilder();
 			compositeCodeGenerator.Build(sb, table, option);

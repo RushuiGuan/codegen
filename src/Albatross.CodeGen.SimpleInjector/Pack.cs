@@ -9,6 +9,8 @@ namespace Albatross.CodeGen.SimpleInjector {
 
 	public class Pack : IPackage {
 		public void RegisterServices(Container container) {
+			new Albatross.Database.SqlServer.SimpleInjector.Pack().RegisterServices(container);
+
 			container.Register<ICodeGeneratorFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 			container.Register<IRunCodeGenerator, RunCodeGenerator>(Lifestyle.Singleton);
 			container.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);

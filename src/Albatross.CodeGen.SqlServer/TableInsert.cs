@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table-insert", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Insert statement that excludes the computed columns")]
-	public class TableInsert : TableQueryGenerator {
+	public class TableInsert : CodeGeneratorBase<Table, SqlCodeGenOption> {
 		IGetTable getTable;
 		ICreateVariableName getVariableName;
 		IBuildSqlType buildSqlType;

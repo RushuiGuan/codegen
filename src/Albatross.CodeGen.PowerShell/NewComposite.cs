@@ -39,7 +39,7 @@ namespace Albatross.CodeGen.PowerShell
 		
 
 		protected override void ProcessRecord() {
-			Composite c = new Composite(SourceType, OptionType) {
+			Composite c = new Composite{
 				Branch= Branch,
 				Name = Name,
 				Target = Target,

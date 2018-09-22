@@ -19,24 +19,6 @@ namespace Albatross.CodeGen.UnitTest {
 
 
 		[Test]
-		public void TestNormalComposite() {
-			var composite = new Composite {
-				Branch = new Branch(new INode[] {
-							new Leaf("string"),
-							new Leaf("string"),
-							new Leaf("string"),
-							new Leaf("string"),
-						}),
-				Name = "test",
-			};
-			Get<IConfigurableCodeGenFactory>().RegisterAssembly(typeof(IConfigurableCodeGenFactory).Assembly);
-			StringBuilder sb = new StringBuilder();
-			Get<IRunCodeGenerator>().Run(composite.GetMeta(), sb, "test", null);
-			sb.ToString();
-		}
-
-
-		[Test]
 		public void CompositeTest() {
 			Container container = Ioc.Container;
 			var factory = container.GetInstance<IConfigurableCodeGenFactory>();
@@ -44,13 +26,13 @@ namespace Albatross.CodeGen.UnitTest {
 			factory.RegisterConstant("test2", GeneratorTarget.Any, "test2", null, null);
 			factory.RegisterConstant("test3", GeneratorTarget.Any, "test3", null, null);
 			factory.RegisterConstant("test4", GeneratorTarget.Any, "test4", null, null);
-			factory.RegisterComposite(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
+			factory.RegisterComposite(new Composite() {
 				Name = "test",
 				Branch = new Branch(new Leaf("test1"), new Leaf("test2")),
 				Target = GeneratorTarget.Sql,
 			});
 
-			var handle = factory.Create<Table, SqlCodeGenOption>("test");
+			var handle = factory.Create("test");
 			StringBuilder sb = new StringBuilder();
 			var used = handle.Build(sb, new Table(), new SqlCodeGenOption());
 			Assert.AreEqual("test1test2", sb.ToString());
@@ -68,7 +50,7 @@ namespace Albatross.CodeGen.UnitTest {
 				Target = GeneratorTarget.Any,
 				Name = "test0",
 			});
-			var handle = factory.Create<string, string>("test0");
+			var handle = factory.Create("test0");
 
 			StringBuilder sb = new StringBuilder();
 			IEnumerable<object> used = handle.Build(sb, string.Empty, string.Empty);
@@ -94,13 +76,13 @@ namespace Albatross.CodeGen.UnitTest {
 			factory.RegisterConstant("test3", GeneratorTarget.Any, "test3", null, null);
 			factory.RegisterConstant("test4", GeneratorTarget.Any, "test4", null, null);
 			factory.RegisterConstant("test4", GeneratorTarget.Any, "test4", null, null);
-			factory.RegisterComposite(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
+			factory.RegisterComposite(new Composite() {
 				Name = "test",
 				Branch = new Branch(new Leaf("test0"), new Leaf("test1"), new Leaf("newline"), new Leaf("test2")),
 				Target = GeneratorTarget.Sql,
 			});
 
-			var handle = factory.Create<Table, SqlCodeGenOption>("test");
+			var handle = factory.Create("test");
 			StringBuilder sb = new StringBuilder();
 			IEnumerable<object> used= handle.Build(sb, new Table(), new SqlCodeGenOption());
 			Assert.AreEqual(@"begin

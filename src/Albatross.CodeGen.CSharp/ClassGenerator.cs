@@ -10,12 +10,7 @@ namespace Albatross.CodeGen.CSharp {
 	/// method <see cref="Albatross.CodeGen.CSharp.ClassGenerator{T}.RenderBody(StringBuilder, int, T, ClassOption)"/>.
 	/// </summary>
 	/// <typeparam name="T">the source type</typeparam>
-	public abstract class ClassGenerator<T> : ICodeGenerator<T, ClassOption> where T : class {
-
-#pragma warning disable 0067
-		public event Func<StringBuilder, IEnumerable<object>> Yield;
-#pragma warning restore 0067
-
+	public abstract class ClassGenerator<T> : CodeGeneratorBase<T, ClassOption> where T : class {
 		/// <summary>
 		/// Return the name of the class.  By default, it will use the <see cref="Albatross.CodeGen.CSharp.ClassOption.Name"/> property.  Override this method to change the behavior.
 		/// </summary>
@@ -27,7 +22,7 @@ namespace Albatross.CodeGen.CSharp {
 		}
 		public abstract void RenderBody(StringBuilder sb, int tabLevel, T t, ClassOption options);
 
-		public IEnumerable<object>  Build(StringBuilder sb, T t, ClassOption option) {
+		public override IEnumerable<object> Build(StringBuilder sb, T t, ClassOption option) {
 			if (option.Imports != null) {
 				foreach (var ns in option.Imports) {
 					sb.Append("using ").Append(ns).Terminate();
@@ -55,7 +50,5 @@ namespace Albatross.CodeGen.CSharp {
 
 			return new object[] { this, };
 		}
-
-		public void Configure(object data) { }
 	}
 }

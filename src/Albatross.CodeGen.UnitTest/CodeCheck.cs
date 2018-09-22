@@ -36,5 +36,14 @@ namespace Albatross.CodeGen.UnitTest {
 			//Assert.True(string_type.IsAssignableFrom(object_type));
 			Assert.True(object_type.IsAssignableFrom(string_type));
 		}
+
+		[Test]
+		public void xx() {
+			ICodeGenerator<object, object> a = null;
+			ICodeGenerator<string, string> b = null;
+			ICodeGenerator c = null;
+			b = a;
+			c = b;
+		}
 	}
 }

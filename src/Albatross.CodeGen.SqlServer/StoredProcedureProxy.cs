@@ -10,13 +10,9 @@ namespace Albatross.CodeGen.SqlServer
 	/// <summary>
 	/// Create a CSharp class from a SQL Stored procedure
 	/// </summary>
-	public class StoredProcedureProxy : ICodeGenerator<Procedure, ClassOption> {
-		public event Func<StringBuilder, IEnumerable<object>> Yield { add { } remove { } }
-
-		public IEnumerable<object> Build(StringBuilder sb, Procedure source, ClassOption option) {
+	public class StoredProcedureProxy : CodeGeneratorBase<Procedure, ClassOption> {
+		public override IEnumerable<object> Build(StringBuilder sb, Procedure source, ClassOption option) {
 			throw new NotImplementedException();
 		}
-
-		public void Configure(object data) { }
 	}
 }

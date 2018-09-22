@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table-select-scope-identity", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Select the Scope_Identity() of the previous insert operation.  Typically used after the insert operation.")]
-	public class TableSelectScopedIdentity : TableQueryGenerator {
+	public class TableSelectScopedIdentity : CodeGeneratorBase<Table, SqlCodeGenOption> {
 		IGetTable getTable;
 
 		public TableSelectScopedIdentity(IGetTable getTable) {

@@ -93,14 +93,14 @@ where
 		public string BuildDeclareStatement(Table table, SqlCodeGenOption option) {
 			Container c = Ioc.Container;
 			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
-			factory.RegisterComposite(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
+			factory.RegisterComposite(new Composite() {
 				Name = "test",
 				Branch = new Branch(new Leaf("declare statement"), new Branch(new Leaf("newline"), new Leaf("table_update"), new Leaf("newline"), new Leaf("table_where"))),
 				Target = GeneratorTarget.Sql,
 			});
 
 			StringBuilder sb = new StringBuilder();
-			var handle = factory.Create<Table, SqlCodeGenOption>("test");
+			var handle = factory.Create("test");
 			handle.Build(sb, table, option);
 			return sb.ToString();
 		}
@@ -125,14 +125,14 @@ from [test].[Symbol]" },
 			var factory = c.GetInstance<IConfigurableCodeGenFactory>();
 			factory.RegisterAssembly(typeof(DeclareStatement).Assembly);
 			factory.RegisterConstant();
-			factory.RegisterComposite(new Composite(typeof(Table), typeof(SqlCodeGenOption)) {
+			factory.RegisterComposite(new Composite() {
 				Name = "test",
 				Branch = new Branch(new Leaf("declare statement"), new Branch(new Leaf("newline"), new Leaf("table_select"))),
 				Target = GeneratorTarget.Sql,
 			});
 
 			StringBuilder sb = new StringBuilder();
-			var handle = factory.Create<Table, SqlCodeGenOption>("test");
+			var handle = factory.Create("test");
 			handle.Build(sb, table, option);
 			return sb.ToString();
 		}

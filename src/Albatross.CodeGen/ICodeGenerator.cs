@@ -10,8 +10,11 @@ namespace Albatross.CodeGen {
 	/// </summary>
 	/// <typeparam name="T">Source type</typeparam>
 	/// <typeparam name="O">Option type</typeparam>
-	public interface ICodeGenerator<in T, in O> {
-
+	public interface ICodeGenerator<in T, in O> : ICodeGenerator {
+		IEnumerable<object> Build(StringBuilder sb, T source, O option);
+	}
+	public interface ICodeGenerator {
+		IEnumerable<object> Build(StringBuilder sb, object source, object option);
 		/// <summary>
 		/// Normal a generator is run against a source and doesn't need to contain states.  But there are exceptions such as <see cref="Albatross.CodeGen.CompositeCodeGenerator{T, O}"/> or <see cref="Albatross.CodeGen.ConstantCodeGenerator"/>.  These
 		/// generators need to be configured because their main function is not to generate code using the source but to generate code based on a data configuration.
@@ -25,7 +28,8 @@ namespace Albatross.CodeGen {
 		/// <param name="source"></param>
 		/// <param name="option"></param>
 		/// <returns></returns>
-		IEnumerable<object> Build(StringBuilder sb, T source, O option);
 		event Func<StringBuilder, IEnumerable<object>> Yield;
+		void ValidateSource(object source);
+		void ValidateOption(object option);
 	}
 }

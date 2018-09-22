@@ -17,8 +17,5 @@ namespace Albatross.CodeGen {
 
 		public string Category { get; set; }
 		public string Description { get; set; }
-
-		public Type SourceType { get; set; }
-		public Type GeneratorType { get; set; }
 	}
 }

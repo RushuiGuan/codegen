@@ -18,9 +18,15 @@ namespace Albatross.CodeGen {
 		}
 
 		public static bool TryRegister(this IConfigurableCodeGenFactory factory, Type type, string name, string target, string category, string description, object data) {
-			Type interfaceType = type.FindInterfaces(new TypeFilter((t, obj) => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(ICodeGenerator<,>)), null).FirstOrDefault();
+			Type interfaceType = type.FindInterfaces(new TypeFilter((t, obj) => t == typeof(ICodeGenerator)), null).FirstOrDefault();
 			if (interfaceType != null) {
-				Type[] arguments = interfaceType.GetGenericArguments();
+				interfaceType = type.FindInterfaces(new TypeFilter((t, obj) => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(ICodeGenerator<,>)), null).FirstOrDefault();
+				Type[] arguments;
+				if (interfaceType != null) {
+					arguments = interfaceType.GetGenericArguments();
+				} else {
+					arguments = new Type[] { typeof(object), typeof(object), };
+				}
 				CodeGenerator gen = new CodeGenerator {
 					Name = name,
 					Target = target,
@@ -29,6 +35,7 @@ namespace Albatross.CodeGen {
 					GeneratorType = type,
 					SourceType = arguments[0],
 					OptionType = arguments[1],
+					Data = data,
 				};
 				factory.Register(gen);
 				return true;
@@ -45,6 +52,7 @@ namespace Albatross.CodeGen {
 				}
 			}
 		}
+
 		public static IConfigurableCodeGenFactory RegisterConstant(this IConfigurableCodeGenFactory factory, string name, string target, string content, string category, string description) {
 			factory.Register(new CodeGenerator {
 				Category = category,

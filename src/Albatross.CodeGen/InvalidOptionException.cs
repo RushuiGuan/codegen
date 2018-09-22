@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Albatross.CodeGen
 {
-    public class MissingSourceException : Exception
+    public class InvalidOptionException : Exception
     {
     }
 }

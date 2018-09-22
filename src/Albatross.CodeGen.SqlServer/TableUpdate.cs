@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("table-update", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Update statement that excludes the computed columns.  Will exclude the primary key by default unless ExcludePrimaryKey flag is set to false in the option")]
-	public class TableUpdate : TableQueryGenerator {
+	public class TableUpdate : CodeGeneratorBase<Table, SqlCodeGenOption> {
 		IGetTable getTable;
 		ICreateVariableName getVariableName;
 		IStoreVariable createVariable;

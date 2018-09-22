@@ -27,17 +27,10 @@ namespace Albatross.CodeGen {
 			}
 		}
 
-		public ICodeGenerator<T, O> Create<T, O>(string name) {
+		public ICodeGenerator Create(string name) {
 			CodeGenerator codeGenerator = Get(name);
-			var handle = (ICodeGenerator<T, O>)factory.Create(codeGenerator.GeneratorType);
+			ICodeGenerator handle = (ICodeGenerator)factory.Create(codeGenerator.GeneratorType);
 			handle.Configure(codeGenerator.Data);
-			return handle;
-		}
-
-		public object Create(string name) {
-			CodeGenerator codeGenerator = Get(name);
-			var handle = factory.Create(codeGenerator.GeneratorType);
-			handle.GetType().GetMethod(nameof(ICodeGenerator<int, int>.Configure)).Invoke(handle, new[] { codeGenerator.Data });
 			return handle;
 		}
 
