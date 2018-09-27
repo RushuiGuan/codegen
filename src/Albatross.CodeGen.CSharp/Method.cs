@@ -10,5 +10,7 @@ namespace Albatross.CodeGen.CSharp {
 		public IEnumerable<Parameter> Parameters { get; set; }
 		public string Body { get; set; }
 		public bool Static { get; set; }
+		public bool Virtual { get; set; }
+		public bool Override { get; set; }
 	}
 }
