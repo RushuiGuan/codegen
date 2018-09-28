@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albatross.CodeGen.CSharp {
+namespace Albatross.CodeGen.CSharp.Core {
 	public class Method {
 		public string ReturnType { get; set; }
 		public string Name { get; set; }

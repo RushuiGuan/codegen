@@ -28,6 +28,12 @@ namespace Albatross.CodeGen {
 		public static StringBuilder CloseSquareBracket(this StringBuilder sb, int count = 1) {
 			return sb.AppendChar(']', count);
 		}
+		public static StringBuilder OpenAngleBracket(this StringBuilder sb, int count = 1) {
+			return sb.AppendChar('<', count);
+		}
+		public static StringBuilder CloseAngleBracket(this StringBuilder sb, int count = 1) {
+			return sb.AppendChar('>', count);
+		}
 		public static StringBuilder OpenParenthesis(this StringBuilder sb, int count = 1) {
 			return sb.AppendChar('(', count);
 		}
@@ -51,21 +57,18 @@ namespace Albatross.CodeGen {
 		#endregion
 
 		#region C# code generation
-		public static StringBuilder PublicClass(this StringBuilder sb) {
-			sb.Append("public class ");
+		public static StringBuilder Static(this StringBuilder sb) {
+			sb.Append("static ");
 			return sb;
 		}
-
-		public static StringBuilder BaseClass(this StringBuilder sb, Type type) {
-			sb.Append(" : ").GetTypeName(type).OpenScope();
+		public static StringBuilder Namespace(this StringBuilder sb) {
+			sb.Append("namespace ");
 			return sb;
 		}
-
-		public static StringBuilder ClassName(this StringBuilder sb, Type type, string postFix) {
-			sb.Append(type.Name).Append(postFix);
+		public static StringBuilder Class(this StringBuilder sb) {
+			sb.Append("class ");
 			return sb;
 		}
-
 		public static StringBuilder Join(this StringBuilder sb, params string[] segments) {
 			foreach (var item in segments) {
 				sb.Append(item);
@@ -80,7 +83,7 @@ namespace Albatross.CodeGen {
 			if (terminate) {
 				return sb.Append("}").Terminate();
 			} else {
-				return sb.AppendLine("}");
+				return sb.Append("}");
 			}
 		}
 		public static StringBuilder Terminate(this StringBuilder sb) {
@@ -133,9 +136,6 @@ namespace Albatross.CodeGen {
 		public static StringBuilder EmptyScope(this StringBuilder sb) {
 			sb.AppendLine("{ }");
 			return sb;
-		}
-		public static StringBuilder PublicProperty(this StringBuilder sb, Type propertyType, string name) {
-			return sb.Append("public ").GetTypeName(propertyType).Space().Append(name).OpenScope();
 		}
 
 		public static StringBuilder BindableGetter(this StringBuilder sb, Type type, string name) {
