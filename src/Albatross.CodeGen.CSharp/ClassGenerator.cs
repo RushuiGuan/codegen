@@ -7,14 +7,18 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp {
 	public class ClassGenerator : CodeGeneratorBase<Class, Class> {
-		IRenderCSharp<AccessModifier> renderAccessModifier;
-		IRenderCSharp<Constructor> renderConstructor;
-		IRenderCSharp<Method> renderMethod;
+		IWriteObject<AccessModifier> writeAccessModifier;
+		IWriteObject<Constructor> writeConstructor;
+		IWriteObject<Method> writeMethod;
+		IWriteObject<Field> writeField;
+		IWriteObject<Property> writeProperty;
 
-		public ClassGenerator(IRenderCSharp<AccessModifier> renderAccessModifier, IRenderCSharp<Constructor> renderConstructor, IRenderCSharp<Method> renderMethod) {
-			this.renderAccessModifier = renderAccessModifier;
-			this.renderConstructor = renderConstructor;
-			this.renderMethod = renderMethod;
+		public ClassGenerator(IWriteObject<AccessModifier> writeAccessModifier, IWriteObject<Constructor> writeConstructor, IWriteObject<Method> writeMethod, IWriteObject<Field> writeField, IWriteObject<Property> writeProperty) {
+			this.writeAccessModifier = writeAccessModifier;
+			this.writeConstructor = writeConstructor;
+			this.writeMethod = writeMethod;
+			this.writeField = writeField;
+			this.writeProperty = writeProperty;
 		}
 		public override IEnumerable<object> Build(StringBuilder sb, Class source, Class option) {
 			if(source.Imports?.Count() > 0) {
@@ -24,22 +28,31 @@ namespace Albatross.CodeGen.CSharp {
 				}
 			}
 
-			if (string.IsNullOrEmpty(source.Namespace)) {
-				sb.Namespace().OpenScope();
-			}
-			return new object[] { this };
-		}
-
-		StringBuilder RenderClass(StringBuilder sb, Class source) {
-			renderAccessModifier.Render(sb, source.AccessModifier).Class().OpenScope();
-			if(source.Constructors?.Count() > 0) {
-				foreach(var constructor in source.Constructors) {
-//					renderConstructor.Render(new StringBuilder(), constructor);
+			using (var namespaceWriter = new WriteCSharpScopedObject(sb).BeginScope($"namespace {source.Namespace}")) {
+				using (var classWriter = namespaceWriter.BeginChildScope($"{writeAccessModifier.Write(source.AccessModifier)} class {source.Name}")) {
+					if(source.Constructors?.Count() > 0) {
+						foreach(var constructor in source.Constructors) {
+							classWriter.Content.AppendLine(writeConstructor.Write(constructor));
+						}
+					}
+					if(source.Fields?.Count() > 0) {
+						foreach(var field in source.Fields) {
+							classWriter.Content.AppendLine(writeField.Write(field));
+						}
+					}
+					if (source.Properties?.Count() > 0) {
+						foreach (var property in source.Properties) {
+							classWriter.Content.AppendLine(writeProperty.Write(property));
+						}
+					}
+					if (source.Methods?.Count() > 0) {
+						foreach (var method in source.Methods) {
+							classWriter.Content.AppendLine(writeMethod.Write(method));
+						}
+					}
 				}
 			}
-
-			sb.CloseScope();
-			return sb;
+			return new object[] { this };
 		}
 	}
 }

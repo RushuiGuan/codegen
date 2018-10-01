@@ -26,5 +26,14 @@ namespace Albatross.CodeGen {
 				}
 			}
 		}
+
+		public static List<T>Combine<T>(this IEnumerable<T> items, params T[] others) {
+			List<T> list = new List<T>();
+			if(items != null) {
+				list.AddRange(items);
+			}
+			list.AddRange(others);
+			return list;
+		}
 	}
 }

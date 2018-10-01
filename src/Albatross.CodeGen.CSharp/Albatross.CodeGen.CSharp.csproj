@@ -13,6 +13,9 @@
     <Version>1.1.6-alpha</Version>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Albatross.Database" Version="1.1.4-alpha.0" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
   </ItemGroup>
 </Project>

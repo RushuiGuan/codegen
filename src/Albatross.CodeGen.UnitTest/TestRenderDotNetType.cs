@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture(TestOf = typeof(RenderDotNetType))]
+	[TestFixture(TestOf = typeof(WriteDotNetType))]
 	public class TestRenderDotNetType : TestBase {
 		public override void Register(Container container) {
 		}
@@ -40,10 +40,8 @@ namespace Albatross.CodeGen.UnitTest {
 
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(DotNetType t) {
-			var gen = Get<RenderDotNetType>();
-			StringBuilder sb = new StringBuilder();
-			gen.Render(sb, t);
-			return sb.ToString();
+			var gen = Get<WriteDotNetType>();
+			return gen.Write(t);
 		}
 	}
 }

@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 
 namespace Albatross.CodeGen.CSharp {
-	public class RenderDotNetType: IRenderCSharp<DotNetType> {
-		public StringBuilder Render(StringBuilder sb, DotNetType type) {
+	public class WriteDotNetType: IWriteObject<DotNetType> {
+		public string Write(DotNetType type) {
+			StringBuilder sb = new StringBuilder();
 			sb.Append(type.Name);
 			if (type.IsGeneric && type.GenericTypes?.Count() > 0) {
 				sb.OpenAngleBracket();
@@ -18,11 +19,11 @@ namespace Albatross.CodeGen.CSharp {
 					} else {
 						first = false;
 					}
-					Render(sb, genericType);
+					sb.Append(Write(genericType));
 				}
 				sb.CloseAngleBracket();
 			}
-			return sb;
+			 return sb.ToString();
 		}
 	}
 }

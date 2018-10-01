@@ -14,6 +14,7 @@ namespace Albatross.CodeGen.CSharp.Core {
 
 		public IEnumerable<Constructor> Constructors { get; set; }
 		public IEnumerable<Property> Properties { get; set; }
+		public IEnumerable<Field> Fields { get; set; }
 		public IEnumerable<Method> Methods { get; set; }
 
 	}

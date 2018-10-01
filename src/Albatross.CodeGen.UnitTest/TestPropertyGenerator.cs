@@ -11,8 +11,8 @@ namespace Albatross.CodeGen.UnitTest {
 	[TestFixture(TestOf =typeof(PropertyGenerator))]
 	public class TestPropertyGenerator : TestBase{
 		public override void Register(Container container) {
-			container.Register<IRenderCSharp<DotNetType>, RenderDotNetType>();
-			container.Register<IRenderCSharp<AccessModifier>, RenderAccessModifier>();
+			container.Register<IWriteObject<DotNetType>, WriteDotNetType>();
+			container.Register<IWriteObject<AccessModifier>, WriteAccessModifier>();
 		}
 
 		public readonly static Property Case1 = new Property {
