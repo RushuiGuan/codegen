@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Albatross.CodeGen</id>
-    <version>1.1.2-alpha.1</version>
+    <version>1.1.2-alpha.2</version>
     <description>The goal of this library is to create code generators to speed up software development.  It comes with powershell cmdlets that allows users to create composite code generators.  The powershell cmdlet can be found in the tools folder or use nuget package "Albatross.CodeGen.PowerShell".  Call Import-Module Albatross.CodeGen.PowerShell.dll first to import the module.</description>
   </metadata>
 </package>

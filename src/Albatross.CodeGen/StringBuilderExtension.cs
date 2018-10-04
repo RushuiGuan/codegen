@@ -54,8 +54,8 @@ namespace Albatross.CodeGen {
 			}
 			return sb;
 		}
-		public static StringBuilder Generate<T>(this StringBuilder sb, IWriteObject<T> generator, T t, int tabify = 0) {
-			string text = generator.Write(t);
+		public static StringBuilder Write<T>(this StringBuilder sb, IWriteObject<T> writer, T t, int tabify = 0) {
+			string text = writer.Write(t);
 			if (tabify > 0) {
 				sb.Tabify(text, tabify);
 			} else {

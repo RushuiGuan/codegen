@@ -12,12 +12,12 @@ namespace Albatross.CodeGen.SqlServer {
 	/// Create a CSharp class from a SQL Stored procedure
 	/// </summary>
 	public class StoredProcedureProxy : CodeGeneratorBase<Procedure, Class> {
-		ClassGenerator classGenerator;
-		IGetCSharpType getCSharpType;
+		IWriteObject<Class> writeClass;
+		IGetDotNetType getDotNetType;
 
-		public StoredProcedureProxy(ClassGenerator classGenerator, IGetCSharpType getCSharpType) {
-			this.classGenerator = classGenerator;
-			this.getCSharpType = getCSharpType;
+		public StoredProcedureProxy(IWriteObject<Class> writeClass, IGetDotNetType getDotNetType) {
+			this.writeClass = writeClass;
+			this.getDotNetType = getDotNetType;
 		}
 
 		public override IEnumerable<object> Build(StringBuilder sb, Procedure source, Class classOption) {
@@ -34,7 +34,7 @@ namespace Albatross.CodeGen.SqlServer {
 							 in source.Parameters
 							 select new Albatross.CodeGen.CSharp.Core.Parameter {
 								 Name = Extension.Proper(sqlParam.Name),
-								 Type = getCSharpType.Get(sqlParam.Type),
+								 Type = getDotNetType.Get(sqlParam.Type),
 							 },
 			};
 
@@ -42,7 +42,7 @@ namespace Albatross.CodeGen.SqlServer {
 			method.Body.Append("return new CommandDefinition(dbConnection,);");
 
 			classOption.Methods = new Method[] { method };
-			classGenerator.Build(sb, classOption, null);
+			sb.Write(writeClass, classOption);
 			return new object[] { this };
 		}
 	}

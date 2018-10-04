@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.CSharp;
+using Albatross.CodeGen.CSharp.Core;
 using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
 using SimpleInjector;
@@ -14,7 +15,6 @@ namespace Albatross.CodeGen.SimpleInjector {
 			container.Register<ICodeGeneratorFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
 			container.Register<IRunCodeGenerator, RunCodeGenerator>(Lifestyle.Singleton);
 			container.Register<IConfigurableCodeGenFactory, CodeGeneratorFactory>(Lifestyle.Singleton);
-			container.Register<IGetReflectionOnlyType, GetReflectionOnlyType>(Lifestyle.Singleton);
 
 			container.Register<IBuildSqlType, BuildSqlType>(Lifestyle.Singleton);
 			container.Register<IBuildVariable, BuildSqlVariable>(Lifestyle.Singleton);
@@ -22,6 +22,10 @@ namespace Albatross.CodeGen.SimpleInjector {
 			container.Register<IStoreVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<IGetVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<ICreateVariableName, CreateSqlVariableName>(Lifestyle.Singleton);
+			container.Register<IWriteObject<Property>, WriteProperty>(Lifestyle.Singleton);
+			container.Register<IWriteObject<DotNetType>, WriteDotNetType>(Lifestyle.Singleton);
+			container.Register<IWriteObject<AccessModifier>, WriteAccessModifier>(Lifestyle.Singleton);
+			container.Register<IWriteObject<Class>, WriteClass>(Lifestyle.Singleton);
 			container.RegisterInstance<IObjectFactory>(new ObjectFactory(container));
 		}
 

@@ -13,17 +13,13 @@ namespace Albatross.CodeGen.UnitTest {
 		public override void Register(Container container) {
 		}
 
-		readonly static DotNetType Case1 = new DotNetType {
-			Name = "string",
-		};
+		readonly static DotNetType Case1 = DotNetType.String;
 		const string Case1Result = @"string";
 
-		readonly static DotNetType Case2 = new DotNetType {
-			Name = "IEnumerable",
+		readonly static DotNetType Case2 = new DotNetType("IEnumerable") {
 			IsGeneric = true,
 			GenericTypes = new DotNetType[] {
-				new DotNetType{Name = "string"},
-				new DotNetType{Name = "int"},
+				DotNetType.String, DotNetType.Integer,
 			},
 		};
 		const string Case2Result = @"IEnumerable<string, int>";

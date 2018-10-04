@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.CSharp;
 using Albatross.CodeGen.CSharp.Core;
+using Albatross.CodeGen.SimpleInjector;
 using Albatross.Test;
 using NUnit.Framework;
 using SimpleInjector;
@@ -8,18 +9,15 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture(TestOf =typeof(PropertyGenerator))]
-	public class TestPropertyGenerator : TestBase{
+	[TestFixture(TestOf =typeof(WriteProperty))]
+	public class TestWriteProperty : TestBase{
 		public override void Register(Container container) {
-			container.Register<IWriteObject<DotNetType>, WriteDotNetType>();
-			container.Register<IWriteObject<AccessModifier>, WriteAccessModifier>();
+			new Pack().RegisterServices(container);
 		}
 
 		public readonly static Property Case1 = new Property {
 			Name = "Name",
-			Type = new DotNetType {
-				Name = "string",
-			},
+			Type = DotNetType.String,
 		};
 		public const string Case1Result = @"public string Name {
 	get; set;
@@ -27,9 +25,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 		public readonly static Property Case2 = new Property {
 			Name = "Name",
-			Type = new DotNetType {
-				Name = "string",
-			},
+			Type = DotNetType.String,
 			SetModifier = AccessModifier.Protected,
 		};
 		public const string Case2Result = @"public string Name {
@@ -38,9 +34,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 		public readonly static Property Case3 = new Property {
 			Name = "Name",
-			Type = new DotNetType {
-				Name = "string",
-			},
+			Type = DotNetType.String,
 			SetModifier = AccessModifier.Private,
 		};
 		public const string Case3Result = @"public string Name {
@@ -50,9 +44,7 @@ namespace Albatross.CodeGen.UnitTest {
 		public readonly static Property Case4 = new Property {
 			Name = "Name",
 			Static = true,
-			Type = new DotNetType {
-				Name = "string",
-			},
+			Type = DotNetType.String,
 			SetModifier = AccessModifier.Private,
 		};
 		public const string Case4Result = @"public static string Name {
@@ -73,10 +65,8 @@ namespace Albatross.CodeGen.UnitTest {
 
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(Property p) {
-			var gen = Get<PropertyGenerator>();
-			StringBuilder sb = new StringBuilder();
-			gen.Build(sb, p, null);
-			return sb.ToString();
+			var writer = Get<WriteProperty>();
+			return writer.Write(p);
 		}
 	}
 }

@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
-    <AssemblyVersion>1.1.6.1</AssemblyVersion>
-    <FileVersion>1.1.6.1</FileVersion>
+    <AssemblyVersion>1.1.6.2</AssemblyVersion>
+    <FileVersion>1.1.6.2</FileVersion>
     <Authors>Rushui Guan</Authors>
     <Company>Rushui Guan</Company>
     <Product>Albatross.CodeGen.CSharp</Product>
@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
     <Description>Contains code generator that will run against .net reflection objects.</Description>
     <PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
-    <Version>1.1.6-alpha</Version>
+    <Version>1.1.6-alpha.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Albatross.Database" Version="1.1.4-alpha.0" />

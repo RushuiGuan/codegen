@@ -7,8 +7,8 @@ namespace Albatross.CodeGen.CSharp {
 
 		public WriteCSharpScopedObject(StringBuilder parent) : base(parent) { }
 
-		public override IWriteScopedObject<string> BeginScope(string t) {
-			Parent.Append(t).Space().AppendLine("{");
+		public override IWriteScopedObject<string> BeginScope(string t = "") {
+			Parent.Append(t).AppendLine(" {");
 			return this;
 		}
 		public override IWriteScopedObject<string> BeginChildScope(string t) {

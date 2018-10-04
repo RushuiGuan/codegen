@@ -2,6 +2,6 @@
 <package>
   <metadata>
     <id>Albatross.CodeGen.SimpleInjector</id>
-    <version>0.0.0-alpha</version>
+    <version>0.0.0-alpha.0</version>
   </metadata>
 </package>
