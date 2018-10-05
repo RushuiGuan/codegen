@@ -4,7 +4,12 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp.Core {
 	public class Constructor {
+		public Constructor(string name) {
+			Name = name;
+		}
+
 		public AccessModifier AccessModifier { get; set; }
+		public string Name { get; set; }
 		public IEnumerable<Parameter> Parameters { get; set; }
 		public bool Static { get; set; }
 		public Constructor ChainedConstructor { get; set; }

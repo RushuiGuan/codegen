@@ -15,8 +15,11 @@ namespace Albatross.CodeGen {
 		public abstract IWriteScopedObject<T> BeginChildScope(T t);
 
 		public void Dispose() {
-			Parent.Tabify(Content.ToString(), 1);
-			Parent.AppendLine();
+			string content = Content.ToString();
+			if (!string.IsNullOrEmpty(content)) {
+				Parent.Tabify(content, 1);
+				Parent.AppendLine();
+			}
 			EndScope();
 		}
 

@@ -32,8 +32,7 @@ namespace Albatross.CodeGen.SqlServer {
 				ReturnType = "Dapper.CommandDefinition",
 				Parameters = from sqlParam
 							 in source.Parameters
-							 select new Albatross.CodeGen.CSharp.Core.Parameter {
-								 Name = Extension.Proper(sqlParam.Name),
+							 select new Albatross.CodeGen.CSharp.Core.Parameter(Extension.Proper(sqlParam.Name)) {
 								 Type = getDotNetType.Get(sqlParam.Type),
 							 },
 			};
