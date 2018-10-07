@@ -8,7 +8,11 @@ namespace Albatross.CodeGen.UnitTest {
 	[TestFixture]
 	public class TestWriteCSharpScopedObject {
 
-		[TestCase(ExpectedResult = "")]
+		[TestCase(ExpectedResult = @"namespace System.Text {
+	public class Test {
+		int i = 0;
+	}
+}")]
 		public string Run() {
 			StringBuilder sb = new StringBuilder();
 			using (var namespaceWriter = new WriteCSharpScopedObject(sb).BeginScope("namespace System.Text")) {

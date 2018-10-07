@@ -54,7 +54,7 @@ namespace Albatross.CodeGen.SqlServer {
 
 			string text = content.ToString();
 			if (!string.IsNullOrEmpty(text)) {
-				sb.Tabify(text, 1);
+				sb.Tabify(text, 1, true);
 				sb.AppendLine();
 			}
 			sb.Append("go");

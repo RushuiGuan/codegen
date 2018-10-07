@@ -21,13 +21,21 @@ namespace Albatross.CodeGen.UnitTest {
 				Name = "GetCompany",
 				Schema = "dbo",
 				Parameters = new Albatross.Database.Parameter[] {
-					  new Albatross.Database.Parameter {
-						   Name = "id",
-							Type = new SqlType{ Name = "int"},
-					  }
-				  },
+					new Albatross.Database.Parameter {
+						Name = "id",
+						Type = new SqlType{ Name = "int"},
+					}
+				},
+			},
+			new Class {
+				Namespace = "Albatross.Test",
 			}) {
-			ExpectedResult = @"",
+			ExpectedResult = @"namespace Albatross.Test {
+	public class GetCompany {
+		public GetCompany() {
+		}
+	}
+}",
 		};
 
 		public static IEnumerable<TestCaseData> GetTestCases() {

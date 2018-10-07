@@ -24,8 +24,7 @@ namespace Albatross.CodeGen.SqlServer {
 			if (string.IsNullOrEmpty(classOption.Name)) {
 				classOption.Name = source.Name;
 			}
-			var columns = from item in source.Columns select new Property {
-				Name = item.Name.Proper(),
+			var columns = from item in source.Columns select new Property(item.Name.Proper()) {
 				Type = getDotNetType.Get(item.Type),
 				Modifier = AccessModifier.Public,
 			};

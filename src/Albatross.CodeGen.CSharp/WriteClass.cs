@@ -31,6 +31,32 @@ namespace Albatross.CodeGen.CSharp {
 
 			using (var namespaceWriter = new WriteCSharpScopedObject(sb).BeginScope($"namespace {@class.Namespace}")) {
 				using (var classWriter = namespaceWriter.BeginChildScope($"{writeAccessModifier.Write(@class.AccessModifier)} class {@class.Name}")) {
+
+					if(@class.Dependencies?.Count() > 0) {
+						Constructor c = new Constructor {
+							AccessModifier = AccessModifier.Public,
+							Name = @class.Name,
+							Static = false,
+							Parameters = (from item in @class.Dependencies select new Core.Parameter(item.Name) {
+								Type = item.Type,
+							}).ToArray(),
+						};
+						List<Field> fields = new List<Field>();
+						foreach (var item in @class.Dependencies) {
+							fields.Add(new Field(item.Name) {
+								Modifier = AccessModifier.Private,
+								Type = item.FieldType ?? item.Type,
+							});
+							c.Body.This(item.Name).Assignment().Append(item.Name).Semicolon();
+							if(item != @class.Dependencies.Last()) {
+								c.Body.AppendLine();
+							}
+						}
+
+						@class.Constructors = new Constructor[] { c }.Union(@class.Constructors ?? new Constructor[0]);
+						@class.Fields = fields.Union(@class.Fields ?? new Field[0]);
+						
+					}
 					if(@class.Constructors?.Count() > 0) {
 						foreach(var constructor in @class.Constructors) {
 							classWriter.Content.AppendLine(writeConstructor.Write(constructor));

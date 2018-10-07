@@ -7,9 +7,11 @@ namespace Albatross.CodeGen.CSharp.Core {
 		public DotNetType(string name) {
 			Name = name;
 		}
-		public string Name { get; set; }
+		public string Name { get; private set; }
 		public bool IsGeneric { get; set; }
 		public IEnumerable<DotNetType> GenericTypes { get; set; }
+
+		public static readonly DotNetType Void = new DotNetType("void");
 
 		public static readonly DotNetType String = new DotNetType("string");
 		public static readonly DotNetType Char = new DotNetType("char");
@@ -32,6 +34,6 @@ namespace Albatross.CodeGen.CSharp.Core {
 		public static readonly DotNetType ByteArray = new DotNetType("byte[]");
 		public static readonly DotNetType Guid = new DotNetType("Guid");
 
-		
+		public static readonly DotNetType IDbConnection = new DotNetType("System.Data.IDbConnection");
 	}
 }

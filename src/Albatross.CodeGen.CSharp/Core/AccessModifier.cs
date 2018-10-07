@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp.Core {
 	public enum AccessModifier {
-		Public,
-		Private,
-		Protected,
-		Internal,
-		ProtectedInternal,
-		PrivateInternal,
+		Public = 0,
+		Private = 1,
+		Protected = 2,
+		Internal = 3,
+		ProtectedInternal = 4,
+		PrivateInternal = 5,
 	}
 }

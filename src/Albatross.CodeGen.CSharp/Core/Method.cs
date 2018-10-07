@@ -4,7 +4,12 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp.Core {
 	public class Method {
-		public string ReturnType { get; set; }
+		public Method(string name) {
+			Name = name;
+		}
+		public Method() { }
+
+		public DotNetType ReturnType { get; set; } = DotNetType.Void;
 		public string Name { get; set; }
 		public AccessModifier AccessModifier { get; set; }
 		public IEnumerable<Parameter> Parameters { get; set; }

@@ -45,5 +45,11 @@ namespace Albatross.CodeGen.UnitTest {
 			b = a;
 			c = b;
 		}
+
+		[Test]
+		public void UnionTest() {
+			string[] x = new string[] { "1" };
+			x.Union(null);
+		}
 	}
 }

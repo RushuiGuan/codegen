@@ -17,7 +17,7 @@ namespace Albatross.CodeGen {
 		public void Dispose() {
 			string content = Content.ToString();
 			if (!string.IsNullOrEmpty(content)) {
-				Parent.Tabify(content, 1);
+				Parent.Tabify(content, 1, true);
 				Parent.AppendLine();
 			}
 			EndScope();

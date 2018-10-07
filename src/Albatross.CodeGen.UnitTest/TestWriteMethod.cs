@@ -9,19 +9,20 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture(TestOf = typeof(WriteConstructor))]
-	public class TestWriteConstructor : TestBase {
+	[TestFixture(TestOf = typeof(WriteMethod))]
+	public class TestWriteMethod : TestBase {
 		public override void Register(Container container) {
 			new Pack().RegisterServices(container);
 		}
 
 		public static IEnumerable<TestCaseData> GetTestCases() {
-			TestCaseData case1 = new TestCaseData(new Constructor("Test")) {
-				ExpectedResult = @"public Test() {
+			TestCaseData case1 = new TestCaseData(new Method("Test")) {
+				ExpectedResult = @"public void Test() {
 }"
 			};
 			TestCaseData case2 = new TestCaseData(
-				new Constructor("Test") {
+				new Method("Test") {
+					ReturnType = DotNetType.Integer,
 					Parameters = new Parameter[] {
 						new Parameter("a") {
 							 Type = DotNetType.String,
@@ -34,13 +35,13 @@ namespace Albatross.CodeGen.UnitTest {
 						},
 					}
 				}) {
-				ExpectedResult = @"public Test(string a, int b, DateTime c) {
+				ExpectedResult = @"public int Test(string a, int b, DateTime c) {
 }",
 			};
 
 			TestCaseData case3 = new TestCaseData(
-				new Constructor("Test") {
-					Name = "Test",
+				new Method("Test") {
+					ReturnType = DotNetType.String,
 					Parameters = new Parameter[] {
 						new Parameter("a") {
 							 Type = DotNetType.String,
@@ -51,32 +52,26 @@ namespace Albatross.CodeGen.UnitTest {
 						new Parameter("c") {
 							 Type = DotNetType.DateTime,
 						},
-					},
-					ChainedConstructor = new Constructor("this") {
-						Parameters = new Parameter[] {
-							new Parameter("a"),
-							new Parameter("b")
-						}
 					}
 				}) {
-				ExpectedResult = @"public Test(string a, int b, DateTime c) : this(a, b) {
+				ExpectedResult = @"public string Test(string a, int b, DateTime c) {
 }"
 			};
-			var constructor = new Constructor("Test");
+			var constructor = new Method("Test");
 			constructor.Body.Append("int i = 100;");
 
 			TestCaseData case4 = new TestCaseData(constructor) {
-				ExpectedResult = @"public Test() {
+				ExpectedResult = @"public void Test() {
 	int i = 100;
 }"
 			};
 
-			constructor = new Constructor("Test") {
+			constructor = new Method("Test") {
 				Static = true,
 			};
 			constructor.Body.Append("int i = 100;");
 			TestCaseData case5 = new TestCaseData(constructor) {
-				ExpectedResult = @"static Test() {
+				ExpectedResult = @"public static void Test() {
 	int i = 100;
 }"
 			};
@@ -90,8 +85,8 @@ namespace Albatross.CodeGen.UnitTest {
 		}
 
 		[TestCaseSource(nameof(GetTestCases))]
-		public string Run(Constructor p) {
-			var writer = Get<WriteConstructor>();
+		public string Run(Method p) {
+			var writer = Get<WriteMethod>();
 			return writer.Write(p);
 		}
 	}

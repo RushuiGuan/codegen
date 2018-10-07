@@ -9,43 +9,38 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture(TestOf =typeof(WriteProperty))]
-	public class TestWriteProperty : TestBase{
+	[TestFixture(TestOf =typeof(WriteField))]
+	public class TestWriteField : TestBase{
 		public override void Register(Container container) {
 			new Pack().RegisterServices(container);
 		}
 
-		public readonly static Property Case1 = new Property("Name") {
+		public readonly static Field Case1 = new Field("Name") {
 			Type = DotNetType.String,
 		};
-		public const string Case1Result = @"public string Name {
-	get; set;
-}";
+		public const string Case1Result = @"public string Name;";
 
-		public readonly static Property Case2 = new Property("Name") {
+		public readonly static Field Case2 = new Field("Name") {
 			Type = DotNetType.String,
-			SetModifier = AccessModifier.Protected,
+			ReadOnly = true,
 		};
-		public const string Case2Result = @"public string Name {
-	get; protected set;
-}";
+		public const string Case2Result = @"public readonly string Name;";
 
-		public readonly static Property Case3 = new Property("Name") {
+		public readonly static Field Case3 = new Field("Name") {
 			Type = DotNetType.String,
-			SetModifier = AccessModifier.Private,
+			ReadOnly = true,
 		};
-		public const string Case3Result = @"public string Name {
-	get; private set;
-}";
+		public const string Case3Result = "public readonly string Name = \"test\";";
 
-		public readonly static Property Case4 = new Property("Name") {
+		static TestWriteField() {
+			Case3.Assignment.Append("\"test\"");
+		}
+
+		public readonly static Field Case4 = new Field("Name") {
 			Static = true,
 			Type = DotNetType.String,
-			SetModifier = AccessModifier.Private,
 		};
-		public const string Case4Result = @"public static string Name {
-	get; private set;
-}";
+		public const string Case4Result = @"public static string Name;";
 
 
 		public static IEnumerable<TestCaseData> GetTestCases() {
@@ -58,8 +53,8 @@ namespace Albatross.CodeGen.UnitTest {
 		}
 
 		[TestCaseSource(nameof(GetTestCases))]
-		public string Run(Property p) {
-			var writer = Get<WriteProperty>();
+		public string Run(Field p) {
+			var writer = Get<WriteField>();
 			return writer.Write(p);
 		}
 	}

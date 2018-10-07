@@ -7,6 +7,7 @@ namespace Albatross.CodeGen.CSharp.Core {
 		public Constructor(string name) {
 			Name = name;
 		}
+		public Constructor() { }
 
 		public AccessModifier AccessModifier { get; set; }
 		public string Name { get; set; }

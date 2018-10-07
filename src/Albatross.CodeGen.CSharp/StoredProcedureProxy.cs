@@ -26,10 +26,9 @@ namespace Albatross.CodeGen.SqlServer {
 				classOption.Name = source.Name;
 				classOption.Imports = classOption.Imports.Combine<string>("Dapper");
 			}
-			var method = new Method {
+			var method = new Method("CreateDefinition") {
 				AccessModifier = AccessModifier.Public,
-				Name = "CreateDefinition",
-				ReturnType = "Dapper.CommandDefinition",
+				ReturnType = new DotNetType("Dapper.CommandDefinition"),
 				Parameters = from sqlParam
 							 in source.Parameters
 							 select new Albatross.CodeGen.CSharp.Core.Parameter(Extension.Proper(sqlParam.Name)) {
