@@ -17,19 +17,16 @@ namespace Albatross.CodeGen.CSharp  {
 		public string Write(Method t) {
 			StringBuilder sb = new StringBuilder();
 			sb.Write(writeAccessModifier, t.AccessModifier).Space();
-			if (t.Static) {
-				sb.Static();
-			}
+			if (t.Static) { sb.Static(); }
 			sb.Write(writeType, t.ReturnType).Space();
 
 			sb.Append(t.Name).OpenParenthesis();
 			if (t.Parameters?.Count() > 0) {
 				foreach (var param in t.Parameters) {
-					if (param != t.Parameters.First()) {
-						sb.Comma().Space();
-					}
 					sb.Write(writeParam, param);
+					sb.Comma().Space();
 				}
+				sb.TrimTrailingComma();
 			}
 			sb.CloseParenthesis();
 

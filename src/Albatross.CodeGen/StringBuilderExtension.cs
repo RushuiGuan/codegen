@@ -78,6 +78,17 @@ namespace Albatross.CodeGen {
 			
 			return sb;
 		}
+		public static StringBuilder TrimEnd(this StringBuilder sb, int offset = 0, params char[] additional) {
+			int i = sb.Length - 1;
+			while(i >= offset && (char.IsWhiteSpace(sb[i]) || additional.Contains(sb[i]))) {
+				i--;
+			}
+			sb.Length = i + 1;
+			return sb;
+		}
+		public static StringBuilder TrimTrailingComma(this StringBuilder sb) {
+			return sb.TrimEnd(0, ',');
+		}
 		public static StringBuilder Write<T>(this StringBuilder sb, IWriteObject<T> writer, T t, int tabify = 0) {
 			int position = sb.Length;
 			string text = writer.Write(t);

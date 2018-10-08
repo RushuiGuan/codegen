@@ -20,12 +20,12 @@ namespace Albatross.CodeGen.CSharp {
 			if (property.Static) { sb.Static(); }
 			sb.Write(writeType, property.Type).Space().Append(property.Name);
 
-			using (var scope = new WriteCSharpScopedObject(sb).BeginScope()) {
-				scope.Content.Append("get; ");
+			using (var scope = new WriteSingleLineCSharpScopedObject(sb).BeginScope()) {
+				scope.Content.Append(" get; ");
 				if (property.SetModifier != property.Modifier) {
 					scope.Content.Write(writeAccessModifier, property.SetModifier).Space();
 				}
-				scope.Content.Append("set;");
+				scope.Content.Append("set; ");
 			}
 			return sb.ToString();
 		}

@@ -22,6 +22,10 @@ namespace Albatross.CodeGen.SimpleInjector {
 			container.Register<IStoreVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<IGetVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<ICreateVariableName, CreateSqlVariableName>(Lifestyle.Singleton);
+
+			container.Register<IGetDotNetType, GetDotNetType>(Lifestyle.Singleton);
+			container.Register<IOverrideClassObject, OverrideClassObject>(Lifestyle.Singleton);
+
 			container.Register<IWriteObject<Property>, WriteProperty>(Lifestyle.Singleton);
 			container.Register<IWriteObject<DotNetType>, WriteDotNetType>(Lifestyle.Singleton);
 			container.Register<IWriteObject<AccessModifier>, WriteAccessModifier>(Lifestyle.Singleton);

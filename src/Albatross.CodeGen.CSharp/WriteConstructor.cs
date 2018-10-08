@@ -23,25 +23,20 @@ namespace Albatross.CodeGen.CSharp  {
 			sb.Append(t.Name).OpenParenthesis();
 			if (t.Parameters?.Count() > 0) {
 				foreach (var param in t.Parameters) {
-					if (param != t.Parameters.First()) {
-						sb.Comma().Space();
-					}
 					sb.Write(writeParam, param);
+					sb.Comma().Space();
 				}
+				sb.TrimTrailingComma();
 			}
 			sb.CloseParenthesis();
 
-			if(t.ChainedConstructor != null && t.ChainedConstructor.Parameters?.Count() > 0) {
+			if(t.ChainedConstructor?.Parameters?.Count() > 0) {
 				sb.Append(" : ").Append(t.ChainedConstructor.Name).OpenParenthesis();
-				bool first = true;
-				foreach(var item in t.ChainedConstructor.Parameters) {
-					if (first) {
-						sb.Append(item.Name);
-						first = false;
-					} else {
-						sb.Comma().Space().Append(item.Name);
-					}
+				foreach (var item in t.ChainedConstructor.Parameters) {
+					sb.Append(item.Name);
+					sb.Comma().Space();
 				}
+				sb.TrimTrailingComma();
 				sb.CloseParenthesis();
 			}
 

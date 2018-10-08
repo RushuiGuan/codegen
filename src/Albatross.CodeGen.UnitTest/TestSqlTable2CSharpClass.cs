@@ -17,23 +17,32 @@ namespace Albatross.CodeGen.UnitTest {
 		}
 
 		public static readonly TestCaseData Case1 = new TestCaseData(
-			new Procedure {
-				Name = "GetCompany",
+			new Table {
+				Name = "Company",
 				Schema = "dbo",
-				Parameters = new Albatross.Database.Parameter[] {
-					new Albatross.Database.Parameter {
-						Name = "id",
+				Columns = new Column[] {
+					new Column{
+						Name = "Id",
 						Type = new SqlType{ Name = "int"},
-					}
-				},
+					},
+					new Column{
+						Name = "Type",
+						Type = new SqlType{ Name = "int"},
+					},
+				}
 			},
 			new Class {
 				Namespace = "Albatross.Test",
+				Properties = new Property[] {
+					new Property("Type") {
+						Type = new DotNetType("CompanyType"),
+					}
+				}
 			}) {
 			ExpectedResult = @"namespace Albatross.Test {
-	public class GetCompany {
-		public GetCompany() {
-		}
+	public class Company {
+		public int Id { get; set; }
+		public CompanyType Type { get; set; }
 	}
 }",
 		};

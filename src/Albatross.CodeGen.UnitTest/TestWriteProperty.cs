@@ -18,34 +18,26 @@ namespace Albatross.CodeGen.UnitTest {
 		public readonly static Property Case1 = new Property("Name") {
 			Type = DotNetType.String,
 		};
-		public const string Case1Result = @"public string Name {
-	get; set;
-}";
+		public const string Case1Result = @"public string Name { get; set; }";
 
 		public readonly static Property Case2 = new Property("Name") {
 			Type = DotNetType.String,
 			SetModifier = AccessModifier.Protected,
 		};
-		public const string Case2Result = @"public string Name {
-	get; protected set;
-}";
+		public const string Case2Result = @"public string Name { get; protected set; }";
 
 		public readonly static Property Case3 = new Property("Name") {
 			Type = DotNetType.String,
 			SetModifier = AccessModifier.Private,
 		};
-		public const string Case3Result = @"public string Name {
-	get; private set;
-}";
+		public const string Case3Result = @"public string Name { get; private set; }";
 
 		public readonly static Property Case4 = new Property("Name") {
 			Static = true,
 			Type = DotNetType.String,
 			SetModifier = AccessModifier.Private,
 		};
-		public const string Case4Result = @"public static string Name {
-	get; private set;
-}";
+		public const string Case4Result = @"public static string Name { get; private set; }";
 
 
 		public static IEnumerable<TestCaseData> GetTestCases() {

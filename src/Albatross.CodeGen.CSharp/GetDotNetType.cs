@@ -5,7 +5,7 @@ using Albatross.CodeGen.CSharp.Core;
 using Albatross.Database;
 
 namespace Albatross.CodeGen.CSharp {
-	public class GetCSharpType : IGetDotNetType {
+	public class GetDotNetType : IGetDotNetType {
 		public DotNetType Get(SqlType sqlType) {
 			DotNetType type;
 			bool isValueType = false;

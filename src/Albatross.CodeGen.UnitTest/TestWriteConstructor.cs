@@ -96,3 +96,4 @@ namespace Albatross.CodeGen.UnitTest {
 		}
 	}
 }
+ 

@@ -13,16 +13,18 @@ namespace Albatross.CodeGen {
 
 		public abstract IWriteScopedObject<T> BeginScope(T t);
 		public abstract IWriteScopedObject<T> BeginChildScope(T t);
-
-		public void Dispose() {
+		public virtual void WriteContent() {
 			string content = Content.ToString();
 			if (!string.IsNullOrEmpty(content)) {
 				Parent.Tabify(content, 1, true);
 				Parent.AppendLine();
 			}
+		}
+		public abstract void EndScope();
+
+		public void Dispose() {
+			WriteContent();
 			EndScope();
 		}
-
-		public abstract void EndScope();
 	}
 }
