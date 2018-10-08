@@ -11,29 +11,22 @@ namespace Albatross.CodeGen.SqlServer {
 	/// <summary>
 	/// Create a CSharp class from a SQL Stored procedure
 	/// </summary>
+	[CodeGenerator("table-to-class", GeneratorTarget.CSharp, Description ="Generate a C Sharp class from a sql server table")]
 	public class SqlTable2CSharpClass : CodeGeneratorBase<Table, Class> {
+		IDatabaseTableToClass generateClassFromDatabaseTable;
+		IOverrideClassObject overrideClassObject;
 		IWriteObject<Class> writeClass;
-		IGetDotNetType getDotNetType;
 
-		public SqlTable2CSharpClass(IWriteObject<Class> writeClass, IGetDotNetType getDotNetType) {
+		public SqlTable2CSharpClass(GenerateClassFromDatabaseTable generateClassFromDatabaseTable, IOverrideClassObject overrideClassObject, IWriteObject<Class> writeClass) {
+			this.generateClassFromDatabaseTable = generateClassFromDatabaseTable;
+			this.overrideClassObject = overrideClassObject;
 			this.writeClass = writeClass;
-			this.getDotNetType = getDotNetType;
 		}
 
 		public override IEnumerable<object> Build(StringBuilder sb, Table source, Class classOption) {
-			if (string.IsNullOrEmpty(classOption.Name)) {
-				classOption.Name = source.Name;
-			}
-			var columns = from item in source.Columns select new Property(item.Name.Proper()) {
-				Type = getDotNetType.Get(item.Type),
-				Modifier = AccessModifier.Public,
-			};
-			if (classOption.Properties?.Count() > 0) {
-				classOption.Properties = columns.Except(from c in columns join p in classOption.Properties on c.Name equals p.Name select c).Union(classOption.Properties).OrderBy(p => p.Name);
-			} else {
-				classOption.Properties = columns;
-			}
-			sb.Write(writeClass, classOption);
+			Class @class = this.generateClassFromDatabaseTable.Get(source);
+			@class = this.overrideClassObject.Get(@class, classOption);
+			sb.Write(writeClass, @class);
 			return new object[] { this };
 		}
 	}

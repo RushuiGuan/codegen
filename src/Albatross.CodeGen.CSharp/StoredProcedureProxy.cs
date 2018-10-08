@@ -11,6 +11,7 @@ namespace Albatross.CodeGen.SqlServer {
 	/// <summary>
 	/// Create a CSharp class from a SQL Stored procedure
 	/// </summary>
+	[CodeGenerator("procedure-to-proxy-class", GeneratorTarget.CSharp, Description = "Genearte a CSharp class from a database stored procedure object")]
 	public class StoredProcedureProxy : CodeGeneratorBase<Procedure, Class> {
 		IWriteObject<Class> writeClass;
 		IGetDotNetType getDotNetType;
@@ -24,16 +25,11 @@ namespace Albatross.CodeGen.SqlServer {
 
 			if (string.IsNullOrEmpty(classOption.Name)) {
 				classOption.Name = source.Name;
-				classOption.Imports = classOption.Imports.Combine<string>("Dapper");
 			}
 			var method = new Method("CreateDefinition") {
 				AccessModifier = AccessModifier.Public,
 				ReturnType = new DotNetType("Dapper.CommandDefinition"),
-				Parameters = from sqlParam
-							 in source.Parameters
-							 select new Albatross.CodeGen.CSharp.Core.Parameter(Extension.Proper(sqlParam.Name)) {
-								 Type = getDotNetType.Get(sqlParam.Type),
-							 },
+				
 			};
 
 			method.Body.AppendLine("DynamicParameters dynamicParameters = new DynamicParameters();");

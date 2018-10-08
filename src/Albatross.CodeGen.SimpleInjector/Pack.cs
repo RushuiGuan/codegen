@@ -25,6 +25,7 @@ namespace Albatross.CodeGen.SimpleInjector {
 
 			container.Register<IGetDotNetType, GetDotNetType>(Lifestyle.Singleton);
 			container.Register<IOverrideClassObject, OverrideClassObject>(Lifestyle.Singleton);
+			container.Register<IGetMethodSignature, GetMethodSignature>(Lifestyle.Singleton);
 
 			container.Register<IWriteObject<Property>, WriteProperty>(Lifestyle.Singleton);
 			container.Register<IWriteObject<DotNetType>, WriteDotNetType>(Lifestyle.Singleton);

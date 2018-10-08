@@ -12,7 +12,7 @@ namespace Albatross.CodeGen.CSharp {
 		}
 
 		public string Write(Parameter t) {
-			return $"{writeType.Write(t.Type)} {t.Name}";
+			return $"{writeType.Write(t.Type)} @{t.Name}";
 		}
 	}
 }

@@ -35,5 +35,6 @@ namespace Albatross.CodeGen.CSharp.Core {
 		public static readonly DotNetType Guid = new DotNetType("Guid");
 
 		public static readonly DotNetType IDbConnection = new DotNetType("System.Data.IDbConnection");
+		public static readonly DotNetType IDbConnection_ClassName = new DotNetType("IDbConnection");
 	}
 }
