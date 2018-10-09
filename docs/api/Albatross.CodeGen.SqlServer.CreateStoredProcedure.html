@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class CreateStoredProcedure
    ">
-    <meta name="generator" content="docfx 2.34.0.0">
+    <meta name="generator" content="docfx 2.39.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -79,27 +79,53 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">CreateStoredProcedure</span></div>
+    <div class="level1"><a class="xref" href="Albatross.CodeGen.CodeGeneratorBase-2.html">CodeGeneratorBase</a>&lt;<span class="xref">System.Object</span>, <a class="xref" href="Albatross.CodeGen.Database.SqlCodeGenOption.html">SqlCodeGenOption</a>&gt;</div>
+    <div class="level2"><span class="xref">CreateStoredProcedure</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Albatross.CodeGen.ICodeGenerator-2.html">ICodeGenerator</a>&lt;<span class="xref">System.Object</span>, <a class="xref" href="Albatross.CodeGen.Database.SqlCodeGenOption.html">SqlCodeGenOption</a>&gt;</div>
+    <div><a class="xref" href="Albatross.CodeGen.ICodeGenerator.html">ICodeGenerator</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Albatross.CodeGen.CodeGeneratorBase-2.html#Albatross_CodeGen_CodeGeneratorBase_2_Yield">CodeGeneratorBase&lt;Object, SqlCodeGenOption&gt;.Yield</a>
+    </div>
+    <div>
+      <a class="xref" href="Albatross.CodeGen.CodeGeneratorBase-2.html#Albatross_CodeGen_CodeGeneratorBase_2_InvokeYield_System_Text_StringBuilder_">CodeGeneratorBase&lt;Object, SqlCodeGenOption&gt;.InvokeYield(StringBuilder)</a>
+    </div>
+    <div>
+      <a class="xref" href="Albatross.CodeGen.CodeGeneratorBase-2.html#Albatross_CodeGen_CodeGeneratorBase_2_Build_System_Text_StringBuilder__0__1_">CodeGeneratorBase&lt;Object, SqlCodeGenOption&gt;.Build(StringBuilder, Object, SqlCodeGenOption)</a>
+    </div>
+    <div>
+      <a class="xref" href="Albatross.CodeGen.CodeGeneratorBase-2.html#Albatross_CodeGen_CodeGeneratorBase_2_Configure_System_Object_">CodeGeneratorBase&lt;Object, SqlCodeGenOption&gt;.Configure(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Albatross.CodeGen.CodeGeneratorBase-2.html#Albatross_CodeGen_CodeGeneratorBase_2_ValidateSource_System_Object_">CodeGeneratorBase&lt;Object, SqlCodeGenOption&gt;.ValidateSource(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Albatross.CodeGen.CodeGeneratorBase-2.html#Albatross_CodeGen_CodeGeneratorBase_2_ValidateOption_System_Object_">CodeGeneratorBase&lt;Object, SqlCodeGenOption&gt;.ValidateOption(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Albatross.CodeGen.CodeGeneratorBase-2.html#Albatross_CodeGen_CodeGeneratorBase_2_Albatross_CodeGen_ICodeGenerator_Build_System_Text_StringBuilder_System_Object_System_Object_">CodeGeneratorBase&lt;Object, SqlCodeGenOption&gt;.ICodeGenerator.Build(StringBuilder, Object, Object)</a>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Albatross.CodeGen.SqlServer.html">Albatross.CodeGen.SqlServer</a></h6>
   <h6><strong>Assembly</strong>: Albatross.CodeGen.SqlServer.dll</h6>
   <h5 id="Albatross_CodeGen_SqlServer_CreateStoredProcedure_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[CodeGenerator(&quot;create stored procedure&quot;, &quot;SQL&quot;, Category = &quot;Sql Server Table&quot;, Description = &quot;Create a SQL server stored procedure&quot;, SourceType = typeof(object))]
-public class CreateStoredProcedure : ICodeGenerator&lt;object, SqlCodeGenOption&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">[CodeGenerator(&quot;create-stored-procedure&quot;, &quot;SQL&quot;, Category = &quot;Sql Server&quot;, Description = &quot;Create a SQL server stored procedure&quot;)]
+public class CreateStoredProcedure : CodeGeneratorBase&lt;object, SqlCodeGenOption&gt;, ICodeGenerator&lt;object, SqlCodeGenOption&gt;, ICodeGenerator</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_CreateStoredProcedure__ctor_Albatross_CodeGen_Database_IGetVariable_Albatross_CodeGen_Database_IBuildVariable_Albatross_CodeGen_Database_IBuildParameter_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.CreateStoredProcedure.%23ctor(Albatross.CodeGen.Database.IGetVariable%2CAlbatross.CodeGen.Database.IBuildVariable%2CAlbatross.CodeGen.Database.IBuildParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/RushuiGuan/codegen/new/develop/apiSpec/new?filename=Albatross_CodeGen_SqlServer_CreateStoredProcedure__ctor_Albatross_CodeGen_Database_IGetVariable_Albatross_CodeGen_Database_IBuildVariable_Albatross_CodeGen_Database_IBuildParameter_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.CreateStoredProcedure.%23ctor(Albatross.CodeGen.Database.IGetVariable%2CAlbatross.CodeGen.Database.IBuildVariable%2CAlbatross.CodeGen.Database.IBuildParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/CreateStoredProcedure.cs/#L18">View Source</a>
+    <a href="https://github.com/RushuiGuan/codegen/blob/develop/src/Albatross.CodeGen.SqlServer/CreateStoredProcedure.cs/#L18">View Source</a>
   </span>
   <a id="Albatross_CodeGen_SqlServer_CreateStoredProcedure__ctor_" data-uid="Albatross.CodeGen.SqlServer.CreateStoredProcedure.#ctor*"></a>
   <h4 id="Albatross_CodeGen_SqlServer_CreateStoredProcedure__ctor_Albatross_CodeGen_Database_IGetVariable_Albatross_CodeGen_Database_IBuildVariable_Albatross_CodeGen_Database_IBuildParameter_" data-uid="Albatross.CodeGen.SqlServer.CreateStoredProcedure.#ctor(Albatross.CodeGen.Database.IGetVariable,Albatross.CodeGen.Database.IBuildVariable,Albatross.CodeGen.Database.IBuildParameter)">CreateStoredProcedure(IGetVariable, IBuildVariable, IBuildParameter)</h4>
@@ -140,10 +166,10 @@ public class CreateStoredProcedure : ICodeGenerator&lt;object, SqlCodeGenOption&
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_CreateStoredProcedure_Build_System_Text_StringBuilder_System_Object_Albatross_CodeGen_Database_SqlCodeGenOption_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.CreateStoredProcedure.Build(System.Text.StringBuilder%2CSystem.Object%2CAlbatross.CodeGen.Database.SqlCodeGenOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/RushuiGuan/codegen/new/develop/apiSpec/new?filename=Albatross_CodeGen_SqlServer_CreateStoredProcedure_Build_System_Text_StringBuilder_System_Object_Albatross_CodeGen_Database_SqlCodeGenOption_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.CreateStoredProcedure.Build(System.Text.StringBuilder%2CSystem.Object%2CAlbatross.CodeGen.Database.SqlCodeGenOption)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/CreateStoredProcedure.cs/#L26">View Source</a>
+    <a href="https://github.com/RushuiGuan/codegen/blob/develop/src/Albatross.CodeGen.SqlServer/CreateStoredProcedure.cs/#L24">View Source</a>
   </span>
   <a id="Albatross_CodeGen_SqlServer_CreateStoredProcedure_Build_" data-uid="Albatross.CodeGen.SqlServer.CreateStoredProcedure.Build*"></a>
   <h4 id="Albatross_CodeGen_SqlServer_CreateStoredProcedure_Build_System_Text_StringBuilder_System_Object_Albatross_CodeGen_Database_SqlCodeGenOption_" data-uid="Albatross.CodeGen.SqlServer.CreateStoredProcedure.Build(System.Text.StringBuilder,System.Object,Albatross.CodeGen.Database.SqlCodeGenOption)">Build(StringBuilder, Object, SqlCodeGenOption)</h4>
@@ -151,7 +177,7 @@ public class CreateStoredProcedure : ICodeGenerator&lt;object, SqlCodeGenOption&
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;object&gt; Build(StringBuilder sb, object source, SqlCodeGenOption option)</code></pre>
+    <pre><code class="lang-csharp hljs">public override IEnumerable&lt;object&gt; Build(StringBuilder sb, object source, SqlCodeGenOption option)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -195,72 +221,14 @@ public class CreateStoredProcedure : ICodeGenerator&lt;object, SqlCodeGenOption&
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_CreateStoredProcedure_Configure_System_Object_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.CreateStoredProcedure.Configure(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/CreateStoredProcedure.cs/#L67">View Source</a>
-  </span>
-  <a id="Albatross_CodeGen_SqlServer_CreateStoredProcedure_Configure_" data-uid="Albatross.CodeGen.SqlServer.CreateStoredProcedure.Configure*"></a>
-  <h4 id="Albatross_CodeGen_SqlServer_CreateStoredProcedure_Configure_System_Object_" data-uid="Albatross.CodeGen.SqlServer.CreateStoredProcedure.Configure(System.Object)">Configure(Object)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Configure(object data)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">data</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="events">Events
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_CreateStoredProcedure_Yield.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.CreateStoredProcedure.Yield%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/CreateStoredProcedure.cs/#L24">View Source</a>
-  </span>
-  <h4 id="Albatross_CodeGen_SqlServer_CreateStoredProcedure_Yield" data-uid="Albatross.CodeGen.SqlServer.CreateStoredProcedure.Yield">Yield</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public event Func&lt;StringBuilder, IEnumerable&lt;object&gt;&gt; Yield</code></pre>
-  </div>
-  <h5 class="eventType">Event Type</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Text.StringBuilder</span>, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Albatross.CodeGen.CodeGeneratorBase&lt;System.Object, Albatross.CodeGen.Database.SqlCodeGenOption&gt;.Build(System.Text.StringBuilder, System.Object, Albatross.CodeGen.Database.SqlCodeGenOption)</span></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Albatross.CodeGen.ICodeGenerator-2.html">ICodeGenerator&lt;T, O&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="Albatross.CodeGen.ICodeGenerator.html">ICodeGenerator</a>
   </div>
 </article>
           </div>
@@ -270,10 +238,10 @@ public class CreateStoredProcedure : ICodeGenerator&lt;object, SqlCodeGenOption&
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_SqlServer_CreateStoredProcedure.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.CreateStoredProcedure%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/RushuiGuan/codegen/new/develop/apiSpec/new?filename=Albatross_CodeGen_SqlServer_CreateStoredProcedure.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.SqlServer.CreateStoredProcedure%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen.SqlServer/CreateStoredProcedure.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/RushuiGuan/codegen/blob/develop/src/Albatross.CodeGen.SqlServer/CreateStoredProcedure.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
