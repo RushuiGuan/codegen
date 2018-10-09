@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
-    <AssemblyVersion>1.1.2.4</AssemblyVersion>
-    <FileVersion>1.1.2.4</FileVersion>
-    <Version>1.1.2-alpha.2</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0-beta</Version>
     <Authors>Rushui Guan</Authors>
     <Product>Albatross Code Generator</Product>
     <Description>A customizable code generator engine with a Powershell tool that allows user to quickly setup composite generators and update the target file.</Description>
@@ -12,7 +12,4 @@
     <PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/RushuiGuan/CodeGen/blob/master/LICENSE</PackageLicenseUrl>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-  </ItemGroup>
 </Project>

@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net462;netstandard2.0</TargetFrameworks>
-    <AssemblyVersion>1.1.9.3</AssemblyVersion>
-    <FileVersion>1.1.9.3</FileVersion>
-    <Version>1.1.9-alpha.1</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0-beta</Version>
+    
     <AutoGenerateBindingRedirects>False</AutoGenerateBindingRedirects>
     <Product>Albatross Code Generator PowerShell Utilities</Product>
     <Authors>Rushui Guan</Authors>
