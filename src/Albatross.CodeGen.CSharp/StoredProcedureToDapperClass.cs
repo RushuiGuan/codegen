@@ -34,9 +34,9 @@ namespace Albatross.CodeGen.CSharp {
 		Method GetCreateMethod(Procedure procedure) {
 			Method method = new Method("Create") {
 				ReturnType = new DotNetType("CommandDefinition"),
-				Parameters = from sqlParam
+				Variables = from sqlParam
 							 in procedure.Parameters
-							 select new Albatross.CodeGen.CSharp.Core.Parameter(Extension.VariableName(sqlParam.Name)) {
+							 select new Albatross.CodeGen.CSharp.Core.Variable(Extension.VariableName(sqlParam.Name)) {
 								 Type = getDotNetType.Get(sqlParam.Type),
 							 },
 			};

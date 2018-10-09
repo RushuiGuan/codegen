@@ -5,9 +5,9 @@ using System.Text;
 namespace Albatross.CodeGen.CSharp  {
 	public class WriteConstructor : IWriteObject<Constructor> {
 		IWriteObject<AccessModifier> writeAccessModifier;
-		IWriteObject<Parameter> writeParam;
+		IWriteObject<Variable> writeParam;
 
-		public WriteConstructor(IWriteObject<AccessModifier> writeAccessModifier, IWriteObject<Parameter> writeParam) {
+		public WriteConstructor(IWriteObject<AccessModifier> writeAccessModifier, IWriteObject<Variable> writeParam) {
 			this.writeAccessModifier = writeAccessModifier;
 			this.writeParam = writeParam;
 		}
@@ -21,8 +21,8 @@ namespace Albatross.CodeGen.CSharp  {
 				sb.Write(writeAccessModifier, t.AccessModifier).Space();
 			}
 			sb.Append(t.Name).OpenParenthesis();
-			if (t.Parameters?.Count() > 0) {
-				foreach (var param in t.Parameters) {
+			if (t.Variables?.Count() > 0) {
+				foreach (var param in t.Variables) {
 					sb.Write(writeParam, param);
 					sb.Comma().Space();
 				}
@@ -30,10 +30,10 @@ namespace Albatross.CodeGen.CSharp  {
 			}
 			sb.CloseParenthesis();
 
-			if(t.ChainedConstructor?.Parameters?.Count() > 0) {
+			if(t.ChainedConstructor?.Variables?.Count() > 0) {
 				sb.Append(" : ").Append(t.ChainedConstructor.Name).OpenParenthesis();
-				foreach (var item in t.ChainedConstructor.Parameters) {
-					sb.Append(item.Name);
+				foreach (var item in t.ChainedConstructor.Variables) {
+					sb.Append("@").Append(item.Name);
 					sb.Comma().Space();
 				}
 				sb.TrimTrailingComma();

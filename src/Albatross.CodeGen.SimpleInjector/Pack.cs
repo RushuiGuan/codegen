@@ -32,7 +32,7 @@ namespace Albatross.CodeGen.SimpleInjector {
 			container.Register<IWriteObject<AccessModifier>, WriteAccessModifier>(Lifestyle.Singleton);
 			container.Register<IWriteObject<Class>, WriteClass>(Lifestyle.Singleton);
 			container.Register<IWriteObject<Constructor>, WriteConstructor>(Lifestyle.Singleton);
-			container.Register<IWriteObject<Parameter>, WriteParameter>(Lifestyle.Singleton);
+			container.Register<IWriteObject<Variable>, WriteParameter>(Lifestyle.Singleton);
 			container.Register<IWriteObject<Method>, WriteMethod>(Lifestyle.Singleton);
 			container.Register<IWriteObject<Field>, WriteField>(Lifestyle.Singleton);
 

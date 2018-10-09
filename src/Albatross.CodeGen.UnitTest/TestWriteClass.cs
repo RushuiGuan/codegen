@@ -12,6 +12,7 @@ namespace Albatross.CodeGen.UnitTest {
 	[TestFixture(TestOf =typeof(WriteClass))]
 	public class TestWriteClass : TestBase{
 		public override void Register(Container container) {
+
 			new Pack().RegisterServices(container);
 		}
 
@@ -26,8 +27,8 @@ namespace Albatross.CodeGen.UnitTest {
 		};
 		public const string Case1Result = @"namespace Albatross.Test {
 	public class Test {
-		public Test(WarehouseDbConnection dbConn) {
-			this.dbConn = dbConn;
+		public Test(WarehouseDbConnection @dbConn) {
+			this.dbConn = @dbConn;
 		}
 		private System.Data.IDbConnection dbConn;
 	}

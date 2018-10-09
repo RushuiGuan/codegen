@@ -22,44 +22,44 @@ namespace Albatross.CodeGen.UnitTest {
 			};
 			TestCaseData case2 = new TestCaseData(
 				new Constructor("Test") {
-					Parameters = new Parameter[] {
-						new Parameter("a") {
+					Variables = new Variable[] {
+						new Variable("a") {
 							 Type = DotNetType.String,
 						},
-						new Parameter("b") {
+						new Variable("b") {
 							 Type = DotNetType.Integer,
 						},
-						new Parameter("c") {
+						new Variable("c") {
 							 Type = DotNetType.DateTime,
 						},
 					}
 				}) {
-				ExpectedResult = @"public Test(string a, int b, DateTime c) {
+				ExpectedResult = @"public Test(string @a, int @b, DateTime @c) {
 }",
 			};
 
 			TestCaseData case3 = new TestCaseData(
 				new Constructor("Test") {
 					Name = "Test",
-					Parameters = new Parameter[] {
-						new Parameter("a") {
+					Variables = new Variable[] {
+						new Variable("a") {
 							 Type = DotNetType.String,
 						},
-						new Parameter("b") {
+						new Variable("b") {
 							 Type = DotNetType.Integer,
 						},
-						new Parameter("c") {
+						new Variable("c") {
 							 Type = DotNetType.DateTime,
 						},
 					},
 					ChainedConstructor = new Constructor("this") {
-						Parameters = new Parameter[] {
-							new Parameter("a"),
-							new Parameter("b")
+						Variables = new Variable[] {
+							new Variable("a"),
+							new Variable("b")
 						}
 					}
 				}) {
-				ExpectedResult = @"public Test(string a, int b, DateTime c) : this(a, b) {
+				ExpectedResult = @"public Test(string @a, int @b, DateTime @c) : this(@a, @b) {
 }"
 			};
 			var constructor = new Constructor("Test");

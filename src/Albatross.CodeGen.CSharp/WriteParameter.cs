@@ -4,15 +4,24 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.CSharp {
-	public class WriteParameter : IWriteObject<Parameter> {
+	public class WriteParameter : IWriteObject<Variable> {
 		IWriteObject<DotNetType> writeType;
 
 		public WriteParameter(IWriteObject<DotNetType> writeType) {
 			this.writeType = writeType;
 		}
 
-		public string Write(Parameter t) {
-			return $"{writeType.Write(t.Type)} @{t.Name}";
+		public string Write(Variable t) {
+			StringBuilder sb = new StringBuilder();
+
+
+			if(t.Modifier == ParameterModifier.Out) {
+				sb.Append("out ");
+			}else if(t.Modifier == ParameterModifier.Ref) {
+				sb.Append("ref ");
+			}
+			sb.Write(writeType, t.Type).Space().Append("@").Append(t.Name);
+			return sb.ToString();
 		}
 	}
 }

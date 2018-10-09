@@ -5,10 +5,10 @@ using System.Text;
 namespace Albatross.CodeGen.CSharp  {
 	public class WriteMethod : IWriteObject<Method> {
 		IWriteObject<AccessModifier> writeAccessModifier;
-		IWriteObject<Parameter> writeParam;
+		IWriteObject<Variable> writeParam;
 		IWriteObject<DotNetType> writeType;
 
-		public WriteMethod(IWriteObject<AccessModifier> writeAccessModifier, IWriteObject<Parameter> writeParam, IWriteObject<DotNetType> writeType) {
+		public WriteMethod(IWriteObject<AccessModifier> writeAccessModifier, IWriteObject<Variable> writeParam, IWriteObject<DotNetType> writeType) {
 			this.writeAccessModifier = writeAccessModifier;
 			this.writeParam = writeParam;
 			this.writeType = writeType;
@@ -21,8 +21,8 @@ namespace Albatross.CodeGen.CSharp  {
 			sb.Write(writeType, t.ReturnType).Space();
 
 			sb.Append(t.Name).OpenParenthesis();
-			if (t.Parameters?.Count() > 0) {
-				foreach (var param in t.Parameters) {
+			if (t.Variables?.Count() > 0) {
+				foreach (var param in t.Variables) {
 					sb.Write(writeParam, param);
 					sb.Comma().Space();
 				}

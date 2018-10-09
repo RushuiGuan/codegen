@@ -23,38 +23,38 @@ namespace Albatross.CodeGen.UnitTest {
 			TestCaseData case2 = new TestCaseData(
 				new Method("Test") {
 					ReturnType = DotNetType.Integer,
-					Parameters = new Parameter[] {
-						new Parameter("a") {
+					Variables = new Variable[] {
+						new Variable("a") {
 							 Type = DotNetType.String,
 						},
-						new Parameter("b") {
+						new Variable("b") {
 							 Type = DotNetType.Integer,
 						},
-						new Parameter("c") {
+						new Variable("c") {
 							 Type = DotNetType.DateTime,
 						},
 					}
 				}) {
-				ExpectedResult = @"public int Test(string a, int b, DateTime c) {
+				ExpectedResult = @"public int Test(string @a, int @b, DateTime @c) {
 }",
 			};
 
 			TestCaseData case3 = new TestCaseData(
 				new Method("Test") {
 					ReturnType = DotNetType.String,
-					Parameters = new Parameter[] {
-						new Parameter("a") {
+					Variables = new Variable[] {
+						new Variable("a") {
 							 Type = DotNetType.String,
 						},
-						new Parameter("b") {
+						new Variable("b") {
 							 Type = DotNetType.Integer,
 						},
-						new Parameter("c") {
+						new Variable("c") {
 							 Type = DotNetType.DateTime,
 						},
 					}
 				}) {
-				ExpectedResult = @"public string Test(string a, int b, DateTime c) {
+				ExpectedResult = @"public string Test(string @a, int @b, DateTime @c) {
 }"
 			};
 			var constructor = new Method("Test");

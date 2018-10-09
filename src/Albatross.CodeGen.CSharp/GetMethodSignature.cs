@@ -15,8 +15,8 @@ namespace Albatross.CodeGen.CSharp {
 		public string Get(Method method) {
 			StringBuilder sb = new StringBuilder();
 			sb.Append(method.Name).OpenParenthesis();
-			if(method.Parameters?.Count()> 0) {
-				foreach(var item in method.Parameters) {
+			if(method.Variables?.Count()> 0) {
+				foreach(var item in method.Variables) {
 					sb.Write(getDotNetType, item.Type).Space().Append(item.Name).Comma();
 				}
 				sb.TrimTrailingComma();

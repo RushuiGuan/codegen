@@ -19,14 +19,14 @@ namespace Albatross.CodeGen.UnitTest {
 		public static IEnumerable<TestCaseData> GetTestCases() {
 			return new TestCaseData[] {
 				new TestCaseData(new Method("test"){
-					Parameters = new Parameter[]{
-						new Parameter("a") {
+					Variables = new Variable[]{
+						new Variable("a") {
 							Type = DotNetType.Integer
 						},
-						new Parameter("b") {
+						new Variable("b") {
 							Type = DotNetType.String
 						},
-						new Parameter("c") {
+						new Variable("c") {
 							Type = DotNetType.Object
 						}
 					}

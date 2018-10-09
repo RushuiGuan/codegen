@@ -16,11 +16,11 @@ namespace Albatross.CodeGen.CSharp.Core {
 			if (!string.IsNullOrEmpty(@override.Namespace)) { src.Namespace = @override.Namespace; }
 			if (!string.IsNullOrEmpty(@override.Name)) { src.Name = @override.Name; }
 
-			src.Dependencies.Merge(@override.Dependencies, args=>args.Name);
-			src.Properties.Merge(@override.Properties, args => args.Name);
-			src.Fields.Merge(@override.Fields, args => args.Name);
-			src.Methods.Merge(@override.Methods, args => getMethodSignature.Get(args));
-			src.Constructors.Merge(@override.Constructors, args => args.Name);
+			src.Dependencies = src.Dependencies.Merge(@override.Dependencies, args=>args.Name);
+			src.Properties = src.Properties.Merge(@override.Properties, args => args.Name);
+			src.Fields = src.Fields.Merge(@override.Fields, args => args.Name);
+			src.Methods = src.Methods.Merge(@override.Methods, args => getMethodSignature.Get(args));
+			src.Constructors = src.Constructors.Merge(@override.Constructors, args => args.Name);
 
 			return src;
 		}

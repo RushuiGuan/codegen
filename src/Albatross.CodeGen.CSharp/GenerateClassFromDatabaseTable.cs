@@ -16,13 +16,11 @@ namespace Albatross.CodeGen.CSharp {
 		public Class Get(Table table) {
 			Class @class = new Class {
 				Name = table.Name.Proper(),
+				Properties = from item in table.Columns select new Property(item.Name.Proper()) {
+					Type = getDotNetType.Get(item.Type),
+					Modifier = AccessModifier.Public,
+				},
 			};
-
-			var columns = from item in table.Columns select new Property(item.Name.Proper()) {
-				Type = getDotNetType.Get(item.Type),
-				Modifier = AccessModifier.Public,
-			};
-
 			return @class;
 		}
 	}
