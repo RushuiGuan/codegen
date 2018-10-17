@@ -20,8 +20,6 @@
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0-RC1" />
   </ItemGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Albatross.CodeGen.SimpleInjector\Albatross.CodeGen.SimpleInjector.csproj" />
   </ItemGroup>
 </Project>
