@@ -12,7 +12,7 @@ namespace Albatross.CodeGen.CSharp {
 			Parent.Append(t).AppendLine(" {");
 			return this;
 		}
-		public override IWriteScopedObject<string> BeginChildScope(string t) {
+		public override IWriteScopedObject<string> BeginChildScope(string t = "") {
 			var childScope = new WriteCSharpScopedObject(Content);
 			return childScope.BeginScope(t);
 		}

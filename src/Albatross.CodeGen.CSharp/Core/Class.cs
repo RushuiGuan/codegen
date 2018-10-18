@@ -13,6 +13,7 @@ namespace Albatross.CodeGen.CSharp.Core {
 		public string Name { get; set; }
 		public string BaseClass { get; set; }
 		public bool Static { get; set; }
+		public bool Partial { get; set; }
 		public string Namespace { get; set; }
 
 

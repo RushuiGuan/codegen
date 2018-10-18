@@ -30,8 +30,11 @@ namespace Albatross.CodeGen.CSharp {
 			}
 
 			using (var namespaceWriter = new WriteCSharpScopedObject(sb).BeginScope($"namespace {@class.Namespace}")) {
-				using (var classWriter = namespaceWriter.BeginChildScope($"{writeAccessModifier.Write(@class.AccessModifier)} class {@class.Name}")) {
+				namespaceWriter.Content.Write(writeAccessModifier, @class.AccessModifier);
+				if (@class.Partial) { namespaceWriter.Content.Append(" partial "); }
+				namespaceWriter.Content.Append(" class ").Append(@class.Name);
 
+				using (var classWriter = namespaceWriter.BeginChildScope("")) {
 					WriteClassDependencies(@class);
 
 					if(@class.Constructors?.Count() > 0) {
