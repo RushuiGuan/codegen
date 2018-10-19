@@ -45,8 +45,9 @@ namespace Albatross.CodeGen.PowerShell {
 					using (var stream = new FileStream(Output.FullName, FileMode.OpenOrCreate)) {
 						using (var writer = new StreamWriter(stream)) {
 							writer.Write(sb.ToString());
+							writer.Flush();
+							stream.SetLength(stream.Position);
 						}
-						stream.SetLength(stream.Position);
 					}
 				}
 			}
