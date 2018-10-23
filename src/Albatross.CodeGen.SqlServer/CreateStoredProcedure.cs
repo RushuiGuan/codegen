@@ -9,8 +9,8 @@ namespace Albatross.CodeGen.SqlServer {
 	/// <summary>
 	/// Create a stored procedure based on the variables produced by the next generator in a composite generator.  The generator will yield for 1 turn.
 	/// </summary>
-	[CodeGenerator("create stored procedure", target: GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Create a SQL server stored procedure", SourceType = typeof(object))]
-	public class CreateStoredProcedure : ICodeGenerator<object, Database.SqlCodeGenOption> {
+	[CodeGenerator("create-stored-procedure", target: GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Create a SQL server stored procedure")]
+	public class CreateStoredProcedure : CodeGeneratorBase<object, Database.SqlCodeGenOption> {
 		IGetVariable getVariable;
 		IBuildVariable buildVariable;
 		IBuildParameter buildParameter;
@@ -21,11 +21,9 @@ namespace Albatross.CodeGen.SqlServer {
 			this.buildParameter = buildParameter;
 		}
 
-		public event Func<StringBuilder, IEnumerable<object>> Yield;
-
-		public IEnumerable<object> Build(StringBuilder sb, object source, SqlCodeGenOption option) {
+		public override IEnumerable<object> Build(StringBuilder sb, object source, SqlCodeGenOption option) {
 			StringBuilder content = new StringBuilder();
-			var items = Yield?.Invoke(content);
+			var items = InvokeYield(content);
 			if (items == null) {
 				items = new object[0];
 			}
@@ -56,15 +54,12 @@ namespace Albatross.CodeGen.SqlServer {
 
 			string text = content.ToString();
 			if (!string.IsNullOrEmpty(text)) {
-				sb.Tabify(text, 1);
+				sb.Tabify(text, 1, true);
 				sb.AppendLine();
 			}
 			sb.Append("go");
 
 			return new[] { this }.Union(items);
-		}
-
-		public void Configure(object data) {
 		}
 	}
 }

@@ -6,10 +6,7 @@ namespace Albatross.CodeGen.PowerShell {
 
 		private IObjectFactory Run() {
 			Container container = new Container();
-			container.Register<IObjectFactory>(() => new ObjectFactory(container), Lifestyle.Singleton);
-
 			new Albatross.CodeGen.SimpleInjector.Pack().RegisterServices(container);
-			new Albatross.Database.SqlServer.SimpleInjector.Pack().RegisterServices(container);
 			container.Verify();
 
 			return container.GetInstance<IObjectFactory>();

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.Database {
-	[OptionType("Sql Code Generation Options")]
 	public class SqlCodeGenOption {
 		/// <summary>
 		/// Option to exclude primary key for certain operations such as generating an update statement

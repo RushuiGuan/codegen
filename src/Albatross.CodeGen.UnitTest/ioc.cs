@@ -23,13 +23,13 @@ namespace Albatross.CodeGen.UnitTest {
 
 		void Setup() {
 			container.Options.AllowOverridingRegistrations = true;
-			container.RegisterSingleton<IObjectFactory>(this);
+			container.RegisterInstance<IObjectFactory>(this);
 			new Albatross.CodeGen.SimpleInjector .Pack().RegisterServices(container);
 			new Albatross.Database.SqlServer.SimpleInjector.Pack().RegisterServices(container);
 
 			var mock_getTable = new Mock<IGetTable>();
-			container.RegisterSingleton<Mock<IGetTable>>(mock_getTable);
-			container.RegisterSingleton<IGetTable>(mock_getTable.Object);
+			container.RegisterInstance<Mock<IGetTable>>(mock_getTable);
+			container.RegisterInstance<IGetTable>(mock_getTable.Object);
 		}
 
 		

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace Albatross.CodeGen
    ">
-    <meta name="generator" content="docfx 2.34.0.0">
+    <meta name="generator" content="docfx 2.39.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -85,6 +85,8 @@
       <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.CodeGeneratorAttribute.html">CodeGeneratorAttribute</a></h4>
       <section></section>
+      <h4><a class="xref" href="Albatross.CodeGen.CodeGeneratorBase-2.html">CodeGeneratorBase&lt;SourceType, OptionType&gt;</a></h4>
+      <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.CodeGeneratorFactory.html">CodeGeneratorFactory</a></h4>
       <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.CodeGenException.html">CodeGenException</a></h4>
@@ -93,7 +95,9 @@
       <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.Composite.html">Composite</a></h4>
       <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.CompositeCodeGenerator-2.html">CompositeCodeGenerator&lt;T, O&gt;</a></h4>
+      <h4><a class="xref" href="Albatross.CodeGen.CompositeCodeGenerator.html">CompositeCodeGenerator</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Albatross.CodeGen.ConstantCodeGenerator.html">ConstantCodeGenerator</a></h4>
       <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.Extension.html">Extension</a></h4>
       <section></section>
@@ -101,30 +105,30 @@
       <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.GeneratorTarget.html">GeneratorTarget</a></h4>
       <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.InvalidOptionTypeException.html">InvalidOptionTypeException</a></h4>
+      <h4><a class="xref" href="Albatross.CodeGen.IConfigurableCodeGenFactoryExt.html">IConfigurableCodeGenFactoryExt</a></h4>
       <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.InvalidSourceTypeException.html">InvalidSourceTypeException</a></h4>
+      <h4><a class="xref" href="Albatross.CodeGen.InvalidOptionException.html">InvalidOptionException</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Albatross.CodeGen.InvalidSourceException.html">InvalidSourceException</a></h4>
       <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.Leaf.html">Leaf</a></h4>
       <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.OptionType.html">OptionType</a></h4>
       <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.OptionTypeAttribute.html">OptionTypeAttribute</a></h4>
-      <section><p>used to register source types in an assembly</p>
-</section>
       <h4><a class="xref" href="Albatross.CodeGen.RunCodeGenerator.html">RunCodeGenerator</a></h4>
       <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.SourceType.html">SourceType</a></h4>
       <section></section>
-      <h4><a class="xref" href="Albatross.CodeGen.SourceTypeAttribute.html">SourceTypeAttribute</a></h4>
-      <section><p>used to register source types in an assembly</p>
-</section>
-      <h4><a class="xref" href="Albatross.CodeGen.StaticCodeGenerator.html">StaticCodeGenerator</a></h4>
-      <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.StringBuilderExtension.html">StringBuilderExtension</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Albatross.CodeGen.StringCodeGenerator.html">StringCodeGenerator</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Albatross.CodeGen.WriteScopedObject-1.html">WriteScopedObject&lt;T&gt;</a></h4>
       <section></section>
     <h3 id="interfaces">Interfaces
   </h3>
+      <h4><a class="xref" href="Albatross.CodeGen.ICodeGenerator.html">ICodeGenerator</a></h4>
+      <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.ICodeGenerator-2.html">ICodeGenerator&lt;T, O&gt;</a></h4>
       <section><p>This interface is responsible for all code genration implementation.  A code generator requires a) A source; b) an option.  The source indicates what the generator is running against; for example, a database table or a .net type.  It defines the input of the generator.
 The option indicates the supported options for the particular generator.  It could be the name of the generated class or whether the javascript output should use camel case.  Therefore it influences the output of the generator.  CodeGenerator implementation are not expected to be 
@@ -140,6 +144,10 @@ thread safe, since new instances will be created for each execution.  Instances 
       <section></section>
       <h4><a class="xref" href="Albatross.CodeGen.IRunCodeGenerator.html">IRunCodeGenerator</a></h4>
       <section></section>
+      <h4><a class="xref" href="Albatross.CodeGen.IWriteObject-1.html">IWriteObject&lt;T&gt;</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Albatross.CodeGen.IWriteScopedObject-1.html">IWriteScopedObject&lt;T&gt;</a></h4>
+      <section></section>
 </article>
           </div>
           
@@ -148,7 +156,7 @@ thread safe, since new instances will be created for each execution.  Instances 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/docfx_project/apidoc/Albatross.CodeGen.md/#L2" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/RushuiGuan/codegen/blob/develop/docfx_project/apidoc/Albatross.CodeGen.md/#L2" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

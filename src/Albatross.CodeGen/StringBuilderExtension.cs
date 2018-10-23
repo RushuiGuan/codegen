@@ -28,6 +28,12 @@ namespace Albatross.CodeGen {
 		public static StringBuilder CloseSquareBracket(this StringBuilder sb, int count = 1) {
 			return sb.AppendChar(']', count);
 		}
+		public static StringBuilder OpenAngleBracket(this StringBuilder sb, int count = 1) {
+			return sb.AppendChar('<', count);
+		}
+		public static StringBuilder CloseAngleBracket(this StringBuilder sb, int count = 1) {
+			return sb.AppendChar('>', count);
+		}
 		public static StringBuilder OpenParenthesis(this StringBuilder sb, int count = 1) {
 			return sb.AppendChar('(', count);
 		}
@@ -40,111 +46,78 @@ namespace Albatross.CodeGen {
 		public static StringBuilder Semicolon(this StringBuilder sb, int count = 1) {
 			return sb.AppendChar(';', count);
 		}
-		public static StringBuilder Tabify(this StringBuilder sb, string content, int count) {
+		/// <summary>
+		/// this function will always TrimEnd
+		/// </summary>
+		public static StringBuilder Tabify(this StringBuilder sb, string content, int count, bool removeBlankLines) {
+			int begin = sb.Length;
+			bool isBlank = true;
 			sb.AppendChar('\t', count);
-			foreach (char c in content) {
+			for (int i = 0; i<content.Length; i++) {
+				char c = content[i];
 				sb.Append(c);
-				if (c == '\n') { sb.AppendChar('\t', count); }
+				if (!char.IsWhiteSpace(c)) {
+					isBlank = false;
+				}
+
+				if (c == '\n') {
+					if (!(isBlank && removeBlankLines)) {
+						begin = sb.Length;
+					} else {
+						sb.Length = begin;
+					}
+					isBlank = true;
+					if (i < content.Length-1) {
+						sb.AppendChar('\t', count);
+					}
+				}
+			}
+			if (isBlank && removeBlankLines) {
+				sb.Length = begin;
+			}
+			
+			return sb;
+		}
+		public static StringBuilder TrimEnd(this StringBuilder sb, int offset = 0, params char[] additional) {
+			int i = sb.Length - 1;
+			while(i >= offset && (char.IsWhiteSpace(sb[i]) || additional.Contains(sb[i]))) {
+				i--;
+			}
+			sb.Length = i + 1;
+			return sb;
+		}
+		public static StringBuilder TrimTrailingComma(this StringBuilder sb) {
+			return sb.TrimEnd(0, ',');
+		}
+		public static StringBuilder Write<T>(this StringBuilder sb, IWriteObject<T> writer, T t, int tabify = 0) {
+			int position = sb.Length;
+			string text = writer.Write(t);
+			if (tabify > 0) {
+				sb.Tabify(text, tabify, true);
+			} else {
+				sb.Append(text);
 			}
 			return sb;
 		}
 		#endregion
 
 		#region C# code generation
-		public static StringBuilder PublicClass(this StringBuilder sb) {
-			sb.Append("public class ");
+		public static StringBuilder This(this StringBuilder sb, string name) {
+			return sb.Append("this.").Append(name);
+		}
+
+		public static StringBuilder Static(this StringBuilder sb) {
+			sb.Append("static ");
 			return sb;
 		}
 
-		public static StringBuilder BaseClass(this StringBuilder sb, Type type) {
-			sb.Append(" : ").GetTypeName(type).OpenScope();
+		public static StringBuilder ReadOnly(this StringBuilder sb) {
+			sb.Append("readonly ");
 			return sb;
 		}
 
-		public static StringBuilder ClassName(this StringBuilder sb, Type type, string postFix) {
-			sb.Append(type.Name).Append(postFix);
-			return sb;
-		}
-
-		public static StringBuilder Join(this StringBuilder sb, params string[] segments) {
-			foreach (var item in segments) {
-				sb.Append(item);
-			}
-			return sb;
-		}
-
-		public static StringBuilder OpenScope(this StringBuilder sb) {
-			return sb.Append(" {").AppendLine();
-		}
-		public static StringBuilder CloseScope(this StringBuilder sb, bool terminate = false) {
-			if (terminate) {
-				return sb.Append("}").Terminate();
-			} else {
-				return sb.AppendLine("}");
-			}
-		}
-		public static StringBuilder Terminate(this StringBuilder sb) {
-			return sb.AppendLine(";");
-		}
-		public static StringBuilder Pad(this StringBuilder sb, char c, int count = 1) {
-			for (int i = 0; i < count; i++) {
-				sb.Append(c);
-			}
-			return sb;
-		}
-
-		public static StringBuilder Public(this StringBuilder sb) {
-			return sb.Append("public ");
-		}
-		public static StringBuilder Override(this StringBuilder sb, string methodName) {
-			return sb.Append("override ").Append(methodName);
-		}
-		public static StringBuilder MethodParam<T>(this StringBuilder sb, string paramName) {
-			return sb.GetTypeName(typeof(T)).Space().Append(paramName);
-		}
-		public static StringBuilder MethodParam(this StringBuilder sb, Type type, string paramName) {
-			return sb.GetTypeName(type).Space().Append(paramName);
-		}
-
-		public static StringBuilder Method(this StringBuilder sb, Type returnType, string name, Action<StringBuilder> setParams) {
-			sb.Space().GetTypeName(returnType).Append(name).OpenParenthesis();
-			setParams(sb);
-			sb.CloseParenthesis().OpenScope();
-			return sb;
-		}
-
-		public static StringBuilder Constructor(this StringBuilder sb, string name, Action<StringBuilder> setParams, params string[] baseClassParams) {
-			sb.Space().Append(name).OpenParenthesis();
-			setParams(sb);
-			sb.CloseParenthesis();
-			if (baseClassParams.Length > 0) {
-				sb.Append(" : base").OpenParenthesis();
-				for (int i = 0; i < baseClassParams.Length; i++) {
-					sb.Append(baseClassParams[i]);
-					if (i < baseClassParams.Length - 1) {
-						sb.Comma().Space();
-					}
-				}
-				sb.CloseParenthesis();
-			}
-			sb.Space();
-			return sb;
-		}
-		public static StringBuilder EmptyScope(this StringBuilder sb) {
-			sb.AppendLine("{ }");
-			return sb;
-		}
-		public static StringBuilder PublicProperty(this StringBuilder sb, Type propertyType, string name) {
-			return sb.Append("public ").GetTypeName(propertyType).Space().Append(name).OpenScope();
-		}
-
-		public static StringBuilder BindableGetter(this StringBuilder sb, Type type, string name) {
-			sb.Append("get { return GetProperty<").GetTypeName(type).Append(">(()=>").Append(name).Append("); ").CloseScope();
-			return sb;
-		}
-
-		public static StringBuilder BindableSetter(this StringBuilder sb, Type type, string name) {
-			sb.Append("set { SetProperty<").GetTypeName(type).Append(">(()=>").Append(name).Append(", value); ").CloseScope();
+		public static StringBuilder Assignment(this StringBuilder sb) {
+			sb.Append(" = ");
 			return sb;
 		}
 
@@ -155,10 +128,6 @@ namespace Albatross.CodeGen {
 			return sb.AppendLine("#endregion ");
 		}
 
-		public static StringBuilder PropertyAssignment(this StringBuilder sb, string propertyName, object value) {
-			sb.Append(propertyName).Append(" = ").Literal(value).Comma();
-			return sb;
-		}
 		public static StringBuilder Literal(this StringBuilder sb, object value) {
 			if (value == null) {
 				sb.Append("null");
@@ -174,41 +143,6 @@ namespace Albatross.CodeGen {
 
 		public static StringBuilder AsString(this StringBuilder sb) {
 			return sb.Append(".ToString()");
-		}
-
-		public static string ToGenericTypeString(this Type t) {
-			if (!t.IsGenericType)
-				return t.Name;
-			string genericTypeName = t.GetGenericTypeDefinition().Name;
-			genericTypeName = genericTypeName.Substring(0,
-				genericTypeName.IndexOf('`'));
-			string genericArgs = string.Join(",", t.GetGenericArguments().Select(ta => ToGenericTypeString(ta)).ToArray());
-			return genericTypeName + "<" + genericArgs + ">";
-		}
-
-		public static StringBuilder GetTypeName(this StringBuilder sb, Type type) {
-			if (type.IsGenericType) {
-				sb.Append(type.ToGenericTypeString());
-			} else if (type == typeof(int)) {
-				sb.Append("int");
-			} else if (type == typeof(long)) {
-				sb.Append("long");
-			} else if (type == typeof(DateTime)) {
-				sb.Append("DateTime");
-			} else if (type == typeof(string)) {
-				sb.Append("string");
-			} else if (type == typeof(bool)) {
-				sb.Append("bool");
-			} else if (type == typeof(decimal)) {
-				sb.Append("decimal");
-			} else if (type == typeof(double)) {
-				sb.Append("double");
-			} else if (type == typeof(float)) {
-				sb.Append("float");
-			} else {
-				sb.Append(type.Name);
-			}
-			return sb;
 		}
 		#endregion
 	}

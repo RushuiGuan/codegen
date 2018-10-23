@@ -9,8 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.SqlServer {
-	[CodeGenerator("table_select", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Select statement sorted by ordinal position")]
-	public class TableSelect : TableQueryGenerator {
+	[CodeGenerator("table-select", GeneratorTarget.Sql, Category = GeneratorCategory.SQLServer, Description = "Select statement sorted by ordinal position")]
+	public class TableSelect : CodeGeneratorBase<Table, SqlCodeGenOption> {
 		IGetTable getTable;
 
 		public TableSelect(IGetTable getTable) {

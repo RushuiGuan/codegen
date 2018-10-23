@@ -1,28 +1,8 @@
 <?xml version="1.0"?>
-<package >
-	<metadata>
-		<id>Albatross.CodeGen</id>
-		<version>1.1.2</version>
-		<title>Albatross Code Generator</title>
-		<authors>Rushui Guan</authors>
-		<owners>Rushui Guan</owners>
-		<licenseUrl>https://github.com/RushuiGuan/CodeGen/blob/master/LICENSE</licenseUrl>
-		<projectUrl>https://github.com/RushuiGuan/CodeGen</projectUrl>
-		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<summary>A customizable code generator engine with a Powershell tool that allows user to quickly setup composite generators and update the target file.</summary>
-		<description>The goal of this library is to create code generators to speed up software development.  It comes with powershell cmdlets that allows users to create composite code generators.  The powershell cmdlet can be found in the tools folder or use nuget package &quot;Albatross.CodeGen.PowerShell&quot;.  Call Import-Module Albatross.CodeGen.PowerShell.dll first to import the module.</description>
-		<releaseNotes>Initial Release</releaseNotes>
-		<copyright>Copyright 2017</copyright>
-		<tags>code generator c# sql codegen powershell database csharp</tags>
-		<dependencies>
-			<dependency id="Newtonsoft.Json" version="10.0.3" />
-		</dependencies>
-	</metadata>
-	<files>
-		<file src=".\bin\release\net45\**" target="lib\net45"/>
-		<file src=".\bin\release\netstandard2.0\**" target="lib\netstandard2.0"/>
-		<file src="..\Albatross.CodeGen.PowerShell\bin\Release\net462\*.dll" target="tools" />
-		<file src="..\Albatross.CodeGen.PowerShell\bin\Release\net462\*.exe" target="tools" />
-		<file src="..\readme.md" target="" />
-	</files>
+<package>
+  <metadata>
+    <id>Albatross.CodeGen</id>
+    <version>1.1.2-alpha.2</version>
+    <description>The goal of this library is to create code generators to speed up software development.  It comes with powershell cmdlets that allows users to create composite code generators.  The powershell cmdlet can be found in the tools folder or use nuget package "Albatross.CodeGen.PowerShell".  Call Import-Module Albatross.CodeGen.PowerShell.dll first to import the module.</description>
+  </metadata>
 </package>

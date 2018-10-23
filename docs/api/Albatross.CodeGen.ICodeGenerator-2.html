@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ICodeGenerator&lt;T, O&gt;
    ">
-    <meta name="generator" content="docfx 2.34.0.0">
+    <meta name="generator" content="docfx 2.39.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -78,11 +78,29 @@ The option indicates the supported options for the particular generator.  It cou
 thread safe, since new instances will be created for each execution.  Instances of this interface will be created using an Ioc container.  Therefore its dependencies should be declared in its constructor.  Only a single constructor is supported.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Albatross.CodeGen.ICodeGenerator.html#Albatross_CodeGen_ICodeGenerator_Build_System_Text_StringBuilder_System_Object_System_Object_">ICodeGenerator.Build(StringBuilder, Object, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Albatross.CodeGen.ICodeGenerator.html#Albatross_CodeGen_ICodeGenerator_Configure_System_Object_">ICodeGenerator.Configure(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Albatross.CodeGen.ICodeGenerator.html#Albatross_CodeGen_ICodeGenerator_Yield">ICodeGenerator.Yield</a>
+    </div>
+    <div>
+      <a class="xref" href="Albatross.CodeGen.ICodeGenerator.html#Albatross_CodeGen_ICodeGenerator_ValidateSource_System_Object_">ICodeGenerator.ValidateSource(Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Albatross.CodeGen.ICodeGenerator.html#Albatross_CodeGen_ICodeGenerator_ValidateOption_System_Object_">ICodeGenerator.ValidateOption(Object)</a>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Albatross.CodeGen.html">Albatross.CodeGen</a></h6>
   <h6><strong>Assembly</strong>: Albatross.CodeGen.dll</h6>
   <h5 id="Albatross_CodeGen_ICodeGenerator_2_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ICodeGenerator&lt;in T, in O&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public interface ICodeGenerator&lt;in T, in O&gt; : ICodeGenerator</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -109,15 +127,14 @@ thread safe, since new instances will be created for each execution.  Instances 
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_ICodeGenerator_2_Build_System_Text_StringBuilder__0__1_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.ICodeGenerator%602.Build(System.Text.StringBuilder%2C%600%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/RushuiGuan/codegen/new/develop/apiSpec/new?filename=Albatross_CodeGen_ICodeGenerator_2_Build_System_Text_StringBuilder__0__1_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.ICodeGenerator%602.Build(System.Text.StringBuilder%2C%600%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen/ICodeGenerator.cs/#L28">View Source</a>
+    <a href="https://github.com/RushuiGuan/codegen/blob/develop/src/Albatross.CodeGen/ICodeGenerator.cs/#L14">View Source</a>
   </span>
   <a id="Albatross_CodeGen_ICodeGenerator_2_Build_" data-uid="Albatross.CodeGen.ICodeGenerator`2.Build*"></a>
   <h4 id="Albatross_CodeGen_ICodeGenerator_2_Build_System_Text_StringBuilder__0__1_" data-uid="Albatross.CodeGen.ICodeGenerator`2.Build(System.Text.StringBuilder,`0,`1)">Build(StringBuilder, T, O)</h4>
-  <div class="markdown level1 summary"><p>The main code generation method.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -165,71 +182,6 @@ thread safe, since new instances will be created for each execution.  Instances 
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_ICodeGenerator_2_Configure_System_Object_.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.ICodeGenerator%602.Configure(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen/ICodeGenerator.cs/#L20">View Source</a>
-  </span>
-  <a id="Albatross_CodeGen_ICodeGenerator_2_Configure_" data-uid="Albatross.CodeGen.ICodeGenerator`2.Configure*"></a>
-  <h4 id="Albatross_CodeGen_ICodeGenerator_2_Configure_System_Object_" data-uid="Albatross.CodeGen.ICodeGenerator`2.Configure(System.Object)">Configure(Object)</h4>
-  <div class="markdown level1 summary"><p>Normal a generator is run against a source and doesn&apos;t need to contain states.  But there are exceptions such as <a class="xref" href="Albatross.CodeGen.CompositeCodeGenerator-2.html">CompositeCodeGenerator&lt;T, O&gt;</a> or <a class="xref" href="Albatross.CodeGen.StaticCodeGenerator.html">StaticCodeGenerator</a>.  These
-generators need to be configured because their main function is not to generate code using the source but to generate code based on a data configuration.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Configure(object data)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Object</span></td>
-        <td><span class="parametername">data</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="events">Events
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_ICodeGenerator_2_Yield.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.ICodeGenerator%602.Yield%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen/ICodeGenerator.cs/#L29">View Source</a>
-  </span>
-  <h4 id="Albatross_CodeGen_ICodeGenerator_2_Yield" data-uid="Albatross.CodeGen.ICodeGenerator`2.Yield">Yield</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">event Func&lt;StringBuilder, IEnumerable&lt;object&gt;&gt; Yield</code></pre>
-  </div>
-  <h5 class="eventType">Event Type</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Text.StringBuilder</span>, <span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           
@@ -238,10 +190,10 @@ generators need to be configured because their main function is not to generate 
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/RushuiGuan/CodeGen/new/master/apiSpec/new?filename=Albatross_CodeGen_ICodeGenerator_2.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.ICodeGenerator%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/RushuiGuan/codegen/new/develop/apiSpec/new?filename=Albatross_CodeGen_ICodeGenerator_2.md&amp;value=---%0Auid%3A%20Albatross.CodeGen.ICodeGenerator%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/RushuiGuan/CodeGen/blob/master/src/Albatross.CodeGen/ICodeGenerator.cs/#L13" class="contribution-link">View Source</a>
+                    <a href="https://github.com/RushuiGuan/codegen/blob/develop/src/Albatross.CodeGen/ICodeGenerator.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -1,15 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>net462</TargetFramework>
-		<AssemblyVersion>1.1.9.0</AssemblyVersion>
-		<FileVersion>1.1.9.0</FileVersion>
-	</PropertyGroup>
-	
-	<ItemGroup>
-	  <PackageReference Include="SimpleInjector" Version="4.0.12" />
-	  <PackageReference Include="System.Management.Automation.dll" Version="10.0.10586" />
-	</ItemGroup>
-	<ItemGroup>
-	  <ProjectReference Include="..\Albatross.CodeGen.SimpleInjector\Albatross.CodeGen.SimpleInjector.csproj" />
-	</ItemGroup>
+  <PropertyGroup>
+    <TargetFrameworks>net462;netstandard2.0</TargetFrameworks>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0-beta</Version>
+    
+    <AutoGenerateBindingRedirects>False</AutoGenerateBindingRedirects>
+    <Product>Albatross Code Generator PowerShell Utilities</Product>
+    <Authors>Rushui Guan</Authors>
+    <PackageLicenseUrl>https://github.com/RushuiGuan/CodeGen/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
+    <Description>The powershell utility contains a set of cmdlets that allow users to create composite generators and execute generators for code generation purpose.</Description>
+    <PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <PackageReference Include="System.Management.Automation.dll" Version="10.0.10586" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0-RC1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Albatross.CodeGen.SimpleInjector\Albatross.CodeGen.SimpleInjector.csproj" />
+  </ItemGroup>
 </Project>

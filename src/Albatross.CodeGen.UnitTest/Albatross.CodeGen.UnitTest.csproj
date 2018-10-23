@@ -5,17 +5,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Dapper" Version="1.50.4" />
-	  <PackageReference Include="Moq" Version="4.8.1" />
-	  <PackageReference Include="NUnit" Version="3.9.0" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
-		<PackageReference Include="NUnit3TestAdapter" Version="3.9.0" />
-	  <PackageReference Include="SimpleInjector" Version="4.0.12" />
+		<PackageReference Include="Albatross.Test" Version="1.0.1-alpha.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+		<PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Albatross.CodeGen.CSharp\Albatross.CodeGen.CSharp.csproj" />
 	  <ProjectReference Include="..\Albatross.CodeGen.Database\Albatross.CodeGen.Database.csproj" />
+	  <ProjectReference Include="..\Albatross.CodeGen.PowerShell\Albatross.CodeGen.PowerShell.csproj" />
 	  <ProjectReference Include="..\Albatross.CodeGen.SimpleInjector\Albatross.CodeGen.SimpleInjector.csproj" />
 	  <ProjectReference Include="..\Albatross.CodeGen.SqlServer\Albatross.CodeGen.SqlServer.csproj" />
 	  <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />

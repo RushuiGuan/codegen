@@ -14,10 +14,10 @@ namespace Albatross.CodeGen.PowerShell {
 		[Alias("b")]
 		public Branch Branch { get; set; }
 
-		[Parameter(Position = 1, Mandatory = true)]
+		[Parameter(Position = 1)]
 		public object Source{ get; set; }
 
-		[Parameter(Position = 2, Mandatory = true)]
+		[Parameter(Position = 2)]
 		public object Option { get; set; }
 
 		[Parameter(Position = 3, Mandatory = false)]
@@ -32,7 +32,8 @@ namespace Albatross.CodeGen.PowerShell {
 			StringBuilder sb = new StringBuilder();
 			if(Source is PSObject) { Source = ((PSObject)Source).BaseObject; }
 			if (Option is PSObject) { Option = ((PSObject)Option).BaseObject; }
-			Composite c = new Composite(Source.GetType(), Option.GetType()) {
+
+			Composite c = new Composite{
 				Branch = Branch,
 			};
 			var meta = c.GetMeta();
