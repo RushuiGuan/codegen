@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -51,5 +52,18 @@ namespace Albatross.CodeGen.UnitTest {
 			string[] x = new string[] { "1" };
 			x.Union(null);
 		}
+
+		public class T1Attribute: Attribute { }
+		public class T2Attribute : T1Attribute { }
+
+		[T2]
+		[Test]
+		public void AttributeTest() {
+			Type type = this.GetType();
+			MethodInfo info = type.GetMethod(nameof(AttributeTest));
+			var attrib = info.GetCustomAttribute<T1Attribute>();
+			Assert.NotNull(attrib);
+		}
+
 	}
 }

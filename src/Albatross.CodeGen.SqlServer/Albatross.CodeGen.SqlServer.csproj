@@ -11,6 +11,7 @@
     <PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
     <Description>Contains code generator that will run against sql server objects.</Description>
     <PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Albatross.Database.SqlServer.SimpleInjector" Version="1.1.6" />

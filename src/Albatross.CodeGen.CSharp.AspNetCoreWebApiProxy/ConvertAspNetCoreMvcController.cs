@@ -5,12 +5,18 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using Microsoft.AspNetCore.Mvc.Routing;
+using Albatross.CodeGen.CSharp.Reflection;
 
 namespace Albatross.CodeGen.CSharp.AspNetCoreWebApiProxy {
 	/// <summary>
 	/// Convert a type of AspNet Controller to the ControllerClass
 	/// </summary>
 	public class ConvertAspNetCoreMvcController : IConvertController {
+		SetMethodByReflection setMethodByReflection;
+
+		public ConvertAspNetCoreMvcController(SetMethodByReflection setMethodByReflection) {
+			this.setMethodByReflection = setMethodByReflection;
+		}
 		public ControllerClass Convert(Type type) {
 			if (typeof(Controller).IsAssignableFrom(type)) {
 
@@ -18,39 +24,28 @@ namespace Albatross.CodeGen.CSharp.AspNetCoreWebApiProxy {
 				var controllerClass = new ControllerClass {
 					Name = type.Name,
 					Route = attribute?.Template,
+					Methods = from item in type.GetMethods()
+							  where item.IsPublic && item.GetCustomAttribute<HttpMethodAttribute>() != null
+							  select ConvertMethod(item),
 				};
-
-				foreach(var method in type.GetMethods()) {
-					if (method.IsPublic) {
-						HttpMethodAttribute httpMethod = GetHttpMethod(method);
-						if(httpMethod != null) {
-							ControllerMethod controllerMethod = new ControllerMethod {
-								Route = httpMethod.Template,
-								HttpAction = httpMethod.Name,
-								Name = method.Name,
-							};
-						}
-					}
-				}
-
-
 				return controllerClass;
 			} else {
 				throw new ArgumentException();
 			}
 		}
-		HttpMethodAttribute GetHttpMethod(MethodInfo method) {
-			HttpMethodAttribute httpMethodAttribute = (from attrib in method.GetCustomAttributes<HttpGetAttribute>() orderby attrib.Order select attrib).FirstOrDefault();
-			if (httpMethodAttribute == null) {
-				httpMethodAttribute = (from attrib in method.GetCustomAttributes<HttpPostAttribute>() orderby attrib.Order select attrib).FirstOrDefault();
-				if (httpMethodAttribute == null) {
-					httpMethodAttribute = (from attrib in method.GetCustomAttributes<HttpPutAttribute>() orderby attrib.Order select attrib).FirstOrDefault();
-					if (httpMethodAttribute == null) {
-						httpMethodAttribute = (from attrib in method.GetCustomAttributes<HttpDeleteAttribute>() orderby attrib.Order select attrib).FirstOrDefault();
-					}
+		
+		ControllerMethod ConvertMethod(MethodInfo method) {
+			if (method.IsPublic) {
+				HttpMethodAttribute httpMethodAttribute = method.GetCustomAttributes<HttpMethodAttribute>().OrderBy(args => args.Order).FirstOrDefault();
+		
+				if(httpMethodAttribute != null) {
+					return new ControllerMethod {
+						Route = httpMethodAttribute.Template,
+						HttpAction = httpMethodAttribute.Name,
+					};
 				}
 			}
-			return httpMethodAttribute;
+			return null;
 		}
 	}
 }
