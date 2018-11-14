@@ -12,12 +12,16 @@
     <PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
     <Description>Contains code generator that will run against .net reflection objects.</Description>
     <PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
-    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Albatross.Database" Version="1.1.5" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Runtime">
+      <HintPath>..\..\..\..\..\..\usr\local\share\dotnet\sdk\NuGetFallbackFolder\system.runtime\4.3.0\ref\netstandard1.5\System.Runtime.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

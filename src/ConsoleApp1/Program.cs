@@ -1,30 +1,33 @@
-﻿using NSwag.CodeGeneration.CSharp;
-using System;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Reflection;
+using System.Runtime.Loader;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1 {
 	class Program {
 		static void Main(string[] args) {
-			Task task = Task.Run(async () => await Run());
-			Task.WaitAll(task);
-		}
+            const string path = "/Users/rushui/git/codegen/src/TestProjects/bin/ProjectB.dll";
 
-		static async Task Run() {
-			string json;
-			using (StreamReader reader = new StreamReader(@"C:\git\codegen\src\ConsoleApp1\data.json")) {
-				json = reader.ReadToEnd();
-			}
-			var document = await NSwag.SwaggerDocument.FromJsonAsync(json);
-			var settings = new SwaggerToCSharpClientGeneratorSettings {
-				ClassName = "MyClass",
-				CSharpGeneratorSettings = { Namespace = "MyNamespace" }
-			};
-			var generator = new SwaggerToCSharpClientGenerator(document, settings);
-			var code = generator.GenerateFile();
-			using (StreamWriter writer = new StreamWriter(@"C:\git\codegen\src\ConsoleApp1\output.cs")) {
-				writer.Write(code);
-			}
-		}
+            Run(path);
+            Console.ReadLine();
+            Run(path);
+        }
+        static void Run(string path) {
+            Assembly asm = AssemblyLoadContext.Default.LoadFromAssemblyPath(path);
+            //    Assembly asm = Assembly.LoadFile(path);
+
+            foreach (Type type in asm.GetTypes()) {
+                Console.WriteLine(type.FullName);
+                foreach (PropertyInfo p in type.GetProperties()) {
+                    Console.WriteLine(p.Name);
+                }
+            }
+        }
+        static void Run2() {
+            Process p = new Process();
+        }
 	}
+
 }
