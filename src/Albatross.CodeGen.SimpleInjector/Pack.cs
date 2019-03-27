@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.SimpleInjector {
 			container.Register<IGetVariable, SqlVariableMgmt>(Lifestyle.Singleton);
 			container.Register<ICreateVariableName, CreateSqlVariableName>(Lifestyle.Singleton);
 
-			container.Register<IGetDotNetType, GetDotNetType>(Lifestyle.Singleton);
+			container.Register<IConvertSqlTypeToDotNetType, GetDotNetType>(Lifestyle.Singleton);
 			container.Register<IOverrideClassObject, OverrideClassObject>(Lifestyle.Singleton);
 			container.Register<IGetMethodSignature, GetMethodSignature>(Lifestyle.Singleton);
 

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <FileVersion>2.0.0.0</FileVersion>
     <Version>2.0.0-beta</Version>
@@ -10,9 +10,10 @@
     <PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
     <Description>Contains code generation objects and interfaces for database operations</Description>
     <PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Albatross.Database" Version="1.1.5" />
+    <PackageReference Include="Albatross.Database" Version="1.1.7" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />

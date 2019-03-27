@@ -14,9 +14,9 @@ namespace Albatross.CodeGen.SqlServer {
 	[CodeGenerator("procedure-to-proxy-class", GeneratorTarget.CSharp, Description = "Genearte a CSharp class from a database stored procedure object")]
 	public class StoredProcedureProxy : CodeGeneratorBase<Procedure, Class> {
 		IWriteObject<Class> writeClass;
-		IGetDotNetType getDotNetType;
+		IConvertSqlTypeToDotNetType getDotNetType;
 
-		public StoredProcedureProxy(IWriteObject<Class> writeClass, IGetDotNetType getDotNetType) {
+		public StoredProcedureProxy(IWriteObject<Class> writeClass, IConvertSqlTypeToDotNetType getDotNetType) {
 			this.writeClass = writeClass;
 			this.getDotNetType = getDotNetType;
 		}

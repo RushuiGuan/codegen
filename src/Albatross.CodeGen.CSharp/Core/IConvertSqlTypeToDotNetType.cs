@@ -1,7 +1,7 @@
 ﻿using Albatross.Database;
 
 namespace Albatross.CodeGen.CSharp.Core {
-	public interface IGetDotNetType {
+	public interface IConvertSqlTypeToDotNetType {
 		DotNetType Get(SqlType sqlType);
 	}
 }
