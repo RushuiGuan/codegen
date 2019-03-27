@@ -7,9 +7,9 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp {
 	public class StoredProcedureToDapperClass : IStoredProcedureToClass {
-		IGetDotNetType getDotNetType;
+		IConvertSqlTypeToDotNetType getDotNetType;
 
-		public StoredProcedureToDapperClass(IGetDotNetType getDotNetType) {
+		public StoredProcedureToDapperClass(IConvertSqlTypeToDotNetType getDotNetType) {
 			this.getDotNetType = getDotNetType;
 		}
 

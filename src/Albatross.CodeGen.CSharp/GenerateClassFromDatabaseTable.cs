@@ -7,9 +7,9 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp {
 	public class GenerateClassFromDatabaseTable : IDatabaseTableToClass {
-		IGetDotNetType getDotNetType;
+		IConvertSqlTypeToDotNetType getDotNetType;
 
-		public GenerateClassFromDatabaseTable(IGetDotNetType getDotNetType) {
+		public GenerateClassFromDatabaseTable(IConvertSqlTypeToDotNetType getDotNetType) {
 			this.getDotNetType = getDotNetType;
 		}
 
