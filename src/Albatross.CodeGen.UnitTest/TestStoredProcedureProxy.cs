@@ -1,16 +1,15 @@
-﻿using Albatross.CodeGen.CSharp.Core;
+﻿using Albatross.CodeGen.CSharp.Model;
 using Albatross.CodeGen.SimpleInjector;
-using Albatross.CodeGen.SqlServer;
 using Albatross.Database;
 using Albatross.Test;
 using NUnit.Framework;
 using SimpleInjector;
-using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albatross.CodeGen.UnitTest {
-	[TestFixture]
+namespace Albatross.CodeGen.UnitTest
+{
+    [TestFixture]
 	public class TestStoredProcedureProxy : TestBase {
 
 		public override void Register(Container container) {
@@ -42,14 +41,6 @@ namespace Albatross.CodeGen {
 			return new TestCaseData[] {
 				Case1,
 			};
-		}
-
-
-		[TestCaseSource(nameof(GetTestCases))]
-		public string Run(Procedure procedure, Class c) {
-			StringBuilder sb = new StringBuilder();
-			Get<StoredProcedureProxy>().Build(sb, procedure, c);
-			return sb.ToString();
 		}
 	}
 }

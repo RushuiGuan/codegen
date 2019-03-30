@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.CSharp;
-using Albatross.CodeGen.CSharp.Core;
+using Albatross.CodeGen.CSharp.Model;
+using Albatross.CodeGen.CSharp.Writer;
 using Albatross.CodeGen.SimpleInjector;
 using Albatross.Test;
 using NUnit.Framework;
@@ -9,7 +10,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture(TestOf =typeof(WriteClass))]
+	[TestFixture(TestOf =typeof(WriteCSharpClass))]
 	public class TestWriteClass : TestBase{
 		public override void Register(Container container) {
 
@@ -43,7 +44,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(Class p) {
-			var writer = Get<WriteClass>();
+			var writer = Get<WriteCSharpClass>();
 			string result = writer.Write(p);
 			return result;
 		}

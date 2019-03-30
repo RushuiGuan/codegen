@@ -26,8 +26,6 @@ namespace Albatross.CodeGen.UnitTest {
 			//codeGenFactory.RegisterAssembly(typeof(Albatross.CodeGen.CSharp.ClassGenerator<object>).Assembly);
 			codeGenFactory.RegisterAssembly(typeof(Albatross.CodeGen.Database.SqlCodeGenOption).Assembly);
 			codeGenFactory.RegisterAssembly(typeof(Albatross.CodeGen.SqlServer.BuildSqlType).Assembly);
-
-			codeGenFactory.RegisterConstant();
 		}
 	}
 }

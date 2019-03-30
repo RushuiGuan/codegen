@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.CSharp;
-using Albatross.CodeGen.CSharp.Core;
+using Albatross.CodeGen.CSharp.Model;
+using Albatross.CodeGen.CSharp.Writer;
 using Albatross.CodeGen.SimpleInjector;
 using Albatross.Test;
 using NUnit.Framework;
@@ -52,7 +53,7 @@ namespace Albatross.CodeGen.UnitTest {
 							 Type = DotNetType.DateTime,
 						},
 					},
-					ChainedConstructor = new Constructor("this") {
+					BaseConstructor = new Constructor("this") {
 						Variables = new Variable[] {
 							new Variable("a"),
 							new Variable("b")

@@ -1,16 +1,17 @@
-﻿using Albatross.CodeGen.CSharp.Core;
+﻿using Albatross.CodeGen.CSharp;
+using Albatross.CodeGen.CSharp.Model;
+using Albatross.CodeGen.Renderer;
 using Albatross.CodeGen.SimpleInjector;
-using Albatross.CodeGen.SqlServer;
 using Albatross.Database;
 using Albatross.Test;
 using NUnit.Framework;
 using SimpleInjector;
-using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Albatross.CodeGen.UnitTest {
-	[TestFixture]
+namespace Albatross.CodeGen.UnitTest
+{
+    [TestFixture]
 	public class TestSqlTable2CSharpClass : TestBase {
 		public override void Register(Container container) {
 			new Pack().RegisterServices(container);
@@ -55,7 +56,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 		[TestCaseSource(nameof(GetTestCases))]
 		public string RunTest(Table table, Class @class) {
-			var handle = Get<SqlTable2CSharpClass>();
+			var handle = Get<RenderCSharpClass>();
 			StringBuilder sb = new StringBuilder();
 			handle.Build(sb, table, @class);
 			return sb.ToString();

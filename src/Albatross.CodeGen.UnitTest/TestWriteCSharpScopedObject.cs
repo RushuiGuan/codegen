@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.CSharp;
+using Albatross.CodeGen.CSharp.Writer;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

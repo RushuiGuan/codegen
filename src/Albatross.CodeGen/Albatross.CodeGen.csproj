@@ -13,4 +13,8 @@
     <PackageLicenseUrl>https://github.com/RushuiGuan/CodeGen/blob/master/LICENSE</PackageLicenseUrl>
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Albatross.Database" Version="1.1.7" />
+    <PackageReference Include="Autofac" Version="4.9.2" />
+  </ItemGroup>
 </Project>

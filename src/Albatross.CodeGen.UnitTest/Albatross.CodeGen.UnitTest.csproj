@@ -17,8 +17,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Albatross.CodeGen.CSharp.AspNetCoreWebApiProxy\Albatross.CodeGen.CSharp.AspNetCoreWebApiProxy.csproj" />
-	  <ProjectReference Include="..\Albatross.CodeGen.CSharp\Albatross.CodeGen.CSharp.csproj" />
 	  <ProjectReference Include="..\Albatross.CodeGen.Database\Albatross.CodeGen.Database.csproj" />
 	  <ProjectReference Include="..\Albatross.CodeGen.PowerShell\Albatross.CodeGen.PowerShell.csproj" />
 	  <ProjectReference Include="..\Albatross.CodeGen.SimpleInjector\Albatross.CodeGen.SimpleInjector.csproj" />

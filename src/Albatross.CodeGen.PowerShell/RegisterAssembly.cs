@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.CSharp;
+using Albatross.CodeGen.CSharp.Conversion;
 using Albatross.CodeGen.Database;
 using Albatross.CodeGen.SqlServer;
 using System;
@@ -18,13 +19,11 @@ namespace Albatross.CodeGen.PowerShell {
 
 		protected override void ProcessRecord() {
 			Handle.RegisterAssembly(typeof(Albatross.CodeGen.ICodeGeneratorFactory).Assembly);
-			Handle.RegisterAssembly(typeof(Albatross.CodeGen.CSharp.StoredProcedureToDapperClass).Assembly);
+			Handle.RegisterAssembly(typeof(ConvertStoredProcedureToDapperClass).Assembly);
 			Handle.RegisterAssembly(typeof(Albatross.CodeGen.Database.SqlCodeGenOption).Assembly);
 			Handle.RegisterAssembly(typeof(Albatross.CodeGen.SqlServer.BuildSqlType).Assembly);
 
-			Handle.RegisterConstant();
-
-			if (File.Exists(Location?.FullName)) {
+            if (File.Exists(Location?.FullName)) {
 				Assembly asm = Assembly.LoadFile(Location.FullName);
 				Handle.RegisterAssembly(asm);
 			}

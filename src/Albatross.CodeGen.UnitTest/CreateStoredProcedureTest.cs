@@ -37,29 +37,5 @@ namespace Albatross.CodeGen.UnitTest {
 				new TestCaseData(ContactTable.Table, new SqlCodeGenOption{ Schema="dbo", Name="test", Parameters = new Parameter[]{ new Parameter{ Name = "user", Type = NonUnicodeString(100), } }, Expressions={ { "@created", "getdate()"}, {"@modified", "getdate()"}, { "@createdBy", "@user"},{ "@modifiedBy", "@user"} } }){ ExpectedResult="create procedure [dbo].[test]\r\n\t@user as varchar(100),\r\n\t@domain as varchar(100),\r\n\t@login as varchar(100),\r\n\t@firstName as nvarchar(100),\r\n\t@lastName as nvarchar(100),\r\n\t@middleName as nvarchar(100),\r\n\t@gender as char(20),\r\n\t@cell as varchar(50),\r\n\t@address as nvarchar(200)\r\nas\r\n\tinsert into [test].[Contact] ([Domain], [Login], [FirstName], [LastName], [MiddleName], [Gender], [Cell], [Address], [Created], [CreatedBy], [Modified], [ModifiedBy])\r\n\tvalues (@domain, @login, @firstName, @lastName, @middleName, @gender, @cell, @address, getdate(), @user, getdate(), @user)\r\ngo" },
 			};
 		}
-
-		[TestCaseSource(nameof(CreateProcedureTestCase))]
-		public string CreateProcedure(Table table, SqlCodeGenOption option) {
-			Container container = Ioc.Container;
-			var factory = container.GetInstance<IConfigurableCodeGenFactory>();
-			factory.Register(new CodeGenerator {
-				GeneratorType = typeof(CreateStoredProcedure),
-				SourceType = typeof(Table),
-				OptionType = typeof(SqlCodeGenOption),
-				Name = "create procedure",
-			});
-			factory.Register(new CodeGenerator {
-				GeneratorType = typeof(TableInsert),
-				SourceType = typeof(Table),
-				OptionType = typeof(SqlCodeGenOption),
-				Name = "insert",
-			});
-
-			CompositeCodeGenerator compositeCodeGenerator = new CompositeCodeGenerator(factory);
-			compositeCodeGenerator.Configure(new Branch(new Leaf("create procedure"), new Leaf("insert")));
-			StringBuilder sb = new StringBuilder();
-			compositeCodeGenerator.Build(sb, table, option);
-			return sb.ToString();
-		}
 	}
 }

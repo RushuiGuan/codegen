@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.CSharp;
-using Albatross.CodeGen.CSharp.Core;
+using Albatross.CodeGen.CSharp.Model;
+using Albatross.CodeGen.CSharp.Writer;
 using Albatross.CodeGen.SimpleInjector;
 using Albatross.Test;
 using NUnit.Framework;

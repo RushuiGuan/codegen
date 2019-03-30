@@ -29,7 +29,16 @@ namespace Albatross.CodeGen.PowerShell {
 		[Parameter]
 		public SwitchParameter Force { get; set; }
 
-		protected override void ProcessRecord() {
+        StreamWriter writer;
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            if (Output?.Exists == false || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning"))
+            {
+                writer = new StreamWriter(new FileStream(Output.FullName, FileMode.OpenOrCreate));
+            }
+        }
+        protected override void ProcessRecord() {
 			if (Source is PSObject) { Source = ((PSObject)Source).BaseObject; }
 			if (Option is PSObject) { Option = ((PSObject)Option).BaseObject; }
 
@@ -39,17 +48,17 @@ namespace Albatross.CodeGen.PowerShell {
 
 			runHandle.Run(meta, sb, Source, Option);
 			WriteObject(sb.ToString());
-			if (Output != null) {
-				if (!Output.Exists || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning")) {
-					using (var stream = new FileStream(Output.FullName, FileMode.OpenOrCreate)) {
-						using (var writer = new StreamWriter(stream)) {
-							writer.Write(sb.ToString());
-							writer.Flush();
-							stream.SetLength(stream.Position);
-						}
-					}
-				}
-			}
+            if(writer != null)
+            {
+                writer.Write(sb.ToString());
+            }
 		}
-	}
+        protected override void EndProcessing()
+        {
+            base.EndProcessing();
+            writer.Flush();
+            writer.BaseStream.SetLength(writer.BaseStream.Position);
+            writer.Close();
+        }
+    }
 }
