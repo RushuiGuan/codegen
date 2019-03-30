@@ -12,24 +12,28 @@ namespace Albatross.CodeGen.CSharp.Writer
 	public class WriteDotNetType: CodeGeneratorBase<DotNetType> {
 		public override void Run(TextWriter writer, DotNetType type) {
             writer.Append(type.Name);
-            if (type.IsGeneric && type.GenericTypes?.Count() > 0)
+            if (type.IsGeneric)
             {
-                writer.OpenAngleBracket();
-                bool first = true;
-                foreach (var genericType in type.GenericTypes)
-                {
-                    if (!first)
-                    {
-                        writer.Comma().Space();
-                    }
-                    else
-                    {
-                        first = false;
-                    }
-                    writer.Run(this, genericType);
-                }
-                writer.CloseAngleBracket();
+				if (type.GenericTypeArguments?.Count() > 0) {
+
+					writer.OpenAngleBracket();
+					bool first = true;
+					foreach (var genericType in type.GenericTypeArguments) {
+						if (!first) {
+							writer.Comma().Space();
+						} else {
+							first = false;
+						}
+						writer.Run(this, genericType);
+					}
+					writer.CloseAngleBracket();
+				} else {
+					throw new CodeGenException("Missing Generic Arguments");
+				}
             }
+			if (type.IsArray) {
+				writer.Append("[]");
+			}
         }
 	}
 }

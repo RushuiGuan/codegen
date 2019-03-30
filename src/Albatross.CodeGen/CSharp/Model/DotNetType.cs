@@ -4,12 +4,21 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp.Model {
 	public class DotNetType {
-		public DotNetType(string name) {
-			Name = name;
+		public DotNetType(string name):this(name, false, false, null) {
 		}
+
+
+		public DotNetType(string name, bool isArray, bool isGeneric, IEnumerable<DotNetType> genericTypeArgs) {
+			this.Name = name;
+			this.IsGeneric = isGeneric;
+			this.IsArray = isArray;
+			this.GenericTypeArguments = genericTypeArgs ?? new DotNetType[0];
+		}
+
 		public string Name { get; private set; }
-		public bool IsGeneric { get; set; }
-		public IEnumerable<DotNetType> GenericTypes { get; set; }
+		public bool IsGeneric { get;private set; }
+		public bool IsArray { get; private set; }
+		public IEnumerable<DotNetType> GenericTypeArguments { get; private set; }
 
 		public static readonly DotNetType Void = new DotNetType("void");
 
@@ -35,6 +44,12 @@ namespace Albatross.CodeGen.CSharp.Model {
 		public static readonly DotNetType Guid = new DotNetType("Guid");
 
 		public static readonly DotNetType IDbConnection = new DotNetType("System.Data.IDbConnection");
-		public static readonly DotNetType IDbConnection_ClassName = new DotNetType("IDbConnection");
+
+		public static DotNetType MakeNullable(DotNetType dotNetType) {
+			return new DotNetType("System.Nullable", false, true, new DotNetType[] { dotNetType });
+		}
+		public static DotNetType MakeIEnumerable(DotNetType dotNetType) {
+			return new DotNetType("System.Collections.Generic.IEnumerable", false, true, new DotNetType[] { dotNetType });
+		}
 	}
 }

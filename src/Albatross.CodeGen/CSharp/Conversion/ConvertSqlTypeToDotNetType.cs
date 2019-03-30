@@ -5,6 +5,13 @@ using Albatross.Database;
 
 namespace Albatross.CodeGen.CSharp.Conversion {
 	public class ConvertSqlTypeToDotNetType : IConvertObject<SqlType, DotNetType> {
+
+		ConvertTypeToDotNetType convertTypeToDotNetType;
+
+		public ConvertSqlTypeToDotNetType(ConvertTypeToDotNetType convertTypeToDotNetType) {
+			this.convertTypeToDotNetType = convertTypeToDotNetType;
+		}
+
 		public DotNetType Convert(SqlType sqlType) {
 			DotNetType type;
 			bool isValueType = false;
@@ -119,10 +126,7 @@ namespace Albatross.CodeGen.CSharp.Conversion {
 			}
 
 			if(isValueType && sqlType.IsNullable) {
-				type = new DotNetType("Nullable") {
-					IsGeneric = true,
-					GenericTypes = new DotNetType[] { type },
-				};
+				type = DotNetType.MakeNullable(type);
 			}
 			return type;
 		}

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.Core
 {
-    public class CodeGeneratorScope : ICodeGeneratorScope
+    public class CodeGeneratorScope :IDisposable
     {
         TextWriter parentWriter;
         StringBuilder content = new StringBuilder();

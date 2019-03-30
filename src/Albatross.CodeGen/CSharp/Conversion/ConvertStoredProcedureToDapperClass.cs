@@ -18,8 +18,8 @@ namespace Albatross.CodeGen.CSharp.Conversion {
 				Imports = new string[] { "Dapper", "System.Data", },
 				Dependencies = new Dependency[] {
 					  new Dependency("dbConn") {
-						   FieldType = DotNetType.IDbConnection_ClassName,
-						   Type = DotNetType.IDbConnection_ClassName,
+						   FieldType = DotNetType.IDbConnection,
+						   Type = DotNetType.IDbConnection,
 					  }
 				 },
 				Methods = new Method[] {
@@ -44,7 +44,7 @@ namespace Albatross.CodeGen.CSharp.Conversion {
 							 },
 			};
 
-            method.Body = "DynamicParameters dynamicParameters = new DynamicParameters();\nreturn new CommandDefinition(dbConnection,);";
+            method.Body = new CodeBlock { Content = "DynamicParameters dynamicParameters = new DynamicParameters();\nreturn new CommandDefinition(dbConnection,);" };
 			return method;
 		}
 	}
