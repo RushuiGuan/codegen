@@ -7,14 +7,14 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp.Writer
 {
-	public class WriteParameter : CodeGeneratorBase<Variable> {
+	public class WriteParameter : CodeGeneratorBase<Parameter> {
 		ICodeGenerator<DotNetType> writeType;
 
 		public WriteParameter(ICodeGenerator<DotNetType> writeType) {
 			this.writeType = writeType;
 		}
 
-        public override void Run(TextWriter writer, Variable t)
+        public override void Run(TextWriter writer, Parameter t)
         {
 			if(t.Modifier == ParameterModifier.Out) {
 				writer.Append("out ");

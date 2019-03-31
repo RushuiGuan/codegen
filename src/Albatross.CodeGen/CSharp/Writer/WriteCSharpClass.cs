@@ -26,7 +26,6 @@ namespace Albatross.CodeGen.CSharp.Writer
 
         public override void Run(TextWriter writer, Class @class) {
 			if (@class.Imports?.Count() > 0) {
-				@class.Imports.Distinct().OrderBy(args => args);
 				foreach(var item in @class.Imports) {
 					writer.Append("import ").AppendLine(item);
 				}

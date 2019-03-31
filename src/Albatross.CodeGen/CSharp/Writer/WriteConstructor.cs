@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.Core;
 using Albatross.CodeGen.CSharp.Model;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,41 +9,39 @@ namespace Albatross.CodeGen.CSharp.Writer
 {
 	public class WriteConstructor : CodeGeneratorBase<Constructor> {
 		ICodeGenerator<AccessModifier> writeAccessModifier;
-		ICodeGenerator<Variable> writeParam;
+		ICodeGenerator<IEnumerable<Parameter>> writeParams;
+		ICodeGenerator<CodeBlock> writeCodeBlock;
 
-		public WriteConstructor(ICodeGenerator<AccessModifier> writeAccessModifier, ICodeGenerator<Variable> writeParam) {
+		public WriteConstructor(ICodeGenerator<AccessModifier> writeAccessModifier, ICodeGenerator<IEnumerable<Parameter>> writeParams, ICodeGenerator<CodeBlock> writeCodeBlock) {
 			this.writeAccessModifier = writeAccessModifier;
-			this.writeParam = writeParam;
+			this.writeParams = writeParams;
+			this.writeCodeBlock = writeCodeBlock;
 		}
 
 
-		public override void Run(TextWriter writer, Constructor t) {
-			if (t.Static) {
+		public override void Run(TextWriter writer, Constructor constructor) {
+			if (constructor.Static) {
 				writer.Static();
 			} else {
-				writer.Run(writeAccessModifier, t.AccessModifier).Space();
+				writer.Run(writeAccessModifier, constructor.AccessModifier).Space();
 			}
-			writer.Append(t.Name).OpenParenthesis();
-			if (t.Variables?.Count() > 0) {
-				foreach (var param in t.Variables) {
-					writer.Run(writeParam, param);
-					writer.Comma().Space();
-				}
-			}
+			writer.Append(constructor.Name).OpenParenthesis();
+			writer.Run(writeParams, constructor.Parameters);
 			writer.CloseParenthesis();
 
-			if(t.BaseConstructor?.Variables?.Count() > 0) {
-				writer.Append(" : ").Append(t.BaseConstructor.Name).OpenParenthesis();
-				foreach (var item in t.BaseConstructor.Variables) {
-					writer.Append("@").Append(item.Name);
-					writer.Comma().Space();
+			if(constructor.BaseConstructor!=null) {
+				writer.Append(" : ").Append(constructor.BaseConstructor.Name).OpenParenthesis();
+				if (constructor.Parameters != null) {
+					foreach (var item in constructor.Parameters) {
+						writer.Append("@").Append(item.Name);
+						if (item != constructor.Parameters.Last()) {
+							writer.Comma().Space();
+						}
+					}
 				}
 				writer.CloseParenthesis();
 			}
-
-			using(var scope= writer.BeginScope()) {
-                scope.Writer.Append(t.Body);
-			}
+			writer.Run(writeCodeBlock, constructor.Body);
 		}
 	}
 }

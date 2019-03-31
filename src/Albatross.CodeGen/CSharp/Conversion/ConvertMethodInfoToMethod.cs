@@ -5,11 +5,11 @@ using System.Reflection;
 
 namespace Albatross.CodeGen.CSharp.Conversion {
 	public class ConvertMethodInfoToMethod: IConvertObject<MethodInfo, Method> {
-        ConvertParameterInfoToVariable convertToVariable;
+        ConvertParameterInfoToParameter  convertToParameter;
 		ConvertTypeToDotNetType convertToDotNetType;
 
-		public ConvertMethodInfoToMethod(ConvertParameterInfoToVariable convertToVariable, ConvertTypeToDotNetType convertToDotNetType) {
-			this.convertToVariable = convertToVariable;
+		public ConvertMethodInfoToMethod(ConvertParameterInfoToParameter  convertToParameter, ConvertTypeToDotNetType convertToDotNetType) {
+			this.convertToParameter = convertToParameter;
 			this.convertToDotNetType = convertToDotNetType;
 		}
 
@@ -18,11 +18,11 @@ namespace Albatross.CodeGen.CSharp.Conversion {
             Method method = new Method
             {
                 Name = info.Name,
-                Variables = from item in info.GetParameters() select convertToVariable.Convert(item),
+                Parameters = from item in info.GetParameters() select convertToParameter.Convert(item),
                 ReturnType = convertToDotNetType.Convert(info.ReturnType),
                 Static = info.IsStatic,
                 Virtual = info.IsVirtual,
-                AccessModifier = info.IsPublic ? AccessModifier.Public : info.IsPrivate ? AccessModifier.Private : AccessModifier.Protected,
+                AccessModifier = info.GetAccessModifier(),
             };
             return method;
         }

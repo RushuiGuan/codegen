@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.Core;
 using Albatross.CodeGen.CSharp.Model;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -7,32 +8,33 @@ namespace Albatross.CodeGen.CSharp.Writer
 {
     public class WriteMethod : CodeGeneratorBase<Method> {
 		ICodeGenerator<AccessModifier> writeAccessModifier;
-		ICodeGenerator<Variable> writeParam;
+		ICodeGenerator<IEnumerable<Parameter>> writeParams;
 		ICodeGenerator<DotNetType> writeType;
+		ICodeGenerator<CodeBlock> writeCodeBlock;
 
-		public WriteMethod(ICodeGenerator<AccessModifier> writeAccessModifier, ICodeGenerator<Variable> writeParam, ICodeGenerator<DotNetType> writeType) {
+		public WriteMethod(ICodeGenerator<AccessModifier> writeAccessModifier, ICodeGenerator<IEnumerable<Parameter>> writeParams, ICodeGenerator<DotNetType> writeType, ICodeGenerator<CodeBlock> writeCodeBlock) {
 			this.writeAccessModifier = writeAccessModifier;
-			this.writeParam = writeParam;
+			this.writeParams = writeParams;
 			this.writeType = writeType;
+			this.writeCodeBlock = writeCodeBlock;
 		}
 
         public override void Run(TextWriter writer, Method t) {
 			writer.Run(writeAccessModifier, t.AccessModifier).Space();
-			if (t.Static) { writer.Static(); }
+			if (t.Static) {
+				writer.Static();
+			} else if (t.Override) {
+				writer.Write("override ");
+			} else if (t.Virtual) {
+				writer.Write("virtual ");
+			}
+
 			writer.Run(writeType, t.ReturnType).Space();
 
 			writer.Append(t.Name).OpenParenthesis();
-			if (t.Variables?.Count() > 0) {
-				foreach (var param in t.Variables) {
-					writer.Run(writeParam, param);
-					writer.Comma().Space();
-				}
-			}
+			writer.Run(writeParams, t.Parameters);
 			writer.CloseParenthesis();
-
-            using (var scope = writer.BeginScope()){
-				scope.Writer.Append(t.Body);
-			}
+			writer.Run(writeCodeBlock, t.Body);
 		}
 	}
 }

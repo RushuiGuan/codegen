@@ -16,5 +16,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 		public bool Static { get; set; }
         public bool CanWrite { get; set; }
         public bool CanRead { get; set; }
-    }
+		public CodeBlock GetCodeBlock { get; set; }
+		public CodeBlock SetCodeBlock { get; set; }
+	}
 }

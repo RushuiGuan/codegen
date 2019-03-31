@@ -9,19 +9,19 @@ using System.Text;
 namespace Albatross.CodeGen.CSharp.Writer {
 	public class WriteAccessModifier: CodeGeneratorBase<AccessModifier> {
 		public override void Run(TextWriter writer, AccessModifier accessModifier) {
-			switch (accessModifier) {
-				case AccessModifier.Public:
-				case AccessModifier.Private:
-				case AccessModifier.Protected:
-				case AccessModifier.Internal:
-					writer.Append(Convert.ToString(accessModifier).ToLower());
-					break;
-				case AccessModifier.ProtectedInternal:
-					writer.Append("protected internal");
-					break;
-				case AccessModifier.PrivateInternal:
-					writer.Append("private internal"); 
-					break;
+			if (accessModifier == AccessModifier.Internal) {
+				writer.Write("internal");
+			} else {
+				if ((accessModifier & AccessModifier.Public) > 0) {
+					writer.Write("public");
+				} else if ((accessModifier & AccessModifier.Private) > 0) {
+					writer.Write("private");
+				} else if ((accessModifier & AccessModifier.Protected) > 0) {
+					writer.Write("protected");
+				}
+				if ((accessModifier & AccessModifier.Internal) > 0) {
+					writer.Write(" internal");
+				}
 			}
 		}
 	}

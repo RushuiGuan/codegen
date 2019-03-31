@@ -35,7 +35,7 @@ namespace Albatross.CodeGen.UnitTest {
 					ExpectedResult = "decimal",
 				},
 				new TestCaseData(DotNetType.Double){
-					ExpectedResult = "double",
+					ExpectedResult = "System.Double",
 				},
 				new TestCaseData(DotNetType.Guid){
 					ExpectedResult = "Guid",
@@ -44,7 +44,7 @@ namespace Albatross.CodeGen.UnitTest {
 					ExpectedResult = typeof(System.Data.IDbConnection).FullName,
 				},
 				new TestCaseData(DotNetType.Integer){
-					ExpectedResult = "int",
+					ExpectedResult = "System.Int32",
 				},
 				new TestCaseData(DotNetType.Long){
 					ExpectedResult = "long",
@@ -56,7 +56,7 @@ namespace Albatross.CodeGen.UnitTest {
 					ExpectedResult = "single",
 				},
 				new TestCaseData(DotNetType.String){
-					ExpectedResult = "string",
+					ExpectedResult = "System.String",
 				},
 				new TestCaseData(DotNetType.TimeSpan){
 					ExpectedResult = "TimeSpan",
@@ -64,9 +64,9 @@ namespace Albatross.CodeGen.UnitTest {
 				new TestCaseData(DotNetType.Void){
 					ExpectedResult = "void",
 				},
-				new TestCaseData(DotNetType.MakeIEnumerable(DotNetType.String)){ ExpectedResult="System.Collections.Generic.IEnumerable<string>" },
-				new TestCaseData(new DotNetType("int", true, false, null)){ ExpectedResult="int[]" },
-				new TestCaseData(DotNetType.MakeNullable(DotNetType.Integer)){ ExpectedResult= "System.Nullable<int>" },
+				new TestCaseData(DotNetType.MakeIEnumerable(DotNetType.String)){ ExpectedResult="System.Collections.Generic.IEnumerable<System.String>" },
+				new TestCaseData(new DotNetType("System.Int32", true, false, null)){ ExpectedResult="System.Int32[]" },
+				new TestCaseData(DotNetType.MakeNullable(DotNetType.Integer)){ ExpectedResult= "System.Nullable<System.Int32>" },
 			};
 		}
 

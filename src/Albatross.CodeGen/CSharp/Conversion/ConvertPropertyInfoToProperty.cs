@@ -15,17 +15,17 @@ namespace Albatross.CodeGen.CSharp.Conversion {
 
         public Property Convert(PropertyInfo from)
         {
-			
-            return new Property
+            Property property = new Property
             {
                 Name = from.Name,
                 Type = convertToDotNetType.Convert(from.PropertyType),
                 CanWrite = from.CanWrite,
                 CanRead = from.CanRead,
 				Static = from.GetAccessors().Any(args => args.IsStatic),
+				Modifier = from.GetMethod.GetAccessModifier(),
 			};
-
-			
+			property.SetModifier = (from.GetSetMethod()??from.GetSetMethod(true))?.GetAccessModifier() ?? property.Modifier;
+			return property;
         }
 
         object IConvertObject<PropertyInfo>.Convert(PropertyInfo from)

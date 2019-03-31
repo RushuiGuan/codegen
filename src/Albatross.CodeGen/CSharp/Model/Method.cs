@@ -12,7 +12,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 		public DotNetType ReturnType { get; set; } = DotNetType.Void;
 		public string Name { get; set; }
 		public AccessModifier AccessModifier { get; set; }
-		public IEnumerable<Variable> Variables { get; set; }
+		public IEnumerable<Parameter> Parameters { get; set; }
 		public bool Static { get; set; }
 		public bool Virtual { get; set; }
 		public bool Override { get; set; }

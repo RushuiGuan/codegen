@@ -10,10 +10,10 @@ namespace Albatross.CodeGen.UnitTest {
 	public class WriteCodeBlockTest {
 
 
-		[TestCase("test;", ExpectedResult ="{\n\ttest;\n}\n")]
+		[TestCase("test;", ExpectedResult =" {\n\ttest;\n}")]
 		public string Run(string input) {
 			StringWriter writer = new StringWriter();
-			writer.Run(new WriteCodeBlock(), new CodeBlock { Content = input, });
+			writer.Run(new WriteCodeBlock(), new CodeBlock(input));
 			return writer.ToString().RemoveCarriageReturn();
 		}
 	}

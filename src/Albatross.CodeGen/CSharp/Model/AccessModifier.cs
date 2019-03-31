@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Albatross.CodeGen.CSharp.Model {
+	[Flags]
 	public enum AccessModifier {
-		Public = 0,
-		Private = 1,
-		Protected = 2,
-		Internal = 3,
-		ProtectedInternal = 4,
-		PrivateInternal = 5,
+		Unknown = 0,
+		Public = 1,
+		Private = 2,
+		Protected = 4,
+		Internal = 8,
 	}
 }

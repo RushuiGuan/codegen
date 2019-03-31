@@ -11,10 +11,12 @@ namespace Albatross.CodeGen.CSharp.Writer
 	public class WriteCSharpProperty : CodeGeneratorBase<Property> {
 		ICodeGenerator<AccessModifier> writeAccessModifier;
 		ICodeGenerator<DotNetType> writeType;
+		WriteCodeBlock writeCodeBlock;
 
-		public WriteCSharpProperty(ICodeGenerator<AccessModifier> renderAccessModifier, ICodeGenerator<DotNetType> renderType) {
+		public WriteCSharpProperty(ICodeGenerator<AccessModifier> renderAccessModifier, ICodeGenerator<DotNetType> renderType, WriteCodeBlock writeCodeBlock) {
 			this.writeAccessModifier = renderAccessModifier;
 			this.writeType = renderType;
+			this.writeCodeBlock = writeCodeBlock;
 		}
 
 		public override void Run(TextWriter writer, Property property) {
@@ -24,11 +26,25 @@ namespace Albatross.CodeGen.CSharp.Writer
             writer.Run(writeType, property.Type).Space().Append(property.Name);
 
             using (var scope = writer.BeginScope()) {
-                scope.Writer.Append(" get; ");
-				if (property.SetModifier != property.Modifier) {
-                    scope.Writer.Run(writeAccessModifier, property.SetModifier).Space();
+				if (property.CanRead) {
+					scope.Writer.Append("get");
+					if (property.GetCodeBlock != null) {
+						scope.Writer.Run(writeCodeBlock, property.GetCodeBlock);
+					} else {
+						scope.Writer.Write(";");
+					}
 				}
-				scope.Writer.Append("set");
+				if (property.CanWrite) {
+					if (property.SetModifier != property.Modifier) {
+						scope.Writer.Run(writeAccessModifier, property.SetModifier).Space();
+					}
+					scope.Writer.Append("set");
+					if (property.SetCodeBlock != null) {
+						scope.Writer.Run(writeCodeBlock, property.SetCodeBlock);
+					} else {
+						scope.Writer.Write(";");
+					}
+				}
 			}
 		}
 	}

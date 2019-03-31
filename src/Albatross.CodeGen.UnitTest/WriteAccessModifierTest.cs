@@ -12,8 +12,8 @@ namespace Albatross.CodeGen.UnitTest {
 		[TestCase(AccessModifier.Public, ExpectedResult = "public")]
 		[TestCase(AccessModifier.Private, ExpectedResult = "private")]
 		[TestCase(AccessModifier.Protected, ExpectedResult = "protected")]
-		[TestCase(AccessModifier.ProtectedInternal, ExpectedResult = "protected internal")]
-		[TestCase(AccessModifier.PrivateInternal, ExpectedResult = "private internal")]
+		[TestCase(AccessModifier.Protected | AccessModifier.Internal, ExpectedResult = "protected internal")]
+		[TestCase(AccessModifier.Private| AccessModifier.Internal, ExpectedResult = "private internal")]
 		public string Run(AccessModifier accessModifier) {
 			StringWriter writer = new StringWriter();
 			new WriteAccessModifier().Run(writer, accessModifier);

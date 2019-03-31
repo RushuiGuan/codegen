@@ -30,7 +30,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 		public static readonly DotNetType Long = new DotNetType("long");
 		public static readonly DotNetType Decimal = new DotNetType("decimal");
 		public static readonly DotNetType Single = new DotNetType("single");
-		public static readonly DotNetType Double = new DotNetType("double");
+		public static readonly DotNetType Double = new DotNetType("System.Double");
 
 		public static readonly DotNetType Object = new DotNetType("object");
 
