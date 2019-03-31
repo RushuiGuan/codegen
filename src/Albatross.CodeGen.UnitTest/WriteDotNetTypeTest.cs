@@ -64,7 +64,7 @@ namespace Albatross.CodeGen.UnitTest {
 				new TestCaseData(DotNetType.Void){
 					ExpectedResult = "void",
 				},
-				new TestCaseData(DotNetType.MakeIEnumerable(DotNetType.String)){ ExpectedResult="System.Collection.Generic.IEnumerable<string>" },
+				new TestCaseData(DotNetType.MakeIEnumerable(DotNetType.String)){ ExpectedResult="System.Collections.Generic.IEnumerable<string>" },
 				new TestCaseData(new DotNetType("int", true, false, null)){ ExpectedResult="int[]" },
 				new TestCaseData(DotNetType.MakeNullable(DotNetType.Integer)){ ExpectedResult= "System.Nullable<int>" },
 			};

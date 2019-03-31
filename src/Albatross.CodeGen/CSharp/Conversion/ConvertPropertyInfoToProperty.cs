@@ -1,6 +1,7 @@
 ﻿using Albatross.CodeGen.Core;
 using Albatross.CodeGen.CSharp.Model;
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace Albatross.CodeGen.CSharp.Conversion {
@@ -14,13 +15,17 @@ namespace Albatross.CodeGen.CSharp.Conversion {
 
         public Property Convert(PropertyInfo from)
         {
+			
             return new Property
             {
                 Name = from.Name,
                 Type = convertToDotNetType.Convert(from.PropertyType),
                 CanWrite = from.CanWrite,
                 CanRead = from.CanRead,
-            };
+				Static = from.GetAccessors().Any(args => args.IsStatic),
+			};
+
+			
         }
 
         object IConvertObject<PropertyInfo>.Convert(PropertyInfo from)

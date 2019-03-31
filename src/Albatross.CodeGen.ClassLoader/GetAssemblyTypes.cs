@@ -6,6 +6,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using Albatross.CodeGen.TypeScript.Conversion;
+using Albatross.CodeGen.Core;
 
 namespace Albatross.CodeGen.ClassLoader
 {

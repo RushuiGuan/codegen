@@ -22,11 +22,11 @@ namespace Albatross.CodeGen.CSharp.Model {
 
 		public static readonly DotNetType Void = new DotNetType("void");
 
-		public static readonly DotNetType String = new DotNetType("string");
+		public static readonly DotNetType String = new DotNetType("System.String");
 		public static readonly DotNetType Char = new DotNetType("char");
 
 		public static readonly DotNetType Short = new DotNetType("short");
-		public static readonly DotNetType Integer = new DotNetType("int");
+		public static readonly DotNetType Integer = new DotNetType("System.Int32");
 		public static readonly DotNetType Long = new DotNetType("long");
 		public static readonly DotNetType Decimal = new DotNetType("decimal");
 		public static readonly DotNetType Single = new DotNetType("single");

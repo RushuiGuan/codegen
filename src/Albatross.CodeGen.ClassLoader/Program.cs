@@ -2,13 +2,13 @@
 using CommandLine;
 using System;
 using System.Collections.Generic;
-using SimpleInjector;
-using Albatross.CodeGen.SimpleInjector;
 using System.Reflection;
+using Autofac.Core;
+using Autofac;
+using Albatross.CodeGen.Autofac;
 
-namespace Albatross.CodeGen.ClassLoader
-{
-    class Program {
+namespace Albatross.CodeGen.ClassLoader {
+	class Program {
 
         public class Options {
             [Option('f', "file", Required = true, HelpText = "Input assembly file")]
@@ -31,12 +31,13 @@ namespace Albatross.CodeGen.ClassLoader
             Parser.Default.ParseArguments<Options>(args).WithParsed<Options>(option => {
                 try
                 {
-                    Container container = new Container();
-                    new Pack().RegisterServices(container);
+					ContainerBuilder builder = new ContainerBuilder();
+					new Pack().Register(builder);
+					IContainer container = builder.Build();
                     if (File.Exists(option.AssemblyFile))
                     {
                         Assembly assembly = Assembly.LoadFile(option.AssemblyFile);
-                        var handle = container.GetInstance<GetAssemblyTypes>();
+                        var handle = container.Resolve<GetAssemblyTypes>();
                         handle.Get(assembly, option.Pattern, option.Namespaces, option.Converter);
                     }
                     else

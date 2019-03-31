@@ -14,17 +14,11 @@ namespace Albatross.CodeGen.UnitTest {
 			using (scope) {
 				scope.Writer.WriteLine("int i = 100;");
 			}
-			return writer.ToString();
+			return writer.ToString().RemoveCarriageReturn();
 		}
 
 
-		const string NestedScopeResult = @"{
-	int i = 100;
-	test {
-		int a = 200;
-	}
-}
-";
+		const string NestedScopeResult = "{\n\tint i = 100;\n\ttest {\n\t\tint a = 200;\n\t}\n}\n";
 		[Test(ExpectedResult = NestedScopeResult)]
 		public string NestedScope() {
 			StringWriter writer = new StringWriter();
@@ -35,7 +29,7 @@ namespace Albatross.CodeGen.UnitTest {
 					child.Writer.WriteLine("int a = 200;");
 				}
 			}
-			return writer.ToString().Replace("\n", "\r\n");
+			return writer.ToString().RemoveCarriageReturn();
 		}
 	}
 }

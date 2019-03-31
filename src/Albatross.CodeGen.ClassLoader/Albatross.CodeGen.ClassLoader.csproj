@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Albatross.CodeGen.Autofac\Albatross.CodeGen.Autofac.csproj" />
       <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
     </ItemGroup>
 </Project>

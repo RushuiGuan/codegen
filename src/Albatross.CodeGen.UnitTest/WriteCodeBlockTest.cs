@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.UnitTest {
 		public string Run(string input) {
 			StringWriter writer = new StringWriter();
 			writer.Run(new WriteCodeBlock(), new CodeBlock { Content = input, });
-			return writer.ToString();
+			return writer.ToString().RemoveCarriageReturn();
 		}
 	}
 }

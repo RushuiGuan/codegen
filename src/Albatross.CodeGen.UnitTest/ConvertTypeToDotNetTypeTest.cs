@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.UnitTest {
 				new TestCaseData(typeof(Guid), new DotNetType("System.Guid")),
 				new TestCaseData(typeof(ConvertTypeToDotNetTypeTest), new DotNetType("Albatross.CodeGen.UnitTest.ConvertTypeToDotNetTypeTest")),
 				new TestCaseData(typeof(int[]), new DotNetType("System.Int32", true, false, null)),
-				new TestCaseData(typeof(IEnumerable<string>), DotNetType.MakeIEnumerable(DotNetType.String))
+				new TestCaseData(typeof(IEnumerable<string>), DotNetType.MakeIEnumerable(new DotNetType("System.String")))
 			};
 		}
 
