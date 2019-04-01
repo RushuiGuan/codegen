@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp.Model {
 	public class Method {
+		public Method() { }
 		public Method(string name) {
 			Name = name;
 		}
-		public Method() { }
 
 		public DotNetType ReturnType { get; set; } = DotNetType.Void;
 		public string Name { get; set; }

@@ -28,8 +28,8 @@ namespace Albatross.CodeGen.CSharp.Conversion {
                 result.BaseClass = Convert(type.BaseType);
             }
 
-            result.Properties = from p in type.GetProperties() select convertProperty.Convert(p);
-            result.Fields = from f in type.GetFields() select convertField.Convert(f);
+			result.Properties = (from p in type.GetProperties() select convertProperty.Convert(p)).ToArray();
+			result.Fields = (from f in type.GetFields() select convertField.Convert(f)).ToArray();
 
             return result;
         }

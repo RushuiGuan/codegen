@@ -4,11 +4,13 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp.Model {
 	public class DotNetType {
-		public DotNetType(string name):this(name, false, false, null) {
-		}
+		public string Name { get; set; }
+		public bool IsGeneric { get; set; }
+		public bool IsArray { get; set; }
+		public IEnumerable<DotNetType> GenericTypeArguments { get; set; }
 
 		private DotNetType() { }
-
+		public DotNetType(string name) : this(name, false, false, null) { }
 		public DotNetType(string name, bool isArray, bool isGeneric, IEnumerable<DotNetType> genericTypeArgs) {
 			this.Name = name;
 			this.IsGeneric = isGeneric;
@@ -16,10 +18,8 @@ namespace Albatross.CodeGen.CSharp.Model {
 			this.GenericTypeArguments = genericTypeArgs ?? new DotNetType[0];
 		}
 
-		public string Name { get; private set; }
-		public bool IsGeneric { get;private set; }
-		public bool IsArray { get; private set; }
-		public IEnumerable<DotNetType> GenericTypeArguments { get; private set; }
+
+
 
 		public static readonly DotNetType Void = new DotNetType("void");
 
@@ -37,7 +37,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 
 		public static readonly DotNetType DateTime = new DotNetType("DateTime");
 		public static readonly DotNetType DateTimeOffset = new DotNetType("DateTimeOffset");
-		public static readonly DotNetType TimeSpan= new DotNetType("TimeSpan");
+		public static readonly DotNetType TimeSpan = new DotNetType("TimeSpan");
 
 		public static readonly DotNetType Boolean = new DotNetType("bool");
 		public static readonly DotNetType Byte = new DotNetType("byte");

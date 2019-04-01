@@ -31,6 +31,7 @@ namespace Albatross.CodeGen.UnitTest {
 				new TestCaseData(type.GetProperty(nameof(TestClass.ReadOnlyText)), new Property(nameof(TestClass.ReadOnlyText)){  Type = DotNetType.String, CanWrite = false, CanRead = true, } ),
 				new TestCaseData(type.GetProperty(nameof(TestClass.Number)), new Property(nameof(TestClass.Number)){  Type = DotNetType.Integer, CanWrite = true, CanRead = true, Static = true, } ),
 				new TestCaseData(type.GetProperty(nameof(TestClass.Double)), new Property(nameof(TestClass.Double)){  Type = DotNetType.Double, CanWrite = true, CanRead = true, SetModifier = AccessModifier.Private, } ),
+				new TestCaseData(typeof(Property).GetProperty(nameof(Property.Name)), new Property(nameof(TestClass.Double)){  Type = DotNetType.Double, CanWrite = true, CanRead = true, SetModifier = AccessModifier.Private, } ),
 			};
 		}
 

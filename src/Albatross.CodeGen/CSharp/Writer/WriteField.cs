@@ -19,10 +19,6 @@ namespace Albatross.CodeGen.CSharp.Writer
 			if (field.Static) { writer.Static(); }
 			if (field.ReadOnly) { writer.ReadOnly(); }
             writer.Run(writeType, field.Type).Space().Append(field.Name);
-
-			if (field.Assignment.Length > 0) {
-				writer.Append(" = ").Append(field.Assignment);
-			}
 			writer.Semicolon();
 		}
 	}

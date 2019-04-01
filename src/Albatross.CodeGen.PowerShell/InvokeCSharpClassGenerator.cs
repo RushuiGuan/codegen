@@ -36,8 +36,10 @@ namespace Albatross.CodeGen.PowerShell {
         protected override void ProcessRecord() {
 			if (writer != null) {
 				EntryObject.Run(writer, Class);
+				writer.WriteLine();
 			}
 			EntryObject.Run(Console.Out, Class);
+			Console.WriteLine();
 		}
         protected override void EndProcessing()
         {
