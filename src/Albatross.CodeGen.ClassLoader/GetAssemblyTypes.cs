@@ -59,16 +59,17 @@ namespace Albatross.CodeGen.ClassLoader
 
                 foreach (Type type in asm.GetTypes())
                 {
-                    bool match = (namespaces?.Count() ?? 0) == 0 || namespaces.Contains(type.Namespace, StringComparer.InvariantCultureIgnoreCase);
+					if (!type.IsAnonymousType() && !type.IsInterface && type.IsPublic) {
+						bool match = (namespaces?.Count() ?? 0) == 0 || namespaces.Contains(type.Namespace, StringComparer.InvariantCultureIgnoreCase);
 
-                    if (match)
-                    {
-                        match = match && (regex == null || regex.IsMatch(type.FullName));
-                    }
+						if (match) {
+							match = match && (regex == null || regex.IsMatch(type.FullName));
+						}
 
-					if (match) {
-						var data = handle.Convert(type);
-						serializer.Serialize(writer, data);
+						if (match) {
+							var data = handle.Convert(type);
+							serializer.Serialize(writer, data);
+						}
 					}
                 }
                 writer.WriteEndArray();

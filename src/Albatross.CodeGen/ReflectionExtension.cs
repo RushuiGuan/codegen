@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Albatross.CodeGen {
 	public static class ReflectionExtension {
@@ -34,6 +35,17 @@ namespace Albatross.CodeGen {
 				return false;
 			}
 			return true;
+		}
+
+		public static Boolean IsAnonymousType(this Type type) {
+			Boolean hasCompilerGeneratedAttribute = type.GetCustomAttributes(typeof(CompilerGeneratedAttribute), false).Count() > 0;
+			Boolean nameContainsAnonymousType = type.FullName.Contains("AnonymousType");
+			Boolean isAnonymousType = hasCompilerGeneratedAttribute && nameContainsAnonymousType;
+			return isAnonymousType;
+		}
+
+		public static string GetGenericTypeName(string name) {
+			return name.Substring(0, name.LastIndexOf('`'));
 		}
 	}
 }

@@ -20,8 +20,7 @@ namespace Albatross.CodeGen.CSharp.Conversion {
 		
 			isGenericType = type.IsGenericType;
 			if (isGenericType) {
-				name = type.GetGenericTypeDefinition().FullName;
-				name = name.Substring(0, name.LastIndexOf('`'));
+				name = ReflectionExtension.GetGenericTypeName(type.GetGenericTypeDefinition().FullName);
 				genericTypeArguments = (from item in type.GetGenericArguments() select Convert(item)).ToArray();
 			} else {
 				name = type.FullName;

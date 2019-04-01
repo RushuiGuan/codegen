@@ -25,7 +25,11 @@ namespace Albatross.CodeGen.Core
             StringReader reader = new StringReader(content.ToString());
             string line = reader.ReadLine();
             while (line != null) {
-                parentWriter.Tab().WriteLine(line);
+				if (string.IsNullOrEmpty(line)) {
+					parentWriter.WriteLine();
+				} else { 
+					parentWriter.Tab().WriteLine(line);
+				}
                 line = reader.ReadLine();
             }
             this.end(parentWriter);

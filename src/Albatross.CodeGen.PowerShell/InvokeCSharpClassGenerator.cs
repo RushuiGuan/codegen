@@ -12,11 +12,11 @@ using Albatross.CodeGen.Autofac;
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsLifecycle.Invoke, "CSharpClassGenerator")]
 	public class InvokeCSharpClassGenerator : BaseCmdlet<Albatross.CodeGen.CSharp.Writer.WriteCSharpClass> {
-		[Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true)]
+		[Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true)]
 		[Alias("c")]
 		public Albatross.CodeGen.CSharp.Model.Class Class { get; set; }
 
-		[Parameter(Position = 3, Mandatory = false)]
+		[Parameter(Position = 1, Mandatory = false)]
 		[Alias("t")]
 		public FileInfo Output { get; set; }
 
@@ -27,20 +27,25 @@ namespace Albatross.CodeGen.PowerShell {
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            if (Output?.Exists == false || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning"))
-            {
-                writer = new StreamWriter(new FileStream(Output.FullName, FileMode.OpenOrCreate));
-            }
+			if (Output != null) {
+				if (!Output.Exists || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning")) {
+					writer = new StreamWriter(new FileStream(Output.FullName, FileMode.OpenOrCreate));
+				}
+			}
         }
         protected override void ProcessRecord() {
-			EntryObject.Run(writer, Class);
+			if (writer != null) {
+				EntryObject.Run(writer, Class);
+			}
 			EntryObject.Run(Console.Out, Class);
 		}
         protected override void EndProcessing()
         {
-			writer.Flush();
-			writer.BaseStream.SetLength(writer.BaseStream.Position);
-			writer.Close();
+			if (writer != null) {
+				writer.Flush();
+				writer.BaseStream.SetLength(writer.BaseStream.Position);
+				writer.Close();
+			}
 
 			base.EndProcessing();
         }

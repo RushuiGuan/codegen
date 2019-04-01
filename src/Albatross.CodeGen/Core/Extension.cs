@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.Core {
         }
 
         public static CodeGeneratorScope BeginScope(this TextWriter writer, string text = null) {
-            return new CodeGeneratorScope(writer, args => args.AppendLine($"{text} {{"), args => args.AppendLine("}"));
+            return new CodeGeneratorScope(writer, args => args.AppendLine($"{text} {{"), args => args.Append("}"));
         }
 
 

@@ -6,7 +6,6 @@ using System.Reflection;
 
 namespace Albatross.CodeGen.CSharp.Conversion {
 	public class ConvertTypeToCSharpClass : IConvertObject<Type, Class> {
-
         IConvertObject<PropertyInfo, Property> convertProperty;
         IConvertObject<FieldInfo, Field> convertField;
         public ConvertTypeToCSharpClass(IConvertObject<PropertyInfo, Property> convertProperty, IConvertObject<FieldInfo, Field> convertField) {
@@ -15,16 +14,20 @@ namespace Albatross.CodeGen.CSharp.Conversion {
         }
         public Class Convert(Type type)
         {
-            var result = new Class(type.Name)
-            {
-                Namespace = type.Namespace,
-            };
-            if(type.IsPublic) { result.AccessModifier = AccessModifier.Public;  }
-            result.Sealed = type.IsSealed;
+			var result = new Class {
+				Namespace = type.Namespace,
+				AccessModifier = type.IsPublic ? AccessModifier.Public : AccessModifier.Unknown,
+				Sealed = type.IsSealed,
+				Static = type.IsAbstract && type.IsSealed,
+				Abstract = type.IsAbstract && !type.IsSealed,
+				Name = type.Name,
+			};
+
             if (type.BaseType != null &&  type.BaseType != typeof(object))
             {
                 result.BaseClass = Convert(type.BaseType);
             }
+
             result.Properties = from p in type.GetProperties() select convertProperty.Convert(p);
             result.Fields = from f in type.GetFields() select convertField.Convert(f);
 

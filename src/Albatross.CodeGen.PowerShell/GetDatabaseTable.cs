@@ -1,4 +1,5 @@
 ﻿using Albatross.Database;
+using Autofac;
 using System.Management.Automation;
 
 namespace Albatross.CodeGen.PowerShell {
@@ -15,6 +16,10 @@ namespace Albatross.CodeGen.PowerShell {
 			foreach(var item in items) {
 				WriteObject(item);
 			}
+		}
+
+		protected override void RegisterContainer(ContainerBuilder builder) {
+			throw new System.NotImplementedException();
 		}
 	}
 }

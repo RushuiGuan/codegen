@@ -7,6 +7,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 		public DotNetType(string name):this(name, false, false, null) {
 		}
 
+		private DotNetType() { }
 
 		public DotNetType(string name, bool isArray, bool isGeneric, IEnumerable<DotNetType> genericTypeArgs) {
 			this.Name = name;

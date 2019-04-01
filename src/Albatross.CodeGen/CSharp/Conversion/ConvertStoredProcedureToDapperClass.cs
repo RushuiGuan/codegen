@@ -16,12 +16,6 @@ namespace Albatross.CodeGen.CSharp.Conversion {
 				Name = procedure.Name.Proper(),
 				AccessModifier = AccessModifier.Public,
 				Imports = new string[] { "Dapper", "System.Data", },
-				Dependencies = new Dependency[] {
-					  new Dependency("dbConn") {
-						   FieldType = DotNetType.IDbConnection,
-						   Type = DotNetType.IDbConnection,
-					  }
-				 },
 				Methods = new Method[] {
 					GetCreateMethod(procedure),
 				},

@@ -27,13 +27,15 @@ namespace Albatross.CodeGen.CSharp.Writer
         public override void Run(TextWriter writer, Class @class) {
 			if (@class.Imports?.Count() > 0) {
 				foreach(var item in @class.Imports) {
-					writer.Append("import ").AppendLine(item);
+					writer.Append("import ").Append(item).AppendLine(";");
 				}
+				writer.WriteLine();
 			}
 
 			using (var scope = writer.BeginScope($"namespace {@class.Namespace}")) {
 				scope.Writer.Run(writeAccessModifier, @class.AccessModifier);
-				if (@class.Partial) { scope.Writer.Append(" partial "); }
+				if (@class.Static) { scope.Writer.Append(" static"); }
+				if (@class.Partial) { scope.Writer.Append(" partial"); }
 				scope.Writer.Append(" class ").Append(@class.Name);
 
 				using (var childScope = scope.Writer.BeginScope()) {
