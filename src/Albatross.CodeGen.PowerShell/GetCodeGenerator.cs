@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.PowerShell {
 
 
 		protected override void ProcessRecord() {
-			foreach (var item in Handle.Registrations) {
+			foreach (var item in EntryObject.Registrations) {
 				if (string.Equals(item.Name, Name, StringComparison.InvariantCultureIgnoreCase)) {
 					WriteObject(item);
 					return;

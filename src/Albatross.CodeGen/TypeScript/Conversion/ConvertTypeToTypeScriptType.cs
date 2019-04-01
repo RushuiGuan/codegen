@@ -39,12 +39,12 @@ namespace Albatross.CodeGen.TypeScript.Conversion
             {
                 return TypeScriptType.Any;
             }
-            else if (GetCollectionType(type, out Type elementType))
+            else if (type.GetCollectionElementType(out Type elementType))
             {
                 var result = this.Convert(elementType);
                 result.IsArray = true;
                 return result;
-            }else if(GetNullableType(type, out Type targetType))
+            }else if(type.GetNullableValueType(out Type targetType))
             {
                 return this.Convert(targetType);
             }
@@ -54,46 +54,7 @@ namespace Albatross.CodeGen.TypeScript.Conversion
             }
         }
 
-        public bool GetNullableType(Type nullableType, out Type result) {
-            result = null;
-            if (nullableType.IsGenericType && nullableType.GetGenericTypeDefinition() == typeof(Nullable<>)) {
-                result = nullableType.GetGenericArguments()[0];
-                return true;
-            }
-            return false;
-        }
-
-        public bool GetCollectionType(Type type, out Type elementType) {
-            elementType = null;
-
-            if (type == typeof(string))
-            {
-                return false;
-            } else if (type == typeof(Array) || type.IsArray)
-            {
-                elementType = type.GetElementType();
-                if (elementType == null)
-                {
-                    elementType = typeof(object);
-                }
-            }
-            else if(type.IsGenericType && type.GetGenericTypeDefinition() == typeof(IEnumerable<>))
-            {
-                elementType = type.GetGenericArguments().First();
-            }
-            else if (type.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IEnumerable<>))) { 
-                elementType = type.GetGenericArguments().First();
-            }
-            else if (typeof(IEnumerable).IsAssignableFrom(type))
-            {
-                elementType = typeof(object);
-            }
-            else
-            {
-                return false;
-            }
-            return true;
-        }
+     
 
         object IConvertObject<Type>.Convert(Type from)
         {

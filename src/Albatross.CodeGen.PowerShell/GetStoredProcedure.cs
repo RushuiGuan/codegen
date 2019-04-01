@@ -11,7 +11,7 @@ namespace Albatross.CodeGen.PowerShell {
 		public Albatross.Database.Database Database { get; set; }
 
 		protected override void ProcessRecord() {
-			var items = Handle.Get(Database, Criteria);
+			var items = EntryObject.Get(Database, Criteria);
 			foreach(var item in items) {
 				WriteObject(item);
 			}
