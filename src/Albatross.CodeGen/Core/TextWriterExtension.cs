@@ -92,7 +92,7 @@ namespace Albatross.CodeGen.Core {
 		public static TextWriter Literal(this TextWriter writer, object value) {
 			if (value == null) {
 				writer.Write("null");
-			} else if (value.GetType() == typeof(string)) {
+			} else if (value is string) {
 				writer.Write("\"");
 				writer.Write(value);
 				writer.Write("\"");
