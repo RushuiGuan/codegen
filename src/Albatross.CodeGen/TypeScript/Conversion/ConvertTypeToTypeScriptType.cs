@@ -14,30 +14,30 @@ namespace Albatross.CodeGen.TypeScript.Conversion
         {
             if (type == typeof(string) || type == typeof(char))
             {
-                return TypeScriptType.String;
+                return TypeScriptType.String();
             }
             else if (type == typeof(float) || type == typeof(decimal) || type == typeof(double)
                 || type == typeof(byte) || type == typeof(sbyte) 
                 || type == typeof(short) || type == typeof(int) || type == typeof(long)
                 || type == typeof(ushort) || type == typeof(uint) || type == typeof(ulong))
             {
-                return TypeScriptType.Number;
+                return TypeScriptType.Number();
             }
             else if (type == typeof(bool))
             {
-                return TypeScriptType.Boolean;
+                return TypeScriptType.Boolean();
             }
             else if (type == typeof(void))
             {
-                return TypeScriptType.Void;
+                return TypeScriptType.Void();
             }
             else if (type == typeof(DateTime))
             {
-                return TypeScriptType.Date;
+                return TypeScriptType.Date();
             }
             else if (type == typeof(object))
             {
-                return TypeScriptType.Any;
+                return TypeScriptType.Any();
             }
             else if (type.GetCollectionElementType(out Type elementType))
             {

@@ -39,7 +39,7 @@ namespace Albatross.Sample {
 					Properties = new Property[]{
 						new Property{
 							Name = "P1",
-							Type = DotNetType.String,
+							Type = DotNetType.String(),
 							CanRead = true,
 							CanWrite = true,
 							Modifier = AccessModifier.Public,
@@ -57,7 +57,7 @@ namespace Albatross.Sample {
 					Properties = new Property[]{
 						new Property{
 							Name = "P1",
-							Type = DotNetType.String,
+							Type = DotNetType.String(),
 							CanRead = true,
 							CanWrite = true,
 							Modifier = AccessModifier.Public,

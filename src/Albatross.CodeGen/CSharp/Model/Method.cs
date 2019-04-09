@@ -9,7 +9,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 			Name = name;
 		}
 
-		public DotNetType ReturnType { get; set; } = DotNetType.Void;
+		public DotNetType ReturnType { get; set; } = DotNetType.Void();
 		public string Name { get; set; }
 		public AccessModifier AccessModifier { get; set; }
 		public IEnumerable<Parameter> Parameters { get; set; }

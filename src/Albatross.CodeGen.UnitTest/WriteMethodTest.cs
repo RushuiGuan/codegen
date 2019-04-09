@@ -30,7 +30,7 @@ namespace Albatross.CodeGen.UnitTest {
 					Name = "Test",
 					Body = new CodeBlock("int i = 100;"),
 					Override = false,
-					ReturnType = DotNetType.Integer,
+					ReturnType = DotNetType.Integer(),
 				}){
 					ExpectedResult = NormalMethod.RemoveCarriageReturn(),
 				},
@@ -38,15 +38,15 @@ namespace Albatross.CodeGen.UnitTest {
 					AccessModifier = AccessModifier.Public,
 					Name = "Test",
 					Override = false,
-					ReturnType = DotNetType.Integer,
+					ReturnType = DotNetType.Integer(),
 					Parameters = new Parameter[]{
 						new Parameter{
 							 Name = "a",
-							 Type = DotNetType.Integer,
+							 Type = DotNetType.Integer(),
 						},
 						new Parameter{
 							 Name = "b",
-							 Type = DotNetType.String,
+							 Type = DotNetType.String(),
 						},
 					},
 				}){
@@ -56,7 +56,7 @@ namespace Albatross.CodeGen.UnitTest {
 					AccessModifier = AccessModifier.Public,
 					Name = "Test",
 					Static = true,
-					ReturnType = DotNetType.Void,
+					ReturnType = DotNetType.Void(),
 				}){
 					ExpectedResult = StaticMethod.RemoveCarriageReturn(),
 				},
@@ -64,7 +64,7 @@ namespace Albatross.CodeGen.UnitTest {
 					AccessModifier = AccessModifier.Public,
 					Name = "Test",
 					Override = true,
-					ReturnType = DotNetType.Void,
+					ReturnType = DotNetType.Void(),
 				}){
 					ExpectedResult = OverrideMethod.RemoveCarriageReturn(),
 				},
@@ -72,7 +72,7 @@ namespace Albatross.CodeGen.UnitTest {
 					AccessModifier = AccessModifier.Public,
 					Name = "Test",
 					Virtual = true,
-					ReturnType = DotNetType.Void,
+					ReturnType = DotNetType.Void(),
 				}){
 					ExpectedResult = VirtualMethod.RemoveCarriageReturn(),
 				},

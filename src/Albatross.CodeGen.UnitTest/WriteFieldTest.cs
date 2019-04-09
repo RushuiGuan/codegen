@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.UnitTest {
 				new TestCaseData(new Field{
 					Modifier = AccessModifier.Public,
 					Name = "Test",
-					Type = DotNetType.Integer,
+					Type = DotNetType.Integer(),
 				}){
 					ExpectedResult = NormalMethod.RemoveCarriageReturn(),
 				},
@@ -26,7 +26,7 @@ namespace Albatross.CodeGen.UnitTest {
 					Modifier = AccessModifier.Public,
 					Name = "a",
 					Static = true,
-					Type = DotNetType.String,
+					Type = DotNetType.String(),
 				}){
 					ExpectedResult = StaticMethod.RemoveCarriageReturn(),
 				},

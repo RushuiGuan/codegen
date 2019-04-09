@@ -30,11 +30,11 @@ namespace Albatross.CodeGen.UnitTest {
 			Parameter[] parameters = new Parameter[]{
 						new Parameter{
 							 Name = "a",
-							 Type = DotNetType.Integer,
+							 Type = DotNetType.Integer(),
 						},
 						new Parameter{
 							 Name = "b",
-							 Type = DotNetType.String,
+							 Type = DotNetType.String(),
 						},
 					};
 			return new TestCaseData[] {
