@@ -14,13 +14,17 @@
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Sql\Conversion\**" />
+    <EmbeddedResource Remove="Sql\Conversion\**" />
+    <None Remove="Sql\Conversion\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Albatross.Database" Version="1.1.7" />
     <PackageReference Include="Autofac" Version="4.9.2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sql\" />
     <Folder Include="Sql\Model\" />
-    <Folder Include="Sql\Conversion\" />
     <Folder Include="Sql\Writer\" />
   </ItemGroup>
 </Project>
