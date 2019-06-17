@@ -17,6 +17,18 @@ namespace Albatross.CodeGen.CSharp.Model {
 			this.IsArray = isArray;
 			this.GenericTypeArguments = genericTypeArgs ?? new DotNetType[0];
 		}
+		public DotNetType(Type type) {
+			Name = type.FullName;
+			IsGeneric = type.IsGenericType;
+			IsArray = type.IsArray;
+			if (IsGeneric) {
+				List<DotNetType> list = new List<DotNetType>();
+				foreach(var genericType in type.GetGenericArguments()) {
+					list.Add(new DotNetType(genericType));
+				}
+				GenericTypeArguments = list;
+			}
+		}
 
 
 
@@ -51,6 +63,9 @@ namespace Albatross.CodeGen.CSharp.Model {
 		}
 		public static DotNetType MakeIEnumerable(DotNetType dotNetType) {
 			return new DotNetType("System.Collections.Generic.IEnumerable", false, true, new DotNetType[] { dotNetType });
+		}
+		public static DotNetType MakeAsync(DotNetType dotNetType) {
+			return new DotNetType("Task", false, true, new DotNetType[] { dotNetType });
 		}
 	}
 }

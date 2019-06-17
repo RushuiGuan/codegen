@@ -37,6 +37,9 @@ namespace Albatross.CodeGen.CSharp.Writer
 				if (@class.Static) { scope.Writer.Append(" static"); }
 				if (@class.Partial) { scope.Writer.Append(" partial"); }
 				scope.Writer.Append(" class ").Append(@class.Name);
+				if(@class.BaseClass != null) {
+					scope.Writer.Append(" : ").Append(@class.BaseClass.Name);
+				}
 
 				using (var childScope = scope.Writer.BeginScope()) {
 					if(@class.Constructors?.Count() > 0) {

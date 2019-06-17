@@ -15,10 +15,16 @@ namespace Albatross.CodeGen.CSharp.Writer
 		}
 
 		public override void Run(TextWriter writer, Field field) {
-            writer.Run(writeAccessModifier, field.Modifier).Space();
-			if (field.Static) { writer.Static(); }
+			if (field.Modifier != AccessModifier.None) {
+				writer.Run(writeAccessModifier, field.Modifier).Space();
+			}
+			if (field.Const) { writer.Const(); }
 			if (field.ReadOnly) { writer.ReadOnly(); }
+			if (field.Static) { writer.Static(); }
             writer.Run(writeType, field.Type).Space().Append(field.Name);
+			if (!string.IsNullOrEmpty(field.Value)) {
+				writer.Append(" = ").Append(field.Value);
+			}
 			writer.Semicolon();
 		}
 	}

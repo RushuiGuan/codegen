@@ -14,5 +14,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 		public AccessModifier Modifier { get; set; }
 		public bool ReadOnly { get; set; } 
 		public bool Static { get; set; }
+		public bool Const { get; set; }
+		public string Value { get; set; }
 	}
 }

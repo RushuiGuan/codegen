@@ -7,7 +7,7 @@ using System.Linq;
 namespace Albatross.CodeGen.CSharp.Conversion {
 	public static class ConversionExtension {
 		public static AccessModifier GetAccessModifier(this MethodInfo method) {
-			AccessModifier accessModifier = AccessModifier.Unknown;
+			AccessModifier accessModifier = AccessModifier.None;
 
 			if (method.IsPublic) {
 				accessModifier = accessModifier | AccessModifier.Public;
@@ -20,9 +20,6 @@ namespace Albatross.CodeGen.CSharp.Conversion {
 			}
 			if (method.IsFamily) {
 				accessModifier = accessModifier | AccessModifier.Protected;
-			}
-			if (accessModifier == AccessModifier.Unknown) {
-				throw new ConversionException("Unknown access modifier");
 			}
 			return accessModifier;
 		}

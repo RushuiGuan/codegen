@@ -64,6 +64,11 @@ namespace Albatross.CodeGen.Core {
 			return writer;
 		}
 
+		public static TextWriter Const(this TextWriter writer) {
+			writer.Write("const ");
+			return writer;
+		}
+
 		public static TextWriter Static(this TextWriter writer) {
 			writer.Write("static ");
 			return writer;

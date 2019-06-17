@@ -16,7 +16,7 @@ namespace Albatross.CodeGen.CSharp.Conversion {
         {
 			var result = new Class {
 				Namespace = type.Namespace,
-				AccessModifier = type.IsPublic ? AccessModifier.Public : AccessModifier.Unknown,
+				AccessModifier = type.IsPublic ? AccessModifier.Public : AccessModifier.None,
 				Sealed = type.IsSealed,
 				Static = type.IsAbstract && type.IsSealed,
 				Abstract = type.IsAbstract && !type.IsSealed,
@@ -28,9 +28,9 @@ namespace Albatross.CodeGen.CSharp.Conversion {
                 result.BaseClass = Convert(type.BaseType);
             }
 
+
 			result.Properties = (from p in type.GetProperties() select convertProperty.Convert(p)).ToArray();
 			result.Fields = (from f in type.GetFields() select convertField.Convert(f)).ToArray();
-
             return result;
         }
 

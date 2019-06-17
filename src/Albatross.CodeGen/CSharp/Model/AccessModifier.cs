@@ -5,7 +5,7 @@ using System.Text;
 namespace Albatross.CodeGen.CSharp.Model {
 	[Flags]
 	public enum AccessModifier {
-		Unknown = 0,
+		None = 0,
 		Public = 1,
 		Private = 2,
 		Protected = 4,
