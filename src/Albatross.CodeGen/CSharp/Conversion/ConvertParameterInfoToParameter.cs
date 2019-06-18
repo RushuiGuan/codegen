@@ -5,18 +5,26 @@ using System.Reflection;
 namespace Albatross.CodeGen.CSharp.Conversion {
 	public class ConvertParameterInfoToParameter : IConvertObject<ParameterInfo, Parameter> {
 
-        ConvertTypeToDotNetType convertType;
-
-		public ConvertParameterInfoToParameter (ConvertTypeToDotNetType getTypeByReflection) {
-			this.convertType = getTypeByReflection;
+		public ConvertParameterInfoToParameter () {
 		}
 
 		public Parameter Convert(ParameterInfo info) {
-			return new Parameter {
+			var p = new Parameter {
 				Name = info.Name,
-				Type = convertType.Convert(info.ParameterType),
+				Type = new DotNetType(info.ParameterType),
 				Modifier = info.IsOut ? Model.ParameterModifier.Out : info.IsIn ? Model.ParameterModifier.In : Model.ParameterModifier.Ref,
 			};
+
+            if (info.IsOut) {
+                p.Modifier = Model.ParameterModifier.Out;
+            }else if (info.IsIn) {
+                p.Modifier = Model.ParameterModifier.In;
+            }else if (info.ParameterType.IsByRef) {
+                p.Modifier = Model.ParameterModifier.Ref;
+            } else {
+                p.Modifier = Model.ParameterModifier.None;
+            }
+            return p;
 		}
 
         object IConvertObject<ParameterInfo>.Convert(ParameterInfo from)

@@ -20,7 +20,9 @@ namespace Albatross.CodeGen.CSharp.Writer
 				writer.Append("out ");
 			}else if(t.Modifier == ParameterModifier.Ref) {
 				writer.Append("ref ");
-			}
+			}else if(t.Modifier == ParameterModifier.In) {
+                writer.Append("in ");
+            }
 			writer.Run(writeType, t.Type).Space().Append("@").Append(t.Name);
 		}
 	}

@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Albatross.CodeGen.UnitTest {
-	[TestFixture(TestOf = typeof(ConvertTypeToDotNetType))]
+	[TestFixture(TestOf = typeof(DotNetType))]
 	public class ConvertTypeToDotNetTypeTest {
 
 		static IEnumerable<TestCaseData> GetTestData() {
@@ -26,7 +26,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 		[TestCaseSource(nameof(GetTestData))]
 		public void Run(Type type, DotNetType expected) {
-			var item = new ConvertTypeToDotNetType().Convert(type);
+			var item = new DotNetType(type);
 			Assert.AreEqual(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(item));
 		}
 	}

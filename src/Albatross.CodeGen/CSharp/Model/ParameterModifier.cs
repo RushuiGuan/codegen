@@ -4,6 +4,6 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp.Model {
 	public enum ParameterModifier {
-		In, Out, Ref
+		In, Out, Ref, None
 	}
 }

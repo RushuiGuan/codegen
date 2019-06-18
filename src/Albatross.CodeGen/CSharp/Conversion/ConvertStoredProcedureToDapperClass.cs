@@ -30,7 +30,7 @@ namespace Albatross.CodeGen.CSharp.Conversion {
 
         Method GetCreateMethod(Procedure procedure) {
 			Method method = new Method("Create") {
-				ReturnType = new DotNetType("CommandDefinition"),
+				ReturnType = new DotNetType("Dapper.CommandDefinition"),
 				Parameters = from sqlParam
 							 in procedure.Parameters
 							 select new Albatross.CodeGen.CSharp.Model.Parameter(Extension.VariableName(sqlParam.Name)) {

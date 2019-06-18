@@ -14,31 +14,31 @@ namespace Albatross.CodeGen.UnitTest {
 		static IEnumerable<TestCaseData> Get() {
 			return new TestCaseData[]{
 				new TestCaseData(DotNetType.Boolean()){
-					ExpectedResult = "bool",
+					ExpectedResult = "System.Boolean",
 				},
 				new TestCaseData(DotNetType.Byte()){
-					ExpectedResult = "byte"
-				},
+					ExpectedResult = "System.Byte"
+                },
 				new TestCaseData(DotNetType.ByteArray()){
-					ExpectedResult = "byte[]"
-				},
+					ExpectedResult = "System.Byte[]"
+                },
 				new TestCaseData(DotNetType.Char()){
-					ExpectedResult ="char",
+					ExpectedResult ="System.Char",
 				},
 				new TestCaseData(DotNetType.DateTime()){
-					ExpectedResult = "DateTime",
+					ExpectedResult = "System.DateTime",
 				},
 				new TestCaseData(DotNetType.DateTimeOffset()){
-					ExpectedResult = "DateTimeOffset",
+					ExpectedResult = "System.DateTimeOffset",
 				},
 				new TestCaseData(DotNetType.Decimal()){
-					ExpectedResult = "decimal",
+					ExpectedResult = "System.Decimal",
 				},
 				new TestCaseData(DotNetType.Double()){
 					ExpectedResult = "System.Double",
 				},
 				new TestCaseData(DotNetType.Guid()){
-					ExpectedResult = "Guid",
+					ExpectedResult = "System.Guid",
 				},
 				new TestCaseData(DotNetType.IDbConnection()){
 					ExpectedResult = typeof(System.Data.IDbConnection).FullName,
@@ -47,19 +47,19 @@ namespace Albatross.CodeGen.UnitTest {
 					ExpectedResult = "System.Int32",
 				},
 				new TestCaseData(DotNetType.Long()){
-					ExpectedResult = "long",
+					ExpectedResult = "System.Int64",
 				},
 				new TestCaseData(DotNetType.Short()){
-					ExpectedResult = "short",
+					ExpectedResult = "System.Int16",
 				},
 				new TestCaseData(DotNetType.Single()){
-					ExpectedResult = "single",
+					ExpectedResult = "System.Single",
 				},
 				new TestCaseData(DotNetType.String()){
 					ExpectedResult = "System.String",
 				},
 				new TestCaseData(DotNetType.TimeSpan()){
-					ExpectedResult = "TimeSpan",
+					ExpectedResult = "System.TimeSpan",
 				},
 				new TestCaseData(DotNetType.Void()){
 					ExpectedResult = "void",

@@ -8,9 +8,7 @@ using System.Text;
 
 namespace Albatross.CodeGen.CSharp.Conversion {
 	public class ConvertFieldInfoToField : IConvertObject<FieldInfo, Field> {
-        IConvertObject<Type, DotNetType> convertToDotNetType;
-        public ConvertFieldInfoToField(IConvertObject<Type, DotNetType> convertToDotNetType) {
-            this.convertToDotNetType = convertToDotNetType;
+        public ConvertFieldInfoToField() {
         }
 
         public Field Convert(FieldInfo from)
@@ -18,7 +16,7 @@ namespace Albatross.CodeGen.CSharp.Conversion {
             return new Field
             {
                 Name = from.Name,
-                Type = convertToDotNetType.Convert(from.FieldType),
+                Type = new DotNetType(from.FieldType),
                 ReadOnly = from.IsInitOnly,
             };
         }

@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Albatross.CodeGen.Core {
 	public static class TextWriterExtension {
@@ -55,6 +56,19 @@ namespace Albatross.CodeGen.Core {
 		public static TextWriter Semicolon(this TextWriter writer, int count = 1) {
 			return writer.AppendChar(';', count);
 		}
+        public static TextWriter WriteItems<T>(this TextWriter writer, IEnumerable<T> items, string delimiter, Action<TextWriter, T> action) {
+            if (items != null) {
+                int count = 0, total = items.Count();
+                foreach (var item in items) {
+                    action?.Invoke(writer, item);
+                    count++;
+                    if (count != total) {
+                        writer.Append(delimiter);
+                    }
+                }
+            }
+            return writer;
+        }
 		#endregion
 
 		#region C# code generation

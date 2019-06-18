@@ -27,7 +27,7 @@ namespace Albatross.CodeGen.CSharp.Writer
         public override void Run(TextWriter writer, Class @class) {
 			if (@class.Imports?.Count() > 0) {
 				foreach(var item in @class.Imports) {
-					writer.Append("import ").Append(item).AppendLine(";");
+					writer.Append("using ").Append(item).AppendLine(";");
 				}
 				writer.WriteLine();
 			}

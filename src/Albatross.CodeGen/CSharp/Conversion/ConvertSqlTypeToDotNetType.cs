@@ -6,10 +6,7 @@ using Albatross.Database;
 namespace Albatross.CodeGen.CSharp.Conversion {
 	public class ConvertSqlTypeToDotNetType : IConvertObject<SqlType, DotNetType> {
 
-		ConvertTypeToDotNetType convertTypeToDotNetType;
-
-		public ConvertSqlTypeToDotNetType(ConvertTypeToDotNetType convertTypeToDotNetType) {
-			this.convertTypeToDotNetType = convertTypeToDotNetType;
+		public ConvertSqlTypeToDotNetType() {
 		}
 
 		public DotNetType Convert(SqlType sqlType) {

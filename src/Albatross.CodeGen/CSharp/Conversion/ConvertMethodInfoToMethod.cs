@@ -6,11 +6,9 @@ using System.Reflection;
 namespace Albatross.CodeGen.CSharp.Conversion {
 	public class ConvertMethodInfoToMethod: IConvertObject<MethodInfo, Method> {
         ConvertParameterInfoToParameter  convertToParameter;
-		ConvertTypeToDotNetType convertToDotNetType;
 
-		public ConvertMethodInfoToMethod(ConvertParameterInfoToParameter  convertToParameter, ConvertTypeToDotNetType convertToDotNetType) {
+		public ConvertMethodInfoToMethod(ConvertParameterInfoToParameter  convertToParameter) {
 			this.convertToParameter = convertToParameter;
-			this.convertToDotNetType = convertToDotNetType;
 		}
 
         public Method Convert(MethodInfo info)
@@ -19,7 +17,7 @@ namespace Albatross.CodeGen.CSharp.Conversion {
             {
                 Name = info.Name,
                 Parameters = from item in info.GetParameters() select convertToParameter.Convert(item),
-                ReturnType = convertToDotNetType.Convert(info.ReturnType),
+                ReturnType = new DotNetType(info.ReturnType),
                 Static = info.IsStatic,
                 Virtual = info.IsVirtual,
                 AccessModifier = info.GetAccessModifier(),
