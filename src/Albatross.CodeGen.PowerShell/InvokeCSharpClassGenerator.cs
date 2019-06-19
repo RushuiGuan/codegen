@@ -23,17 +23,16 @@ namespace Albatross.CodeGen.PowerShell {
 		[Parameter]
 		public SwitchParameter Force { get; set; }
 
-        StreamWriter writer;
-        protected override void BeginProcessing()
-        {
-            base.BeginProcessing();
+		StreamWriter writer;
+		protected override void BeginProcessing() {
+			base.BeginProcessing();
 			if (Output != null) {
 				if (!Output.Exists || Force || this.ShouldContinue("The file already exists, continue and overwrite?", "Warning")) {
 					writer = new StreamWriter(new FileStream(Output.FullName, FileMode.OpenOrCreate));
 				}
 			}
-        }
-        protected override void ProcessRecord() {
+		}
+		protected override void ProcessRecord() {
 			if (writer != null) {
 				EntryObject.Run(writer, Class);
 				writer.WriteLine();
@@ -41,8 +40,7 @@ namespace Albatross.CodeGen.PowerShell {
 			EntryObject.Run(Console.Out, Class);
 			Console.WriteLine();
 		}
-        protected override void EndProcessing()
-        {
+		protected override void EndProcessing() {
 			if (writer != null) {
 				writer.Flush();
 				writer.BaseStream.SetLength(writer.BaseStream.Position);
@@ -50,7 +48,7 @@ namespace Albatross.CodeGen.PowerShell {
 			}
 
 			base.EndProcessing();
-        }
+		}
 
 		protected override void RegisterContainer(ContainerBuilder builder) {
 			new Pack().Register(builder);

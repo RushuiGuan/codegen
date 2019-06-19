@@ -1,13 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
+		<Version>2.0.0</Version>
+		<Authors>Rushui Guan</Authors>
+		<Product>Albatross Code Generator Autofac Registration</Product>
+		<Description></Description>
+		<PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+		<PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
+		<PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
+		<PackageLicenseUrl>https://github.com/RushuiGuan/CodeGen/blob/master/LICENSE</PackageLicenseUrl>
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
-  </PropertyGroup>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.9.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Autofac" Version="4.9.2" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
+	</ItemGroup>
 </Project>

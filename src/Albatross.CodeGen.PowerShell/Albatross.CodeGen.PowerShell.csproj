@@ -24,7 +24,7 @@
   <ItemGroup>
 	  <PackageReference Include="Albatross.Database" Version="1.1.7" />
 	  <PackageReference Include="Autofac" Version="4.9.2" />
-      <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Albatross.CodeGen.Autofac\Albatross.CodeGen.Autofac.csproj" />
