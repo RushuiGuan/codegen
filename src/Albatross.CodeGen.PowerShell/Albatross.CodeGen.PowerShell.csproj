@@ -1,33 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
-    <Version>2.0.0-beta</Version>
-    
-    <AutoGenerateBindingRedirects>False</AutoGenerateBindingRedirects>
-    <Product>Albatross Code Generator PowerShell Utilities</Product>
-    <Authors>Rushui Guan</Authors>
-    <PackageLicenseUrl>https://github.com/RushuiGuan/CodeGen/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
-    <Description>The powershell utility contains a set of cmdlets that allow users to create composite generators and execute generators for code generation purpose.</Description>
-    <PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
-    <LangVersion>7.3</LangVersion>
-  </PropertyGroup>
-    
-  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
-    <PackageReference Include="System.Management.Automation.dll" Version="10.0.10586" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" />
-  </ItemGroup>
-  <ItemGroup>
-	  <PackageReference Include="Albatross.Database" Version="1.1.7" />
-	  <PackageReference Include="Autofac" Version="4.9.2" />
-      <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Albatross.CodeGen.Autofac\Albatross.CodeGen.Autofac.csproj" />
-    <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net46;netcoreapp2.2</TargetFrameworks>
+		<AssemblyVersion>2.0.0.0</AssemblyVersion>
+		<FileVersion>2.0.0.0</FileVersion>
+		<Version>2.0.0-beta</Version>
+		<AutoGenerateBindingRedirects>False</AutoGenerateBindingRedirects>
+		<Product>Albatross Code Generator PowerShell Utilities</Product>
+		<Authors>Rushui Guan</Authors>
+		<PackageLicenseUrl>https://github.com/RushuiGuan/CodeGen/blob/master/LICENSE</PackageLicenseUrl>
+		<PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
+		<Description>The powershell utility contains a set of cmdlets that allow users to create composite generators and execute generators for code generation purpose.</Description>
+		<PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
+		<LangVersion>7.3</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net46'">
+		<PackageReference Include="System.Management.Automation.dll" Version="10.0.10586" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.2'">
+		<PackageReference Include="System.Management.Automation" Version="6.2.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Albatross.Database" Version="1.1.7" />
+		<PackageReference Include="Autofac" Version="4.9.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Albatross.CodeGen.Autofac\Albatross.CodeGen.Autofac.csproj" />
+		<ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
+	</ItemGroup>
 </Project>
