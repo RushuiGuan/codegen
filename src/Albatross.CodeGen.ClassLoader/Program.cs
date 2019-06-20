@@ -32,7 +32,7 @@ namespace Albatross.CodeGen.ClassLoader {
 			Parser.Default.ParseArguments<Options>(args).WithParsed<Options>(option => {
 				try {
 					ContainerBuilder builder = new ContainerBuilder();
-					new Pack().Register(builder);
+					builder.AddCodeGen();
 					IContainer container = builder.Build();
 					HashSet<string> paths = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase);
 					paths.Add(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));

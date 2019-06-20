@@ -9,7 +9,7 @@ namespace Albatross.CodeGen.UnitTest {
 		[OneTimeSetUp]
 		public void OneTimeSetUp() {
 			ContainerBuilder builder = new ContainerBuilder();
-			new Pack().Register(builder);
+			builder.AddCodeGen();
 			container = builder.Build();
 		}
 	}
