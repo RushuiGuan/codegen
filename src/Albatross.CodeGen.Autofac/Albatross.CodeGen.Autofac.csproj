@@ -1,14 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
-		<Version>2.0.0</Version>
+		<Version>2.0.0-prerelease</Version>
 		<Authors>Rushui Guan</Authors>
-		<Product>Albatross Code Generator Autofac Registration</Product>
-		<Description></Description>
-		<PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+		<Product>Albatross.CodeGen Autofac Registration</Product>
+		<Description>Albatross.CodeGen Autofac Registration</Description>
+		<PackageReleaseNotes></PackageReleaseNotes>
 		<PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
 		<PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
-		<PackageLicenseUrl>https://github.com/RushuiGuan/CodeGen/blob/master/LICENSE</PackageLicenseUrl>
+		<PackageLicenseUrl></PackageLicenseUrl>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Copyright>Copyright © 2019</Copyright>
 
 	</PropertyGroup>
 
@@ -17,5 +20,11 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="..\..\LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
 	</ItemGroup>
 </Project>

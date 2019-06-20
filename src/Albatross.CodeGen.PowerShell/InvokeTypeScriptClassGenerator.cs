@@ -53,7 +53,7 @@ namespace Albatross.CodeGen.PowerShell {
         }
 
 		protected override void RegisterContainer(ContainerBuilder builder) {
-			new Pack().Register(builder);
+			builder.AddCodeGen();
 		}
 	}
 }
