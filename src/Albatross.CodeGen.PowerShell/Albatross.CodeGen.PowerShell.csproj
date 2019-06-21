@@ -9,10 +9,11 @@
 		<Authors>Rushui Guan</Authors>
 		<PackageLicenseUrl></PackageLicenseUrl>
 		<PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
-		<Description>The powershell utility contains a set of cmdlets that allow users to create composite generators and execute generators for code generation purpose.</Description>
+		<Description>The powershell utility contains a set of cmdlets that allow users to execute generators for code generation purpose.</Description>
 		<PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
 		<LangVersion>7.3</LangVersion>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<Copyright>Copyright © 2019</Copyright>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net46'">
