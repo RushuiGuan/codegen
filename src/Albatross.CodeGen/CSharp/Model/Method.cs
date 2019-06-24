@@ -11,6 +11,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 		public string Name { get; set; }
 		public AccessModifier AccessModifier { get; set; }
 		public IEnumerable<Parameter> Parameters { get; set; }
+        public bool Async { get; set; }
 		public bool Static { get; set; }
 		public bool Virtual { get; set; }
 		public bool Override { get; set; }

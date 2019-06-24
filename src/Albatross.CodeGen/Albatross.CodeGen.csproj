@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
+		<TargetFramework>netstandard2.0</TargetFramework>
 		<PackageId>Albatross.CodeGen</PackageId>
-		<Version>2.0.0-prerelease.2</Version>
+		<Version>2.0.0-prerelease3</Version>
 		<Authors>Rushui Guan</Authors>
 		<Product>Albatross Code Generator</Product>
 		<Description>A customizable code generator engine with a Powershell tool that allows user to quickly setup composite generators and update the target file.</Description>
@@ -14,10 +14,12 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Copyright>Copyright © 2019</Copyright>
 	</PropertyGroup>
+    
 	<ItemGroup>
 		<PackageReference Include="Albatross.Database" Version="1.1.7" />
 		<PackageReference Include="Autofac" Version="4.9.2" />
 	</ItemGroup>
+    
 	<ItemGroup>
 	  <None Include="..\..\LICENSE">
 	    <Pack>True</Pack>

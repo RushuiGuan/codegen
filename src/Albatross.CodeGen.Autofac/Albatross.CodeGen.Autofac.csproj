@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
+		<TargetFramework>netstandard2.0</TargetFramework>
 		<Version>2.0.0-prerelease</Version>
 		<Authors>Rushui Guan</Authors>
 		<Product>Albatross.CodeGen Autofac Registration</Product>
@@ -12,7 +12,6 @@
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Copyright>Copyright © 2019</Copyright>
-
 	</PropertyGroup>
 
 	<ItemGroup>

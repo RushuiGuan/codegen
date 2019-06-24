@@ -28,6 +28,7 @@ namespace Albatross.CodeGen.CSharp.Writer
 			} else if (t.Virtual) {
 				writer.Write("virtual ");
 			}
+            if (t.Async) { writer.Write("async "); }
 
 			writer.Run(writeType, t.ReturnType).Space();
 
