@@ -8,6 +8,6 @@ $array = @(
 );
 
 $array | ForEach-Object {
-	$out = Get-Path $nuget_source, (get-item $_).Name;
+	$out = Get-Path Get-NugetLocal, (get-item $_).Name;
 	Invoke-DotnetPack -csproj $_  -config debug  -out $out;
 }
