@@ -5,12 +5,10 @@
 		<Authors>Rushui Guan</Authors>
 		<Product>Albatross.CodeGen Autofac Registration</Product>
 		<Description>Albatross.CodeGen Autofac Registration</Description>
-		<PackageReleaseNotes></PackageReleaseNotes>
 		<PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
 		<PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
 		<PackageLicenseUrl></PackageLicenseUrl>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Copyright>Copyright © 2019</Copyright>
 	</PropertyGroup>
 
