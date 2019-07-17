@@ -1,7 +1,7 @@
 ﻿using Albatross.CodeGen.Core;
 using Albatross.CodeGen.CSharp.Model;
 using Albatross.CodeGen.CSharp.Writer;
-using Autofac;
+using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
@@ -89,7 +89,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 		[TestCaseSource(nameof(GetTestCases))]
 		public string Run(Constructor constructor) {
-			WriteConstructor writeConstructor = container.Resolve<WriteConstructor>();
+			WriteConstructor writeConstructor = provider.GetRequiredService<WriteConstructor>();
 			StringWriter writer = new StringWriter();
 			writer.Run(writeConstructor, constructor);
 			return writer.ToString().RemoveCarriageReturn();

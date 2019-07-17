@@ -1,5 +1,5 @@
 ﻿using Albatross.Database;
-using Autofac;
+using Microsoft.Extensions.DependencyInjection;
 using System.Management.Automation;
 
 namespace Albatross.CodeGen.PowerShell {
@@ -18,8 +18,7 @@ namespace Albatross.CodeGen.PowerShell {
 			}
 		}
 
-		protected override void RegisterContainer(ContainerBuilder builder) {
-			throw new System.NotImplementedException();
+		protected override void RegisterContainer(IServiceCollection svc) {
 		}
 	}
 }

@@ -1,12 +1,11 @@
 ﻿using Albatross.CodeGen.CSharp.Conversion;
 using Albatross.CodeGen.CSharp.Model;
-using Autofac;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace Albatross.CodeGen.UnitTest {
 	[TestFixture]
@@ -37,7 +36,7 @@ namespace Albatross.CodeGen.UnitTest {
 
 		[TestCaseSource(nameof(GetTestData))]
 		public void Run(PropertyInfo propertyInfo, Property expected) {
-			ConvertPropertyInfoToProperty handle = container.Resolve<ConvertPropertyInfoToProperty>();
+			ConvertPropertyInfoToProperty handle = provider.GetRequiredService<ConvertPropertyInfoToProperty>();
 			var result = handle.Convert(propertyInfo);
 			Assert.AreEqual(JsonConvert.SerializeObject(expected), JsonConvert.SerializeObject(result));
 		}

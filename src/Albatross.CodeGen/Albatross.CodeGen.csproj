@@ -16,7 +16,6 @@
     
 	<ItemGroup>
 		<PackageReference Include="Albatross.Database" Version="1.1.7" />
-		<PackageReference Include="Autofac" Version="4.9.2" />
 	</ItemGroup>
     
 	<ItemGroup>
@@ -24,5 +23,11 @@
 	    <Pack>True</Pack>
 	    <PackagePath></PackagePath>
 	  </None>
+	</ItemGroup>
+    
+	<ItemGroup>
+	  <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+	    <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.dependencyinjection.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 </Project>

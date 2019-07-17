@@ -5,17 +5,15 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
-using Albatross.CodeGen.TypeScript.Conversion;
 using Albatross.CodeGen.Core;
-using Autofac;
 
 namespace Albatross.CodeGen.ClassLoader {
 	public class GetAssemblyTypes {
-		IContainer container;
+		IServiceProvider provider;
 		IEnumerable<string> paths;
 
-		public GetAssemblyTypes(IContainer container, IEnumerable<string> paths) {
-			this.container = container;
+		public GetAssemblyTypes(IServiceProvider provider, IEnumerable<string> paths) {
+			this.provider = provider;
 			this.paths = paths;
 		}
 
@@ -34,7 +32,7 @@ namespace Albatross.CodeGen.ClassLoader {
 			AppDomain.CurrentDomain.AssemblyResolve += handler;
 			Regex regex = null;
 
-			IConvertObject<Type> converter = container.Resolve(Type.GetType(converterTypeName, true)) as IConvertObject<Type>;
+			IConvertObject<Type> converter = provider.GetService(Type.GetType(converterTypeName, true)) as IConvertObject<Type>;
 			if (!string.IsNullOrEmpty(pattern)) {
 				regex = new Regex(pattern, RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 			}

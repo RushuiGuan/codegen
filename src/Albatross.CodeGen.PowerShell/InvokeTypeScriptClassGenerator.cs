@@ -1,13 +1,7 @@
 ﻿using System.IO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
-using Albatross.CodeGen.Autofac;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Albatross.CodeGen.PowerShell {
 	[Cmdlet(VerbsLifecycle.Invoke, "TypeScriptClassGenerator")]
@@ -52,8 +46,8 @@ namespace Albatross.CodeGen.PowerShell {
 			base.EndProcessing();
         }
 
-		protected override void RegisterContainer(ContainerBuilder builder) {
-			builder.AddCodeGen();
+		protected override void RegisterContainer(IServiceCollection svc) {
+			svc.AddDefaultCodeGen();
 		}
 	}
 }

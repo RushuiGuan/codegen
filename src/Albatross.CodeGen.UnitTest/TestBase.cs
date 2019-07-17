@@ -1,16 +1,16 @@
-﻿using Albatross.CodeGen.Autofac;
-using Autofac;
+﻿using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
+using System;
 
 namespace Albatross.CodeGen.UnitTest {
 	public class TestBase {
-		protected IContainer container;
+		protected ServiceProvider provider;
 
 		[OneTimeSetUp]
 		public void OneTimeSetUp() {
-			ContainerBuilder builder = new ContainerBuilder();
-			builder.AddCodeGen();
-			container = builder.Build();
+			ServiceCollection service = new ServiceCollection();
+			service.AddDefaultCodeGen();
+			provider = service.BuildServiceProvider();
 		}
 	}
 }

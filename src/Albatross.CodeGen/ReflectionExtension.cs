@@ -47,5 +47,14 @@ namespace Albatross.CodeGen {
 		public static string GetGenericTypeName(string name) {
 			return name.Substring(0, name.LastIndexOf('`'));
 		}
+
+		public static bool TryGetGenericInterfaceType(this Type type, Type genericInterfaceDefinition, out Type genericInterfaceType) {
+			if (!type.IsAbstract && type.IsClass) {
+				genericInterfaceType = type.GetInterfaces().FirstOrDefault(args => args.IsGenericType && args.GetGenericTypeDefinition() == genericInterfaceDefinition);
+			} else {
+				genericInterfaceType = null;
+			}
+			return genericInterfaceType != null;
+		}
 	}
 }

@@ -1,17 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen", "Albatross.CodeGen\Albatross.CodeGen.csproj", "{B99B890A-0FC3-4744-B880-416665E9580A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.ClassLoader", "Albatross.CodeGen.ClassLoader\Albatross.CodeGen.ClassLoader.csproj", "{9AD65A10-77AD-4BDC-AF84-A4BCCEE7FA58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.UnitTest", "Albatross.CodeGen.UnitTest\Albatross.CodeGen.UnitTest.csproj", "{4DB9DF80-C3A0-4437-9232-DC70C3FD3DF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.UnitTest", "Albatross.CodeGen.UnitTest\Albatross.CodeGen.UnitTest.csproj", "{4DB9DF80-C3A0-4437-9232-DC70C3FD3DF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.Autofac", "Albatross.CodeGen.Autofac\Albatross.CodeGen.Autofac.csproj", "{4E814405-03BF-4F77-9A2B-C766A92AB21C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.PowerShell", "Albatross.CodeGen.PowerShell\Albatross.CodeGen.PowerShell.csproj", "{65396C0E-C5FE-4E4F-B6A2-532E56453A75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.PowerShell", "Albatross.CodeGen.PowerShell\Albatross.CodeGen.PowerShell.csproj", "{65396C0E-C5FE-4E4F-B6A2-532E56453A75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,14 +43,6 @@ Global
 		{4DB9DF80-C3A0-4437-9232-DC70C3FD3DF4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4DB9DF80-C3A0-4437-9232-DC70C3FD3DF4}.Release|x64.ActiveCfg = Release|Any CPU
 		{4DB9DF80-C3A0-4437-9232-DC70C3FD3DF4}.Release|x64.Build.0 = Release|Any CPU
-		{4E814405-03BF-4F77-9A2B-C766A92AB21C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E814405-03BF-4F77-9A2B-C766A92AB21C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E814405-03BF-4F77-9A2B-C766A92AB21C}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{4E814405-03BF-4F77-9A2B-C766A92AB21C}.Debug|x64.Build.0 = Debug|Any CPU
-		{4E814405-03BF-4F77-9A2B-C766A92AB21C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E814405-03BF-4F77-9A2B-C766A92AB21C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4E814405-03BF-4F77-9A2B-C766A92AB21C}.Release|x64.ActiveCfg = Release|Any CPU
-		{4E814405-03BF-4F77-9A2B-C766A92AB21C}.Release|x64.Build.0 = Release|Any CPU
 		{65396C0E-C5FE-4E4F-B6A2-532E56453A75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{65396C0E-C5FE-4E4F-B6A2-532E56453A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65396C0E-C5FE-4E4F-B6A2-532E56453A75}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -66,7 +56,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGToold = {DC66FBE3-16F6-4FE3-BA4F-D3C380D2AB75}
 		SolutionGuid = {8E6AD19A-703E-4DCE-92B7-50652D34EE15}
+		SolutionGToold = {DC66FBE3-16F6-4FE3-BA4F-D3C380D2AB75}
 	EndGlobalSection
 EndGlobal

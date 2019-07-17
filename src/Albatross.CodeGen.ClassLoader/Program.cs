@@ -3,10 +3,8 @@ using CommandLine;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Autofac.Core;
-using Autofac;
-using Albatross.CodeGen.Autofac;
 using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Albatross.CodeGen.ClassLoader {
 	class Program {
@@ -31,9 +29,9 @@ namespace Albatross.CodeGen.ClassLoader {
 		static int Main(string[] args) {
 			Parser.Default.ParseArguments<Options>(args).WithParsed<Options>(option => {
 				try {
-					ContainerBuilder builder = new ContainerBuilder();
-					builder.AddCodeGen();
-					IContainer container = builder.Build();
+					ServiceCollection services = new ServiceCollection();
+					services.AddDefaultCodeGen();
+					IServiceProvider provider = services.BuildServiceProvider();
 					HashSet<string> paths = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase);
 					paths.Add(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 					if (!string.IsNullOrWhiteSpace(option.AssemblyPath)) {
@@ -44,7 +42,7 @@ namespace Albatross.CodeGen.ClassLoader {
 					}
 					if (File.Exists(option.TargetAssembly)) {
 						Assembly assembly = System.Runtime.Loader.AssemblyLoadContext.Default.LoadFromAssemblyPath(option.TargetAssembly);
-						var handle = new GetAssemblyTypes(container, paths);
+						var handle = new GetAssemblyTypes(provider, paths);
 						handle.Get(assembly, option.Pattern, option.Namespaces, option.Converter);
 					} else {
 						Console.Error.WriteLine($"Assembly file {option.TargetAssembly} doesn't exist");
