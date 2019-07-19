@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.CSharp.Model {
 	public class DotNetType {
         const string VoidType = "System.Void";
-		public string Name { get; set; }
-		public bool IsGeneric { get; set; }
-		public bool IsArray { get; set; }
-        public bool IsVoid => Name == VoidType;
-        public IEnumerable<DotNetType> GenericTypeArguments { get; set; } = new DotNetType[0];
 
-		private DotNetType() { }
+        public string Name { get; private set; }
+        public bool IsGeneric { get; private set; }
+		public bool IsArray { get; private set; }
+        public IEnumerable<DotNetType> GenericTypeArguments { get; private set; } = new DotNetType[0];
+
+        public bool IsAsync => this.Name == typeof(Task).FullName;
+        public bool IsVoid => Name == VoidType || IsAsync && !IsGeneric;
+
 		public DotNetType(string name) : this(name, false, false, null) { }
 		public DotNetType(string name, bool isArray, bool isGeneric, IEnumerable<DotNetType> genericTypeArgs) {
 			this.Name = name;
@@ -37,7 +39,6 @@ namespace Albatross.CodeGen.CSharp.Model {
             }
         }
 
-        public bool IsAsync  => this.Name == typeof(Task).FullName;
         public override string ToString() {
             StringWriter writer = new StringWriter();
             new Writer.WriteDotNetType().Run(writer, this);
@@ -49,7 +50,8 @@ namespace Albatross.CodeGen.CSharp.Model {
         public override int GetHashCode() {
             return Name?.GetHashCode()?? 0;
         }
-        public static DotNetType Void() => new DotNetType("System.Void");
+
+        public static DotNetType Void() => new DotNetType(VoidType);
 
 		public static DotNetType String() => new DotNetType(typeof(string));
 		public static DotNetType Char() => new DotNetType(typeof(char));
@@ -87,5 +89,16 @@ namespace Albatross.CodeGen.CSharp.Model {
                 return new DotNetType(typeof(Task).FullName, false, true, new DotNetType[] { dotNetType });
             }
         }
-	}
+        public DotNetType RemoveAsync() {
+            if (IsAsync) {
+                if (IsVoid) {
+                    return Void();
+                } else {
+                    return GenericTypeArguments.First();
+                }
+            } else {
+                return this;
+            }
+        }
+    }
 }

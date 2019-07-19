@@ -1,27 +1,28 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
-		<Version>2.0.0-prerelease</Version>
-		<Authors>Rushui Guan</Authors>
-		<Product>Albatross.CodeGen Autofac Registration</Product>
-		<Description>Albatross.CodeGen Autofac Registration</Description>
-		<PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
-		<PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
-		<PackageLicenseUrl></PackageLicenseUrl>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<Copyright>Copyright © 2019</Copyright>
-	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Autofac" Version="4.9.2" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Include="..\..\LICENSE">
-	    <Pack>True</Pack>
-	    <PackagePath></PackagePath>
-	  </None>
-	</ItemGroup>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>2.0.0-prerelease7</Version>
+    <Authors>Rushui Guan</Authors>
+    <Product>Albatross.CodeGen Autofac Registration</Product>
+    <Description>Albatross.CodeGen Autofac Registration</Description>
+    <PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
+    <PackageProjectUrl>https://github.com/RushuiGuan/CodeGen</PackageProjectUrl>
+    <PackageLicenseUrl>
+    </PackageLicenseUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Copyright>Copyright © 2019</Copyright>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>
+      </PackagePath>
+    </None>
+  </ItemGroup>
 </Project>

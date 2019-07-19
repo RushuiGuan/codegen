@@ -11,7 +11,7 @@ namespace Albatross.CodeGen.CSharp.Writer
 {
 	public class WriteDotNetType: CodeGeneratorBase<DotNetType> {
 		public override void Run(TextWriter writer, DotNetType type) {
-            if (type.IsVoid) {
+            if (type.IsVoid && !type.IsAsync) {
                 writer.Append("void");
             } else {
                 writer.Append(type.Name);
