@@ -1,10 +1,15 @@
-﻿using System.IO;
+﻿
+
+using System.IO;
 using CommandLine;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text.RegularExpressions;
+using Albatross.CodeGen.Core;
+using Newtonsoft.Json;
 
 namespace Albatross.CodeGen.ClassLoader {
 	class Program {
@@ -31,22 +36,47 @@ namespace Albatross.CodeGen.ClassLoader {
 				try {
 					ServiceCollection services = new ServiceCollection();
 					services.AddDefaultCodeGen();
-					IServiceProvider provider = services.BuildServiceProvider();
 					HashSet<string> paths = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase);
 					paths.Add(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 					if (!string.IsNullOrWhiteSpace(option.AssemblyPath)) {
 						var items = (from item in (option.AssemblyPath ?? string.Empty).Split(',') select item.Trim()).ToArray();
-						foreach(string item in items) {
+						foreach (string item in items) {
 							paths.Add(item);
 						}
 					}
-					if (File.Exists(option.TargetAssembly)) {
-						Assembly assembly = System.Runtime.Loader.AssemblyLoadContext.Default.LoadFromAssemblyPath(option.TargetAssembly);
-						var handle = new GetAssemblyTypes(provider, paths);
-						handle.Get(assembly, option.Pattern, option.Namespaces, option.Converter);
-					} else {
-						Console.Error.WriteLine($"Assembly file {option.TargetAssembly} doesn't exist");
+					var getAssemblyTypes = new GetAssemblyTypes(paths);
+					Type converterType = getAssemblyTypes.LoadTypeByName(option.Converter);
+					if (!services.TryAddConverter(converterType)) {
+						throw new Exception($"Error loading converter type: ${converterType}");
 					}
+					var provider = services.BuildServiceProvider();
+
+
+					Regex regex = null;
+					IConvertObject<Type> converter = provider.GetRequiredService(converterType) as IConvertObject<Type>;
+					if (!string.IsNullOrEmpty(option.Pattern)) {
+						regex = new Regex(option.Pattern, RegexOptions.Compiled | RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
+					}
+
+					List<CSharp.Model.Class> list = new List<CSharp.Model.Class>();
+					var writer = new JsonTextWriter(Console.Out);
+					JsonSerializer serializer = new JsonSerializer();
+					writer.Formatting = Formatting.None;
+					writer.WriteStartArray();
+					getAssemblyTypes.LoadAssemblyTypes(option.TargetAssembly, type => {
+						if (!type.IsAnonymousType() && !type.IsInterface && type.IsPublic) {
+							bool match = (option.Namespaces?.Count() ?? 0) == 0 || option.Namespaces.Contains(type.Namespace, StringComparer.InvariantCultureIgnoreCase);
+							if (match) {
+								match = match && (regex == null || regex.IsMatch(type.FullName));
+							}
+							if (match) {
+								var data = converter.Convert(type);
+								serializer.Serialize(writer, data);
+							}
+						}
+					});
+					writer.WriteEndArray();
+					writer.Flush();
 				} catch (Exception err) {
 					Console.Error.WriteLine(err);
 				}

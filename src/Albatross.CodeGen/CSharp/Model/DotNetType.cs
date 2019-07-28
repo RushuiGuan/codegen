@@ -1,57 +1,58 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CSharp.Model {
 	public class DotNetType {
-        const string VoidType = "System.Void";
+		const string VoidType = "System.Void";
 
-        public string Name { get; private set; }
-        public bool IsGeneric { get; private set; }
-		public bool IsArray { get; private set; }
-        public IEnumerable<DotNetType> GenericTypeArguments { get; private set; } = new DotNetType[0];
+		public string Name { get; }
+		public bool IsGeneric { get; }
+		public bool IsArray { get; }
+		public IEnumerable<DotNetType> GenericTypeArguments { get; private set; } = new DotNetType[0];
 
-        public bool IsAsync => this.Name == typeof(Task).FullName;
-        public bool IsVoid => Name == VoidType || IsAsync && !IsGeneric;
+		public bool IsAsync => this.Name == typeof(Task).FullName;
+		public bool IsVoid => Name == VoidType || IsAsync && !IsGeneric;
 
 		public DotNetType(string name) : this(name, false, false, null) { }
+		[JsonConstructor]
 		public DotNetType(string name, bool isArray, bool isGeneric, IEnumerable<DotNetType> genericTypeArgs) {
 			this.Name = name;
-			this.IsGeneric = isGeneric;
 			this.IsArray = isArray;
+			this.IsGeneric = isGeneric;
 			this.GenericTypeArguments = genericTypeArgs ?? new DotNetType[0];
 		}
-        public DotNetType(Type type) {
-            IsArray = type.IsArray;
-            if (IsArray) {
-                type = type.GetElementType();
-            }
+		public DotNetType(Type type) {
+			IsArray = type.IsArray;
+			if (IsArray) {
+				type = type.GetElementType();
+			}
 
-            IsGeneric = type.IsGenericType;
-            if (IsGeneric) {
-                Name = ReflectionExtension.GetGenericTypeName(type.GetGenericTypeDefinition().FullName);
-                GenericTypeArguments = (from item in type.GetGenericArguments() select new DotNetType(item)).ToArray();
-            } else {
-                Name = type.FullName;
-            }
-        }
+			IsGeneric = type.IsGenericType;
+			if (IsGeneric) {
+				Name = ReflectionExtension.GetGenericTypeName(type.GetGenericTypeDefinition().FullName);
+				GenericTypeArguments = (from item in type.GetGenericArguments() select new DotNetType(item)).ToArray();
+			} else {
+				Name = type.FullName;
+			}
+		}
 
-        public override string ToString() {
-            StringWriter writer = new StringWriter();
-            new Writer.WriteDotNetType().Run(writer, this);
-            return writer.ToString();
-        }
-        public override bool Equals(object obj) {
-            return (obj as DotNetType)?.Name == Name;
-        }
-        public override int GetHashCode() {
-            return Name?.GetHashCode()?? 0;
-        }
+		public override string ToString() {
+			StringWriter writer = new StringWriter();
+			new Writer.WriteDotNetType().Run(writer, this);
+			return writer.ToString();
+		}
+		public override bool Equals(object obj) {
+			return (obj as DotNetType)?.Name == Name;
+		}
+		public override int GetHashCode() {
+			return Name?.GetHashCode() ?? 0;
+		}
 
-        public static DotNetType Void() => new DotNetType(VoidType);
+		public static DotNetType Void() => new DotNetType(VoidType);
 
 		public static DotNetType String() => new DotNetType(typeof(string));
 		public static DotNetType Char() => new DotNetType(typeof(char));
@@ -60,7 +61,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 		public static DotNetType Integer() => new DotNetType(typeof(int));
 		public static DotNetType Long() => new DotNetType(typeof(long));
 		public static DotNetType Decimal() => new DotNetType(typeof(decimal));
-        public static DotNetType Single() => new DotNetType(typeof(Single));
+		public static DotNetType Single() => new DotNetType(typeof(Single));
 		public static DotNetType Double() => new DotNetType(typeof(double));
 
 		public static DotNetType Object() => new DotNetType(typeof(object));
@@ -83,22 +84,22 @@ namespace Albatross.CodeGen.CSharp.Model {
 			return new DotNetType("System.Collections.Generic.IEnumerable", false, true, new DotNetType[] { dotNetType });
 		}
 		public static DotNetType MakeAsync(DotNetType dotNetType) {
-            if (dotNetType.IsVoid) {
-                return new DotNetType(typeof(Task).FullName);
-            } else {
-                return new DotNetType(typeof(Task).FullName, false, true, new DotNetType[] { dotNetType });
-            }
-        }
-        public DotNetType RemoveAsync() {
-            if (IsAsync) {
-                if (IsVoid) {
-                    return Void();
-                } else {
-                    return GenericTypeArguments.First();
-                }
-            } else {
-                return this;
-            }
-        }
-    }
+			if (dotNetType.IsVoid) {
+				return new DotNetType(typeof(Task).FullName);
+			} else {
+				return new DotNetType(typeof(Task).FullName, false, true, new DotNetType[] { dotNetType });
+			}
+		}
+		public DotNetType RemoveAsync() {
+			if (IsAsync) {
+				if (IsVoid) {
+					return Void();
+				} else {
+					return GenericTypeArguments.First();
+				}
+			} else {
+				return this;
+			}
+		}
+	}
 }

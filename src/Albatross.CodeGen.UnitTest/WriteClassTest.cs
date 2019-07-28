@@ -1,4 +1,5 @@
-﻿using Albatross.CodeGen.Core;
+﻿
+using Albatross.CodeGen.Core;
 using Albatross.CodeGen.CSharp.Model;
 using Albatross.CodeGen.CSharp.Writer;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,8 +11,8 @@ namespace Albatross.CodeGen.UnitTest {
 	[TestFixture(TestOf = typeof(WriteCSharpClass))]
 	public class WriteClassTest : TestBase {
 
-		public const string ClassA = @"import System;
-import System.IO;
+		public const string ClassA = @"using System;
+using System.IO;
 
 namespace Albatross.Sample {
 	public class ClassA {
