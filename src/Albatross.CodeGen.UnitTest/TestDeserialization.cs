@@ -36,5 +36,15 @@ namespace Albatross.CodeGen.UnitTest {
 			DotNetType result = Deserialize<DotNetType>(json);
 			Assert.AreEqual(value, result);
 		}
+
+		[TestCase(@"c:\git\temp\test.json")]
+		public void TestFile(string name) {
+			using (var reader = new StreamReader(name)) {
+				string content = reader.ReadToEnd();
+				Class[] result = Deserialize<Class[]>(content);
+				Assert.NotNull(result);
+				Assert.AreEqual(1, result.Length);
+			}
+		}
 	}
 }

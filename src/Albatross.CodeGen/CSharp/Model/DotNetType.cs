@@ -12,7 +12,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 		public string Name { get; }
 		public bool IsGeneric { get; }
 		public bool IsArray { get; }
-		public IEnumerable<DotNetType> GenericTypeArguments { get; private set; } = new DotNetType[0];
+		public DotNetType[] GenericTypeArguments { get; private set; } = new DotNetType[0];
 
 		public bool IsAsync => this.Name == typeof(Task).FullName;
 		public bool IsVoid => Name == VoidType || IsAsync && !IsGeneric;
@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 			this.Name = name;
 			this.IsArray = isArray;
 			this.IsGeneric = isGeneric;
-			this.GenericTypeArguments = genericTypeArgs ?? new DotNetType[0];
+			this.GenericTypeArguments = genericTypeArgs?.ToArray() ?? new DotNetType[0];
 		}
 		public DotNetType(Type type) {
 			IsArray = type.IsArray;
