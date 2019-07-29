@@ -37,7 +37,6 @@ namespace Albatross.CodeGen.UnitTest {
 			Assert.AreEqual(value, result);
 		}
 
-		[TestCase(@"c:\git\temp\test.json")]
 		public void TestFile(string name) {
 			using (var reader = new StreamReader(name)) {
 				string content = reader.ReadToEnd();

@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +16,6 @@ namespace Albatross.CodeGen.CSharp.Model {
 		public bool IsVoid => Name == VoidType || IsAsync && !IsGeneric;
 
 		public DotNetType(string name) : this(name, false, false, null) { }
-		[JsonConstructor]
 		public DotNetType(string name, bool isArray, bool isGeneric, DotNetType[] genericTypeArguments) {
 			this.Name = name;
 			this.IsArray = isArray;
@@ -50,7 +47,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 			if(obj is DotNetType) {
 				DotNetType input = (DotNetType)obj;
 				bool result = input.Name == Name && input.IsArray == IsArray
-					&& input.IsAsync == IsAsync && input.IsGeneric == IsGeneric && input.IsVoid == IsVoid
+					&& input.IsGeneric == IsGeneric && input.IsVoid == IsVoid
 					&& input.GenericTypeArguments?.Length == GenericTypeArguments?.Length;
 				if (result) {
 					for(int i=0; i<GenericTypeArguments.Length; i++) {
