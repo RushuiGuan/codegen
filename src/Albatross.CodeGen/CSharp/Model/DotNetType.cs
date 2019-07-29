@@ -12,18 +12,18 @@ namespace Albatross.CodeGen.CSharp.Model {
 		public string Name { get; }
 		public bool IsGeneric { get; }
 		public bool IsArray { get; }
-		public DotNetType[] GenericTypeArguments { get; private set; } = new DotNetType[0];
+		public DotNetType[] GenericTypeArguments { get; }
 
 		public bool IsAsync => this.Name == typeof(Task).FullName;
 		public bool IsVoid => Name == VoidType || IsAsync && !IsGeneric;
 
 		public DotNetType(string name) : this(name, false, false, null) { }
 		[JsonConstructor]
-		public DotNetType(string name, bool isArray, bool isGeneric, IEnumerable<DotNetType> genericTypeArgs) {
+		public DotNetType(string name, bool isArray, bool isGeneric, DotNetType[] genericTypeArguments) {
 			this.Name = name;
 			this.IsArray = isArray;
 			this.IsGeneric = isGeneric;
-			this.GenericTypeArguments = genericTypeArgs?.ToArray() ?? new DotNetType[0];
+			this.GenericTypeArguments = genericTypeArguments?.ToArray() ?? new DotNetType[0];
 		}
 		public DotNetType(Type type) {
 			IsArray = type.IsArray;
@@ -37,6 +37,7 @@ namespace Albatross.CodeGen.CSharp.Model {
 				GenericTypeArguments = (from item in type.GetGenericArguments() select new DotNetType(item)).ToArray();
 			} else {
 				Name = type.FullName;
+				GenericTypeArguments = new DotNetType[0];
 			}
 		}
 
@@ -46,7 +47,21 @@ namespace Albatross.CodeGen.CSharp.Model {
 			return writer.ToString();
 		}
 		public override bool Equals(object obj) {
-			return (obj as DotNetType)?.Name == Name;
+			if(obj is DotNetType) {
+				DotNetType input = (DotNetType)obj;
+				bool result = input.Name == Name && input.IsArray == IsArray
+					&& input.IsAsync == IsAsync && input.IsGeneric == IsGeneric && input.IsVoid == IsVoid
+					&& input.GenericTypeArguments?.Length == GenericTypeArguments?.Length;
+				if (result) {
+					for(int i=0; i<GenericTypeArguments.Length; i++) {
+						if(input.GenericTypeArguments[i]?.Equals(GenericTypeArguments[i])!=true) {
+							return false;
+						}
+					}
+				}
+				return result;
+			}
+			return false;
 		}
 		public override int GetHashCode() {
 			return Name?.GetHashCode() ?? 0;

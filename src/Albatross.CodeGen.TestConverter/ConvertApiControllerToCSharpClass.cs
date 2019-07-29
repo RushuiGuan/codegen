@@ -12,7 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Albatross.CodeGen.WebClient {
+namespace Albatross.CodeGen.TestConverter {
 	public class ConvertApiControllerToCSharpClass : IConvertObject<Type, Class> {
 		const string Controller = "Controller";
 		const string ClientService = "ClientService";

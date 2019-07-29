@@ -46,5 +46,28 @@ namespace Albatross.CodeGen.UnitTest {
 				Assert.AreEqual(1, result.Length);
 			}
 		}
+		[Test]
+		public void TestGenericArgument() {
+			DotNetType value = new DotNetType(typeof(IEnumerable<string>));
+			string json = Serialize(value);
+			DotNetType result = Deserialize<DotNetType>(json);
+			
+			Assert.True(value.Equals(result));
+		}
+
+		static IEnumerable<TestCaseData> GetSerializationTestCases() {
+			return new TestCaseData[] {
+				new TestCaseData(new DotNetType(typeof(string))) {
+					ExpectedResult="{\"Name\":\"System.String\",\"IsGeneric\":false,\"IsArray\":false,\"GenericTypeArguments\":[],\"IsAsync\":false,\"IsVoid\":false}"
+				},
+				new TestCaseData(new DotNetType(typeof(IEnumerable<string>))) {
+					ExpectedResult="{\"Name\":\"System.Collections.Generic.IEnumerable\",\"IsGeneric\":true,\"IsArray\":false,\"GenericTypeArguments\":[{\"Name\":\"System.String\",\"IsGeneric\":false,\"IsArray\":false,\"GenericTypeArguments\":[],\"IsAsync\":false,\"IsVoid\":false}],\"IsAsync\":false,\"IsVoid\":false}"
+				}
+			};
+		}
+		[TestCaseSource(nameof(GetSerializationTestCases))]
+		public string TestSerialize(DotNetType dotNetType) {
+			return Serialize<DotNetType>(dotNetType);
+		}
 	}
 }
