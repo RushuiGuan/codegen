@@ -7,9 +7,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen", "Albatr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution Items", "solution Items", "{8E1AD7A4-B958-49B8-A0F1-C503BD23D201}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
 		.projects = .projects
-		.version = .version
 		build.ps1 = build.ps1
+		Directory.Build.props = Directory.Build.props
+		icon.png = icon.png
+		LICENSE = LICENSE
+		pack.ps1 = pack.ps1
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen.WebClient", "Albatross.CodeGen.WebClient\Albatross.CodeGen.WebClient.csproj", "{929C98CB-AA06-439E-AB2F-D4EF9A2B61F4}"

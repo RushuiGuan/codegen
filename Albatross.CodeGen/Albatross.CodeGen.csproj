@@ -5,7 +5,7 @@
 		<Nullable>enable</Nullable>
 		<Description>A customizable code generator engine with built in support for C# and TypeScript code generation</Description>
 		<PackageTags>code generator c# sql codegen powershell database csharp</PackageTags>
-		<PackageProjectUrl></PackageProjectUrl>
+		<PackageProjectUrl>$(RepositoryProjectRoot)/Albatross.CodeGen</PackageProjectUrl>
 		<Copyright>Copyright © 2019</Copyright>
 	</PropertyGroup>
 	<ItemGroup>
