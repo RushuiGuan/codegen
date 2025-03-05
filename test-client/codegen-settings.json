@@ -1,0 +1,47 @@
+{
+	"$schema": "codegen-settings.schema.json",
+	"typeScriptWebClientSettings": {
+		"nameSpaceModuleMapping": {
+			"Test.Dto": "./dto.generated"
+		},
+		"controllerMethodFilters": [
+			{
+				"exclude": "FilteredByTypeScript$"
+			}
+		],
+		"endPointName": "test-client",
+		"baseClassModule": "@mirage/webclient",
+		"configServiceModule": "@mirage/config",
+		"usePromise": false,
+		"baseTypeMapping": {
+			"Test.Dto.Classes.AbstractClass":"MyBaseClass,./dto",
+			"Test.Dto.Classes.ICommand":"ICommand,./dto",
+			"Test.Dto.Classes.IEmptyInterface":"IEmptyInterface,./dto"
+		}
+	},
+	"apiControllerConversionSetting": {
+		"globalMethodSettings": {
+			"useDateTimeAsDateOnly": false
+		},
+		"methodSettings": {
+			"FromRouteParamTestController.DateTimeAsDateOnlyRoute": {
+				"useDateTimeAsDateOnly": true
+			},
+			"RequiredParamTestController.RequiredDateTimeAsDateOnlyCollection": {
+				"useDateTimeAsDateOnly": true
+			},
+			"RequiredParamTestController.RequiredDateTimeAsDateOnlyArray": {
+				"useDateTimeAsDateOnly": true
+			},
+			"RequiredParamTestController.RequiredDateTimeAsDateOnly": {
+				"useDateTimeAsDateOnly": true
+			}
+		}
+	},
+	"controllerFilter": {
+		"exclude": "^Test\\.WebApi\\.Controllers\\.(AbsUrl)?RedirectTestController$"
+	},
+	"controllerMethodFilters": [
+		{ "exclude": "FilteredByAll$" }
+	]
+}

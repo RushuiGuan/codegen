@@ -1,0 +1,67 @@
+{
+	"$schema": "codegen-settings.schema.json",
+	"typeScriptWebClientSettings": {
+		"nameSpaceModuleMapping": {
+			"Test.Dto.Enums": "enum.generated.ts",
+			"Test.Dto.Classes": "dto.generated.ts"
+		},
+		"controllerMethodFilters": [
+			{
+				"exclude": "FilteredByTypeScript$"
+			}
+		],
+		"endPointName": "test-client",
+		"baseClassModule": "@mirage/webclient",
+		"configServiceModule": "@mirage/config",
+		"usePromise": false
+	},
+	"cSharpWebClientSettings": {
+		"namespace": "Test.Proxy",
+		"controllerMethodFilters": [
+			{
+				"exclude": "FilteredByCSharp$"
+			},
+			{
+				"exclude": "FilteredByCSharp2$"
+			},
+			{
+				"exclude": "IncludedByCSharp$"
+			},
+			{
+				"include": "IncludedByCSharp$"
+			}
+		],
+		"useInterface": false,
+		"globalMethodSettings": {
+			"useDateTimeAsDateOnly": false
+		},
+		"methodSettings": {
+			"FromRouteParamTestController.DateTimeAsDateOnlyRoute": {
+				"useDateTimeAsDateOnly": true
+			},
+			"RequiredParamTestController.RequiredDateTimeAsDateOnlyCollection": {
+				"useDateTimeAsDateOnly": true
+			},
+			"RequiredParamTestController.RequiredDateTimeAsDateOnlyArray": {
+				"useDateTimeAsDateOnly": true
+			},
+			"RequiredParamTestController.RequiredDateTimeAsDateOnly": {
+				"useDateTimeAsDateOnly": true
+			}
+		},
+		"constructorSettings": {
+			"OmittedConstructorController": {
+				"omit": true
+			},
+			"CustomJsonSettingsController": {
+				"customJsonSettings": "MyCustomJsonSettings.Instance"
+			}
+		}
+	},
+	"controllerFilter": {
+		"exclude": "^Test\\.WebApi\\.Controllers\\.(AbsUrl)?RedirectTestController$"
+	},
+	"controllerMethodFilters": [
+		{ "exclude": "FilteredByAll$" }
+	]
+}
