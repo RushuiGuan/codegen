@@ -5,9 +5,8 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Albatross.Config" Version="7.5.8" />
-		<PackageReference Include="Albatross.Serialization" Version="7.5.8" />
-		<PackageReference Include="Albatross.WebClient" Version="7.5.9" />
+		<PackageReference Include="Albatross.Config" Version="7.5.9" />
+		<PackageReference Include="Albatross.WebClient" Version="7.5.11" />
 		<ProjectReference Include="..\Test.Dto\Test.Dto.csproj" />
 	</ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿using Albatross.Serialization;
+﻿using Albatross.Serialization.Json;
 using System;
 using System.Text.Json;
 

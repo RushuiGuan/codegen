@@ -7,7 +7,7 @@ using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CommandLine;
 using Albatross.Config;
 using Albatross.Logging;
-using Albatross.Serialization;
+using Albatross.Serialization.Json;
 using Microsoft.CodeAnalysis.MSBuild;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
