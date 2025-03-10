@@ -1,14 +1,14 @@
-﻿using Albatross.Serialization.Json;
-using System;
+﻿using System;
 using System.Text.Json;
 
 namespace Test.Proxy {
-	public class MyCustomJsonSettings : IJsonSettings {
-		public readonly static MyCustomJsonSettings Instance = new MyCustomJsonSettings();
-		public JsonSerializerOptions Default { get; } = new JsonSerializerOptions {
-			PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-			PropertyNameCaseInsensitive = true,
-		};
-		public JsonSerializerOptions Alternate => throw new NotImplementedException();
+	public class MyCustomJsonSettings {
+		readonly static Lazy<JsonSerializerOptions> lazy = new Lazy<JsonSerializerOptions>(
+			() => new JsonSerializerOptions {
+				PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+				PropertyNameCaseInsensitive = true,
+			});
+
+		public static JsonSerializerOptions Instance => lazy.Value;
 	}
 }
