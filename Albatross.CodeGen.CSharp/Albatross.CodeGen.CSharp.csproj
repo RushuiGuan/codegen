@@ -5,17 +5,23 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\collections\Albatross.Collections\Albatross.Collections.csproj" />
 		<ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
 	</ItemGroup>
 	<ItemGroup>
+		<None Include="..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 		<None Include="..\LICENSE">
 			<Pack>True</Pack>
-			<PackagePath></PackagePath>
+			<PackagePath>\</PackagePath>
 		</None>
 		<None Include="README.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Albatross.Collections" Version="7.5.9" />
 	</ItemGroup>
 </Project>

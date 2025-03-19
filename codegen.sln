@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.CommandLine", "Test.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.WithInterface.Proxy", "Test.WithInterface.Proxy\Test.WithInterface.Proxy.csproj", "{4B04EA6B-AAA3-49CC-9ECD-83671B3DB1FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.CSharp", "Albatross.CodeGen.CSharp\Albatross.CodeGen.CSharp.csproj", "{0A42B852-36E3-452F-8D48-9E60B4CAF071}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,6 +169,18 @@ Global
 		{4B04EA6B-AAA3-49CC-9ECD-83671B3DB1FE}.Release|arm64.Build.0 = Release|Any CPU
 		{4B04EA6B-AAA3-49CC-9ECD-83671B3DB1FE}.Release|x86.ActiveCfg = Release|Any CPU
 		{4B04EA6B-AAA3-49CC-9ECD-83671B3DB1FE}.Release|x86.Build.0 = Release|Any CPU
+		{0A42B852-36E3-452F-8D48-9E60B4CAF071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A42B852-36E3-452F-8D48-9E60B4CAF071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A42B852-36E3-452F-8D48-9E60B4CAF071}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{0A42B852-36E3-452F-8D48-9E60B4CAF071}.Debug|arm64.Build.0 = Debug|Any CPU
+		{0A42B852-36E3-452F-8D48-9E60B4CAF071}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0A42B852-36E3-452F-8D48-9E60B4CAF071}.Debug|x86.Build.0 = Debug|Any CPU
+		{0A42B852-36E3-452F-8D48-9E60B4CAF071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A42B852-36E3-452F-8D48-9E60B4CAF071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A42B852-36E3-452F-8D48-9E60B4CAF071}.Release|arm64.ActiveCfg = Release|Any CPU
+		{0A42B852-36E3-452F-8D48-9E60B4CAF071}.Release|arm64.Build.0 = Release|Any CPU
+		{0A42B852-36E3-452F-8D48-9E60B4CAF071}.Release|x86.ActiveCfg = Release|Any CPU
+		{0A42B852-36E3-452F-8D48-9E60B4CAF071}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
