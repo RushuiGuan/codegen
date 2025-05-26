@@ -21,7 +21,10 @@ namespace Albatross.CodeGen.WebClient.Models {
 			var routeSegments = symbol.GetRouteText().GetRouteSegments().ToArray();
 			this.HttpMethod = GetHttpMethod(symbol);
 			foreach (var parameter in symbol.Parameters) {
-				this.Parameters.Add(new ParameterInfo(parameter, routeSegments));
+				var paramInfo = new ParameterInfo(parameter, routeSegments);
+				if (!paramInfo.Skip) {
+					this.Parameters.Add(paramInfo);
+				}
 			}
 			this.RouteSegments = routeSegments;
 		}

@@ -9,11 +9,15 @@ namespace Albatross.CodeGen.WebClient.Models {
 		FromQuery,
 		FromRoute,
 	}
+
 	public record class ParameterInfo {
 		public ParameterInfo(IParameterSymbol symbol, IRouteSegment[] routeSegments) {
 			this.Name = symbol.Name;
 			this.Type = symbol.Type;
-			if (symbol.TryGetAttribute(My.FromBodyAttributeClassName, out var attribute)) {
+			if (symbol.TryGetAttribute(My.FromHeaderAttributeClassName, out _)) {
+				// the header parameter should be setup during proxy registration
+				this.Skip = true;
+			} else if (symbol.TryGetAttribute(My.FromBodyAttributeClassName, out var attribute)) {
 				this.WebType = ParameterType.FromBody;
 			} else if (symbol.TryGetAttribute(My.FromRouteAttributeClassName, out attribute)) {
 				this.WebType = ParameterType.FromRoute;
@@ -43,17 +47,20 @@ namespace Albatross.CodeGen.WebClient.Models {
 		RouteParameterSegment? FindSegment(string name, IRouteSegment[] segments) {
 			foreach (var segment in segments) {
 				if (segment is RouteParameterSegment parameterSegment
-					&& string.Equals(parameterSegment.Text, name, System.StringComparison.InvariantCultureIgnoreCase)) {
+				    && string.Equals(parameterSegment.Text, name, System.StringComparison.InvariantCultureIgnoreCase)) {
 					return parameterSegment;
 				}
 			}
 			return null;
 		}
 
+		public bool Skip { get; }
 		public string QueryKey { get; set; } = string.Empty;
 		public string Name { get; set; }
+
 		[JsonIgnore]
 		public ITypeSymbol Type { get; set; }
+
 		public string TypeText => Type.GetFullName();
 		public ParameterType WebType { get; set; }
 

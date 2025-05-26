@@ -43,7 +43,7 @@ namespace Albatross.CodeGen.CommandLine {
 					return new CodeGenSettings();
 				} else if (options.SettingsFile.Exists) {
 					using var stream = options.SettingsFile.OpenRead();
-					var settings = JsonSerializer.Deserialize<CodeGenSettings>(stream, DefaultJsonSettings.Value.Default) ?? throw new ArgumentException("Unable to deserialize codegen settings");
+					var settings = JsonSerializer.Deserialize<CodeGenSettings>(stream, DefaultJsonSettings.Instance.Value) ?? throw new ArgumentException("Unable to deserialize codegen settings");
 					return settings;
 				} else {
 					throw new InvalidOperationException($"File {options.SettingsFile.Name} doesn't exist");

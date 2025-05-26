@@ -54,7 +54,7 @@
 				"omit": true
 			},
 			"CustomJsonSettingsController": {
-				"customJsonSettings": "MyCustomJsonSettings.Options"
+				"customJsonSettings": "MyCustomJsonSettings.Instance"
 			}
 		}
 	},

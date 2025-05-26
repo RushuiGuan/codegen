@@ -15,6 +15,7 @@ namespace Albatross.CodeGen.WebClient {
 		public const string FromQueryAttributeClassName = "Microsoft.AspNetCore.Mvc.FromQueryAttribute";
 		public const string FromRouteAttributeClassName = "Microsoft.AspNetCore.Mvc.FromRouteAttribute";
 		public const string FromBodyAttributeClassName = "Microsoft.AspNetCore.Mvc.FromBodyAttribute";
+		public const string FromHeaderAttributeClassName = "Microsoft.AspNetCore.Mvc.FromHeaderAttribute";
 
 		public const string ActionResultClassName = "Microsoft.AspNetCore.Mvc.ActionResult";
 		public const string ActionResultInterfaceName = "Microsoft.AspNetCore.Mvc.IActionResult";
