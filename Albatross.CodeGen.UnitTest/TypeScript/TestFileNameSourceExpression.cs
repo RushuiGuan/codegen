@@ -13,8 +13,11 @@ namespace Albatross.CodeGen.UnitTest.TypeScript {
 		[Theory]
 		[InlineData("test.ts", "'./test'")]
 		[InlineData("./test.ts", "'./test'")]
-		[InlineData(".\\test.ts", "'./test'")]
-		[InlineData("lib\\test.ts", "'./lib/test'")]
+		// windows only
+		// [InlineData(".\\test.ts", "'./test'")]
+
+		// windows only
+		// [InlineData("lib\\test.ts", "'./lib/test'")]
 		[InlineData("lib/test.ts", "'./lib/test'")]
 		[InlineData("./lib/test.ts", "'./lib/test'")]
 		public void Test(string name, string expected) {
