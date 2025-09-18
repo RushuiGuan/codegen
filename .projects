@@ -1,9 +1,12 @@
-# Packages
+# packages
 Albatross.CodeGen
 Albatross.CodeGen.CommandLine
 Albatross.CodeGen.TypeScript
 Albatross.CodeGen.WebClient
 Albatross.CodeGen.CSharp
 
-# Tests
+# tests
 Albatross.CodeGen.UnitTest
+
+# apps
+Albatross.CodeGen.CommandLine
