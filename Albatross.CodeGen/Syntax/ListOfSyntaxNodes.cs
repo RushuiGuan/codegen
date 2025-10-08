@@ -5,6 +5,10 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Syntax {
+	/// <summary>
+	/// a list of syntax nodes, rendered with separator
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
 	public record class ListOfSyntaxNodes<T> : SyntaxNode, IEnumerable<T> where T : ISyntaxNode {
 		public T[] Nodes { get; init; } = [];
 		protected virtual string Separator => ", ";

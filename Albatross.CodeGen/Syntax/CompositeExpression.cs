@@ -4,6 +4,9 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Syntax {
+	/// <summary>
+	/// an expression that's made of sub expressions, each will be rendered on its own line
+	/// </summary>
 	public record class CompositeExpression : SyntaxNode, IExpression {
 		public CompositeExpression(params IExpression[] items) {
 			this.Items = items;

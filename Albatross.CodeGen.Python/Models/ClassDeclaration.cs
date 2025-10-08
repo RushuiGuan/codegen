@@ -1,4 +1,5 @@
-﻿using Albatross.Collections;
+﻿using Albatross.CodeGen.Syntax;
+using Albatross.Collections;
 using Albatross.Text;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Models {
-	public class ClassDeclaration : ICodeElement, IComparable<ClassDeclaration> {
+	public class ClassDeclaration : IDeclaration, ICodeElement {
 		public ClassDeclaration(string name) {
 			Name = name;
 		}
@@ -40,6 +41,8 @@ namespace Albatross.CodeGen.Python.Models {
 		public bool IsEnum => BaseClass.Any(x => x.Name == My.Classes.EnumName);
 
 		public string Name { get; }
+
+		public IEnumerable<IModifier> Modifiers => throw new NotImplementedException();
 
 		public override void Build() {
 			if (UseDataClass) {
@@ -88,6 +91,10 @@ namespace Albatross.CodeGen.Python.Models {
 				}
 				return Name.CompareTo(other.Name);
 			}
+		}
+
+		public IEnumerable<ISyntaxNode> GetDescendants() {
+			throw new NotImplementedException();
 		}
 	}
 }
