@@ -12,7 +12,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 			Identifier = new IdentifierNameExpression(name);
 		}
 		public IdentifierNameExpression Identifier { get; }
-		public ITypeExpression ReturnType { get; init; } = Defined.Types.Any();
+		public ITypeExpression ReturnType { get; init; } = Defined.Types.None();
 		public ListOfSyntaxNodes<ParameterDeclaration> Parameters { get; init; } = new();
 		public IEnumerable<IModifier> Modifiers { get; init; } = [];
 		public IExpression Body { get; init; } = new EmptyExpression();

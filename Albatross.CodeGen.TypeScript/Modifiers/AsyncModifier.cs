@@ -2,9 +2,6 @@
 
 namespace Albatross.CodeGen.TypeScript.Modifiers {
 	public record class AsyncModifier : IModifier {
-		public AsyncModifier() {
-			this.Name = "async";
-		}
-		public string Name { get; }
+		public string Name { get; } = "async";
 	}
 }

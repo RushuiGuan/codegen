@@ -11,7 +11,6 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		}
 		public string FileName => $"{Name}.ts";
 		public string Name { get; }
-		public IEnumerable<IModifier> Modifiers { get; init; } = [];
 		public IEnumerable<ImportExpression> ImportDeclarations { get; init; } = [];
 		public IEnumerable<EnumDeclaration> EnumDeclarations { get; init; } = [];
 		public IEnumerable<InterfaceDeclaration> InterfaceDeclarations { get; init; } = [];

@@ -13,7 +13,6 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		}
 		public IdentifierNameExpression Identifier { get; }
 		public ITypeExpression? BaseInterfaceName { get; init; }
-		public IEnumerable<IModifier> Modifiers { get; init; } = [];
 		public IEnumerable<PropertyDeclaration> Properties { get; init; } = [];
 
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier, }

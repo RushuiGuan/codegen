@@ -7,7 +7,7 @@ using System.Linq;
 namespace Albatross.CodeGen.Python.Expressions {
 	public record class ImportCollection : ListOfSyntaxNodes<ImportExpression> {
 		public ImportCollection(IEnumerable<ImportExpression> imports) : base(imports.GroupBy(x => x.Source)
-			.Select(x => new ImportExpression(x.SelectMany(y => y.Items)) {
+			.Select(x => new ImportExpression(x.SelectMany(y => y.Symbols)) {
 				Source = x.Key,
 			})
 		) { }

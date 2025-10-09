@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.TypeScript.Declarations {
-	public record class ClassDeclaration : SyntaxNode, IDeclaration, ICodeElement {
+	public record class ClassDeclaration : SyntaxNode, IDeclaration {
 		public ClassDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
@@ -14,7 +14,6 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public IIdentifierNameExpression? BaseClassName { get; init; }
 		public InvocationExpression[] Decorators { get; init; } = [];
 		public MethodDeclaration? Constructor { get; init; }
-		public IEnumerable<IModifier> Modifiers { get; init; } = [];
 		public IEnumerable<ImportExpression> Imports { get; init; } = [];
 		public IEnumerable<GetterDeclaration> Getters { get; init; } = [];
 		public IEnumerable<SetterDeclaration> Setters { get; init; } = [];

@@ -3,8 +3,8 @@ using System.IO;
 
 namespace Albatross.CodeGen.Python.Declarations {
 	public record class ConstructorDeclaration : MethodDeclaration {
-		public ConstructorDeclaration() : base("constructor") {
-			ReturnType = Defined.Types.Void();
+		public ConstructorDeclaration() : base("__init__") {
+			ReturnType = Defined.Types.None();
 		}
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Identifier).OpenParenthesis().Code(Parameters).CloseParenthesis();

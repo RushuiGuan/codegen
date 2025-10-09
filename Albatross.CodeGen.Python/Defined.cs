@@ -9,50 +9,33 @@ namespace Albatross.CodeGen.Python {
 			public static Regex ModuleSource => new Regex(@"^(@\w+/)? [\w\-]+ (/\w+)*$", RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled | RegexOptions.IgnoreCase);
 		}
 		public static class Types {
-			public static SimpleTypeExpression Any(bool optional = false) => new SimpleTypeExpression {
-				Identifier = new IdentifierNameExpression("any"),
-				Optional = optional
+			public static SimpleTypeExpression None() => new SimpleTypeExpression {
+				Identifier = new IdentifierNameExpression("None"),
 			};
-			public static SimpleTypeExpression Void() => new SimpleTypeExpression {
-				Identifier = new IdentifierNameExpression("void")
+			public static SimpleTypeExpression Int() => new SimpleTypeExpression {
+				Identifier = new IdentifierNameExpression("int")
 			};
-			public static SimpleTypeExpression Object(bool optional = false) => new SimpleTypeExpression {
-				Identifier = new IdentifierNameExpression("object"),
-				Optional = optional
+			public static SimpleTypeExpression Float() => new SimpleTypeExpression {
+				Identifier = new IdentifierNameExpression("float"),
 			};
-			public static SimpleTypeExpression Boolean(bool optional = false) => new SimpleTypeExpression {
-				Identifier = new IdentifierNameExpression("boolean"),
-				Optional = optional
+			public static SimpleTypeExpression Boolean() => new SimpleTypeExpression {
+				Identifier = new IdentifierNameExpression("bool"),
 			};
 
-			public static SimpleTypeExpression Date(bool optional = false) => new SimpleTypeExpression {
-				Identifier = new IdentifierNameExpression("Date"),
-				Optional = optional
+			public static SimpleTypeExpression String() => new SimpleTypeExpression {
+				Identifier = new IdentifierNameExpression("str"),
 			};
-			public static SimpleTypeExpression Numeric(bool optional = false) => new SimpleTypeExpression {
-				Identifier = new IdentifierNameExpression("number"),
-				Optional = optional
+			public static SimpleTypeExpression Complex() => new SimpleTypeExpression {
+				Identifier = new IdentifierNameExpression("complex"),
 			};
-			public static SimpleTypeExpression String(bool optional = false) => new SimpleTypeExpression {
+			public static SimpleTypeExpression List() => new SimpleTypeExpression {
 				Identifier = new IdentifierNameExpression("string"),
-				Optional = optional
 			};
-			public static SimpleTypeExpression Null() => new SimpleTypeExpression {
-				Identifier = new IdentifierNameExpression("null")
-			};
-			public static SimpleTypeExpression Undefined() => new SimpleTypeExpression {
-				Identifier = new IdentifierNameExpression("undefined")
-			};
-			public static SimpleTypeExpression Type(string name, bool optional) {
+			public static SimpleTypeExpression Type(string name) {
 				return new SimpleTypeExpression {
 					Identifier = new IdentifierNameExpression(name),
-					Optional = optional
 				};
 			}
-			public static SimpleTypeExpression HttpClient(bool optional = false) => new SimpleTypeExpression {
-				Identifier = Identifiers.HttpClient,
-				Optional = optional
-			};
 		}
 
 		public static class Literals {
@@ -69,26 +52,20 @@ namespace Albatross.CodeGen.Python {
 		}
 
 		public static class Invocations {
-			public static InvocationExpression InjectableDecorator(string providedIn) {
+			public static InvocationExpression PropertyDecorator() {
 				return new DecoratorExpression {
-					Identifier = new QualifiedIdentifierNameExpression("Injectable", Sources.AngularCore),
-					ArgumentList = new ListOfSyntaxNodes<IExpression>(new JsonValueExpression(new JsonPropertyExpression("providedIn", new StringLiteralExpression(providedIn))))
+					Identifier = new IdentifierNameExpression("property"),
 				};
 			}
-			public static InvocationExpression ConsoleLog(string message) {
+			public static InvocationExpression DataClassDecorator(string message) {
 				return new InvocationExpression {
-					Identifier = new MultiPartIdentifierNameExpression(new IdentifierNameExpression("console"), new IdentifierNameExpression("log")),
-					ArgumentList = new ListOfSyntaxNodes<IExpression>(new StringLiteralExpression(message)),
-					Terminate = true,
+					Identifier = new QualifiedIdentifierNameExpression("dataclass", Sources.DataClasses)
 				};
 			}
 		}
 
 		public static class Sources {
-			public static ISourceExpression AngularCore => new ModuleSourceExpression("@angular/core");
-			public static ISourceExpression AngularHttp => new ModuleSourceExpression("@angular/common/http");
-			public static ISourceExpression Rxjs => new ModuleSourceExpression("rxjs");
-			public static ISourceExpression DateFns => new ModuleSourceExpression("date-fns");
+			public static ISourceExpression DataClasses => new ModuleSourceExpression("dataclasses");
 		}
 
 		public static class Identifiers {

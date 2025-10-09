@@ -6,17 +6,21 @@ using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
 	public record class ImportExpression : SyntaxNode, ICodeElement {
-		public ImportExpression(IEnumerable<IdentifierNameExpression> items) {
-			this.Items = new ListOfSyntaxNodes<IdentifierNameExpression>(items.Distinct());
+		public ImportExpression(IdentifierNameExpression module, IEnumerable<IdentifierNameExpression> symbols) {
+			Module = module;
+			this.Symbols = new ListOfSyntaxNodes<IdentifierNameExpression>(symbols.Distinct());
 		}
-		public ListOfSyntaxNodes<IdentifierNameExpression> Items { get; }
+		public IdentifierNameExpression Module { get; }
+		public ListOfSyntaxNodes<IdentifierNameExpression> Symbols { get; }
 		public required ISourceExpression Source { get; init; }
-		public override IEnumerable<ISyntaxNode> Children => [Items, Source];
+		public override IEnumerable<ISyntaxNode> Children => [Symbols, Source];
 		// import {format, parse} from 'date-fns';
 		public override TextWriter Generate(TextWriter writer) {
-			var sorted = new ListOfSyntaxNodes<IdentifierNameExpression>(Items.OrderBy(x => x.Name.ToString()));
-			writer.Append("import ").Append("{ ").Code(sorted).Append(" } ");
-			writer.Append(" from ").Code(Source).Semicolon().WriteLine();
+			if(Symbols.Any()) {
+				writer.Append("from ").Code(Module).Append(" import ").WriteItems(Symbols, ",", (w, x) => w.Code(x));
+			}else{
+				writer.Append("import ").Code(Module);
+			}
 			return writer;
 		}
 	}

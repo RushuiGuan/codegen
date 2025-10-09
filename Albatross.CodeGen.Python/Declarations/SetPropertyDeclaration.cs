@@ -6,8 +6,8 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Declarations {
-	public record class PropertyDeclaration : SyntaxNode, IDeclaration, ICodeElement {
-		public PropertyDeclaration(string name) {
+	public record class SetPropertyDeclaration : SyntaxNode, IDeclaration, ICodeElement {
+		public SetPropertyDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
 
