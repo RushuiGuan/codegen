@@ -1,4 +1,4 @@
-﻿using Albatross.CodeGen.Python.Models;
+﻿using Albatross.CodeGen.Python.Declarations;
 using System;
 using System.Linq;
 using System.Reflection;

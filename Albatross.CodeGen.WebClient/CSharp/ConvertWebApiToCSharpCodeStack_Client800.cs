@@ -30,6 +30,9 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					codeStack.FileName = $"{proxyClassName}.generated.cs";
 					if (settings.CSharpWebClientSettings.UseInterface) {
 						using (codeStack.NewScope(new InterfaceDeclarationBuilder(interfaceClassName).Public().Partial())) {
+							if(from.IsObsolete) {
+								codeStack.Complete(new AttributeBuilder("System.ObsoleteAttribute"));
+							}
 							foreach (var method in from.Methods) {
 								TypeNode returnType;
 								if (method.ReturnType.SpecialType == SpecialType.System_Void) {
@@ -55,6 +58,9 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						codeStack.With(new BaseTypeNode("ClientBase"));
 						if (settings.CSharpWebClientSettings.UseInterface) {
 							codeStack.With(new BaseTypeNode(interfaceClassName));
+						}
+						if (from.IsObsolete) {
+							codeStack.Complete(new AttributeBuilder("System.ObsoleteAttribute"));
 						}
 						settings.CSharpWebClientSettings.ConstructorSettings.TryGetValue(from.Controller.Name, out var constructorSettings);
 						if (constructorSettings == null) {
@@ -84,6 +90,9 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 								returnType = new GenericIdentifierNode("Task", method.ReturnType.AsTypeNode());
 							}
 							using (codeStack.NewScope(new MethodDeclarationBuilder(returnType, method.Name).Public().Async())) {
+								if (method.IsObsolete) {
+									codeStack.Complete(new AttributeBuilder("System.ObsoleteAttribute"));
+								}
 								foreach (var param in method.Parameters) {
 									codeStack.With(new ParameterNode(param.Type.AsTypeNode(), param.Name));
 								}

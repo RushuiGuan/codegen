@@ -27,6 +27,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 				}
 			}
 			this.RouteSegments = routeSegments;
+			this.IsObsolete = symbol.GetAttributes().Any(x => x.AttributeClass?.GetFullName() == My.ObsoleteAttribute_ClassName);
 		}
 		public WebClientMethodSettings Settings { get; init; }
 		public string HttpMethod { get; set; }
@@ -36,6 +37,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 		public string ReturnTypeText => ReturnType.GetFullName();
 		public IEnumerable<IRouteSegment> RouteSegments { get; }
 		public List<ParameterInfo> Parameters { get; } = new List<ParameterInfo>();
+		public bool IsObsolete { get; set; }
 
 		ITypeSymbol GetReturnType(ITypeSymbol type) {
 			if (type is INamedTypeSymbol named && named.IsGenericType) {

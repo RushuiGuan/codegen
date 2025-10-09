@@ -17,6 +17,8 @@ namespace Albatross.CodeGen.WebClient {
 		public const string FromBodyAttributeClassName = "Microsoft.AspNetCore.Mvc.FromBodyAttribute";
 		public const string FromHeaderAttributeClassName = "Microsoft.AspNetCore.Mvc.FromHeaderAttribute";
 
+		public const string ObsoleteAttribute_ClassName = "System.ObsoleteAttribute";
+
 		public const string ActionResultClassName = "Microsoft.AspNetCore.Mvc.ActionResult";
 		public const string ActionResultInterfaceName = "Microsoft.AspNetCore.Mvc.IActionResult";
 		public const string TaskClassName = "System.Threading.Tasks.Task";
