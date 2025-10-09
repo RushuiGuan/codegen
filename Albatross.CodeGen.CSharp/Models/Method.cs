@@ -17,8 +17,10 @@ namespace Albatross.CodeGen.CSharp.Models {
 		public bool Virtual { get; set; }
 		public bool Override { get; set; }
 		public ICodeElement CodeBlock { get; set; } = new CodeBlock();
+		public IEnumerable<MethodCall> Attributes { get; set; } = new MethodCall[0];
 
 		public virtual TextWriter Generate(TextWriter writer) {
+			writer.WriteAttributes(this.Attributes);
 			writer.Code(new AccessModifierElement(AccessModifier)).Space();
 			if (Static) {
 				writer.Static();

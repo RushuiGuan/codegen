@@ -8,7 +8,8 @@ try {
 	dotnet run -- csharp-proxy `
 		-p $PSScriptRoot/../Test.WebApi/Test.WebApi.csproj `
 		-s $PSScriptRoot/codegen-settings.json `
-		-o $PSScriptRoot/
+		-o $PSScriptRoot/ `
+		--show-stack
 } finally {
 	set-Location $location
 }
