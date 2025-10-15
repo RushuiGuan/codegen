@@ -50,30 +50,44 @@ namespace Albatross.CodeGen.Python {
 			public static JsonPropertyExpression JsonProperty(string name, string value)
 				=> new JsonPropertyExpression(name, new StringLiteralExpression(value));
 		}
-
-		public static class Invocations {
-			public static InvocationExpression PropertyDecorator() {
+		
+		public static class Decorators {
+			public static DecoratorExpression Property() {
 				return new DecoratorExpression {
 					Identifier = new IdentifierNameExpression("property"),
 				};
 			}
-			public static InvocationExpression DataClassDecorator(string message) {
-				return new InvocationExpression {
+
+			public static DecoratorExpression DataClass() {
+				return new DecoratorExpression {
 					Identifier = new QualifiedIdentifierNameExpression("dataclass", Sources.DataClasses)
+				};
+			}
+
+			public static DecoratorExpression AbstractMethod() {
+				return new DecoratorExpression {
+					Identifier = new QualifiedIdentifierNameExpression("abstractmethod", Sources.DataClasses)
 				};
 			}
 		}
 
+		public static class Invocations {
+			public static InvocationExpression EnumAuto()
+				=> new InvocationExpression {
+					Identifier = new QualifiedIdentifierNameExpression("auto", Sources.Enum)
+				};
+		}
+
 		public static class Sources {
-			public static ISourceExpression DataClasses => new ModuleSourceExpression("dataclasses");
+			public static readonly ISourceExpression DataClasses = new ModuleSourceExpression("dataclasses");
+			public static readonly ISourceExpression Enum = new ModuleSourceExpression("enum");
+			public static readonly ISourceExpression AbstractBaseClass = new ModuleSourceExpression("abc");
 		}
 
 		public static class Identifiers {
-			public static IIdentifierNameExpression HttpClient => new QualifiedIdentifierNameExpression("HttpClient", Sources.AngularHttp);
-			public static IIdentifierNameExpression This => new IdentifierNameExpression("this");
-			public static IIdentifierNameExpression Promise => new IdentifierNameExpression("Promise");
-			public static IIdentifierNameExpression Observable => new QualifiedIdentifierNameExpression("Observable", Sources.Rxjs);
-			public static IIdentifierNameExpression FirstValueFrom => new QualifiedIdentifierNameExpression("firstValueFrom", Sources.Rxjs);
+			public static readonly IIdentifierNameExpression Self = new IdentifierNameExpression("self");
+			public static readonly IIdentifierNameExpression Enum = new QualifiedIdentifierNameExpression("Enum", Sources.Enum);
+			public static readonly IIdentifierNameExpression AbstractBaseClass = new QualifiedIdentifierNameExpression("ABC", Sources.AbstractBaseClass);
 		}
 	}
 }

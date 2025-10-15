@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Declarations {
-	public record class FieldDeclaration : SyntaxNode, IDeclaration, ICodeElement {
+	public record class FieldDeclaration : SyntaxNode, IDeclaration {
 		public FieldDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
@@ -19,6 +19,5 @@ namespace Albatross.CodeGen.Python.Declarations {
 			writer.Code(Identifier).Append(": ").WriteItems(Types, "|", (w, x) => w.Code(x));
 			return writer;
 		}
-		public IEnumerable<IModifier> Modifiers => [];
 	}
 }

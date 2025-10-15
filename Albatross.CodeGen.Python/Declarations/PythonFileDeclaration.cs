@@ -5,21 +5,18 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Declarations {
-	public record class TypeScriptFileDeclaration : SyntaxNode, IDeclaration, ICodeElement {
-		public TypeScriptFileDeclaration(string name) {
+	public record class PythonFileDeclaration : SyntaxNode, IDeclaration {
+		public PythonFileDeclaration(string name) {
 			this.Name = name;
 		}
-		public string FileName => $"{Name}.ts";
+		public string FileName => $"{Name}.py";
 		public string Name { get; }
-		public IEnumerable<IModifier> Modifiers { get; init; } = [];
 		public IEnumerable<ImportExpression> ImportDeclarations { get; init; } = [];
 		public IEnumerable<EnumDeclaration> EnumDeclarations { get; init; } = [];
-		public IEnumerable<InterfaceDeclaration> InterfaceDeclarations { get; init; } = [];
 		public IEnumerable<ClassDeclaration> ClasseDeclarations { get; init; } = [];
 
 		public override IEnumerable<ISyntaxNode> Children => ImportDeclarations.Cast<ISyntaxNode>()
 			.Union(EnumDeclarations)
-			.Union(InterfaceDeclarations)
 			.Union(ClasseDeclarations);
 
 		bool IsSelf(ISourceExpression source) {
@@ -40,9 +37,6 @@ namespace Albatross.CodeGen.Python.Declarations {
 			new ImportCollection(importExpressions).Generate(writer);
 			writer.WriteLine();
 			foreach (var item in EnumDeclarations) {
-				writer.Code(item);
-			}
-			foreach (var item in InterfaceDeclarations) {
 				writer.Code(item);
 			}
 			foreach (var item in ClasseDeclarations) {

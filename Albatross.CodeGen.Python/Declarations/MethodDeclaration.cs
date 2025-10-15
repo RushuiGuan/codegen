@@ -11,25 +11,25 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public MethodDeclaration(string name) {
 			Identifier = new IdentifierNameExpression(name);
 		}
+
 		public IdentifierNameExpression Identifier { get; }
+		public IEnumerable<DecoratorExpression> Decorators { get; init; } = [];
 		public ITypeExpression ReturnType { get; init; } = Defined.Types.None();
 		public ListOfSyntaxNodes<ParameterDeclaration> Parameters { get; init; } = new();
 		public IEnumerable<IModifier> Modifiers { get; init; } = [];
 		public IExpression Body { get; init; } = new EmptyExpression();
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier, ReturnType, Parameters, Body };
-
 		public override TextWriter Generate(TextWriter writer) {
-			var modifier = Modifiers.Where(x => x is AccessModifier).FirstOrDefault() ?? AccessModifier.Public;
-			if (!object.Equals(modifier, AccessModifier.Public)) {
-				writer.Append(modifier.Name).Space();
+			foreach (var decorator in Decorators) {
+				writer.Code(decorator).WriteLine();
 			}
-			if (Modifiers.Where(x => x is AsyncModifier).Any()) {
-				writer.Append("async").Space();
+			foreach (var modifier in Modifiers) {
+				writer.Append(modifier).Space();
 			}
-			writer.Code(Identifier).OpenParenthesis().Code(Parameters).CloseParenthesis();
-			if (!object.Equals(this.ReturnType, Defined.Types.Void())) {
-				writer.Append(": ").Code(ReturnType).Space();
+			writer.Append("def ").Code(Identifier)
+				.OpenParenthesis().Code(Parameters).CloseParenthesis();
+			if (!object.Equals(this.ReturnType, Defined.Types.None())) {
+				writer.Append(" -> ").Code(ReturnType);
 			}
 			using (var scope = writer.BeginScope()) {
 				scope.Writer.Code(Body);
@@ -37,5 +37,10 @@ namespace Albatross.CodeGen.Python.Declarations {
 			writer.WriteLine();
 			return writer;
 		}
+
+		public override IEnumerable<ISyntaxNode> Children =>
+			new ISyntaxNode[] {
+				this.Identifier, this.ReturnType, this.Body,
+			}.Concat(Parameters).Concat(this.Decorators);
 	}
 }

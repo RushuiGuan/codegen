@@ -10,13 +10,12 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public EnumDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
-		public IEnumerable<IModifier> Modifiers { get; init; } = [];
 		public required ListOfEnumItems Items { get; init; }
 
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier, Items };
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Append("export ").Append("enum ");
+			writer.Append("class ").Code(this.Identifier);
 			using (var scope = writer.Code(Identifier).BeginScope()) {
 				scope.Writer.Code(Items);
 			}
