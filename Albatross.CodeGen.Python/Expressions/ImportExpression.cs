@@ -12,7 +12,6 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public ListOfSyntaxNodes<IdentifierNameExpression> Symbols { get; }
 		public required ISourceExpression Source { get; init; }
 		public override IEnumerable<ISyntaxNode> Children => [Symbols, Source];
-		// import {format, parse} from 'date-fns';
 		public override TextWriter Generate(TextWriter writer) {
 			if(Symbols.Any()) {
 				writer.Append("from ").Code(Source).Append(" import ").WriteItems(Symbols, ",", (w, x) => w.Code(x));

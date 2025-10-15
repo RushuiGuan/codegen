@@ -20,10 +20,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 			.Union(ClasseDeclarations);
 
 		bool IsSelf(ISourceExpression source) {
-			// note that file name is case sensitive in the world of unix
-			if (source is FileNameSourceExpression fileNameSource && fileNameSource.FileName == this.FileName) {
-				return true;
-			}else if(source is GenericSourceExpression genericSource && genericSource.Name.Trim('.', '/', '\\', ' ') == this.Name){
+			if (source is ModuleSourceExpression moduleSourceExpression && moduleSourceExpression.ModuleName == this.Name) {
 				return true;
 			} else {
 				return false;

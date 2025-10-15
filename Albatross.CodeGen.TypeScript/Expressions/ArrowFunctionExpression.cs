@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class ArrayFunctionExpression : SyntaxNode, IExpression, ICodeElement {
+	public record class ArrowFunctionExpression : SyntaxNode, IExpression, ICodeElement {
 		public ListOfSyntaxNodes<IIdentifierNameExpression> Arguments { get; init; } = new();
 		public IExpression Body { get; init; } = new EmptyExpression();
 

@@ -12,11 +12,11 @@ namespace Albatross.CodeGen.Python.Declarations {
 		}
 
 		public IdentifierNameExpression Identifier { get; }
-		public ITypeExpression[] Types { get; init; } = [];
-		public override IEnumerable<ISyntaxNode> Children => Types.Cast<ISyntaxNode>().Union([Identifier]).ToArray();
+		public ITypeExpression Type { get; init; } = Defined.Types.None;
+		public override IEnumerable<ISyntaxNode> Children => [Type, Identifier];
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Code(Identifier).Append(": ").WriteItems(Types, "|", (w, x) => w.Code(x));
+			writer.Code(Identifier).Append(": ").Code(Type);
 			return writer;
 		}
 	}

@@ -7,6 +7,5 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public MultiTypeExpression(IEnumerable<ITypeExpression> nodes) : base(nodes) { }
 
 		protected override string Separator => "|";
-		public bool Optional { get; init; }
 	}
 }

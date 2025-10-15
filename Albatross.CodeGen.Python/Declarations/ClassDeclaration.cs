@@ -15,7 +15,6 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public IIdentifierNameExpression? BaseClassName { get; init; }
 		public IEnumerable<FieldDeclaration> Fields { get; init; } = [];
 		public IEnumerable<GetPropertyDeclaration> GetProperties { get; init; } = [];
-		public IEnumerable<SetPropertyDeclaration> SetProperties { get; init; } = [];
 
 		public InvocationExpression[] Decorators { get; init; } = [];
 		public MethodDeclaration? Constructor { get; init; }
@@ -27,7 +26,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 			=> new List<ISyntaxNode> { Identifier, }
 				.AddIfNotNull(BaseClassName)
 				.AddIfNotNull(Constructor)
-				.UnionAll(Decorators, Imports, Fields, GetProperties, SetProperties, Methods);
+				.UnionAll(Decorators, Imports, Fields, GetProperties, Methods);
 
 		public override TextWriter Generate(TextWriter writer) {
 			Decorators.ForEach(x => writer.Code(x).AppendLine());
@@ -41,9 +40,6 @@ namespace Albatross.CodeGen.Python.Declarations {
 				}
 				foreach (var getter in GetProperties) {
 					scope.Writer.Code(getter);
-				}
-				foreach (var setter in SetProperties) {
-					scope.Writer.Code(setter);
 				}
 				if (Constructor != null) {
 					scope.Writer.Code(Constructor);

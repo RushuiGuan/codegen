@@ -1,6 +1,5 @@
 ﻿using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.Python.Expressions;
-using Albatross.CodeGen.Python.Modifiers;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +13,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 
 		public IdentifierNameExpression Identifier { get; }
 		public IEnumerable<DecoratorExpression> Decorators { get; init; } = [];
-		public ITypeExpression ReturnType { get; init; } = Defined.Types.None();
+		public ITypeExpression ReturnType { get; init; } = Defined.Types.None;
 		public ListOfSyntaxNodes<ParameterDeclaration> Parameters { get; init; } = new();
 		public IEnumerable<IModifier> Modifiers { get; init; } = [];
 		public IExpression Body { get; init; } = new EmptyExpression();
@@ -28,7 +27,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 			}
 			writer.Append("def ").Code(Identifier)
 				.OpenParenthesis().Code(Parameters).CloseParenthesis();
-			if (!object.Equals(this.ReturnType, Defined.Types.None())) {
+			if (!object.Equals(this.ReturnType, Defined.Types.None)) {
 				writer.Append(" -> ").Code(ReturnType);
 			}
 			using (var scope = writer.BeginScope()) {

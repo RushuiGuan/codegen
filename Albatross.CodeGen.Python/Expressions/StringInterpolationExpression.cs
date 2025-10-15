@@ -17,17 +17,17 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public override IEnumerable<ISyntaxNode> Children => Expressions;
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Append("`");
+			writer.Append("f\"");
 			foreach (var item in Expressions) {
 				if (item is StringLiteralExpression literal) {
 					writer.Append(literal.Value);
 				} else {
-					writer.Append("${");
+					writer.Append("{");
 					writer.Code(item);
 					writer.Append("}");
 				}
 			}
-			writer.Append("`");
+			writer.Append("\"");
 			return writer;
 		}
 	}

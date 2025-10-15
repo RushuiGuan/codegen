@@ -16,7 +16,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier, }.AddIfNotNull(Expression);
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Code(Identifier).Append(" = ").Code(Expression ??  Defined.Invocations.EnumAuto());
+			writer.Code(Identifier).Append(" = ").Code(Expression ??  Defined.Invocations.EnumAuto);
 			return writer;
 		}
 	}

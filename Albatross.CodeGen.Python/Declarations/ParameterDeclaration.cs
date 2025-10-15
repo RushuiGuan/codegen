@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Identifier);
-			if (Type != Defined.Types.None()) {
+			if (Type != Defined.Types.None) {
 				writer.Append(": ").Code(Type);
 			}
 			return writer;

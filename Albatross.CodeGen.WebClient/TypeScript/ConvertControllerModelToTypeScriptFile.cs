@@ -171,7 +171,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 				value = new InvocationExpression {
 					Identifier = new MultiPartIdentifierNameExpression(parameter.Name.CamelCase(), "map"),
 					ArgumentList = new ListOfSyntaxNodes<IExpression>(
-						new ArrayFunctionExpression {
+						new ArrowFunctionExpression {
 							Arguments = new ListOfSyntaxNodes<IIdentifierNameExpression>(new IdentifierNameExpression("x")),
 							Body = BuildParamValue("x", elementType!, useDateTimeAsDateOnly),
 						}

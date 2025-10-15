@@ -6,9 +6,9 @@ namespace Albatross.CodeGen.Python.Declarations {
 			this.Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
 				new ParameterDeclaration {
 					Identifier = Defined.Identifiers.Self,
-					Type = Defined.Types.None(),
+					Type = Defined.Types.None,
 				});
-			this.Decorators = [Defined.Decorators.Property()];
+			this.Decorators = [Defined.Decorators.Property];
 		}
 	}
 }

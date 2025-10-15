@@ -36,18 +36,12 @@ namespace Albatross.CodeGen.Python.Expressions {
 		}
 		public bool Value { get; }
 		public override TextWriter Generate(TextWriter writer) {
-			return writer.Append(Value.ToString().ToLower());
+			return writer.Append(Value.ToString());
 		}
 	}
-	public record class NullLiteralExpression : LiteralExpression {
+	public record class NoneLiteralExpression : LiteralExpression {
 		public override TextWriter Generate(TextWriter writer) {
-			return writer.Append("null");
-		}
-	}
-
-	public record class UndefinedLiteralExpression : LiteralExpression {
-		public override TextWriter Generate(TextWriter writer) {
-			return writer.Append("undefined");
+			return writer.Append("None");
 		}
 	}
 
