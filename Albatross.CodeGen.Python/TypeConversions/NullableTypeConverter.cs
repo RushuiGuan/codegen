@@ -12,10 +12,11 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 			if (symbol.TryGetNullableValueType(out var valueType)) {
 				typeExpression = factory.Convert(valueType!);
 			} else if (symbol.IsNullableReferenceType()) {
+				// strip nullable annotation
 				typeExpression = factory.Convert(symbol.WithNullableAnnotation(NullableAnnotation.None));
 			}
 			if (typeExpression != null) {
-				expression = new MultiTypeExpression(typeExpression, Defined.Types.Undefined());
+				expression = new MultiTypeExpression(typeExpression, Defined.Types.None);
 				return true;
 			} else {
 				expression = null;

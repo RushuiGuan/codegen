@@ -11,6 +11,10 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {
 			ITypeExpression typeExpression;
 			if (symbol.TryGetCollectionElementType(out var elementType)) {
+				if(elementType!.GetFullName() == "System.Byte") {
+					expression = Defined.Types.Bytes;
+					return true;
+				}
 				typeExpression = factory.Convert(elementType!);
 			} else if (symbol.IsCollection()) {
 				typeExpression = Defined.Types.Any;

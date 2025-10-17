@@ -4,7 +4,7 @@ using Albatross.CodeGen.WebClient.Models;
 using System.Linq;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class ConvertEnumModelToTypeScriptEnum : IConvertObject<EnumInfo, EnumDeclaration> {
+	public class ConvertEnumModelToPythonEnum : IConvertObject<EnumInfo, EnumDeclaration> {
 		public EnumDeclaration Convert(EnumInfo from) {
 			return new EnumDeclaration(from.Name) {
 				Items = new ListOfEnumItems(

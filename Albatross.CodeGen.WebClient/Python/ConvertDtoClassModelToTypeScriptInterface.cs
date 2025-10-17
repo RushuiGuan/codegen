@@ -4,10 +4,10 @@ using Microsoft.CodeAnalysis;
 using System.Linq;
 
 namespace Albatross.CodeGen.WebClient.Python {
-	public class ConvertDtoClassModelToTypeScriptInterface : IConvertObject<DtoClassInfo, InterfaceDeclaration> {
+	public class ConvertDtoClassModelToPythonInterface : IConvertObject<DtoClassInfo, InterfaceDeclaration> {
 		private readonly IConvertObject<DtoClassPropertyInfo, PropertyDeclaration> propertyConverter;
 
-		public ConvertDtoClassModelToTypeScriptInterface(IConvertObject<DtoClassPropertyInfo, PropertyDeclaration> propertyConverter) {
+		public ConvertDtoClassModelToPythonInterface(IConvertObject<DtoClassPropertyInfo, PropertyDeclaration> propertyConverter) {
 			this.propertyConverter = propertyConverter;
 		}
 

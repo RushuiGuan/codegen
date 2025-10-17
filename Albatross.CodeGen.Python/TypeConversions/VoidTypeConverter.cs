@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {
 			if (symbol.SpecialType == SpecialType.System_Void) {
-				expression = Defined.Types.Void();
+				expression = Defined.Types.None;
 				return true;
 			} else {
 				expression = null;

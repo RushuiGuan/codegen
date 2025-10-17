@@ -1,73 +1,60 @@
-﻿using Albatross.CodeAnalysis.Symbols;
+﻿using Humanizer;
+using Albatross.CodeAnalysis.Symbols;
 using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.Python.Expressions;
-using Albatross.CodeGen.Python.Modifiers;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.Text;
-using Humanizer;
 using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using InvocationExpressionBuilder = Albatross.CodeGen.Python.Expressions.InvocationExpressionBuilder;
 
 namespace Albatross.CodeGen.WebClient.Python {
-	public class ConvertControllerModelToTypeScriptFile : IConvertObject<ControllerInfo, TypeScriptFileDeclaration> {
+	public class ConvertControllerModelToPythonFile : IConvertObject<ControllerInfo, PythonFileDeclaration> {
 		public const string ControllerPostfix = "Controller";
 		public const string ControllerNamePlaceholder = "[controller]";
-		private readonly TypeScriptWebClientSettings settings;
+		private readonly PythonWebClientSettings settings;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertControllerModelToTypeScriptFile(CodeGenSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
-			this.settings = settings.TypeScriptWebClientSettings;
+		public ConvertControllerModelToPythonFile(CodeGenSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+			this.settings = settings.PythonWebClientSettings;
 			this.typeConverter = typeConverter;
 		}
 
-		public TypeScriptFileDeclaration Convert(ControllerInfo model) {
-			var fileName = $"{model.ControllerName.Kebaberize()}.service.generated";
-			return new TypeScriptFileDeclaration(fileName) {
+		public PythonFileDeclaration Convert(ControllerInfo model) {
+			var fileName = $"{model.ControllerName.ToLowerInvariant()}_client";
+			return new PythonFileDeclaration(fileName) {
 				ClasseDeclarations = [
-					new ClassDeclaration($"{model.ControllerName}Service") {
-						Decorators = [
-							Defined.Invocations.InjectableDecorator("root"),
-						],
-						BaseClassName = new QualifiedIdentifierNameExpression(settings.BaseClassName, new ModuleSourceExpression(settings.BaseClassModule)),
-						Getters = [
-							new GetterDeclaration("endPoint") {
-								ReturnType = Defined.Types.String(),
-								Body = new ReturnExpression(new InfixExpression("+") {
-									Left = new InvocationExpression {
-										Identifier = new MultiPartIdentifierNameExpression("this", "config", "endpoint"),
-										ArgumentList = new ListOfSyntaxNodes<IExpression>(new StringLiteralExpression(settings.EndPointName)),
-									},
-									Right = new StringLiteralExpression(model.Route),
-								}),
+					new ClassDeclaration($"{model.ControllerName}Client") {
+						Fields = [
+							new FieldDeclaration("endPoint") {
+								Type = Defined.Types.String,
 							}
 						],
 						Constructor = new ConstructorDeclaration() {
 							Parameters = new ListOfSyntaxNodes<ParameterDeclaration> {
 								Nodes = [
-									new ParameterDeclaration("config") {
-										Type = new SimpleTypeExpression {
-											Identifier = new QualifiedIdentifierNameExpression("ConfigService", new ModuleSourceExpression(settings.ConfigServiceModule)),
-										},
-										Modifiers = [AccessModifier.Private],
+									Defined.Parameters.Self,
+									new ParameterDeclaration {
+										Identifier = new IdentifierNameExpression("base_url"),
+										Type = Defined.Types.String
 									},
-									new ParameterDeclaration("client") {
-										Type = Defined.Types.HttpClient(),
-										Modifiers = [AccessModifier.Protected],
-									}
 								],
 							},
 							Body = new CompositeExpression {
 								Items = [
-									new InvocationExpression {
-										Identifier = new IdentifierNameExpression("super"),
-										Terminate = true,
+									new ScopedVariableExpression{
+										Identifier =new MultiPartIdentifierNameExpression("self", "base_url"),
+										Assignment = new InvocationExpression {
+											Identifier = new MultiPartIdentifierNameExpression("base_url", "rstrip"),
+											ArgumentList = new ListOfSyntaxNodes<IExpression>(new StringLiteralExpression("/")),
+										},
 									},
-									Defined.Invocations.ConsoleLog($"{model.ControllerName}Service instance created"),
+									
 								]
 							},
 						},
@@ -87,10 +74,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		}
 		MethodDeclaration BuildMethod(MethodInfo method, int index) {
 			var returnType = this.typeConverter.Convert(method.ReturnType);
-			if (object.Equals(returnType, Defined.Types.Void())) {
-				returnType = Defined.Types.Object();
-			}
-			var name = index == 0 ? method.Name.CamelCase() : $"{method.Name.CamelCase()}{index}";
+			var name = index == 0 ? method.Name.Underscore() : $"{method.Name.Underscore()}{index}";
 			return new MethodDeclaration(name) {
 				Modifiers = settings.UsePromise ? [new AsyncModifier()] : [],
 				ReturnType = settings.UsePromise ? returnType.ToPromise() : returnType.ToObservable(),

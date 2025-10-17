@@ -9,10 +9,10 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Albatross.CodeGen.WebClient.Python {
 	public class MappedTypeConverter : ITypeConverter {
-		private TypeScriptWebClientSettings settings;
+		private PythonWebClientSettings settings;
 
 		public MappedTypeConverter(CodeGenSettings settings) {
-			this.settings = settings.TypeScriptWebClientSettings;
+			this.settings = settings.PythonWebClientSettings;
 		}
 		// this should have higher precedence than CustomTypeConversion
 		public int Precedence => 998;

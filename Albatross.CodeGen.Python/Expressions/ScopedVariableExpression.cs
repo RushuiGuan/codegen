@@ -3,15 +3,10 @@ using Albatross.Collections;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class ScopedVariableExpression : SyntaxNode, IExpression, ICodeElement {
-		public ScopedVariableExpression(string name) {
-			Identifier = new IdentifierNameExpression(name);
-		}
-
-		public IdentifierNameExpression Identifier { get; }
+	public record class ScopedVariableExpression : SyntaxNode, IExpression {
+		public required IIdentifierNameExpression Identifier { get; init; }
 		public ITypeExpression? Type { get; init; }
 		public IExpression? Assignment { get; init; }
 
@@ -19,13 +14,12 @@ namespace Albatross.CodeGen.Python.Expressions {
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Identifier);
-			if (Type != null) {
+			if (Type != null && !Type.Equals(Defined.Types.None)) {
 				writer.Append(" : ").Code(Type);
 			}
 			if (Assignment != null) {
 				writer.Append(" = ").Code(Assignment);
 			}
-			writer.Append(";");
 			return writer;
 		}
 	}
