@@ -44,6 +44,13 @@ namespace Albatross.CodeGen.WebClient.Settings {
 		public static SymbolFilterPatterns TypeScriptEnumFilter(this CodeGenSettings settings)
 			=> settings.TypeScriptWebClientSettings.EnumFilter.Overwrite(settings.EnumFilter);
 		
+		public static SymbolFilter[] CreatePythonControllerMethodFilters(this CodeGenSettings settings) {
+			var selected = settings.PythonWebClientSettings.ControllerMethodFilters.Where(x => x.HasValue).ToArray();
+			if (selected.Length == 0) {
+				selected = settings.ControllerMethodFilters.Where(x => x.HasValue).ToArray();
+			}
+			return selected.Select(x => new SymbolFilter(x)).ToArray();
+		}
 		public static SymbolFilterPatterns CreatePythonControllerFilter(this CodeGenSettings settings)
 			=> settings.PythonWebClientSettings.ControllerFilter.Overwrite(settings.ControllerFilter);
 

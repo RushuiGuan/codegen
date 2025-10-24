@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Albatross.CodeGen.Python.Declarations {
 	public record class ParameterDeclaration : SyntaxNode, IDeclaration {
-		public required ITypeExpression Type { get; init; }
+		public ITypeExpression Type { get; init; } = Defined.Types.None;
 		public required IIdentifierNameExpression Identifier { get; init; }
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Type, Identifier };
 

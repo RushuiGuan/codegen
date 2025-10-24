@@ -13,7 +13,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public IExpression Expression { get; }
 
 		public override TextWriter Generate(TextWriter writer) {
-			return writer.Append("return ").Code(this.Expression).Semicolon();
+			return writer.Append("return ").Code(this.Expression);
 		}
 	}
 }

@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 				writer.Code(decorator).WriteLine();
 			}
 			foreach (var modifier in Modifiers) {
-				writer.Append(modifier).Space();
+				writer.Append(modifier.Name).Space();
 			}
 			writer.Append("def ").Code(Identifier)
 				.OpenParenthesis().Code(Parameters).CloseParenthesis();

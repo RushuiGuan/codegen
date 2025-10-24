@@ -12,7 +12,6 @@ using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using InvocationExpressionBuilder = Albatross.CodeGen.Python.Expressions.InvocationExpressionBuilder;
 
 namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertControllerModelToPythonFile : IConvertObject<ControllerInfo, PythonFileDeclaration> {
@@ -26,45 +25,112 @@ namespace Albatross.CodeGen.WebClient.Python {
 			this.typeConverter = typeConverter;
 		}
 
+		private static readonly IIdentifierNameExpression AsyncClient = new QualifiedIdentifierNameExpression("AsyncClient", new ModuleSourceExpression("httpx"));
+		private static readonly IIdentifierNameExpression HttpNtlmAuth = new QualifiedIdentifierNameExpression("HttpNtlmAuth", new ModuleSourceExpression("httpx_ntlm"));
+
 		public PythonFileDeclaration Convert(ControllerInfo model) {
-			var fileName = $"{model.ControllerName.ToLowerInvariant()}_client";
+			var fileName = $"{model.ControllerName.Underscore()}_client";
 			return new PythonFileDeclaration(fileName) {
 				ClasseDeclarations = [
 					new ClassDeclaration($"{model.ControllerName}Client") {
 						Fields = [
-							new FieldDeclaration("endPoint") {
+							new FieldDeclaration("base_url") {
 								Type = Defined.Types.String,
-							}
+							},
+							new FieldDeclaration("_client") {
+								Type = new SimpleTypeExpression {
+									Identifier = AsyncClient
+								}
+							},
 						],
-						Constructor = new ConstructorDeclaration() {
-							Parameters = new ListOfSyntaxNodes<ParameterDeclaration> {
-								Nodes = [
-									Defined.Parameters.Self,
-									new ParameterDeclaration {
-										Identifier = new IdentifierNameExpression("base_url"),
-										Type = Defined.Types.String
-									},
-								],
-							},
-							Body = new CompositeExpression {
-								Items = [
-									new ScopedVariableExpression {
-										Identifier = new MultiPartIdentifierNameExpression("self", "base_url"),
-										Assignment = new InvocationExpression {
-											Identifier = new MultiPartIdentifierNameExpression("base_url", "rstrip"),
-											ArgumentList = new ListOfSyntaxNodes<IExpression>(new StringLiteralExpression("/")),
-										},
-									},
-								]
-							},
-						},
-						Methods = GroupMethods(model).Select(x => BuildMethod(x.Method, x.Index)).ToArray(),
+						Constructor = CreateConstructor(),
+						Methods = new MethodDeclaration[]{
+							CreateCloseMethod(),
+							CreateAsyncEnterMethod(),
+							CreateAsyncExitMethod()
+							
+						}.Concat(GroupMethods(model).Select(x => BuildMethod(x.Method, x.Index))).ToArray(),
 					}
 				],
 			};
 		}
 
-		// has to do this since typescript doesn't support methods of the same name
+		MethodDeclaration CreateConstructor() => new ConstructorDeclaration() {
+			Parameters = new ListOfSyntaxNodes<ParameterDeclaration> {
+				Nodes = [
+					Defined.Parameters.Self,
+					new ParameterDeclaration {
+						Identifier = new IdentifierNameExpression("base_url"),
+						Type = Defined.Types.String
+					},
+				],
+			},
+			Body = new CompositeExpression {
+				Items = [
+					new ScopedVariableExpression {
+						Identifier = new MultiPartIdentifierNameExpression("self", "base_url"),
+						Assignment = new InvocationExpression {
+							Identifier = new MultiPartIdentifierNameExpression("base_url", "rstrip"),
+							ArgumentList = new ListOfSyntaxNodes<IExpression>(new StringLiteralExpression("/")),
+						},
+					},
+					new ScopedVariableExpression {
+						Identifier = new MultiPartIdentifierNameExpression("self", "_client"),
+						Assignment = new InvocationExpression {
+							Identifier = new QualifiedIdentifierNameExpression("AsyncClient", new ModuleSourceExpression("httpx")),
+							ArgumentList = new ListOfSyntaxNodes<IExpression>(
+								new ScopedVariableExpression {
+									Identifier = new IdentifierNameExpression("base_url"),
+									Assignment = new MultiPartIdentifierNameExpression("self", "base_url"),
+								},
+								new ScopedVariableExpression {
+									Identifier = new IdentifierNameExpression("auth"),
+									Assignment = new InvocationExpression {
+										Identifier = HttpNtlmAuth,
+										ArgumentList = new ListOfSyntaxNodes<IExpression>(
+											Defined.Types.None, Defined.Types.None
+										),
+									},
+								}
+							),
+						}
+					}
+				]
+			},
+		};
+		MethodDeclaration CreateCloseMethod() => new MethodDeclaration("close") {
+			Modifiers = [new AsyncModifier()],
+			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
+				new ParameterDeclaration{
+					Identifier = Defined.Identifiers.Self,
+				}),
+			ReturnType = Defined.Types.None,
+			Body = new InvocationExpressionBuilder()
+				.Await()
+				.WithMultiPartName("self", "_client", "aclose")
+				.Build(),
+		};
+		MethodDeclaration CreateAsyncEnterMethod() => new MethodDeclaration("__aenter__") {
+			Modifiers = [new AsyncModifier()],
+			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
+				new ParameterDeclaration{
+					Identifier = Defined.Identifiers.Self,
+				}),
+			ReturnType = Defined.Types.None,
+			Body = new ReturnExpression(Defined.Identifiers.Self),
+		};
+		MethodDeclaration CreateAsyncExitMethod() => new MethodDeclaration("__aexit__") {
+			Modifiers = [new AsyncModifier()],
+			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
+				new ParameterDeclaration{
+					Identifier = Defined.Identifiers.Self,
+				}),
+			ReturnType = Defined.Types.None,
+			Body = new InvocationExpressionBuilder().Await().WithMultiPartName("self", "close").Build(),
+		};
+		
+
+		// has to do this since python doesn't support methods of the same name
 		IEnumerable<(MethodInfo Method, int Index)> GroupMethods(ControllerInfo model) {
 			foreach (var group in model.Methods.GroupBy(x => x.Name)) {
 				var index = 0;
