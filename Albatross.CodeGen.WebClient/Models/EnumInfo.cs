@@ -19,12 +19,4 @@ namespace Albatross.CodeGen.WebClient.Models {
 		public IEnumerable<EnumMember> Members { get; }
 		public bool UseTextAsValue { get; }
 	}
-	public record class EnumMember {
-		public EnumMember(IFieldSymbol symbol) {
-			this.Name = symbol.Name;
-			this.NumericValue = System.Convert.ToInt64(symbol.ConstantValue);
-		}
-		public string Name { get; }
-		public long NumericValue { get; }
-	}
 }

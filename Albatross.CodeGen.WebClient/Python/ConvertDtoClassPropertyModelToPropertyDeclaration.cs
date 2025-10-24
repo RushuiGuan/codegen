@@ -1,25 +1,22 @@
-﻿using Albatross.CodeAnalysis.Symbols;
-using Albatross.CodeGen.Syntax;
+﻿using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.WebClient.Models;
-using Albatross.Text;
+using Humanizer;
 using Microsoft.CodeAnalysis;
 
 namespace Albatross.CodeGen.WebClient.Python {
-	public class ConvertDtoClassPropertyModelToPropertyDeclaration : IConvertObject<DtoClassPropertyInfo, PropertyDeclaration> {
+	public class ConvertDtoClassPropertyModelToFieldDeclaration : IConvertObject<DtoClassPropertyInfo, FieldDeclaration> {
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertDtoClassPropertyModelToPropertyDeclaration(IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+		public ConvertDtoClassPropertyModelToFieldDeclaration(IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
 			this.typeConverter = typeConverter;
 		}
 
-		public PropertyDeclaration Convert(DtoClassPropertyInfo from) {
-			return new PropertyDeclaration(from.Name.CamelCase()) {
+		public FieldDeclaration Convert(DtoClassPropertyInfo from) {
+			return new FieldDeclaration(from.Name.Underscore()) {
 				Type = typeConverter.Convert(from.PropertyType),
-				Optional = from.PropertyType.IsNullable(),
 			};
 		}
-
 		object IConvertObject<DtoClassPropertyInfo>.Convert(DtoClassPropertyInfo from) => Convert(from);
 	}
 }

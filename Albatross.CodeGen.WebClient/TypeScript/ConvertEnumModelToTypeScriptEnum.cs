@@ -3,7 +3,7 @@ using Albatross.CodeGen.TypeScript.Expressions;
 using Albatross.CodeGen.WebClient.Models;
 using System.Linq;
 
-namespace Albatross.CodeGen.CommandLine {
+namespace Albatross.CodeGen.WebClient.TypeScript {
 	public class ConvertEnumModelToTypeScriptEnum : IConvertObject<EnumInfo, EnumDeclaration> {
 		public EnumDeclaration Convert(EnumInfo from) {
 			return new EnumDeclaration(from.Name) {

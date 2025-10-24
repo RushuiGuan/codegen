@@ -1,13 +1,4 @@
-﻿namespace Albatross.CodeGen.WebClient.Models {
-	public interface IRouteSegment {
-		string Text { get; }
-	}
-	public record class RouteTextSegment : IRouteSegment {
-		public RouteTextSegment(string text) {
-			this.Text = text;
-		}
-		public string Text { get; }
-	}
+namespace Albatross.CodeGen.WebClient.Models {
 	public record class RouteParameterSegment : IRouteSegment {
 		public RouteParameterSegment(string text) {
 			this.Text = text;

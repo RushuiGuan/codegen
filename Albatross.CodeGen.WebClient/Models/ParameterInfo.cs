@@ -3,13 +3,6 @@ using Microsoft.CodeAnalysis;
 using System.Text.Json.Serialization;
 
 namespace Albatross.CodeGen.WebClient.Models {
-	[JsonConverter(typeof(JsonStringEnumConverter))]
-	public enum ParameterType {
-		FromBody,
-		FromQuery,
-		FromRoute,
-	}
-
 	public record class ParameterInfo {
 		public ParameterInfo(IParameterSymbol symbol, IRouteSegment[] routeSegments) {
 			this.Name = symbol.Name;

@@ -4,6 +4,7 @@ using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.Python.Expressions;
+using Albatross.CodeGen.Python.Modifiers;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.Text;
@@ -47,22 +48,22 @@ namespace Albatross.CodeGen.WebClient.Python {
 							},
 							Body = new CompositeExpression {
 								Items = [
-									new ScopedVariableExpression{
-										Identifier =new MultiPartIdentifierNameExpression("self", "base_url"),
+									new ScopedVariableExpression {
+										Identifier = new MultiPartIdentifierNameExpression("self", "base_url"),
 										Assignment = new InvocationExpression {
 											Identifier = new MultiPartIdentifierNameExpression("base_url", "rstrip"),
 											ArgumentList = new ListOfSyntaxNodes<IExpression>(new StringLiteralExpression("/")),
 										},
 									},
-									
 								]
 							},
 						},
-						Methods = GroupMethods(model).Select(x=> BuildMethod(x.Method, x.Index)).ToArray(),
+						Methods = GroupMethods(model).Select(x => BuildMethod(x.Method, x.Index)).ToArray(),
 					}
 				],
 			};
 		}
+
 		// has to do this since typescript doesn't support methods of the same name
 		IEnumerable<(MethodInfo Method, int Index)> GroupMethods(ControllerInfo model) {
 			foreach (var group in model.Methods.GroupBy(x => x.Name)) {
@@ -72,15 +73,15 @@ namespace Albatross.CodeGen.WebClient.Python {
 				}
 			}
 		}
+
 		MethodDeclaration BuildMethod(MethodInfo method, int index) {
 			var returnType = this.typeConverter.Convert(method.ReturnType);
 			var name = index == 0 ? method.Name.Underscore() : $"{method.Name.Underscore()}{index}";
 			return new MethodDeclaration(name) {
-				Modifiers = settings.UsePromise ? [new AsyncModifier()] : [],
-				ReturnType = settings.UsePromise ? returnType.ToPromise() : returnType.ToObservable(),
-				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(method.Parameters.Select(x => new ParameterDeclaration(x.Name) { Type = typeConverter.Convert(x.Type) })),
+				Modifiers = [new AsyncModifier()],
+				ReturnType = returnType,
+				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(method.Parameters.Select(x => new ParameterDeclaration { Identifier = new IdentifierNameExpression(x.Name), Type = typeConverter.Convert(x.Type) })),
 				Body = new ScopedVariableExpressionBuilder()
-					.IsConstant()
 					.WithName("relativeUrl").WithExpression(new StringInterpolationExpression(method.RouteSegments.Select(x => BuildRouteSegment(method, x))))
 					.Add(() => CreateHttpInvocationExpression(method))
 					.BuildAll()
@@ -103,9 +104,8 @@ namespace Albatross.CodeGen.WebClient.Python {
 			return new InvocationExpression {
 				Identifier = new QualifiedIdentifierNameExpression("format", Defined.Sources.DateFns),
 				ArgumentList = new ListOfSyntaxNodes<IExpression>(
-							new IdentifierNameExpression(text),
-							new StringLiteralExpression(format)),
-
+					new IdentifierNameExpression(text),
+					new StringLiteralExpression(format)),
 			};
 		}
 
@@ -128,20 +128,22 @@ namespace Albatross.CodeGen.WebClient.Python {
 			return value;
 		}
 
-		JsonValueExpression BuildQueryStringParameters(MethodInfo method) {
-			var properties = new List<JsonPropertyExpression>();
+		DictionaryValueExpression BuildQueryStringParameters(MethodInfo method) {
+			var properties = new List<KeyValuePairExpression>();
 			foreach (var param in method.Parameters.Where(x => x.WebType == ParameterType.FromQuery)) {
 				properties.Add(BuildQueryStringParameter(param, method.Settings.UseDateTimeAsDateOnly == true));
 			}
-			return new JsonValueExpression(properties);
+			return new DictionaryValueExpression(properties);
 		}
+
 		bool IsDate(ITypeSymbol type) {
 			var typeName = type.GetFullName();
 			return typeName == typeof(TimeOnly).FullName
-				|| typeName == typeof(DateOnly).FullName
-				|| typeName == typeof(DateTime).FullName
-				|| typeName == typeof(DateTimeOffset).FullName;
+			       || typeName == typeof(DateOnly).FullName
+			       || typeName == typeof(DateTime).FullName
+			       || typeName == typeof(DateTimeOffset).FullName;
 		}
+
 		/// <summary>
 		/// This method will generate this
 		/// { dates:dates.map(x=>format(x, "yyyy-MM-dd")) }
@@ -149,7 +151,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		/// { value }
 		/// { v: value }
 		/// </summary>
-		JsonPropertyExpression BuildQueryStringParameter(ParameterInfo parameter, bool useDateTimeAsDateOnly) {
+		KeyValuePairExpression BuildQueryStringParameter(ParameterInfo parameter, bool useDateTimeAsDateOnly) {
 			IExpression value;
 			if (parameter.Type.TryGetCollectionElementType(out var elementType) && IsDate(elementType!)) {
 				value = new InvocationExpression {

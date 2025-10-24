@@ -3,7 +3,7 @@ using Albatross.CodeGen.Python.Expressions;
 using Albatross.CodeGen.WebClient.Models;
 using System.Linq;
 
-namespace Albatross.CodeGen.CommandLine {
+namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertEnumModelToPythonEnum : IConvertObject<EnumInfo, EnumDeclaration> {
 		public EnumDeclaration Convert(EnumInfo from) {
 			return new EnumDeclaration(from.Name) {

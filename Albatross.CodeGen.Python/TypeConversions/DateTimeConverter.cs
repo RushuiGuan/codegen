@@ -11,25 +11,4 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 
 		protected override ITypeExpression GetResult(ITypeSymbol _) => Defined.Types.DateTime;
 	}
-	public class DateConverter : SimpleTypeConverter {
-		protected override IEnumerable<string> NamesToMatch => [
-			"System.DateOnly",
-		];
-
-		protected override ITypeExpression GetResult(ITypeSymbol _) => Defined.Types.Date;
-	}
-	public class TimeConverter : SimpleTypeConverter {
-		protected override IEnumerable<string> NamesToMatch => [
-			"System.TimeOnly",
-		];
-
-		protected override ITypeExpression GetResult(ITypeSymbol _) => Defined.Types.Time;
-	}
-	public class TimeSpanConverter : SimpleTypeConverter {
-		protected override IEnumerable<string> NamesToMatch => [
-			"System.TimeSpan",
-		];
-
-		protected override ITypeExpression GetResult(ITypeSymbol _) => Defined.Types.TimeDelta;
-	}	
 }
