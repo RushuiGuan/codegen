@@ -30,7 +30,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 			if (!object.Equals(this.ReturnType, Defined.Types.None)) {
 				writer.Append(" -> ").Code(ReturnType);
 			}
-			using (var scope = writer.BeginScope()) {
+			using (var scope = writer.BeginPythonScope()) {
 				scope.Writer.Code(Body);
 			}
 			writer.WriteLine();

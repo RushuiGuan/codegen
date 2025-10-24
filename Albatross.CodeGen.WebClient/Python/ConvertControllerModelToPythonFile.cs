@@ -102,7 +102,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 
 		InvocationExpression FormattedDate(string text, string format) {
 			return new InvocationExpression {
-				Identifier = new QualifiedIdentifierNameExpression("format", Defined.Sources.DateFns),
+				Identifier = new IdentifierNameExpression("format"),
 				ArgumentList = new ListOfSyntaxNodes<IExpression>(
 					new IdentifierNameExpression(text),
 					new StringLiteralExpression(format)),
@@ -156,26 +156,18 @@ namespace Albatross.CodeGen.WebClient.Python {
 			if (parameter.Type.TryGetCollectionElementType(out var elementType) && IsDate(elementType!)) {
 				value = new InvocationExpression {
 					Identifier = new MultiPartIdentifierNameExpression(parameter.Name.CamelCase(), "map"),
-					ArgumentList = new ListOfSyntaxNodes<IExpression>(
-						new ArrowFunctionExpression {
-							Arguments = new ListOfSyntaxNodes<IIdentifierNameExpression>(new IdentifierNameExpression("x")),
-							Body = BuildParamValue("x", elementType!, useDateTimeAsDateOnly),
-						}
-					)
+					ArgumentList = new ListOfSyntaxNodes<IExpression>()
 				};
 			} else {
 				value = BuildParamValue(parameter.Name.CamelCase(), parameter.Type, useDateTimeAsDateOnly);
 			}
-			return new JsonPropertyExpression(parameter.QueryKey, value);
+			return new KeyValuePairExpression(new StringLiteralExpression(parameter.QueryKey), value);
 		}
 
 		IExpression CreateHttpInvocationExpression(MethodInfo method) {
 			var builder = new InvocationExpressionBuilder();
 			var returnType = this.typeConverter.Convert(method.ReturnType);
-			if (object.Equals(returnType, Defined.Types.Void())) {
-				returnType = Defined.Types.Object();
-			}
-			var hasStringReturnType = object.Equals(returnType, Defined.Types.String());
+			var hasStringReturnType = object.Equals(returnType, Defined.Types.String);
 			switch (method.HttpMethod) {
 				case My.HttpMethodGet:
 					if (hasStringReturnType) {
@@ -220,28 +212,19 @@ namespace Albatross.CodeGen.WebClient.Python {
 				builder.AddGenericArgument(this.typeConverter.Convert(fromBodyParameter.Type));
 				builder.AddArgument(new IdentifierNameExpression(fromBodyParameter.Name.CamelCase()));
 			} else if (method.HttpMethod == My.HttpMethodPost || method.HttpMethod == My.HttpMethodPut || method.HttpMethod == My.HttpMethodPatch) {
-				builder.AddGenericArgument(Defined.Types.String());
+				builder.AddGenericArgument(Defined.Types.String);
 				builder.AddArgument(new StringLiteralExpression(""));
 			}
-
 			// build query string
 			builder.AddArgument(BuildQueryStringParameters(method));
-
-			if (settings.UsePromise) {
-				return new ScopedVariableExpressionBuilder()
-					.IsConstant().WithName("result").WithExpression(builder.Build())
-					.Add(() => new ReturnExpression(new InvocationExpression() {
-						Identifier = Defined.Identifiers.FirstValueFrom,
-						ArgumentList = new ListOfSyntaxNodes<IExpression>(new IdentifierNameExpression("result")),
-						UseAwaitOperator = true,
-					}))
-					.BuildAll();
-			} else {
-				return new ScopedVariableExpressionBuilder()
-					.IsConstant().WithName("result").WithExpression(builder.Build())
-					.Add(() => new ReturnExpression(new IdentifierNameExpression("result")))
-					.BuildAll();
-			}
+			return new ScopedVariableExpressionBuilder()
+				.WithName("result").WithExpression(builder.Build())
+				.Add(() => new ReturnExpression(new InvocationExpression() {
+					Identifier = new IdentifierNameExpression("xx"),
+					ArgumentList = new ListOfSyntaxNodes<IExpression>(new IdentifierNameExpression("result")),
+					UseAwaitOperator = true,
+				}))
+				.BuildAll();
 		}
 
 		object IConvertObject<ControllerInfo>.Convert(ControllerInfo from) => this.Convert(from);

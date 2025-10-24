@@ -22,7 +22,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 		}
 		public override TextWriter Generate(TextWriter writer) {
 			var sorted = this.OrderBy(x => x.Source.ToString()).ToArray();
-			writer.WriteItems(sorted, "", (writer, t) => writer.Code(t), null, null);
+			writer.WriteItems(sorted, "", (writer, t) => writer.Code(t).AppendLine(), null, null);
 			return writer;
 		}
 	}

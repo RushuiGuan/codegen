@@ -12,11 +12,9 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public string FileName => $"{Name}.py";
 		public string Name { get; }
 		public IEnumerable<ImportExpression> ImportDeclarations { get; init; } = [];
-		public IEnumerable<EnumDeclaration> EnumDeclarations { get; init; } = [];
 		public IEnumerable<ClassDeclaration> ClasseDeclarations { get; init; } = [];
 
 		public override IEnumerable<ISyntaxNode> Children => ImportDeclarations.Cast<ISyntaxNode>()
-			.Union(EnumDeclarations)
 			.Union(ClasseDeclarations);
 
 		bool IsSelf(ISourceExpression source) {
@@ -33,9 +31,6 @@ namespace Albatross.CodeGen.Python.Declarations {
 				.Where(x => !IsSelf(x.Source));
 			new ImportCollection(importExpressions).Generate(writer);
 			writer.WriteLine();
-			foreach (var item in EnumDeclarations) {
-				writer.Code(item);
-			}
 			foreach (var item in ClasseDeclarations) {
 				writer.Code(item);
 			}

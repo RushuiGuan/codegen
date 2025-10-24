@@ -1,5 +1,6 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.CodeGen.Python.Expressions;
+﻿using Albatross.CodeGen.Python.Expressions;
+using Albatross.CodeGen.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -37,7 +38,27 @@ namespace Albatross.CodeGen.WebClient.Python {
 				};
 			}
 		}
-
-
+		/// <summary>
+		/// Parse a string into an IdentifierNameExpression, a fully qualified name can be constructed by using the format name,soure
+		/// </summary>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		public static IIdentifierNameExpression ParseIdentifierName(this string name) {
+			name = name.Trim();
+			var index = name.IndexOf(',');
+			var source = string.Empty;
+			if (index > 0) {
+				source = name.Substring(index + 1).Trim();
+				name = name.Substring(0, index).Trim();
+			}
+			if (string.IsNullOrEmpty(name)){
+				throw new ArgumentException($"{name} is not valid identifier name");
+			}
+			if (string.IsNullOrEmpty(source)) {
+				return new IdentifierNameExpression(name);
+			} else {
+				return new QualifiedIdentifierNameExpression(name, new ModuleSourceExpression(source));
+			}
+		}
 	}
 }

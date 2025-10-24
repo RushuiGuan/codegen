@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 		}
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Identifier).OpenParenthesis().Code(Parameters).CloseParenthesis();
-			using (var scope = writer.BeginScope()) {
+			using (var scope = writer.BeginPythonScope()) {
 				scope.Writer.Code(Body);
 			}
 			writer.WriteLine();

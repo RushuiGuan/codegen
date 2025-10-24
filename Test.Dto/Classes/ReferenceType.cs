@@ -2,8 +2,8 @@
 
 namespace Test.Dto.Classes {
 	public class ReferenceType {
-		public string String { get; set; } = string.Empty;
-		public object Object { get; set; } = null!;
+		public string StringValue { get; set; } = string.Empty;
+		public object ObjectValue { get; set; } = null!;
 		public MyClassWithGenericBaseType MyClass { get; set; } = null!;
 
 		public string? NullableString { get; set; }

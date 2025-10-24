@@ -2,34 +2,34 @@
   "profiles": {
     "create python api": {
       "commandName": "Project",
-      "commandLineArgs": "create-python-api -d C:\\app\\python\\ref-data"
+      "commandLineArgs": "python proxy -d C:\\app\\python\\ref-data"
     },
     "create python code": {
       "commandName": "Project",
-      "commandLineArgs": "create-python-dto  -d C:\\app\\python\\secmaster --solution C:\\app\\secmaster\\secmaster.sln --projects secmaster.core"
+      "commandLineArgs": "python dto  -d C:\\app\\python\\secmaster --solution C:\\app\\secmaster\\secmaster.sln --projects secmaster.core"
     },
     "typescript-proxy": {
       "commandName": "Project",
-      "commandLineArgs": "typescript-proxy -p c:\\app\\framework\\codegen\\Test.WebApi\\Test.WebApi.csproj -o c:\\temp -s c:\\app\\framework\\codegen\\Test.Proxy\\codegen-settings.json"
+      "commandLineArgs": "typescript proxy -p c:\\app\\codegen\\Test.WebApi\\Test.WebApi.csproj -o c:\\temp -s c:\\app\\codegen\\Test.Proxy\\codegen-settings.json"
     },
     "typescript-dto": {
       "commandName": "Project",
-      "commandLineArgs": "typescript-dto -p .\\Test.Dto\\Test.Dto.csproj -s .\\test-client\\codegen-settings.json\r\n",
-      "workingDirectory": "c:\\app\\framework\\codegen"
+      "commandLineArgs": "typescript dto -p .\\Test.Dto\\Test.Dto.csproj -s .\\test-client\\codegen-settings.json",
+      "workingDirectory": "c:\\app\\codegen"
     },
     "secmaster dto": {
       "commandName": "Project",
-      "commandLineArgs": "typescript-dto -p C:\\app\\secmaster\\src\\SecMaster.Core\\SecMaster.Core.csproj"
+      "commandLineArgs": "typescript dto -p C:\\app\\secmaster\\src\\SecMaster.Core\\SecMaster.Core.csproj"
     },
     "csharp-proxy": {
       "commandName": "Project",
-      "commandLineArgs": "csharp-proxy -p .\\Test.WebApi\\Test.WebApi.csproj -s .\\Test.Proxy\\codegen-settings.json -o .\\Test.Proxy",
-      "workingDirectory": "C:\\app\\framework\\codegen"
+      "commandLineArgs": "csharp proxy -p .\\Test.WebApi\\Test.WebApi.csproj -s .\\Test.Proxy\\codegen-settings.json -o .\\Test.Proxy",
+      "workingDirectory": "c:\\app\\codegen"
     },
     "dto-model": {
       "commandName": "Project",
-      "commandLineArgs": "dto-model -p .\\Test.Dto\\Test.Dto.csproj -s .\\Test.Proxy\\codegen-settings.json --adhoc-filter mystringenum",
-      "workingDirectory": "C:\\app\\framework\\codegen"
+      "commandLineArgs": "model dto -p .\\Test.Dto\\Test.Dto.csproj -s .\\Test.Proxy\\codegen-settings.json --adhoc-filter mystringenum",
+      "workingDirectory": "c:\\app\\codegen"
     }
   }
 }

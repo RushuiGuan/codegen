@@ -13,10 +13,17 @@ namespace Albatross.CodeGen.Python.Declarations {
 
 		public IdentifierNameExpression Identifier { get; }
 		public ITypeExpression Type { get; init; } = Defined.Types.None;
-		public override IEnumerable<ISyntaxNode> Children => [Type, Identifier];
+		public IExpression? Initializer { get; init; }
+		public override IEnumerable<ISyntaxNode> Children => new ISyntaxNode[] { Type, Identifier }.Concat(Initializer == null ? [] : [Initializer]);
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Code(Identifier).Append(": ").Code(Type);
+			writer.Code(Identifier);
+			if (!Type.Equals(Defined.Types.None)) {
+				writer.Append(": ").Code(Type);
+			}
+			if (Initializer != null) {
+				writer.Append(" = ").Code(Initializer);
+			}
 			return writer;
 		}
 	}

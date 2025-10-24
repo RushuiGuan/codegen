@@ -16,6 +16,6 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 			"System.IntPtr",
 			"System.UIntPtr"
 		];
-		protected override ITypeExpression GetResult(ITypeSymbol _) => Defined.Types.Float;
+		protected override ITypeExpression GetResult(ITypeSymbol _) => Defined.Types.Int;
 	}
 }

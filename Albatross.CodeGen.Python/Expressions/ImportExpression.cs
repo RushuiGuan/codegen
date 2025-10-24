@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public override IEnumerable<ISyntaxNode> Children => [Symbols, Source];
 		public override TextWriter Generate(TextWriter writer) {
 			if(Symbols.Any()) {
-				writer.Append("from ").Code(Source).Append(" import ").WriteItems(Symbols, ",", (w, x) => w.Code(x));
+				writer.Append("from ").Code(Source).Append(" import ").WriteItems(Symbols, ", ", (w, x) => w.Code(x));
 			}else{
 				writer.Append("import ").Code(Source);
 			}

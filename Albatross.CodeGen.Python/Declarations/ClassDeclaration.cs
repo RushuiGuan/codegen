@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.Python.Declarations {
-	public record class ClassDeclaration : SyntaxNode, IDeclaration, ICodeElement {
+	public record class ClassDeclaration : SyntaxNode, IDeclaration {
 		public ClassDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
@@ -18,7 +18,6 @@ namespace Albatross.CodeGen.Python.Declarations {
 
 		public InvocationExpression[] Decorators { get; init; } = [];
 		public MethodDeclaration? Constructor { get; init; }
-		public IEnumerable<IModifier> Modifiers { get; init; } = [];
 		public IEnumerable<ImportExpression> Imports { get; init; } = [];
 		public IEnumerable<MethodDeclaration> Methods { get; init; } = [];
 

@@ -77,12 +77,8 @@ namespace Albatross.CodeGen.Python {
 				Identifier = new IdentifierNameExpression(name),
 			};
 			
-			public static SimpleTypeExpression Uuid3 = new SimpleTypeExpression {
-				Identifier = new QualifiedIdentifierNameExpression("uuid3", Sources.Uuid),
-			};
-			
-			public static SimpleTypeExpression Uuid4 = new SimpleTypeExpression {
-				Identifier = new QualifiedIdentifierNameExpression("uuid4", Sources.Uuid),
+			public static SimpleTypeExpression UUID = new SimpleTypeExpression {
+				Identifier = new QualifiedIdentifierNameExpression("UUID", Sources.Uuid),
 			};
 			
 			public static SimpleTypeExpression Bytes = new SimpleTypeExpression {

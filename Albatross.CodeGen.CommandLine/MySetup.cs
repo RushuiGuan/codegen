@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeAnalysis.MSBuild;
 using Albatross.CodeAnalysis.Symbols;
+using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.TypeScript;
 using Albatross.CodeGen.WebClient;
@@ -22,7 +23,12 @@ namespace Albatross.CodeGen.CommandLine {
 		public override void RegisterServices(InvocationContext context, IConfiguration configuration, EnvironmentSetting envSetting, IServiceCollection services) {
 			base.RegisterServices(context, configuration, envSetting, services);
 			services.RegisterCommands();
-			services.AddTypeScriptCodeGen().AddWebClientCodeGen();
+			services.AddWebClientCodeGen();
+			if(context.ParseResult.CommandResult.Parent?.Symbol.Name == "python") {
+				services.AddPythonCodeGen();
+			} else if(context.ParseResult.CommandResult.Parent?.Symbol.Name == "typescript") {
+				services.AddTypeScriptCodeGen();
+			}
 			services.AddScoped(provider => MSBuildWorkspace.Create());
 			services.AddScoped<ICurrentProject>(provider => {
 				var options = provider.GetRequiredService<IOptions<CodeGenCommandOptions>>().Value;

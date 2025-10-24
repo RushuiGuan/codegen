@@ -3,12 +3,13 @@ using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
 
 namespace Albatross.CodeGen.Python.TypeConversions {
-	public class GuidTypeConverter : SimpleTypeConverter {
+	public class JsonElementConverter : SimpleTypeConverter {
 		protected override IEnumerable<string> NamesToMatch => [
-			"System.Guid"
+			"System.Text.Json.JsonElement",
+			"System.Text.Json.JsonDocument",
 		];
 
 		protected override ITypeExpression GetResult(ITypeSymbol symbol) 
-			=> Defined.Types.UUID;
+			=> Defined.Types.Any;
 	}
 }

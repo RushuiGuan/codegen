@@ -24,8 +24,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public override IEnumerable<ISyntaxNode> Children => [];
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Append('"').Append(ModuleName).Append('"');
-			return writer;
+			return writer.Append(ModuleName);
 		}
 
 		public override string ToString() => this.ModuleName;

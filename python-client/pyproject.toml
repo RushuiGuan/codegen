@@ -1,0 +1,13 @@
+# Simple configuration for internal use
+
+[tool.pylint]
+max-line-length = 120
+
+[tool.pylint.format]
+indent-string = "\t"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.format]
+indent-style = "tab"
