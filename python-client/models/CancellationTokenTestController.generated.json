@@ -1,0 +1,26 @@
+{
+  "controllerName": "CancellationTokenTest",
+  "route": "api/cancellationtokentest",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "Get",
+      "returnTypeText": "System.String",
+      "routeSegments": [],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "cancellationToken",
+          "name": "cancellationToken",
+          "typeText": "System.Threading.CancellationToken",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}

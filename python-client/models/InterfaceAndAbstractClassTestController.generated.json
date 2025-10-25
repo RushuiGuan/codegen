@@ -1,0 +1,113 @@
+{
+  "controllerName": "InterfaceAndAbstractClassTest",
+  "route": "api/interface-abstract-class-test",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "SubmitByInterface",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "interface-as-param"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "command",
+          "name": "command",
+          "typeText": "Test.Dto.Classes.ICommand",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "SubmitByAbstractClass",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "abstract-class-as-param"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "command",
+          "name": "command",
+          "typeText": "Test.Dto.Classes.AbstractClass",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "ReturnInterfaceAsync",
+      "returnTypeText": "Test.Dto.Classes.ICommand",
+      "routeSegments": [
+        {
+          "text": "return-interface-async"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "ReturnInterface",
+      "returnTypeText": "Test.Dto.Classes.ICommand",
+      "routeSegments": [
+        {
+          "text": "return-interface"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "ReturnAbstractClassAsync",
+      "returnTypeText": "Test.Dto.Classes.AbstractClass",
+      "routeSegments": [
+        {
+          "text": "return-abstract-class-async"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "ReturnAbstractClass",
+      "returnTypeText": "Test.Dto.Classes.AbstractClass",
+      "routeSegments": [
+        {
+          "text": "return-abstract-class"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}

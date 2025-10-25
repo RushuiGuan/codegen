@@ -1,0 +1,22 @@
+{
+  "controllerName": "Obsolete",
+  "route": "api/obsolete",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "Get",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "get"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": true
+}

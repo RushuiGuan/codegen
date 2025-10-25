@@ -1,0 +1,53 @@
+{
+  "controllerName": "DuplicateNameTest",
+  "route": "api/duplicate-name-test",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "Submit",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "by-id"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "id",
+          "name": "id",
+          "typeText": "System.Int32",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "Submit",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "by-name"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "name",
+          "name": "name",
+          "typeText": "System.String",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}

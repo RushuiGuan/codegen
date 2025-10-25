@@ -1,0 +1,277 @@
+{
+  "controllerName": "NullableReturnTypeTest",
+  "route": "api/nullable-return-type",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetString",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "string"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncString",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "async-string"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetActionResultString",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "action-result-string"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncActionResultString",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "async-action-result-string"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetInt",
+      "returnTypeText": "System.Nullable\u003CSystem.Int32\u003E",
+      "routeSegments": [
+        {
+          "text": "int"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncInt",
+      "returnTypeText": "System.Nullable\u003CSystem.Int32\u003E",
+      "routeSegments": [
+        {
+          "text": "async-int"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetActionResultInt",
+      "returnTypeText": "System.Nullable\u003CSystem.Int32\u003E",
+      "routeSegments": [
+        {
+          "text": "action-result-int"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncActionResultInt",
+      "returnTypeText": "System.Nullable\u003CSystem.Int32\u003E",
+      "routeSegments": [
+        {
+          "text": "async-action-result-int"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetDateTime",
+      "returnTypeText": "System.Nullable\u003CSystem.DateTime\u003E",
+      "routeSegments": [
+        {
+          "text": "datetime"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncDateTime",
+      "returnTypeText": "System.Nullable\u003CSystem.DateTime\u003E",
+      "routeSegments": [
+        {
+          "text": "async-datetime"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetActionResultDateTime",
+      "returnTypeText": "System.Nullable\u003CSystem.DateTime\u003E",
+      "routeSegments": [
+        {
+          "text": "action-result-datetime"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncActionResultDateTime",
+      "returnTypeText": "System.Nullable\u003CSystem.DateTime\u003E",
+      "routeSegments": [
+        {
+          "text": "async-action-result-datetime"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetMyDto",
+      "returnTypeText": "Test.Dto.Classes.MyDto",
+      "routeSegments": [
+        {
+          "text": "object"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncMyDto",
+      "returnTypeText": "Test.Dto.Classes.MyDto",
+      "routeSegments": [
+        {
+          "text": "async-object"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "ActionResultObject",
+      "returnTypeText": "Test.Dto.Classes.MyDto",
+      "routeSegments": [
+        {
+          "text": "action-result-object"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "AsyncActionResultObject",
+      "returnTypeText": "Test.Dto.Classes.MyDto",
+      "routeSegments": [
+        {
+          "text": "async-action-result-object"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetMyDtoNullableArray",
+      "returnTypeText": "Test.Dto.Classes.MyDto[]",
+      "routeSegments": [
+        {
+          "text": "nullable-array-return-type"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetMyDtoCollection",
+      "returnTypeText": "System.Collections.Generic.IEnumerable\u003CTest.Dto.Classes.MyDto\u003E",
+      "routeSegments": [
+        {
+          "text": "nullable-collection-return-type"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}

@@ -1,0 +1,82 @@
+{
+  "controllerName": "FilteredMethod",
+  "route": "api/filtered-method",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "FilteredByNone",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "none"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "FilteredByCSharp",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "csharp"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "FilteredByCSharp2",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "csharp2"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "IncludedByCSharp",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "include-this-method"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "FilteredByTypeScript",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "typescript"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}

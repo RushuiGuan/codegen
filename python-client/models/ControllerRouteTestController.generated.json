@@ -1,0 +1,18 @@
+{
+  "controllerName": "ControllerRouteTest",
+  "route": "api/controllerroutetest",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "Post",
+      "returnTypeText": "System.Void",
+      "routeSegments": [],
+      "parameters": [],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}

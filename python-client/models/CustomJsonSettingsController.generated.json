@@ -1,0 +1,6 @@
+{
+  "controllerName": "CustomJsonSettings",
+  "route": "api/customjsonsettings",
+  "methods": [],
+  "isObsolete": false
+}

@@ -2,11 +2,10 @@ from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
 
 class FromBodyParamTestClient:
-	base_url: str
 	_client: AsyncClient
 	def __init__(self, base_url: str):
-		self.base_url = base_url.rstrip("/")
-		self._client = AsyncClient(base_url = self.base_url, auth = HttpNtlmAuth(None, None))
+		base_url = base_url.rstrip("/")
+		self._client = AsyncClient(base_url = base_url, auth = HttpNtlmAuth(None, None))
 	
 	async def close(self):
 		await self._client.aclose()
@@ -17,44 +16,44 @@ class FromBodyParamTestClient:
 	async def __aexit__(self):
 		await self.close()
 	
-	async def required_object(dto: MyDto) -> int:
+	async def required_object(self, dto: MyDto) -> int:
 		relativeUrl = f"required-object"
-		result = this.doPostAsync[int, MyDto](relativeUrl, dto, {})
-		return await xx(result)
+		response = await self._client.post[MyDto](relativeUrl, dto, {})
+		response.raise_for_status()
 	
-	async def nullable_object(dto: MyDto|None) -> int:
+	async def nullable_object(self, dto: MyDto|None) -> int:
 		relativeUrl = f"nullable-object"
-		result = this.doPostAsync[int, MyDto|None](relativeUrl, dto, {})
-		return await xx(result)
+		response = await self._client.post[MyDto|None](relativeUrl, dto, {})
+		response.raise_for_status()
 	
-	async def required_int(value: int) -> int:
+	async def required_int(self, value: int) -> int:
 		relativeUrl = f"required-int"
-		result = this.doPostAsync[int, int](relativeUrl, value, {})
-		return await xx(result)
+		response = await self._client.post[int](relativeUrl, value, {})
+		response.raise_for_status()
 	
-	async def nullable_int(value: int|None) -> int:
+	async def nullable_int(self, value: int|None) -> int:
 		relativeUrl = f"nullable-int"
-		result = this.doPostAsync[int, int|None](relativeUrl, value, {})
-		return await xx(result)
+		response = await self._client.post[int|None](relativeUrl, value, {})
+		response.raise_for_status()
 	
-	async def required_string(value: str) -> int:
+	async def required_string(self, value: str) -> int:
 		relativeUrl = f"required-string"
-		result = this.doPostAsync[int, str](relativeUrl, value, {})
-		return await xx(result)
+		response = await self._client.post[str](relativeUrl, value, {})
+		response.raise_for_status()
 	
-	async def nullable_string(value: None|str) -> int:
+	async def nullable_string(self, value: None|str) -> int:
 		relativeUrl = f"nullable-string"
-		result = this.doPostAsync[int, None|str](relativeUrl, value, {})
-		return await xx(result)
+		response = await self._client.post[None|str](relativeUrl, value, {})
+		response.raise_for_status()
 	
-	async def required_object_array(array: list[MyDto]) -> int:
+	async def required_object_array(self, array: list[MyDto]) -> int:
 		relativeUrl = f"required-object-array"
-		result = this.doPostAsync[int, list[MyDto]](relativeUrl, array, {})
-		return await xx(result)
+		response = await self._client.post[list[MyDto]](relativeUrl, array, {})
+		response.raise_for_status()
 	
-	async def nullable_object_array(array: list[MyDto|None]) -> int:
+	async def nullable_object_array(self, array: list[MyDto|None]) -> int:
 		relativeUrl = f"nullable-object-array"
-		result = this.doPostAsync[int, list[MyDto|None]](relativeUrl, array, {})
-		return await xx(result)
+		response = await self._client.post[list[MyDto|None]](relativeUrl, array, {})
+		response.raise_for_status()
 	
 

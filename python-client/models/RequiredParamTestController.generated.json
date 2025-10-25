@@ -1,0 +1,421 @@
+{
+  "controllerName": "RequiredParamTest",
+  "route": "api/required-param-test",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "ExplicitStringParam",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "explicit-string-param"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "text",
+          "name": "text",
+          "typeText": "System.String",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "ImplicitStringParam",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "implicit-string-param"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "text",
+          "name": "text",
+          "typeText": "System.String",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredStringParam",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-string-param"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "text",
+          "name": "text",
+          "typeText": "System.String",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredValueType",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-value-type"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "id",
+          "name": "id",
+          "typeText": "System.Int32",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredDateOnly",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-date-only"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "date",
+          "name": "date",
+          "typeText": "System.DateOnly",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredDateTime",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-datetime"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "date",
+          "name": "date",
+          "typeText": "System.DateTime",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredDateTimeAsDateOnly",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "requried-datetime-as-dateonly"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "date",
+          "name": "date",
+          "typeText": "System.DateTime",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "RequiredPostParam",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "required-post-param"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "dto",
+          "typeText": "Test.Dto.Classes.MyDto",
+          "webType": "FromBody"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredStringArray",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-string-array"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "values",
+          "name": "values",
+          "typeText": "System.String[]",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredStringCollection",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-string-collection"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "values",
+          "name": "values",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.String\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredValueTypeArray",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-value-type-array"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "values",
+          "name": "values",
+          "typeText": "System.Int32[]",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredValueTypeCollection",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-value-type-collection"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "values",
+          "name": "values",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.Int32\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredDateOnlyCollection",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-date-only-collection"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "dates",
+          "name": "dates",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.DateOnly\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredDateOnlyArray",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-date-only-array"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "dates",
+          "name": "dates",
+          "typeText": "System.DateOnly[]",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredDateTimeCollection",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-datetime-collection"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "dates",
+          "name": "dates",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.DateTime\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredDateTimeArray",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-datetime-array"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "dates",
+          "name": "dates",
+          "typeText": "System.DateTime[]",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredDateTimeAsDateOnlyCollection",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-datetime-as-dateonly-collection"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "dates",
+          "name": "dates",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.DateTime\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "RequiredDateTimeAsDateOnlyArray",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "required-datetime-as-dateonly-array"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "dates",
+          "name": "dates",
+          "typeText": "System.DateTime[]",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}

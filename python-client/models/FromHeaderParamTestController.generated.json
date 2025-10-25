@@ -1,0 +1,18 @@
+{
+  "controllerName": "FromHeaderParamTest",
+  "route": "api/from-header-param-test",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "OmitFromHeaderParameters",
+      "returnTypeText": "System.Void",
+      "routeSegments": [],
+      "parameters": [],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}

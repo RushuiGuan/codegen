@@ -1,0 +1,358 @@
+{
+  "controllerName": "FromRouteParamTest",
+  "route": "api/from-routing-param-test",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "ImplicitRoute",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "implicit-route/"
+        },
+        {
+          "text": "name"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "id"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "name",
+          "typeText": "System.String",
+          "webType": "FromRoute"
+        },
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "id",
+          "typeText": "System.Int32",
+          "webType": "FromRoute"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "ExplicitRoute",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "explicit-route/"
+        },
+        {
+          "text": "name"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "id"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "name",
+          "typeText": "System.String",
+          "webType": "FromRoute"
+        },
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "id",
+          "typeText": "System.Int32",
+          "webType": "FromRoute"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "WildCardRouteDouble",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "wild-card-route-double/"
+        },
+        {
+          "text": "id"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "name"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "name",
+          "typeText": "System.String",
+          "webType": "FromRoute"
+        },
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "id",
+          "typeText": "System.Int32",
+          "webType": "FromRoute"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "WildCardRouteSingle",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "wild-card-route-single/"
+        },
+        {
+          "text": "id"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "name"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "name",
+          "typeText": "System.String",
+          "webType": "FromRoute"
+        },
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "id",
+          "typeText": "System.Int32",
+          "webType": "FromRoute"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "DateTimeRoute",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "date-time-route/"
+        },
+        {
+          "text": "date"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "id"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "date",
+          "typeText": "System.DateTime",
+          "webType": "FromRoute"
+        },
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "id",
+          "typeText": "System.Int32",
+          "webType": "FromRoute"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "DateTimeAsDateOnlyRoute",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "date-time-as-date-only-route/"
+        },
+        {
+          "text": "date"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "id"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "date",
+          "typeText": "System.DateTime",
+          "webType": "FromRoute"
+        },
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "id",
+          "typeText": "System.Int32",
+          "webType": "FromRoute"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "DateOnlyRoute",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "date-only-route/"
+        },
+        {
+          "text": "date"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "id"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "date",
+          "typeText": "System.DateOnly",
+          "webType": "FromRoute"
+        },
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "id",
+          "typeText": "System.Int32",
+          "webType": "FromRoute"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "DateTimeOffsetRoute",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "datetimeoffset-route/"
+        },
+        {
+          "text": "date"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "id"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "date",
+          "typeText": "System.DateTimeOffset",
+          "webType": "FromRoute"
+        },
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "id",
+          "typeText": "System.Int32",
+          "webType": "FromRoute"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "TimeOnlyRoute",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "timeonly-route/"
+        },
+        {
+          "text": "time"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "id"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "time",
+          "typeText": "System.TimeOnly",
+          "webType": "FromRoute"
+        },
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "id",
+          "typeText": "System.Int32",
+          "webType": "FromRoute"
+        }
+      ],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}

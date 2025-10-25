@@ -1,0 +1,237 @@
+{
+  "controllerName": "NullableParamTest",
+  "route": "api/nullable-param-test",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "NullableStringParam",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "nullable-string-param"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "text",
+          "name": "text",
+          "typeText": "System.String",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "NullableValueType",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "nullable-value-type"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "id",
+          "name": "id",
+          "typeText": "System.Nullable\u003CSystem.Int32\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "NullableDateOnly",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "nullable-date-only"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "date",
+          "name": "date",
+          "typeText": "System.Nullable\u003CSystem.DateOnly\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "NullablePostParam",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "nullable-post-param"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "dto",
+          "typeText": "Test.Dto.Classes.MyDto",
+          "webType": "FromBody"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "NullableStringArray",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "nullable-string-array"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "values",
+          "name": "values",
+          "typeText": "System.String[]",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "NullableStringCollection",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "nullable-string-collection"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "values",
+          "name": "values",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.String\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "NullableValueTypeArray",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "nullable-value-type-array"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "values",
+          "name": "values",
+          "typeText": "System.Nullable\u003CSystem.Int32\u003E[]",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "NullableValueTypeCollection",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "nullable-value-type-collection"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "values",
+          "name": "values",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.Nullable\u003CSystem.Int32\u003E\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "NullableDateOnlyCollection",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "nullable-date-only-collection"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "dates",
+          "name": "dates",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.Nullable\u003CSystem.DateOnly\u003E\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "NullableDateOnlyArray",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "nullable-date-only-array"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "dates",
+          "name": "dates",
+          "typeText": "System.Nullable\u003CSystem.DateOnly\u003E[]",
+          "webType": "FromQuery"
+        }
+      ],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}

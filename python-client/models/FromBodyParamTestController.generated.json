@@ -1,0 +1,191 @@
+{
+  "controllerName": "FromBodyParamTest",
+  "route": "api/from-body-param-test",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "RequiredObject",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [
+        {
+          "text": "required-object"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "dto",
+          "typeText": "Test.Dto.Classes.MyDto",
+          "webType": "FromBody"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "NullableObject",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [
+        {
+          "text": "nullable-object"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "dto",
+          "typeText": "Test.Dto.Classes.MyDto",
+          "webType": "FromBody"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "RequiredInt",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [
+        {
+          "text": "required-int"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "value",
+          "typeText": "System.Int32",
+          "webType": "FromBody"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "NullableInt",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [
+        {
+          "text": "nullable-int"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "value",
+          "typeText": "System.Nullable\u003CSystem.Int32\u003E",
+          "webType": "FromBody"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "RequiredString",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [
+        {
+          "text": "required-string"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "value",
+          "typeText": "System.String",
+          "webType": "FromBody"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "NullableString",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [
+        {
+          "text": "nullable-string"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "value",
+          "typeText": "System.String",
+          "webType": "FromBody"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "RequiredObjectArray",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [
+        {
+          "text": "required-object-array"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "array",
+          "typeText": "Test.Dto.Classes.MyDto[]",
+          "webType": "FromBody"
+        }
+      ],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "NullableObjectArray",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [
+        {
+          "text": "nullable-object-array"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "array",
+          "typeText": "Test.Dto.Classes.MyDto[]",
+          "webType": "FromBody"
+        }
+      ],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}

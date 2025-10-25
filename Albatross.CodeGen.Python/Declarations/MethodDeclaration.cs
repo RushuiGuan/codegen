@@ -27,7 +27,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 			}
 			writer.Append("def ").Code(Identifier)
 				.OpenParenthesis().Code(Parameters).CloseParenthesis();
-			if (!object.Equals(this.ReturnType, Defined.Types.None)) {
+			if (!this.ReturnType.Equals(Defined.Types.None)) {
 				writer.Append(" -> ").Code(ReturnType);
 			}
 			using (var scope = writer.BeginPythonScope()) {

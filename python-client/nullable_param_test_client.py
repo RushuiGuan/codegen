@@ -3,11 +3,10 @@ from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
 
 class NullableParamTestClient:
-	base_url: str
 	_client: AsyncClient
 	def __init__(self, base_url: str):
-		self.base_url = base_url.rstrip("/")
-		self._client = AsyncClient(base_url = self.base_url, auth = HttpNtlmAuth(None, None))
+		base_url = base_url.rstrip("/")
+		self._client = AsyncClient(base_url = base_url, auth = HttpNtlmAuth(None, None))
 	
 	async def close(self):
 		await self._client.aclose()
@@ -18,54 +17,54 @@ class NullableParamTestClient:
 	async def __aexit__(self):
 		await self.close()
 	
-	async def nullable_string_param(text: None|str) -> str:
+	async def nullable_string_param(self, text: None|str) -> str:
 		relativeUrl = f"nullable-string-param"
-		result = this.doGetStringAsync(relativeUrl, { "text": text })
-		return await xx(result)
+		response = await self._client.get(relativeUrl, { "text": text })
+		response.raise_for_status()
 	
-	async def nullable_value_type(id: int|None) -> str:
+	async def nullable_value_type(self, id: int|None) -> str:
 		relativeUrl = f"nullable-value-type"
-		result = this.doGetStringAsync(relativeUrl, { "id": id })
-		return await xx(result)
+		response = await self._client.get(relativeUrl, { "id": id })
+		response.raise_for_status()
 	
-	async def nullable_date_only(date: date|None) -> str:
+	async def nullable_date_only(self, date: date|None) -> str:
 		relativeUrl = f"nullable-date-only"
-		result = this.doGetStringAsync(relativeUrl, { "date": date })
-		return await xx(result)
+		response = await self._client.get(relativeUrl, { "date": date })
+		response.raise_for_status()
 	
-	async def nullable_post_param(dto: MyDto|None):
+	async def nullable_post_param(self, dto: MyDto|None):
 		relativeUrl = f"nullable-post-param"
-		result = this.doPostAsync[None, MyDto|None](relativeUrl, dto, {})
-		return await xx(result)
+		response = await self._client.post[MyDto|None](relativeUrl, dto, {})
+		response.raise_for_status()
 	
-	async def nullable_string_array(values: list[None|str]) -> str:
+	async def nullable_string_array(self, values: list[None|str]) -> str:
 		relativeUrl = f"nullable-string-array"
-		result = this.doGetStringAsync(relativeUrl, { "values": values })
-		return await xx(result)
+		response = await self._client.get(relativeUrl, { "values": values })
+		response.raise_for_status()
 	
-	async def nullable_string_collection(values: list[None|str]) -> str:
+	async def nullable_string_collection(self, values: list[None|str]) -> str:
 		relativeUrl = f"nullable-string-collection"
-		result = this.doGetStringAsync(relativeUrl, { "values": values })
-		return await xx(result)
+		response = await self._client.get(relativeUrl, { "values": values })
+		response.raise_for_status()
 	
-	async def nullable_value_type_array(values: list[int|None]) -> str:
+	async def nullable_value_type_array(self, values: list[int|None]) -> str:
 		relativeUrl = f"nullable-value-type-array"
-		result = this.doGetStringAsync(relativeUrl, { "values": values })
-		return await xx(result)
+		response = await self._client.get(relativeUrl, { "values": values })
+		response.raise_for_status()
 	
-	async def nullable_value_type_collection(values: list[int|None]) -> str:
+	async def nullable_value_type_collection(self, values: list[int|None]) -> str:
 		relativeUrl = f"nullable-value-type-collection"
-		result = this.doGetStringAsync(relativeUrl, { "values": values })
-		return await xx(result)
+		response = await self._client.get(relativeUrl, { "values": values })
+		response.raise_for_status()
 	
-	async def nullable_date_only_collection(dates: list[date|None]) -> str:
+	async def nullable_date_only_collection(self, dates: list[date|None]) -> str:
 		relativeUrl = f"nullable-date-only-collection"
-		result = this.doGetStringAsync(relativeUrl, { "dates": dates })
-		return await xx(result)
+		response = await self._client.get(relativeUrl, { "dates": dates })
+		response.raise_for_status()
 	
-	async def nullable_date_only_array(dates: list[date|None]) -> str:
+	async def nullable_date_only_array(self, dates: list[date|None]) -> str:
 		relativeUrl = f"nullable-date-only-array"
-		result = this.doGetStringAsync(relativeUrl, { "dates": dates })
-		return await xx(result)
+		response = await self._client.get(relativeUrl, { "dates": dates })
+		response.raise_for_status()
 	
 

@@ -34,9 +34,6 @@ namespace Albatross.CodeGen.WebClient.Python {
 				ClasseDeclarations = [
 					new ClassDeclaration($"{model.ControllerName}Client") {
 						Fields = [
-							new FieldDeclaration("base_url") {
-								Type = Defined.Types.String,
-							},
 							new FieldDeclaration("_client") {
 								Type = new SimpleTypeExpression {
 									Identifier = AsyncClient
@@ -44,11 +41,10 @@ namespace Albatross.CodeGen.WebClient.Python {
 							},
 						],
 						Constructor = CreateConstructor(),
-						Methods = new MethodDeclaration[]{
+						Methods = new MethodDeclaration[] {
 							CreateCloseMethod(),
 							CreateAsyncEnterMethod(),
 							CreateAsyncExitMethod()
-							
 						}.Concat(GroupMethods(model).Select(x => BuildMethod(x.Method, x.Index))).ToArray(),
 					}
 				],
@@ -68,7 +64,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			Body = new CompositeExpression {
 				Items = [
 					new ScopedVariableExpression {
-						Identifier = new MultiPartIdentifierNameExpression("self", "base_url"),
+						Identifier = new IdentifierNameExpression("base_url"),
 						Assignment = new InvocationExpression {
 							Identifier = new MultiPartIdentifierNameExpression("base_url", "rstrip"),
 							ArgumentList = new ListOfSyntaxNodes<IExpression>(new StringLiteralExpression("/")),
@@ -81,7 +77,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 							ArgumentList = new ListOfSyntaxNodes<IExpression>(
 								new ScopedVariableExpression {
 									Identifier = new IdentifierNameExpression("base_url"),
-									Assignment = new MultiPartIdentifierNameExpression("self", "base_url"),
+									Assignment = new IdentifierNameExpression("base_url"),
 								},
 								new ScopedVariableExpression {
 									Identifier = new IdentifierNameExpression("auth"),
@@ -98,37 +94,31 @@ namespace Albatross.CodeGen.WebClient.Python {
 				]
 			},
 		};
+
 		MethodDeclaration CreateCloseMethod() => new MethodDeclaration("close") {
 			Modifiers = [new AsyncModifier()],
-			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
-				new ParameterDeclaration{
-					Identifier = Defined.Identifiers.Self,
-				}),
+			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(Defined.Parameters.Self),
 			ReturnType = Defined.Types.None,
 			Body = new InvocationExpressionBuilder()
 				.Await()
 				.WithMultiPartName("self", "_client", "aclose")
 				.Build(),
 		};
+
 		MethodDeclaration CreateAsyncEnterMethod() => new MethodDeclaration("__aenter__") {
 			Modifiers = [new AsyncModifier()],
-			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
-				new ParameterDeclaration{
-					Identifier = Defined.Identifiers.Self,
-				}),
+			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(Defined.Parameters.Self),
 			ReturnType = Defined.Types.None,
 			Body = new ReturnExpression(Defined.Identifiers.Self),
 		};
+
 		MethodDeclaration CreateAsyncExitMethod() => new MethodDeclaration("__aexit__") {
 			Modifiers = [new AsyncModifier()],
-			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
-				new ParameterDeclaration{
-					Identifier = Defined.Identifiers.Self,
-				}),
+			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(Defined.Parameters.Self),
 			ReturnType = Defined.Types.None,
 			Body = new InvocationExpressionBuilder().Await().WithMultiPartName("self", "close").Build(),
 		};
-		
+
 
 		// has to do this since python doesn't support methods of the same name
 		IEnumerable<(MethodInfo Method, int Index)> GroupMethods(ControllerInfo model) {
@@ -146,7 +136,10 @@ namespace Albatross.CodeGen.WebClient.Python {
 			return new MethodDeclaration(name) {
 				Modifiers = [new AsyncModifier()],
 				ReturnType = returnType,
-				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(method.Parameters.Select(x => new ParameterDeclaration { Identifier = new IdentifierNameExpression(x.Name), Type = typeConverter.Convert(x.Type) })),
+				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
+					method.Parameters.Select(x => new ParameterDeclaration { 
+						Identifier = new IdentifierNameExpression(x.Name), 
+						Type = typeConverter.Convert(x.Type) })).WithSelf(),
 				Body = new ScopedVariableExpressionBuilder()
 					.WithName("relativeUrl").WithExpression(new StringInterpolationExpression(method.RouteSegments.Select(x => BuildRouteSegment(method, x))))
 					.Add(() => CreateHttpInvocationExpression(method))
@@ -233,41 +226,21 @@ namespace Albatross.CodeGen.WebClient.Python {
 		IExpression CreateHttpInvocationExpression(MethodInfo method) {
 			var builder = new InvocationExpressionBuilder();
 			var returnType = this.typeConverter.Convert(method.ReturnType);
-			var hasStringReturnType = object.Equals(returnType, Defined.Types.String);
 			switch (method.HttpMethod) {
 				case My.HttpMethodGet:
-					if (hasStringReturnType) {
-						builder.WithMultiPartName("this", "doGetStringAsync");
-					} else {
-						builder.WithMultiPartName("this", "doGetAsync").AddGenericArgument(returnType);
-					}
+					builder.WithMultiPartName("self", "_client", "get");
 					break;
 				case My.HttpMethodPost:
-					if (hasStringReturnType) {
-						builder.WithMultiPartName("this", "doPostStringAsync");
-					} else {
-						builder.WithMultiPartName("this", "doPostAsync");
-						builder.AddGenericArgument(returnType);
-					}
+					builder.WithMultiPartName("self", "_client", "post");
 					break;
 				case My.HttpMethodPatch:
-					if (hasStringReturnType) {
-						builder.WithMultiPartName("this", "doPatchStringAsync");
-					} else {
-						builder.WithMultiPartName("this", "doPatchAsync");
-						builder.AddGenericArgument(returnType);
-					}
+					builder.WithMultiPartName("self", "_client", "patch");
 					break;
 				case My.HttpMethodPut:
-					if (hasStringReturnType) {
-						builder.WithMultiPartName("this", "doPutStringAsync");
-					} else {
-						builder.WithMultiPartName("this", "doPutAsync");
-						builder.AddGenericArgument(returnType);
-					}
+					builder.WithMultiPartName("self", "_client", "put");
 					break;
 				case My.HttpMethodDelete:
-					builder.WithMultiPartName("this", "doDeleteAsync");
+					builder.WithMultiPartName("self", "_client", "delete");
 					break;
 			}
 			// add relativeUrl parameter
@@ -282,17 +255,14 @@ namespace Albatross.CodeGen.WebClient.Python {
 				builder.AddArgument(new StringLiteralExpression(""));
 			}
 			// build query string
-			builder.AddArgument(BuildQueryStringParameters(method));
+			builder.AddArgument(BuildQueryStringParameters(method)).Await();
 			return new ScopedVariableExpressionBuilder()
-				.WithName("result").WithExpression(builder.Build())
-				.Add(() => new ReturnExpression(new InvocationExpression() {
-					Identifier = new IdentifierNameExpression("xx"),
-					ArgumentList = new ListOfSyntaxNodes<IExpression>(new IdentifierNameExpression("result")),
-					UseAwaitOperator = true,
-				}))
+				.WithName("response").WithExpression(builder.Build())
+				.Add(()=> new InvocationExpressionBuilder().WithMultiPartName("response", "raise_for_status").Build())
 				.BuildAll();
 		}
 
-		object IConvertObject<ControllerInfo>.Convert(ControllerInfo from) => this.Convert(from);
+		object IConvertObject<ControllerInfo>.
+			Convert(ControllerInfo from) => this.Convert(from);
 	}
 }

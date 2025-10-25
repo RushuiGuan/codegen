@@ -2,11 +2,10 @@ from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
 
 class DuplicateNameTestClient:
-	base_url: str
 	_client: AsyncClient
 	def __init__(self, base_url: str):
-		self.base_url = base_url.rstrip("/")
-		self._client = AsyncClient(base_url = self.base_url, auth = HttpNtlmAuth(None, None))
+		base_url = base_url.rstrip("/")
+		self._client = AsyncClient(base_url = base_url, auth = HttpNtlmAuth(None, None))
 	
 	async def close(self):
 		await self._client.aclose()
@@ -17,14 +16,14 @@ class DuplicateNameTestClient:
 	async def __aexit__(self):
 		await self.close()
 	
-	async def submit(id: int):
+	async def submit(self, id: int):
 		relativeUrl = f"by-id"
-		result = this.doPostAsync[None, str](relativeUrl, "", { "id": id })
-		return await xx(result)
+		response = await self._client.post[str](relativeUrl, "", { "id": id })
+		response.raise_for_status()
 	
-	async def submit1(name: str):
+	async def submit1(self, name: str):
 		relativeUrl = f"by-name"
-		result = this.doPostAsync[None, str](relativeUrl, "", { "name": name })
-		return await xx(result)
+		response = await self._client.post[str](relativeUrl, "", { "name": name })
+		response.raise_for_status()
 	
 

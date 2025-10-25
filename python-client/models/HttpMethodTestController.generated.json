@@ -1,0 +1,62 @@
+{
+  "controllerName": "HttpMethodTest",
+  "route": "api/http-method-test",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Delete",
+      "name": "Delete",
+      "returnTypeText": "System.Void",
+      "routeSegments": [],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Post",
+      "name": "Post",
+      "returnTypeText": "System.Void",
+      "routeSegments": [],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Patch",
+      "name": "Patch",
+      "returnTypeText": "System.Void",
+      "routeSegments": [],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "Get",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Put",
+      "name": "Put",
+      "returnTypeText": "System.Void",
+      "routeSegments": [],
+      "parameters": [],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}

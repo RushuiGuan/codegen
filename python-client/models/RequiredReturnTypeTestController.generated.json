@@ -1,0 +1,397 @@
+{
+  "controllerName": "RequiredReturnTypeTest",
+  "route": "api/required-return-type",
+  "methods": [
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "Get",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "void"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsync",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "async-task"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetActionResult",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "action-result"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncActionResult",
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "async-action-result"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetString",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "string"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncString",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "async-string"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetActionResultString",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "action-result-string"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncActionResultString",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "async-action-result-string"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetInt",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [
+        {
+          "text": "int"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncInt",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [
+        {
+          "text": "async-int"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetActionResultInt",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [
+        {
+          "text": "action-result-int"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncActionResultInt",
+      "returnTypeText": "System.Int32",
+      "routeSegments": [
+        {
+          "text": "async-action-result-int"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetDateTime",
+      "returnTypeText": "System.DateTime",
+      "routeSegments": [
+        {
+          "text": "datetime"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncDateTime",
+      "returnTypeText": "System.DateTime",
+      "routeSegments": [
+        {
+          "text": "async-datetime"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetActionResultDateTime",
+      "returnTypeText": "System.DateTime",
+      "routeSegments": [
+        {
+          "text": "action-result-datetime"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncActionResultDateTime",
+      "returnTypeText": "System.DateTime",
+      "routeSegments": [
+        {
+          "text": "async-action-result-datetime"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetDateOnly",
+      "returnTypeText": "System.DateOnly",
+      "routeSegments": [
+        {
+          "text": "dateonly"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetDateTimeOffset",
+      "returnTypeText": "System.DateTimeOffset",
+      "routeSegments": [
+        {
+          "text": "datetimeoffset"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetTimeOnly",
+      "returnTypeText": "System.TimeOnly",
+      "routeSegments": [
+        {
+          "text": "timeonly"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetMyDto",
+      "returnTypeText": "Test.Dto.Classes.MyDto",
+      "routeSegments": [
+        {
+          "text": "object"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetAsyncMyDto",
+      "returnTypeText": "Test.Dto.Classes.MyDto",
+      "routeSegments": [
+        {
+          "text": "async-object"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "ActionResultObject",
+      "returnTypeText": "Test.Dto.Classes.MyDto",
+      "routeSegments": [
+        {
+          "text": "action-result-object"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "AsyncActionResultObject",
+      "returnTypeText": "Test.Dto.Classes.MyDto",
+      "routeSegments": [
+        {
+          "text": "async-action-result-object"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetMyDtoArray",
+      "returnTypeText": "Test.Dto.Classes.MyDto[]",
+      "routeSegments": [
+        {
+          "text": "array-return-type"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetMyDtoCollection",
+      "returnTypeText": "System.Collections.Generic.IEnumerable\u003CTest.Dto.Classes.MyDto\u003E",
+      "routeSegments": [
+        {
+          "text": "collection-return-type"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    },
+    {
+      "settings": {
+        "useDateTimeAsDateOnly": null
+      },
+      "httpMethod": "Get",
+      "name": "GetMyDtoCollectionAsync",
+      "returnTypeText": "System.Collections.Generic.IEnumerable\u003CTest.Dto.Classes.MyDto\u003E",
+      "routeSegments": [
+        {
+          "text": "async-collection-return-type"
+        }
+      ],
+      "parameters": [],
+      "isObsolete": false
+    }
+  ],
+  "isObsolete": false
+}
