@@ -14,57 +14,67 @@ class NullableParamTestClient:
 	async def __aenter__(self):
 		return self
 	
-	async def __aexit__(self):
+	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
 	async def nullable_string_param(self, text: None|str) -> str:
-		relativeUrl = f"nullable-string-param"
-		response = await self._client.get(relativeUrl, { "text": text })
+		relative_url = f"nullable-string-param"
+		params = { "text": text }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def nullable_value_type(self, id: int|None) -> str:
-		relativeUrl = f"nullable-value-type"
-		response = await self._client.get(relativeUrl, { "id": id })
+		relative_url = f"nullable-value-type"
+		params = { "id": id }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def nullable_date_only(self, date: date|None) -> str:
-		relativeUrl = f"nullable-date-only"
-		response = await self._client.get(relativeUrl, { "date": date })
+		relative_url = f"nullable-date-only"
+		params = { "date": date }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def nullable_post_param(self, dto: MyDto|None):
-		relativeUrl = f"nullable-post-param"
-		response = await self._client.post[MyDto|None](relativeUrl, dto, {})
+		relative_url = f"nullable-post-param"
+		params = {}
+		response = await self._client.post[MyDto|None](relative_url, dto, params = params)
 		response.raise_for_status()
 	
 	async def nullable_string_array(self, values: list[None|str]) -> str:
-		relativeUrl = f"nullable-string-array"
-		response = await self._client.get(relativeUrl, { "values": values })
+		relative_url = f"nullable-string-array"
+		params = { "values": values }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def nullable_string_collection(self, values: list[None|str]) -> str:
-		relativeUrl = f"nullable-string-collection"
-		response = await self._client.get(relativeUrl, { "values": values })
+		relative_url = f"nullable-string-collection"
+		params = { "values": values }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def nullable_value_type_array(self, values: list[int|None]) -> str:
-		relativeUrl = f"nullable-value-type-array"
-		response = await self._client.get(relativeUrl, { "values": values })
+		relative_url = f"nullable-value-type-array"
+		params = { "values": values }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def nullable_value_type_collection(self, values: list[int|None]) -> str:
-		relativeUrl = f"nullable-value-type-collection"
-		response = await self._client.get(relativeUrl, { "values": values })
+		relative_url = f"nullable-value-type-collection"
+		params = { "values": values }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def nullable_date_only_collection(self, dates: list[date|None]) -> str:
-		relativeUrl = f"nullable-date-only-collection"
-		response = await self._client.get(relativeUrl, { "dates": dates })
+		relative_url = f"nullable-date-only-collection"
+		params = { "dates": dates }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def nullable_date_only_array(self, dates: list[date|None]) -> str:
-		relativeUrl = f"nullable-date-only-array"
-		response = await self._client.get(relativeUrl, { "dates": dates })
+		relative_url = f"nullable-date-only-array"
+		params = { "dates": dates }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 

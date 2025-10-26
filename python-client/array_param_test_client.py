@@ -13,27 +13,31 @@ class ArrayParamTestClient:
 	async def __aenter__(self):
 		return self
 	
-	async def __aexit__(self):
+	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
 	async def array_string_param(self, array: list[str]) -> str:
-		relativeUrl = f"array-string-param"
-		response = await self._client.get(relativeUrl, { "a": array })
+		relative_url = f"array-string-param"
+		params = { "a": array }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def array_value_type(self, array: list[int]) -> str:
-		relativeUrl = f"array-value-type"
-		response = await self._client.get(relativeUrl, { "a": array })
+		relative_url = f"array-value-type"
+		params = { "a": array }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def collection_string_param(self, collection: list[str]) -> str:
-		relativeUrl = f"collection-string-param"
-		response = await self._client.get(relativeUrl, { "c": collection })
+		relative_url = f"collection-string-param"
+		params = { "c": collection }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def collection_value_type(self, collection: list[int]) -> str:
-		relativeUrl = f"collection-value-type"
-		response = await self._client.get(relativeUrl, { "c": collection })
+		relative_url = f"collection-value-type"
+		params = { "c": collection }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 

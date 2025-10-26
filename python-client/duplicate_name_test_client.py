@@ -13,17 +13,19 @@ class DuplicateNameTestClient:
 	async def __aenter__(self):
 		return self
 	
-	async def __aexit__(self):
+	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
 	async def submit(self, id: int):
-		relativeUrl = f"by-id"
-		response = await self._client.post[str](relativeUrl, "", { "id": id })
+		relative_url = f"by-id"
+		params = { "id": id }
+		response = await self._client.post[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 	async def submit1(self, name: str):
-		relativeUrl = f"by-name"
-		response = await self._client.post[str](relativeUrl, "", { "name": name })
+		relative_url = f"by-name"
+		params = { "name": name }
+		response = await self._client.post[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 

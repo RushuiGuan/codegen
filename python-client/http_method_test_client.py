@@ -13,32 +13,37 @@ class HttpMethodTestClient:
 	async def __aenter__(self):
 		return self
 	
-	async def __aexit__(self):
+	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
 	async def delete(self):
-		relativeUrl = f""
-		response = await self._client.delete(relativeUrl, {})
+		relative_url = f""
+		params = {}
+		response = await self._client.delete(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def post(self):
-		relativeUrl = f""
-		response = await self._client.post[str](relativeUrl, "", {})
+		relative_url = f""
+		params = {}
+		response = await self._client.post[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 	async def patch(self):
-		relativeUrl = f""
-		response = await self._client.patch[str](relativeUrl, "", {})
+		relative_url = f""
+		params = {}
+		response = await self._client.patch[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 	async def get(self) -> int:
-		relativeUrl = f""
-		response = await self._client.get(relativeUrl, {})
+		relative_url = f""
+		params = {}
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def put(self):
-		relativeUrl = f""
-		response = await self._client.put[str](relativeUrl, "", {})
+		relative_url = f""
+		params = {}
+		response = await self._client.put[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 

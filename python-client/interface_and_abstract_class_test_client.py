@@ -13,37 +13,43 @@ class InterfaceAndAbstractClassTestClient:
 	async def __aenter__(self):
 		return self
 	
-	async def __aexit__(self):
+	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
 	async def submit_by_interface(self, command: ICommand):
-		relativeUrl = f"interface-as-param"
-		response = await self._client.post[str](relativeUrl, "", { "command": command })
+		relative_url = f"interface-as-param"
+		params = { "command": command }
+		response = await self._client.post[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 	async def submit_by_abstract_class(self, command: AbstractClass):
-		relativeUrl = f"abstract-class-as-param"
-		response = await self._client.post[str](relativeUrl, "", { "command": command })
+		relative_url = f"abstract-class-as-param"
+		params = { "command": command }
+		response = await self._client.post[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 	async def return_interface_async(self) -> ICommand:
-		relativeUrl = f"return-interface-async"
-		response = await self._client.post[str](relativeUrl, "", {})
+		relative_url = f"return-interface-async"
+		params = {}
+		response = await self._client.post[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 	async def return_interface(self) -> ICommand:
-		relativeUrl = f"return-interface"
-		response = await self._client.post[str](relativeUrl, "", {})
+		relative_url = f"return-interface"
+		params = {}
+		response = await self._client.post[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 	async def return_abstract_class_async(self) -> AbstractClass:
-		relativeUrl = f"return-abstract-class-async"
-		response = await self._client.post[str](relativeUrl, "", {})
+		relative_url = f"return-abstract-class-async"
+		params = {}
+		response = await self._client.post[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 	async def return_abstract_class(self) -> AbstractClass:
-		relativeUrl = f"return-abstract-class"
-		response = await self._client.post[str](relativeUrl, "", {})
+		relative_url = f"return-abstract-class"
+		params = {}
+		response = await self._client.post[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 

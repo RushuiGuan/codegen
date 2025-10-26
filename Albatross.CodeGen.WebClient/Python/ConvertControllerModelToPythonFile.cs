@@ -12,6 +12,7 @@ using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertControllerModelToPythonFile : IConvertObject<ControllerInfo, PythonFileDeclaration> {
@@ -114,7 +115,20 @@ namespace Albatross.CodeGen.WebClient.Python {
 
 		MethodDeclaration CreateAsyncExitMethod() => new MethodDeclaration("__aexit__") {
 			Modifiers = [new AsyncModifier()],
-			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(Defined.Parameters.Self),
+			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
+				Defined.Parameters.Self,
+				new ParameterDeclaration {
+					Identifier = new IdentifierNameExpression("exc_type"),
+					Type = Defined.Types.None
+				},
+				new ParameterDeclaration {
+					Identifier = new IdentifierNameExpression("exc_value"),
+					Type = Defined.Types.None
+				},
+				new ParameterDeclaration {
+					Identifier = new IdentifierNameExpression("traceback"),
+					Type = Defined.Types.None
+				}),
 			ReturnType = Defined.Types.None,
 			Body = new InvocationExpressionBuilder().Await().WithMultiPartName("self", "close").Build(),
 		};
@@ -137,50 +151,47 @@ namespace Albatross.CodeGen.WebClient.Python {
 				Modifiers = [new AsyncModifier()],
 				ReturnType = returnType,
 				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
-					method.Parameters.Select(x => new ParameterDeclaration { 
-						Identifier = new IdentifierNameExpression(x.Name), 
-						Type = typeConverter.Convert(x.Type) })).WithSelf(),
+					method.Parameters.Select(x => new ParameterDeclaration {
+						Identifier = new IdentifierNameExpression(x.Name.Underscore()),
+						Type = GetParameterType(x, method.Settings)
+					})).WithSelf(),
 				Body = new ScopedVariableExpressionBuilder()
-					.WithName("relativeUrl").WithExpression(new StringInterpolationExpression(method.RouteSegments.Select(x => BuildRouteSegment(method, x))))
+					.WithName("relative_url").WithExpression(new StringInterpolationExpression(method.RouteSegments.Select(x => BuildRouteSegment(method, x))))
+					.Add(() => new ScopedVariableExpressionBuilder().WithName("params").WithExpression(BuildQueryStringParameters(method)).Build())
 					.Add(() => CreateHttpInvocationExpression(method))
 					.BuildAll()
 			};
 		}
-
-		const string TimeOnlyFormat = "HH:mm:ss.SSS";
-		const string DateOnlyFormat = "yyyy-MM-dd";
-		const string DateTimeFormat = "yyyy-MM-ddTHH:mm:ssXXX";
+		ITypeExpression GetParameterType(ParameterInfo parameter, WebClientMethodSettings methodSettings) {
+			var type = this.typeConverter.Convert(parameter.Type);
+			if (type.Equals(Defined.Types.DateTime) && methodSettings.UseDateTimeAsDateOnly == true) {
+				return Defined.Types.Date;
+			} else {
+				return type;
+			}
+		}
 
 		IExpression BuildRouteSegment(MethodInfo method, IRouteSegment segment) {
 			if (segment is RouteParameterSegment parameterSegment) {
-				return BuildParamValue(segment.Text, parameterSegment.RequiredParameterInfo.Type, method.Settings.UseDateTimeAsDateOnly == true);
+				return BuildParamValue(segment.Text, parameterSegment.RequiredParameterInfo.Type);
 			} else {
 				return new StringLiteralExpression(segment.Text);
 			}
 		}
 
-		InvocationExpression FormattedDate(string text, string format) {
+		InvocationExpression FormattedDate(string variableName) {
 			return new InvocationExpression {
-				Identifier = new IdentifierNameExpression("format"),
-				ArgumentList = new ListOfSyntaxNodes<IExpression>(
-					new IdentifierNameExpression(text),
-					new StringLiteralExpression(format)),
+				Identifier = new MultiPartIdentifierNameExpression(variableName, "isoFormat"),
 			};
 		}
 
-		IExpression BuildParamValue(string variableName, ITypeSymbol elementType, bool useDateTimeAsDateOnly) {
+		IExpression BuildParamValue(string variableName, ITypeSymbol elementType) {
 			IExpression value;
 			var typeName = elementType!.GetFullName();
-			if (typeName == typeof(TimeOnly).FullName) {
-				value = FormattedDate(variableName, TimeOnlyFormat);
-			} else if (typeName == typeof(DateOnly).FullName) {
-				value = FormattedDate(variableName, DateOnlyFormat);
-			} else if (typeName == typeof(DateTime).FullName || typeName == typeof(DateTimeOffset).FullName) {
-				if (useDateTimeAsDateOnly) {
-					value = FormattedDate(variableName, DateOnlyFormat);
-				} else {
-					value = FormattedDate(variableName, DateTimeFormat);
-				}
+			if (typeName == typeof(TimeOnly).FullName ||
+				typeName == typeof(DateOnly).FullName ||
+				typeName == typeof(DateTime).FullName || typeName == typeof(DateTimeOffset).FullName) {
+				value = FormattedDate(variableName);
 			} else {
 				value = new IdentifierNameExpression(variableName);
 			}
@@ -198,9 +209,9 @@ namespace Albatross.CodeGen.WebClient.Python {
 		bool IsDate(ITypeSymbol type) {
 			var typeName = type.GetFullName();
 			return typeName == typeof(TimeOnly).FullName
-			       || typeName == typeof(DateOnly).FullName
-			       || typeName == typeof(DateTime).FullName
-			       || typeName == typeof(DateTimeOffset).FullName;
+				   || typeName == typeof(DateOnly).FullName
+				   || typeName == typeof(DateTime).FullName
+				   || typeName == typeof(DateTimeOffset).FullName;
 		}
 
 		/// <summary>
@@ -214,11 +225,11 @@ namespace Albatross.CodeGen.WebClient.Python {
 			IExpression value;
 			if (parameter.Type.TryGetCollectionElementType(out var elementType) && IsDate(elementType!)) {
 				value = new InvocationExpression {
-					Identifier = new MultiPartIdentifierNameExpression(parameter.Name.CamelCase(), "map"),
+					Identifier = new MultiPartIdentifierNameExpression(parameter.Name.Underscore(), "map"),
 					ArgumentList = new ListOfSyntaxNodes<IExpression>()
 				};
 			} else {
-				value = BuildParamValue(parameter.Name.CamelCase(), parameter.Type, useDateTimeAsDateOnly);
+				value = BuildParamValue(parameter.Name.Underscore(), parameter.Type);
 			}
 			return new KeyValuePairExpression(new StringLiteralExpression(parameter.QueryKey), value);
 		}
@@ -244,7 +255,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 					break;
 			}
 			// add relativeUrl parameter
-			builder.AddArgument(new IdentifierNameExpression("relativeUrl"));
+			builder.AddArgument(new IdentifierNameExpression("relative_url"));
 			// add from body parameter if it exists
 			var fromBodyParameter = method.Parameters.FirstOrDefault(x => x.WebType == ParameterType.FromBody);
 			if (fromBodyParameter != null) {
@@ -255,10 +266,13 @@ namespace Albatross.CodeGen.WebClient.Python {
 				builder.AddArgument(new StringLiteralExpression(""));
 			}
 			// build query string
-			builder.AddArgument(BuildQueryStringParameters(method)).Await();
+			builder.AddArgument(
+				new ScopedVariableExpressionBuilder()
+					.WithName("params")
+					.WithExpression(new IdentifierNameExpression("params")).Build()).Await();
 			return new ScopedVariableExpressionBuilder()
 				.WithName("response").WithExpression(builder.Build())
-				.Add(()=> new InvocationExpressionBuilder().WithMultiPartName("response", "raise_for_status").Build())
+				.Add(() => new InvocationExpressionBuilder().WithMultiPartName("response", "raise_for_status").Build())
 				.BuildAll();
 		}
 

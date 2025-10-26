@@ -13,47 +13,55 @@ class FromBodyParamTestClient:
 	async def __aenter__(self):
 		return self
 	
-	async def __aexit__(self):
+	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
 	async def required_object(self, dto: MyDto) -> int:
-		relativeUrl = f"required-object"
-		response = await self._client.post[MyDto](relativeUrl, dto, {})
+		relative_url = f"required-object"
+		params = {}
+		response = await self._client.post[MyDto](relative_url, dto, params = params)
 		response.raise_for_status()
 	
 	async def nullable_object(self, dto: MyDto|None) -> int:
-		relativeUrl = f"nullable-object"
-		response = await self._client.post[MyDto|None](relativeUrl, dto, {})
+		relative_url = f"nullable-object"
+		params = {}
+		response = await self._client.post[MyDto|None](relative_url, dto, params = params)
 		response.raise_for_status()
 	
 	async def required_int(self, value: int) -> int:
-		relativeUrl = f"required-int"
-		response = await self._client.post[int](relativeUrl, value, {})
+		relative_url = f"required-int"
+		params = {}
+		response = await self._client.post[int](relative_url, value, params = params)
 		response.raise_for_status()
 	
 	async def nullable_int(self, value: int|None) -> int:
-		relativeUrl = f"nullable-int"
-		response = await self._client.post[int|None](relativeUrl, value, {})
+		relative_url = f"nullable-int"
+		params = {}
+		response = await self._client.post[int|None](relative_url, value, params = params)
 		response.raise_for_status()
 	
 	async def required_string(self, value: str) -> int:
-		relativeUrl = f"required-string"
-		response = await self._client.post[str](relativeUrl, value, {})
+		relative_url = f"required-string"
+		params = {}
+		response = await self._client.post[str](relative_url, value, params = params)
 		response.raise_for_status()
 	
 	async def nullable_string(self, value: None|str) -> int:
-		relativeUrl = f"nullable-string"
-		response = await self._client.post[None|str](relativeUrl, value, {})
+		relative_url = f"nullable-string"
+		params = {}
+		response = await self._client.post[None|str](relative_url, value, params = params)
 		response.raise_for_status()
 	
 	async def required_object_array(self, array: list[MyDto]) -> int:
-		relativeUrl = f"required-object-array"
-		response = await self._client.post[list[MyDto]](relativeUrl, array, {})
+		relative_url = f"required-object-array"
+		params = {}
+		response = await self._client.post[list[MyDto]](relative_url, array, params = params)
 		response.raise_for_status()
 	
 	async def nullable_object_array(self, array: list[MyDto|None]) -> int:
-		relativeUrl = f"nullable-object-array"
-		response = await self._client.post[list[MyDto|None]](relativeUrl, array, {})
+		relative_url = f"nullable-object-array"
+		params = {}
+		response = await self._client.post[list[MyDto|None]](relative_url, array, params = params)
 		response.raise_for_status()
 	
 

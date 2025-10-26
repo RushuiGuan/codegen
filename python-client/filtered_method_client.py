@@ -13,32 +13,37 @@ class FilteredMethodClient:
 	async def __aenter__(self):
 		return self
 	
-	async def __aexit__(self):
+	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
 	async def filtered_by_none(self):
-		relativeUrl = f"none"
-		response = await self._client.get(relativeUrl, {})
+		relative_url = f"none"
+		params = {}
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def filtered_by_c_sharp(self):
-		relativeUrl = f"csharp"
-		response = await self._client.get(relativeUrl, {})
+		relative_url = f"csharp"
+		params = {}
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def filtered_by_c_sharp2(self):
-		relativeUrl = f"csharp2"
-		response = await self._client.get(relativeUrl, {})
+		relative_url = f"csharp2"
+		params = {}
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def included_by_c_sharp(self):
-		relativeUrl = f"include-this-method"
-		response = await self._client.get(relativeUrl, {})
+		relative_url = f"include-this-method"
+		params = {}
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def filtered_by_type_script(self):
-		relativeUrl = f"typescript"
-		response = await self._client.get(relativeUrl, {})
+		relative_url = f"typescript"
+		params = {}
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 

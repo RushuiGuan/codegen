@@ -13,12 +13,13 @@ class FromHeaderParamTestClient:
 	async def __aenter__(self):
 		return self
 	
-	async def __aexit__(self):
+	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
 	async def omit_from_header_parameters(self):
-		relativeUrl = f""
-		response = await self._client.get(relativeUrl, {})
+		relative_url = f""
+		params = {}
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 

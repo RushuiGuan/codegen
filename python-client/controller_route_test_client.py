@@ -13,12 +13,13 @@ class ControllerRouteTestClient:
 	async def __aenter__(self):
 		return self
 	
-	async def __aexit__(self):
+	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
 	async def post(self):
-		relativeUrl = f""
-		response = await self._client.post[str](relativeUrl, "", {})
+		relative_url = f""
+		params = {}
+		response = await self._client.post[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 

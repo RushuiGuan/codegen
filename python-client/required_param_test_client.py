@@ -14,97 +14,115 @@ class RequiredParamTestClient:
 	async def __aenter__(self):
 		return self
 	
-	async def __aexit__(self):
+	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
 	async def explicit_string_param(self, text: str) -> str:
-		relativeUrl = f"explicit-string-param"
-		response = await self._client.get(relativeUrl, { "text": text })
+		relative_url = f"explicit-string-param"
+		params = { "text": text }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def implicit_string_param(self, text: str) -> str:
-		relativeUrl = f"implicit-string-param"
-		response = await self._client.get(relativeUrl, { "text": text })
+		relative_url = f"implicit-string-param"
+		params = { "text": text }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_string_param(self, text: str) -> str:
-		relativeUrl = f"required-string-param"
-		response = await self._client.get(relativeUrl, { "text": text })
+		relative_url = f"required-string-param"
+		params = { "text": text }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_value_type(self, id: int) -> str:
-		relativeUrl = f"required-value-type"
-		response = await self._client.get(relativeUrl, { "id": id })
+		relative_url = f"required-value-type"
+		params = { "id": id }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_only(self, date: date) -> str:
-		relativeUrl = f"required-date-only"
-		response = await self._client.get(relativeUrl, { "date": format(date, "yyyy-MM-dd") })
+		relative_url = f"required-date-only"
+		params = { "date": date.isoFormat() }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time(self, date: datetime) -> str:
-		relativeUrl = f"required-datetime"
-		response = await self._client.get(relativeUrl, { "date": format(date, "yyyy-MM-ddTHH:mm:ssXXX") })
+		relative_url = f"required-datetime"
+		params = { "date": date.isoFormat() }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time_as_date_only(self, date: datetime) -> str:
-		relativeUrl = f"requried-datetime-as-dateonly"
-		response = await self._client.get(relativeUrl, { "date": format(date, "yyyy-MM-ddTHH:mm:ssXXX") })
+		relative_url = f"requried-datetime-as-dateonly"
+		params = { "date": date.isoFormat() }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_post_param(self, dto: MyDto):
-		relativeUrl = f"required-post-param"
-		response = await self._client.post[MyDto](relativeUrl, dto, {})
+		relative_url = f"required-post-param"
+		params = {}
+		response = await self._client.post[MyDto](relative_url, dto, params = params)
 		response.raise_for_status()
 	
 	async def required_string_array(self, values: list[str]) -> str:
-		relativeUrl = f"required-string-array"
-		response = await self._client.get(relativeUrl, { "values": values })
+		relative_url = f"required-string-array"
+		params = { "values": values }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_string_collection(self, values: list[str]) -> str:
-		relativeUrl = f"required-string-collection"
-		response = await self._client.get(relativeUrl, { "values": values })
+		relative_url = f"required-string-collection"
+		params = { "values": values }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_value_type_array(self, values: list[int]) -> str:
-		relativeUrl = f"required-value-type-array"
-		response = await self._client.get(relativeUrl, { "values": values })
+		relative_url = f"required-value-type-array"
+		params = { "values": values }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_value_type_collection(self, values: list[int]) -> str:
-		relativeUrl = f"required-value-type-collection"
-		response = await self._client.get(relativeUrl, { "values": values })
+		relative_url = f"required-value-type-collection"
+		params = { "values": values }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_only_collection(self, dates: list[date]) -> str:
-		relativeUrl = f"required-date-only-collection"
-		response = await self._client.get(relativeUrl, { "dates": dates.map() })
+		relative_url = f"required-date-only-collection"
+		params = { "dates": dates.map() }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_only_array(self, dates: list[date]) -> str:
-		relativeUrl = f"required-date-only-array"
-		response = await self._client.get(relativeUrl, { "dates": dates.map() })
+		relative_url = f"required-date-only-array"
+		params = { "dates": dates.map() }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time_collection(self, dates: list[datetime]) -> str:
-		relativeUrl = f"required-datetime-collection"
-		response = await self._client.get(relativeUrl, { "dates": dates.map() })
+		relative_url = f"required-datetime-collection"
+		params = { "dates": dates.map() }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time_array(self, dates: list[datetime]) -> str:
-		relativeUrl = f"required-datetime-array"
-		response = await self._client.get(relativeUrl, { "dates": dates.map() })
+		relative_url = f"required-datetime-array"
+		params = { "dates": dates.map() }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time_as_date_only_collection(self, dates: list[datetime]) -> str:
-		relativeUrl = f"required-datetime-as-dateonly-collection"
-		response = await self._client.get(relativeUrl, { "dates": dates.map() })
+		relative_url = f"required-datetime-as-dateonly-collection"
+		params = { "dates": dates.map() }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time_as_date_only_array(self, dates: list[datetime]) -> str:
-		relativeUrl = f"required-datetime-as-dateonly-array"
-		response = await self._client.get(relativeUrl, { "dates": dates.map() })
+		relative_url = f"required-datetime-as-dateonly-array"
+		params = { "dates": dates.map() }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 

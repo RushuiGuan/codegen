@@ -13,12 +13,13 @@ class PartiallyObsoleteClient:
 	async def __aenter__(self):
 		return self
 	
-	async def __aexit__(self):
+	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
 	async def get(self) -> str:
-		relativeUrl = f"get"
-		response = await self._client.get(relativeUrl, {})
+		relative_url = f"get"
+		params = {}
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 
