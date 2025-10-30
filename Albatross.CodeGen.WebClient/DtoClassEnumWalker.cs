@@ -19,16 +19,12 @@ namespace Albatross.CodeGen.WebClient {
 		}
 
 		bool IsValidDtoClass([NotNullWhen(true)] INamedTypeSymbol? symbol) =>
-			symbol != null
-				&& symbol.DeclaredAccessibility == Accessibility.Public
-				&& !symbol.IsAbstract
-				&& !symbol.IsAnonymousType
-				&& !symbol.IsStatic
-				&& symbol.TypeKind != TypeKind.Delegate
-				&& !symbol.IsGenericTypeDefinition()
-				&& symbol.TypeKind != TypeKind.Interface
-				&& symbol.TypeKind != TypeKind.Enum
-				&& !symbol.IsDerivedFrom("System.Text.Json.Serialization.JsonConverter");
+			symbol is { DeclaredAccessibility: Accessibility.Public, IsAbstract: false, IsAnonymousType: false, IsStatic: false }
+			&& symbol.TypeKind != TypeKind.Delegate
+			&& !symbol.IsGenericTypeDefinition()
+			&& symbol.TypeKind != TypeKind.Interface
+			&& symbol.TypeKind != TypeKind.Enum
+			&& !symbol.IsDerivedFrom("System.Text.Json.Serialization.JsonConverter");
 
 		public override void VisitClassDeclaration(ClassDeclarationSyntax node) {
 			var symbol = semanticModel.GetDeclaredSymbol(node);

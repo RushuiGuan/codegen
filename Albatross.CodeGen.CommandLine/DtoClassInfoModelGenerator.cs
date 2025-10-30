@@ -65,12 +65,14 @@ namespace Albatross.CodeGen.CommandLine {
 
 			if (options.OutputDirectory != null) {
 				if (dtoModels.Any()) {
-					using (var stream = File.OpenWrite(Path.Join(options.OutputDirectory.FullName, "dto.generated.json"))) {
+					using (var stream = File.OpenWrite(Path.Join(options.OutputDirectory.FullName, "dto.json"))) {
+						stream.SetLength(0);
 						JsonSerializer.SerializeAsync(stream, dtoModels, serializationOptions);
 					}
 				}
 				if (enumModels.Any()) {
-					using (var stream = File.OpenWrite(Path.Join(options.OutputDirectory.FullName, "enum.generated.json"))) {
+					using (var stream = File.OpenWrite(Path.Join(options.OutputDirectory.FullName, "enum.json"))) {
+						stream.SetLength(0);
 						JsonSerializer.SerializeAsync(stream, enumModels, serializationOptions);
 					}
 				}

@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		public ClassDeclaration Convert(DtoClassInfo from) {
 			var declaration = new ClassDeclaration(from.Name) {
 				Fields = from.Properties.Select(x => propertyConverter.Convert(x)).ToList(),
-				Decorators = [Defined.Decorators.DataClass]
+				BaseClassName = Defined.Identifiers.PydanticBaseModel,
 			};
 			return declaration;
 		}

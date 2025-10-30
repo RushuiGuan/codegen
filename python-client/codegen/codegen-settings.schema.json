@@ -7,11 +7,11 @@
     "typeScriptWebClientSettings": {
       "$ref": "#/definitions/TypeScriptWebClientSettings"
     },
+    "pythonWebClientSettings": {
+      "$ref": "#/definitions/PythonWebClientSettings"
+    },
     "cSharpWebClientSettings": {
       "$ref": "#/definitions/CSharpWebClientSettings"
-    },
-    "apiControllerConversionSetting": {
-      "$ref": "#/definitions/ApiControllerConversionSettings"
     },
     "controllerFilter": {
       "$ref": "#/definitions/SymbolFilterPatterns"
@@ -79,7 +79,7 @@
             "type": "string"
           }
         },
-        "baseTypeMapping": {
+        "typeMapping": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
@@ -108,6 +108,45 @@
         }
       }
     },
+    "PythonWebClientSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "controllerFilter": {
+          "$ref": "#/definitions/SymbolFilterPatterns"
+        },
+        "controllerMethodFilters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SymbolFilterPatterns"
+          }
+        },
+        "dtoFilter": {
+          "$ref": "#/definitions/SymbolFilterPatterns"
+        },
+        "enumFilter": {
+          "$ref": "#/definitions/SymbolFilterPatterns"
+        },
+        "endPointName": {
+          "type": "string"
+        },
+        "baseClassName": {
+          "type": "string"
+        },
+        "nameSpaceModuleMapping": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "typeMapping": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "CSharpWebClientSettings": {
       "type": "object",
       "additionalProperties": false,
@@ -132,13 +171,7 @@
         },
         "useInternalProxy": {
           "type": "boolean"
-        }
-      }
-    },
-    "ApiControllerConversionSettings": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
+        },
         "globalMethodSettings": {
           "oneOf": [
             {
@@ -154,6 +187,12 @@
           "additionalProperties": {
             "$ref": "#/definitions/WebClientMethodSettings"
           }
+        },
+        "constructorSettings": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/WebClientConstructorSettings"
+          }
         }
       }
     },
@@ -165,6 +204,21 @@
           "type": [
             "boolean",
             "null"
+          ]
+        }
+      }
+    },
+    "WebClientConstructorSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "omit": {
+          "type": "boolean"
+        },
+        "customJsonSettings": {
+          "type": [
+            "null",
+            "string"
           ]
         }
       }

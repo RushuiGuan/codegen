@@ -38,8 +38,9 @@ namespace Albatross.CodeGen.CommandLine {
 					var text = JsonSerializer.Serialize(model, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, });
 					this.writer.WriteLine(text);
 					if (options.OutputDirectory != null) {
-						using (var writer = new System.IO.StreamWriter(System.IO.Path.Join(options.OutputDirectory.FullName, $"{item.Name}.generated.json"))) {
-							writer.Write(text);
+						using (var streamWriter = new System.IO.StreamWriter(System.IO.Path.Join(options.OutputDirectory.FullName, $"{item.Name}.json"))) {
+							streamWriter.BaseStream.SetLength(0);
+							streamWriter.Write(text);
 						}
 					}
 				}

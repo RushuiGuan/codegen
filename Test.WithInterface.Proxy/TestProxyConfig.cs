@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Test.WithInterface.Proxy {
 	public class TestProxyConfig : ConfigBase {
-		public TestProxyConfig(IConfiguration configuration) : base(configuration) {
+		public TestProxyConfig(IConfiguration configuration) : base(configuration, null) {
 			this.EndPoint = configuration.GetRequiredEndPoint("test");
 		}
 		public string EndPoint { get; }

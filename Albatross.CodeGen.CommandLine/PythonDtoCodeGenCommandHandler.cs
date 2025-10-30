@@ -58,9 +58,12 @@ namespace Albatross.CodeGen.CommandLine {
 			};
 			dtoFile.Generate(System.Console.Out);
 			if (options.OutputDirectory != null) {
-				using (var writer = new StreamWriter(Path.Join(options.OutputDirectory.FullName, dtoFile.FileName))) {
-					dtoFile.Generate(writer);
-				}
+				var file = Path.Join(options.OutputDirectory.FullName, dtoFile.FileName);
+				using var stream = new FileStream(file, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+				using var streamWriter = new StreamWriter(stream);
+				dtoFile.Generate(streamWriter);
+				streamWriter.Flush();
+				stream.SetLength(stream.Position);
 			}
 			return 0;
 		}

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "MyEnum",
+    "members": [
+      {
+        "name": "One",
+        "numericValue": 0
+      },
+      {
+        "name": "Two",
+        "numericValue": 1
+      },
+      {
+        "name": "Three",
+        "numericValue": 2
+      }
+    ],
+    "useTextAsValue": false
+  },
+  {
+    "name": "MyStringEnum",
+    "members": [
+      {
+        "name": "One",
+        "numericValue": 1
+      },
+      {
+        "name": "Two",
+        "numericValue": 2
+      },
+      {
+        "name": "Three",
+        "numericValue": 3
+      }
+    ],
+    "useTextAsValue": true
+  }
+]

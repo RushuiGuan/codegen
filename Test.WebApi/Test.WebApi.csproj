@@ -11,7 +11,7 @@
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Albatross.Hosting" Version="9.0.1" />
+		<PackageReference Include="Albatross.Hosting" Version="9.0.4" />
 		<ProjectReference Include="..\Test.Dto\Test.Dto.csproj" />
 	</ItemGroup>
 	<ItemGroup>

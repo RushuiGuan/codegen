@@ -122,6 +122,7 @@ namespace Albatross.CodeGen.Python {
 
 		public static class Sources {
 			public static readonly ISourceExpression DataClasses = new ModuleSourceExpression("dataclasses");
+			public static readonly ISourceExpression Pydantic = new ModuleSourceExpression("pydantic");
 			public static readonly ISourceExpression Enum = new ModuleSourceExpression("enum");
 			public static readonly ISourceExpression AbstractBaseClass = new ModuleSourceExpression("abc");
 			public static readonly ISourceExpression Typing = new ModuleSourceExpression("typing");
@@ -134,6 +135,10 @@ namespace Albatross.CodeGen.Python {
 			public static readonly IIdentifierNameExpression Self = new IdentifierNameExpression("self");
 			public static readonly IIdentifierNameExpression Enum = new QualifiedIdentifierNameExpression("Enum", Sources.Enum);
 			public static readonly IIdentifierNameExpression AbstractBaseClass = new QualifiedIdentifierNameExpression("ABC", Sources.AbstractBaseClass);
+			public static readonly IIdentifierNameExpression Field = new QualifiedIdentifierNameExpression("field", Sources.DataClasses);
+			public static readonly IIdentifierNameExpression PydanticField = new QualifiedIdentifierNameExpression("Field", Sources.Pydantic);
+			public static readonly IIdentifierNameExpression PydanticBaseModel = new QualifiedIdentifierNameExpression("BaseModel", Sources.Pydantic);
+			public static readonly IIdentifierNameExpression Fields = new QualifiedIdentifierNameExpression("fields", Sources.DataClasses);
 		}
 		
 		public static class Parameters {
