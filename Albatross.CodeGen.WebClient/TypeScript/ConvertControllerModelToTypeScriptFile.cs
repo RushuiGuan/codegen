@@ -109,7 +109,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 
 		IExpression BuildRouteSegment(MethodInfo method, IRouteSegment segment) {
 			if (segment is RouteParameterSegment parameterSegment) {
-				return BuildParamValue(segment.Text, parameterSegment.RequiredParameterInfo.Type, method.Settings.UseDateTimeAsDateOnly == true);
+				return BuildParamValue(segment.Text, parameterSegment.RequiredParameterInfo.Type);
 			} else {
 				return new StringLiteralExpression(segment.Text);
 			}
@@ -125,7 +125,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			};
 		}
 
-		IExpression BuildParamValue(string variableName, ITypeSymbol elementType, bool useDateTimeAsDateOnly) {
+		IExpression BuildParamValue(string variableName, ITypeSymbol elementType) {
 			IExpression value;
 			var typeName = elementType!.GetFullName();
 			if (typeName == typeof(TimeOnly).FullName) {
@@ -133,11 +133,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			} else if (typeName == typeof(DateOnly).FullName) {
 				value = FormattedDate(variableName, DateOnlyFormat);
 			} else if (typeName == typeof(DateTime).FullName || typeName == typeof(DateTimeOffset).FullName) {
-				if (useDateTimeAsDateOnly) {
-					value = FormattedDate(variableName, DateOnlyFormat);
-				} else {
-					value = FormattedDate(variableName, DateTimeFormat);
-				}
+				value = FormattedDate(variableName, DateTimeFormat);
 			} else {
 				value = new IdentifierNameExpression(variableName);
 			}
@@ -147,7 +143,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		JsonValueExpression BuildQueryStringParameters(MethodInfo method) {
 			var properties = new List<JsonPropertyExpression>();
 			foreach (var param in method.Parameters.Where(x => x.WebType == ParameterType.FromQuery)) {
-				properties.Add(BuildQueryStringParameter(param, method.Settings.UseDateTimeAsDateOnly == true));
+				properties.Add(BuildQueryStringParameter(param));
 			}
 			return new JsonValueExpression(properties);
 		}
@@ -165,7 +161,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		/// { value }
 		/// { v: value }
 		/// </summary>
-		JsonPropertyExpression BuildQueryStringParameter(ParameterInfo parameter, bool useDateTimeAsDateOnly) {
+		JsonPropertyExpression BuildQueryStringParameter(ParameterInfo parameter) {
 			IExpression value;
 			if (parameter.Type.TryGetCollectionElementType(out var elementType) && IsDate(elementType!)) {
 				value = new InvocationExpression {
@@ -173,12 +169,12 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 					ArgumentList = new ListOfSyntaxNodes<IExpression>(
 						new ArrowFunctionExpression {
 							Arguments = new ListOfSyntaxNodes<IIdentifierNameExpression>(new IdentifierNameExpression("x")),
-							Body = BuildParamValue("x", elementType!, useDateTimeAsDateOnly),
+							Body = BuildParamValue("x", elementType!),
 						}
 					)
 				};
 			} else {
-				value = BuildParamValue(parameter.Name.CamelCase(), parameter.Type, useDateTimeAsDateOnly);
+				value = BuildParamValue(parameter.Name.CamelCase(), parameter.Type);
 			}
 			return new JsonPropertyExpression(parameter.QueryKey, value);
 		}

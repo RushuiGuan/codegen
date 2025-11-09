@@ -153,7 +153,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
 					method.Parameters.Select(x => new ParameterDeclaration {
 						Identifier = new IdentifierNameExpression(x.Name.Underscore()),
-						Type = GetParameterType(x, method.Settings)
+						Type = this.typeConverter.Convert(x.Type)
 					})).WithSelf(),
 				Body = new ScopedVariableExpressionBuilder()
 					.WithName("relative_url").WithExpression(new StringInterpolationExpression(method.RouteSegments.Select(x => BuildRouteSegment(method, x))))
@@ -161,14 +161,6 @@ namespace Albatross.CodeGen.WebClient.Python {
 					.Add(() => CreateHttpInvocationExpression(method))
 					.BuildAll()
 			};
-		}
-		ITypeExpression GetParameterType(ParameterInfo parameter, WebClientMethodSettings methodSettings) {
-			var type = this.typeConverter.Convert(parameter.Type);
-			if (type.Equals(Defined.Types.DateTime) && methodSettings.UseDateTimeAsDateOnly == true) {
-				return Defined.Types.Date;
-			} else {
-				return type;
-			}
 		}
 
 		IExpression BuildRouteSegment(MethodInfo method, IRouteSegment segment) {
@@ -201,7 +193,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		DictionaryValueExpression BuildQueryStringParameters(MethodInfo method) {
 			var properties = new List<KeyValuePairExpression>();
 			foreach (var param in method.Parameters.Where(x => x.WebType == ParameterType.FromQuery)) {
-				properties.Add(BuildQueryStringParameter(param, method.Settings.UseDateTimeAsDateOnly == true));
+				properties.Add(BuildQueryStringParameter(param));
 			}
 			return new DictionaryValueExpression(properties);
 		}
@@ -221,7 +213,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		/// { value }
 		/// { v: value }
 		/// </summary>
-		KeyValuePairExpression BuildQueryStringParameter(ParameterInfo parameter, bool useDateTimeAsDateOnly) {
+		KeyValuePairExpression BuildQueryStringParameter(ParameterInfo parameter) {
 			IExpression value;
 			if (parameter.Type.TryGetCollectionElementType(out var elementType) && IsDate(elementType!)) {
 				value = new InvocationExpression {

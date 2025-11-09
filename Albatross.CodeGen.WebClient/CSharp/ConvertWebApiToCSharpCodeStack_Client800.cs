@@ -13,6 +13,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		public ConvertWebApiToCSharpCodeStack_Client800(CodeGenSettings settings) {
 			this.settings = settings;
 		}
+
 		public CodeStack Convert(ControllerInfo from) {
 			var codeStack = new CodeStack();
 			using (codeStack.NewScope(new CompilationUnitBuilder())) {
@@ -30,7 +31,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					codeStack.FileName = $"{proxyClassName}.generated.cs";
 					if (settings.CSharpWebClientSettings.UseInterface) {
 						using (codeStack.NewScope(new InterfaceDeclarationBuilder(interfaceClassName).Public().Partial())) {
-							if(from.IsObsolete) {
+							if (from.IsObsolete) {
 								codeStack.Complete(new AttributeBuilder("System.ObsoleteAttribute"));
 							}
 							foreach (var method in from.Methods) {
@@ -72,14 +73,14 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 									.With(new ParameterNode(new GenericIdentifierNode("ILogger", proxyClassName), "logger"))
 									.With(new ParameterNode("HttpClient", "client"))
 									.Begin(new ArgumentListBuilder())
-										.With(new IdentifierNode("logger"))
-										.With(new IdentifierNode("client"))
-										.Condition(!string.IsNullOrEmpty(constructorSettings?.CustomJsonSettings), cs => cs.With(new IdentifierNode(constructorSettings?.CustomJsonSettings!)))
+									.With(new IdentifierNode("logger"))
+									.With(new IdentifierNode("client"))
+									.Condition(!string.IsNullOrEmpty(constructorSettings?.CustomJsonSettings), cs => cs.With(new IdentifierNode(constructorSettings?.CustomJsonSettings!)))
 									.End();
 							}
 						}
 						codeStack.Begin(new FieldDeclarationBuilder("string", "ControllerPath").Public().Const())
-								.With(new LiteralNode(from.Route))
+							.With(new LiteralNode(from.Route))
 							.End();
 
 						foreach (var method in from.Methods) {
@@ -146,19 +147,19 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 									if (method.ReturnType.SpecialType == SpecialType.System_Void) {
 										using (codeStack.NewScope()) {
 											codeStack.With(new ThisExpression()).ToNewBegin(new InvocationExpressionBuilder("GetRawResponse").Await())
-														.Begin(new ArgumentListBuilder())
-															.With(new IdentifierNode("request"))
-														.End()
-													.End();
+												.Begin(new ArgumentListBuilder())
+												.With(new IdentifierNode("request"))
+												.End()
+												.End();
 										}
 									} else {
 										using (codeStack.NewScope(new ReturnExpressionBuilder())) {
 											if (method.ReturnType.SpecialType == SpecialType.System_String) {
 												codeStack.With(new ThisExpression()).ToNewBegin(new InvocationExpressionBuilder("GetRawResponse").Await())
 													.Begin(new ArgumentListBuilder())
-														.With(new IdentifierNode("request"))
+													.With(new IdentifierNode("request"))
 													.End()
-												.End();
+													.End();
 											} else {
 												string functionName;
 												if (method.ReturnType.IsNullable()) {
@@ -172,9 +173,9 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 													.With(new GenericIdentifierNode(functionName, method.ReturnType.AsTypeNode()))
 													.ToNewBegin(new InvocationExpressionBuilder().Await())
 													.Begin(new ArgumentListBuilder())
-														.With(new IdentifierNode("request"))
+													.With(new IdentifierNode("request"))
 													.End()
-												.End();
+													.End();
 											}
 										}
 									}
@@ -186,13 +187,12 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				}
 			}
 		}
+
 		CodeStack BuildRouteSegment(CodeStack cs, MethodInfo method, IRouteSegment routeSegment) {
 			using (cs.NewScope()) {
 				if (routeSegment is RouteParameterSegment routeParam) {
 					var type = routeParam.ParameterInfo?.Type.GetFullName();
-					if (type == "System.DateTime" && method.Settings.UseDateTimeAsDateOnly == true) {
-						cs.With(new IdentifierNode(routeParam.Text)).To(new InvocationExpressionBuilder("ISO8601StringDateOnly"));
-					} else if (type == "System.DateTime" || type == "System.DateTimeOffset" || type == "System.DateOnly" || type == "System.TimeOnly") {
+					if (type == "System.DateTime" || type == "System.DateTimeOffset" || type == "System.DateOnly" || type == "System.TimeOnly") {
 						cs.With(new IdentifierNode(routeParam.Text)).To(new InvocationExpressionBuilder("ISO8601String"));
 					} else {
 						cs.With(new IdentifierNode(routeParam.Text));
@@ -203,6 +203,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			}
 			return cs;
 		}
+
 		CodeStack CreateAddQueryStringStatement(CodeStack codeStack, WebClientMethodSettings settings, ITypeSymbol type, string queryKey, string variableName) {
 			ITypeSymbol finalType = type;
 			if (type.IsNullable()) {
@@ -221,18 +222,10 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						if (finalType.SpecialType == SpecialType.System_String) {
 							codeStack.With(new IdentifierNode(variableName));
 						} else {
-							if (finalType.SpecialType == SpecialType.System_DateTime && settings.UseDateTimeAsDateOnly == true) {
-								using (codeStack.NewScope()) {
-									codeStack.With(new IdentifierNode(variableName));
-									if (type.IsNullableValueType()) {
-										codeStack.With(new IdentifierNode("Value"));
-									}
-									codeStack.To(new InvocationExpressionBuilder("ISO8601StringDateOnly"));
-								}
-							} else if (finalType.SpecialType == SpecialType.System_DateTime
-								|| finalType.GetFullName() == "System.DateTimeOffset"
-								|| finalType.GetFullName() == "System.DateOnly"
-								|| finalType.GetFullName() == "System.TimeOnly") {
+							if (finalType.SpecialType == SpecialType.System_DateTime
+							    || finalType.GetFullName() == "System.DateTimeOffset"
+							    || finalType.GetFullName() == "System.DateOnly"
+							    || finalType.GetFullName() == "System.TimeOnly") {
 								using (codeStack.NewScope()) {
 									codeStack.With(new IdentifierNode(variableName));
 									if (type.IsNullableValueType()) {
@@ -245,7 +238,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 							} else {
 								codeStack.Begin().With(new IdentifierNode(variableName))
 									.To(new InterpolatedStringBuilder())
-								.End();
+									.End();
 							}
 						}
 					}
@@ -254,6 +247,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			if (type.IsNullable()) { codeStack.End(); }
 			return codeStack;
 		}
+
 		object IConvertObject<ControllerInfo>.Convert(ControllerInfo from) {
 			return Convert(from);
 		}

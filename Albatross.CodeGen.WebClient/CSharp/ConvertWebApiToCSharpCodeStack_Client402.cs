@@ -150,9 +150,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			using (cs.NewScope()) {
 				if (routeSegment is RouteParameterSegment routeParam) {
 					var type = routeParam.ParameterInfo?.Type.GetFullName();
-					if (type == "System.DateTime" && method.Settings.UseDateTimeAsDateOnly == true) {
-						cs.Complete(new StringInterpolationBuilder(routeParam.Text, "yyyy-MM-dd"));
-					} else if (type == "System.DateTime" || type == "System.DateTimeOffset") {
+					if (type == "System.DateTime" || type == "System.DateTimeOffset") {
 						cs.Complete(new StringInterpolationBuilder(routeParam.Text, "yyyy-MM-ddTHH:mm:ssK"));
 					} else if (type == "System.DateOnly") {
 						cs.Complete(new StringInterpolationBuilder(routeParam.Text, "yyyy-MM-dd"));
@@ -188,8 +186,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 								codeStack.With(new IdentifierNode("Value"))
 									.To(new MemberAccessBuilder());
 							}
-							if (finalType.SpecialType == SpecialType.System_DateTime && settings.UseDateTimeAsDateOnly == true
-								|| finalType.GetFullName() == "System.DateOnly") {
+							if (finalType.GetFullName() == "System.DateOnly") {
 								codeStack.To(new StringInterpolationBuilder("yyyy-MM-dd"));
 							} else if (finalType.SpecialType == SpecialType.System_DateTime
 								|| finalType.GetFullName() == "System.DateTimeOffset") {
