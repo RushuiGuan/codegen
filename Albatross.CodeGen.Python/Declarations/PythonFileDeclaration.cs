@@ -11,6 +11,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 		}
 		public string FileName => $"{Name}.py";
 		public string Name { get; }
+		public IEnumerable<CommentDeclaration> Banner { get; init; } = [];
 		public IEnumerable<ImportExpression> ImportDeclarations { get; init; } = [];
 		public IEnumerable<ClassDeclaration> ClasseDeclarations { get; init; } = [];
 
@@ -26,6 +27,10 @@ namespace Albatross.CodeGen.Python.Declarations {
 		}
 
 		public override TextWriter Generate(TextWriter writer) {
+			foreach (var item in Banner) {
+				writer.Code(item);
+			}
+			writer.WriteLine();
 			var importExpressions = this.ImportDeclarations
 				.Union(new ImportCollection(this.GetDescendants()))
 				.Where(x => !IsSelf(x.Source));

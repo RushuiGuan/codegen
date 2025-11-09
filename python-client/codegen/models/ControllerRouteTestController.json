@@ -3,14 +3,13 @@
   "route": "api/controllerroutetest",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "Post",
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     }
   ],

@@ -9,15 +9,21 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public StringInterpolationExpression(params IExpression[] expressions) {
 			this.Expressions = expressions;
 		}
+
 		public StringInterpolationExpression(IEnumerable<IExpression> expressions) {
 			this.Expressions = expressions.ToArray();
 		}
+
 		public IExpression[] Expressions { get; init; } = [];
 
 		public override IEnumerable<ISyntaxNode> Children => Expressions;
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Append("f\"");
+			if (Expressions.Any(x => !(x is StringLiteralExpression))) {
+				writer.Append("f\"");
+			} else {
+				writer.Append("\"");
+			}
 			foreach (var item in Expressions) {
 				if (item is StringLiteralExpression literal) {
 					writer.Append(literal.Value);

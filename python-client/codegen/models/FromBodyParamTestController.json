@@ -3,9 +3,7 @@
   "route": "api/from-body-param-test",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "RequiredObject",
       "returnTypeText": "System.Int32",
@@ -23,12 +21,11 @@
           "webType": "FromBody"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "NullableObject",
       "returnTypeText": "System.Int32",
@@ -46,12 +43,11 @@
           "webType": "FromBody"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "RequiredInt",
       "returnTypeText": "System.Int32",
@@ -69,12 +65,11 @@
           "webType": "FromBody"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "NullableInt",
       "returnTypeText": "System.Int32",
@@ -92,12 +87,11 @@
           "webType": "FromBody"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "RequiredString",
       "returnTypeText": "System.Int32",
@@ -115,12 +109,11 @@
           "webType": "FromBody"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "NullableString",
       "returnTypeText": "System.Int32",
@@ -138,12 +131,11 @@
           "webType": "FromBody"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "RequiredObjectArray",
       "returnTypeText": "System.Int32",
@@ -161,12 +153,11 @@
           "webType": "FromBody"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "NullableObjectArray",
       "returnTypeText": "System.Int32",
@@ -184,6 +175,7 @@
           "webType": "FromBody"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     }
   ],

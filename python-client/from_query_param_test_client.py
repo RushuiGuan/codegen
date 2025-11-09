@@ -1,3 +1,5 @@
+# @generated
+
 from datetime import datetime, date
 from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
@@ -18,55 +20,55 @@ class FromQueryParamTestClient:
 		await self.close()
 	
 	async def required_string(self, name: str):
-		relative_url = f"required-string"
+		relative_url = "required-string"
 		params = { "name": name }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_string_implied(self, name: str):
-		relative_url = f"required-string-implied"
+		relative_url = "required-string-implied"
 		params = { "name": name }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_string_diff_name(self, name: str):
-		relative_url = f"required-string-diff-name"
+		relative_url = "required-string-diff-name"
 		params = { "n": name }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time(self, datetime: datetime):
-		relative_url = f"required-datetime"
+		relative_url = "required-datetime"
 		params = { "datetime": datetime.isoFormat() }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time_diff_name(self, datetime: datetime):
-		relative_url = f"required-datetime_diff-name"
+		relative_url = "required-datetime_diff-name"
 		params = { "d": datetime.isoFormat() }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_only(self, dateonly: date):
-		relative_url = f"required-dateonly"
+		relative_url = "required-dateonly"
 		params = { "dateonly": dateonly.isoFormat() }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_only_diff_name(self, dateonly: date):
-		relative_url = f"required-dateonly_diff-name"
+		relative_url = "required-dateonly_diff-name"
 		params = { "d": dateonly.isoFormat() }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time_offset(self, date_time_offset: datetime):
-		relative_url = f"required-datetimeoffset"
+		relative_url = "required-datetimeoffset"
 		params = { "dateTimeOffset": date_time_offset.isoFormat() }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time_offset_diff_name(self, date_time_offset: datetime):
-		relative_url = f"required-datetimeoffset_diff-name"
+		relative_url = "required-datetimeoffset_diff-name"
 		params = { "d": date_time_offset.isoFormat() }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()

@@ -12,7 +12,6 @@ using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertControllerModelToPythonFile : IConvertObject<ControllerInfo, PythonFileDeclaration> {
@@ -32,6 +31,9 @@ namespace Albatross.CodeGen.WebClient.Python {
 		public PythonFileDeclaration Convert(ControllerInfo model) {
 			var fileName = $"{model.ControllerName.Underscore()}_client";
 			return new PythonFileDeclaration(fileName) {
+				Banner = [
+					new CommentDeclaration("@generated"),
+				],
 				ClasseDeclarations = [
 					new ClassDeclaration($"{model.ControllerName}Client") {
 						Fields = [
@@ -133,7 +135,6 @@ namespace Albatross.CodeGen.WebClient.Python {
 			Body = new InvocationExpressionBuilder().Await().WithMultiPartName("self", "close").Build(),
 		};
 
-
 		// has to do this since python doesn't support methods of the same name
 		IEnumerable<(MethodInfo Method, int Index)> GroupMethods(ControllerInfo model) {
 			foreach (var group in model.Methods.GroupBy(x => x.Name)) {
@@ -155,12 +156,30 @@ namespace Albatross.CodeGen.WebClient.Python {
 						Identifier = new IdentifierNameExpression(x.Name.Underscore()),
 						Type = this.typeConverter.Convert(x.Type)
 					})).WithSelf(),
-				Body = new ScopedVariableExpressionBuilder()
-					.WithName("relative_url").WithExpression(new StringInterpolationExpression(method.RouteSegments.Select(x => BuildRouteSegment(method, x))))
-					.Add(() => new ScopedVariableExpressionBuilder().WithName("params").WithExpression(BuildQueryStringParameters(method)).Build())
-					.Add(() => CreateHttpInvocationExpression(method))
-					.BuildAll()
+				Body = new CompositeExpression(
+					BuildRelativeUrl(method),
+					BuildQueryParameters(method),
+					CreateHttpInvocationExpression(method)
+				),
 			};
+		}
+
+		IExpression BuildRelativeUrl(MethodInfo method) {
+			var builder = new ScopedVariableExpressionBuilder().WithName("relative_url")
+				.WithExpression(new StringInterpolationExpression(method.RouteSegments.Select(x => BuildRouteSegment(method, x))));
+			return builder.Build();
+		}
+
+		IExpression BuildQueryParameters(MethodInfo method) {
+			var properties = new List<KeyValuePairExpression>();
+			foreach (var param in method.Parameters.Where(x => x.WebType == ParameterType.FromQuery)) {
+				properties.Add(BuildQueryStringParameter(param));
+			}
+			if (properties.Any()) {
+				return new ScopedVariableExpressionBuilder().WithName("params").WithExpression(new DictionaryValueExpression(properties)).Build();
+			} else {
+				return new NoOpExpression();
+			}
 		}
 
 		IExpression BuildRouteSegment(MethodInfo method, IRouteSegment segment) {
@@ -181,8 +200,8 @@ namespace Albatross.CodeGen.WebClient.Python {
 			IExpression value;
 			var typeName = elementType!.GetFullName();
 			if (typeName == typeof(TimeOnly).FullName ||
-				typeName == typeof(DateOnly).FullName ||
-				typeName == typeof(DateTime).FullName || typeName == typeof(DateTimeOffset).FullName) {
+			    typeName == typeof(DateOnly).FullName ||
+			    typeName == typeof(DateTime).FullName || typeName == typeof(DateTimeOffset).FullName) {
 				value = FormattedDate(variableName);
 			} else {
 				value = new IdentifierNameExpression(variableName);
@@ -190,20 +209,12 @@ namespace Albatross.CodeGen.WebClient.Python {
 			return value;
 		}
 
-		DictionaryValueExpression BuildQueryStringParameters(MethodInfo method) {
-			var properties = new List<KeyValuePairExpression>();
-			foreach (var param in method.Parameters.Where(x => x.WebType == ParameterType.FromQuery)) {
-				properties.Add(BuildQueryStringParameter(param));
-			}
-			return new DictionaryValueExpression(properties);
-		}
-
 		bool IsDate(ITypeSymbol type) {
 			var typeName = type.GetFullName();
 			return typeName == typeof(TimeOnly).FullName
-				   || typeName == typeof(DateOnly).FullName
-				   || typeName == typeof(DateTime).FullName
-				   || typeName == typeof(DateTimeOffset).FullName;
+			       || typeName == typeof(DateOnly).FullName
+			       || typeName == typeof(DateTime).FullName
+			       || typeName == typeof(DateTimeOffset).FullName;
 		}
 
 		/// <summary>
@@ -216,9 +227,12 @@ namespace Albatross.CodeGen.WebClient.Python {
 		KeyValuePairExpression BuildQueryStringParameter(ParameterInfo parameter) {
 			IExpression value;
 			if (parameter.Type.TryGetCollectionElementType(out var elementType) && IsDate(elementType!)) {
-				value = new InvocationExpression {
-					Identifier = new MultiPartIdentifierNameExpression(parameter.Name.Underscore(), "map"),
-					ArgumentList = new ListOfSyntaxNodes<IExpression>()
+				value = new ListComprehensionExpression {
+					VariableName = "d",
+					IterableExpression = new IdentifierNameExpression(parameter.Name.Underscore()),
+					Expression = new InvocationExpression{
+						Identifier = new MultiPartIdentifierNameExpression("d", "isoformat"),
+					}
 				};
 			} else {
 				value = BuildParamValue(parameter.Name.Underscore(), parameter.Type);
@@ -257,18 +271,19 @@ namespace Albatross.CodeGen.WebClient.Python {
 				builder.AddGenericArgument(Defined.Types.String);
 				builder.AddArgument(new StringLiteralExpression(""));
 			}
-			// build query string
-			builder.AddArgument(
-				new ScopedVariableExpressionBuilder()
-					.WithName("params")
-					.WithExpression(new IdentifierNameExpression("params")).Build()).Await();
+			if (method.HasQueryStringParameter) {
+				// build query string
+				builder.AddArgument(
+					new ScopedVariableExpressionBuilder()
+						.WithName("params")
+						.WithExpression(new IdentifierNameExpression("params")).Build()).Await();
+			}
 			return new ScopedVariableExpressionBuilder()
 				.WithName("response").WithExpression(builder.Build())
 				.Add(() => new InvocationExpressionBuilder().WithMultiPartName("response", "raise_for_status").Build())
 				.BuildAll();
 		}
 
-		object IConvertObject<ControllerInfo>.
-			Convert(ControllerInfo from) => this.Convert(from);
+		object IConvertObject<ControllerInfo>.Convert(ControllerInfo from) => this.Convert(from);
 	}
 }

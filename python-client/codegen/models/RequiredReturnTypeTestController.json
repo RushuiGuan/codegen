@@ -3,9 +3,7 @@
   "route": "api/required-return-type",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "Get",
       "returnTypeText": "System.Void",
@@ -15,12 +13,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsync",
       "returnTypeText": "System.Void",
@@ -30,12 +27,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetActionResult",
       "returnTypeText": "System.Void",
@@ -45,12 +41,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncActionResult",
       "returnTypeText": "System.Void",
@@ -60,12 +55,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetString",
       "returnTypeText": "System.String",
@@ -75,12 +69,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncString",
       "returnTypeText": "System.String",
@@ -90,12 +83,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetActionResultString",
       "returnTypeText": "System.String",
@@ -105,12 +97,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncActionResultString",
       "returnTypeText": "System.String",
@@ -120,12 +111,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetInt",
       "returnTypeText": "System.Int32",
@@ -135,12 +125,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncInt",
       "returnTypeText": "System.Int32",
@@ -150,12 +139,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetActionResultInt",
       "returnTypeText": "System.Int32",
@@ -165,12 +153,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncActionResultInt",
       "returnTypeText": "System.Int32",
@@ -180,12 +167,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetDateTime",
       "returnTypeText": "System.DateTime",
@@ -195,12 +181,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncDateTime",
       "returnTypeText": "System.DateTime",
@@ -210,12 +195,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetActionResultDateTime",
       "returnTypeText": "System.DateTime",
@@ -225,12 +209,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncActionResultDateTime",
       "returnTypeText": "System.DateTime",
@@ -240,12 +223,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetDateOnly",
       "returnTypeText": "System.DateOnly",
@@ -255,12 +237,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetDateTimeOffset",
       "returnTypeText": "System.DateTimeOffset",
@@ -270,12 +251,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetTimeOnly",
       "returnTypeText": "System.TimeOnly",
@@ -285,12 +265,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetMyDto",
       "returnTypeText": "Test.Dto.Classes.MyDto",
@@ -300,12 +279,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncMyDto",
       "returnTypeText": "Test.Dto.Classes.MyDto",
@@ -315,12 +293,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "ActionResultObject",
       "returnTypeText": "Test.Dto.Classes.MyDto",
@@ -330,12 +307,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "AsyncActionResultObject",
       "returnTypeText": "Test.Dto.Classes.MyDto",
@@ -345,12 +321,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetMyDtoArray",
       "returnTypeText": "Test.Dto.Classes.MyDto[]",
@@ -360,12 +335,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetMyDtoCollection",
       "returnTypeText": "System.Collections.Generic.IEnumerable\u003CTest.Dto.Classes.MyDto\u003E",
@@ -375,12 +349,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "GetMyDtoCollectionAsync",
       "returnTypeText": "System.Collections.Generic.IEnumerable\u003CTest.Dto.Classes.MyDto\u003E",
@@ -390,6 +363,7 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     }
   ],

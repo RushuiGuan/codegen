@@ -3,9 +3,7 @@
   "route": "api/from-query-param-test",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredString",
       "returnTypeText": "System.Void",
@@ -23,12 +21,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredStringImplied",
       "returnTypeText": "System.Void",
@@ -46,12 +43,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredStringDiffName",
       "returnTypeText": "System.Void",
@@ -69,12 +65,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTime",
       "returnTypeText": "System.Void",
@@ -92,12 +87,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTimeDiffName",
       "returnTypeText": "System.Void",
@@ -115,12 +109,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateOnly",
       "returnTypeText": "System.Void",
@@ -138,12 +131,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateOnlyDiffName",
       "returnTypeText": "System.Void",
@@ -161,12 +153,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTimeOffset",
       "returnTypeText": "System.Void",
@@ -184,12 +175,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTimeOffsetDiffName",
       "returnTypeText": "System.Void",
@@ -207,6 +197,7 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     }
   ],

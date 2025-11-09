@@ -1,3 +1,5 @@
+# @generated
+
 from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
 
@@ -17,33 +19,28 @@ class HttpMethodTestClient:
 		await self.close()
 	
 	async def delete(self):
-		relative_url = f""
-		params = {}
-		response = await self._client.delete(relative_url, params = params)
+		relative_url = ""
+		response = self._client.delete(relative_url)
 		response.raise_for_status()
 	
 	async def post(self):
-		relative_url = f""
-		params = {}
-		response = await self._client.post[str](relative_url, "", params = params)
+		relative_url = ""
+		response = self._client.post[str](relative_url, "")
 		response.raise_for_status()
 	
 	async def patch(self):
-		relative_url = f""
-		params = {}
-		response = await self._client.patch[str](relative_url, "", params = params)
+		relative_url = ""
+		response = self._client.patch[str](relative_url, "")
 		response.raise_for_status()
 	
 	async def get(self) -> int:
-		relative_url = f""
-		params = {}
-		response = await self._client.get(relative_url, params = params)
+		relative_url = ""
+		response = self._client.get(relative_url)
 		response.raise_for_status()
 	
 	async def put(self):
-		relative_url = f""
-		params = {}
-		response = await self._client.put[str](relative_url, "", params = params)
+		relative_url = ""
+		response = self._client.put[str](relative_url, "")
 		response.raise_for_status()
 	
 

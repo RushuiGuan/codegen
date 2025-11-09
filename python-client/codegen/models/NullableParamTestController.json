@@ -3,9 +3,7 @@
   "route": "api/nullable-param-test",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "NullableStringParam",
       "returnTypeText": "System.String",
@@ -23,12 +21,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "NullableValueType",
       "returnTypeText": "System.String",
@@ -46,12 +43,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "NullableDateOnly",
       "returnTypeText": "System.String",
@@ -69,12 +65,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "NullablePostParam",
       "returnTypeText": "System.Void",
@@ -92,12 +87,11 @@
           "webType": "FromBody"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "NullableStringArray",
       "returnTypeText": "System.String",
@@ -115,12 +109,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "NullableStringCollection",
       "returnTypeText": "System.String",
@@ -138,12 +131,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "NullableValueTypeArray",
       "returnTypeText": "System.String",
@@ -161,12 +153,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "NullableValueTypeCollection",
       "returnTypeText": "System.String",
@@ -184,12 +175,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "NullableDateOnlyCollection",
       "returnTypeText": "System.String",
@@ -207,12 +197,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "NullableDateOnlyArray",
       "returnTypeText": "System.String",
@@ -230,6 +219,7 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     }
   ],

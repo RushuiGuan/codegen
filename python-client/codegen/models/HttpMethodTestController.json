@@ -3,58 +3,53 @@
   "route": "api/http-method-test",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Delete",
       "name": "Delete",
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "Post",
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Patch",
       "name": "Patch",
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "Get",
       "returnTypeText": "System.Int32",
       "routeSegments": [],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Put",
       "name": "Put",
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     }
   ],

@@ -3,9 +3,7 @@
   "route": "api/from-routing-param-test",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "ImplicitRoute",
       "returnTypeText": "System.Void",
@@ -39,12 +37,11 @@
           "webType": "FromRoute"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "ExplicitRoute",
       "returnTypeText": "System.Void",
@@ -78,12 +75,11 @@
           "webType": "FromRoute"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "WildCardRouteDouble",
       "returnTypeText": "System.Void",
@@ -117,12 +113,11 @@
           "webType": "FromRoute"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "WildCardRouteSingle",
       "returnTypeText": "System.Void",
@@ -156,12 +151,11 @@
           "webType": "FromRoute"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "DateTimeRoute",
       "returnTypeText": "System.Void",
@@ -195,51 +189,11 @@
           "webType": "FromRoute"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
-      "httpMethod": "Get",
-      "name": "DateTimeAsDateOnlyRoute",
-      "returnTypeText": "System.Void",
-      "routeSegments": [
-        {
-          "text": "date-time-as-date-only-route/"
-        },
-        {
-          "text": "date"
-        },
-        {
-          "text": "/"
-        },
-        {
-          "text": "id"
-        }
-      ],
-      "parameters": [
-        {
-          "skip": false,
-          "queryKey": "",
-          "name": "date",
-          "typeText": "System.DateTime",
-          "webType": "FromRoute"
-        },
-        {
-          "skip": false,
-          "queryKey": "",
-          "name": "id",
-          "typeText": "System.Int32",
-          "webType": "FromRoute"
-        }
-      ],
-      "isObsolete": false
-    },
-    {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "DateOnlyRoute",
       "returnTypeText": "System.Void",
@@ -273,12 +227,11 @@
           "webType": "FromRoute"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "DateTimeOffsetRoute",
       "returnTypeText": "System.Void",
@@ -312,12 +265,11 @@
           "webType": "FromRoute"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "TimeOnlyRoute",
       "returnTypeText": "System.Void",
@@ -351,6 +303,7 @@
           "webType": "FromRoute"
         }
       ],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     }
   ],

@@ -1,3 +1,5 @@
+# @generated
+
 from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
 
@@ -17,13 +19,13 @@ class DuplicateNameTestClient:
 		await self.close()
 	
 	async def submit(self, id: int):
-		relative_url = f"by-id"
+		relative_url = "by-id"
 		params = { "id": id }
 		response = await self._client.post[str](relative_url, "", params = params)
 		response.raise_for_status()
 	
 	async def submit1(self, name: str):
-		relative_url = f"by-name"
+		relative_url = "by-name"
 		params = { "name": name }
 		response = await self._client.post[str](relative_url, "", params = params)
 		response.raise_for_status()

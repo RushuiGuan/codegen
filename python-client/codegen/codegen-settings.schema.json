@@ -198,15 +198,7 @@
     },
     "WebClientMethodSettings": {
       "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "useDateTimeAsDateOnly": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        }
-      }
+      "additionalProperties": false
     },
     "WebClientConstructorSettings": {
       "type": "object",

@@ -3,9 +3,7 @@
   "route": "api/cancellationtokentest",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "Get",
       "returnTypeText": "System.String",
@@ -19,6 +17,7 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     }
   ],

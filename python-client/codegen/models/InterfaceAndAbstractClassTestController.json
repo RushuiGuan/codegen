@@ -3,9 +3,7 @@
   "route": "api/interface-abstract-class-test",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "SubmitByInterface",
       "returnTypeText": "System.Void",
@@ -23,12 +21,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "SubmitByAbstractClass",
       "returnTypeText": "System.Void",
@@ -46,12 +43,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "ReturnInterfaceAsync",
       "returnTypeText": "Test.Dto.Classes.ICommand",
@@ -61,12 +57,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "ReturnInterface",
       "returnTypeText": "Test.Dto.Classes.ICommand",
@@ -76,12 +71,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "ReturnAbstractClassAsync",
       "returnTypeText": "Test.Dto.Classes.AbstractClass",
@@ -91,12 +85,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "ReturnAbstractClass",
       "returnTypeText": "Test.Dto.Classes.AbstractClass",
@@ -106,6 +99,7 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     }
   ],

@@ -3,9 +3,7 @@
   "route": "api/duplicate-name-test",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "Submit",
       "returnTypeText": "System.Void",
@@ -23,12 +21,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Post",
       "name": "Submit",
       "returnTypeText": "System.Void",
@@ -46,6 +43,7 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     }
   ],

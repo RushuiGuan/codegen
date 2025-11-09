@@ -37,6 +37,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 		public string ReturnTypeText => ReturnType.GetFullName();
 		public IEnumerable<IRouteSegment> RouteSegments { get; }
 		public List<ParameterInfo> Parameters { get; } = new List<ParameterInfo>();
+		public bool HasQueryStringParameter => Parameters.Any(x => x.WebType == ParameterType.FromQuery);
 		public bool IsObsolete { get; set; }
 
 		ITypeSymbol GetReturnType(ITypeSymbol type) {

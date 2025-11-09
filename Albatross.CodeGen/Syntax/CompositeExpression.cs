@@ -16,7 +16,7 @@ namespace Albatross.CodeGen.Syntax {
 		}
 		public IEnumerable<IExpression> Items { get; init; }
 		public override TextWriter Generate(TextWriter writer) {
-			writer.WriteItems(Items, "\n", (w, x) => w.Code(x));
+			writer.WriteItems(Items.Where(x=>!(x is NoOpExpression)), "\n", (w, x) => w.Code(x));
 			return writer;
 		}
 		public override IEnumerable<ISyntaxNode> Children => Items.Cast<ISyntaxNode>();

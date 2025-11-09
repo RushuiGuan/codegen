@@ -3,9 +3,7 @@
   "route": "api/obsolete",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "Get",
       "returnTypeText": "System.String",
@@ -15,6 +13,7 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     }
   ],

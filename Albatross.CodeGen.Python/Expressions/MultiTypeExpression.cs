@@ -6,6 +6,6 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public MultiTypeExpression(params ITypeExpression[] nodes) : base(nodes) { }
 		public MultiTypeExpression(IEnumerable<ITypeExpression> nodes) : base(nodes) { }
 
-		protected override string Separator => "|";
+		protected override string Separator => " | ";
 	}
 }

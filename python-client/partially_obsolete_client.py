@@ -1,3 +1,5 @@
+# @generated
+
 from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
 
@@ -17,9 +19,8 @@ class PartiallyObsoleteClient:
 		await self.close()
 	
 	async def get(self) -> str:
-		relative_url = f"get"
-		params = {}
-		response = await self._client.get(relative_url, params = params)
+		relative_url = "get"
+		response = self._client.get(relative_url)
 		response.raise_for_status()
 	
 

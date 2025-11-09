@@ -3,14 +3,13 @@
   "route": "api/from-header-param-test",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "OmitFromHeaderParameters",
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     }
   ],

@@ -3,9 +3,7 @@
   "route": "api/filtered-method",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "FilteredByNone",
       "returnTypeText": "System.Void",
@@ -15,12 +13,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "FilteredByCSharp",
       "returnTypeText": "System.Void",
@@ -30,12 +27,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "FilteredByCSharp2",
       "returnTypeText": "System.Void",
@@ -45,12 +41,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "IncludedByCSharp",
       "returnTypeText": "System.Void",
@@ -60,12 +55,11 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "FilteredByTypeScript",
       "returnTypeText": "System.Void",
@@ -75,6 +69,7 @@
         }
       ],
       "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     }
   ],

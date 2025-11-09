@@ -1,3 +1,5 @@
+# @generated
+
 from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
 
@@ -17,9 +19,8 @@ class ControllerRouteTestClient:
 		await self.close()
 	
 	async def post(self):
-		relative_url = f""
-		params = {}
-		response = await self._client.post[str](relative_url, "", params = params)
+		relative_url = ""
+		response = self._client.post[str](relative_url, "")
 		response.raise_for_status()
 	
 

@@ -1,3 +1,5 @@
+# @generated
+
 from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
 
@@ -17,7 +19,7 @@ class CancellationTokenTestClient:
 		await self.close()
 	
 	async def get(self, cancellation_token: CancellationToken) -> str:
-		relative_url = f""
+		relative_url = ""
 		params = { "cancellationToken": cancellation_token }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()

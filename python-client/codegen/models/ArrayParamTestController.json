@@ -3,9 +3,7 @@
   "route": "api/array-param-test",
   "methods": [
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "ArrayStringParam",
       "returnTypeText": "System.String",
@@ -23,12 +21,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "ArrayValueType",
       "returnTypeText": "System.String",
@@ -46,12 +43,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "CollectionStringParam",
       "returnTypeText": "System.String",
@@ -69,12 +65,11 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
-      "settings": {
-        "useDateTimeAsDateOnly": null
-      },
+      "settings": {},
       "httpMethod": "Get",
       "name": "CollectionValueType",
       "returnTypeText": "System.String",
@@ -92,6 +87,51 @@
           "webType": "FromQuery"
         }
       ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "settings": {},
+      "httpMethod": "Get",
+      "name": "CollectionDateParam",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "collection-date-param"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "c",
+          "name": "collection",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.DateOnly\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "settings": {},
+      "httpMethod": "Get",
+      "name": "CollectionDateTimeParam",
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "collection-datetime-param"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "c",
+          "name": "collection",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.DateTime\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     }
   ],

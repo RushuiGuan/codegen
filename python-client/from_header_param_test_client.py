@@ -1,3 +1,5 @@
+# @generated
+
 from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
 
@@ -17,9 +19,8 @@ class FromHeaderParamTestClient:
 		await self.close()
 	
 	async def omit_from_header_parameters(self):
-		relative_url = f""
-		params = {}
-		response = await self._client.get(relative_url, params = params)
+		relative_url = ""
+		response = self._client.get(relative_url)
 		response.raise_for_status()
 	
 
