@@ -8,7 +8,7 @@ using System.CommandLine.Invocation;
 using System.IO;
 
 namespace Albatross.CodeGen.CommandLine {
-	[Verb("typescript-entrypoint", typeof(TypeScriptEntryPointCodeGenCommandHandler))]
+	[Verb("typescript entrypoint", typeof(TypeScriptEntryPointCodeGenCommandHandler))]
 	public record TypeScriptEntryPointCodeGenOptions {
 		[Option("o")]
 		public DirectoryInfo OutputDirectory { get; init; } = null!;

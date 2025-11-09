@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 		public required ListOfSyntaxNodes<ITypeExpression> Arguments { get; init; }
 		public override IEnumerable<ISyntaxNode> Children => [Identifier, Arguments];
 		public override TextWriter Generate(TextWriter writer) {
-			return writer.Code(Identifier).Append("[").Code(Arguments).Append("]");
+			return writer.Code(Identifier).Append("<").Code(Arguments).Append(">");
 		}
 	}
 }
