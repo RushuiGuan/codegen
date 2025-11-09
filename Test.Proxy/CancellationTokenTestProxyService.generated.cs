@@ -12,10 +12,9 @@ namespace Test.Proxy {
 		}
 
 		public const string ControllerPath = "api/cancellationtokentest";
-		public async Task<System.String> Get(System.Threading.CancellationToken cancellationToken) {
+		public async Task<System.String> Get() {
 			string path = $"{ControllerPath}";
 			var queryString = new NameValueCollection();
-			queryString.Add("cancellationToken", $"{cancellationToken}");
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}

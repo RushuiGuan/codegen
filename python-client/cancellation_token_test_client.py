@@ -18,10 +18,10 @@ class CancellationTokenTestClient:
 	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
-	async def get(self, cancellation_token: CancellationToken) -> str:
+	async def get(self) -> str:
 		relative_url = ""
-		params = { "cancellationToken": cancellation_token }
-		response = await self._client.get(relative_url, params = params)
+		response = self._client.get(relative_url)
 		response.raise_for_status()
+		return response.text
 	
 

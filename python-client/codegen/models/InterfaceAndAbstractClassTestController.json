@@ -6,6 +6,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "SubmitByInterface",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -28,6 +29,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "SubmitByAbstractClass",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -50,6 +52,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "ReturnInterfaceAsync",
+      "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.ICommand",
       "routeSegments": [
         {
@@ -64,6 +67,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "ReturnInterface",
+      "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.ICommand",
       "routeSegments": [
         {
@@ -78,6 +82,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "ReturnAbstractClassAsync",
+      "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.AbstractClass",
       "routeSegments": [
         {
@@ -92,6 +97,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "ReturnAbstractClass",
+      "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.AbstractClass",
       "routeSegments": [
         {

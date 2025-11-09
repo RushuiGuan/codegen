@@ -6,6 +6,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "RequiredObject",
+      "canCancel": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [
         {
@@ -28,6 +29,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "NullableObject",
+      "canCancel": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [
         {
@@ -50,6 +52,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "RequiredInt",
+      "canCancel": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [
         {
@@ -72,6 +75,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "NullableInt",
+      "canCancel": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [
         {
@@ -94,6 +98,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "RequiredString",
+      "canCancel": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [
         {
@@ -116,6 +121,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "NullableString",
+      "canCancel": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [
         {
@@ -138,6 +144,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "RequiredObjectArray",
+      "canCancel": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [
         {
@@ -160,6 +167,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "NullableObjectArray",
+      "canCancel": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [
         {

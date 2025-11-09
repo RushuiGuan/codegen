@@ -6,6 +6,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "Get",
+      "canCancel": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {

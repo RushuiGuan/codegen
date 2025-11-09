@@ -22,5 +22,6 @@ class ObsoleteClient:
 		relative_url = "get"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		return response.text
 	
 

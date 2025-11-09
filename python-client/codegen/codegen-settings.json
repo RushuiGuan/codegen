@@ -23,6 +23,8 @@
 		"exclude": "^Test\\.WebApi\\.Controllers\\.(AbsUrl)?RedirectTestController$"
 	},
 	"controllerMethodFilters": [
-		{ "exclude": "FilteredByAll$" }
+		{
+			"exclude": "FilteredByAll$"
+		}
 	]
 }

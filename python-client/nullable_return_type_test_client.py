@@ -23,21 +23,25 @@ class NullableReturnTypeTestClient:
 		relative_url = "string"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		return response.text
 	
 	async def get_async_string(self) -> str:
 		relative_url = "async-string"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		return response.text
 	
 	async def get_action_result_string(self) -> str:
 		relative_url = "action-result-string"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		return response.text
 	
 	async def get_async_action_result_string(self) -> str:
 		relative_url = "async-action-result-string"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		return response.text
 	
 	async def get_int(self) -> int | None:
 		relative_url = "int"

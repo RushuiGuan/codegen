@@ -59,6 +59,30 @@ namespace Test.Proxy {
 				return await this.GetRawResponse(request);
 			}
 		}
+
+		public async Task<System.String> CollectionDateParam(System.Collections.Generic.IEnumerable<System.DateOnly> collection) {
+			string path = $"{ControllerPath}/collection-date-param";
+			var queryString = new NameValueCollection();
+			foreach (var item in collection) {
+				queryString.Add("c", item.ISO8601String());
+			}
+
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRawResponse(request);
+			}
+		}
+
+		public async Task<System.String> CollectionDateTimeParam(System.Collections.Generic.IEnumerable<System.DateTime> collection) {
+			string path = $"{ControllerPath}/collection-datetime-param";
+			var queryString = new NameValueCollection();
+			foreach (var item in collection) {
+				queryString.Add("c", item.ISO8601String());
+			}
+
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRawResponse(request);
+			}
+		}
 	}
 }
 #nullable disable

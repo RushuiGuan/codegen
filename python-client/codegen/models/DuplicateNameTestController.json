@@ -6,6 +6,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "Submit",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -28,6 +29,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "Submit",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {

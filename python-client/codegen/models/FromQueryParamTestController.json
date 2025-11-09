@@ -6,6 +6,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "RequiredString",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -28,6 +29,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "RequiredStringImplied",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -50,6 +52,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "RequiredStringDiffName",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -72,6 +75,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTime",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -94,6 +98,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTimeDiffName",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -116,6 +121,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateOnly",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -138,6 +144,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateOnlyDiffName",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -160,6 +167,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTimeOffset",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -182,6 +190,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTimeOffsetDiffName",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {

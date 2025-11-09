@@ -6,6 +6,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "FilteredByNone",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -20,6 +21,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "FilteredByCSharp",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -34,6 +36,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "FilteredByCSharp2",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -48,6 +51,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "IncludedByCSharp",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -62,6 +66,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "FilteredByTypeScript",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {

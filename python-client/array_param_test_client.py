@@ -24,35 +24,41 @@ class ArrayParamTestClient:
 		params = { "a": array }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		return response.text
 	
 	async def array_value_type(self, array: list[int]) -> str:
 		relative_url = "array-value-type"
 		params = { "a": array }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		return response.text
 	
 	async def collection_string_param(self, collection: list[str]) -> str:
 		relative_url = "collection-string-param"
 		params = { "c": collection }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		return response.text
 	
 	async def collection_value_type(self, collection: list[int]) -> str:
 		relative_url = "collection-value-type"
 		params = { "c": collection }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		return response.text
 	
 	async def collection_date_param(self, collection: list[date]) -> str:
 		relative_url = "collection-date-param"
 		params = { "c": [d.isoformat() for d in collection] }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		return response.text
 	
 	async def collection_date_time_param(self, collection: list[datetime]) -> str:
 		relative_url = "collection-datetime-param"
 		params = { "c": [d.isoformat() for d in collection] }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		return response.text
 	
 

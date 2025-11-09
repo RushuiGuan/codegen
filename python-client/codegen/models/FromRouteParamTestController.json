@@ -6,6 +6,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "ImplicitRoute",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -44,6 +45,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "ExplicitRoute",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -82,6 +84,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "WildCardRouteDouble",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -120,6 +123,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "WildCardRouteSingle",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -158,6 +162,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "DateTimeRoute",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -196,6 +201,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "DateOnlyRoute",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -234,6 +240,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "DateTimeOffsetRoute",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -272,6 +279,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "TimeOnlyRoute",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {

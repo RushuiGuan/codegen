@@ -8,7 +8,7 @@ using System.IO;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	[Verb("settings-schema", typeof(GenerateSettingsSchema))]
+	[Verb("schema settings", typeof(GenerateSettingsSchema))]
 	public record class GenerateSettingsSchemaOptions {
 		public FileInfo? File { get; set; }
 	}

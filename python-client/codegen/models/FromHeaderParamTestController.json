@@ -6,6 +6,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "OmitFromHeaderParameters",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],

@@ -159,9 +159,18 @@ namespace Albatross.CodeGen.WebClient.Python {
 				Body = new CompositeExpression(
 					BuildRelativeUrl(method),
 					BuildQueryParameters(method),
-					CreateHttpInvocationExpression(method)
+					CreateHttpInvocationExpression(method),
+					BuildReturnValue(method)
 				),
 			};
+		}
+
+		IExpression BuildReturnValue(MethodInfo method) {
+			if (method.ReturnTypeText == "System.String") {
+				return new ReturnExpression(new MultiPartIdentifierNameExpression("response", "text"));
+			} else {
+				return new NoOpExpression();
+			}
 		}
 
 		IExpression BuildRelativeUrl(MethodInfo method) {
@@ -230,7 +239,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				value = new ListComprehensionExpression {
 					VariableName = "d",
 					IterableExpression = new IdentifierNameExpression(parameter.Name.Underscore()),
-					Expression = new InvocationExpression{
+					Expression = new InvocationExpression {
 						Identifier = new MultiPartIdentifierNameExpression("d", "isoformat"),
 					}
 				};

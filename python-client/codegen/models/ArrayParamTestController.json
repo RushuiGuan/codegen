@@ -6,6 +6,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "ArrayStringParam",
+      "canCancel": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -28,6 +29,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "ArrayValueType",
+      "canCancel": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -50,6 +52,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "CollectionStringParam",
+      "canCancel": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -72,6 +75,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "CollectionValueType",
+      "canCancel": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -94,6 +98,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "CollectionDateParam",
+      "canCancel": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -116,6 +121,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "CollectionDateTimeParam",
+      "canCancel": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {

@@ -6,6 +6,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetString",
+      "canCancel": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -20,6 +21,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncString",
+      "canCancel": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -34,6 +36,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetActionResultString",
+      "canCancel": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -48,6 +51,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncActionResultString",
+      "canCancel": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -62,6 +66,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetInt",
+      "canCancel": false,
       "returnTypeText": "System.Nullable\u003CSystem.Int32\u003E",
       "routeSegments": [
         {
@@ -76,6 +81,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncInt",
+      "canCancel": false,
       "returnTypeText": "System.Nullable\u003CSystem.Int32\u003E",
       "routeSegments": [
         {
@@ -90,6 +96,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetActionResultInt",
+      "canCancel": false,
       "returnTypeText": "System.Nullable\u003CSystem.Int32\u003E",
       "routeSegments": [
         {
@@ -104,6 +111,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncActionResultInt",
+      "canCancel": false,
       "returnTypeText": "System.Nullable\u003CSystem.Int32\u003E",
       "routeSegments": [
         {
@@ -118,6 +126,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetDateTime",
+      "canCancel": false,
       "returnTypeText": "System.Nullable\u003CSystem.DateTime\u003E",
       "routeSegments": [
         {
@@ -132,6 +141,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncDateTime",
+      "canCancel": false,
       "returnTypeText": "System.Nullable\u003CSystem.DateTime\u003E",
       "routeSegments": [
         {
@@ -146,6 +156,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetActionResultDateTime",
+      "canCancel": false,
       "returnTypeText": "System.Nullable\u003CSystem.DateTime\u003E",
       "routeSegments": [
         {
@@ -160,6 +171,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncActionResultDateTime",
+      "canCancel": false,
       "returnTypeText": "System.Nullable\u003CSystem.DateTime\u003E",
       "routeSegments": [
         {
@@ -174,6 +186,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetMyDto",
+      "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
       "routeSegments": [
         {
@@ -188,6 +201,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncMyDto",
+      "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
       "routeSegments": [
         {
@@ -202,6 +216,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "ActionResultObject",
+      "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
       "routeSegments": [
         {
@@ -216,6 +231,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "AsyncActionResultObject",
+      "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
       "routeSegments": [
         {
@@ -230,6 +246,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetMyDtoNullableArray",
+      "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.MyDto[]",
       "routeSegments": [
         {
@@ -244,6 +261,7 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "GetMyDtoCollection",
+      "canCancel": false,
       "returnTypeText": "System.Collections.Generic.IEnumerable\u003CTest.Dto.Classes.MyDto\u003E",
       "routeSegments": [
         {

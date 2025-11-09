@@ -22,7 +22,9 @@ namespace Albatross.CodeGen.WebClient.Models {
 			this.HttpMethod = GetHttpMethod(symbol);
 			foreach (var parameter in symbol.Parameters) {
 				var paramInfo = new ParameterInfo(parameter, routeSegments);
-				if (!paramInfo.Skip) {
+				if (paramInfo.TypeText == "System.Threading.CancellationToken") {
+					this.CanCancel = true;
+				}else if (!paramInfo.Skip) {
 					this.Parameters.Add(paramInfo);
 				}
 			}
@@ -32,6 +34,8 @@ namespace Albatross.CodeGen.WebClient.Models {
 		public WebClientMethodSettings Settings { get; init; }
 		public string HttpMethod { get; set; }
 		public string Name { get; set; }
+		public bool CanCancel { get; set; }
+
 		[JsonIgnore]
 		public ITypeSymbol ReturnType { get; set; }
 		public string ReturnTypeText => ReturnType.GetFullName();

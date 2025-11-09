@@ -6,6 +6,7 @@
       "settings": {},
       "httpMethod": "Post",
       "name": "Post",
+      "canCancel": false,
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],

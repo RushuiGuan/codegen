@@ -6,18 +6,11 @@
       "settings": {},
       "httpMethod": "Get",
       "name": "Get",
+      "canCancel": true,
       "returnTypeText": "System.String",
       "routeSegments": [],
-      "parameters": [
-        {
-          "skip": false,
-          "queryKey": "cancellationToken",
-          "name": "cancellationToken",
-          "typeText": "System.Threading.CancellationToken",
-          "webType": "FromQuery"
-        }
-      ],
-      "hasQueryStringParameter": true,
+      "parameters": [],
+      "hasQueryStringParameter": false,
       "isObsolete": false
     }
   ],
