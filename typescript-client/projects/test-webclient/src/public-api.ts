@@ -14,3 +14,8 @@ export * from './lib/nullable-return-type-test.service.generated';
 export * from './lib/required-param-test.service.generated';
 export * from './lib/required-return-type-test.service.generated';
 export * from './lib/duplicate-name-test.service.generated';
+export * from './lib/partially-obsolete.service.generated';
+export * from './lib/custom-json-settings.service.generated';
+export * from './lib/from-header-param-test.service.generated';
+export * from './lib/obsolete.service.generated';
+export * from './lib/omitted-constructor.service.generated';

@@ -45,11 +45,6 @@ export class RequiredParamTestService extends WebClient {
 		const result = this.doGetStringAsync(relativeUrl, { date: format(date, "yyyy-MM-ddTHH:mm:ssXXX") });
 		return result;
 	}
-	requiredDateTimeAsDateOnly(date: Date): Observable<string>  {
-		const relativeUrl = `requried-datetime-as-dateonly`;
-		const result = this.doGetStringAsync(relativeUrl, { date: format(date, "yyyy-MM-dd") });
-		return result;
-	}
 	requiredPostParam(dto: MyDto): Observable<object>  {
 		const relativeUrl = `required-post-param`;
 		const result = this.doPostAsync<object, MyDto>(relativeUrl, dto, {});
@@ -93,16 +88,6 @@ export class RequiredParamTestService extends WebClient {
 	requiredDateTimeArray(dates: Date[]): Observable<string>  {
 		const relativeUrl = `required-datetime-array`;
 		const result = this.doGetStringAsync(relativeUrl, { dates: dates.map(x => format(x, "yyyy-MM-ddTHH:mm:ssXXX")) });
-		return result;
-	}
-	requiredDateTimeAsDateOnlyCollection(dates: Date[]): Observable<string>  {
-		const relativeUrl = `required-datetime-as-dateonly-collection`;
-		const result = this.doGetStringAsync(relativeUrl, { dates: dates.map(x => format(x, "yyyy-MM-dd")) });
-		return result;
-	}
-	requiredDateTimeAsDateOnlyArray(dates: Date[]): Observable<string>  {
-		const relativeUrl = `required-datetime-as-dateonly-array`;
-		const result = this.doGetStringAsync(relativeUrl, { dates: dates.map(x => format(x, "yyyy-MM-dd")) });
 		return result;
 	}
 }

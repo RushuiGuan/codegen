@@ -39,11 +39,6 @@ export class FromRouteParamTestService extends WebClient {
 		const result = this.doGetAsync<object>(relativeUrl, {});
 		return result;
 	}
-	dateTimeAsDateOnlyRoute(date: Date, id: number): Observable<object>  {
-		const relativeUrl = `date-time-as-date-only-route/${format(date, "yyyy-MM-dd")}/${id}`;
-		const result = this.doGetAsync<object>(relativeUrl, {});
-		return result;
-	}
 	dateOnlyRoute(date: Date, id: number): Observable<object>  {
 		const relativeUrl = `date-only-route/${format(date, "yyyy-MM-dd")}/${id}`;
 		const result = this.doGetAsync<object>(relativeUrl, {});
