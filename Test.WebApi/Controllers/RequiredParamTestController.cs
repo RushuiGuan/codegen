@@ -25,9 +25,6 @@ namespace Test.WebApi.Controllers {
 		[HttpGet("required-datetime")]
 		public string RequiredDateTime(DateTime date) => date.ToString();
 
-		[HttpGet("requried-datetime-as-dateonly")]
-		public string RequiredDateTimeAsDateOnly(DateTime date) => date.ToString();
-
 		[HttpPost("required-post-param")]
 		public void RequiredPostParam([FromBody] MyDto dto) { }
 
@@ -54,11 +51,5 @@ namespace Test.WebApi.Controllers {
 
 		[HttpGet("required-datetime-array")]
 		public string RequiredDateTimeArray([FromQuery] DateTime[] dates) => string.Join(",", dates);
-
-		[HttpGet("required-datetime-as-dateonly-collection")]
-		public string RequiredDateTimeAsDateOnlyCollection([FromQuery] IEnumerable<DateTime> dates) => string.Join(",", dates);
-
-		[HttpGet("required-datetime-as-dateonly-array")]
-		public string RequiredDateTimeAsDateOnlyArray([FromQuery] DateTime[] dates) => string.Join(",", dates);
 	}
 }

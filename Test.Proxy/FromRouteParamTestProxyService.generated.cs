@@ -52,14 +52,6 @@ namespace Test.Proxy {
 			}
 		}
 
-		public async Task DateTimeAsDateOnlyRoute(System.DateTime date, System.Int32 id) {
-			string path = $"{ControllerPath}/date-time-as-date-only-route/{date.ISO8601StringDateOnly()}/{id}";
-			var queryString = new NameValueCollection();
-			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				await this.GetRawResponse(request);
-			}
-		}
-
 		public async Task DateOnlyRoute(System.DateOnly date, System.Int32 id) {
 			string path = $"{ControllerPath}/date-only-route/{date.ISO8601String()}/{id}";
 			var queryString = new NameValueCollection();

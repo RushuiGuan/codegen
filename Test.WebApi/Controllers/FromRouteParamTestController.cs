@@ -27,9 +27,6 @@ namespace Test.WebApi.Controllers {
 		[HttpGet("date-time-route/{date}/{id}")]
 		public void DateTimeRoute([FromRoute] DateTime date, [FromRoute] int id) { }
 
-		[HttpGet("date-time-as-date-only-route/{date}/{id}")]
-		public void DateTimeAsDateOnlyRoute([FromRoute] DateTime date, [FromRoute] int id) { }
-
 		[HttpGet("date-only-route/{date}/{id}")]
 		public void DateOnlyRoute([FromRoute] DateOnly date, [FromRoute] int id) { }
 

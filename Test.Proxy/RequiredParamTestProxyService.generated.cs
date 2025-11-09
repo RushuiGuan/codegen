@@ -66,15 +66,6 @@ namespace Test.Proxy {
 			}
 		}
 
-		public async Task<System.String> RequiredDateTimeAsDateOnly(System.DateTime date) {
-			string path = $"{ControllerPath}/requried-datetime-as-dateonly";
-			var queryString = new NameValueCollection();
-			queryString.Add("date", date.ISO8601StringDateOnly());
-			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
-			}
-		}
-
 		public async Task RequiredPostParam(Test.Dto.Classes.MyDto dto) {
 			string path = $"{ControllerPath}/required-post-param";
 			var queryString = new NameValueCollection();
@@ -172,30 +163,6 @@ namespace Test.Proxy {
 			var queryString = new NameValueCollection();
 			foreach (var item in dates) {
 				queryString.Add("dates", item.ISO8601String());
-			}
-
-			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
-			}
-		}
-
-		public async Task<System.String> RequiredDateTimeAsDateOnlyCollection(System.Collections.Generic.IEnumerable<System.DateTime> dates) {
-			string path = $"{ControllerPath}/required-datetime-as-dateonly-collection";
-			var queryString = new NameValueCollection();
-			foreach (var item in dates) {
-				queryString.Add("dates", item.ISO8601StringDateOnly());
-			}
-
-			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
-			}
-		}
-
-		public async Task<System.String> RequiredDateTimeAsDateOnlyArray(System.DateTime[] dates) {
-			string path = $"{ControllerPath}/required-datetime-as-dateonly-array";
-			var queryString = new NameValueCollection();
-			foreach (var item in dates) {
-				queryString.Add("dates", item.ISO8601StringDateOnly());
 			}
 
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
