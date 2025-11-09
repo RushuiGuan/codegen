@@ -1,6 +1,9 @@
+using Albatross.Dates;
 using Albatross.WebClient;
 using Microsoft.Extensions.Logging;
+using System.Collections.Specialized;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 #nullable enable
 namespace Test.WithInterface.Proxy {
@@ -8,7 +11,7 @@ namespace Test.WithInterface.Proxy {
 	}
 
 	public partial class CustomJsonSettingsProxyService : ClientBase, ICustomJsonSettingsProxyService {
-		public CustomJsonSettingsProxyService(ILogger<CustomJsonSettingsProxyService> logger, HttpClient client) : base(logger, client, MyCustomJsonSettings.Options) {
+		public CustomJsonSettingsProxyService(ILogger<CustomJsonSettingsProxyService> logger, HttpClient client) : base(logger, client, MyCustomJsonSettings.Instance) {
 		}
 
 		public const string ControllerPath = "api/customjsonsettings";
