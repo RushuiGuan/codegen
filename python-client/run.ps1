@@ -6,6 +6,7 @@ Get-ChildItem $PSScriptRoot/*.py | ForEach-Object {
     }
 }
 
+Get-ChildItem $PSScriptRoot/codegen/models | Remove-Item;
 
 
 $root = git rev-parse --show-toplevel

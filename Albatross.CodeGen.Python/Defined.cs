@@ -38,9 +38,9 @@ namespace Albatross.CodeGen.Python {
 			};
 			
 			public static readonly SimpleTypeExpression List = new SimpleTypeExpression {
-				Identifier = new IdentifierNameExpression("list"),
+				Identifier = Defined.Identifiers.List,
 			};
-			
+
 			public static readonly SimpleTypeExpression Dictionary = new SimpleTypeExpression {
 				Identifier = new IdentifierNameExpression("dict"),
 			};
@@ -52,7 +52,11 @@ namespace Albatross.CodeGen.Python {
 			public static readonly SimpleTypeExpression Set = new SimpleTypeExpression {
 				Identifier = new IdentifierNameExpression("set"),
 			};
-			
+
+			public static readonly SimpleTypeExpression Self = new SimpleTypeExpression {
+				Identifier = new QualifiedIdentifierNameExpression("Self", Sources.Typing),
+			};
+
 			public static readonly SimpleTypeExpression DateTime = new SimpleTypeExpression {
 				Identifier = new QualifiedIdentifierNameExpression("datetime", Sources.DateTime),
 			};
@@ -102,21 +106,21 @@ namespace Albatross.CodeGen.Python {
 
 		public static class Decorators {
 			public static readonly DecoratorExpression Property = new DecoratorExpression {
-				Identifier = new IdentifierNameExpression("property"),
+				CallableExpression = new IdentifierNameExpression("property"),
 			};
 
 			public static readonly DecoratorExpression DataClass = new DecoratorExpression {
-				Identifier = new QualifiedIdentifierNameExpression("dataclass", Sources.DataClasses)
+				CallableExpression = new QualifiedIdentifierNameExpression("dataclass", Sources.DataClasses)
 			};
 
 			public static readonly DecoratorExpression AbstractMethod = new DecoratorExpression {
-				Identifier = new QualifiedIdentifierNameExpression("abstractmethod", Sources.DataClasses)
+				CallableExpression = new QualifiedIdentifierNameExpression("abstractmethod", Sources.DataClasses)
 			};
 		}
 
 		public static class Invocations {
 			public static readonly InvocationExpression EnumAuto = new InvocationExpression {
-				Identifier = new QualifiedIdentifierNameExpression("auto", Sources.Enum)
+				CallableExpression = new QualifiedIdentifierNameExpression("auto", Sources.Enum)
 			};
 		}
 
@@ -139,6 +143,8 @@ namespace Albatross.CodeGen.Python {
 			public static readonly IIdentifierNameExpression PydanticField = new QualifiedIdentifierNameExpression("Field", Sources.Pydantic);
 			public static readonly IIdentifierNameExpression PydanticBaseModel = new QualifiedIdentifierNameExpression("BaseModel", Sources.Pydantic);
 			public static readonly IIdentifierNameExpression Fields = new QualifiedIdentifierNameExpression("fields", Sources.DataClasses);
+			public static readonly IIdentifierNameExpression TypeAdapter = new QualifiedIdentifierNameExpression("TypeAdapter", Sources.Pydantic);
+			public static readonly IIdentifierNameExpression List = new IdentifierNameExpression("list");
 		}
 		
 		public static class Parameters {

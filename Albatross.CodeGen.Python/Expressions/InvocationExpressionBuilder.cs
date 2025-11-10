@@ -5,18 +5,28 @@ using System.Collections.Generic;
 namespace Albatross.CodeGen.Python.Expressions {
 	public class InvocationExpressionBuilder : ExpressionBuilder<InvocationExpression> {
 		private bool useAwaitOperator;
-		private IIdentifierNameExpression? name;
+		private IExpression? callableExpression;
+		private IIdentifierNameExpression? chained;
 		private readonly List<IExpression> arguments = new List<IExpression>();
 		private readonly List<ITypeExpression> genericArguments = new List<ITypeExpression>();
 
-		
-		public InvocationExpressionBuilder WithName(string name) {
-			this.name = new IdentifierNameExpression(name);
+		public InvocationExpressionBuilder WithIdentifier(IIdentifierNameExpression identifier) {
+			this.callableExpression = identifier;
 			return this;
 		}
 
-		public InvocationExpressionBuilder WithMultiPartName(params string[] names) {
-			this.name = new MultiPartIdentifierNameExpression(names);
+		public InvocationExpressionBuilder WithFunctionName(string name) {
+			this.callableExpression = new IdentifierNameExpression(name);
+			return this;
+		}
+
+		public InvocationExpressionBuilder WithMultiPartFunctionName(params string[] names) {
+			this.callableExpression = new MultiPartIdentifierNameExpression(names);
+			return this;
+		}
+
+		public InvocationExpressionBuilder WithCallableExpression(IExpression expression) {
+			this.callableExpression = expression;
 			return this;
 		}
 
@@ -38,9 +48,17 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public override InvocationExpression Build() {
 			return new InvocationExpression() {
 				UseAwaitOperator = useAwaitOperator,
-				Identifier = name ?? throw new InvalidOperationException("Name is not set"),
+				CallableExpression = callableExpression ?? throw new InvalidOperationException("Name is not set"),
+				Chained = chained,
 				ArgumentList = new ListOfSyntaxNodes<IExpression>(arguments),
 				GenericArguments = new ListOfSyntaxNodes<ITypeExpression>(genericArguments),
+			};
+		}
+
+		public InvocationExpressionBuilder Chain(string functionName) {
+			return new InvocationExpressionBuilder {
+				callableExpression = this.Build(),
+				chained = new IdentifierNameExpression(functionName)
 			};
 		}
 	}

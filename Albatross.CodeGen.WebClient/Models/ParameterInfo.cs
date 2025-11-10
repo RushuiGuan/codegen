@@ -56,9 +56,8 @@ namespace Albatross.CodeGen.WebClient.Models {
 
 		public string TypeText => Type.GetFullName();
 		public ParameterType WebType { get; set; }
-
-		//public bool IsCollection { get; set; }
-		//public bool IsNullable{get;set; }
-		//public bool IsValueType { get; set; }
+		// TODO: implement wildcard route parameter support
+		// TODO: update RouteParameterSegment to indicate wildcard
+		// public bool IsWildCardRoute { get; set; }
 	}
 }

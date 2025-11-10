@@ -2,22 +2,23 @@
 
 from datetime import date
 from dto import MyDto
-from httpx import AsyncClient
-from httpx_ntlm import HttpNtlmAuth
+from httpx import AsyncClient, Auth
+from pydantic import TypeAdapter
+from typing import Self
 
 class NullableParamTestClient:
 	_client: AsyncClient
-	def __init__(self, base_url: str):
-		base_url = base_url.rstrip("/")
-		self._client = AsyncClient(base_url = base_url, auth = HttpNtlmAuth(None, None))
+	def __init__(self, base_url: str, auth: Auth | None = None) -> None:
+		base_url = f"{base_url.rstrip('/')}/api/nullable-param-test"
+		self._client = AsyncClient(base_url = base_url, auth = auth)
 	
-	async def close(self):
+	async def close(self) -> None:
 		await self._client.aclose()
 	
-	async def __aenter__(self):
+	async def __aenter__(self) -> Self:
 		return self
 	
-	async def __aexit__(self, exc_type, exc_value, traceback):
+	async def __aexit__(self, exc_type, exc_value, traceback) -> None:
 		await self.close()
 	
 	async def nullable_string_param(self, text: None | str) -> str:
@@ -36,14 +37,14 @@ class NullableParamTestClient:
 	
 	async def nullable_date_only(self, date: date | None) -> str:
 		relative_url = "nullable-date-only"
-		params = { "date": date }
+		params = { "date": None if date is None else date.isoformat() }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
-	async def nullable_post_param(self, dto: MyDto | None):
+	async def nullable_post_param(self, dto: MyDto | None) -> None:
 		relative_url = "nullable-post-param"
-		response = self._client.post[MyDto | None](relative_url, dto)
+		response = await self._client.post(relative_url, json = TypeAdapter(MyDto | None).dump_python(dto, mode = "json"))
 		response.raise_for_status()
 	
 	async def nullable_string_array(self, values: list[None | str]) -> str:

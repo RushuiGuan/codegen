@@ -1,49 +1,48 @@
 # @generated
 
-from httpx import AsyncClient
-from httpx_ntlm import HttpNtlmAuth
+from httpx import AsyncClient, Auth
 from pydantic import TypeAdapter
+from typing import Self
 
 class HttpMethodTestClient:
 	_client: AsyncClient
-	def __init__(self, base_url: str):
-		base_url = base_url.rstrip("/")
-		self._client = AsyncClient(base_url = base_url, auth = HttpNtlmAuth(None, None))
+	def __init__(self, base_url: str, auth: Auth | None = None) -> None:
+		base_url = f"{base_url.rstrip('/')}/api/http-method-test"
+		self._client = AsyncClient(base_url = base_url, auth = auth)
 	
-	async def close(self):
+	async def close(self) -> None:
 		await self._client.aclose()
 	
-	async def __aenter__(self):
+	async def __aenter__(self) -> Self:
 		return self
 	
-	async def __aexit__(self, exc_type, exc_value, traceback):
+	async def __aexit__(self, exc_type, exc_value, traceback) -> None:
 		await self.close()
 	
-	async def delete(self):
+	async def delete(self) -> None:
 		relative_url = ""
-		response = self._client.delete(relative_url)
+		response = await self._client.delete(relative_url)
 		response.raise_for_status()
 	
-	async def post(self):
+	async def post(self) -> None:
 		relative_url = ""
-		response = self._client.post[str](relative_url, "")
+		response = await self._client.post(relative_url)
 		response.raise_for_status()
 	
-	async def patch(self):
+	async def patch(self) -> None:
 		relative_url = ""
-		response = self._client.patch[str](relative_url, "")
+		response = await self._client.patch(relative_url)
 		response.raise_for_status()
 	
 	async def get(self) -> int:
 		relative_url = ""
-		response = self._client.get(relative_url)
+		response = await self._client.get(relative_url)
 		response.raise_for_status()
-		adapter = TypeAdapter(int)
-		adapter.validate_python(response.json())
+		return TypeAdapter(int).validate_python(response.json())
 	
-	async def put(self):
+	async def put(self) -> None:
 		relative_url = ""
-		response = self._client.put[str](relative_url, "")
+		response = await self._client.put(relative_url)
 		response.raise_for_status()
 	
 

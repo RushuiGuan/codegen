@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 #nullable enable
 namespace Test.Proxy {
-	public partial class FromRouteParamTestProxyService : ClientBase {
-		public FromRouteParamTestProxyService(ILogger<FromRouteParamTestProxyService> logger, HttpClient client) : base(logger, client) {
+	public partial class FromRoutingParamTestProxyService : ClientBase {
+		public FromRoutingParamTestProxyService(ILogger<FromRoutingParamTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
 
 		public const string ControllerPath = "api/from-routing-param-test";

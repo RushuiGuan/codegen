@@ -2,22 +2,23 @@
 
 from datetime import date, datetime
 from dto import MyDto
-from httpx import AsyncClient
-from httpx_ntlm import HttpNtlmAuth
+from httpx import AsyncClient, Auth
+from pydantic import TypeAdapter
+from typing import Self
 
 class RequiredParamTestClient:
 	_client: AsyncClient
-	def __init__(self, base_url: str):
-		base_url = base_url.rstrip("/")
-		self._client = AsyncClient(base_url = base_url, auth = HttpNtlmAuth(None, None))
+	def __init__(self, base_url: str, auth: Auth | None = None) -> None:
+		base_url = f"{base_url.rstrip('/')}/api/required-param-test"
+		self._client = AsyncClient(base_url = base_url, auth = auth)
 	
-	async def close(self):
+	async def close(self) -> None:
 		await self._client.aclose()
 	
-	async def __aenter__(self):
+	async def __aenter__(self) -> Self:
 		return self
 	
-	async def __aexit__(self, exc_type, exc_value, traceback):
+	async def __aexit__(self, exc_type, exc_value, traceback) -> None:
 		await self.close()
 	
 	async def explicit_string_param(self, text: str) -> str:
@@ -50,21 +51,21 @@ class RequiredParamTestClient:
 	
 	async def required_date_only(self, date: date) -> str:
 		relative_url = "required-date-only"
-		params = { "date": date.isoFormat() }
+		params = { "date": date.isoformat() }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_date_time(self, date: datetime) -> str:
 		relative_url = "required-datetime"
-		params = { "date": date.isoFormat() }
+		params = { "date": date.isoformat() }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
-	async def required_post_param(self, dto: MyDto):
+	async def required_post_param(self, dto: MyDto) -> None:
 		relative_url = "required-post-param"
-		response = self._client.post[MyDto](relative_url, dto)
+		response = await self._client.post(relative_url, json = TypeAdapter(MyDto).dump_python(dto, mode = "json"))
 		response.raise_for_status()
 	
 	async def required_string_array(self, values: list[str]) -> str:

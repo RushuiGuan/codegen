@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			return new FieldDeclaration(from.Name.Underscore()) {
 				Type = typeConverter.Convert(from.PropertyType),
 				Initializer = new InvocationExpression {
-					Identifier = Defined.Identifiers.PydanticField,
+					CallableExpression = Defined.Identifiers.PydanticField,
 					ArgumentList = new ListOfSyntaxNodes<IExpression>(
 						new ScopedVariableExpression {
 							Identifier = new IdentifierNameExpression("alias"),

@@ -5,10 +5,10 @@ using System;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/from-routing-param-test")]
-	public class FromRouteParamTestController : ControllerBase {
+	public class FromRoutingParamTestController : ControllerBase {
 		private readonly ILogger logger;
 
-		public FromRouteParamTestController(ILogger logger) {
+		public FromRoutingParamTestController(ILogger logger) {
 			this.logger = logger;
 		}
 
