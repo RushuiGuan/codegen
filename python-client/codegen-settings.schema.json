@@ -127,12 +127,6 @@
         "enumFilter": {
           "$ref": "#/definitions/SymbolFilterPatterns"
         },
-        "endPointName": {
-          "type": "string"
-        },
-        "baseClassName": {
-          "type": "string"
-        },
         "nameSpaceModuleMapping": {
           "type": "object",
           "additionalProperties": {

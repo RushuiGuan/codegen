@@ -2,7 +2,7 @@
   "profiles": {
     "create python api": {
       "commandName": "Project",
-      "commandLineArgs": "python proxy -d C:\\app\\python\\ref-data"
+      "commandLineArgs": "py web-client -p ../Test.WebApi/Test.WebApi.csproj -s ../python-client/codegen/codegen-settings.json -o ../python-client/"
     },
     "create python code": {
       "commandName": "Project",

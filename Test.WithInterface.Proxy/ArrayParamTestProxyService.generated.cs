@@ -12,6 +12,8 @@ namespace Test.WithInterface.Proxy {
 		Task<System.String> ArrayValueType(System.Int32[] array);
 		Task<System.String> CollectionStringParam(System.Collections.Generic.IEnumerable<System.String> collection);
 		Task<System.String> CollectionValueType(System.Collections.Generic.IEnumerable<System.Int32> collection);
+		Task<System.String> CollectionDateParam(System.Collections.Generic.IEnumerable<System.DateOnly> collection);
+		Task<System.String> CollectionDateTimeParam(System.Collections.Generic.IEnumerable<System.DateTime> collection);
 	}
 
 	public partial class ArrayParamTestProxyService : ClientBase, IArrayParamTestProxyService {
@@ -60,6 +62,30 @@ namespace Test.WithInterface.Proxy {
 			var queryString = new NameValueCollection();
 			foreach (var item in collection) {
 				queryString.Add("c", $"{item}");
+			}
+
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRawResponse(request);
+			}
+		}
+
+		public async Task<System.String> CollectionDateParam(System.Collections.Generic.IEnumerable<System.DateOnly> collection) {
+			string path = $"{ControllerPath}/collection-date-param";
+			var queryString = new NameValueCollection();
+			foreach (var item in collection) {
+				queryString.Add("c", item.ISO8601String());
+			}
+
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRawResponse(request);
+			}
+		}
+
+		public async Task<System.String> CollectionDateTimeParam(System.Collections.Generic.IEnumerable<System.DateTime> collection) {
+			string path = $"{ControllerPath}/collection-datetime-param";
+			var queryString = new NameValueCollection();
+			foreach (var item in collection) {
+				queryString.Add("c", item.ISO8601String());
 			}
 
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {

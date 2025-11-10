@@ -2,6 +2,7 @@
 
 from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
+from pydantic import TypeAdapter
 
 class HttpMethodTestClient:
 	_client: AsyncClient
@@ -37,6 +38,8 @@ class HttpMethodTestClient:
 		relative_url = ""
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(int)
+		adapter.validate_python(response.json())
 	
 	async def put(self):
 		relative_url = ""

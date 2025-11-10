@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System;
 using System.CommandLine.Invocation;
+using System.Net.Security;
 using System.Text.Json;
 
 namespace Albatross.CodeGen.CommandLine {
@@ -26,8 +27,12 @@ namespace Albatross.CodeGen.CommandLine {
 			services.AddWebClientCodeGen();
 			if(context.ParseResult.CommandResult.Parent?.Symbol.Name == "python") {
 				services.AddPythonCodeGen();
+				services.AddPythonWebClientCodeGen();
 			} else if(context.ParseResult.CommandResult.Parent?.Symbol.Name == "typescript") {
 				services.AddTypeScriptCodeGen();
+				services.AddTypeScriptWebClientCodeGen();
+			} else if (context.ParseResult.CommandResult.Parent?.Symbol.Name == "charp") {
+				services.AddCSharpWebClientCodeGen();
 			}
 			services.AddScoped(provider => MSBuildWorkspace.Create());
 			services.AddScoped<ICurrentProject>(provider => {
@@ -42,7 +47,6 @@ namespace Albatross.CodeGen.CommandLine {
 			services.AddScoped(provider => provider.GetRequiredService<ICompilationFactory>().Workspace);
 			services.AddScoped(provider => provider.GetRequiredService<ICompilationFactory>().Create());
 			services.AddShortenLoggerName(false, "Albatross");
-
 			services.AddSingleton(provider => {
 				var options = provider.GetRequiredService<IOptions<CodeGenCommandOptions>>().Value;
 				if (options.SettingsFile == null) {
@@ -55,11 +59,6 @@ namespace Albatross.CodeGen.CommandLine {
 					throw new InvalidOperationException($"File {options.SettingsFile.Name} doesn't exist");
 				}
 			});
-			services.AddSingleton<ISourceLookup>(provider => {
-				var settings = provider.GetRequiredService<CodeGenSettings>();
-				return new DefaultTypeScriptSourceLookup(settings.TypeScriptWebClientSettings.NameSpaceModuleMapping);
-			});
-
 		}
 	}
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 #nullable enable
 namespace Test.WithInterface.Proxy {
 	public partial interface ICancellationTokenTestProxyService {
-		Task<System.String> Get(System.Threading.CancellationToken cancellationToken);
+		Task<System.String> Get();
 	}
 
 	public partial class CancellationTokenTestProxyService : ClientBase, ICancellationTokenTestProxyService {
@@ -16,10 +16,9 @@ namespace Test.WithInterface.Proxy {
 		}
 
 		public const string ControllerPath = "api/cancellationtokentest";
-		public async Task<System.String> Get(System.Threading.CancellationToken cancellationToken) {
+		public async Task<System.String> Get() {
 			string path = $"{ControllerPath}";
 			var queryString = new NameValueCollection();
-			queryString.Add("cancellationToken", $"{cancellationToken}");
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}

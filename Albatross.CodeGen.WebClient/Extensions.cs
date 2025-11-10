@@ -1,29 +1,35 @@
-﻿using Albatross.CodeGen.TypeScript;
-using Albatross.CodeGen.TypeScript.TypeConversions;
-using Albatross.CodeGen.WebClient.CSharp;
-using Albatross.CodeGen.WebClient.Models;
-using Albatross.CodeGen.WebClient.TypeScript;
+﻿using Albatross.CodeGen.Python;
+using Albatross.CodeGen.Syntax;
+using Albatross.CodeGen.TypeScript;
+using Albatross.CodeGen.WebClient.Settings;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Albatross.CodeGen.WebClient {
 	public static class Extensions {
-
 		public static IServiceCollection AddWebClientCodeGen(this IServiceCollection services) {
-			services.AddTypeScriptCodeGen();
 			services.AddCodeGen(typeof(Extensions).Assembly);
-			// symbol to model conversion
-			services.AddScoped<ConvertClassSymbolToDtoClassModel>()
-				.AddScoped<ConvertEnumSymbolToDtoEnumModel>()
-				.AddScoped<ConvertApiControllerToControllerModel>();
+			return services;
+		}
 
-			// model to code conversion
-			services.AddScoped<ConvertWebApiToCSharpCodeStack_Client740>()
-				.AddScoped<ConvertControllerModelToTypeScriptFile>()
-				.AddScoped<CreateHttpClientRegistrations>()
-				.AddScoped<ConvertDtoClassModelToTypeScriptInterface>()
-				.AddScoped<ConvertEnumModelToTypeScriptEnum>();
+		public static IServiceCollection AddCSharpWebClientCodeGen(this IServiceCollection services) {
+			return services;
+		}
 
-			services.AddSingleton<ITypeConverter, MappedTypeConverter>();
+		public static IServiceCollection AddTypeScriptWebClientCodeGen(this IServiceCollection services) {
+			services.AddSingleton<ITypeConverter, TypeScript.MappedTypeConverter>();
+			services.AddSingleton<ISourceLookup>(provider => {
+				var settings = provider.GetRequiredService<CodeGenSettings>();
+				return new DefaultTypeScriptSourceLookup(settings.TypeScriptWebClientSettings.NameSpaceModuleMapping);
+			});
+			return services;
+		}
+
+		public static IServiceCollection AddPythonWebClientCodeGen(this IServiceCollection services) {
+			services.AddSingleton<ITypeConverter, Python.MappedTypeConverter>();
+			services.AddSingleton<ISourceLookup>(provider => {
+				var settings = provider.GetRequiredService<CodeGenSettings>();
+				return new DefaultPythonSourceLookup(settings.PythonWebClientSettings.NameSpaceModuleMapping);
+			});
 			return services;
 		}
 	}

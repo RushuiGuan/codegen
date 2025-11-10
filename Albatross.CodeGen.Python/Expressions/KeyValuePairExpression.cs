@@ -14,6 +14,8 @@ namespace Albatross.CodeGen.Python.Expressions {
 			this.Value = value;
 		}
 
+		public KeyValuePairExpression(string key, string value) : this(new StringLiteralExpression(key), new StringLiteralExpression(value)) { }
+
 		public override TextWriter Generate(TextWriter writer) {
 			return writer.Code(Key).Append(": ").Code(Value);
 		}

@@ -13,9 +13,9 @@ export class CancellationTokenTestService extends WebClient {
 		super();
 		console.log("CancellationTokenTestService instance created");
 	}
-	get(cancellationToken: CancellationToken): Observable<string>  {
+	get(): Observable<string>  {
 		const relativeUrl = ``;
-		const result = this.doGetStringAsync(relativeUrl, { cancellationToken });
+		const result = this.doGetStringAsync(relativeUrl, {});
 		return result;
 	}
 }

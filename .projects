@@ -10,3 +10,6 @@ Albatross.CodeGen.UnitTest
 
 # apps
 Albatross.CodeGen.CommandLine
+
+# services
+Test.WebApi

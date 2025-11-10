@@ -1,22 +1,13 @@
 {
 	"$schema": "codegen-settings.schema.json",
-	"apiControllerConversionSetting": {
-		"globalMethodSettings": {
-			"useDateTimeAsDateOnly": false
-		},
-		"methodSettings": {
-			"FromRouteParamTestController.DateTimeAsDateOnlyRoute": {
-				"useDateTimeAsDateOnly": true
-			},
-			"RequiredParamTestController.RequiredDateTimeAsDateOnlyCollection": {
-				"useDateTimeAsDateOnly": true
-			},
-			"RequiredParamTestController.RequiredDateTimeAsDateOnlyArray": {
-				"useDateTimeAsDateOnly": true
-			},
-			"RequiredParamTestController.RequiredDateTimeAsDateOnly": {
-				"useDateTimeAsDateOnly": true
+	"pythonWebClientSettings": {
+		"controllerMethodFilters": [
+			{
+				"exclude": "FilteredByPython$"
 			}
+		],
+		"nameSpaceModuleMapping": {
+			"Test.Dto": "dto"
 		}
 	},
 	"controllerFilter": {

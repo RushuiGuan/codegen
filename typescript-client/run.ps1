@@ -5,6 +5,8 @@ get-item $project/projects/test-webclient/src/lib/*.generated.ts | remove-item;
 
 set-location $PSScriptRoot/../Albatross.CodeGen.CommandLine;
 
+dotnet run --no-launch-profile -- schema settings --file $PSScriptRoot/codegen-settings.schema.json
+
 dotnet run -- typescript dto `
 	-p $project/../Test.Dto/Test.Dto.csproj `
 	-s $PSScriptRoot/codegen-settings.json `

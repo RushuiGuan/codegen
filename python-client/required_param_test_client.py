@@ -1,6 +1,7 @@
 # @generated
 
 from datetime import date, datetime
+from dto import MyDto
 from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
 

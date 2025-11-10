@@ -1,8 +1,10 @@
 # @generated
 
 from datetime import datetime
+from dto import MyDto
 from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
+from pydantic import TypeAdapter
 
 class NullableReturnTypeTestClient:
 	_client: AsyncClient
@@ -47,70 +49,98 @@ class NullableReturnTypeTestClient:
 		relative_url = "int"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(int | None)
+		adapter.validate_python(response.json())
 	
 	async def get_async_int(self) -> int | None:
 		relative_url = "async-int"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(int | None)
+		adapter.validate_python(response.json())
 	
 	async def get_action_result_int(self) -> int | None:
 		relative_url = "action-result-int"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(int | None)
+		adapter.validate_python(response.json())
 	
 	async def get_async_action_result_int(self) -> int | None:
 		relative_url = "async-action-result-int"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(int | None)
+		adapter.validate_python(response.json())
 	
 	async def get_date_time(self) -> datetime | None:
 		relative_url = "datetime"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(datetime | None)
+		adapter.validate_python(response.json())
 	
 	async def get_async_date_time(self) -> datetime | None:
 		relative_url = "async-datetime"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(datetime | None)
+		adapter.validate_python(response.json())
 	
 	async def get_action_result_date_time(self) -> datetime | None:
 		relative_url = "action-result-datetime"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(datetime | None)
+		adapter.validate_python(response.json())
 	
 	async def get_async_action_result_date_time(self) -> datetime | None:
 		relative_url = "async-action-result-datetime"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(datetime | None)
+		adapter.validate_python(response.json())
 	
 	async def get_my_dto(self) -> MyDto | None:
 		relative_url = "object"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(MyDto | None)
+		adapter.validate_python(response.json())
 	
 	async def get_async_my_dto(self) -> MyDto | None:
 		relative_url = "async-object"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(MyDto | None)
+		adapter.validate_python(response.json())
 	
 	async def action_result_object(self) -> MyDto | None:
 		relative_url = "action-result-object"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(MyDto | None)
+		adapter.validate_python(response.json())
 	
 	async def async_action_result_object(self) -> MyDto | None:
 		relative_url = "async-action-result-object"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(MyDto | None)
+		adapter.validate_python(response.json())
 	
 	async def get_my_dto_nullable_array(self) -> list[MyDto | None]:
 		relative_url = "nullable-array-return-type"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(list[MyDto | None])
+		adapter.validate_python(response.json())
 	
 	async def get_my_dto_collection(self) -> list[MyDto | None]:
 		relative_url = "nullable-collection-return-type"
 		response = self._client.get(relative_url)
 		response.raise_for_status()
+		adapter = TypeAdapter(list[MyDto | None])
+		adapter.validate_python(response.json())
 	
 

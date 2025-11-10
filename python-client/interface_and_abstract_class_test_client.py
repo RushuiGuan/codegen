@@ -1,7 +1,9 @@
 # @generated
 
+from dto import ICommand, AbstractClass
 from httpx import AsyncClient
 from httpx_ntlm import HttpNtlmAuth
+from pydantic import TypeAdapter
 
 class InterfaceAndAbstractClassTestClient:
 	_client: AsyncClient
@@ -34,20 +36,28 @@ class InterfaceAndAbstractClassTestClient:
 		relative_url = "return-interface-async"
 		response = self._client.post[str](relative_url, "")
 		response.raise_for_status()
+		adapter = TypeAdapter(ICommand)
+		adapter.validate_python(response.json())
 	
 	async def return_interface(self) -> ICommand:
 		relative_url = "return-interface"
 		response = self._client.post[str](relative_url, "")
 		response.raise_for_status()
+		adapter = TypeAdapter(ICommand)
+		adapter.validate_python(response.json())
 	
 	async def return_abstract_class_async(self) -> AbstractClass:
 		relative_url = "return-abstract-class-async"
 		response = self._client.post[str](relative_url, "")
 		response.raise_for_status()
+		adapter = TypeAdapter(AbstractClass)
+		adapter.validate_python(response.json())
 	
 	async def return_abstract_class(self) -> AbstractClass:
 		relative_url = "return-abstract-class"
 		response = self._client.post[str](relative_url, "")
 		response.raise_for_status()
+		adapter = TypeAdapter(AbstractClass)
+		adapter.validate_python(response.json())
 	
 

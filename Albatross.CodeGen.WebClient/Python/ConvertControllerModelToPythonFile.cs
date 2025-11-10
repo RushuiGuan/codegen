@@ -15,8 +15,6 @@ using System.Linq;
 
 namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertControllerModelToPythonFile : IConvertObject<ControllerInfo, PythonFileDeclaration> {
-		public const string ControllerPostfix = "Controller";
-		public const string ControllerNamePlaceholder = "[controller]";
 		private readonly PythonWebClientSettings settings;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
@@ -166,10 +164,23 @@ namespace Albatross.CodeGen.WebClient.Python {
 		}
 
 		IExpression BuildReturnValue(MethodInfo method) {
-			if (method.ReturnTypeText == "System.String") {
+			if (method.ReturnType.SpecialType == SpecialType.System_Void) {
+				return new NoOpExpression();
+			} else if (method.ReturnTypeText == "System.String") {
 				return new ReturnExpression(new MultiPartIdentifierNameExpression("response", "text"));
 			} else {
-				return new NoOpExpression();
+				return new ScopedVariableExpressionBuilder()
+					.WithName("adapter")
+					.WithExpression(new InvocationExpression {
+						Identifier = new QualifiedIdentifierNameExpression("TypeAdapter", Defined.Sources.Pydantic),
+						ArgumentList = new ListOfSyntaxNodes<IExpression>(typeConverter.Convert(method.ReturnType))
+					})
+					.Add(new InvocationExpressionBuilder()
+						.WithMultiPartName("adapter", "validate_python")
+						.AddArgument(new InvocationExpression {
+							Identifier = new MultiPartIdentifierNameExpression("response", "json")
+						})
+					).BuildAll();
 			}
 		}
 
@@ -251,7 +262,6 @@ namespace Albatross.CodeGen.WebClient.Python {
 
 		IExpression CreateHttpInvocationExpression(MethodInfo method) {
 			var builder = new InvocationExpressionBuilder();
-			var returnType = this.typeConverter.Convert(method.ReturnType);
 			switch (method.HttpMethod) {
 				case My.HttpMethodGet:
 					builder.WithMultiPartName("self", "_client", "get");
@@ -274,7 +284,21 @@ namespace Albatross.CodeGen.WebClient.Python {
 			// add from body parameter if it exists
 			var fromBodyParameter = method.Parameters.FirstOrDefault(x => x.WebType == ParameterType.FromBody);
 			if (fromBodyParameter != null) {
-				builder.AddGenericArgument(this.typeConverter.Convert(fromBodyParameter.Type));
+				if (fromBodyParameter.TypeText == "System.String") {
+					// content=text,  # raw body, not JSON-encoded
+					// headers={"Content-Type": "text/plain"},
+					builder.AddArgument(new ScopedVariableExpression {
+						Identifier = new IdentifierNameExpression("headers"),
+						Assignment = new DictionaryValueExpression(new KeyValuePairExpression("Content-Type","text/plain"))
+					});
+					builder.AddArgument(new ScopedVariableExpression {
+						Identifier = new IdentifierNameExpression("content"),
+						Assignment = new IdentifierNameExpression(fromBodyParameter.Name.Underscore())
+					});
+				} else {
+					// TypeAdapter(datetime).dump_python(datetime.now(), mode="json")
+					
+				}
 				builder.AddArgument(new IdentifierNameExpression(fromBodyParameter.Name.CamelCase()));
 			} else if (method.HttpMethod == My.HttpMethodPost || method.HttpMethod == My.HttpMethodPut || method.HttpMethod == My.HttpMethodPatch) {
 				builder.AddGenericArgument(Defined.Types.String);

@@ -18,6 +18,11 @@ class FilteredMethodClient:
 	async def __aexit__(self, exc_type, exc_value, traceback):
 		await self.close()
 	
+	async def filtered_by_all(self):
+		relative_url = "all"
+		response = self._client.get(relative_url)
+		response.raise_for_status()
+	
 	async def filtered_by_none(self):
 		relative_url = "none"
 		response = self._client.get(relative_url)

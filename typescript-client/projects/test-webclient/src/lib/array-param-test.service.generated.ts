@@ -2,6 +2,7 @@ import { HttpClient }  from "@angular/common/http";
 import { Injectable }  from "@angular/core";
 import { ConfigService }  from "@mirage/config";
 import { WebClient }  from "@mirage/webclient";
+import { format }  from "date-fns";
 import { Observable }  from "rxjs";
 
 @Injectable({ providedIn: "root" })
@@ -31,6 +32,16 @@ export class ArrayParamTestService extends WebClient {
 	collectionValueType(collection: number[]): Observable<string>  {
 		const relativeUrl = `collection-value-type`;
 		const result = this.doGetStringAsync(relativeUrl, { c: collection });
+		return result;
+	}
+	collectionDateParam(collection: Date[]): Observable<string>  {
+		const relativeUrl = `collection-date-param`;
+		const result = this.doGetStringAsync(relativeUrl, { c: collection.map(x => format(x, "yyyy-MM-dd")) });
+		return result;
+	}
+	collectionDateTimeParam(collection: Date[]): Observable<string>  {
+		const relativeUrl = `collection-datetime-param`;
+		const result = this.doGetStringAsync(relativeUrl, { c: collection.map(x => format(x, "yyyy-MM-ddTHH:mm:ssXXX")) });
 		return result;
 	}
 }
