@@ -9,6 +9,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 		private readonly List<IExpression> arguments = new List<IExpression>();
 		private readonly List<ITypeExpression> genericArguments = new List<ITypeExpression>();
 
+		
 		public InvocationExpressionBuilder WithName(string name) {
 			this.name = new IdentifierNameExpression(name);
 			return this;

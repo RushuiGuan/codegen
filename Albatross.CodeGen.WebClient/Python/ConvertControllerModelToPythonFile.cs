@@ -289,7 +289,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 					// headers={"Content-Type": "text/plain"},
 					builder.AddArgument(new ScopedVariableExpression {
 						Identifier = new IdentifierNameExpression("headers"),
-						Assignment = new DictionaryValueExpression(new KeyValuePairExpression("Content-Type","text/plain"))
+						Assignment = new DictionaryValueExpression(new KeyValuePairExpression("Content-Type", "text/plain"))
 					});
 					builder.AddArgument(new ScopedVariableExpression {
 						Identifier = new IdentifierNameExpression("content"),
@@ -297,7 +297,15 @@ namespace Albatross.CodeGen.WebClient.Python {
 					});
 				} else {
 					// TypeAdapter(datetime).dump_python(datetime.now(), mode="json")
-					
+					builder.AddArgument(new ScopedVariableExpression {
+						Identifier = new IdentifierNameExpression("json"),
+						Assignment = new InvocationExpressionBuilder()
+							.WithName()
+						{
+							Identifier = new QualifiedIdentifierNameExpression("TypeAdapter", Defined.Sources.Pydantic),
+							ArgumentList = new ListOfSyntaxNodes<IExpression>(this.typeConverter.Convert(fromBodyParameter.Type))
+						}
+					});
 				}
 				builder.AddArgument(new IdentifierNameExpression(fromBodyParameter.Name.CamelCase()));
 			} else if (method.HttpMethod == My.HttpMethodPost || method.HttpMethod == My.HttpMethodPut || method.HttpMethod == My.HttpMethodPatch) {
