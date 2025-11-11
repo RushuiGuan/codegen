@@ -2,6 +2,7 @@
 Albatross.CodeGen
 Albatross.CodeGen.CommandLine
 Albatross.CodeGen.TypeScript
+Albatross.CodeGen.Python
 Albatross.CodeGen.WebClient
 Albatross.CodeGen.CSharp
 
