@@ -1,6 +1,6 @@
 # @generated
 
-from datetime import datetime, date
+from datetime import timezone, datetime, date
 from httpx import AsyncClient, Auth
 from typing import Self
 
@@ -21,55 +21,85 @@ class FromQueryParamTestClient:
 	
 	async def required_string(self, name: str) -> None:
 		relative_url = "required-string"
-		params = { "name": name }
+		params = {
+			"name": name
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_string_implied(self, name: str) -> None:
 		relative_url = "required-string-implied"
-		params = { "name": name }
+		params = {
+			"name": name
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_string_diff_name(self, name: str) -> None:
 		relative_url = "required-string-diff-name"
-		params = { "n": name }
+		params = {
+			"n": name
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time(self, datetime: datetime) -> None:
 		relative_url = "required-datetime"
-		params = { "datetime": datetime.isoformat() }
+		params = {
+			"datetime": datetime.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if datetime.tzinfo
+			else datetime.isoformat()
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time_diff_name(self, datetime: datetime) -> None:
 		relative_url = "required-datetime_diff-name"
-		params = { "d": datetime.isoformat() }
+		params = {
+			"d": datetime.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if datetime.tzinfo
+			else datetime.isoformat()
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_only(self, dateonly: date) -> None:
 		relative_url = "required-dateonly"
-		params = { "dateonly": dateonly.isoformat() }
+		params = {
+			"dateonly": dateonly.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if dateonly.tzinfo
+			else dateonly.isoformat()
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_only_diff_name(self, dateonly: date) -> None:
 		relative_url = "required-dateonly_diff-name"
-		params = { "d": dateonly.isoformat() }
+		params = {
+			"d": dateonly.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if dateonly.tzinfo
+			else dateonly.isoformat()
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time_offset(self, date_time_offset: datetime) -> None:
 		relative_url = "required-datetimeoffset"
-		params = { "dateTimeOffset": date_time_offset.isoformat() }
+		params = {
+			"dateTimeOffset": date_time_offset.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if date_time_offset.tzinfo
+			else date_time_offset.isoformat()
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def required_date_time_offset_diff_name(self, date_time_offset: datetime) -> None:
 		relative_url = "required-datetimeoffset_diff-name"
-		params = { "d": date_time_offset.isoformat() }
+		params = {
+			"d": date_time_offset.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if date_time_offset.tzinfo
+			else date_time_offset.isoformat()
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 	

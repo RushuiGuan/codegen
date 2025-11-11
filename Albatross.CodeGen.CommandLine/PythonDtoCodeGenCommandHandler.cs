@@ -41,7 +41,7 @@ namespace Albatross.CodeGen.CommandLine {
 			var enumModels = new List<EnumInfo>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
 				var semanticModel = compilation.GetSemanticModel(syntaxTree);
-				var symbolWalker = new DtoClassEnumWalker(semanticModel, settings.CreatePythonDtoFilter());
+				var symbolWalker = new DtoClassEnumWalker(semanticModel, settings.DtoFilters());
 				symbolWalker.Visit(syntaxTree.GetRoot());
 				dtoModels.AddRange(symbolWalker.DtoClasses
 					.Where(x => string.IsNullOrEmpty(options.AdhocFilter) || x.GetFullName().Contains(options.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase))

@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
 using Albatross.CodeGen.WebClient.Settings;
+using Albatross.Collections;
 using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,16 +38,10 @@ namespace Albatross.CodeGen.WebClient.Models {
 				}
 			}
 		}
+
 		public void ApplyMethodFilters(IEnumerable<Settings.SymbolFilter> filters) {
-			if (filters.Any()) {
-				var controllerName = this.Controller.GetFullName();
-				for (int i = this.Methods.Count - 1; i >= 0; i--) {
-					var method = this.Methods[i];
-					if(!Settings.SymbolFilter.ShouldKeep(filters, $"{controllerName}.{method.Name}")) {
-						this.Methods.RemoveAt(i);
-					}
-				}
-			}
+			var controllerName = this.Controller.GetFullName();
+			this.Methods.RemoveAny(method => !filters.ShouldKeep($"{controllerName}.{method.Name}"));
 		}
 	}
 }

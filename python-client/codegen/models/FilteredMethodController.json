@@ -16,66 +16,6 @@
       "parameters": [],
       "hasQueryStringParameter": false,
       "isObsolete": false
-    },
-    {
-      "settings": {},
-      "httpMethod": "Get",
-      "name": "FilteredByCSharp",
-      "canCancel": false,
-      "returnTypeText": "System.Void",
-      "routeSegments": [
-        {
-          "text": "csharp"
-        }
-      ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
-      "isObsolete": false
-    },
-    {
-      "settings": {},
-      "httpMethod": "Get",
-      "name": "FilteredByCSharp2",
-      "canCancel": false,
-      "returnTypeText": "System.Void",
-      "routeSegments": [
-        {
-          "text": "csharp2"
-        }
-      ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
-      "isObsolete": false
-    },
-    {
-      "settings": {},
-      "httpMethod": "Get",
-      "name": "IncludedByCSharp",
-      "canCancel": false,
-      "returnTypeText": "System.Void",
-      "routeSegments": [
-        {
-          "text": "include-this-method"
-        }
-      ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
-      "isObsolete": false
-    },
-    {
-      "settings": {},
-      "httpMethod": "Get",
-      "name": "FilteredByTypeScript",
-      "canCancel": false,
-      "returnTypeText": "System.Void",
-      "routeSegments": [
-        {
-          "text": "typescript"
-        }
-      ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
-      "isObsolete": false
     }
   ],
   "isObsolete": false

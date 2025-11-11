@@ -1,11 +1,6 @@
 {
 	"$schema": "codegen-settings.schema.json",
 	"typeScriptWebClientSettings": {
-		"controllerMethodFilters": [
-			{
-				"exclude": "FilteredByTypeScript$"
-			}
-		],
 		"endPointName": "test-client",
 		"baseClassModule": "@mirage/webclient",
 		"configServiceModule": "@mirage/config",
@@ -19,9 +14,11 @@
 			"Test.Dto.Classes.IEmptyInterface": "IEmptyInterface,./dto"
 		}
 	},
-	"controllerFilter": {
-		"exclude": "^Test\\.WebApi\\.Controllers\\.(AbsUrl)?RedirectTestController$"
-	},
+	"controllerFilters": [
+		{
+			"exclude": "^Test\\.WebApi\\.Controllers\\.(AbsUrl)?RedirectTestController$"
+		}
+	],
 	"controllerMethodFilters": [
 		{
 			"exclude": "FilteredByAll$"

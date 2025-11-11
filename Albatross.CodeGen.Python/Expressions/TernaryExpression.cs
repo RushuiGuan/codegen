@@ -2,23 +2,26 @@
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
 	public record class TernaryExpression : SyntaxNode, IExpression {
 		public required IExpression Condition { get; init; }
 		public required IExpression TrueExpression { get; init; }
 		public required IExpression FalseExpression { get; init; }
-
+		public bool LineBreak { get; set; }
 		public override IEnumerable<ISyntaxNode> Children => [Condition, TrueExpression, FalseExpression];
 
 		public override TextWriter Generate(TextWriter writer) {
-			return writer
-				.Code(TrueExpression)
-				.Append(" if ")
-				.Code(Condition)
-				.Append(" else ")
-				.Code(FalseExpression);
+			if (LineBreak) {
+				writer.Code(TrueExpression)
+					.AppendLine()
+					.Append("if ").Code(Condition)
+					.AppendLine()
+					.Append("else ").Code(FalseExpression);
+			} else {
+				writer.Code(TrueExpression).Append(" if ").Code(Condition).Append(" else ").Code(FalseExpression);
+			}
+			return writer;
 		}
 	}
 }

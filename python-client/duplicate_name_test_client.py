@@ -20,13 +20,17 @@ class DuplicateNameTestClient:
 	
 	async def submit(self, id: int) -> None:
 		relative_url = "by-id"
-		params = { "id": id }
+		params = {
+			"id": id
+		}
 		response = await self._client.post(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def submit1(self, name: str) -> None:
 		relative_url = "by-name"
-		params = { "name": name }
+		params = {
+			"name": name
+		}
 		response = await self._client.post(relative_url, params = params)
 		response.raise_for_status()
 	

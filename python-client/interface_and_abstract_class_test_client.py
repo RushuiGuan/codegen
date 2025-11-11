@@ -22,13 +22,17 @@ class InterfaceAndAbstractClassTestClient:
 	
 	async def submit_by_interface(self, command: ICommand) -> None:
 		relative_url = "interface-as-param"
-		params = { "command": command }
+		params = {
+			"command": command
+		}
 		response = await self._client.post(relative_url, params = params)
 		response.raise_for_status()
 	
 	async def submit_by_abstract_class(self, command: AbstractClass) -> None:
 		relative_url = "abstract-class-as-param"
-		params = { "command": command }
+		params = {
+			"command": command
+		}
 		response = await self._client.post(relative_url, params = params)
 		response.raise_for_status()
 	

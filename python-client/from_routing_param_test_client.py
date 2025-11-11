@@ -1,6 +1,6 @@
 # @generated
 
-from datetime import datetime, date, time
+from datetime import timezone, datetime, date, time
 from httpx import AsyncClient, Auth
 from typing import Self
 
@@ -40,22 +40,30 @@ class FromRoutingParamTestClient:
 		response.raise_for_status()
 	
 	async def date_time_route(self, date: datetime, id: int) -> None:
-		relative_url = f"date-time-route/{date.isoformat()}/{id}"
+		relative_url = f"date-time-route/{date.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+		if date.tzinfo
+		else date.isoformat()}/{id}"
 		response = await self._client.get(relative_url)
 		response.raise_for_status()
 	
 	async def date_only_route(self, date: date, id: int) -> None:
-		relative_url = f"date-only-route/{date.isoformat()}/{id}"
+		relative_url = f"date-only-route/{date.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+		if date.tzinfo
+		else date.isoformat()}/{id}"
 		response = await self._client.get(relative_url)
 		response.raise_for_status()
 	
 	async def date_time_offset_route(self, date: datetime, id: int) -> None:
-		relative_url = f"datetimeoffset-route/{date.isoformat()}/{id}"
+		relative_url = f"datetimeoffset-route/{date.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+		if date.tzinfo
+		else date.isoformat()}/{id}"
 		response = await self._client.get(relative_url)
 		response.raise_for_status()
 	
 	async def time_only_route(self, time: time, id: int) -> None:
-		relative_url = f"timeonly-route/{time.isoformat()}/{id}"
+		relative_url = f"timeonly-route/{time.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+		if time.tzinfo
+		else time.isoformat()}/{id}"
 		response = await self._client.get(relative_url)
 		response.raise_for_status()
 	

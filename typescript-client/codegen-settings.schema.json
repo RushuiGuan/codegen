@@ -13,16 +13,25 @@
     "cSharpWebClientSettings": {
       "$ref": "#/definitions/CSharpWebClientSettings"
     },
-    "controllerFilter": {
-      "$ref": "#/definitions/SymbolFilterPatterns"
-    },
-    "dtoFilter": {
-      "$ref": "#/definitions/SymbolFilterPatterns"
-    },
-    "enumFilter": {
-      "$ref": "#/definitions/SymbolFilterPatterns"
+    "controllerFilters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SymbolFilterPatterns"
+      }
     },
     "controllerMethodFilters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SymbolFilterPatterns"
+      }
+    },
+    "dtoFilters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SymbolFilterPatterns"
+      }
+    },
+    "enumFilters": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/SymbolFilterPatterns"
@@ -37,21 +46,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "controllerFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
-        "controllerMethodFilters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SymbolFilterPatterns"
-          }
-        },
-        "dtoFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
-        "enumFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
         "endPointName": {
           "type": "string"
         },
@@ -87,52 +81,10 @@
         }
       }
     },
-    "SymbolFilterPatterns": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "exclude": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "include": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "hasValue": {
-          "type": "boolean"
-        }
-      }
-    },
     "PythonWebClientSettings": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "controllerFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
-        "controllerMethodFilters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SymbolFilterPatterns"
-          }
-        },
-        "dtoFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
-        "enumFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
-        "endPointName": {
-          "type": "string"
-        },
-        "baseClassName": {
-          "type": "string"
-        },
         "nameSpaceModuleMapping": {
           "type": "object",
           "additionalProperties": {
@@ -151,19 +103,10 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "controllerFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
-        "controllerMethodFilters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SymbolFilterPatterns"
-          }
-        },
         "namespace": {
           "type": "string"
         },
-        "useTextContentTypeForStringPost": {
+        "useTextContentTypeForStringPostRequest": {
           "type": "boolean"
         },
         "useInterface": {
@@ -204,6 +147,12 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "compressionEncoding": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
         "omit": {
           "type": "boolean"
         },
@@ -212,6 +161,27 @@
             "null",
             "string"
           ]
+        }
+      }
+    },
+    "SymbolFilterPatterns": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exclude": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "include": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "hasValue": {
+          "type": "boolean"
         }
       }
     }

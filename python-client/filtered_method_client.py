@@ -18,33 +18,8 @@ class FilteredMethodClient:
 	async def __aexit__(self, exc_type, exc_value, traceback) -> None:
 		await self.close()
 	
-	async def filtered_by_all(self) -> None:
-		relative_url = "all"
-		response = await self._client.get(relative_url)
-		response.raise_for_status()
-	
 	async def filtered_by_none(self) -> None:
 		relative_url = "none"
-		response = await self._client.get(relative_url)
-		response.raise_for_status()
-	
-	async def filtered_by_c_sharp(self) -> None:
-		relative_url = "csharp"
-		response = await self._client.get(relative_url)
-		response.raise_for_status()
-	
-	async def filtered_by_c_sharp2(self) -> None:
-		relative_url = "csharp2"
-		response = await self._client.get(relative_url)
-		response.raise_for_status()
-	
-	async def included_by_c_sharp(self) -> None:
-		relative_url = "include-this-method"
-		response = await self._client.get(relative_url)
-		response.raise_for_status()
-	
-	async def filtered_by_type_script(self) -> None:
-		relative_url = "typescript"
 		response = await self._client.get(relative_url)
 		response.raise_for_status()
 	

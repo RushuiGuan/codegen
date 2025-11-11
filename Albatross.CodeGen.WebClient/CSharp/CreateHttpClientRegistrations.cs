@@ -1,16 +1,13 @@
 ﻿using Albatross.CodeAnalysis.Syntax;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
-using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
 
 namespace Albatross.CodeGen.WebClient.CSharp {
 	public class CreateHttpClientRegistrations {
-		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
 
-		public CreateHttpClientRegistrations(Compilation compilation, CodeGenSettings settings) {
-			this.compilation = compilation;
+		public CreateHttpClientRegistrations(CodeGenSettings settings) {
 			this.settings = settings;
 		}
 

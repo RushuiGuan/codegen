@@ -1,6 +1,6 @@
 # @generated
 
-from datetime import date, datetime
+from datetime import timezone, date, datetime
 from dto import MyDto
 from httpx import AsyncClient, Auth
 from pydantic import TypeAdapter
@@ -23,42 +23,58 @@ class RequiredParamTestClient:
 	
 	async def explicit_string_param(self, text: str) -> str:
 		relative_url = "explicit-string-param"
-		params = { "text": text }
+		params = {
+			"text": text
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def implicit_string_param(self, text: str) -> str:
 		relative_url = "implicit-string-param"
-		params = { "text": text }
+		params = {
+			"text": text
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_string_param(self, text: str) -> str:
 		relative_url = "required-string-param"
-		params = { "text": text }
+		params = {
+			"text": text
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_value_type(self, id: int) -> str:
 		relative_url = "required-value-type"
-		params = { "id": id }
+		params = {
+			"id": id
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_date_only(self, date: date) -> str:
 		relative_url = "required-date-only"
-		params = { "date": date.isoformat() }
+		params = {
+			"date": date.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if date.tzinfo
+			else date.isoformat()
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_date_time(self, date: datetime) -> str:
 		relative_url = "required-datetime"
-		params = { "date": date.isoformat() }
+		params = {
+			"date": date.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if date.tzinfo
+			else date.isoformat()
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
@@ -70,56 +86,92 @@ class RequiredParamTestClient:
 	
 	async def required_string_array(self, values: list[str]) -> str:
 		relative_url = "required-string-array"
-		params = { "values": values }
+		params = {
+			"values": values
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_string_collection(self, values: list[str]) -> str:
 		relative_url = "required-string-collection"
-		params = { "values": values }
+		params = {
+			"values": values
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_value_type_array(self, values: list[int]) -> str:
 		relative_url = "required-value-type-array"
-		params = { "values": values }
+		params = {
+			"values": values
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_value_type_collection(self, values: list[int]) -> str:
 		relative_url = "required-value-type-collection"
-		params = { "values": values }
+		params = {
+			"values": values
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_date_only_collection(self, dates: list[date]) -> str:
 		relative_url = "required-date-only-collection"
-		params = { "dates": [x.isoformat() for x in dates] }
+		params = {
+			"dates": [
+				x.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+				if x.tzinfo
+				else x.isoformat()
+				for x in dates
+			]
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_date_only_array(self, dates: list[date]) -> str:
 		relative_url = "required-date-only-array"
-		params = { "dates": [x.isoformat() for x in dates] }
+		params = {
+			"dates": [
+				x.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+				if x.tzinfo
+				else x.isoformat()
+				for x in dates
+			]
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_date_time_collection(self, dates: list[datetime]) -> str:
 		relative_url = "required-datetime-collection"
-		params = { "dates": [x.isoformat() for x in dates] }
+		params = {
+			"dates": [
+				x.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+				if x.tzinfo
+				else x.isoformat()
+				for x in dates
+			]
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_date_time_array(self, dates: list[datetime]) -> str:
 		relative_url = "required-datetime-array"
-		params = { "dates": [x.isoformat() for x in dates] }
+		params = {
+			"dates": [
+				x.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+				if x.tzinfo
+				else x.isoformat()
+				for x in dates
+			]
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text

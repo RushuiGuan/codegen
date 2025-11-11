@@ -9,18 +9,18 @@ using SymbolFilter = Albatross.CodeGen.WebClient.Settings.SymbolFilter;
 namespace Albatross.CodeGen.WebClient {
 	public class ApiControllerClassWalker : CSharpSyntaxWalker {
 		private readonly SemanticModel semanticModel;
+		private readonly IEnumerable<SymbolFilter> filters;
 		public List<INamedTypeSymbol> Result { get; } = new List<INamedTypeSymbol>();
-		SymbolFilter filter;
 
-		public ApiControllerClassWalker(SemanticModel semanticModel, SymbolFilterPatterns patterns) {
+		public ApiControllerClassWalker(SemanticModel semanticModel, IEnumerable<SymbolFilter> filters) {
 			this.semanticModel = semanticModel;
-			this.filter = new SymbolFilter(patterns);
+			this.filters = filters;
 		}
 		public override void VisitClassDeclaration(ClassDeclarationSyntax node) {
 			if (node.Identifier.Text.EndsWith("Controller")) {
 				var symbol = semanticModel.GetDeclaredSymbol(node);
 				if (symbol?.BaseType != null && symbol.BaseType.Name == "ControllerBase") {
-					if (filter.ShouldKeep(symbol.GetFullName())) {
+					if (filters.ShouldKeep(symbol.GetFullName())) {
 						Result.Add(symbol);
 					}
 				}

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class CompareExpression : SyntaxNode, IExpression {
+	public record class ConditionExpression : SyntaxNode, IExpression {
 		private readonly string @operator;
 
-		public CompareExpression(string @operator) {
+		public ConditionExpression(string @operator) {
 			this.@operator = @operator;
 		}
 

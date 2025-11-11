@@ -14,94 +14,94 @@ export class NullableReturnTypeTestService extends WebClient {
 		super();
 		console.log("NullableReturnTypeTestService instance created");
 	}
-	getString(): Observable<string>  {
+	getString(text: string): Observable<string>  {
 		const relativeUrl = `string`;
-		const result = this.doGetStringAsync(relativeUrl, {});
+		const result = this.doGetAsync<string>(relativeUrl, { text });
 		return result;
 	}
-	getAsyncString(): Observable<string>  {
+	getAsyncString(text: string): Observable<string>  {
 		const relativeUrl = `async-string`;
-		const result = this.doGetStringAsync(relativeUrl, {});
+		const result = this.doGetAsync<string>(relativeUrl, { text });
 		return result;
 	}
-	getActionResultString(): Observable<string>  {
+	getActionResultString(text: string): Observable<string>  {
 		const relativeUrl = `action-result-string`;
-		const result = this.doGetStringAsync(relativeUrl, {});
+		const result = this.doGetAsync<string>(relativeUrl, { text });
 		return result;
 	}
-	getAsyncActionResultString(): Observable<string>  {
+	getAsyncActionResultString(text: string): Observable<string>  {
 		const relativeUrl = `async-action-result-string`;
-		const result = this.doGetStringAsync(relativeUrl, {});
+		const result = this.doGetAsync<string>(relativeUrl, { text });
 		return result;
 	}
-	getInt(): Observable<number|undefined>  {
+	getInt(n: number|undefined): Observable<number|undefined>  {
 		const relativeUrl = `int`;
-		const result = this.doGetAsync<number|undefined>(relativeUrl, {});
+		const result = this.doGetAsync<number|undefined>(relativeUrl, { n });
 		return result;
 	}
-	getAsyncInt(): Observable<number|undefined>  {
+	getAsyncInt(n: number|undefined): Observable<number|undefined>  {
 		const relativeUrl = `async-int`;
-		const result = this.doGetAsync<number|undefined>(relativeUrl, {});
+		const result = this.doGetAsync<number|undefined>(relativeUrl, { n });
 		return result;
 	}
-	getActionResultInt(): Observable<number|undefined>  {
+	getActionResultInt(n: number|undefined): Observable<number|undefined>  {
 		const relativeUrl = `action-result-int`;
-		const result = this.doGetAsync<number|undefined>(relativeUrl, {});
+		const result = this.doGetAsync<number|undefined>(relativeUrl, { n });
 		return result;
 	}
-	getAsyncActionResultInt(): Observable<number|undefined>  {
+	getAsyncActionResultInt(n: number|undefined): Observable<number|undefined>  {
 		const relativeUrl = `async-action-result-int`;
-		const result = this.doGetAsync<number|undefined>(relativeUrl, {});
+		const result = this.doGetAsync<number|undefined>(relativeUrl, { n });
 		return result;
 	}
-	getDateTime(): Observable<Date|undefined>  {
+	getDateTime(v: Date|undefined): Observable<Date|undefined>  {
 		const relativeUrl = `datetime`;
-		const result = this.doGetAsync<Date|undefined>(relativeUrl, {});
+		const result = this.doGetAsync<Date|undefined>(relativeUrl, { v });
 		return result;
 	}
-	getAsyncDateTime(): Observable<Date|undefined>  {
+	getAsyncDateTime(v: Date|undefined): Observable<Date|undefined>  {
 		const relativeUrl = `async-datetime`;
-		const result = this.doGetAsync<Date|undefined>(relativeUrl, {});
+		const result = this.doGetAsync<Date|undefined>(relativeUrl, { v });
 		return result;
 	}
-	getActionResultDateTime(): Observable<Date|undefined>  {
+	getActionResultDateTime(v: Date|undefined): Observable<Date|undefined>  {
 		const relativeUrl = `action-result-datetime`;
-		const result = this.doGetAsync<Date|undefined>(relativeUrl, {});
+		const result = this.doGetAsync<Date|undefined>(relativeUrl, { v });
 		return result;
 	}
-	getAsyncActionResultDateTime(): Observable<Date|undefined>  {
+	getAsyncActionResultDateTime(v: Date|undefined): Observable<Date|undefined>  {
 		const relativeUrl = `async-action-result-datetime`;
-		const result = this.doGetAsync<Date|undefined>(relativeUrl, {});
+		const result = this.doGetAsync<Date|undefined>(relativeUrl, { v });
 		return result;
 	}
-	getMyDto(): Observable<MyDto|undefined>  {
+	getMyDto(value: MyDto|undefined): Observable<MyDto|undefined>  {
 		const relativeUrl = `object`;
-		const result = this.doGetAsync<MyDto|undefined>(relativeUrl, {});
+		const result = this.doPostAsync<MyDto|undefined, MyDto|undefined>(relativeUrl, value, {});
 		return result;
 	}
-	getAsyncMyDto(): Observable<MyDto|undefined>  {
+	getAsyncMyDto(value: MyDto|undefined): Observable<MyDto|undefined>  {
 		const relativeUrl = `async-object`;
-		const result = this.doGetAsync<MyDto|undefined>(relativeUrl, {});
+		const result = this.doPostAsync<MyDto|undefined, MyDto|undefined>(relativeUrl, value, {});
 		return result;
 	}
-	actionResultObject(): Observable<MyDto|undefined>  {
+	actionResultObject(value: MyDto|undefined): Observable<MyDto|undefined>  {
 		const relativeUrl = `action-result-object`;
-		const result = this.doGetAsync<MyDto|undefined>(relativeUrl, {});
+		const result = this.doPostAsync<MyDto|undefined, MyDto|undefined>(relativeUrl, value, {});
 		return result;
 	}
-	asyncActionResultObject(): Observable<MyDto|undefined>  {
+	asyncActionResultObject(value: MyDto|undefined): Observable<MyDto|undefined>  {
 		const relativeUrl = `async-action-result-object`;
-		const result = this.doGetAsync<MyDto|undefined>(relativeUrl, {});
+		const result = this.doPostAsync<MyDto|undefined, MyDto|undefined>(relativeUrl, value, {});
 		return result;
 	}
-	getMyDtoNullableArray(): Observable<(MyDto|undefined)[]>  {
+	getMyDtoNullableArray(values: (MyDto|undefined)[]): Observable<(MyDto|undefined)[]>  {
 		const relativeUrl = `nullable-array-return-type`;
-		const result = this.doGetAsync<(MyDto|undefined)[]>(relativeUrl, {});
+		const result = this.doPostAsync<(MyDto|undefined)[], (MyDto|undefined)[]>(relativeUrl, values, {});
 		return result;
 	}
-	getMyDtoCollection(): Observable<(MyDto|undefined)[]>  {
+	getMyDtoCollection(values: (MyDto|undefined)[]): Observable<(MyDto|undefined)[]>  {
 		const relativeUrl = `nullable-collection-return-type`;
-		const result = this.doGetAsync<(MyDto|undefined)[]>(relativeUrl, {});
+		const result = this.doPostAsync<(MyDto|undefined)[], (MyDto|undefined)[]>(relativeUrl, values, {});
 		return result;
 	}
 }

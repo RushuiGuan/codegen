@@ -34,7 +34,7 @@ namespace Albatross.CodeGen.CommandLine {
 			var enumClasses = new List<INamedTypeSymbol>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
 				var semanticModel = compilation.GetSemanticModel(syntaxTree);
-				var symbolWalker = new DtoClassEnumWalker(semanticModel, settings.DtoFilter);
+				var symbolWalker = new DtoClassEnumWalker(semanticModel, settings.DtoFilters());
 				symbolWalker.Visit(syntaxTree.GetRoot());
 				dtoClasses.AddRange(symbolWalker.DtoClasses);
 				enumClasses.AddRange(symbolWalker.EnumTypes);

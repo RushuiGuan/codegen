@@ -5,16 +5,16 @@ import { WebClient }  from "@mirage/webclient";
 import { Observable }  from "rxjs";
 
 @Injectable({ providedIn: "root" })
-export class FilteredMethodService extends WebClient {
+export class FilteredService extends WebClient {
 	get endPoint(): string  {
-		return this.config.endpoint("test-client") + "api/filtered-method";
+		return this.config.endpoint("test-client") + "api/filtered-controller";
 	}
 	constructor(private config: ConfigService, protected client: HttpClient) {
 		super();
-		console.log("FilteredMethodService instance created");
+		console.log("FilteredService instance created");
 	}
-	filteredByNone(): Observable<object>  {
-		const relativeUrl = `none`;
+	thisShouldNoShowUp(): Observable<object>  {
+		const relativeUrl = ``;
 		const result = this.doGetAsync<object>(relativeUrl, {});
 		return result;
 	}

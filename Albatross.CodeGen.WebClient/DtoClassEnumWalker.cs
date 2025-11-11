@@ -5,17 +5,18 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using SymbolFilter = Albatross.CodeGen.WebClient.Settings.SymbolFilter;
 
 namespace Albatross.CodeGen.WebClient {
 	public class DtoClassEnumWalker : CSharpSyntaxWalker {
 		private readonly SemanticModel semanticModel;
 		public List<INamedTypeSymbol> DtoClasses { get; } = new List<INamedTypeSymbol>();
 		public List<INamedTypeSymbol> EnumTypes { get; } = new List<INamedTypeSymbol>();
-		Settings.SymbolFilter filter;
+		readonly SymbolFilter[] filters;
 
-		public DtoClassEnumWalker(SemanticModel semanticModel, SymbolFilterPatterns patterns) {
+		public DtoClassEnumWalker(SemanticModel semanticModel, SymbolFilter[] filters) {
 			this.semanticModel = semanticModel;
-			filter = new Settings.SymbolFilter(patterns);
+			this.filters = filters;
 		}
 
 		bool IsValidDtoClass([NotNullWhen(true)] INamedTypeSymbol? symbol) =>
@@ -28,7 +29,7 @@ namespace Albatross.CodeGen.WebClient {
 
 		public override void VisitClassDeclaration(ClassDeclarationSyntax node) {
 			var symbol = semanticModel.GetDeclaredSymbol(node);
-			if (IsValidDtoClass(symbol) && this.filter.ShouldKeep(symbol.GetFullName())) {
+			if (IsValidDtoClass(symbol) && this.filters.ShouldKeep(symbol.GetFullName())) {
 				DtoClasses.Add(symbol);
 			}
 			base.VisitClassDeclaration(node);
@@ -36,14 +37,14 @@ namespace Albatross.CodeGen.WebClient {
 
 		public override void VisitRecordDeclaration(RecordDeclarationSyntax node) {
 			var symbol = semanticModel.GetDeclaredSymbol(node);
-			if (IsValidDtoClass(symbol) && this.filter.ShouldKeep(symbol.GetFullName())) {
+			if (IsValidDtoClass(symbol) && this.filters.ShouldKeep(symbol.GetFullName())) {
 				DtoClasses.Add(symbol);
 			}
 			base.VisitRecordDeclaration(node);
 		}
 		public override void VisitEnumDeclaration(EnumDeclarationSyntax node) {
 			var symbol = semanticModel.GetDeclaredSymbol(node);
-			if (symbol != null && symbol.DeclaredAccessibility == Accessibility.Public && filter.ShouldKeep(symbol.GetFullName())) {
+			if (symbol != null && symbol.DeclaredAccessibility == Accessibility.Public && filters.ShouldKeep(symbol.GetFullName())) {
 				EnumTypes.Add(symbol);
 			}
 			base.VisitEnumDeclaration(node);

@@ -46,13 +46,13 @@ class FromBodyParamTestClient:
 	
 	async def required_string(self, value: str) -> int:
 		relative_url = "required-string"
-		response = await self._client.post(relative_url, headers = { "Content-Type": "text/plain" }, content = value)
+		response = await self._client.post(relative_url, headers = {"Content-Type": "text/plain"}, content = value)
 		response.raise_for_status()
 		return TypeAdapter(int).validate_python(response.json())
 	
 	async def nullable_string(self, value: str | None) -> int:
 		relative_url = "nullable-string"
-		response = await self._client.post(relative_url, headers = { "Content-Type": "text/plain" }, content = value if value is not None else "")
+		response = await self._client.post(relative_url, headers = {"Content-Type": "text/plain"}, content = value if value is not None else "")
 		response.raise_for_status()
 		return TypeAdapter(int).validate_python(response.json())
 	

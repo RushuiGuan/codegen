@@ -1,6 +1,6 @@
 # @generated
 
-from datetime import datetime
+from datetime import datetime, timezone
 from dto import MyDto
 from httpx import AsyncClient, Auth
 from pydantic import TypeAdapter
@@ -23,7 +23,9 @@ class NullableReturnTypeTestClient:
 	
 	async def get_string(self, text: str | None) -> str | None:
 		relative_url = "string"
-		params = { "text": text }
+		params = {
+			"text": text
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		if (response.status_code == 204):
@@ -33,7 +35,9 @@ class NullableReturnTypeTestClient:
 	
 	async def get_async_string(self, text: str | None) -> str | None:
 		relative_url = "async-string"
-		params = { "text": text }
+		params = {
+			"text": text
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		if (response.status_code == 204):
@@ -43,7 +47,9 @@ class NullableReturnTypeTestClient:
 	
 	async def get_action_result_string(self, text: str | None) -> str | None:
 		relative_url = "action-result-string"
-		params = { "text": text }
+		params = {
+			"text": text
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		if (response.status_code == 204):
@@ -53,7 +59,9 @@ class NullableReturnTypeTestClient:
 	
 	async def get_async_action_result_string(self, text: str | None) -> str | None:
 		relative_url = "async-action-result-string"
-		params = { "text": text }
+		params = {
+			"text": text
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		if (response.status_code == 204):
@@ -63,7 +71,9 @@ class NullableReturnTypeTestClient:
 	
 	async def get_int(self, n: int | None) -> int | None:
 		relative_url = "int"
-		params = { "n": n }
+		params = {
+			"n": n
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		if (response.status_code == 204):
@@ -73,7 +83,9 @@ class NullableReturnTypeTestClient:
 	
 	async def get_async_int(self, n: int | None) -> int | None:
 		relative_url = "async-int"
-		params = { "n": n }
+		params = {
+			"n": n
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		if (response.status_code == 204):
@@ -83,7 +95,9 @@ class NullableReturnTypeTestClient:
 	
 	async def get_action_result_int(self, n: int | None) -> int | None:
 		relative_url = "action-result-int"
-		params = { "n": n }
+		params = {
+			"n": n
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		if (response.status_code == 204):
@@ -93,7 +107,9 @@ class NullableReturnTypeTestClient:
 	
 	async def get_async_action_result_int(self, n: int | None) -> int | None:
 		relative_url = "async-action-result-int"
-		params = { "n": n }
+		params = {
+			"n": n
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		if (response.status_code == 204):
@@ -103,7 +119,13 @@ class NullableReturnTypeTestClient:
 	
 	async def get_date_time(self, v: datetime | None) -> datetime | None:
 		relative_url = "datetime"
-		params = { "v": v.isoformat() if v is not None else None }
+		params = {
+			"v": v.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if v.tzinfo
+			else v.isoformat()
+			if v is not None
+			else None
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		if (response.status_code == 204):
@@ -113,7 +135,13 @@ class NullableReturnTypeTestClient:
 	
 	async def get_async_date_time(self, v: datetime | None) -> datetime | None:
 		relative_url = "async-datetime"
-		params = { "v": v.isoformat() if v is not None else None }
+		params = {
+			"v": v.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if v.tzinfo
+			else v.isoformat()
+			if v is not None
+			else None
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		if (response.status_code == 204):
@@ -123,7 +151,13 @@ class NullableReturnTypeTestClient:
 	
 	async def get_action_result_date_time(self, v: datetime | None) -> datetime | None:
 		relative_url = "action-result-datetime"
-		params = { "v": v.isoformat() if v is not None else None }
+		params = {
+			"v": v.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if v.tzinfo
+			else v.isoformat()
+			if v is not None
+			else None
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		if (response.status_code == 204):
@@ -133,7 +167,13 @@ class NullableReturnTypeTestClient:
 	
 	async def get_async_action_result_date_time(self, v: datetime | None) -> datetime | None:
 		relative_url = "async-action-result-datetime"
-		params = { "v": v.isoformat() if v is not None else None }
+		params = {
+			"v": v.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if v.tzinfo
+			else v.isoformat()
+			if v is not None
+			else None
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		if (response.status_code == 204):

@@ -6,13 +6,13 @@ import { format }  from "date-fns";
 import { Observable }  from "rxjs";
 
 @Injectable({ providedIn: "root" })
-export class FromRouteParamTestService extends WebClient {
+export class FromRoutingParamTestService extends WebClient {
 	get endPoint(): string  {
 		return this.config.endpoint("test-client") + "api/from-routing-param-test";
 	}
 	constructor(private config: ConfigService, protected client: HttpClient) {
 		super();
-		console.log("FromRouteParamTestService instance created");
+		console.log("FromRoutingParamTestService instance created");
 	}
 	implicitRoute(name: string, id: number): Observable<object>  {
 		const relativeUrl = `implicit-route/${name}/${id}`;

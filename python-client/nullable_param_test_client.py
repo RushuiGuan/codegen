@@ -1,6 +1,6 @@
 # @generated
 
-from datetime import date
+from datetime import timezone, date
 from dto import MyDto
 from httpx import AsyncClient, Auth
 from pydantic import TypeAdapter
@@ -23,21 +23,31 @@ class NullableParamTestClient:
 	
 	async def nullable_string_param(self, text: str | None) -> str:
 		relative_url = "nullable-string-param"
-		params = { "text": text }
+		params = {
+			"text": text
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def nullable_value_type(self, id: int | None) -> str:
 		relative_url = "nullable-value-type"
-		params = { "id": id }
+		params = {
+			"id": id
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def nullable_date_only(self, date: date | None) -> str:
 		relative_url = "nullable-date-only"
-		params = { "date": date.isoformat() if date is not None else None }
+		params = {
+			"date": date.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			if date.tzinfo
+			else date.isoformat()
+			if date is not None
+			else None
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
@@ -49,42 +59,80 @@ class NullableParamTestClient:
 	
 	async def nullable_string_array(self, values: list[str | None]) -> str:
 		relative_url = "nullable-string-array"
-		params = { "values": [x if x is not None else "" for x in values] }
+		params = {
+			"values": [
+				x if x is not None else ""
+				for x in values
+			]
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def nullable_string_collection(self, values: list[str | None]) -> str:
 		relative_url = "nullable-string-collection"
-		params = { "values": [x if x is not None else "" for x in values] }
+		params = {
+			"values": [
+				x if x is not None else ""
+				for x in values
+			]
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def nullable_value_type_array(self, values: list[int | None]) -> str:
 		relative_url = "nullable-value-type-array"
-		params = { "values": [x if x is not None else "" for x in values] }
+		params = {
+			"values": [
+				x if x is not None else ""
+				for x in values
+			]
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def nullable_value_type_collection(self, values: list[int | None]) -> str:
 		relative_url = "nullable-value-type-collection"
-		params = { "values": [x if x is not None else "" for x in values] }
+		params = {
+			"values": [
+				x if x is not None else ""
+				for x in values
+			]
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def nullable_date_only_collection(self, dates: list[date | None]) -> str:
 		relative_url = "nullable-date-only-collection"
-		params = { "dates": [x.isoformat() if x is not None else "" for x in dates] }
+		params = {
+			"dates": [
+				x.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+				if x.tzinfo
+				else x.isoformat()
+				if x is not None
+				else ""
+				for x in dates
+			]
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def nullable_date_only_array(self, dates: list[date | None]) -> str:
 		relative_url = "nullable-date-only-array"
-		params = { "dates": [x.isoformat() if x is not None else "" for x in dates] }
+		params = {
+			"dates": [
+				x.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+				if x.tzinfo
+				else x.isoformat()
+				if x is not None
+				else ""
+				for x in dates
+			]
+		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text

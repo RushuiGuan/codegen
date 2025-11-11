@@ -6,9 +6,9 @@ namespace Albatross.CodeGen.WebClient.Settings {
 		public PythonWebClientSettings PythonWebClientSettings { get; init; } = new PythonWebClientSettings();
 		public CSharpWebClientSettings CSharpWebClientSettings { get; init; } = new CSharpWebClientSettings();
 
-		public SymbolFilterPatterns ControllerFilter { get; init; } = new SymbolFilterPatterns();
-		public SymbolFilterPatterns DtoFilter { get; init; } = new SymbolFilterPatterns();
-		public SymbolFilterPatterns EnumFilter { get; init; } = new SymbolFilterPatterns();
+		public SymbolFilterPatterns[] ControllerFilters { get; init; } = [];
 		public SymbolFilterPatterns[] ControllerMethodFilters { get; init; } = [];
+		public SymbolFilterPatterns[] DtoFilters { get; init; } = [];
+		public SymbolFilterPatterns[] EnumFilters { get; init; } = [];
 	}
 }

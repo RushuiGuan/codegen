@@ -27,14 +27,14 @@ namespace Albatross.CodeGen.CommandLine {
 			var controllerClass = new List<INamedTypeSymbol>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
 				var semanticModel = compilation.GetSemanticModel(syntaxTree);
-				var dtoClassWalker = new ApiControllerClassWalker(semanticModel, settings.ControllerFilter);
-				dtoClassWalker.Visit(syntaxTree.GetRoot());
-				controllerClass.AddRange(dtoClassWalker.Result);
+				var classWalker = new ApiControllerClassWalker(semanticModel, settings.ControllerFilters());
+				classWalker.Visit(syntaxTree.GetRoot());
+				controllerClass.AddRange(classWalker.Result);
 			}
 			foreach (var item in controllerClass) {
 				if (string.IsNullOrEmpty(options.AdhocFilter) || item.GetFullName().Contains(options.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase)) {
 					var model = converter.Convert(item);
-					model.ApplyMethodFilters(settings.CreateControllerMethodFilters());
+					model.ApplyMethodFilters(settings.ControllerMethodFilters());
 					var text = JsonSerializer.Serialize(model, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, });
 					this.writer.WriteLine(text);
 					if (options.OutputDirectory != null) {

@@ -6,7 +6,7 @@ namespace Albatross.CodeGen.Python {
 	public static class Defined {
 		public static class Types {
 			public static readonly SimpleTypeExpression None = new SimpleTypeExpression {
-				Identifier = new IdentifierNameExpression("None"),
+				Identifier = Identifiers.None,
 			};
 			
 			public static readonly SimpleTypeExpression Any = new SimpleTypeExpression {
@@ -147,6 +147,9 @@ namespace Albatross.CodeGen.Python {
 			public static readonly IIdentifierNameExpression TypeAdapter = new QualifiedIdentifierNameExpression("TypeAdapter", Sources.Pydantic);
 			public static readonly IIdentifierNameExpression List = new IdentifierNameExpression("list");
 			public static readonly IIdentifierNameExpression Deprecated = new QualifiedIdentifierNameExpression("deprecated", Sources.Deprecated);
+			public static readonly IIdentifierNameExpression TimeZone = new QualifiedIdentifierNameExpression("timezone", Sources.DateTime);
+			public static readonly IIdentifierNameExpression TimeZoneUtc = new MultiPartIdentifierNameExpression(TimeZone, new IdentifierNameExpression("utc"));
+			public static readonly IIdentifierNameExpression None = new IdentifierNameExpression("None");
 		}
 		
 		public static class Parameters {

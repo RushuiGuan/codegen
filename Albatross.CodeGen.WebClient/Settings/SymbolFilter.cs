@@ -3,7 +3,8 @@ using System.Text.RegularExpressions;
 
 namespace Albatross.CodeGen.WebClient.Settings {
 	public class SymbolFilter {
-		Regex? inclusiveFilter, exclusiveFilter;
+		readonly Regex? inclusiveFilter;
+		readonly Regex? exclusiveFilter;
 
 		public SymbolFilter(SymbolFilterPatterns patterns) {
 			if (patterns.Include != null) {
@@ -28,24 +29,6 @@ namespace Albatross.CodeGen.WebClient.Settings {
 		/// <returns></returns>
 		public bool ShouldKeep(string name) {
 			return !Exclude(name) || Include(name) || this.exclusiveFilter == null && this.inclusiveFilter == null;
-		}
-
-		/// <summary>
-		/// Implement the same behavior with the single pattern filter.  Include wins over exclude
-		/// </summary>
-		/// <param name="filters"></param>
-		/// <param name="name"></param>
-		/// <returns></returns>
-		public static bool ShouldKeep(IEnumerable<SymbolFilter> filters, string name) {
-			bool excluded = false;
-			foreach (var filter in filters) {
-				if (filter.Include(name)) {
-					return true;
-				} else {
-					excluded = excluded || filter.Exclude(name);
-				}
-			}
-			return !excluded;
 		}
 	}
 }

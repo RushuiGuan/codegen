@@ -31,7 +31,7 @@ namespace Albatross.CodeGen.CommandLine {
 			} else if(context.ParseResult.CommandResult.Parent?.Symbol.Name == "typescript") {
 				services.AddTypeScriptCodeGen();
 				services.AddTypeScriptWebClientCodeGen();
-			} else if (context.ParseResult.CommandResult.Parent?.Symbol.Name == "charp") {
+			} else if (context.ParseResult.CommandResult.Parent?.Symbol.Name == "csharp") {
 				services.AddCSharpWebClientCodeGen();
 			}
 			services.AddScoped(provider => MSBuildWorkspace.Create());

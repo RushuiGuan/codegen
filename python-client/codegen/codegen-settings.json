@@ -1,18 +1,18 @@
 {
 	"$schema": "codegen-settings.schema.json",
 	"pythonWebClientSettings": {
-		"controllerMethodFilters": [
-			{
-				"exclude": "FilteredByPython$"
-			}
-		],
 		"nameSpaceModuleMapping": {
 			"Test.Dto": "dto"
 		}
 	},
-	"controllerFilter": {
-		"exclude": "^Test\\.WebApi\\.Controllers\\.(AbsUrl)?RedirectTestController$"
-	},
+	"controllerFilters": [
+		{
+			"exclude": "^Test\\.WebApi\\.Controllers\\.(AbsUrl)?RedirectTestController$"
+		},
+		{
+			"exclude": "FilteredController$"
+		}
+	],
 	"controllerMethodFilters": [
 		{
 			"exclude": "FilteredByAll$"

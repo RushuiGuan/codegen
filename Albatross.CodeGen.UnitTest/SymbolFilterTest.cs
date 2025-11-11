@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeGen.WebClient.Settings;
+using System;
 using Xunit;
 
 namespace Albatross.CodeGen.UnitTest {
@@ -26,8 +27,13 @@ namespace Albatross.CodeGen.UnitTest {
 			var filter2 = new SymbolFilter(pattern);
 			var filters = new SymbolFilter[] { filter1, filter2 };
 
-			var result = SymbolFilter.ShouldKeep(filters, text);
+			var result = filters.ShouldKeep(text);
 			Assert.Equal(expected, result);
+		}
+
+		[Fact]
+		public void TestNoPatternFilter() {
+			Assert.True(Array.Empty<SymbolFilter>().ShouldKeep("xx"));
 		}
 	}
 }

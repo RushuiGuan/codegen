@@ -40,7 +40,7 @@ namespace Albatross.CodeGen.CommandLine {
 			var controllerClass = new List<INamedTypeSymbol>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
 				var semanticModel = compilation.GetSemanticModel(syntaxTree);
-				var dtoClassWalker = new ApiControllerClassWalker(semanticModel, settings.CreateCSharpControllerFilter());
+				var dtoClassWalker = new ApiControllerClassWalker(semanticModel, settings.ControllerFilters());
 				dtoClassWalker.Visit(syntaxTree.GetRoot());
 				controllerClass.AddRange(dtoClassWalker.Result);
 			}
@@ -49,7 +49,7 @@ namespace Albatross.CodeGen.CommandLine {
 				if (string.IsNullOrEmpty(options.AdhocFilter) || controller.GetFullName().Contains(options.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase)) {
 					logger.LogInformation("Generating proxy for {controller}", controller.Name);
 					var webApi = this.convertToWebApi.Convert(controller);
-					webApi.ApplyMethodFilters(settings.CreateCSharpControllerMethodFilters());
+					webApi.ApplyMethodFilters(settings.ControllerMethodFilters());
 					models.Add(webApi);
 					var codeStack = this.converToCSharpCodeStack.Convert(webApi);
 

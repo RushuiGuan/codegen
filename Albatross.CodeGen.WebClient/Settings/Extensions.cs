@@ -3,61 +3,34 @@ using System.Linq;
 
 namespace Albatross.CodeGen.WebClient.Settings {
 	public static class Extensions {
-		public static Dictionary<string, SymbolFilterPatterns> Overwrite(this Dictionary<string, SymbolFilterPatterns> changes,
-			Dictionary<string, SymbolFilterPatterns> destination) {
-
-			var result = new Dictionary<string, SymbolFilterPatterns>(destination);
-			foreach (var pair in changes) {
-				if (pair.Value.HasValue) {
-					result[pair.Key] = pair.Value;
-				}
-			}
-			return result;
-		}
-
-		public static SymbolFilter[] CreateCSharpControllerMethodFilters(this CodeGenSettings settings) {
-			var selected = settings.CSharpWebClientSettings.ControllerMethodFilters.Where(x => x.HasValue).ToArray();
-			if (selected.Length == 0) {
-				selected = settings.ControllerMethodFilters.Where(x => x.HasValue).ToArray();
-			}
-			return selected.Select(x => new SymbolFilter(x)).ToArray();
-		}
-		public static SymbolFilter[] CreateTypeScriptControllerMethodFilters(this CodeGenSettings settings) {
-			var selected = settings.TypeScriptWebClientSettings.ControllerMethodFilters.Where(x => x.HasValue).ToArray();
-			if (selected.Length == 0) {
-				selected = settings.ControllerMethodFilters.Where(x => x.HasValue).ToArray();
-			}
-			return selected.Select(x => new SymbolFilter(x)).ToArray();
-		}
-		public static SymbolFilter[] CreateControllerMethodFilters(this CodeGenSettings settings)
+		public static SymbolFilter[] ControllerMethodFilters(this CodeGenSettings settings)
 			=> settings.ControllerMethodFilters.Where(x => x.HasValue).Select(x => new SymbolFilter(x)).ToArray();
 
-		public static SymbolFilterPatterns CreateCSharpControllerFilter(this CodeGenSettings settings)
-			=> settings.CSharpWebClientSettings.ControllerFilter.Overwrite(settings.ControllerFilter);
+		public static SymbolFilter[] DtoFilters(this CodeGenSettings settings)
+			=> settings.DtoFilters.Where(x => x.HasValue).Select(x => new SymbolFilter(x)).ToArray();
 
-		public static SymbolFilterPatterns CreateTypeScriptControllerFilter(this CodeGenSettings settings)
-			=> settings.TypeScriptWebClientSettings.ControllerFilter.Overwrite(settings.ControllerFilter);
+		public static SymbolFilter[] EnumFilters(this CodeGenSettings settings)
+			=> settings.EnumFilters.Where(x => x.HasValue).Select(x => new SymbolFilter(x)).ToArray();
 
-		public static SymbolFilterPatterns CreateTypeScriptDtoFilter(this CodeGenSettings settings)
-			=> settings.TypeScriptWebClientSettings.DtoFilter.Overwrite(settings.DtoFilter);
-
-		public static SymbolFilterPatterns TypeScriptEnumFilter(this CodeGenSettings settings)
-			=> settings.TypeScriptWebClientSettings.EnumFilter.Overwrite(settings.EnumFilter);
+		public static SymbolFilter[] ControllerFilters(this CodeGenSettings settings)
+			=> settings.ControllerFilters.Where(x => x.HasValue).Select(x => new SymbolFilter(x)).ToArray();
 		
-		public static SymbolFilter[] CreatePythonControllerMethodFilters(this CodeGenSettings settings) {
-			var selected = settings.PythonWebClientSettings.ControllerMethodFilters.Where(x => x.HasValue).ToArray();
-			if (selected.Length == 0) {
-				selected = settings.ControllerMethodFilters.Where(x => x.HasValue).ToArray();
+		/// <summary>
+		/// Implement the same behavior with the single pattern filter.  Include wins over exclude
+		/// </summary>
+		/// <param name="filters"></param>
+		/// <param name="name"></param>
+		/// <returns></returns>
+		public static bool ShouldKeep(this IEnumerable<SymbolFilter> filters, string name) {
+			bool excluded = false;
+			foreach (var filter in filters) {
+				if (filter.Include(name)) {
+					return true;
+				} else {
+					excluded = excluded || filter.Exclude(name);
+				}
 			}
-			return selected.Select(x => new SymbolFilter(x)).ToArray();
+			return !excluded;
 		}
-		public static SymbolFilterPatterns CreatePythonControllerFilter(this CodeGenSettings settings)
-			=> settings.PythonWebClientSettings.ControllerFilter.Overwrite(settings.ControllerFilter);
-
-		public static SymbolFilterPatterns CreatePythonDtoFilter(this CodeGenSettings settings)
-			=> settings.PythonWebClientSettings.DtoFilter.Overwrite(settings.DtoFilter);
-
-		public static SymbolFilterPatterns PythonEnumFilter(this CodeGenSettings settings)
-			=> settings.PythonWebClientSettings.EnumFilter.Overwrite(settings.EnumFilter);
 	}
 }

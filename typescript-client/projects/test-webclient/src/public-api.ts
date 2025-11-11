@@ -19,3 +19,7 @@ export * from './lib/custom-json-settings.service.generated';
 export * from './lib/from-header-param-test.service.generated';
 export * from './lib/obsolete.service.generated';
 export * from './lib/omitted-constructor.service.generated';
+export * from './lib/from-routing-param-test.service.generated';
+export * from './lib/filtered.service.generated';
+export * from './lib/abs-url-redirect-test.service.generated';
+export * from './lib/redirect-test.service.generated';
