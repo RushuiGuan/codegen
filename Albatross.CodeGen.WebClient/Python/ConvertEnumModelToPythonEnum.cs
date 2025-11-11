@@ -9,7 +9,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			return new EnumDeclaration(from.Name) {
 				Fields = from
 					.Members
-					.Select(x => new EnumMemberDeclaration(x.Name.ToUpperInvariant(), from.UseTextAsValue ? new StringLiteralExpression(x.Name) : new NumberLiteralExpression(x.NumericValue)))
+					.Select(x => new EnumMemberDeclaration(x.Name.ToUpperInvariant(), from.UseTextAsValue ? new StringLiteralExpression(x.Name) : new DoubleLiteralExpression(x.NumericValue)))
 			};
 		}
 		object IConvertObject<EnumInfo>.Convert(EnumInfo from) => this.Convert(from);

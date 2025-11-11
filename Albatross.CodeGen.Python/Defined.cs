@@ -94,11 +94,11 @@ namespace Albatross.CodeGen.Python {
 			public static StringLiteralExpression String(string value)
 				=> new StringLiteralExpression(value);
 
-			public static NumberLiteralExpression Number(int value)
-				=> new NumberLiteralExpression(value);
+			public static DoubleLiteralExpression Number(int value)
+				=> new DoubleLiteralExpression(value);
 
-			public static NumberLiteralExpression NumberLiteral(double value)
-				=> new NumberLiteralExpression(value);
+			public static DoubleLiteralExpression NumberLiteral(double value)
+				=> new DoubleLiteralExpression(value);
 
 			public static BooleanLiteralExpression BooleanLiteral(bool value)
 				=> new BooleanLiteralExpression(value);
@@ -133,6 +133,7 @@ namespace Albatross.CodeGen.Python {
 			public static readonly ISourceExpression DateTime = new ModuleSourceExpression("datetime");
 			public static readonly ISourceExpression Decimal = new ModuleSourceExpression("decimal");
 			public static readonly ISourceExpression Uuid = new ModuleSourceExpression("uuid");
+			public static readonly ISourceExpression Deprecated = new ModuleSourceExpression("deprecated");
 		}
 
 		public static class Identifiers {
@@ -145,6 +146,7 @@ namespace Albatross.CodeGen.Python {
 			public static readonly IIdentifierNameExpression Fields = new QualifiedIdentifierNameExpression("fields", Sources.DataClasses);
 			public static readonly IIdentifierNameExpression TypeAdapter = new QualifiedIdentifierNameExpression("TypeAdapter", Sources.Pydantic);
 			public static readonly IIdentifierNameExpression List = new IdentifierNameExpression("list");
+			public static readonly IIdentifierNameExpression Deprecated = new QualifiedIdentifierNameExpression("deprecated", Sources.Deprecated);
 		}
 		
 		public static class Parameters {

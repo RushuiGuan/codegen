@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/array-param-test")]
+	[ApiController]
 	public class ArrayParamTestController : ControllerBase {
 		[HttpGet("array-string-param")]
 		public string ArrayStringParam([FromQuery(Name = "a")] string[] array) => string.Join(',', array);

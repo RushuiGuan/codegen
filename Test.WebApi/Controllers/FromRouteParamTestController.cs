@@ -5,6 +5,7 @@ using System;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/from-routing-param-test")]
+	[ApiController]
 	public class FromRoutingParamTestController : ControllerBase {
 		private readonly ILogger logger;
 

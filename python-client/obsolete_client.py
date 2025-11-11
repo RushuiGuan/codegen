@@ -1,8 +1,10 @@
 # @generated
 
+from deprecated import deprecated
 from httpx import AsyncClient, Auth
 from typing import Self
 
+@deprecated()
 class ObsoleteClient:
 	_client: AsyncClient
 	def __init__(self, base_url: str, auth: Auth | None = None) -> None:

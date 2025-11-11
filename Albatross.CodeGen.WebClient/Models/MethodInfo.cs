@@ -14,10 +14,6 @@ namespace Albatross.CodeGen.WebClient.Models {
 			this.compilation = compilation;
 			this.Name = symbol.Name;
 			this.ReturnType = GetReturnType(symbol.ReturnType);
-			// if the return type is string, it should not be nullable
-			if (this.ReturnType.SpecialType == SpecialType.System_String && this.ReturnType.IsNullableReferenceType()) {
-				this.ReturnType = compilation.GetSpecialType(SpecialType.System_String);
-			}
 			var routeSegments = symbol.GetRouteText().GetRouteSegments().ToArray();
 			this.HttpMethod = GetHttpMethod(symbol);
 			foreach (var parameter in symbol.Parameters) {

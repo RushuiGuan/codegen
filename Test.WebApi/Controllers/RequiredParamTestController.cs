@@ -5,6 +5,7 @@ using Test.Dto.Classes;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/required-param-test")]
+	[ApiController]
 	public class RequiredParamTestController : ControllerBase {
 
 		[HttpGet("explicit-string-param")]

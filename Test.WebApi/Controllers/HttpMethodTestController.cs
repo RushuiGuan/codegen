@@ -2,6 +2,7 @@
 
 namespace Test.WebApi.Controllers {
 	[Route("api/http-method-test")]
+	[ApiController]
 	public class HttpMethodTestController : ControllerBase {
 		[HttpDelete]
 		public void Delete() { }

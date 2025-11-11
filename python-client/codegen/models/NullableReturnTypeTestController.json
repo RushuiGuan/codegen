@@ -13,8 +13,16 @@
           "text": "string"
         }
       ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "text",
+          "name": "text",
+          "typeText": "System.String",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
@@ -28,8 +36,16 @@
           "text": "async-string"
         }
       ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "text",
+          "name": "text",
+          "typeText": "System.String",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
@@ -43,8 +59,16 @@
           "text": "action-result-string"
         }
       ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "text",
+          "name": "text",
+          "typeText": "System.String",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
@@ -58,8 +82,16 @@
           "text": "async-action-result-string"
         }
       ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "text",
+          "name": "text",
+          "typeText": "System.String",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
@@ -73,8 +105,16 @@
           "text": "int"
         }
       ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "n",
+          "name": "n",
+          "typeText": "System.Nullable\u003CSystem.Int32\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
@@ -88,8 +128,16 @@
           "text": "async-int"
         }
       ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "n",
+          "name": "n",
+          "typeText": "System.Nullable\u003CSystem.Int32\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
@@ -103,8 +151,16 @@
           "text": "action-result-int"
         }
       ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "n",
+          "name": "n",
+          "typeText": "System.Nullable\u003CSystem.Int32\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
@@ -118,8 +174,16 @@
           "text": "async-action-result-int"
         }
       ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "n",
+          "name": "n",
+          "typeText": "System.Nullable\u003CSystem.Int32\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
@@ -133,8 +197,16 @@
           "text": "datetime"
         }
       ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "v",
+          "name": "v",
+          "typeText": "System.Nullable\u003CSystem.DateTime\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
@@ -148,8 +220,16 @@
           "text": "async-datetime"
         }
       ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "v",
+          "name": "v",
+          "typeText": "System.Nullable\u003CSystem.DateTime\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
@@ -163,8 +243,16 @@
           "text": "action-result-datetime"
         }
       ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "v",
+          "name": "v",
+          "typeText": "System.Nullable\u003CSystem.DateTime\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
@@ -178,13 +266,21 @@
           "text": "async-action-result-datetime"
         }
       ],
-      "parameters": [],
-      "hasQueryStringParameter": false,
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "v",
+          "name": "v",
+          "typeText": "System.Nullable\u003CSystem.DateTime\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
       "isObsolete": false
     },
     {
       "settings": {},
-      "httpMethod": "Get",
+      "httpMethod": "Post",
       "name": "GetMyDto",
       "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
@@ -193,13 +289,21 @@
           "text": "object"
         }
       ],
-      "parameters": [],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "value",
+          "typeText": "Test.Dto.Classes.MyDto",
+          "webType": "FromBody"
+        }
+      ],
       "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
       "settings": {},
-      "httpMethod": "Get",
+      "httpMethod": "Post",
       "name": "GetAsyncMyDto",
       "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
@@ -208,13 +312,21 @@
           "text": "async-object"
         }
       ],
-      "parameters": [],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "value",
+          "typeText": "Test.Dto.Classes.MyDto",
+          "webType": "FromBody"
+        }
+      ],
       "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
       "settings": {},
-      "httpMethod": "Get",
+      "httpMethod": "Post",
       "name": "ActionResultObject",
       "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
@@ -223,13 +335,21 @@
           "text": "action-result-object"
         }
       ],
-      "parameters": [],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "value",
+          "typeText": "Test.Dto.Classes.MyDto",
+          "webType": "FromBody"
+        }
+      ],
       "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
       "settings": {},
-      "httpMethod": "Get",
+      "httpMethod": "Post",
       "name": "AsyncActionResultObject",
       "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
@@ -238,13 +358,21 @@
           "text": "async-action-result-object"
         }
       ],
-      "parameters": [],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "value",
+          "typeText": "Test.Dto.Classes.MyDto",
+          "webType": "FromBody"
+        }
+      ],
       "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
       "settings": {},
-      "httpMethod": "Get",
+      "httpMethod": "Post",
       "name": "GetMyDtoNullableArray",
       "canCancel": false,
       "returnTypeText": "Test.Dto.Classes.MyDto[]",
@@ -253,13 +381,21 @@
           "text": "nullable-array-return-type"
         }
       ],
-      "parameters": [],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "values",
+          "typeText": "Test.Dto.Classes.MyDto[]",
+          "webType": "FromBody"
+        }
+      ],
       "hasQueryStringParameter": false,
       "isObsolete": false
     },
     {
       "settings": {},
-      "httpMethod": "Get",
+      "httpMethod": "Post",
       "name": "GetMyDtoCollection",
       "canCancel": false,
       "returnTypeText": "System.Collections.Generic.IEnumerable\u003CTest.Dto.Classes.MyDto\u003E",
@@ -268,7 +404,15 @@
           "text": "nullable-collection-return-type"
         }
       ],
-      "parameters": [],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "values",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CTest.Dto.Classes.MyDto\u003E",
+          "webType": "FromBody"
+        }
+      ],
       "hasQueryStringParameter": false,
       "isObsolete": false
     }

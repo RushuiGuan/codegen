@@ -4,7 +4,7 @@ from datetime import datetime, date, time
 from httpx import AsyncClient, Auth
 from typing import Self
 
-class FromRouteParamTestClient:
+class FromRoutingParamTestClient:
 	_client: AsyncClient
 	def __init__(self, base_url: str, auth: Auth | None = None) -> None:
 		base_url = f"{base_url.rstrip('/')}/api/from-routing-param-test"

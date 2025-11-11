@@ -3,6 +3,7 @@ using Test.Dto.Classes;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/from-body-param-test")]
+	[ApiController]
 	public class FromBodyParamTestController : ControllerBase {
 		[HttpPost("required-object")]
 		public int RequiredObject([FromBody] MyDto dto) => 1;

@@ -33,4 +33,7 @@ namespace Albatross.CodeGen.Syntax {
 		protected abstract IExpression InternalBuild();
 		public CompositeExpression BuildAll() => new CompositeExpression(this.queue.Select(x => x()).ToArray());
 	}
+	public class CompositeExpressionBuilder : ExpressionBuilder<IExpression> {
+		public override IExpression Build() => new NoOpExpression();
+	}
 }

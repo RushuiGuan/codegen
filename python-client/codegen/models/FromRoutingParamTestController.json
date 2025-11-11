@@ -1,5 +1,5 @@
 {
-  "controllerName": "FromRouteParamTest",
+  "controllerName": "FromRoutingParamTest",
   "route": "api/from-routing-param-test",
   "methods": [
     {

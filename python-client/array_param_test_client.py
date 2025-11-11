@@ -49,14 +49,14 @@ class ArrayParamTestClient:
 	
 	async def collection_date_param(self, collection: list[date]) -> str:
 		relative_url = "collection-date-param"
-		params = { "c": [d.isoformat() for d in collection] }
+		params = { "c": [x.isoformat() for x in collection] }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def collection_date_time_param(self, collection: list[datetime]) -> str:
 		relative_url = "collection-datetime-param"
-		params = { "c": [d.isoformat() for d in collection] }
+		params = { "c": [x.isoformat() for x in collection] }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text

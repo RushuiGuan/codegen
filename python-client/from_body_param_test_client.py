@@ -50,7 +50,7 @@ class FromBodyParamTestClient:
 		response.raise_for_status()
 		return TypeAdapter(int).validate_python(response.json())
 	
-	async def nullable_string(self, value: None | str) -> int:
+	async def nullable_string(self, value: str | None) -> int:
 		relative_url = "nullable-string"
 		response = await self._client.post(relative_url, headers = { "Content-Type": "text/plain" }, content = value if value is not None else "")
 		response.raise_for_status()

@@ -3,6 +3,7 @@ using System;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/from-header-param-test")]
+	[ApiController]
 	public class FromHeaderParamTestController : ControllerBase {
 		public class Context {
 			[FromHeader(Name = "id")]

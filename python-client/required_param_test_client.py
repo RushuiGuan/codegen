@@ -98,28 +98,28 @@ class RequiredParamTestClient:
 	
 	async def required_date_only_collection(self, dates: list[date]) -> str:
 		relative_url = "required-date-only-collection"
-		params = { "dates": [d.isoformat() for d in dates] }
+		params = { "dates": [x.isoformat() for x in dates] }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_date_only_array(self, dates: list[date]) -> str:
 		relative_url = "required-date-only-array"
-		params = { "dates": [d.isoformat() for d in dates] }
+		params = { "dates": [x.isoformat() for x in dates] }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_date_time_collection(self, dates: list[datetime]) -> str:
 		relative_url = "required-datetime-collection"
-		params = { "dates": [d.isoformat() for d in dates] }
+		params = { "dates": [x.isoformat() for x in dates] }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
 	async def required_date_time_array(self, dates: list[datetime]) -> str:
 		relative_url = "required-datetime-array"
-		params = { "dates": [d.isoformat() for d in dates] }
+		params = { "dates": [x.isoformat() for x in dates] }
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text

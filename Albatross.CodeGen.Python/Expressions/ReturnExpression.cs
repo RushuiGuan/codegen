@@ -13,7 +13,11 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public IExpression Expression { get; }
 
 		public override TextWriter Generate(TextWriter writer) {
-			return writer.Append("return ").Code(this.Expression);
+			if (this.Expression is NoneLiteralExpression) {
+				return writer.Append("return");
+			} else {
+				return writer.Append("return ").Code(this.Expression);
+			}
 		}
 	}
 }

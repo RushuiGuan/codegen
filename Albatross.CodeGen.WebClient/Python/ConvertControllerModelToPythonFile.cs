@@ -33,6 +33,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				],
 				ClasseDeclarations = [
 					new ClassDeclaration($"{model.ControllerName}Client") {
+						Decorators = model.IsObsolete ? [new DecoratorExpression { CallableExpression = Defined.Identifiers.Deprecated, }] : Array.Empty<DecoratorExpression>(),
 						Fields = [
 							new FieldDeclaration("_client") {
 								Type = new SimpleTypeExpression {
@@ -156,6 +157,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			var name = index == 0 ? method.Name.Underscore() : $"{method.Name.Underscore()}{index}";
 			return new MethodDeclaration(name) {
 				Modifiers = [new AsyncModifier()],
+				Decorators = method.IsObsolete ? [new DecoratorExpression { CallableExpression = Defined.Identifiers.Deprecated, }] : Array.Empty<DecoratorExpression>(),
 				ReturnType = returnType,
 				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
 					method.Parameters.Select(x => new ParameterDeclaration {
@@ -174,10 +176,22 @@ namespace Albatross.CodeGen.WebClient.Python {
 		IExpression BuildReturnValue(MethodInfo method) {
 			if (method.ReturnType.SpecialType == SpecialType.System_Void) {
 				return new NoOpExpression();
-			} else if (method.ReturnTypeText == "System.String") {
-				return new ReturnExpression(new MultiPartIdentifierNameExpression("response", "text"));
+			}
+			ExpressionBuilder builder = new CompositeExpressionBuilder();
+			if (method.ReturnType.IsNullable()) {
+				builder.Add(() => new IfElseCodeBlockExpression {
+					Condition = new CompareExpression("==") {
+						Left = new MultiPartIdentifierNameExpression("response", "status_code"),
+						Right = new IntLiteralExpression(204),
+					},
+					CodeBlock = new ReturnExpression(new NoneLiteralExpression()),
+				});
+			}
+			if (method.ReturnTypeText == "System.String") {
+				builder.Add(() => new ReturnExpression(new MultiPartIdentifierNameExpression("response", "text")));
 			} else {
-				return new ReturnExpression(
+				builder.Add(() =>
+				new ReturnExpression(
 					new InvocationExpressionBuilder()
 						.WithIdentifier(Defined.Identifiers.TypeAdapter)
 						.AddArgument(this.typeConverter.Convert(method.ReturnType))
@@ -185,8 +199,9 @@ namespace Albatross.CodeGen.WebClient.Python {
 						.AddArgument(new InvocationExpression {
 							CallableExpression = new MultiPartIdentifierNameExpression("response", "json")
 						}).Build()
-				);
+				));
 			}
+			return builder.BuildAll();
 		}
 
 		IExpression BuildRelativeUrl(MethodInfo method) {
@@ -198,7 +213,8 @@ namespace Albatross.CodeGen.WebClient.Python {
 		IExpression BuildQueryParameters(MethodInfo method) {
 			var properties = new List<KeyValuePairExpression>();
 			foreach (var param in method.Parameters.Where(x => x.WebType == ParameterType.FromQuery)) {
-				properties.Add(BuildQueryStringParameter(param));
+				var value = BuildParamValue(param.Name.Underscore(), param.Type, false);
+				properties.Add(new KeyValuePairExpression(new StringLiteralExpression(param.QueryKey), value));
 			}
 			if (properties.Any()) {
 				return new ScopedVariableExpressionBuilder().WithName("params").WithExpression(new DictionaryValueExpression(properties)).Build();
@@ -207,32 +223,9 @@ namespace Albatross.CodeGen.WebClient.Python {
 			}
 		}
 
-		/// <summary>
-		/// This method will generate this
-		/// { dates:dates.map(x=>format(x, "yyyy-MM-dd")) }
-		/// { d:dates.map(x=>format(x, "yyyy-MM-dd")) }
-		/// { value }
-		/// { v: value }
-		/// </summary>
-		KeyValuePairExpression BuildQueryStringParameter(ParameterInfo parameter) {
-			IExpression value;
-			if (parameter.Type.TryGetCollectionElementType(out var elementType) && IsDate(elementType!)) {
-				value = new ListComprehensionExpression {
-					VariableName = "d",
-					IterableExpression = new IdentifierNameExpression(parameter.Name.Underscore()),
-					Expression = new InvocationExpression {
-						CallableExpression = new MultiPartIdentifierNameExpression("d", "isoformat"),
-					}
-				};
-			} else {
-				value = BuildParamValue(parameter.Name.Underscore(), parameter.Type);
-			}
-			return new KeyValuePairExpression(new StringLiteralExpression(parameter.QueryKey), value);
-		}
-
 		IExpression BuildRouteSegment(MethodInfo method, IRouteSegment segment) {
 			if (segment is RouteParameterSegment parameterSegment) {
-				return BuildParamValue(segment.Text, parameterSegment.RequiredParameterInfo.Type);
+				return BuildParamValue(segment.Text, parameterSegment.RequiredParameterInfo.Type, false);
 			} else {
 				return new StringLiteralExpression(segment.Text);
 			}
@@ -244,17 +237,54 @@ namespace Albatross.CodeGen.WebClient.Python {
 			};
 		}
 
-		IExpression BuildParamValue(string variableName, ITypeSymbol elementType) {
-			IExpression value;
-			var typeName = elementType!.GetFullName();
-			if (typeName == typeof(TimeOnly).FullName ||
-				typeName == typeof(DateOnly).FullName ||
-				typeName == typeof(DateTime).FullName || typeName == typeof(DateTimeOffset).FullName) {
-				value = FormattedDate(variableName);
-			} else {
-				value = new IdentifierNameExpression(variableName);
+		IExpression BuildParamValue(string variableName, ITypeSymbol parameterType, bool useEmptyStringForNullValue) {
+			if (IsDate(parameterType)) {
+				return FormattedDate(variableName);
+			} else if (parameterType.SpecialType == SpecialType.System_String) {
+				if (useEmptyStringForNullValue) {
+					return new TernaryExpression {
+						Condition = new TypeCheckExpression(true) {
+							Expression = new IdentifierNameExpression(variableName),
+							Type = Defined.Types.None,
+						},
+						TrueExpression = new IdentifierNameExpression(variableName),
+						FalseExpression = new StringLiteralExpression("")
+					};
+				} else {
+					return new IdentifierNameExpression(variableName);
+				}
+			} else if (parameterType.TryGetNullableValueType(out var valueType)) {
+				if (IsDate(valueType!)) {
+					return new TernaryExpression {
+						Condition = new TypeCheckExpression(true) {
+							Expression = new IdentifierNameExpression(variableName),
+							Type = Defined.Types.None,
+						},
+						TrueExpression = FormattedDate(variableName),
+						FalseExpression = useEmptyStringForNullValue ? new StringLiteralExpression("") : new NoneLiteralExpression(),
+					};
+				} else {
+					if (useEmptyStringForNullValue) {
+						return new TernaryExpression {
+							Condition = new TypeCheckExpression(true) {
+								Expression = new IdentifierNameExpression(variableName),
+								Type = Defined.Types.None,
+							},
+							TrueExpression = new IdentifierNameExpression(variableName),
+							FalseExpression = new StringLiteralExpression("")
+						};
+					} else {
+						return new IdentifierNameExpression(variableName);
+					}
+				}
+			} else if (parameterType.TryGetCollectionElementType(out var elementType) && (IsDate(elementType!) || elementType!.IsNullable())) {
+				return new ListComprehensionExpression {
+					VariableName = "x",
+					IterableExpression = new IdentifierNameExpression(variableName),
+					Expression = BuildParamValue("x", elementType!, true),
+				};
 			}
-			return value;
+			return new IdentifierNameExpression(variableName);
 		}
 
 		bool IsDate(ITypeSymbol type) {

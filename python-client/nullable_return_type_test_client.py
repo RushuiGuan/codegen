@@ -21,111 +21,171 @@ class NullableReturnTypeTestClient:
 	async def __aexit__(self, exc_type, exc_value, traceback) -> None:
 		await self.close()
 	
-	async def get_string(self) -> str:
+	async def get_string(self, text: str | None) -> str | None:
 		relative_url = "string"
-		response = await self._client.get(relative_url)
+		params = { "text": text }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return response.text
 	
-	async def get_async_string(self) -> str:
+	async def get_async_string(self, text: str | None) -> str | None:
 		relative_url = "async-string"
-		response = await self._client.get(relative_url)
+		params = { "text": text }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return response.text
 	
-	async def get_action_result_string(self) -> str:
+	async def get_action_result_string(self, text: str | None) -> str | None:
 		relative_url = "action-result-string"
-		response = await self._client.get(relative_url)
+		params = { "text": text }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return response.text
 	
-	async def get_async_action_result_string(self) -> str:
+	async def get_async_action_result_string(self, text: str | None) -> str | None:
 		relative_url = "async-action-result-string"
-		response = await self._client.get(relative_url)
+		params = { "text": text }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return response.text
 	
-	async def get_int(self) -> int | None:
+	async def get_int(self, n: int | None) -> int | None:
 		relative_url = "int"
-		response = await self._client.get(relative_url)
+		params = { "n": n }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return TypeAdapter(int | None).validate_python(response.json())
 	
-	async def get_async_int(self) -> int | None:
+	async def get_async_int(self, n: int | None) -> int | None:
 		relative_url = "async-int"
-		response = await self._client.get(relative_url)
+		params = { "n": n }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return TypeAdapter(int | None).validate_python(response.json())
 	
-	async def get_action_result_int(self) -> int | None:
+	async def get_action_result_int(self, n: int | None) -> int | None:
 		relative_url = "action-result-int"
-		response = await self._client.get(relative_url)
+		params = { "n": n }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return TypeAdapter(int | None).validate_python(response.json())
 	
-	async def get_async_action_result_int(self) -> int | None:
+	async def get_async_action_result_int(self, n: int | None) -> int | None:
 		relative_url = "async-action-result-int"
-		response = await self._client.get(relative_url)
+		params = { "n": n }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return TypeAdapter(int | None).validate_python(response.json())
 	
-	async def get_date_time(self) -> datetime | None:
+	async def get_date_time(self, v: datetime | None) -> datetime | None:
 		relative_url = "datetime"
-		response = await self._client.get(relative_url)
+		params = { "v": v.isoformat() if v is not None else None }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return TypeAdapter(datetime | None).validate_python(response.json())
 	
-	async def get_async_date_time(self) -> datetime | None:
+	async def get_async_date_time(self, v: datetime | None) -> datetime | None:
 		relative_url = "async-datetime"
-		response = await self._client.get(relative_url)
+		params = { "v": v.isoformat() if v is not None else None }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return TypeAdapter(datetime | None).validate_python(response.json())
 	
-	async def get_action_result_date_time(self) -> datetime | None:
+	async def get_action_result_date_time(self, v: datetime | None) -> datetime | None:
 		relative_url = "action-result-datetime"
-		response = await self._client.get(relative_url)
+		params = { "v": v.isoformat() if v is not None else None }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return TypeAdapter(datetime | None).validate_python(response.json())
 	
-	async def get_async_action_result_date_time(self) -> datetime | None:
+	async def get_async_action_result_date_time(self, v: datetime | None) -> datetime | None:
 		relative_url = "async-action-result-datetime"
-		response = await self._client.get(relative_url)
+		params = { "v": v.isoformat() if v is not None else None }
+		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return TypeAdapter(datetime | None).validate_python(response.json())
 	
-	async def get_my_dto(self) -> MyDto | None:
+	async def get_my_dto(self, value: MyDto | None) -> MyDto | None:
 		relative_url = "object"
-		response = await self._client.get(relative_url)
+		response = await self._client.post(relative_url, json = TypeAdapter(MyDto | None).dump_python(value, mode = "json"))
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return TypeAdapter(MyDto | None).validate_python(response.json())
 	
-	async def get_async_my_dto(self) -> MyDto | None:
+	async def get_async_my_dto(self, value: MyDto | None) -> MyDto | None:
 		relative_url = "async-object"
-		response = await self._client.get(relative_url)
+		response = await self._client.post(relative_url, json = TypeAdapter(MyDto | None).dump_python(value, mode = "json"))
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return TypeAdapter(MyDto | None).validate_python(response.json())
 	
-	async def action_result_object(self) -> MyDto | None:
+	async def action_result_object(self, value: MyDto | None) -> MyDto | None:
 		relative_url = "action-result-object"
-		response = await self._client.get(relative_url)
+		response = await self._client.post(relative_url, json = TypeAdapter(MyDto | None).dump_python(value, mode = "json"))
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return TypeAdapter(MyDto | None).validate_python(response.json())
 	
-	async def async_action_result_object(self) -> MyDto | None:
+	async def async_action_result_object(self, value: MyDto | None) -> MyDto | None:
 		relative_url = "async-action-result-object"
-		response = await self._client.get(relative_url)
+		response = await self._client.post(relative_url, json = TypeAdapter(MyDto | None).dump_python(value, mode = "json"))
 		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
 		return TypeAdapter(MyDto | None).validate_python(response.json())
 	
-	async def get_my_dto_nullable_array(self) -> list[MyDto | None]:
+	async def get_my_dto_nullable_array(self, values: list[MyDto | None]) -> list[MyDto | None]:
 		relative_url = "nullable-array-return-type"
-		response = await self._client.get(relative_url)
+		response = await self._client.post(relative_url, json = TypeAdapter(list[MyDto | None]).dump_python(values, mode = "json"))
 		response.raise_for_status()
 		return TypeAdapter(list[MyDto | None]).validate_python(response.json())
 	
-	async def get_my_dto_collection(self) -> list[MyDto | None]:
+	async def get_my_dto_collection(self, values: list[MyDto | None]) -> list[MyDto | None]:
 		relative_url = "nullable-collection-return-type"
-		response = await self._client.get(relative_url)
+		response = await self._client.post(relative_url, json = TypeAdapter(list[MyDto | None]).dump_python(values, mode = "json"))
 		response.raise_for_status()
 		return TypeAdapter(list[MyDto | None]).validate_python(response.json())
 	

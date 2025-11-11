@@ -5,6 +5,7 @@ using Test.Dto.Classes;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/nullable-param-test")]
+	[ApiController]
 	public class NullableParamTestController : ControllerBase {
 		[HttpGet("nullable-string-param")]
 		public string NullableStringParam(string? text) => text ?? string.Empty;

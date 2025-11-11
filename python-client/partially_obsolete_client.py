@@ -1,5 +1,6 @@
 # @generated
 
+from deprecated import deprecated
 from httpx import AsyncClient, Auth
 from typing import Self
 
@@ -18,6 +19,7 @@ class PartiallyObsoleteClient:
 	async def __aexit__(self, exc_type, exc_value, traceback) -> None:
 		await self.close()
 	
+	@deprecated()
 	async def get(self) -> str:
 		relative_url = "get"
 		response = await self._client.get(relative_url)

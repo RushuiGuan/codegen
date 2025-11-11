@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 		}.AddIfNotNull(ElseBlock);
 
 		public override TextWriter Generate(TextWriter writer) {
-			using (var mainScope = writer.Append("if ").OpenParenthesis().Append(Condition).CloseParenthesis().BeginPythonScope()) {
+			using (var mainScope = writer.Append("if ").OpenParenthesis().Code(Condition).CloseParenthesis().BeginPythonScope()) {
 				mainScope.Writer.Code(CodeBlock);
 			}
 			if (ElseBlock != null) {

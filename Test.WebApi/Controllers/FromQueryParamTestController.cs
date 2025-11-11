@@ -3,6 +3,7 @@ using System;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/from-query-param-test")]
+	[ApiController]
 	public class FromQueryParamTestController : ControllerBase {
 		[HttpGet("required-string")]
 		public void RequiredString([FromQuery] string name) { }

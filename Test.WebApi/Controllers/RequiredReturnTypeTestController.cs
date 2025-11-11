@@ -7,6 +7,7 @@ using Test.Dto.Classes;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/required-return-type")]
+	[ApiController]
 	public class RequiredReturnTypeTestController : ControllerBase {
 		[HttpGet("void")]
 		public void Get() { }
