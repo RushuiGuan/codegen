@@ -3,6 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
 		<Nullable>enable</Nullable>
+		<PackageProjectUrl>$(RepositoryProjectRoot)/Albatross.CodeGen.Python</PackageProjectUrl>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Albatross.Collections" Version="8.0.0" />
@@ -10,5 +11,19 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
 </Project>

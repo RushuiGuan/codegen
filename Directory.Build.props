@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
 	<PropertyGroup>
-		<Version>8.0.3-47.main+3127eff</Version>
+		<Version>8.0.3-48.main+c12de5f</Version>
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
 		<EnableWindowsTargeting>True</EnableWindowsTargeting>
