@@ -1,7 +1,7 @@
 # @generated
 
-from datetime import timezone, date, datetime
-from dto import MyDto
+from datetime import date, timezone, datetime
+from dto import MyDto, MyEnum
 from httpx import AsyncClient, Auth
 from pydantic import TypeAdapter
 from typing import Self
@@ -60,9 +60,7 @@ class RequiredParamTestClient:
 	async def required_date_only(self, date: date) -> str:
 		relative_url = "required-date-only"
 		params = {
-			"date": date.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-			if date.tzinfo
-			else date.isoformat()
+			"date": date.isoformat()
 		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
@@ -124,9 +122,7 @@ class RequiredParamTestClient:
 		relative_url = "required-date-only-collection"
 		params = {
 			"dates": [
-				x.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-				if x.tzinfo
-				else x.isoformat()
+				x.isoformat()
 				for x in dates
 			]
 		}
@@ -138,9 +134,7 @@ class RequiredParamTestClient:
 		relative_url = "required-date-only-array"
 		params = {
 			"dates": [
-				x.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-				if x.tzinfo
-				else x.isoformat()
+				x.isoformat()
 				for x in dates
 			]
 		}
@@ -175,5 +169,26 @@ class RequiredParamTestClient:
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
+	
+	async def required_enum(self, value: MyEnum) -> MyEnum:
+		relative_url = "required-enum"
+		params = {
+			"value": value.value
+		}
+		response = await self._client.get(relative_url, params = params)
+		response.raise_for_status()
+		return TypeAdapter(MyEnum).validate_python(response.json())
+	
+	async def required_enum_array(self, values: list[MyEnum]) -> list[MyEnum]:
+		relative_url = "required-enum-array"
+		params = {
+			"values": [
+				x.value
+				for x in values
+			]
+		}
+		response = await self._client.get(relative_url, params = params)
+		response.raise_for_status()
+		return TypeAdapter(list[MyEnum]).validate_python(response.json())
 	
 

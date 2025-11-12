@@ -1,4 +1,6 @@
+# @generated
 
+from __future__ import annotations
 from datetime import datetime, date, timedelta, time
 from decimal import Decimal
 from enum import Enum

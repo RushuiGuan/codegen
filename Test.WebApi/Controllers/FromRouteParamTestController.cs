@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using System;
+using Test.Dto.Enums;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/from-routing-param-test")]
@@ -36,5 +37,8 @@ namespace Test.WebApi.Controllers {
 
 		[HttpGet("timeonly-route/{time}/{id}")]
 		public void TimeOnlyRoute([FromRoute] TimeOnly time, [FromRoute] int id) { }
+		
+		[HttpGet("enum-route/{value}/{id}")]
+		public void EnumRoute([FromRoute] MyEnum value, [FromRoute] int id) { }
 	}
 }

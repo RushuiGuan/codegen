@@ -1,6 +1,7 @@
 # @generated
 
 from datetime import timezone, datetime, date, time
+from dto import MyEnum
 from httpx import AsyncClient, Auth
 from typing import Self
 
@@ -47,9 +48,7 @@ class FromRoutingParamTestClient:
 		response.raise_for_status()
 	
 	async def date_only_route(self, date: date, id: int) -> None:
-		relative_url = f"date-only-route/{date.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-		if date.tzinfo
-		else date.isoformat()}/{id}"
+		relative_url = f"date-only-route/{date.isoformat()}/{id}"
 		response = await self._client.get(relative_url)
 		response.raise_for_status()
 	
@@ -61,9 +60,12 @@ class FromRoutingParamTestClient:
 		response.raise_for_status()
 	
 	async def time_only_route(self, time: time, id: int) -> None:
-		relative_url = f"timeonly-route/{time.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-		if time.tzinfo
-		else time.isoformat()}/{id}"
+		relative_url = f"timeonly-route/{time.isoformat()}/{id}"
+		response = await self._client.get(relative_url)
+		response.raise_for_status()
+	
+	async def enum_route(self, value: MyEnum, id: int) -> None:
+		relative_url = f"enum-route/{value.value}/{id}"
 		response = await self._client.get(relative_url)
 		response.raise_for_status()
 	

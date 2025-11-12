@@ -1,5 +1,7 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
+using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Python.Declarations;
+using Albatross.CodeGen.Python.Expressions;
 using Albatross.CodeGen.WebClient;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
@@ -27,7 +29,7 @@ namespace Albatross.CodeGen.CommandLine {
 			ConvertEnumSymbolToDtoEnumModel enum2Model,
 			ConvertDtoClassModelToDataClass dtoModel2Python,
 			ConvertEnumModelToPythonEnum enumModel2Python,
-			IOptions<CodeGenCommandOptions> options) :base(options){
+			IOptions<CodeGenCommandOptions> options) : base(options) {
 			this.compilation = compilation;
 			this.settings = settings;
 			this.dto2Model = dto2Model;
@@ -52,6 +54,8 @@ namespace Albatross.CodeGen.CommandLine {
 					.Select(x => enum2Model.Convert(x)));
 			}
 			var dtoFile = new PythonFileDeclaration("dto") {
+				Banner = [new CommentDeclaration("@generated"),],
+				ImportDeclarations = new ImportCollection([Defined.Identifiers.FutureAnnotations]),
 				ClasseDeclarations = enumModels.Select(x => enumModel2Python.Convert(x))
 					.Concat(dtoModels.Select(x => dtoModel2Python.Convert(x)))
 					.ToList(),

@@ -208,6 +208,29 @@
       ],
       "hasQueryStringParameter": true,
       "isObsolete": false
+    },
+    {
+      "settings": {},
+      "httpMethod": "Get",
+      "name": "RequiredEnumParameter",
+      "canCancel": false,
+      "returnTypeText": "Test.Dto.Enums.MyEnum",
+      "routeSegments": [
+        {
+          "text": "required-enum-parameter"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "value",
+          "name": "value",
+          "typeText": "Test.Dto.Enums.MyEnum",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
     }
   ],
   "isObsolete": false

@@ -231,6 +231,52 @@
       ],
       "hasQueryStringParameter": true,
       "isObsolete": false
+    },
+    {
+      "settings": {},
+      "httpMethod": "Get",
+      "name": "NullableEnumParameter",
+      "canCancel": false,
+      "returnTypeText": "System.Nullable\u003CTest.Dto.Enums.MyEnum\u003E",
+      "routeSegments": [
+        {
+          "text": "nullable-enum-parameter"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "value",
+          "name": "value",
+          "typeText": "System.Nullable\u003CTest.Dto.Enums.MyEnum\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "settings": {},
+      "httpMethod": "Get",
+      "name": "NullableEnumArray",
+      "canCancel": false,
+      "returnTypeText": "System.Nullable\u003CTest.Dto.Enums.MyEnum\u003E[]",
+      "routeSegments": [
+        {
+          "text": "nullable-enum-array"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "value",
+          "name": "value",
+          "typeText": "System.Nullable\u003CTest.Dto.Enums.MyEnum\u003E[]",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
     }
   ],
   "isObsolete": false

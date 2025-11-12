@@ -1,7 +1,9 @@
 # @generated
 
 from datetime import timezone, datetime, date
+from dto import MyEnum
 from httpx import AsyncClient, Auth
+from pydantic import TypeAdapter
 from typing import Self
 
 class FromQueryParamTestClient:
@@ -66,9 +68,7 @@ class FromQueryParamTestClient:
 	async def required_date_only(self, dateonly: date) -> None:
 		relative_url = "required-dateonly"
 		params = {
-			"dateonly": dateonly.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-			if dateonly.tzinfo
-			else dateonly.isoformat()
+			"dateonly": dateonly.isoformat()
 		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
@@ -76,9 +76,7 @@ class FromQueryParamTestClient:
 	async def required_date_only_diff_name(self, dateonly: date) -> None:
 		relative_url = "required-dateonly_diff-name"
 		params = {
-			"d": dateonly.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-			if dateonly.tzinfo
-			else dateonly.isoformat()
+			"d": dateonly.isoformat()
 		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
@@ -102,5 +100,14 @@ class FromQueryParamTestClient:
 		}
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
+	
+	async def required_enum_parameter(self, value: MyEnum) -> MyEnum:
+		relative_url = "required-enum-parameter"
+		params = {
+			"value": value.value
+		}
+		response = await self._client.get(relative_url, params = params)
+		response.raise_for_status()
+		return TypeAdapter(MyEnum).validate_python(response.json())
 	
 

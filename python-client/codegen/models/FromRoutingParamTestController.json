@@ -313,6 +313,45 @@
       ],
       "hasQueryStringParameter": false,
       "isObsolete": false
+    },
+    {
+      "settings": {},
+      "httpMethod": "Get",
+      "name": "EnumRoute",
+      "canCancel": false,
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "enum-route/"
+        },
+        {
+          "text": "value"
+        },
+        {
+          "text": "/"
+        },
+        {
+          "text": "id"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "value",
+          "typeText": "Test.Dto.Enums.MyEnum",
+          "webType": "FromRoute"
+        },
+        {
+          "skip": false,
+          "queryKey": "",
+          "name": "id",
+          "typeText": "System.Int32",
+          "webType": "FromRoute"
+        }
+      ],
+      "hasQueryStringParameter": false,
+      "isObsolete": false
     }
   ],
   "isObsolete": false

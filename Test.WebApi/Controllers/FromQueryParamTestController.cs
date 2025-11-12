@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using Test.Dto.Enums;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/from-query-param-test")]
@@ -31,5 +32,8 @@ namespace Test.WebApi.Controllers {
 
 		[HttpGet("required-datetimeoffset_diff-name")]
 		public void RequiredDateTimeOffsetDiffName([FromQuery(Name = "d")] DateTimeOffset dateTimeOffset) { }
+
+		[HttpGet("required-enum-parameter")]
+		public MyEnum RequiredEnumParameter([FromQuery] MyEnum value) => value;
 	}
 }

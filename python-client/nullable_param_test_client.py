@@ -1,7 +1,7 @@
 # @generated
 
-from datetime import timezone, date
-from dto import MyDto
+from datetime import date
+from dto import MyDto, MyEnum
 from httpx import AsyncClient, Auth
 from pydantic import TypeAdapter
 from typing import Self
@@ -42,9 +42,7 @@ class NullableParamTestClient:
 	async def nullable_date_only(self, date: date | None) -> str:
 		relative_url = "nullable-date-only"
 		params = {
-			"date": date.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-			if date.tzinfo
-			else date.isoformat()
+			"date": date.isoformat()
 			if date is not None
 			else None
 		}
@@ -109,9 +107,7 @@ class NullableParamTestClient:
 		relative_url = "nullable-date-only-collection"
 		params = {
 			"dates": [
-				x.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-				if x.tzinfo
-				else x.isoformat()
+				x.isoformat()
 				if x is not None
 				else ""
 				for x in dates
@@ -125,9 +121,7 @@ class NullableParamTestClient:
 		relative_url = "nullable-date-only-array"
 		params = {
 			"dates": [
-				x.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-				if x.tzinfo
-				else x.isoformat()
+				x.isoformat()
 				if x is not None
 				else ""
 				for x in dates
@@ -136,5 +130,29 @@ class NullableParamTestClient:
 		response = await self._client.get(relative_url, params = params)
 		response.raise_for_status()
 		return response.text
+	
+	async def nullable_enum_parameter(self, value: MyEnum | None) -> MyEnum | None:
+		relative_url = "nullable-enum-parameter"
+		params = {
+			"value": value.value if value is not None else None
+		}
+		response = await self._client.get(relative_url, params = params)
+		response.raise_for_status()
+		if (response.status_code == 204):
+			return
+		
+		return TypeAdapter(MyEnum | None).validate_python(response.json())
+	
+	async def nullable_enum_array(self, value: list[MyEnum | None]) -> list[MyEnum | None]:
+		relative_url = "nullable-enum-array"
+		params = {
+			"value": [
+				x.value if x is not None else ""
+				for x in value
+			]
+		}
+		response = await self._client.get(relative_url, params = params)
+		response.raise_for_status()
+		return TypeAdapter(list[MyEnum | None]).validate_python(response.json())
 	
 

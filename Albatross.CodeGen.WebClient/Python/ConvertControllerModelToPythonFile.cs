@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
+using System.Security;
 
 namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertControllerModelToPythonFile : IConvertObject<ControllerInfo, PythonFileDeclaration> {
@@ -226,33 +227,41 @@ namespace Albatross.CodeGen.WebClient.Python {
 
 		IExpression BuildRouteSegment(MethodInfo method, IRouteSegment segment) {
 			if (segment is RouteParameterSegment parameterSegment) {
-				return BuildParamValue(segment.Text, parameterSegment.RequiredParameterInfo.Type, false);
+				return BuildParamValue(segment.Text.Underscore(), parameterSegment.RequiredParameterInfo.Type, false);
 			} else {
 				return new StringLiteralExpression(segment.Text);
 			}
 		}
 
-		IExpression FormattedDate(string variableName) {
-			// if there is timezone, convert it to utc -> isoformaat and replace '+00:00' with 'Z' 
-			// value.astimezone(timezone.utc).isoformat().replace('+00:00', 'Z') if value.tzinfo else value.isoformat()
-			return new TernaryExpression {
-				LineBreak = true,
-				TrueExpression = new InvocationExpressionBuilder()
-					.WithMultiPartFunctionName(variableName, "astimezone")
-					.AddArgument(Defined.Identifiers.TimeZoneUtc)
-					.Chain("isoformat")
-					.Chain("replace").AddArgument(new StringLiteralExpression("+00:00"))
-					.AddArgument(new StringLiteralExpression("Z")).BuildAll(),
-				Condition = new MultiPartIdentifierNameExpression(variableName, "tzinfo"),
-				FalseExpression = new InvocationExpression {
-					CallableExpression = new MultiPartIdentifierNameExpression(variableName, "isoformat"),
-				}
-			};
+		IExpression FormattedDate(string variableName, bool isDateTime) {
+			if (isDateTime) {
+				// if there is timezone, convert it to utc -> isoformaat and replace '+00:00' with 'Z' 
+				// value.astimezone(timezone.utc).isoformat().replace('+00:00', 'Z') if value.tzinfo else value.isoformat()
+				return new TernaryExpression {
+					LineBreak = true,
+					TrueExpression = new InvocationExpressionBuilder()
+						.WithMultiPartFunctionName(variableName, "astimezone")
+						.AddArgument(Defined.Identifiers.TimeZoneUtc)
+						.Chain("isoformat")
+						.Chain("replace").AddArgument(new StringLiteralExpression("+00:00"))
+						.AddArgument(new StringLiteralExpression("Z")).BuildAll(),
+					Condition = new MultiPartIdentifierNameExpression(variableName, "tzinfo"),
+					FalseExpression = new InvocationExpression {
+						CallableExpression = new MultiPartIdentifierNameExpression(variableName, "isoformat"),
+					}
+				};
+			} else {
+				return new InvocationExpression {
+					CallableExpression = new MultiPartIdentifierNameExpression(variableName, "isoformat")
+				};
+			}
 		}
 
 		IExpression BuildParamValue(string variableName, ITypeSymbol parameterType, bool useEmptyStringForNullValue) {
-			if (IsDate(parameterType)) {
-				return FormattedDate(variableName);
+			if (IsDate(parameterType, out var isDateTime)) {
+				return FormattedDate(variableName, isDateTime);
+			} else if (IsEnum(parameterType)) {
+				return new MultiPartIdentifierNameExpression(variableName, "value");
 			} else if (parameterType.SpecialType == SpecialType.System_String && useEmptyStringForNullValue) {
 				return new TernaryExpression {
 					Condition = new TypeCheckExpression(true) {
@@ -263,14 +272,23 @@ namespace Albatross.CodeGen.WebClient.Python {
 					FalseExpression = new StringLiteralExpression("")
 				};
 			} else if (parameterType.TryGetNullableValueType(out var valueType)) {
-				if (IsDate(valueType!)) {
+				if (IsDate(valueType!, out isDateTime)) {
 					return new TernaryExpression {
 						LineBreak = true,
 						Condition = new TypeCheckExpression(true) {
 							Expression = new IdentifierNameExpression(variableName),
 							Type = Defined.Types.None,
 						},
-						TrueExpression = FormattedDate(variableName),
+						TrueExpression = FormattedDate(variableName, isDateTime),
+						FalseExpression = useEmptyStringForNullValue ? new StringLiteralExpression("") : new NoneLiteralExpression(),
+					};
+				} else if (IsEnum(valueType)) {
+					return new TernaryExpression {
+						Condition =  new TypeCheckExpression(true){
+							Expression = new IdentifierNameExpression(variableName),
+							Type = Defined.Types.None,
+						},
+						TrueExpression = new MultiPartIdentifierNameExpression(variableName, "value"),
 						FalseExpression = useEmptyStringForNullValue ? new StringLiteralExpression("") : new NoneLiteralExpression(),
 					};
 				} else {
@@ -285,7 +303,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 						};
 					}
 				}
-			} else if (parameterType.TryGetCollectionElementType(out var elementType) && (IsDate(elementType!) || elementType!.IsNullable())) {
+			} else if (parameterType.TryGetCollectionElementType(out var elementType) && (IsDate(elementType!, out _) || IsEnum(elementType!) || elementType!.IsNullable())) {
 				return new ListComprehensionExpression {
 					LineBreak = true,
 					VariableName = "x",
@@ -296,13 +314,18 @@ namespace Albatross.CodeGen.WebClient.Python {
 			return new IdentifierNameExpression(variableName);
 		}
 
-		bool IsDate(ITypeSymbol type) {
+		bool IsDate(ITypeSymbol type, out bool isDateTime) {
 			var typeName = type.GetFullName();
-			return typeName == typeof(TimeOnly).FullName
-			       || typeName == typeof(DateOnly).FullName
-			       || typeName == typeof(DateTime).FullName
-			       || typeName == typeof(DateTimeOffset).FullName;
+			if (typeName == typeof(DateTime).FullName || typeName == typeof(DateTimeOffset).FullName) {
+				isDateTime = true;
+				return true;
+			} else {
+				isDateTime = false;
+				return typeName == typeof(TimeOnly).FullName || typeName == typeof(DateOnly).FullName;
+			}
 		}
+
+		bool IsEnum(ITypeSymbol type) => type.TypeKind == TypeKind.Enum;
 
 		IExpression CreateHttpInvocationExpression(MethodInfo method) {
 			var builder = new InvocationExpressionBuilder();

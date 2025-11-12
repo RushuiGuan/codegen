@@ -1,7 +1,7 @@
 # @generated
 
 from datetime import datetime, date, time
-from dto import MyDto
+from dto import MyDto, MyEnum
 from httpx import AsyncClient, Auth
 from pydantic import TypeAdapter
 from typing import Self
@@ -172,5 +172,17 @@ class RequiredReturnTypeTestClient:
 		response = await self._client.get(relative_url)
 		response.raise_for_status()
 		return TypeAdapter(list[MyDto]).validate_python(response.json())
+	
+	async def required_enum(self) -> MyEnum:
+		relative_url = "required-enum"
+		response = await self._client.get(relative_url)
+		response.raise_for_status()
+		return TypeAdapter(MyEnum).validate_python(response.json())
+	
+	async def required_enum_array(self) -> list[MyEnum]:
+		relative_url = "required-enum-array"
+		response = await self._client.get(relative_url)
+		response.raise_for_status()
+		return TypeAdapter(list[MyEnum]).validate_python(response.json())
 	
 

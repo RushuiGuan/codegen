@@ -1,6 +1,6 @@
 # @generated
 
-from datetime import timezone, date, datetime
+from datetime import date, timezone, datetime
 from httpx import AsyncClient, Auth
 from typing import Self
 
@@ -59,9 +59,7 @@ class ArrayParamTestClient:
 		relative_url = "collection-date-param"
 		params = {
 			"c": [
-				x.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-				if x.tzinfo
-				else x.isoformat()
+				x.isoformat()
 				for x in collection
 			]
 		}

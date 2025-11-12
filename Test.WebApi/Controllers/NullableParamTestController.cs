@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Test.Dto.Classes;
+using Test.Dto.Enums;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/nullable-param-test")]
@@ -37,5 +38,10 @@ namespace Test.WebApi.Controllers {
 		[HttpGet("nullable-date-only-array")]
 		public string NullableDateOnlyArray([FromQuery] DateOnly?[] dates) => string.Join(",", dates);
 
+		[HttpGet("nullable-enum-parameter")]
+		public MyEnum? NullableEnumParameter([FromQuery] MyEnum? value) => value;
+		
+		[HttpGet("nullable-enum-array")]
+		public MyEnum?[] NullableEnumArray([FromQuery] MyEnum?[] value) => value;
 	}
 }

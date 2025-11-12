@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Test.Dto.Classes;
+using Test.Dto.Enums;
 
 namespace Test.WebApi.Controllers {
 	[Route("api/required-return-type")]
@@ -91,5 +92,11 @@ namespace Test.WebApi.Controllers {
 
 		[HttpGet("async-collection-return-type")]
 		public IAsyncEnumerable<MyDto> GetMyDtoCollectionAsync() => AsyncEnumerable.Empty<MyDto>();
+
+		[HttpGet("required-enum")]
+		public MyEnum RequiredEnum() => MyEnum.One;
+
+		[HttpGet("required-enum-array")]
+		public MyEnum[] RequiredEnumArray() => [MyEnum.One, MyEnum.Two, MyEnum.Three];
 	}
 }

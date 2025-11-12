@@ -152,9 +152,9 @@ class NullableReturnTypeTestClient:
 	async def get_action_result_date_time(self, v: datetime | None) -> datetime | None:
 		relative_url = "action-result-datetime"
 		params = {
-			"v": v.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+			"v": (v.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
 			if v.tzinfo
-			else v.isoformat()
+			else v.isoformat())
 			if v is not None
 			else None
 		}

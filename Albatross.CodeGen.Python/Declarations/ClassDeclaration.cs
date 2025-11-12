@@ -34,17 +34,25 @@ namespace Albatross.CodeGen.Python.Declarations {
 				writer.Append("(").Code(BaseClassName).Append(")");
 			}
 			using (var scope = writer.BeginPythonScope()) {
+				bool pass = true;
 				foreach(var field in Fields) {
+					pass = false;
 					scope.Writer.Code(field).AppendLine();
 				}
 				foreach (var getter in GetProperties) {
+					pass = false;
 					scope.Writer.Code(getter);
 				}
 				if (Constructor != null) {
+					pass = false;
 					scope.Writer.Code(Constructor);
 				}
 				foreach (var method in Methods) {
+					pass = false;
 					scope.Writer.Code(method);
+				}
+				if (pass) {
+					scope.Writer.Append("pass");
 				}
 			}
 			writer.WriteLine();

@@ -391,6 +391,36 @@
       "parameters": [],
       "hasQueryStringParameter": false,
       "isObsolete": false
+    },
+    {
+      "settings": {},
+      "httpMethod": "Get",
+      "name": "RequiredEnum",
+      "canCancel": false,
+      "returnTypeText": "Test.Dto.Enums.MyEnum",
+      "routeSegments": [
+        {
+          "text": "required-enum"
+        }
+      ],
+      "parameters": [],
+      "hasQueryStringParameter": false,
+      "isObsolete": false
+    },
+    {
+      "settings": {},
+      "httpMethod": "Get",
+      "name": "RequiredEnumArray",
+      "canCancel": false,
+      "returnTypeText": "Test.Dto.Enums.MyEnum[]",
+      "routeSegments": [
+        {
+          "text": "required-enum-array"
+        }
+      ],
+      "parameters": [],
+      "hasQueryStringParameter": false,
+      "isObsolete": false
     }
   ],
   "isObsolete": false

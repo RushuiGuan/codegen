@@ -346,6 +346,52 @@
       ],
       "hasQueryStringParameter": true,
       "isObsolete": false
+    },
+    {
+      "settings": {},
+      "httpMethod": "Get",
+      "name": "RequiredEnum",
+      "canCancel": false,
+      "returnTypeText": "Test.Dto.Enums.MyEnum",
+      "routeSegments": [
+        {
+          "text": "required-enum"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "value",
+          "name": "value",
+          "typeText": "Test.Dto.Enums.MyEnum",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "settings": {},
+      "httpMethod": "Get",
+      "name": "RequiredEnumArray",
+      "canCancel": false,
+      "returnTypeText": "Test.Dto.Enums.MyEnum[]",
+      "routeSegments": [
+        {
+          "text": "required-enum-array"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "values",
+          "name": "values",
+          "typeText": "Test.Dto.Enums.MyEnum[]",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
     }
   ],
   "isObsolete": false
