@@ -7,10 +7,7 @@ namespace Albatross.CodeGen.WebClient.Settings {
 			=> settings.ControllerMethodFilters.Where(x => x.HasValue).Select(x => new SymbolFilter(x)).ToArray();
 
 		public static SymbolFilter[] DtoFilters(this CodeGenSettings settings)
-			=> settings.DtoFilters.Where(x => x.HasValue).Select(x => new SymbolFilter(x)).ToArray();
-
-		public static SymbolFilter[] EnumFilters(this CodeGenSettings settings)
-			=> settings.EnumFilters.Where(x => x.HasValue).Select(x => new SymbolFilter(x)).ToArray();
+			=> settings.DtoEnumFilters.Where(x => x.HasValue).Select(x => new SymbolFilter(x)).ToArray();
 
 		public static SymbolFilter[] ControllerFilters(this CodeGenSettings settings)
 			=> settings.ControllerFilters.Where(x => x.HasValue).Select(x => new SymbolFilter(x)).ToArray();

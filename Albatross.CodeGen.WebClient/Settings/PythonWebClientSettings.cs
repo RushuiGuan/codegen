@@ -7,5 +7,6 @@ namespace Albatross.CodeGen.WebClient.Settings {
 		/// </summary>
 		public Dictionary<string, string> NameSpaceModuleMapping { get; init; } = new Dictionary<string, string>();
 		public Dictionary<string, string> TypeMapping { get; init; } = new Dictionary<string, string>();
+		public Dictionary<string, WebClientConstructorSettings> ConstructorSettings { get; init; } = new Dictionary<string, WebClientConstructorSettings>();
 	}
 }

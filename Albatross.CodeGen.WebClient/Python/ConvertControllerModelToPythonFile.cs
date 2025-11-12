@@ -7,13 +7,10 @@ using Albatross.CodeGen.Python.Expressions;
 using Albatross.CodeGen.Python.Modifiers;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
-using Albatross.Text;
 using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using System.Linq;
-using System.Security;
 
 namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertControllerModelToPythonFile : IConvertObject<ControllerInfo, PythonFileDeclaration> {
@@ -282,7 +279,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 						TrueExpression = FormattedDate(variableName, isDateTime),
 						FalseExpression = useEmptyStringForNullValue ? new StringLiteralExpression("") : new NoneLiteralExpression(),
 					};
-				} else if (IsEnum(valueType)) {
+				} else if (IsEnum(valueType!)) {
 					return new TernaryExpression {
 						Condition =  new TypeCheckExpression(true){
 							Expression = new IdentifierNameExpression(variableName),
