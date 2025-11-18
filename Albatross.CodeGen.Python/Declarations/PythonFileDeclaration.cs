@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 			.Union(ClasseDeclarations);
 
 		bool IsSelf(ISourceExpression source) {
-			if (source is ModuleSourceExpression moduleSourceExpression && moduleSourceExpression.ModuleName == this.Name) {
+			if (source is ModuleSourceExpression moduleSourceExpression && (moduleSourceExpression.ModuleName == this.Name || moduleSourceExpression.ModuleName == "." + this.Name)) {
 				return true;
 			} else {
 				return false;
