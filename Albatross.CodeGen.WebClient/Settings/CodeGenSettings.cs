@@ -8,7 +8,6 @@ namespace Albatross.CodeGen.WebClient.Settings {
 
 		public SymbolFilterPatterns[] ControllerFilters { get; init; } = [];
 		public SymbolFilterPatterns[] ControllerMethodFilters { get; init; } = [];
-		public SymbolFilterPatterns[] DtoFilters { get; init; } = [];
-		public SymbolFilterPatterns[] EnumFilters { get; init; } = [];
+		public SymbolFilterPatterns[] DtoEnumFilters { get; init; } = [];
 	}
 }
