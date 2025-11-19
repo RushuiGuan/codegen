@@ -138,6 +138,7 @@ namespace Albatross.CodeGen.Python {
 		}
 
 		public static class Identifiers {
+			public static readonly IIdentifierNameExpression Union = new QualifiedIdentifierNameExpression("Union", Sources.Typing);
 			public static readonly IIdentifierNameExpression Self = new IdentifierNameExpression("self");
 			public static readonly IIdentifierNameExpression Enum = new QualifiedIdentifierNameExpression("Enum", Sources.Enum);
 			public static readonly IIdentifierNameExpression AbstractBaseClass = new QualifiedIdentifierNameExpression("ABC", Sources.AbstractBaseClass);

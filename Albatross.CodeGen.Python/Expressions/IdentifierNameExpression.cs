@@ -17,12 +17,14 @@ namespace Albatross.CodeGen.Python.Expressions {
 				throw new ArgumentException($"Invalid identifier name {name}");
 			}
 		}
-
+		public bool ForwardReference { get; init; }
 		public override IEnumerable<ISyntaxNode> Children => [];
 		public string Name { get; }
 
 		public override TextWriter Generate(TextWriter writer) {
+			if (ForwardReference) { writer.Append("'"); }
 			writer.Append(Name);
+			if (ForwardReference) { writer.Append("'"); }
 			return writer;
 		}
 	}

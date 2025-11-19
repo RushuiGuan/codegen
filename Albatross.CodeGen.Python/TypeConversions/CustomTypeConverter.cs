@@ -21,9 +21,13 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {
 			if (sourceLookup.TryGet(symbol, out var source)) {
 				logger.LogInformation("Found source {source} for symbol {symbol}", source.ToString(), symbol.GetFullName());
-				expression = new SimpleTypeExpression { Identifier = new QualifiedIdentifierNameExpression(symbol.Name, source) };
+				expression = new SimpleTypeExpression {
+					Identifier = new QualifiedIdentifierNameExpression(symbol.Name, source)
+				};
 			} else {
-				expression = new SimpleTypeExpression { Identifier = new IdentifierNameExpression(symbol.Name) };
+				expression = new SimpleTypeExpression {
+					Identifier = new IdentifierNameExpression(symbol.Name)
+				};
 				logger.LogInformation("No module source was found for symbol {symbol}", symbol.GetFullName());
 			}
 			return true;

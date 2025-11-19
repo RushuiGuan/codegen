@@ -18,5 +18,8 @@ namespace Albatross.CodeGen.WebClient.Models {
 		[JsonIgnore]
 		public ITypeSymbol PropertyType { get; }
 		public string PropertyTypeName => PropertyType.GetFullName();
+
+		public string ClassFullName => Symbol.ContainingType.GetFullName();
+		public string FullName => $"{ClassFullName}.{Name}";
 	}
 }

@@ -16,10 +16,14 @@ namespace Albatross.CodeGen.WebClient.Models {
 					.Where(x => !(symbol.IsRecord && x.Name == "EqualityContract"))
 					.Select(x => new DtoClassPropertyInfo(x))) {
 
-					if (!item.Symbol.TryGetAttribute("System.Text.Json.Serialization.JsonIgnoreAttribute", out _)) {
-						if (!properties.ContainsKey(item.Name)) {
-							properties.Add(item.Name, item);
+					// [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
+					if (item.Symbol.TryGetAttribute("System.Text.Json.Serialization.JsonIgnoreAttribute", out var attribute)) {
+						if (!attribute!.TryGetNamedArgument("Condition", out var conditionValue) || System.Convert.ToInt32(conditionValue.Value) == (int)System.Text.Json.Serialization.JsonIgnoreCondition.Always) {
+							continue;
 						}
+					}
+					if (!properties.ContainsKey(item.Name)) {
+						properties.Add(item.Name, item);
 					}
 				}
 				if (symbol.BaseType != null && symbol.BaseType.SpecialType != SpecialType.System_Object) {
