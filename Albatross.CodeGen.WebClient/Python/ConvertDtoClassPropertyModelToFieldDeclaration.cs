@@ -7,6 +7,7 @@ using Humanizer;
 using Microsoft.CodeAnalysis;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.Text;
+using Albatross.CodeAnalysis.Symbols;
 
 namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertDtoClassPropertyModelToFieldDeclaration : IConvertObject<DtoClassPropertyInfo, FieldDeclaration> {
@@ -27,16 +28,32 @@ namespace Albatross.CodeGen.WebClient.Python {
 			}
 			return new FieldDeclaration(name) {
 				Type = typeConverter.Convert(from.PropertyType),
-				Initializer = new InvocationExpression {
-					CallableExpression = Defined.Identifiers.PydanticField,
-					ArgumentList = new ListOfSyntaxNodes<IExpression>(
-							new ScopedVariableExpression {
-								Identifier = new IdentifierNameExpression("alias"),
-								Assignment = new StringLiteralExpression(from.Name.CamelCase())
-							}
-						)
-				},
+				Initializer = new InvocationExpressionBuilder()
+					.WithCallableExpression(Defined.Identifiers.PydanticField)
+					.AddArgument(new ScopedVariableExpression {
+						Identifier = new IdentifierNameExpression("alias"),
+						Assignment = new StringLiteralExpression(from.Name.CamelCase())
+					})
+					.AddArgument(GetDefaultExpression(from)).Build()
 			};
+		}
+
+		IExpression GetDefaultExpression(DtoClassPropertyInfo from) {
+			var builder = new ScopedVariableExpressionBuilder();
+			if (from.PropertyType.IsCollection()) {
+				builder.WithName("default_factory");
+				builder.WithExpression(Defined.Identifiers.List);
+			} else {
+				builder.WithName("default");
+				if (from.PropertyType.IsNullable()) {
+					builder.WithExpression(new NoneLiteralExpression());
+				} else if (from.PropertyType.SpecialType == SpecialType.System_Boolean) {
+					builder.WithExpression(new BooleanLiteralExpression(false));
+				} else {
+					return new NoOpExpression();
+				}
+			}
+			return builder.Build();
 		}
 
 		object IConvertObject<DtoClassPropertyInfo>.Convert(DtoClassPropertyInfo from) => Convert(from);

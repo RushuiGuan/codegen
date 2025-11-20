@@ -36,7 +36,9 @@ namespace Albatross.CodeGen.Python.Expressions {
 		}
 
 		public InvocationExpressionBuilder AddArgument(IExpression expression) {
-			this.arguments.Add(expression);
+			if (expression is not NoOpExpression) {
+				this.arguments.Add(expression);
+			}
 			return this;
 		}
 
