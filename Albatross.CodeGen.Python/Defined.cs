@@ -135,6 +135,9 @@ namespace Albatross.CodeGen.Python {
 			public static readonly ISourceExpression Uuid = new ModuleSourceExpression("uuid");
 			public static readonly ISourceExpression Deprecated = new ModuleSourceExpression("deprecated");
 			public static readonly ISourceExpression Future = new ModuleSourceExpression("__future__");
+			public static readonly ISourceExpression Httpx = new ModuleSourceExpression("httpx");
+			public static readonly ISourceExpression Requests = new ModuleSourceExpression("requests");
+			public static readonly ISourceExpression RequestsAuth = new ModuleSourceExpression("requests.auth");
 		}
 
 		public static class Identifiers {

@@ -18,6 +18,7 @@ namespace Albatross.CodeGen.WebClient {
 		public const string FromHeaderAttributeClassName = "Microsoft.AspNetCore.Mvc.FromHeaderAttribute";
 
 		public const string ObsoleteAttribute_ClassName = "System.ObsoleteAttribute";
+		public const string AuthorizeAttribute_ClassName = "Microsoft.AspNetCore.Authorization.AuthorizeAttribute";
 
 		public const string ActionResultClassName = "Microsoft.AspNetCore.Mvc.ActionResult";
 		public const string ActionResultInterfaceName = "Microsoft.AspNetCore.Mvc.IActionResult";

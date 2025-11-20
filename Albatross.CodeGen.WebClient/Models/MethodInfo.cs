@@ -20,17 +20,19 @@ namespace Albatross.CodeGen.WebClient.Models {
 				var paramInfo = new ParameterInfo(parameter, routeSegments);
 				if (paramInfo.TypeText == "System.Threading.CancellationToken") {
 					this.CanCancel = true;
-				}else if (!paramInfo.Skip) {
+				} else if (!paramInfo.Skip) {
 					this.Parameters.Add(paramInfo);
 				}
 			}
 			this.RouteSegments = routeSegments;
 			this.IsObsolete = symbol.GetAttributes().Any(x => x.AttributeClass?.GetFullName() == My.ObsoleteAttribute_ClassName);
+			this.RequiresAuthentication = symbol.GetAttributes().Any(x => x.AttributeClass?.GetFullName() == My.AuthorizeAttribute_ClassName);
 		}
 		public WebClientMethodSettings Settings { get; init; }
 		public string HttpMethod { get; set; }
 		public string Name { get; set; }
 		public bool CanCancel { get; set; }
+		public bool RequiresAuthentication { get; set; }
 
 		[JsonIgnore]
 		public ITypeSymbol ReturnType { get; set; }

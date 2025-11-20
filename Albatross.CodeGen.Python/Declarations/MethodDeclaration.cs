@@ -17,6 +17,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public ListOfSyntaxNodes<ParameterDeclaration> Parameters { get; init; } = new();
 		public IEnumerable<IModifier> Modifiers { get; init; } = [];
 		public IExpression Body { get; init; } = new EmptyExpression();
+		public IExpression? DocString { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {
 			foreach (var decorator in Decorators) {
@@ -29,6 +30,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 				.OpenParenthesis().Code(Parameters).CloseParenthesis();
 			writer.Append(" -> ").Code(ReturnType);
 			using (var scope = writer.BeginPythonScope()) {
+				if (DocString is not null) { scope.Writer.Code(DocString); }
 				scope.Writer.Code(Body);
 			}
 			writer.WriteLine();

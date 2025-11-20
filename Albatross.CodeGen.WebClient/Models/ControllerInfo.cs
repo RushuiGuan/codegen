@@ -25,12 +25,15 @@ namespace Albatross.CodeGen.WebClient.Models {
 		public string Route { get; set; }
 		public List<MethodInfo> Methods { get; } = new List<MethodInfo>();
 		public bool IsObsolete { get; set; }
+		public bool RequiresAuthentication { get; }
+
 
 		public ControllerInfo(CSharpWebClientSettings settings, Compilation compilation, INamedTypeSymbol controller) {
 			this.Controller = controller;
 			this.Route = controller.GetRouteText();
 			this.Route = this.Route.Replace(ControllerNamePlaceholder, this.ControllerName.ToLower());
 			this.IsObsolete = controller.GetAttributes().Any(x => x.AttributeClass?.GetFullName() == My.ObsoleteAttribute_ClassName);
+			this.RequiresAuthentication = controller.GetAttributes().Any(x => x.AttributeClass?.GetFullName() == My.AuthorizeAttribute_ClassName);
 
 			foreach (var methodSymbol in controller.GetMembers().OfType<IMethodSymbol>()) {
 				if (methodSymbol.GetAttributes().Any(x => x.AttributeClass?.BaseType?.GetFullName() == My.HttpMethodAttributeClassName)) {

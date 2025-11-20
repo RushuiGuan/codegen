@@ -20,6 +20,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public MethodDeclaration? Constructor { get; init; }
 		public IEnumerable<ImportExpression> Imports { get; init; } = [];
 		public IEnumerable<MethodDeclaration> Methods { get; init; } = [];
+		public DocStringExpression? DocString { get; init; }
 
 		public override IEnumerable<ISyntaxNode> Children
 			=> new List<ISyntaxNode> { Identifier, }
@@ -35,7 +36,11 @@ namespace Albatross.CodeGen.Python.Declarations {
 			}
 			using (var scope = writer.BeginPythonScope()) {
 				bool pass = true;
-				foreach(var field in Fields) {
+				if (DocString != null) {
+					pass = false;
+					scope.Writer.Code(DocString).AppendLine();
+				}
+				foreach (var field in Fields) {
 					pass = false;
 					scope.Writer.Code(field).AppendLine();
 				}
