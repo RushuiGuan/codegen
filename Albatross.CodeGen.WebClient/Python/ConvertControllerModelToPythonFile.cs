@@ -26,13 +26,16 @@ namespace Albatross.CodeGen.WebClient.Python {
 		private static readonly IIdentifierNameExpression syncClient = new QualifiedIdentifierNameExpression("Session", Defined.Sources.Requests);
 
 		public PythonFileDeclaration Convert(ControllerInfo model) {
-			var fileName = $"{model.ControllerName.Underscore()}_client";
+			if(!settings.HttpClientClassNameMapping.TryGetValue(model.Controller.GetFullName(), out var clientClassName)) {
+				clientClassName = $"{model.ControllerName}Client";
+			}
+			var fileName = clientClassName.Underscore();
 			return new PythonFileDeclaration(fileName) {
 				Banner = [
 					new CommentDeclaration("@generated"),
 				],
 				ClasseDeclarations = [
-					new ClassDeclaration($"{model.ControllerName}Client") {
+					new ClassDeclaration(clientClassName) {
 						DocString = model.RequiresAuthentication ? new DocStringExpression("Authentication required") : null,
 						Decorators = model.IsObsolete ? [new DecoratorExpression { CallableExpression = Defined.Identifiers.Deprecated, }] : [],
 						Fields = [
@@ -374,7 +377,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 					});
 					if (fromBodyParameter.Type.IsNullable()) {
 						builder.AddArgument(new ScopedVariableExpression {
-							Identifier = new IdentifierNameExpression("content"),
+							Identifier = settings.Async ? new IdentifierNameExpression("content") : new IdentifierNameExpression("data"),
 							Assignment = new TernaryExpression {
 								TrueExpression = new IdentifierNameExpression(fromBodyParameter.Name.Underscore()),
 								Condition = new TypeCheckExpression(true) {
@@ -386,7 +389,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 						});
 					} else {
 						builder.AddArgument(new ScopedVariableExpression {
-							Identifier = new IdentifierNameExpression("content"),
+							Identifier = settings.Async ? new IdentifierNameExpression("content") : new IdentifierNameExpression("data"),
 							Assignment = new IdentifierNameExpression(fromBodyParameter.Name.Underscore())
 						});
 					}

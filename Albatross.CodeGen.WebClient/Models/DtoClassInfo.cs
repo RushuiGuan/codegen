@@ -8,6 +8,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 	public record class DtoClassInfo {
 		public DtoClassInfo(INamedTypeSymbol symbol) {
 			this.Name = symbol.Name;
+			this.FullName = symbol.GetFullName();
 			var properties = new Dictionary<string, DtoClassPropertyInfo>();
 			symbol.AllInterfaces.ForEach(x => BaseTypes.Add(x.GetFullName()));
 
@@ -37,6 +38,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 		}
 
 		public string Name { get; }
+		public string FullName { get; }
 		public DtoClassPropertyInfo[] Properties { get; }
 		public HashSet<string> BaseTypes { get; } = new HashSet<string>();
 	}

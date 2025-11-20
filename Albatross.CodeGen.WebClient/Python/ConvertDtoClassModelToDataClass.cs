@@ -1,23 +1,42 @@
 ﻿using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Python.Declarations;
+using Albatross.CodeGen.Python.Expressions;
 using Albatross.CodeGen.WebClient.Models;
+using Albatross.CodeGen.WebClient.Settings;
 using System.Linq;
 
 namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertDtoClassModelToDataClass : IConvertObject<DtoClassInfo, ClassDeclaration> {
 		private readonly IConvertObject<DtoClassPropertyInfo, FieldDeclaration> propertyConverter;
+		private readonly PythonWebClientSettings settings;
 
-		public ConvertDtoClassModelToDataClass(IConvertObject<DtoClassPropertyInfo, FieldDeclaration> propertyConverter) {
+		public ConvertDtoClassModelToDataClass(CodeGenSettings settings, IConvertObject<DtoClassPropertyInfo, FieldDeclaration> propertyConverter) {
 			this.propertyConverter = propertyConverter;
+			this.settings = settings.PythonWebClientSettings;
 		}
 
 		public ClassDeclaration Convert(DtoClassInfo from) {
-			var declaration = new ClassDeclaration(from.Name) {
-				Fields = from.Properties.Select(x => propertyConverter.Convert(x)).ToList(),
+			if (!settings.DtoClassNameMapping.TryGetValue(from.FullName, out var className)) {
+				className = from.Name;
+			}
+			var declaration = new ClassDeclaration(className) {
+				Fields = new FieldDeclaration[] { modelConfig }.Union(from.Properties.Select(propertyConverter.Convert)).ToList(),
 				BaseClassName = Defined.Identifiers.PydanticBaseModel,
 			};
 			return declaration;
 		}
+
+		FieldDeclaration modelConfig = new FieldDeclaration("model_config") {
+			Initializer = new InvocationExpressionBuilder()
+				.WithCallableExpression(new QualifiedIdentifierNameExpression("ConfigDict", Defined.Sources.Pydantic))
+				.AddArgument(new ScopedVariableExpression {
+					Identifier = new IdentifierNameExpression("populate_by_name"),
+					Assignment = Defined.Literals.BooleanLiteral(true),
+				}).AddArgument(new ScopedVariableExpression {
+					Identifier = new IdentifierNameExpression("serialize_by_alias"),
+					Assignment = Defined.Literals.BooleanLiteral(true),
+				}).Build()
+		};
 
 		object IConvertObject<DtoClassInfo>.Convert(DtoClassInfo from) => Convert(from);
 	}
