@@ -3,6 +3,7 @@ using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.Python.Expressions;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Albatross.CodeGen.WebClient.Python {
@@ -19,8 +20,26 @@ namespace Albatross.CodeGen.WebClient.Python {
 			if (!settings.DtoClassNameMapping.TryGetValue(from.FullName, out var className)) {
 				className = from.Name;
 			}
+			var fields = new List<FieldDeclaration>{
+				modelConfig
+			};
+			if (!string.IsNullOrEmpty(from.TypeDiscriminator)) {
+				fields.Add(new FieldDeclaration("discriminator_") {
+					Type = Defined.Types.String,
+					Initializer = new InvocationExpressionBuilder()
+						.WithCallableExpression(Defined.Identifiers.PydanticField)
+						.AddArgument(new ScopedVariableExpression {
+							Identifier = new IdentifierNameExpression("alias"),
+							Assignment = new StringLiteralExpression("$type")
+						}).AddArgument(new ScopedVariableExpression {
+							Identifier = new IdentifierNameExpression("default"),
+							Assignment = new StringLiteralExpression(from.TypeDiscriminator)
+						}).Build()
+				});
+			}
+			fields.AddRange(from.Properties.Select(propertyConverter.Convert));
 			var declaration = new ClassDeclaration(className) {
-				Fields = new FieldDeclaration[] { modelConfig }.Union(from.Properties.Select(propertyConverter.Convert)).ToList(),
+				Fields = fields,
 				BaseClassName = Defined.Identifiers.PydanticBaseModel,
 			};
 			return declaration;

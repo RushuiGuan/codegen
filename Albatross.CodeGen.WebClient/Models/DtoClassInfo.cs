@@ -6,12 +6,15 @@ using System.Linq;
 
 namespace Albatross.CodeGen.WebClient.Models {
 	public record class DtoClassInfo {
-		public DtoClassInfo(INamedTypeSymbol symbol) {
+		public DtoClassInfo(INamedTypeSymbol symbol, IJsonDerivedTypeIndex index) {
 			this.Name = symbol.Name;
 			this.FullName = symbol.GetFullName();
 			var properties = new Dictionary<string, DtoClassPropertyInfo>();
 			symbol.AllInterfaces.ForEach(x => BaseTypes.Add(x.GetFullName()));
-
+			var derivedTypeDiscriminators = index.GetDerivedTypeDiscriminators(symbol);
+			if (derivedTypeDiscriminators.Length > 0) {
+				this.TypeDiscriminator = derivedTypeDiscriminators.First().Item2;
+			}
 			while (symbol != null) {
 				foreach (var item in symbol.GetMembers().OfType<IPropertySymbol>()
 					.Where(x => !(symbol.IsRecord && x.Name == "EqualityContract"))
@@ -41,5 +44,10 @@ namespace Albatross.CodeGen.WebClient.Models {
 		public string FullName { get; }
 		public DtoClassPropertyInfo[] Properties { get; }
 		public HashSet<string> BaseTypes { get; } = new HashSet<string>();
+		/// <summary>
+		/// Looking for the JsonDerivedTypeAttribute of a base class to get the type discriminator value
+		/// the derivedType of the JsonDerivedTypeAttribute should be this class
+		/// </summary>
+		public string? TypeDiscriminator { get; set; }
 	}
 }
