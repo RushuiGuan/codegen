@@ -7,6 +7,7 @@
       "httpMethod": "Get",
       "name": "GetString",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -30,6 +31,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncString",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -53,6 +55,7 @@
       "httpMethod": "Get",
       "name": "GetActionResultString",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -76,6 +79,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncActionResultString",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -99,6 +103,7 @@
       "httpMethod": "Get",
       "name": "GetInt",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Nullable\u003CSystem.Int32\u003E",
       "routeSegments": [
         {
@@ -122,6 +127,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncInt",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Nullable\u003CSystem.Int32\u003E",
       "routeSegments": [
         {
@@ -145,6 +151,7 @@
       "httpMethod": "Get",
       "name": "GetActionResultInt",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Nullable\u003CSystem.Int32\u003E",
       "routeSegments": [
         {
@@ -168,6 +175,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncActionResultInt",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Nullable\u003CSystem.Int32\u003E",
       "routeSegments": [
         {
@@ -191,6 +199,7 @@
       "httpMethod": "Get",
       "name": "GetDateTime",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Nullable\u003CSystem.DateTime\u003E",
       "routeSegments": [
         {
@@ -214,6 +223,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncDateTime",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Nullable\u003CSystem.DateTime\u003E",
       "routeSegments": [
         {
@@ -237,6 +247,7 @@
       "httpMethod": "Get",
       "name": "GetActionResultDateTime",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Nullable\u003CSystem.DateTime\u003E",
       "routeSegments": [
         {
@@ -260,6 +271,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncActionResultDateTime",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Nullable\u003CSystem.DateTime\u003E",
       "routeSegments": [
         {
@@ -283,6 +295,7 @@
       "httpMethod": "Post",
       "name": "GetMyDto",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
       "routeSegments": [
         {
@@ -306,6 +319,7 @@
       "httpMethod": "Post",
       "name": "GetAsyncMyDto",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
       "routeSegments": [
         {
@@ -329,6 +343,7 @@
       "httpMethod": "Post",
       "name": "ActionResultObject",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
       "routeSegments": [
         {
@@ -352,6 +367,7 @@
       "httpMethod": "Post",
       "name": "AsyncActionResultObject",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
       "routeSegments": [
         {
@@ -375,6 +391,7 @@
       "httpMethod": "Post",
       "name": "GetMyDtoNullableArray",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.MyDto[]",
       "routeSegments": [
         {
@@ -398,6 +415,7 @@
       "httpMethod": "Post",
       "name": "GetMyDtoCollection",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Collections.Generic.IEnumerable\u003CTest.Dto.Classes.MyDto\u003E",
       "routeSegments": [
         {
@@ -417,5 +435,6 @@
       "isObsolete": false
     }
   ],
-  "isObsolete": false
+  "isObsolete": false,
+  "requiresAuthentication": false
 }

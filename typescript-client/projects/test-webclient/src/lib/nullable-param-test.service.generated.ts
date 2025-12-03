@@ -1,4 +1,4 @@
-import { MyDto }  from "./dto.generated";
+import { MyDto, MyEnum }  from "./dto.generated";
 import { HttpClient }  from "@angular/common/http";
 import { Injectable }  from "@angular/core";
 import { ConfigService }  from "@mirage/config";
@@ -62,6 +62,16 @@ export class NullableParamTestService extends WebClient {
 	nullableDateOnlyArray(dates: (Date|undefined)[]): Observable<string>  {
 		const relativeUrl = `nullable-date-only-array`;
 		const result = this.doGetStringAsync(relativeUrl, { dates });
+		return result;
+	}
+	nullableEnumParameter(value: MyEnum|undefined): Observable<MyEnum|undefined>  {
+		const relativeUrl = `nullable-enum-parameter`;
+		const result = this.doGetAsync<MyEnum|undefined>(relativeUrl, { value });
+		return result;
+	}
+	nullableEnumArray(value: (MyEnum|undefined)[]): Observable<(MyEnum|undefined)[]>  {
+		const relativeUrl = `nullable-enum-array`;
+		const result = this.doGetAsync<(MyEnum|undefined)[]>(relativeUrl, { value });
 		return result;
 	}
 }

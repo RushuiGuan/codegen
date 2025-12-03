@@ -7,6 +7,7 @@
       "httpMethod": "Get",
       "name": "ExplicitStringParam",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -30,6 +31,7 @@
       "httpMethod": "Get",
       "name": "ImplicitStringParam",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -53,6 +55,7 @@
       "httpMethod": "Get",
       "name": "RequiredStringParam",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -76,6 +79,7 @@
       "httpMethod": "Get",
       "name": "RequiredValueType",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -99,6 +103,7 @@
       "httpMethod": "Get",
       "name": "RequiredDateOnly",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -122,6 +127,7 @@
       "httpMethod": "Get",
       "name": "RequiredDateTime",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -145,6 +151,7 @@
       "httpMethod": "Post",
       "name": "RequiredPostParam",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -168,6 +175,7 @@
       "httpMethod": "Get",
       "name": "RequiredStringArray",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -191,6 +199,7 @@
       "httpMethod": "Get",
       "name": "RequiredStringCollection",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -214,6 +223,7 @@
       "httpMethod": "Get",
       "name": "RequiredValueTypeArray",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -237,6 +247,7 @@
       "httpMethod": "Get",
       "name": "RequiredValueTypeCollection",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -260,6 +271,7 @@
       "httpMethod": "Get",
       "name": "RequiredDateOnlyCollection",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -283,6 +295,7 @@
       "httpMethod": "Get",
       "name": "RequiredDateOnlyArray",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -306,6 +319,7 @@
       "httpMethod": "Get",
       "name": "RequiredDateTimeCollection",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -329,6 +343,7 @@
       "httpMethod": "Get",
       "name": "RequiredDateTimeArray",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -352,6 +367,7 @@
       "httpMethod": "Get",
       "name": "RequiredEnum",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Enums.MyEnum",
       "routeSegments": [
         {
@@ -375,6 +391,7 @@
       "httpMethod": "Get",
       "name": "RequiredEnumArray",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Enums.MyEnum[]",
       "routeSegments": [
         {
@@ -394,5 +411,6 @@
       "isObsolete": false
     }
   ],
-  "isObsolete": false
+  "isObsolete": false,
+  "requiresAuthentication": false
 }

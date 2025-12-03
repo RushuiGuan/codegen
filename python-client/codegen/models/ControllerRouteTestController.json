@@ -7,6 +7,7 @@
       "httpMethod": "Post",
       "name": "Post",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],
@@ -14,5 +15,6 @@
       "isObsolete": false
     }
   ],
-  "isObsolete": false
+  "isObsolete": false,
+  "requiresAuthentication": false
 }

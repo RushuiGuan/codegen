@@ -1,26 +1,29 @@
 # @generated
 
-from httpx import AsyncClient, Auth
+from requests import Session
+from requests.auth import AuthBase
 from typing import Self
 
 class FromHeaderParamTestClient:
-	_client: AsyncClient
-	def __init__(self, base_url: str, auth: Auth | None = None) -> None:
-		base_url = f"{base_url.rstrip('/')}/api/from-header-param-test"
-		self._client = AsyncClient(base_url = base_url, auth = auth)
+	_client: Session
+	_base_url: str
+	def __init__(self, base_url: str, auth: AuthBase | None = None) -> None:
+		self._base_url = f"{base_url.rstrip('/')}/api/from-header-param-test"
+		self._client = Session()
+		self._client.auth = auth
 	
-	async def close(self) -> None:
-		await self._client.aclose()
+	def close(self) -> None:
+		self._client.close()
 	
-	async def __aenter__(self) -> Self:
+	def __enter__(self) -> Self:
 		return self
 	
-	async def __aexit__(self, exc_type, exc_value, traceback) -> None:
-		await self.close()
+	def __exit__(self, exc_type, exc_value, traceback) -> None:
+		self.close()
 	
-	async def omit_from_header_parameters(self) -> None:
-		relative_url = ""
-		response = await self._client.get(relative_url)
+	def omit_from_header_parameters(self) -> None:
+		request_url = f"{self._base_url}/"
+		response = self._client.get(request_url)
 		response.raise_for_status()
 	
 

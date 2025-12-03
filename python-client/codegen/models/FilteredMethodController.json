@@ -7,6 +7,7 @@
       "httpMethod": "Get",
       "name": "FilteredByNone",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -18,5 +19,6 @@
       "isObsolete": false
     }
   ],
-  "isObsolete": false
+  "isObsolete": false,
+  "requiresAuthentication": false
 }

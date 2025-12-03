@@ -1,4 +1,4 @@
-import { MyDto }  from "./dto.generated";
+import { MyDto, MyEnum }  from "./dto.generated";
 import { HttpClient }  from "@angular/common/http";
 import { Injectable }  from "@angular/core";
 import { ConfigService }  from "@mirage/config";
@@ -88,6 +88,16 @@ export class RequiredParamTestService extends WebClient {
 	requiredDateTimeArray(dates: Date[]): Observable<string>  {
 		const relativeUrl = `required-datetime-array`;
 		const result = this.doGetStringAsync(relativeUrl, { dates: dates.map(x => format(x, "yyyy-MM-ddTHH:mm:ssXXX")) });
+		return result;
+	}
+	requiredEnum(value: MyEnum): Observable<MyEnum>  {
+		const relativeUrl = `required-enum`;
+		const result = this.doGetAsync<MyEnum>(relativeUrl, { value });
+		return result;
+	}
+	requiredEnumArray(values: MyEnum[]): Observable<MyEnum[]>  {
+		const relativeUrl = `required-enum-array`;
+		const result = this.doGetAsync<MyEnum[]>(relativeUrl, { values });
 		return result;
 	}
 }
