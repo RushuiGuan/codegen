@@ -1,42 +1,27 @@
 {
-	"$schema": "codegen-settings.schema.json",
-	"typeScriptWebClientSettings": {
-		"nameSpaceModuleMapping": {
-			"Test.Dto.Enums": "enum.generated.ts",
-			"Test.Dto.Classes": "dto.generated.ts"
-		},
-		"controllerMethodFilters": [
-			{
-				"exclude": "FilteredByTypeScript$"
-			}
-		],
-		"endPointName": "test-client",
-		"baseClassModule": "@mirage/webclient",
-		"configServiceModule": "@mirage/config",
-		"usePromise": false
-	},
-	"cSharpWebClientSettings": {
-		"namespace": "Test.WithInterface.Proxy",
-		"controllerMethodFilters": [
-			{
-				"exclude": "FilteredByCSharp$"
-			}
-		],
-		"useInterface": true,
-		"useInternalProxy": false,
-		"constructorSettings": {
-			"OmittedConstructorController": {
-				"omit": true
-			},
-			"CustomJsonSettingsController": {
-				"customJsonSettings": "MyCustomJsonSettings.Instance"
-			}
-		}
-	},
-	"controllerFilter": {
-		"exclude": "^Test\\.WebApi\\.Controllers\\.(AbsUrl)?RedirectTestController$"
-	},
-	"controllerMethodFilters": [
-		{ "exclude": "FilteredByAll$" }
-	]
+  "$schema": "codegen-settings.schema.json",
+  "csharpWebClientSettings": {
+    "namespace": "Test.WithInterface.Proxy",
+    "controllerMethodFilters": [
+      {
+        "exclude": "FilteredByCSharp$"
+      }
+    ],
+    "useInterface": true,
+    "useInternalProxy": false,
+    "constructorSettings": {
+      "OmittedConstructorController": {
+        "omit": true
+      },
+      "CustomJsonSettingsController": {
+        "customJsonSettings": "MyCustomJsonSettings.Instance"
+      }
+    }
+  },
+  "controllerFilter": {
+    "exclude": "^Test\\.WebApi\\.Controllers\\.(AbsUrl)?RedirectTestController$"
+  },
+  "controllerMethodFilters": [
+    { "exclude": "FilteredByAll$" }
+  ]
 }

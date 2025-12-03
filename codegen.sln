@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.8.34316.72
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11222.15 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Albatross.CodeGen", "Albatross.CodeGen\Albatross.CodeGen.csproj", "{6D9866DB-ABDF-4F26-9FC3-49504BCF97A7}"
 EndProject
@@ -40,7 +40,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.CSharp", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.Python", "Albatross.CodeGen.Python\Albatross.CodeGen.Python.csproj", "{58F3F60B-7E8C-4205-8492-73DFF6FB2F60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.SymbolProviders", "Albatross.CodeGen.SymbolProviders\Albatross.CodeGen.SymbolProviders.csproj", "{2F70BEAD-B895-461D-B0D8-449AC751323B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.SymbolProviders", "Albatross.CodeGen.SymbolProviders\Albatross.CodeGen.SymbolProviders.csproj", "{31EB3A43-4F89-9591-AE35-E2BC49D81445}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -196,18 +196,18 @@ Global
 		{58F3F60B-7E8C-4205-8492-73DFF6FB2F60}.Release|arm64.Build.0 = Release|Any CPU
 		{58F3F60B-7E8C-4205-8492-73DFF6FB2F60}.Release|x86.ActiveCfg = Release|Any CPU
 		{58F3F60B-7E8C-4205-8492-73DFF6FB2F60}.Release|x86.Build.0 = Release|Any CPU
-		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Debug|arm64.Build.0 = Debug|Any CPU
-		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Debug|x86.Build.0 = Debug|Any CPU
-		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Release|arm64.ActiveCfg = Release|Any CPU
-		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Release|arm64.Build.0 = Release|Any CPU
-		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Release|x86.ActiveCfg = Release|Any CPU
-		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Release|x86.Build.0 = Release|Any CPU
+		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Debug|arm64.Build.0 = Debug|Any CPU
+		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Debug|x86.Build.0 = Debug|Any CPU
+		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Release|arm64.ActiveCfg = Release|Any CPU
+		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Release|arm64.Build.0 = Release|Any CPU
+		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Release|x86.ActiveCfg = Release|Any CPU
+		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

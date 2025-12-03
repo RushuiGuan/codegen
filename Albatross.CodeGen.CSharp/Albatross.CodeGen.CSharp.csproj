@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net10.0</TargetFramework>
+		<TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
+		<PackageReference Include="Albatross.Collections" Version="8.0.1-37.main" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\icon.png">
@@ -22,9 +23,10 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Albatross.Collections" Version="8.0.0" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Conversions\" />
+		<PackageReference
+			Condition="'$(TargetFramework)' == 'netstandard2.0'"
+			Include="Albatross.CodeAnalysis.Polyfill"
+			Version="8.0.0-42.main"
+			PrivateAssets="All" />
 	</ItemGroup>
 </Project>

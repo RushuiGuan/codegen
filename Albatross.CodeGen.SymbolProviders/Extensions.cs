@@ -4,14 +4,15 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Albatross.CodeGen.SymbolProviders {
 	public static class Extensions {
-		public static INamedTypeSymbol? ActionResultGenericDefinition(this Compilation compilation) {
-			return compilation.GetTypeByMetadataName("Microsoft.AspNetCore.Mvc.ActionResult`1");
+		public static bool TryGetActionResultGenericDefinition(this Compilation compilation, [NotNullWhen(true)] out INamedTypeSymbol? symbol) {
+			symbol = compilation.GetTypeByMetadataName("Microsoft.AspNetCore.Mvc.ActionResult`1");
+			return symbol != null;
 		}
-		
+
 		public static INamedTypeSymbol? IActionResultInterface(this Compilation compilation) {
 			return compilation.GetTypeByMetadataName("Microsoft.AspNetCore.Mvc.IActionResult");
 		}
-		
+
 		public static INamedTypeSymbol? ActionResultClass(this Compilation compilation) {
 			return compilation.GetTypeByMetadataName("Microsoft.AspNetCore.Mvc.ActionResult");
 		}
