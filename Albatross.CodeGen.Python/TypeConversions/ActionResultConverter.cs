@@ -14,11 +14,11 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 		}
 
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {
-			if (compilation.TryGetIActionResult(out var target) && target.Is(symbol)
-			|| compilation.TryGetActionResult(out target) && target.Is(symbol)){
+			if (compilation.IActionResultInterface(out var target) && target.Is(symbol)
+			|| compilation.ActionResultClass(out target) && target.Is(symbol)){
 				expression = Defined.Types.Any;
 				return true;
-			} else if (compilation.TryGetActionResultGenericDefinition(out var definition) &&  symbol.TryGetGenericTypeArguments(definition, out var arguments)) {
+			} else if (compilation.ActionResultGenericDefinition(out var definition) &&  symbol.TryGetGenericTypeArguments(definition, out var arguments)) {
 				expression = factory.Convert(arguments[0]);
 				return true;
 			} else {

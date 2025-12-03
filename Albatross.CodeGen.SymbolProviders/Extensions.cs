@@ -4,19 +4,16 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Albatross.CodeGen.SymbolProviders {
 	public static class Extensions {
-		public static bool TryGetActionResultGenericDefinition(this Compilation compilation, [NotNullWhen(true)] out INamedTypeSymbol? symbol) {
-			symbol = compilation.GetTypeByMetadataName("Microsoft.AspNetCore.Mvc.ActionResult`1");
-			return symbol != null;
+		public static INamedTypeSymbol? ActionResultGenericDefinition(this Compilation compilation) {
+			return compilation.GetTypeByMetadataName("Microsoft.AspNetCore.Mvc.ActionResult`1");
 		}
 		
-		public static bool TryGetIActionResult(this Compilation compilation, [NotNullWhen(true)] out INamedTypeSymbol? symbol) {
-			symbol = compilation.GetTypeByMetadataName("Microsoft.AspNetCore.Mvc.IActionResult");
-			return symbol != null;
+		public static INamedTypeSymbol? IActionResultInterface(this Compilation compilation) {
+			return compilation.GetTypeByMetadataName("Microsoft.AspNetCore.Mvc.IActionResult");
 		}
 		
-		public static bool TryGetActionResult(this Compilation compilation, [NotNullWhen(true)] out INamedTypeSymbol? symbol) {
-			symbol = compilation.GetTypeByMetadataName("Microsoft.AspNetCore.Mvc.ActionResult");
-			return symbol != null;
+		public static INamedTypeSymbol? ActionResultClass(this Compilation compilation) {
+			return compilation.GetTypeByMetadataName("Microsoft.AspNetCore.Mvc.ActionResult");
 		}
 
 		public static INamedTypeSymbol FromBodyAttributeClass(this Compilation compilation)
