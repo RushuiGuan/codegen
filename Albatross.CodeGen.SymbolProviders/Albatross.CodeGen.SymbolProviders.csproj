@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Albatross.CodeAnalysis" Version="8.0.0-35.main" />
+        <PackageReference Include="Albatross.CodeAnalysis" Version="8.0.0-35.main"/>
     </ItemGroup>
 
 </Project>

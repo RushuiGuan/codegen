@@ -10,11 +10,9 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		private readonly Compilation compilation;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 		
-		public ConvertDtoClassPropertyModelToPropertyDeclaration(Compilation compilation) {
-			this.compilation = compilation;
-		}
 
-		public ConvertDtoClassPropertyModelToPropertyDeclaration(IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+		public ConvertDtoClassPropertyModelToPropertyDeclaration(Compilation compilation, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+			this.compilation = compilation;
 			this.typeConverter = typeConverter;
 		}
 

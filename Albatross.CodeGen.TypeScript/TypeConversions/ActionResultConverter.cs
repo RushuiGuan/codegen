@@ -14,11 +14,11 @@ namespace Albatross.CodeGen.TypeScript.TypeConversions {
 		}
 
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {
-			var name = symbol.GetFullName();
-			if (name == "Microsoft.AspNetCore.Mvc.IActionResult" || name == "Microsoft.AspNetCore.Mvc.ActionResult") {
+			if (compilation.TryGetIActionResult(out var target) && target.Is(symbol)
+			|| compilation.TryGetActionResult(out target) && target.Is(symbol)){
 				expression = Defined.Types.Any();
 				return true;
-			} else if (symbol.TryGetGenericTypeArguments(compilation.ActionResultGenericDefinition(), out var arguments)) {
+			} else if (compilation.TryGetActionResultGenericDefinition(out var definition) &&  symbol.TryGetGenericTypeArguments(definition, out var arguments)) {
 				expression = factory.Convert(arguments[0]);
 				return true;
 			} else {
