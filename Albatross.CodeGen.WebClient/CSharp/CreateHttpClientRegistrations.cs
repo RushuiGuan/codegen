@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				using (codeStack.NewScope(new NamespaceDeclarationBuilder(settings.CSharpWebClientSettings.Namespace))) {
 					using (codeStack.NewScope(new ClassDeclarationBuilder("Extensions").Public().Static().Partial())) {
 						using (codeStack.NewScope(new MethodDeclarationBuilder("IHttpClientBuilder", "AddClients").Public().Static())) {
-							codeStack.With(new ParameterNode("IHttpClientBuilder", "builder").WithThis());
+							codeStack.With(new ParameterNode(new TypeNode("IHttpClientBuilder"), "builder").WithThis());
 							using (codeStack.NewScope(new ReturnExpressionBuilder())) {
 								codeStack.With(new IdentifierNode("builder"));
 								foreach (var model in models) {

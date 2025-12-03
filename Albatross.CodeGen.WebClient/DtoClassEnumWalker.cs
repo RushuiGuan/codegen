@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
+using Albatross.CodeGen.SymbolProviders;
 using Albatross.CodeGen.WebClient.Settings;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -25,7 +26,7 @@ namespace Albatross.CodeGen.WebClient {
 			&& !symbol.IsGenericTypeDefinition()
 			&& symbol.TypeKind != TypeKind.Interface
 			&& symbol.TypeKind != TypeKind.Enum
-			&& !symbol.IsDerivedFrom("System.Text.Json.Serialization.JsonConverter");
+			&& !symbol.IsDerivedFrom(this.semanticModel.Compilation.JsonConverterClass());
 
 		public override void VisitClassDeclaration(ClassDeclarationSyntax node) {
 			var symbol = semanticModel.GetDeclaredSymbol(node);

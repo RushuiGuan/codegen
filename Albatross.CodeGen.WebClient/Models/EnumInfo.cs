@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace Albatross.CodeGen.WebClient.Models {
 	public record class EnumInfo {
-		public EnumInfo(INamedTypeSymbol symbol) {
+		public EnumInfo(Compilation compilation, INamedTypeSymbol symbol) {
 			this.Name = symbol.Name;
 			this.UseTextAsValue = false;
-			if (symbol.TryGetAttribute(My.JsonConverterAttribute_ClassName, out var attributeData)) {
+			if (symbol.TryGetAttribute(compilation.JsonConverterAttribute(), out var attributeData)) {
 				if ((attributeData?.ConstructorArguments.FirstOrDefault().Value as ITypeSymbol)?.GetFullName() == My.JsonStringEnumConverter_ClassName) {
 					this.UseTextAsValue = true;
 				}

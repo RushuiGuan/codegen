@@ -6,11 +6,16 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Albatross.CodeGen.Python.TypeConversions {
 	public class NullableTypeConverter : ITypeConverter {
+		private readonly Compilation compilation;
 		public int Precedence => 80;
+		public NullableTypeConverter(Compilation compilation) {
+			this.compilation = compilation;
+		}
+
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {
 			ITypeExpression? typeExpression = null;
-			if (symbol.TryGetNullableValueType(out var valueType)) {
-				typeExpression = factory.Convert(valueType!);
+			if (symbol.TryGetNullableValueType(compilation, out var valueType)) {
+				typeExpression = factory.Convert(valueType);
 			} else if (symbol.IsNullableReferenceType()) {
 				// strip nullable annotation
 				typeExpression = factory.Convert(symbol.WithNullableAnnotation(NullableAnnotation.None));

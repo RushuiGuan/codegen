@@ -18,10 +18,12 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		public const string ControllerPostfix = "Controller";
 		public const string ControllerNamePlaceholder = "[controller]";
 		private readonly TypeScriptWebClientSettings settings;
+		private readonly Compilation compilation;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertControllerModelToTypeScriptFile(CodeGenSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+		public ConvertControllerModelToTypeScriptFile(Compilation compilation, CodeGenSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
 			this.settings = settings.TypeScriptWebClientSettings;
+			this.compilation = compilation;
 			this.typeConverter = typeConverter;
 		}
 
@@ -163,7 +165,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		/// </summary>
 		JsonPropertyExpression BuildQueryStringParameter(ParameterInfo parameter) {
 			IExpression value;
-			if (parameter.Type.TryGetCollectionElementType(out var elementType) && IsDate(elementType!)) {
+			if (parameter.Type.TryGetCollectionElementType(compilation, out var elementType) && IsDate(elementType!)) {
 				value = new InvocationExpression {
 					Identifier = new MultiPartIdentifierNameExpression(parameter.Name.CamelCase(), "map"),
 					ArgumentList = new ListOfSyntaxNodes<IExpression>(

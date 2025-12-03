@@ -6,12 +6,18 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Albatross.CodeGen.TypeScript.TypeConversions {
 	public class ArrayTypeConverter : ITypeConverter {
+		private readonly Compilation compilation;
+
+		public ArrayTypeConverter(Compilation compilation) {
+			this.compilation = compilation;
+		}
+
 		public int Precedence => 80;
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {
 			ITypeExpression typeExpression;
-			if (symbol.TryGetCollectionElementType(out var elementType)) {
+			if (symbol.TryGetCollectionElementType(compilation, out var elementType)) {
 				typeExpression = factory.Convert(elementType!);
-			} else if (symbol.IsCollection()) {
+			} else if (symbol.IsCollection(compilation)) {
 				typeExpression = Defined.Types.Any();
 			} else {
 				expression = null;

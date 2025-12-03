@@ -7,7 +7,12 @@ using Microsoft.CodeAnalysis;
 
 namespace Albatross.CodeGen.WebClient.TypeScript {
 	public class ConvertDtoClassPropertyModelToPropertyDeclaration : IConvertObject<DtoClassPropertyInfo, PropertyDeclaration> {
+		private readonly Compilation compilation;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
+		
+		public ConvertDtoClassPropertyModelToPropertyDeclaration(Compilation compilation) {
+			this.compilation = compilation;
+		}
 
 		public ConvertDtoClassPropertyModelToPropertyDeclaration(IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
 			this.typeConverter = typeConverter;
@@ -16,7 +21,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		public PropertyDeclaration Convert(DtoClassPropertyInfo from) {
 			return new PropertyDeclaration(from.Name.CamelCase()) {
 				Type = typeConverter.Convert(from.PropertyType),
-				Optional = from.PropertyType.IsNullable(),
+				Optional = from.PropertyType.IsNullable(compilation),
 			};
 		}
 

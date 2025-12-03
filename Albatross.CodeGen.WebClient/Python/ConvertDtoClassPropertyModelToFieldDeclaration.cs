@@ -11,10 +11,12 @@ using Albatross.CodeAnalysis.Symbols;
 
 namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertDtoClassPropertyModelToFieldDeclaration : IConvertObject<DtoClassPropertyInfo, FieldDeclaration> {
+		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertDtoClassPropertyModelToFieldDeclaration(CodeGenSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+		public ConvertDtoClassPropertyModelToFieldDeclaration(Compilation compilation, CodeGenSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+			this.compilation = compilation;
 			this.settings = settings;
 			this.typeConverter = typeConverter;
 		}
@@ -40,12 +42,12 @@ namespace Albatross.CodeGen.WebClient.Python {
 
 		IExpression GetDefaultExpression(DtoClassPropertyInfo from) {
 			var builder = new ScopedVariableExpressionBuilder();
-			if (from.PropertyType.IsCollection()) {
+			if (from.PropertyType.IsCollection(compilation)) {
 				builder.WithName("default_factory");
 				builder.WithExpression(Defined.Identifiers.List);
 			} else {
 				builder.WithName("default");
-				if (from.PropertyType.IsNullable()) {
+				if (from.PropertyType.IsNullable(compilation)) {
 					builder.WithExpression(new NoneLiteralExpression());
 				} else if (from.PropertyType.SpecialType == SpecialType.System_Boolean) {
 					builder.WithExpression(new BooleanLiteralExpression(false));

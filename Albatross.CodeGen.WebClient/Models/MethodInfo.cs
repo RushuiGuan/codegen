@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 			var routeSegments = symbol.GetRouteText().GetRouteSegments().ToArray();
 			this.HttpMethod = GetHttpMethod(symbol);
 			foreach (var parameter in symbol.Parameters) {
-				var paramInfo = new ParameterInfo(parameter, routeSegments);
+				var paramInfo = new ParameterInfo(compilation, parameter, routeSegments);
 				if (paramInfo.TypeText == "System.Threading.CancellationToken") {
 					this.CanCancel = true;
 				} else if (!paramInfo.Skip) {

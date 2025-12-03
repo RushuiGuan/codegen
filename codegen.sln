@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.CSharp", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.Python", "Albatross.CodeGen.Python\Albatross.CodeGen.Python.csproj", "{58F3F60B-7E8C-4205-8492-73DFF6FB2F60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.SymbolProviders", "Albatross.CodeGen.SymbolProviders\Albatross.CodeGen.SymbolProviders.csproj", "{2F70BEAD-B895-461D-B0D8-449AC751323B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -194,6 +196,18 @@ Global
 		{58F3F60B-7E8C-4205-8492-73DFF6FB2F60}.Release|arm64.Build.0 = Release|Any CPU
 		{58F3F60B-7E8C-4205-8492-73DFF6FB2F60}.Release|x86.ActiveCfg = Release|Any CPU
 		{58F3F60B-7E8C-4205-8492-73DFF6FB2F60}.Release|x86.Build.0 = Release|Any CPU
+		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Debug|arm64.Build.0 = Debug|Any CPU
+		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Debug|x86.Build.0 = Debug|Any CPU
+		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Release|arm64.ActiveCfg = Release|Any CPU
+		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Release|arm64.Build.0 = Release|Any CPU
+		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Release|x86.ActiveCfg = Release|Any CPU
+		{2F70BEAD-B895-461D-B0D8-449AC751323B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

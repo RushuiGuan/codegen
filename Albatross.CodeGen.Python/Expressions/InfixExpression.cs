@@ -2,7 +2,6 @@
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
 	public class InfixExpression : IExpression {

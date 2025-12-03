@@ -15,10 +15,12 @@ using System.Linq;
 namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertControllerModelToPythonFile : IConvertObject<ControllerInfo, PythonFileDeclaration> {
 		private readonly PythonWebClientSettings settings;
+		private readonly Compilation compilation;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertControllerModelToPythonFile(CodeGenSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+		public ConvertControllerModelToPythonFile(Compilation compilation, CodeGenSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
 			this.settings = settings.PythonWebClientSettings;
+			this.compilation = compilation;
 			this.typeConverter = typeConverter;
 		}
 
@@ -190,7 +192,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				return new NoOpExpression();
 			}
 			ExpressionBuilder builder = new CompositeExpressionBuilder();
-			if (method.ReturnType.IsNullable()) {
+			if (method.ReturnType.IsNullable(compilation)) {
 				builder.Add(() => new IfElseCodeBlockExpression {
 					Condition = new ConditionExpression("==") {
 						Left = new MultiPartIdentifierNameExpression("response", "status_code"),
@@ -287,7 +289,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 					TrueExpression = new IdentifierNameExpression(variableName),
 					FalseExpression = new StringLiteralExpression("")
 				};
-			} else if (parameterType.TryGetNullableValueType(out var valueType)) {
+			} else if (parameterType.TryGetNullableValueType(compilation, out var valueType)) {
 				if (IsDate(valueType!, out isDateTime)) {
 					return new TernaryExpression {
 						LineBreak = true,
@@ -319,7 +321,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 						};
 					}
 				}
-			} else if (parameterType.TryGetCollectionElementType(out var elementType) && (IsDate(elementType!, out _) || IsEnum(elementType!) || elementType!.IsNullable())) {
+			} else if (parameterType.TryGetCollectionElementType(compilation, out var elementType) && (IsDate(elementType!, out _) || IsEnum(elementType!) || elementType!.IsNullable(compilation))) {
 				return new ListComprehensionExpression {
 					LineBreak = true,
 					VariableName = "x",
@@ -375,7 +377,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 						Identifier = new IdentifierNameExpression("headers"),
 						Assignment = new DictionaryExpression(new KeyValuePairExpression("Content-Type", "text/plain"))
 					});
-					if (fromBodyParameter.Type.IsNullable()) {
+					if (fromBodyParameter.Type.IsNullable(compilation)) {
 						builder.AddArgument(new ScopedVariableExpression {
 							Identifier = settings.Async ? new IdentifierNameExpression("content") : new IdentifierNameExpression("data"),
 							Assignment = new TernaryExpression {

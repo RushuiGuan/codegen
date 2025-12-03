@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
+using Albatross.CodeGen.SymbolProviders;
 using Albatross.Collections;
 using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 
 namespace Albatross.CodeGen.WebClient.Models {
 	public record class DtoClassInfo {
-		public DtoClassInfo(INamedTypeSymbol symbol, IJsonDerivedTypeIndex index) {
+		public DtoClassInfo(Compilation compilation, INamedTypeSymbol symbol, IJsonDerivedTypeIndex index) {
 			this.Name = symbol.Name;
 			this.FullName = symbol.GetFullName();
 			var properties = new Dictionary<string, DtoClassPropertyInfo>();
@@ -21,7 +22,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 					.Select(x => new DtoClassPropertyInfo(x))) {
 
 					// [JsonIgnore(Condition = JsonIgnoreCondition.Always)]
-					if (item.Symbol.TryGetAttribute("System.Text.Json.Serialization.JsonIgnoreAttribute", out var attribute)) {
+					if (item.Symbol.TryGetAttribute(compilation.JsonIgnoreAttribute(), out var attribute)) {
 						if (!attribute!.TryGetNamedArgument("Condition", out var conditionValue) || System.Convert.ToInt32(conditionValue.Value) == (int)System.Text.Json.Serialization.JsonIgnoreCondition.Always) {
 							continue;
 						}

@@ -1,5 +1,4 @@
-﻿using Albatross.CodeAnalysis.MSBuild;
-using Albatross.CodeAnalysis.Symbols;
+﻿using Albatross.CodeAnalysis.Symbols;
 using Albatross.CodeGen.WebClient;
 using Albatross.CodeGen.WebClient.CSharp;
 using Albatross.CodeGen.WebClient.Models;
@@ -53,7 +52,7 @@ namespace Albatross.CodeGen.CommandLine {
 					models.Add(webApi);
 					var codeStack = this.converToCSharpCodeStack.Convert(webApi);
 
-					var text = codeStack.BuildWithFormat();
+					var text = codeStack.Build();
 					this.writer.WriteLine(text);
 					if (options.OutputDirectory != null) {
 						using (var writer = new System.IO.StreamWriter(System.IO.Path.Join(options.OutputDirectory.FullName, codeStack.FileName ?? "generated.cs"))) {
@@ -67,7 +66,7 @@ namespace Albatross.CodeGen.CommandLine {
 		}
 		void BuildRegistrationMethod(IEnumerable<ControllerInfo> models) {
 			var registrationCodeStack = this.createHttpClientRegistrations.Generate(models);
-			var text = registrationCodeStack.BuildWithFormat();
+			var text = registrationCodeStack.Build();
 			System.Console.WriteLine(text);
 			if (options.OutputDirectory != null) {
 				using (var writer = new System.IO.StreamWriter(System.IO.Path.Join(options.OutputDirectory.FullName, registrationCodeStack.FileName ?? "Extensions.generated.cs"))) {

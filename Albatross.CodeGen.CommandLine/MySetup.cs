@@ -1,7 +1,4 @@
-﻿using Albatross.CodeAnalysis.MSBuild;
-using Albatross.CodeAnalysis.Symbols;
-using Albatross.CodeGen.Python;
-using Albatross.CodeGen.Syntax;
+﻿using Albatross.CodeGen.Python;
 using Albatross.CodeGen.TypeScript;
 using Albatross.CodeGen.WebClient;
 using Albatross.CodeGen.WebClient.Settings;
@@ -9,13 +6,13 @@ using Albatross.CommandLine;
 using Albatross.Config;
 using Albatross.Logging;
 using Albatross.Serialization.Json;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.MSBuild;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System;
 using System.CommandLine.Invocation;
-using System.Net.Security;
 using System.Text.Json;
 
 namespace Albatross.CodeGen.CommandLine {
@@ -34,18 +31,17 @@ namespace Albatross.CodeGen.CommandLine {
 			} else if (context.ParseResult.CommandResult.Parent?.Symbol.Name == "csharp") {
 				services.AddCSharpWebClientCodeGen();
 			}
-			services.AddScoped(provider => MSBuildWorkspace.Create());
-			services.AddScoped<ICurrentProject>(provider => {
+			services.AddScoped<Compilation>(provider => {
 				var options = provider.GetRequiredService<IOptions<CodeGenCommandOptions>>().Value;
 				if (options.ProjectFile.Exists) {
-					return new CurrentProject(options.ProjectFile.FullName);
+					var workspace = MSBuildWorkspace.Create();
+					var project = workspace.OpenProjectAsync(options.ProjectFile.FullName).Result;
+					var compilation = project.GetCompilationAsync().Result;
+					return compilation;
 				} else {
 					throw new InvalidOperationException($"File {options.ProjectFile.Name} doesn't exist");
 				}
 			});
-			services.AddScoped<ICompilationFactory, MSBuildProjectCompilationFactory>();
-			services.AddScoped(provider => provider.GetRequiredService<ICompilationFactory>().Workspace);
-			services.AddScoped(provider => provider.GetRequiredService<ICompilationFactory>().Create());
 			services.AddShortenLoggerName(false, "Albatross");
 			services.AddSingleton(provider => {
 				var options = provider.GetRequiredService<IOptions<CodeGenCommandOptions>>().Value;
