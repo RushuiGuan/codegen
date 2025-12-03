@@ -1,468 +1,682 @@
 [
   {
     "name": "DerivedClass",
+    "fullName": "Test.Dto.Classes.DerivedClass",
     "properties": [
       {
         "name": "Name",
-        "propertyTypeName": "System.String"
+        "propertyTypeName": "System.String",
+        "classFullName": "Test.Dto.Classes.DerivedClass",
+        "fullName": "Test.Dto.Classes.DerivedClass.Name"
       },
       {
         "name": "Value",
-        "propertyTypeName": "System.Int32"
+        "propertyTypeName": "System.Int32",
+        "classFullName": "Test.Dto.Classes.AbstractClass",
+        "fullName": "Test.Dto.Classes.AbstractClass.Value"
       }
     ],
     "baseTypes": [
       "Test.Dto.Classes.AbstractClass"
-    ]
+    ],
+    "typeDiscriminator": null
   },
   {
     "name": "ArrayValueType",
+    "fullName": "Test.Dto.Classes.ArrayValueType",
     "properties": [
       {
         "name": "IntArray",
-        "propertyTypeName": "System.Int32[]"
+        "propertyTypeName": "System.Int32[]",
+        "classFullName": "Test.Dto.Classes.ArrayValueType",
+        "fullName": "Test.Dto.Classes.ArrayValueType.IntArray"
       },
       {
         "name": "NullableIntArray",
-        "propertyTypeName": "System.Nullable\u003CSystem.Int32\u003E[]"
+        "propertyTypeName": "System.Nullable\u003CSystem.Int32\u003E[]",
+        "classFullName": "Test.Dto.Classes.ArrayValueType",
+        "fullName": "Test.Dto.Classes.ArrayValueType.NullableIntArray"
       }
     ],
     "baseTypes": [
       "System.IEquatable\u003CTest.Dto.Classes.ArrayValueType\u003E"
-    ]
+    ],
+    "typeDiscriminator": null
   },
   {
     "name": "BaseType",
+    "fullName": "Test.Dto.Classes.BaseType",
     "properties": [
       {
         "name": "Id",
-        "propertyTypeName": "System.Int32"
+        "propertyTypeName": "System.Int32",
+        "classFullName": "Test.Dto.Classes.BaseType",
+        "fullName": "Test.Dto.Classes.BaseType.Id"
       }
     ],
-    "baseTypes": []
+    "baseTypes": [],
+    "typeDiscriminator": null
   },
   {
     "name": "Command1",
+    "fullName": "Test.Dto.Classes.Command1",
     "properties": [
       {
         "name": "Name",
-        "propertyTypeName": "System.String"
+        "propertyTypeName": "System.String",
+        "classFullName": "Test.Dto.Classes.Command1",
+        "fullName": "Test.Dto.Classes.Command1.Name"
       }
     ],
     "baseTypes": [
       "Test.Dto.Classes.ICommand"
-    ]
+    ],
+    "typeDiscriminator": null
   },
   {
     "name": "Command2",
+    "fullName": "Test.Dto.Classes.Command2",
     "properties": [
       {
         "name": "Name",
-        "propertyTypeName": "System.String"
+        "propertyTypeName": "System.String",
+        "classFullName": "Test.Dto.Classes.Command2",
+        "fullName": "Test.Dto.Classes.Command2.Name"
       }
     ],
     "baseTypes": [
       "Test.Dto.Classes.IEmptyInterface"
-    ]
+    ],
+    "typeDiscriminator": null
   },
   {
     "name": "CollectionValueType",
+    "fullName": "Test.Dto.Classes.CollectionValueType",
     "properties": [
       {
         "name": "IntCollection",
-        "propertyTypeName": "System.Collections.Generic.IEnumerable\u003CSystem.Int32\u003E"
+        "propertyTypeName": "System.Collections.Generic.IEnumerable\u003CSystem.Int32\u003E",
+        "classFullName": "Test.Dto.Classes.CollectionValueType",
+        "fullName": "Test.Dto.Classes.CollectionValueType.IntCollection"
       },
       {
         "name": "NullableIntCollection",
-        "propertyTypeName": "System.Collections.Generic.IEnumerable\u003CSystem.Nullable\u003CSystem.Int32\u003E\u003E"
+        "propertyTypeName": "System.Collections.Generic.IEnumerable\u003CSystem.Nullable\u003CSystem.Int32\u003E\u003E",
+        "classFullName": "Test.Dto.Classes.CollectionValueType",
+        "fullName": "Test.Dto.Classes.CollectionValueType.NullableIntCollection"
       }
     ],
     "baseTypes": [
       "System.IEquatable\u003CTest.Dto.Classes.CollectionValueType\u003E"
-    ]
+    ],
+    "typeDiscriminator": null
   },
   {
     "name": "MyClassWithBaseType",
+    "fullName": "Test.Dto.Classes.MyClassWithBaseType",
     "properties": [
       {
         "name": "Id",
-        "propertyTypeName": "System.Int32"
+        "propertyTypeName": "System.Int32",
+        "classFullName": "Test.Dto.Classes.BaseType",
+        "fullName": "Test.Dto.Classes.BaseType.Id"
       }
     ],
     "baseTypes": [
       "Test.Dto.Classes.BaseType"
-    ]
+    ],
+    "typeDiscriminator": null
   },
   {
     "name": "MyClassWithGenericBaseType",
+    "fullName": "Test.Dto.Classes.MyClassWithGenericBaseType",
     "properties": [
       {
         "name": "Value",
-        "propertyTypeName": "System.String"
+        "propertyTypeName": "System.String",
+        "classFullName": "Test.Dto.Classes.GenericBaseType\u003CSystem.String\u003E",
+        "fullName": "Test.Dto.Classes.GenericBaseType\u003CSystem.String\u003E.Value"
       },
       {
         "name": "Name",
-        "propertyTypeName": "System.String"
+        "propertyTypeName": "System.String",
+        "classFullName": "Test.Dto.Classes.GenericBaseType\u003CSystem.String\u003E",
+        "fullName": "Test.Dto.Classes.GenericBaseType\u003CSystem.String\u003E.Name"
       }
     ],
     "baseTypes": [
       "Test.Dto.Classes.GenericBaseType\u003CSystem.String\u003E"
-    ]
+    ],
+    "typeDiscriminator": null
   },
   {
     "name": "MyDto",
+    "fullName": "Test.Dto.Classes.MyDto",
     "properties": [
       {
         "name": "Name",
-        "propertyTypeName": "System.String"
+        "propertyTypeName": "System.String",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.Name"
       },
       {
         "name": "StringLongName",
-        "propertyTypeName": "System.String"
+        "propertyTypeName": "System.String",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.StringLongName"
       },
       {
         "name": "ByteArray",
-        "propertyTypeName": "System.Byte[]"
+        "propertyTypeName": "System.Byte[]",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.ByteArray"
       },
       {
         "name": "IntValue",
-        "propertyTypeName": "System.Int32"
+        "propertyTypeName": "System.Int32",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.IntValue"
       },
       {
         "name": "LongValue",
-        "propertyTypeName": "System.Int64"
+        "propertyTypeName": "System.Int64",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.LongValue"
       },
       {
         "name": "DoubleValue",
-        "propertyTypeName": "System.Double"
+        "propertyTypeName": "System.Double",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.DoubleValue"
       },
       {
         "name": "DecimalValue",
-        "propertyTypeName": "System.Decimal"
+        "propertyTypeName": "System.Decimal",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.DecimalValue"
       },
       {
         "name": "DecimalLongName",
-        "propertyTypeName": "System.Decimal"
+        "propertyTypeName": "System.Decimal",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.DecimalLongName"
       },
       {
         "name": "FloatValue",
-        "propertyTypeName": "System.Single"
+        "propertyTypeName": "System.Single",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.FloatValue"
       },
       {
         "name": "BoolValue",
-        "propertyTypeName": "System.Boolean"
+        "propertyTypeName": "System.Boolean",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.BoolValue"
       },
       {
         "name": "CharValue",
-        "propertyTypeName": "System.Char"
+        "propertyTypeName": "System.Char",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.CharValue"
       },
       {
         "name": "CharArray",
-        "propertyTypeName": "System.Char[]"
+        "propertyTypeName": "System.Char[]",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.CharArray"
       },
       {
         "name": "ShortValue",
-        "propertyTypeName": "System.Int16"
+        "propertyTypeName": "System.Int16",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.ShortValue"
       },
       {
         "name": "UShortValue",
-        "propertyTypeName": "System.UInt16"
+        "propertyTypeName": "System.UInt16",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.UShortValue"
       },
       {
         "name": "UIntValue",
-        "propertyTypeName": "System.UInt32"
+        "propertyTypeName": "System.UInt32",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.UIntValue"
       },
       {
         "name": "ULongValue",
-        "propertyTypeName": "System.UInt64"
+        "propertyTypeName": "System.UInt64",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.ULongValue"
       },
       {
         "name": "SByteValue",
-        "propertyTypeName": "System.SByte"
+        "propertyTypeName": "System.SByte",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.SByteValue"
       },
       {
         "name": "ByteValue",
-        "propertyTypeName": "System.Byte"
+        "propertyTypeName": "System.Byte",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.ByteValue"
       },
       {
         "name": "DateValue",
-        "propertyTypeName": "System.DateTime"
+        "propertyTypeName": "System.DateTime",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.DateValue"
       },
       {
         "name": "DateTimeValue",
-        "propertyTypeName": "System.DateTime"
+        "propertyTypeName": "System.DateTime",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.DateTimeValue"
       },
       {
         "name": "DateOnlyValue",
-        "propertyTypeName": "System.DateOnly"
+        "propertyTypeName": "System.DateOnly",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.DateOnlyValue"
       },
       {
         "name": "DateTimeOffsetValue",
-        "propertyTypeName": "System.DateTimeOffset"
+        "propertyTypeName": "System.DateTimeOffset",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.DateTimeOffsetValue"
       },
       {
         "name": "TimeSpanValue",
-        "propertyTypeName": "System.TimeSpan"
+        "propertyTypeName": "System.TimeSpan",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.TimeSpanValue"
       },
       {
         "name": "TimeOnlyValue",
-        "propertyTypeName": "System.TimeOnly"
+        "propertyTypeName": "System.TimeOnly",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.TimeOnlyValue"
       },
       {
         "name": "NullableIntValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.Int32\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.Int32\u003E",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.NullableIntValue"
       },
       {
         "name": "NullableIntGeneric",
-        "propertyTypeName": "System.Collections.Generic.IEnumerable\u003CSystem.Nullable\u003CSystem.Int32\u003E\u003E"
+        "propertyTypeName": "System.Collections.Generic.IEnumerable\u003CSystem.Nullable\u003CSystem.Int32\u003E\u003E",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.NullableIntGeneric"
       },
       {
         "name": "NullableStringValue",
-        "propertyTypeName": "System.String"
+        "propertyTypeName": "System.String",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.NullableStringValue"
       },
       {
         "name": "NullableStringArray",
-        "propertyTypeName": "System.String[]"
+        "propertyTypeName": "System.String[]",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.NullableStringArray"
       },
       {
         "name": "GuidValue",
-        "propertyTypeName": "System.Guid"
+        "propertyTypeName": "System.Guid",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.GuidValue"
       },
       {
         "name": "EnumValue",
-        "propertyTypeName": "Test.Dto.Enums.MyEnum"
+        "propertyTypeName": "Test.Dto.Enums.MyEnum",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.EnumValue"
       },
       {
         "name": "StringEnumValue",
-        "propertyTypeName": "Test.Dto.Enums.MyStringEnum"
+        "propertyTypeName": "Test.Dto.Enums.MyStringEnum",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.StringEnumValue"
       },
       {
         "name": "IntArray",
-        "propertyTypeName": "System.Int32[]"
+        "propertyTypeName": "System.Int32[]",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.IntArray"
       },
       {
         "name": "Enumerable",
-        "propertyTypeName": "System.Collections.IEnumerable"
+        "propertyTypeName": "System.Collections.IEnumerable",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.Enumerable"
       },
       {
         "name": "GenericIntEnumerable",
-        "propertyTypeName": "System.Collections.Generic.IEnumerable\u003CSystem.Int32\u003E"
+        "propertyTypeName": "System.Collections.Generic.IEnumerable\u003CSystem.Int32\u003E",
+        "classFullName": "Test.Dto.Classes.MyDto",
+        "fullName": "Test.Dto.Classes.MyDto.GenericIntEnumerable"
       }
     ],
-    "baseTypes": []
+    "baseTypes": [],
+    "typeDiscriminator": null
   },
   {
     "name": "ReferenceType",
+    "fullName": "Test.Dto.Classes.ReferenceType",
     "properties": [
       {
         "name": "StringValue",
-        "propertyTypeName": "System.String"
+        "propertyTypeName": "System.String",
+        "classFullName": "Test.Dto.Classes.ReferenceType",
+        "fullName": "Test.Dto.Classes.ReferenceType.StringValue"
       },
       {
         "name": "ObjectValue",
-        "propertyTypeName": "System.Object"
+        "propertyTypeName": "System.Object",
+        "classFullName": "Test.Dto.Classes.ReferenceType",
+        "fullName": "Test.Dto.Classes.ReferenceType.ObjectValue"
       },
       {
         "name": "MyClass",
-        "propertyTypeName": "Test.Dto.Classes.MyClassWithGenericBaseType"
+        "propertyTypeName": "Test.Dto.Classes.MyClassWithGenericBaseType",
+        "classFullName": "Test.Dto.Classes.ReferenceType",
+        "fullName": "Test.Dto.Classes.ReferenceType.MyClass"
       },
       {
         "name": "NullableString",
-        "propertyTypeName": "System.String"
+        "propertyTypeName": "System.String",
+        "classFullName": "Test.Dto.Classes.ReferenceType",
+        "fullName": "Test.Dto.Classes.ReferenceType.NullableString"
       },
       {
         "name": "NullableMyClass",
-        "propertyTypeName": "Test.Dto.Classes.MyClassWithGenericBaseType"
+        "propertyTypeName": "Test.Dto.Classes.MyClassWithGenericBaseType",
+        "classFullName": "Test.Dto.Classes.ReferenceType",
+        "fullName": "Test.Dto.Classes.ReferenceType.NullableMyClass"
       },
       {
         "name": "NullableObject",
-        "propertyTypeName": "System.Object"
+        "propertyTypeName": "System.Object",
+        "classFullName": "Test.Dto.Classes.ReferenceType",
+        "fullName": "Test.Dto.Classes.ReferenceType.NullableObject"
       }
     ],
-    "baseTypes": []
+    "baseTypes": [],
+    "typeDiscriminator": null
   },
   {
     "name": "ValueType",
+    "fullName": "Test.Dto.Classes.ValueType",
     "properties": [
       {
         "name": "IntValue",
-        "propertyTypeName": "System.Int32"
+        "propertyTypeName": "System.Int32",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.IntValue"
       },
       {
         "name": "LongValue",
-        "propertyTypeName": "System.Int64"
+        "propertyTypeName": "System.Int64",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.LongValue"
       },
       {
         "name": "DoubleValue",
-        "propertyTypeName": "System.Double"
+        "propertyTypeName": "System.Double",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.DoubleValue"
       },
       {
         "name": "DecimalValue",
-        "propertyTypeName": "System.Decimal"
+        "propertyTypeName": "System.Decimal",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.DecimalValue"
       },
       {
         "name": "FloatValue",
-        "propertyTypeName": "System.Single"
+        "propertyTypeName": "System.Single",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.FloatValue"
       },
       {
         "name": "BoolValue",
-        "propertyTypeName": "System.Boolean"
+        "propertyTypeName": "System.Boolean",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.BoolValue"
       },
       {
         "name": "CharValue",
-        "propertyTypeName": "System.Char"
+        "propertyTypeName": "System.Char",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.CharValue"
       },
       {
         "name": "ShortValue",
-        "propertyTypeName": "System.Int16"
+        "propertyTypeName": "System.Int16",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.ShortValue"
       },
       {
         "name": "UShortValue",
-        "propertyTypeName": "System.UInt16"
+        "propertyTypeName": "System.UInt16",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.UShortValue"
       },
       {
         "name": "UIntValue",
-        "propertyTypeName": "System.UInt32"
+        "propertyTypeName": "System.UInt32",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.UIntValue"
       },
       {
         "name": "ULongValue",
-        "propertyTypeName": "System.UInt64"
+        "propertyTypeName": "System.UInt64",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.ULongValue"
       },
       {
         "name": "SByteValue",
-        "propertyTypeName": "System.SByte"
+        "propertyTypeName": "System.SByte",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.SByteValue"
       },
       {
         "name": "ByteValue",
-        "propertyTypeName": "System.Byte"
+        "propertyTypeName": "System.Byte",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.ByteValue"
       },
       {
         "name": "DateTimeValue",
-        "propertyTypeName": "System.DateTime"
+        "propertyTypeName": "System.DateTime",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.DateTimeValue"
       },
       {
         "name": "DateOnlyValue",
-        "propertyTypeName": "System.DateOnly"
+        "propertyTypeName": "System.DateOnly",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.DateOnlyValue"
       },
       {
         "name": "DateTimeOffsetValue",
-        "propertyTypeName": "System.DateTimeOffset"
+        "propertyTypeName": "System.DateTimeOffset",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.DateTimeOffsetValue"
       },
       {
         "name": "TimeSpanValue",
-        "propertyTypeName": "System.TimeSpan"
+        "propertyTypeName": "System.TimeSpan",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.TimeSpanValue"
       },
       {
         "name": "TimeOnlyValue",
-        "propertyTypeName": "System.TimeOnly"
+        "propertyTypeName": "System.TimeOnly",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.TimeOnlyValue"
       },
       {
         "name": "GuidValue",
-        "propertyTypeName": "System.Guid"
+        "propertyTypeName": "System.Guid",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.GuidValue"
       },
       {
         "name": "EnumValue",
-        "propertyTypeName": "Test.Dto.Enums.MyEnum"
+        "propertyTypeName": "Test.Dto.Enums.MyEnum",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.EnumValue"
       },
       {
         "name": "StringEnumValue",
-        "propertyTypeName": "Test.Dto.Enums.MyStringEnum"
+        "propertyTypeName": "Test.Dto.Enums.MyStringEnum",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.StringEnumValue"
       },
       {
         "name": "JsonElementValue",
-        "propertyTypeName": "System.Text.Json.JsonElement"
+        "propertyTypeName": "System.Text.Json.JsonElement",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.JsonElementValue"
       },
       {
         "name": "NullableIntValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.Int32\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.Int32\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableIntValue"
       },
       {
         "name": "NullableLongValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.Int64\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.Int64\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableLongValue"
       },
       {
         "name": "NullableDoubleValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.Double\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.Double\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableDoubleValue"
       },
       {
         "name": "NullableDecimalValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.Decimal\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.Decimal\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableDecimalValue"
       },
       {
         "name": "NullableFloatValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.Single\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.Single\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableFloatValue"
       },
       {
         "name": "NullableBoolValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.Boolean\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.Boolean\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableBoolValue"
       },
       {
         "name": "NullableCharValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.Char\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.Char\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableCharValue"
       },
       {
         "name": "NullableShortValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.Int16\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.Int16\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableShortValue"
       },
       {
         "name": "NullableUShortValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.UInt16\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.UInt16\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableUShortValue"
       },
       {
         "name": "NullableUIntValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.UInt32\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.UInt32\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableUIntValue"
       },
       {
         "name": "NullableULongValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.UInt64\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.UInt64\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableULongValue"
       },
       {
         "name": "NullableSByteValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.SByte\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.SByte\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableSByteValue"
       },
       {
         "name": "NullableByteValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.Byte\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.Byte\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableByteValue"
       },
       {
         "name": "NullableDateTimeValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.DateTime\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.DateTime\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableDateTimeValue"
       },
       {
         "name": "NullableDateOnlyValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.DateOnly\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.DateOnly\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableDateOnlyValue"
       },
       {
         "name": "NullableDateTimeOffsetValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.DateTimeOffset\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.DateTimeOffset\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableDateTimeOffsetValue"
       },
       {
         "name": "NullableTimeSpanValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.TimeSpan\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.TimeSpan\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableTimeSpanValue"
       },
       {
         "name": "NullableTimeOnlyValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.TimeOnly\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.TimeOnly\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableTimeOnlyValue"
       },
       {
         "name": "NullableGuidValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.Guid\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.Guid\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableGuidValue"
       },
       {
         "name": "NullableEnumValue",
-        "propertyTypeName": "System.Nullable\u003CTest.Dto.Enums.MyEnum\u003E"
+        "propertyTypeName": "System.Nullable\u003CTest.Dto.Enums.MyEnum\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableEnumValue"
       },
       {
         "name": "NullableStringEnumValue",
-        "propertyTypeName": "System.Nullable\u003CTest.Dto.Enums.MyStringEnum\u003E"
+        "propertyTypeName": "System.Nullable\u003CTest.Dto.Enums.MyStringEnum\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableStringEnumValue"
       },
       {
         "name": "NullableJsonElementValue",
-        "propertyTypeName": "System.Nullable\u003CSystem.Text.Json.JsonElement\u003E"
+        "propertyTypeName": "System.Nullable\u003CSystem.Text.Json.JsonElement\u003E",
+        "classFullName": "Test.Dto.Classes.ValueType",
+        "fullName": "Test.Dto.Classes.ValueType.NullableJsonElementValue"
       }
     ],
     "baseTypes": [
       "System.IEquatable\u003CTest.Dto.Classes.ValueType\u003E"
-    ]
+    ],
+    "typeDiscriminator": null
   }
 ]

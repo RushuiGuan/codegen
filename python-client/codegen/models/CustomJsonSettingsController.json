@@ -2,5 +2,6 @@
   "controllerName": "CustomJsonSettings",
   "route": "api/customjsonsettings",
   "methods": [],
-  "isObsolete": false
+  "isObsolete": false,
+  "requiresAuthentication": false
 }

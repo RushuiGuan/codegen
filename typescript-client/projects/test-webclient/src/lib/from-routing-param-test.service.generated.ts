@@ -1,3 +1,4 @@
+import { MyEnum }  from "./dto.generated";
 import { HttpClient }  from "@angular/common/http";
 import { Injectable }  from "@angular/core";
 import { ConfigService }  from "@mirage/config";
@@ -51,6 +52,11 @@ export class FromRoutingParamTestService extends WebClient {
 	}
 	timeOnlyRoute(time: Date, id: number): Observable<object>  {
 		const relativeUrl = `timeonly-route/${format(time, "HH:mm:ss.SSS")}/${id}`;
+		const result = this.doGetAsync<object>(relativeUrl, {});
+		return result;
+	}
+	enumRoute(value: MyEnum, id: number): Observable<object>  {
+		const relativeUrl = `enum-route/${value}/${id}`;
 		const result = this.doGetAsync<object>(relativeUrl, {});
 		return result;
 	}

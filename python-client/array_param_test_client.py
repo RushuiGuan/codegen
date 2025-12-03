@@ -1,74 +1,77 @@
 # @generated
 
 from datetime import date, timezone, datetime
-from httpx import AsyncClient, Auth
+from requests import Session
+from requests.auth import AuthBase
 from typing import Self
 
 class ArrayParamTestClient:
-	_client: AsyncClient
-	def __init__(self, base_url: str, auth: Auth | None = None) -> None:
-		base_url = f"{base_url.rstrip('/')}/api/array-param-test"
-		self._client = AsyncClient(base_url = base_url, auth = auth)
+	_client: Session
+	_base_url: str
+	def __init__(self, base_url: str, auth: AuthBase | None = None) -> None:
+		self._base_url = f"{base_url.rstrip('/')}/api/array-param-test"
+		self._client = Session()
+		self._client.auth = auth
 	
-	async def close(self) -> None:
-		await self._client.aclose()
+	def close(self) -> None:
+		self._client.close()
 	
-	async def __aenter__(self) -> Self:
+	def __enter__(self) -> Self:
 		return self
 	
-	async def __aexit__(self, exc_type, exc_value, traceback) -> None:
-		await self.close()
+	def __exit__(self, exc_type, exc_value, traceback) -> None:
+		self.close()
 	
-	async def array_string_param(self, array: list[str]) -> str:
-		relative_url = "array-string-param"
+	def array_string_param(self, array: list[str]) -> str:
+		request_url = f"{self._base_url}/array-string-param"
 		params = {
 			"a": array
 		}
-		response = await self._client.get(relative_url, params = params)
+		response = self._client.get(request_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
-	async def array_value_type(self, array: list[int]) -> str:
-		relative_url = "array-value-type"
+	def array_value_type(self, array: list[int]) -> str:
+		request_url = f"{self._base_url}/array-value-type"
 		params = {
 			"a": array
 		}
-		response = await self._client.get(relative_url, params = params)
+		response = self._client.get(request_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
-	async def collection_string_param(self, collection: list[str]) -> str:
-		relative_url = "collection-string-param"
+	def collection_string_param(self, collection: list[str]) -> str:
+		request_url = f"{self._base_url}/collection-string-param"
 		params = {
 			"c": collection
 		}
-		response = await self._client.get(relative_url, params = params)
+		response = self._client.get(request_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
-	async def collection_value_type(self, collection: list[int]) -> str:
-		relative_url = "collection-value-type"
+	def collection_value_type(self, collection: list[int]) -> str:
+		request_url = f"{self._base_url}/collection-value-type"
 		params = {
 			"c": collection
 		}
-		response = await self._client.get(relative_url, params = params)
+		response = self._client.get(request_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
-	async def collection_date_param(self, collection: list[date]) -> str:
-		relative_url = "collection-date-param"
+	def collection_date_param(self, collection: list[date]) -> str:
+		request_url = f"{self._base_url}/collection-date-param"
 		params = {
 			"c": [
 				x.isoformat()
 				for x in collection
 			]
 		}
-		response = await self._client.get(relative_url, params = params)
+		response = self._client.get(request_url, params = params)
 		response.raise_for_status()
 		return response.text
 	
-	async def collection_date_time_param(self, collection: list[datetime]) -> str:
-		relative_url = "collection-datetime-param"
+	def collection_date_time_param(self, collection: list[datetime]) -> str:
+		request_url = f"{self._base_url}/collection-datetime-param"
 		params = {
 			"c": [
 				x.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -77,7 +80,7 @@ class ArrayParamTestClient:
 				for x in collection
 			]
 		}
-		response = await self._client.get(relative_url, params = params)
+		response = self._client.get(request_url, params = params)
 		response.raise_for_status()
 		return response.text
 	

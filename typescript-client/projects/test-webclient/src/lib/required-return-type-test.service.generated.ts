@@ -1,4 +1,4 @@
-import { MyDto }  from "./dto.generated";
+import { MyDto, MyEnum }  from "./dto.generated";
 import { HttpClient }  from "@angular/common/http";
 import { Injectable }  from "@angular/core";
 import { ConfigService }  from "@mirage/config";
@@ -142,6 +142,16 @@ export class RequiredReturnTypeTestService extends WebClient {
 	getMyDtoCollectionAsync(): Observable<MyDto[]>  {
 		const relativeUrl = `async-collection-return-type`;
 		const result = this.doGetAsync<MyDto[]>(relativeUrl, {});
+		return result;
+	}
+	requiredEnum(): Observable<MyEnum>  {
+		const relativeUrl = `required-enum`;
+		const result = this.doGetAsync<MyEnum>(relativeUrl, {});
+		return result;
+	}
+	requiredEnumArray(): Observable<MyEnum[]>  {
+		const relativeUrl = `required-enum-array`;
+		const result = this.doGetAsync<MyEnum[]>(relativeUrl, {});
 		return result;
 	}
 }

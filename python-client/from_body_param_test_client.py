@@ -1,70 +1,73 @@
 # @generated
 
 from dto import MyDto
-from httpx import AsyncClient, Auth
 from pydantic import TypeAdapter
+from requests import Session
+from requests.auth import AuthBase
 from typing import Self
 
 class FromBodyParamTestClient:
-	_client: AsyncClient
-	def __init__(self, base_url: str, auth: Auth | None = None) -> None:
-		base_url = f"{base_url.rstrip('/')}/api/from-body-param-test"
-		self._client = AsyncClient(base_url = base_url, auth = auth)
+	_client: Session
+	_base_url: str
+	def __init__(self, base_url: str, auth: AuthBase | None = None) -> None:
+		self._base_url = f"{base_url.rstrip('/')}/api/from-body-param-test"
+		self._client = Session()
+		self._client.auth = auth
 	
-	async def close(self) -> None:
-		await self._client.aclose()
+	def close(self) -> None:
+		self._client.close()
 	
-	async def __aenter__(self) -> Self:
+	def __enter__(self) -> Self:
 		return self
 	
-	async def __aexit__(self, exc_type, exc_value, traceback) -> None:
-		await self.close()
+	def __exit__(self, exc_type, exc_value, traceback) -> None:
+		self.close()
 	
-	async def required_object(self, dto: MyDto) -> int:
-		relative_url = "required-object"
-		response = await self._client.post(relative_url, json = TypeAdapter(MyDto).dump_python(dto, mode = "json"))
+	def required_object(self, dto: MyDto) -> int:
+		request_url = f"{self._base_url}/required-object"
+		response = self._client.post(request_url, json = TypeAdapter(MyDto).dump_python(dto, mode = "json"))
 		response.raise_for_status()
 		return TypeAdapter(int).validate_python(response.json())
 	
-	async def nullable_object(self, dto: MyDto | None) -> int:
-		relative_url = "nullable-object"
-		response = await self._client.post(relative_url, json = TypeAdapter(MyDto | None).dump_python(dto, mode = "json"))
+	def nullable_object(self, dto: MyDto | None) -> int:
+		request_url = f"{self._base_url}/nullable-object"
+		response = self._client.post(request_url, json = TypeAdapter(MyDto | None).dump_python(dto, mode = "json"))
 		response.raise_for_status()
 		return TypeAdapter(int).validate_python(response.json())
 	
-	async def required_int(self, value: int) -> int:
-		relative_url = "required-int"
-		response = await self._client.post(relative_url, json = TypeAdapter(int).dump_python(value, mode = "json"))
+	def required_int(self, value: int) -> int:
+		request_url = f"{self._base_url}/required-int"
+		response = self._client.post(request_url, json = TypeAdapter(int).dump_python(value, mode = "json"))
 		response.raise_for_status()
 		return TypeAdapter(int).validate_python(response.json())
 	
-	async def nullable_int(self, value: int | None) -> int:
-		relative_url = "nullable-int"
-		response = await self._client.post(relative_url, json = TypeAdapter(int | None).dump_python(value, mode = "json"))
+	def nullable_int(self, value: int | None) -> int:
+		request_url = f"{self._base_url}/nullable-int"
+		response = self._client.post(request_url, json = TypeAdapter(int | None).dump_python(value, mode = "json"))
 		response.raise_for_status()
 		return TypeAdapter(int).validate_python(response.json())
 	
-	async def required_string(self, value: str) -> int:
-		relative_url = "required-string"
-		response = await self._client.post(relative_url, headers = {"Content-Type": "text/plain"}, content = value)
+	def required_string(self, value: str) -> int:
+		request_url = f"{self._base_url}/required-string"
+		response = self._client.post(request_url, headers = {"Content-Type": "text/plain"}, data = value)
 		response.raise_for_status()
 		return TypeAdapter(int).validate_python(response.json())
 	
-	async def nullable_string(self, value: str | None) -> int:
-		relative_url = "nullable-string"
-		response = await self._client.post(relative_url, headers = {"Content-Type": "text/plain"}, content = value if value is not None else "")
+	def nullable_string(self, value: str | None) -> int:
+		request_url = f"{self._base_url}/nullable-string"
+		response = self._client.post(request_url, headers = {"Content-Type": "text/plain"}, data = value if value is not None else "")
 		response.raise_for_status()
 		return TypeAdapter(int).validate_python(response.json())
 	
-	async def required_object_array(self, array: list[MyDto]) -> int:
-		relative_url = "required-object-array"
-		response = await self._client.post(relative_url, json = TypeAdapter(list[MyDto]).dump_python(array, mode = "json"))
+	def required_object_array(self, array: list[MyDto]) -> int:
+		request_url = f"{self._base_url}/required-object-array"
+		response = self._client.post(request_url, json = TypeAdapter(list[MyDto]).dump_python(array, mode = "json"))
 		response.raise_for_status()
 		return TypeAdapter(int).validate_python(response.json())
 	
-	async def nullable_object_array(self, array: list[MyDto | None]) -> int:
-		relative_url = "nullable-object-array"
-		response = await self._client.post(relative_url, json = TypeAdapter(list[MyDto | None]).dump_python(array, mode = "json"))
+	def nullable_object_array(self, array: list[MyDto | None]) -> int:
+		request_url = f"{self._base_url}/nullable-object-array"
+		response = self._client.post(request_url, json = TypeAdapter(list[MyDto | None]).dump_python(array, mode = "json"))
 		response.raise_for_status()
 		return TypeAdapter(int).validate_python(response.json())
 	

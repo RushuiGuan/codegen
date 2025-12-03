@@ -1,3 +1,4 @@
+import { MyEnum }  from "./dto.generated";
 import { HttpClient }  from "@angular/common/http";
 import { Injectable }  from "@angular/core";
 import { ConfigService }  from "@mirage/config";
@@ -57,6 +58,11 @@ export class FromQueryParamTestService extends WebClient {
 	requiredDateTimeOffsetDiffName(dateTimeOffset: Date): Observable<object>  {
 		const relativeUrl = `required-datetimeoffset_diff-name`;
 		const result = this.doGetAsync<object>(relativeUrl, { d: format(dateTimeOffset, "yyyy-MM-ddTHH:mm:ssXXX") });
+		return result;
+	}
+	requiredEnumParameter(value: MyEnum): Observable<MyEnum>  {
+		const relativeUrl = `required-enum-parameter`;
+		const result = this.doGetAsync<MyEnum>(relativeUrl, { value });
 		return result;
 	}
 }

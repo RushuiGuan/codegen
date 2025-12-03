@@ -7,6 +7,7 @@
       "httpMethod": "Get",
       "name": "Get",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -22,6 +23,7 @@
       "httpMethod": "Get",
       "name": "GetAsync",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -37,6 +39,7 @@
       "httpMethod": "Get",
       "name": "GetActionResult",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -52,6 +55,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncActionResult",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -67,6 +71,7 @@
       "httpMethod": "Get",
       "name": "GetString",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -82,6 +87,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncString",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -97,6 +103,7 @@
       "httpMethod": "Get",
       "name": "GetActionResultString",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -112,6 +119,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncActionResultString",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.String",
       "routeSegments": [
         {
@@ -127,6 +135,7 @@
       "httpMethod": "Get",
       "name": "GetInt",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [
         {
@@ -142,6 +151,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncInt",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [
         {
@@ -157,6 +167,7 @@
       "httpMethod": "Get",
       "name": "GetActionResultInt",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [
         {
@@ -172,6 +183,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncActionResultInt",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [
         {
@@ -187,6 +199,7 @@
       "httpMethod": "Get",
       "name": "GetDateTime",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.DateTime",
       "routeSegments": [
         {
@@ -202,6 +215,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncDateTime",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.DateTime",
       "routeSegments": [
         {
@@ -217,6 +231,7 @@
       "httpMethod": "Get",
       "name": "GetActionResultDateTime",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.DateTime",
       "routeSegments": [
         {
@@ -232,6 +247,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncActionResultDateTime",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.DateTime",
       "routeSegments": [
         {
@@ -247,6 +263,7 @@
       "httpMethod": "Get",
       "name": "GetDateOnly",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.DateOnly",
       "routeSegments": [
         {
@@ -262,6 +279,7 @@
       "httpMethod": "Get",
       "name": "GetDateTimeOffset",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.DateTimeOffset",
       "routeSegments": [
         {
@@ -277,6 +295,7 @@
       "httpMethod": "Get",
       "name": "GetTimeOnly",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.TimeOnly",
       "routeSegments": [
         {
@@ -292,6 +311,7 @@
       "httpMethod": "Get",
       "name": "GetMyDto",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
       "routeSegments": [
         {
@@ -307,6 +327,7 @@
       "httpMethod": "Get",
       "name": "GetAsyncMyDto",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
       "routeSegments": [
         {
@@ -322,6 +343,7 @@
       "httpMethod": "Get",
       "name": "ActionResultObject",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
       "routeSegments": [
         {
@@ -337,6 +359,7 @@
       "httpMethod": "Get",
       "name": "AsyncActionResultObject",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.MyDto",
       "routeSegments": [
         {
@@ -352,6 +375,7 @@
       "httpMethod": "Get",
       "name": "GetMyDtoArray",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.MyDto[]",
       "routeSegments": [
         {
@@ -367,6 +391,7 @@
       "httpMethod": "Get",
       "name": "GetMyDtoCollection",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Collections.Generic.IEnumerable\u003CTest.Dto.Classes.MyDto\u003E",
       "routeSegments": [
         {
@@ -382,6 +407,7 @@
       "httpMethod": "Get",
       "name": "GetMyDtoCollectionAsync",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Collections.Generic.IEnumerable\u003CTest.Dto.Classes.MyDto\u003E",
       "routeSegments": [
         {
@@ -397,6 +423,7 @@
       "httpMethod": "Get",
       "name": "RequiredEnum",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Enums.MyEnum",
       "routeSegments": [
         {
@@ -412,6 +439,7 @@
       "httpMethod": "Get",
       "name": "RequiredEnumArray",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Enums.MyEnum[]",
       "routeSegments": [
         {
@@ -423,5 +451,6 @@
       "isObsolete": false
     }
   ],
-  "isObsolete": false
+  "isObsolete": false,
+  "requiresAuthentication": false
 }

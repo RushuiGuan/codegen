@@ -2,5 +2,6 @@
   "controllerName": "OmittedConstructor",
   "route": "api/omittedconstructor",
   "methods": [],
-  "isObsolete": false
+  "isObsolete": false,
+  "requiresAuthentication": false
 }

@@ -7,6 +7,7 @@
       "httpMethod": "Delete",
       "name": "Delete",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],
@@ -18,6 +19,7 @@
       "httpMethod": "Post",
       "name": "Post",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],
@@ -29,6 +31,7 @@
       "httpMethod": "Patch",
       "name": "Patch",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],
@@ -40,6 +43,7 @@
       "httpMethod": "Get",
       "name": "Get",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Int32",
       "routeSegments": [],
       "parameters": [],
@@ -51,6 +55,7 @@
       "httpMethod": "Put",
       "name": "Put",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [],
       "parameters": [],
@@ -58,5 +63,6 @@
       "isObsolete": false
     }
   ],
-  "isObsolete": false
+  "isObsolete": false,
+  "requiresAuthentication": false
 }

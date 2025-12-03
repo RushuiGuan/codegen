@@ -7,6 +7,7 @@
       "httpMethod": "Post",
       "name": "SubmitByInterface",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -30,6 +31,7 @@
       "httpMethod": "Post",
       "name": "SubmitByAbstractClass",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [
         {
@@ -53,6 +55,7 @@
       "httpMethod": "Post",
       "name": "ReturnInterfaceAsync",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.ICommand",
       "routeSegments": [
         {
@@ -68,6 +71,7 @@
       "httpMethod": "Post",
       "name": "ReturnInterface",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.ICommand",
       "routeSegments": [
         {
@@ -83,6 +87,7 @@
       "httpMethod": "Post",
       "name": "ReturnAbstractClassAsync",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.AbstractClass",
       "routeSegments": [
         {
@@ -98,6 +103,7 @@
       "httpMethod": "Post",
       "name": "ReturnAbstractClass",
       "canCancel": false,
+      "requiresAuthentication": false,
       "returnTypeText": "Test.Dto.Classes.AbstractClass",
       "routeSegments": [
         {
@@ -109,5 +115,6 @@
       "isObsolete": false
     }
   ],
-  "isObsolete": false
+  "isObsolete": false,
+  "requiresAuthentication": false
 }
