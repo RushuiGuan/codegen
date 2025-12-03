@@ -8,7 +8,7 @@
         "omit": true
       },
       "CustomJsonSettingsController": {
-        "customJsonSettings": "MyCustomJsonSettings.Instance"
+        "customJsonSettings": "MyCustomJsonSettings.Options"
       }
     }
   },

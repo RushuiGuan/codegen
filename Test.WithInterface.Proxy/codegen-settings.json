@@ -1,12 +1,7 @@
 {
   "$schema": "codegen-settings.schema.json",
-  "csharpWebClientSettings": {
+  "cSharpWebClientSettings": {
     "namespace": "Test.WithInterface.Proxy",
-    "controllerMethodFilters": [
-      {
-        "exclude": "FilteredByCSharp$"
-      }
-    ],
     "useInterface": true,
     "useInternalProxy": false,
     "constructorSettings": {
@@ -14,13 +9,18 @@
         "omit": true
       },
       "CustomJsonSettingsController": {
-        "customJsonSettings": "MyCustomJsonSettings.Instance"
+        "customJsonSettings": "MyCustomJsonSettings.Options"
       }
     }
   },
-  "controllerFilter": {
-    "exclude": "^Test\\.WebApi\\.Controllers\\.(AbsUrl)?RedirectTestController$"
-  },
+  "controllerFilters": [
+    {
+      "exclude": "^Test\\.WebApi\\.Controllers\\.(AbsUrl)?RedirectTestController$"
+    },
+    {
+      "exclude": "FilteredController$"
+    }
+  ],
   "controllerMethodFilters": [
     { "exclude": "FilteredByAll$" }
   ]

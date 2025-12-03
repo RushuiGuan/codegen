@@ -9,6 +9,6 @@ namespace Test.Proxy {
 				PropertyNameCaseInsensitive = true,
 			});
 
-		public static JsonSerializerOptions Instance => lazy.Value;
+		public static JsonSerializerOptions Options => lazy.Value;
 	}
 }
