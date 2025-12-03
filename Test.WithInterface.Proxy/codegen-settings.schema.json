@@ -13,16 +13,19 @@
     "cSharpWebClientSettings": {
       "$ref": "#/definitions/CSharpWebClientSettings"
     },
-    "controllerFilter": {
-      "$ref": "#/definitions/SymbolFilterPatterns"
-    },
-    "dtoFilter": {
-      "$ref": "#/definitions/SymbolFilterPatterns"
-    },
-    "enumFilter": {
-      "$ref": "#/definitions/SymbolFilterPatterns"
+    "controllerFilters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SymbolFilterPatterns"
+      }
     },
     "controllerMethodFilters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SymbolFilterPatterns"
+      }
+    },
+    "dtoEnumFilters": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/SymbolFilterPatterns"
@@ -37,21 +40,6 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "controllerFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
-        "controllerMethodFilters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SymbolFilterPatterns"
-          }
-        },
-        "dtoFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
-        "enumFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
         "endPointName": {
           "type": "string"
         },
@@ -87,51 +75,12 @@
         }
       }
     },
-    "SymbolFilterPatterns": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "exclude": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "include": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "hasValue": {
-          "type": "boolean"
-        }
-      }
-    },
     "PythonWebClientSettings": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "controllerFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
-        "controllerMethodFilters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SymbolFilterPatterns"
-          }
-        },
-        "dtoFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
-        "enumFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
-        "endPointName": {
-          "type": "string"
-        },
-        "baseClassName": {
-          "type": "string"
+        "async": {
+          "type": "boolean"
         },
         "nameSpaceModuleMapping": {
           "type": "object",
@@ -144,6 +93,51 @@
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "propertyNameMapping": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "httpClientClassNameMapping": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "dtoClassNameMapping": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "constructorSettings": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/WebClientConstructorSettings"
+          }
+        }
+      }
+    },
+    "WebClientConstructorSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "compressionEncoding": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "omit": {
+          "type": "boolean"
+        },
+        "customJsonSettings": {
+          "type": [
+            "null",
+            "string"
+          ]
         }
       }
     },
@@ -151,19 +145,10 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "controllerFilter": {
-          "$ref": "#/definitions/SymbolFilterPatterns"
-        },
-        "controllerMethodFilters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SymbolFilterPatterns"
-          }
-        },
         "namespace": {
           "type": "string"
         },
-        "useTextContentTypeForStringPost": {
+        "useTextContentTypeForStringPostRequest": {
           "type": "boolean"
         },
         "useInterface": {
@@ -200,18 +185,24 @@
       "type": "object",
       "additionalProperties": false
     },
-    "WebClientConstructorSettings": {
+    "SymbolFilterPatterns": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "omit": {
-          "type": "boolean"
-        },
-        "customJsonSettings": {
+        "exclude": {
           "type": [
             "null",
             "string"
           ]
+        },
+        "include": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "hasValue": {
+          "type": "boolean"
         }
       }
     }

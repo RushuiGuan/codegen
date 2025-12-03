@@ -1,4 +1,3 @@
-using Albatross.Dates;
 using Albatross.WebClient;
 using Microsoft.Extensions.Logging;
 using System.Collections.Specialized;
@@ -219,7 +218,22 @@ namespace Test.Proxy {
 				return await this.GetJsonResponse<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>>(request);
 			}
 		}
+
+		public async Task<Test.Dto.Enums.MyEnum> RequiredEnum() {
+			string path = $"{ControllerPath}/required-enum";
+			var queryString = new NameValueCollection();
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetJsonResponse<Test.Dto.Enums.MyEnum>(request);
+			}
+		}
+
+		public async Task<Test.Dto.Enums.MyEnum[]> RequiredEnumArray() {
+			string path = $"{ControllerPath}/required-enum-array";
+			var queryString = new NameValueCollection();
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetJsonResponse<Test.Dto.Enums.MyEnum[]>(request);
+			}
+		}
 	}
 }
 #nullable disable
-

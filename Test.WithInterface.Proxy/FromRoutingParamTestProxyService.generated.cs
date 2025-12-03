@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 #nullable enable
 namespace Test.WithInterface.Proxy {
-	public partial interface IFromRouteParamTestProxyService {
+	public partial interface IFromRoutingParamTestProxyService {
 		Task ImplicitRoute(System.String name, System.Int32 id);
 		Task ExplicitRoute(System.String name, System.Int32 id);
 		Task WildCardRouteDouble(System.String name, System.Int32 id);
@@ -16,10 +16,11 @@ namespace Test.WithInterface.Proxy {
 		Task DateOnlyRoute(System.DateOnly date, System.Int32 id);
 		Task DateTimeOffsetRoute(System.DateTimeOffset date, System.Int32 id);
 		Task TimeOnlyRoute(System.TimeOnly time, System.Int32 id);
+		Task EnumRoute(Test.Dto.Enums.MyEnum value, System.Int32 id);
 	}
 
-	public partial class FromRouteParamTestProxyService : ClientBase, IFromRouteParamTestProxyService {
-		public FromRouteParamTestProxyService(ILogger<FromRouteParamTestProxyService> logger, HttpClient client) : base(logger, client) {
+	public partial class FromRoutingParamTestProxyService : ClientBase, IFromRoutingParamTestProxyService {
+		public FromRoutingParamTestProxyService(ILogger<FromRoutingParamTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
 
 		public const string ControllerPath = "api/from-routing-param-test";
@@ -86,7 +87,14 @@ namespace Test.WithInterface.Proxy {
 				await this.GetRawResponse(request);
 			}
 		}
+
+		public async Task EnumRoute(Test.Dto.Enums.MyEnum value, System.Int32 id) {
+			string path = $"{ControllerPath}/enum-route/{value}/{id}";
+			var queryString = new NameValueCollection();
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
 	}
 }
 #nullable disable
-

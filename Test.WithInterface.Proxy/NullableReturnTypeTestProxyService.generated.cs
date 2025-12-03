@@ -8,24 +8,24 @@ using System.Threading.Tasks;
 #nullable enable
 namespace Test.WithInterface.Proxy {
 	public partial interface INullableReturnTypeTestProxyService {
-		Task<System.String> GetString();
-		Task<System.String> GetAsyncString();
-		Task<System.String> GetActionResultString();
-		Task<System.String> GetAsyncActionResultString();
-		Task<System.Nullable<System.Int32>> GetInt();
-		Task<System.Nullable<System.Int32>> GetAsyncInt();
-		Task<System.Nullable<System.Int32>> GetActionResultInt();
-		Task<System.Nullable<System.Int32>> GetAsyncActionResultInt();
-		Task<System.Nullable<System.DateTime>> GetDateTime();
-		Task<System.Nullable<System.DateTime>> GetAsyncDateTime();
-		Task<System.Nullable<System.DateTime>> GetActionResultDateTime();
-		Task<System.Nullable<System.DateTime>> GetAsyncActionResultDateTime();
-		Task<Test.Dto.Classes.MyDto?> GetMyDto();
-		Task<Test.Dto.Classes.MyDto?> GetAsyncMyDto();
-		Task<Test.Dto.Classes.MyDto?> ActionResultObject();
-		Task<Test.Dto.Classes.MyDto?> AsyncActionResultObject();
-		Task<Test.Dto.Classes.MyDto?[]> GetMyDtoNullableArray();
-		Task<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>> GetMyDtoCollection();
+		Task<System.String?> GetString(System.String? text);
+		Task<System.String?> GetAsyncString(System.String? text);
+		Task<System.String?> GetActionResultString(System.String? text);
+		Task<System.String?> GetAsyncActionResultString(System.String? text);
+		Task<System.Nullable<System.Int32>> GetInt(System.Nullable<System.Int32> n);
+		Task<System.Nullable<System.Int32>> GetAsyncInt(System.Nullable<System.Int32> n);
+		Task<System.Nullable<System.Int32>> GetActionResultInt(System.Nullable<System.Int32> n);
+		Task<System.Nullable<System.Int32>> GetAsyncActionResultInt(System.Nullable<System.Int32> n);
+		Task<System.Nullable<System.DateTime>> GetDateTime(System.Nullable<System.DateTime> v);
+		Task<System.Nullable<System.DateTime>> GetAsyncDateTime(System.Nullable<System.DateTime> v);
+		Task<System.Nullable<System.DateTime>> GetActionResultDateTime(System.Nullable<System.DateTime> v);
+		Task<System.Nullable<System.DateTime>> GetAsyncActionResultDateTime(System.Nullable<System.DateTime> v);
+		Task<Test.Dto.Classes.MyDto?> GetMyDto(Test.Dto.Classes.MyDto? value);
+		Task<Test.Dto.Classes.MyDto?> GetAsyncMyDto(Test.Dto.Classes.MyDto? value);
+		Task<Test.Dto.Classes.MyDto?> ActionResultObject(Test.Dto.Classes.MyDto? value);
+		Task<Test.Dto.Classes.MyDto?> AsyncActionResultObject(Test.Dto.Classes.MyDto? value);
+		Task<Test.Dto.Classes.MyDto?[]> GetMyDtoNullableArray(Test.Dto.Classes.MyDto?[] values);
+		Task<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>> GetMyDtoCollection(System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto> values);
 	}
 
 	public partial class NullableReturnTypeTestProxyService : ClientBase, INullableReturnTypeTestProxyService {
@@ -33,150 +33,197 @@ namespace Test.WithInterface.Proxy {
 		}
 
 		public const string ControllerPath = "api/nullable-return-type";
-		public async Task<System.String> GetString() {
+		public async Task<System.String?> GetString(System.String? text) {
 			string path = $"{ControllerPath}/string";
 			var queryString = new NameValueCollection();
+			if (text != null) {
+				queryString.Add("text", text);
+			}
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
 		}
 
-		public async Task<System.String> GetAsyncString() {
+		public async Task<System.String?> GetAsyncString(System.String? text) {
 			string path = $"{ControllerPath}/async-string";
 			var queryString = new NameValueCollection();
+			if (text != null) {
+				queryString.Add("text", text);
+			}
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
 		}
 
-		public async Task<System.String> GetActionResultString() {
+		public async Task<System.String?> GetActionResultString(System.String? text) {
 			string path = $"{ControllerPath}/action-result-string";
 			var queryString = new NameValueCollection();
+			if (text != null) {
+				queryString.Add("text", text);
+			}
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
 		}
 
-		public async Task<System.String> GetAsyncActionResultString() {
+		public async Task<System.String?> GetAsyncActionResultString(System.String? text) {
 			string path = $"{ControllerPath}/async-action-result-string";
 			var queryString = new NameValueCollection();
+			if (text != null) {
+				queryString.Add("text", text);
+			}
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
 		}
 
-		public async Task<System.Nullable<System.Int32>> GetInt() {
+		public async Task<System.Nullable<System.Int32>> GetInt(System.Nullable<System.Int32> n) {
 			string path = $"{ControllerPath}/int";
 			var queryString = new NameValueCollection();
+			if (n != null) {
+				queryString.Add("n", $"{n}");
+			}
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<System.Int32>>(request);
 			}
 		}
 
-		public async Task<System.Nullable<System.Int32>> GetAsyncInt() {
+		public async Task<System.Nullable<System.Int32>> GetAsyncInt(System.Nullable<System.Int32> n) {
 			string path = $"{ControllerPath}/async-int";
 			var queryString = new NameValueCollection();
+			if (n != null) {
+				queryString.Add("n", $"{n}");
+			}
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<System.Int32>>(request);
 			}
 		}
 
-		public async Task<System.Nullable<System.Int32>> GetActionResultInt() {
+		public async Task<System.Nullable<System.Int32>> GetActionResultInt(System.Nullable<System.Int32> n) {
 			string path = $"{ControllerPath}/action-result-int";
 			var queryString = new NameValueCollection();
+			if (n != null) {
+				queryString.Add("n", $"{n}");
+			}
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<System.Int32>>(request);
 			}
 		}
 
-		public async Task<System.Nullable<System.Int32>> GetAsyncActionResultInt() {
+		public async Task<System.Nullable<System.Int32>> GetAsyncActionResultInt(System.Nullable<System.Int32> n) {
 			string path = $"{ControllerPath}/async-action-result-int";
 			var queryString = new NameValueCollection();
+			if (n != null) {
+				queryString.Add("n", $"{n}");
+			}
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<System.Int32>>(request);
 			}
 		}
 
-		public async Task<System.Nullable<System.DateTime>> GetDateTime() {
+		public async Task<System.Nullable<System.DateTime>> GetDateTime(System.Nullable<System.DateTime> v) {
 			string path = $"{ControllerPath}/datetime";
 			var queryString = new NameValueCollection();
+			if (v != null) {
+				queryString.Add("v", v.Value.ISO8601String());
+			}
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<System.DateTime>>(request);
 			}
 		}
 
-		public async Task<System.Nullable<System.DateTime>> GetAsyncDateTime() {
+		public async Task<System.Nullable<System.DateTime>> GetAsyncDateTime(System.Nullable<System.DateTime> v) {
 			string path = $"{ControllerPath}/async-datetime";
 			var queryString = new NameValueCollection();
+			if (v != null) {
+				queryString.Add("v", v.Value.ISO8601String());
+			}
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<System.DateTime>>(request);
 			}
 		}
 
-		public async Task<System.Nullable<System.DateTime>> GetActionResultDateTime() {
+		public async Task<System.Nullable<System.DateTime>> GetActionResultDateTime(System.Nullable<System.DateTime> v) {
 			string path = $"{ControllerPath}/action-result-datetime";
 			var queryString = new NameValueCollection();
+			if (v != null) {
+				queryString.Add("v", v.Value.ISO8601String());
+			}
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<System.DateTime>>(request);
 			}
 		}
 
-		public async Task<System.Nullable<System.DateTime>> GetAsyncActionResultDateTime() {
+		public async Task<System.Nullable<System.DateTime>> GetAsyncActionResultDateTime(System.Nullable<System.DateTime> v) {
 			string path = $"{ControllerPath}/async-action-result-datetime";
 			var queryString = new NameValueCollection();
+			if (v != null) {
+				queryString.Add("v", v.Value.ISO8601String());
+			}
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<System.DateTime>>(request);
 			}
 		}
 
-		public async Task<Test.Dto.Classes.MyDto?> GetMyDto() {
+		public async Task<Test.Dto.Classes.MyDto?> GetMyDto(Test.Dto.Classes.MyDto? value) {
 			string path = $"{ControllerPath}/object";
 			var queryString = new NameValueCollection();
-			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?>(HttpMethod.Post, path, queryString, value)) {
 				return await this.GetJsonResponse<Test.Dto.Classes.MyDto?>(request);
 			}
 		}
 
-		public async Task<Test.Dto.Classes.MyDto?> GetAsyncMyDto() {
+		public async Task<Test.Dto.Classes.MyDto?> GetAsyncMyDto(Test.Dto.Classes.MyDto? value) {
 			string path = $"{ControllerPath}/async-object";
 			var queryString = new NameValueCollection();
-			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?>(HttpMethod.Post, path, queryString, value)) {
 				return await this.GetJsonResponse<Test.Dto.Classes.MyDto?>(request);
 			}
 		}
 
-		public async Task<Test.Dto.Classes.MyDto?> ActionResultObject() {
+		public async Task<Test.Dto.Classes.MyDto?> ActionResultObject(Test.Dto.Classes.MyDto? value) {
 			string path = $"{ControllerPath}/action-result-object";
 			var queryString = new NameValueCollection();
-			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?>(HttpMethod.Post, path, queryString, value)) {
 				return await this.GetJsonResponse<Test.Dto.Classes.MyDto?>(request);
 			}
 		}
 
-		public async Task<Test.Dto.Classes.MyDto?> AsyncActionResultObject() {
+		public async Task<Test.Dto.Classes.MyDto?> AsyncActionResultObject(Test.Dto.Classes.MyDto? value) {
 			string path = $"{ControllerPath}/async-action-result-object";
 			var queryString = new NameValueCollection();
-			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?>(HttpMethod.Post, path, queryString, value)) {
 				return await this.GetJsonResponse<Test.Dto.Classes.MyDto?>(request);
 			}
 		}
 
-		public async Task<Test.Dto.Classes.MyDto?[]> GetMyDtoNullableArray() {
+		public async Task<Test.Dto.Classes.MyDto?[]> GetMyDtoNullableArray(Test.Dto.Classes.MyDto?[] values) {
 			string path = $"{ControllerPath}/nullable-array-return-type";
 			var queryString = new NameValueCollection();
-			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?[]>(HttpMethod.Post, path, queryString, values)) {
 				return await this.GetRequiredJsonResponse<Test.Dto.Classes.MyDto?[]>(request);
 			}
 		}
 
-		public async Task<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>> GetMyDtoCollection() {
+		public async Task<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>> GetMyDtoCollection(System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto> values) {
 			string path = $"{ControllerPath}/nullable-collection-return-type";
 			var queryString = new NameValueCollection();
-			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+			using (var request = this.CreateJsonRequest<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>>(HttpMethod.Post, path, queryString, values)) {
 				return await this.GetRequiredJsonResponse<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>>(request);
 			}
 		}
 	}
 }
 #nullable disable
-

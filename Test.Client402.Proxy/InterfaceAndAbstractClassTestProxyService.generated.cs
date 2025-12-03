@@ -1,4 +1,3 @@
-using Albatross.Dates;
 using Albatross.WebClient;
 using Microsoft.Extensions.Logging;
 using System.Collections.Specialized;
@@ -34,7 +33,7 @@ namespace Test.Proxy {
 			string path = $"{ControllerPath}/return-interface-async";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Post, path, queryString)) {
-				return await this.GetRequiredJsonResponse<Test.Dto.Classes.ICommand>(request);
+				return await this.GetJsonResponse<Test.Dto.Classes.ICommand>(request);
 			}
 		}
 
@@ -42,7 +41,7 @@ namespace Test.Proxy {
 			string path = $"{ControllerPath}/return-interface";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Post, path, queryString)) {
-				return await this.GetRequiredJsonResponse<Test.Dto.Classes.ICommand>(request);
+				return await this.GetJsonResponse<Test.Dto.Classes.ICommand>(request);
 			}
 		}
 
@@ -50,7 +49,7 @@ namespace Test.Proxy {
 			string path = $"{ControllerPath}/return-abstract-class-async";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Post, path, queryString)) {
-				return await this.GetRequiredJsonResponse<Test.Dto.Classes.AbstractClass>(request);
+				return await this.GetJsonResponse<Test.Dto.Classes.AbstractClass>(request);
 			}
 		}
 
@@ -58,7 +57,7 @@ namespace Test.Proxy {
 			string path = $"{ControllerPath}/return-abstract-class";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Post, path, queryString)) {
-				return await this.GetRequiredJsonResponse<Test.Dto.Classes.AbstractClass>(request);
+				return await this.GetJsonResponse<Test.Dto.Classes.AbstractClass>(request);
 			}
 		}
 	}

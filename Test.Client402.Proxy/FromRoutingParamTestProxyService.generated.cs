@@ -1,4 +1,3 @@
-using Albatross.Dates;
 using Albatross.WebClient;
 using Microsoft.Extensions.Logging;
 using System.Collections.Specialized;
@@ -7,8 +6,8 @@ using System.Threading.Tasks;
 
 #nullable enable
 namespace Test.Proxy {
-	public partial class FromRouteParamTestProxyService : ClientBase {
-		public FromRouteParamTestProxyService(ILogger<FromRouteParamTestProxyService> logger, HttpClient client) : base(logger, client) {
+	public partial class FromRoutingParamTestProxyService : ClientBase {
+		public FromRoutingParamTestProxyService(ILogger<FromRoutingParamTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
 
 		public const string ControllerPath = "api/from-routing-param-test";
@@ -52,14 +51,6 @@ namespace Test.Proxy {
 			}
 		}
 
-		public async Task DateTimeAsDateOnlyRoute(System.DateTime date, System.Int32 id) {
-			string path = $"{ControllerPath}/date-time-as-date-only-route/{date:yyyy-MM-dd}/{id}";
-			var queryString = new NameValueCollection();
-			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				await this.GetRawResponse(request);
-			}
-		}
-
 		public async Task DateOnlyRoute(System.DateOnly date, System.Int32 id) {
 			string path = $"{ControllerPath}/date-only-route/{date:yyyy-MM-dd}/{id}";
 			var queryString = new NameValueCollection();
@@ -83,7 +74,14 @@ namespace Test.Proxy {
 				await this.GetRawResponse(request);
 			}
 		}
+
+		public async Task EnumRoute(Test.Dto.Enums.MyEnum value, System.Int32 id) {
+			string path = $"{ControllerPath}/enum-route/{value}/{id}";
+			var queryString = new NameValueCollection();
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
 	}
 }
 #nullable disable
-

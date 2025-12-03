@@ -1,4 +1,3 @@
-using Albatross.Dates;
 using Albatross.WebClient;
 using Microsoft.Extensions.Logging;
 using System.Collections.Specialized;
@@ -6,18 +5,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 
 #nullable enable
-namespace Test.WithInterface.Proxy {
-	[System.ObsoleteAttribute]
-	public partial interface IObsoleteProxyService {
-		Task<System.String> Get();
-	}
-
-	[System.ObsoleteAttribute]
-	public partial class ObsoleteProxyService : ClientBase, IObsoleteProxyService {
-		public ObsoleteProxyService(ILogger<ObsoleteProxyService> logger, HttpClient client) : base(logger, client) {
+namespace Test.Proxy {
+	public partial class PartiallyObsoleteProxyService : ClientBase {
+		public PartiallyObsoleteProxyService(ILogger<PartiallyObsoleteProxyService> logger, HttpClient client) : base(logger, client) {
 		}
 
-		public const string ControllerPath = "api/obsolete";
+		public const string ControllerPath = "api/partiallyobsolete";
 		public async Task<System.String> Get() {
 			string path = $"{ControllerPath}/get";
 			var queryString = new NameValueCollection();

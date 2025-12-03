@@ -1,4 +1,3 @@
-using Albatross.Dates;
 using Albatross.WebClient;
 using Microsoft.Extensions.Logging;
 using System.Collections.Specialized;
@@ -61,15 +60,6 @@ namespace Test.Proxy {
 			string path = $"{ControllerPath}/required-datetime";
 			var queryString = new NameValueCollection();
 			queryString.Add("date", $"{date:yyyy-MM-ddTHH:mm:ssK}");
-			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
-			}
-		}
-
-		public async Task<System.String> RequiredDateTimeAsDateOnly(System.DateTime date) {
-			string path = $"{ControllerPath}/requried-datetime-as-dateonly";
-			var queryString = new NameValueCollection();
-			queryString.Add("date", $"{date:yyyy-MM-dd}");
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -179,30 +169,26 @@ namespace Test.Proxy {
 			}
 		}
 
-		public async Task<System.String> RequiredDateTimeAsDateOnlyCollection(System.Collections.Generic.IEnumerable<System.DateTime> dates) {
-			string path = $"{ControllerPath}/required-datetime-as-dateonly-collection";
+		public async Task<Test.Dto.Enums.MyEnum> RequiredEnum(Test.Dto.Enums.MyEnum value) {
+			string path = $"{ControllerPath}/required-enum";
 			var queryString = new NameValueCollection();
-			foreach (var item in dates) {
-				queryString.Add("dates", $"{item:yyyy-MM-dd}");
-			}
-
+			queryString.Add("value", $"{value}");
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
+				return await this.GetJsonResponse<Test.Dto.Enums.MyEnum>(request);
 			}
 		}
 
-		public async Task<System.String> RequiredDateTimeAsDateOnlyArray(System.DateTime[] dates) {
-			string path = $"{ControllerPath}/required-datetime-as-dateonly-array";
+		public async Task<Test.Dto.Enums.MyEnum[]> RequiredEnumArray(Test.Dto.Enums.MyEnum[] values) {
+			string path = $"{ControllerPath}/required-enum-array";
 			var queryString = new NameValueCollection();
-			foreach (var item in dates) {
-				queryString.Add("dates", $"{item:yyyy-MM-dd}");
+			foreach (var item in values) {
+				queryString.Add("values", $"{item}");
 			}
 
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
+				return await this.GetJsonResponse<Test.Dto.Enums.MyEnum[]>(request);
 			}
 		}
 	}
 }
 #nullable disable
-

@@ -23,6 +23,8 @@ namespace Test.WithInterface.Proxy {
 		Task<System.String> RequiredDateOnlyArray(System.DateOnly[] dates);
 		Task<System.String> RequiredDateTimeCollection(System.Collections.Generic.IEnumerable<System.DateTime> dates);
 		Task<System.String> RequiredDateTimeArray(System.DateTime[] dates);
+		Task<Test.Dto.Enums.MyEnum> RequiredEnum(Test.Dto.Enums.MyEnum value);
+		Task<Test.Dto.Enums.MyEnum[]> RequiredEnumArray(Test.Dto.Enums.MyEnum[] values);
 	}
 
 	public partial class RequiredParamTestProxyService : ClientBase, IRequiredParamTestProxyService {
@@ -187,7 +189,27 @@ namespace Test.WithInterface.Proxy {
 				return await this.GetRawResponse(request);
 			}
 		}
+
+		public async Task<Test.Dto.Enums.MyEnum> RequiredEnum(Test.Dto.Enums.MyEnum value) {
+			string path = $"{ControllerPath}/required-enum";
+			var queryString = new NameValueCollection();
+			queryString.Add("value", $"{value}");
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRequiredJsonResponseForValueType<Test.Dto.Enums.MyEnum>(request);
+			}
+		}
+
+		public async Task<Test.Dto.Enums.MyEnum[]> RequiredEnumArray(Test.Dto.Enums.MyEnum[] values) {
+			string path = $"{ControllerPath}/required-enum-array";
+			var queryString = new NameValueCollection();
+			foreach (var item in values) {
+				queryString.Add("values", $"{item}");
+			}
+
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRequiredJsonResponse<Test.Dto.Enums.MyEnum[]>(request);
+			}
+		}
 	}
 }
 #nullable disable
-

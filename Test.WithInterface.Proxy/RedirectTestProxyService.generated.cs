@@ -6,81 +6,111 @@ using System.Net.Http;
 using System.Threading.Tasks;
 
 #nullable enable
-namespace Test.Proxy {
-	public partial class FromRoutingParamTestProxyService : ClientBase {
-		public FromRoutingParamTestProxyService(ILogger<FromRoutingParamTestProxyService> logger, HttpClient client) : base(logger, client) {
+namespace Test.WithInterface.Proxy {
+	public partial interface IRedirectTestProxyService {
+		Task Get();
+		Task Get1();
+		Task Get2();
+		Task Get3();
+		Task Get4();
+		Task Get5();
+		Task Get6();
+		Task Get7();
+		Task Get8();
+		Task Get9();
+		Task<System.String> Get10();
+	}
+
+	public partial class RedirectTestProxyService : ClientBase, IRedirectTestProxyService {
+		public RedirectTestProxyService(ILogger<RedirectTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
 
-		public const string ControllerPath = "api/from-routing-param-test";
-		public async Task ImplicitRoute(System.String name, System.Int32 id) {
-			string path = $"{ControllerPath}/implicit-route/{name}/{id}";
+		public const string ControllerPath = "api/redirect-test";
+		public async Task Get() {
+			string path = $"{ControllerPath}/test-0";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
 
-		public async Task ExplicitRoute(System.String name, System.Int32 id) {
-			string path = $"{ControllerPath}/explicit-route/{name}/{id}";
+		public async Task Get1() {
+			string path = $"{ControllerPath}/test-1";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
 
-		public async Task WildCardRouteDouble(System.String name, System.Int32 id) {
-			string path = $"{ControllerPath}/wild-card-route-double/{id}/{name}";
+		public async Task Get2() {
+			string path = $"{ControllerPath}/test-2";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
 
-		public async Task WildCardRouteSingle(System.String name, System.Int32 id) {
-			string path = $"{ControllerPath}/wild-card-route-single/{id}/{name}";
+		public async Task Get3() {
+			string path = $"{ControllerPath}/test-3";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
 
-		public async Task DateTimeRoute(System.DateTime date, System.Int32 id) {
-			string path = $"{ControllerPath}/date-time-route/{date.ISO8601String()}/{id}";
+		public async Task Get4() {
+			string path = $"{ControllerPath}/test-4";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
 
-		public async Task DateOnlyRoute(System.DateOnly date, System.Int32 id) {
-			string path = $"{ControllerPath}/date-only-route/{date.ISO8601String()}/{id}";
+		public async Task Get5() {
+			string path = $"{ControllerPath}/test-5";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
 
-		public async Task DateTimeOffsetRoute(System.DateTimeOffset date, System.Int32 id) {
-			string path = $"{ControllerPath}/datetimeoffset-route/{date.ISO8601String()}/{id}";
+		public async Task Get6() {
+			string path = $"{ControllerPath}/test-6";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
 
-		public async Task TimeOnlyRoute(System.TimeOnly time, System.Int32 id) {
-			string path = $"{ControllerPath}/timeonly-route/{time.ISO8601String()}/{id}";
+		public async Task Get7() {
+			string path = $"{ControllerPath}/test-7";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
 
-		public async Task EnumRoute(Test.Dto.Enums.MyEnum value, System.Int32 id) {
-			string path = $"{ControllerPath}/enum-route/{value}/{id}";
+		public async Task Get8() {
+			string path = $"{ControllerPath}/test-8";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
+			}
+		}
+
+		public async Task Get9() {
+			string path = $"{ControllerPath}/test-9";
+			var queryString = new NameValueCollection();
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
+
+		public async Task<System.String> Get10() {
+			string path = $"{ControllerPath}/test-10";
+			var queryString = new NameValueCollection();
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRawResponse(request);
 			}
 		}
 	}

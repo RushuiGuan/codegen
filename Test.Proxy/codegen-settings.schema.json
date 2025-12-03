@@ -25,13 +25,7 @@
         "$ref": "#/definitions/SymbolFilterPatterns"
       }
     },
-    "dtoFilters": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/SymbolFilterPatterns"
-      }
-    },
-    "enumFilters": {
+    "dtoEnumFilters": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/SymbolFilterPatterns"
@@ -85,6 +79,9 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "async": {
+          "type": "boolean"
+        },
         "nameSpaceModuleMapping": {
           "type": "object",
           "additionalProperties": {
@@ -96,6 +93,51 @@
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "propertyNameMapping": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "httpClientClassNameMapping": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "dtoClassNameMapping": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "constructorSettings": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/WebClientConstructorSettings"
+          }
+        }
+      }
+    },
+    "WebClientConstructorSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "compressionEncoding": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "omit": {
+          "type": "boolean"
+        },
+        "customJsonSettings": {
+          "type": [
+            "null",
+            "string"
+          ]
         }
       }
     },
@@ -142,27 +184,6 @@
     "WebClientMethodSettings": {
       "type": "object",
       "additionalProperties": false
-    },
-    "WebClientConstructorSettings": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "compressionEncoding": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "omit": {
-          "type": "boolean"
-        },
-        "customJsonSettings": {
-          "type": [
-            "null",
-            "string"
-          ]
-        }
-      }
     },
     "SymbolFilterPatterns": {
       "type": "object",
