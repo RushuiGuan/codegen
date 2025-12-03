@@ -18,6 +18,8 @@ namespace Test.WithInterface.Proxy {
 		Task<System.String> NullableValueTypeCollection(System.Collections.Generic.IEnumerable<System.Nullable<System.Int32>> values);
 		Task<System.String> NullableDateOnlyCollection(System.Collections.Generic.IEnumerable<System.Nullable<System.DateOnly>> dates);
 		Task<System.String> NullableDateOnlyArray(System.Nullable<System.DateOnly>[] dates);
+		Task<System.Nullable<Test.Dto.Enums.MyEnum>> NullableEnumParameter(System.Nullable<Test.Dto.Enums.MyEnum> value);
+		Task<System.Nullable<Test.Dto.Enums.MyEnum>[]> NullableEnumArray(System.Nullable<Test.Dto.Enums.MyEnum>[] value);
 	}
 
 	public partial class NullableParamTestProxyService : ClientBase, INullableParamTestProxyService {
@@ -152,7 +154,32 @@ namespace Test.WithInterface.Proxy {
 				return await this.GetRawResponse(request);
 			}
 		}
+
+		public async Task<System.Nullable<Test.Dto.Enums.MyEnum>> NullableEnumParameter(System.Nullable<Test.Dto.Enums.MyEnum> value) {
+			string path = $"{ControllerPath}/nullable-enum-parameter";
+			var queryString = new NameValueCollection();
+			if (value != null) {
+				queryString.Add("value", $"{value}");
+			}
+
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetJsonResponse<System.Nullable<Test.Dto.Enums.MyEnum>>(request);
+			}
+		}
+
+		public async Task<System.Nullable<Test.Dto.Enums.MyEnum>[]> NullableEnumArray(System.Nullable<Test.Dto.Enums.MyEnum>[] value) {
+			string path = $"{ControllerPath}/nullable-enum-array";
+			var queryString = new NameValueCollection();
+			foreach (var item in value) {
+				if (item != null) {
+					queryString.Add("value", $"{item}");
+				}
+			}
+
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRequiredJsonResponse<System.Nullable<Test.Dto.Enums.MyEnum>[]>(request);
+			}
+		}
 	}
 }
 #nullable disable
-

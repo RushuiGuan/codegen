@@ -219,7 +219,22 @@ namespace Test.Proxy {
 				return await this.GetRequiredJsonResponse<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>>(request);
 			}
 		}
+
+		public async Task<Test.Dto.Enums.MyEnum> RequiredEnum() {
+			string path = $"{ControllerPath}/required-enum";
+			var queryString = new NameValueCollection();
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRequiredJsonResponseForValueType<Test.Dto.Enums.MyEnum>(request);
+			}
+		}
+
+		public async Task<Test.Dto.Enums.MyEnum[]> RequiredEnumArray() {
+			string path = $"{ControllerPath}/required-enum-array";
+			var queryString = new NameValueCollection();
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRequiredJsonResponse<Test.Dto.Enums.MyEnum[]>(request);
+			}
+		}
 	}
 }
 #nullable disable
-

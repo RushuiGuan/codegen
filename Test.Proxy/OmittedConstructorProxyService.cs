@@ -7,4 +7,3 @@ namespace Test.Proxy {
 		}
 	}
 }
-

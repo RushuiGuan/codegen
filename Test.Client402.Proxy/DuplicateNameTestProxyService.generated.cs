@@ -1,4 +1,3 @@
-using Albatross.Dates;
 using Albatross.WebClient;
 using Microsoft.Extensions.Logging;
 using System.Collections.Specialized;
@@ -24,7 +23,7 @@ namespace Test.Proxy {
 		public async Task Submit(System.String name) {
 			string path = $"{ControllerPath}/by-name";
 			var queryString = new NameValueCollection();
-			queryString.Add("name", name);
+			queryString.Add("name", $"{name}");
 			using (var request = this.CreateRequest(HttpMethod.Post, path, queryString)) {
 				await this.GetRawResponse(request);
 			}

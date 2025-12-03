@@ -26,4 +26,3 @@ namespace Test.WithInterface.Proxy {
 	}
 }
 #nullable disable
-

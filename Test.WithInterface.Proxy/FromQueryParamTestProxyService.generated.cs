@@ -17,6 +17,7 @@ namespace Test.WithInterface.Proxy {
 		Task RequiredDateOnlyDiffName(System.DateOnly dateonly);
 		Task RequiredDateTimeOffset(System.DateTimeOffset dateTimeOffset);
 		Task RequiredDateTimeOffsetDiffName(System.DateTimeOffset dateTimeOffset);
+		Task<Test.Dto.Enums.MyEnum> RequiredEnumParameter(Test.Dto.Enums.MyEnum value);
 	}
 
 	public partial class FromQueryParamTestProxyService : ClientBase, IFromQueryParamTestProxyService {
@@ -104,7 +105,15 @@ namespace Test.WithInterface.Proxy {
 				await this.GetRawResponse(request);
 			}
 		}
+
+		public async Task<Test.Dto.Enums.MyEnum> RequiredEnumParameter(Test.Dto.Enums.MyEnum value) {
+			string path = $"{ControllerPath}/required-enum-parameter";
+			var queryString = new NameValueCollection();
+			queryString.Add("value", $"{value}");
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRequiredJsonResponseForValueType<Test.Dto.Enums.MyEnum>(request);
+			}
+		}
 	}
 }
 #nullable disable
-

@@ -34,6 +34,8 @@ namespace Test.WithInterface.Proxy {
 		Task<Test.Dto.Classes.MyDto[]> GetMyDtoArray();
 		Task<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>> GetMyDtoCollection();
 		Task<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>> GetMyDtoCollectionAsync();
+		Task<Test.Dto.Enums.MyEnum> RequiredEnum();
+		Task<Test.Dto.Enums.MyEnum[]> RequiredEnumArray();
 	}
 
 	public partial class RequiredReturnTypeTestProxyService : ClientBase, IRequiredReturnTypeTestProxyService {
@@ -248,7 +250,22 @@ namespace Test.WithInterface.Proxy {
 				return await this.GetRequiredJsonResponse<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>>(request);
 			}
 		}
+
+		public async Task<Test.Dto.Enums.MyEnum> RequiredEnum() {
+			string path = $"{ControllerPath}/required-enum";
+			var queryString = new NameValueCollection();
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRequiredJsonResponseForValueType<Test.Dto.Enums.MyEnum>(request);
+			}
+		}
+
+		public async Task<Test.Dto.Enums.MyEnum[]> RequiredEnumArray() {
+			string path = $"{ControllerPath}/required-enum-array";
+			var queryString = new NameValueCollection();
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRequiredJsonResponse<Test.Dto.Enums.MyEnum[]>(request);
+			}
+		}
 	}
 }
 #nullable disable
-
