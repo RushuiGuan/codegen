@@ -2,17 +2,16 @@
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class InvocationExpression : ISyntaxNode, IExpression {
+	public record class InvocationExpression : IExpression {
 		public bool UseAwaitOperator { get; init; }
 		public required IExpression CallableExpression { get; init; }
 		public List<ITypeExpression> GenericArguments { get; init; } = new();
 		public List<IExpression> ArgumentList { get; init; } = new();
 
 		public virtual TextWriter Generate(TextWriter writer) {
-			if (UseAwaitOperator) { writer.Append("await "); }
+			if (UseAwaitOperator) { writer.Code(Defined.Keywords.Await); }
 			writer.Code(CallableExpression);
 			writer.WriteItems(GenericArguments, ", ", (w, args)=> w.Code(args), prefix: "<", postfix: ">");
 			writer.WriteItems(ArgumentList, ", ", (w, arg) => w.Code(arg), prefix: "(", postfix: ")");

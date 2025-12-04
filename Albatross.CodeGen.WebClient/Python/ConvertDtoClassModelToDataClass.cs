@@ -26,7 +26,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			if (!string.IsNullOrEmpty(from.TypeDiscriminator)) {
 				fields.Add(new FieldDeclaration("discriminator_") {
 					Type = Defined.Types.String,
-					Initializer = new InvocationExpressionBuilder()
+					Initializer = new InvocationSyntaxNodeBuilder()
 						.WithCallableExpression(Defined.Identifiers.PydanticField)
 						.AddArgument(new ScopedVariableExpression {
 							Identifier = new IdentifierNameExpression("alias"),
@@ -46,7 +46,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		}
 
 		FieldDeclaration modelConfig = new FieldDeclaration("model_config") {
-			Initializer = new InvocationExpressionBuilder()
+			Initializer = new InvocationSyntaxNodeBuilder()
 				.WithCallableExpression(new QualifiedIdentifierNameExpression("ConfigDict", Defined.Sources.Pydantic))
 				.AddArgument(new ScopedVariableExpression {
 					Identifier = new IdentifierNameExpression("populate_by_name"),

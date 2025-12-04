@@ -2,22 +2,22 @@
 using System;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public class ScopedVariableExpressionBuilder : ExpressionBuilder<ScopedVariableExpression> {
+	public class ScopedVariableSyntaxNodeBuilder : SyntaxNodeBuilder<ScopedVariableExpression> {
 		private string? name;
 		private ITypeExpression? type;
 		private IExpression? expression;
 
-		public ScopedVariableExpressionBuilder WithName(string name) {
+		public ScopedVariableSyntaxNodeBuilder WithName(string name) {
 			this.name = name;
 			return this;
 		}
 
-		public ScopedVariableExpressionBuilder WithType(ITypeExpression type) {
+		public ScopedVariableSyntaxNodeBuilder WithType(ITypeExpression type) {
 			this.type = type;
 			return this;
 		}
 
-		public ScopedVariableExpressionBuilder WithExpression(IExpression expression) {
+		public ScopedVariableSyntaxNodeBuilder WithExpression(IExpression expression) {
 			this.expression = expression;
 			return this;
 		}

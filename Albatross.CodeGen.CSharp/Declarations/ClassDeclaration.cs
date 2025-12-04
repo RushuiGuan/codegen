@@ -1,31 +1,27 @@
 ﻿using Albatross.CodeGen.CSharp.Expressions;
-using Albatross.CodeGen.CSharp.Modifiers;
+using Albatross.CodeGen.CSharp.Keywords;
 using Albatross.CodeGen.Syntax;
 using Albatross.Text;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public class ClassDeclaration : ISyntaxNode, IDeclaration {
-		public ClassDeclaration(string name) {
-			Name = new IdentifierNameExpression(name);
-		}
+	public record class ClassDeclaration : IDeclaration {
+		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
+		public required IdentifierNameExpression Name { get; init; }
+		public IEnumerable<ITypeExpression> BaseTypes { get; init; } = [];
+		public ListOfGenericArguments GenericArguments { get; init; } = new();
+		public bool IsStatic { get; init; }
+		public bool IsSealed { get; init; }
+		public bool IsAbstract { get; init; }
+		public bool IsPartial { get; init; }
+		public bool IsRecord { get; init; }
 
-		public AccessModifier? AccessModifier { get; set; } = AccessModifier.Public;
-		public IdentifierNameExpression Name { get; set; }
-		public List<ITypeExpression> BaseTypes { get; set; } = new();
-		public bool IsStatic { get; set; }
-		public bool IsSealed { get; set; }
-		public bool IsAbstract { get; set; }
-		public bool IsPartial { get; set; }
-		public bool IsRecord { get; set; }
-
-		public List<AttributeExpression> AttributeExpressions { get; init; } = new();
-		public List<ConstructorDeclaration> Constructors { get; init; } = new();
-		public List<PropertyDeclaration> Properties { get; init; } = new();
-		public List<FieldDeclaration> Fields { get; init; } = new();
-		public List<MethodDeclaration> Methods { get; init; } = new();
+		public IEnumerable<AttributeExpression> AttributeExpressions { get; init; } = [];
+		public IEnumerable<ConstructorDeclaration> Constructors { get; init; } = [];
+		public IEnumerable<PropertyDeclaration> Properties { get; init; } = [];
+		public IEnumerable<FieldDeclaration> Fields { get; init; } = [];
+		public IEnumerable<MethodDeclaration> Methods { get; init; } = [];
 
 		public TextWriter Generate(TextWriter writer) {
 			foreach (var attribute in AttributeExpressions) {
@@ -39,7 +35,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			if(IsRecord) { writer.Append("record "); }
 			if (IsPartial) { writer.Append("partial ");}
 			if(IsAbstract) { writer.Append("abstract "); }
-			writer.Append("class ").Code(Name);
+			writer.Append("class ").Code(Name).Code(GenericArguments);
 			writer.WriteItems(BaseTypes, ", ", (w, args) => w.Code(args), " : ", null);
 			using (var scope = writer.BeginScope()) {
 				foreach(var constructor in Constructors) {
@@ -60,6 +56,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 
 		public IEnumerable<ISyntaxNode> GetDescendants() {
 			var list = new List<ISyntaxNode>();
+			list.Add(GenericArguments);
 			list.AddRange(Constructors);
 			list.AddRange(Fields);
 			list.AddRange(Properties);

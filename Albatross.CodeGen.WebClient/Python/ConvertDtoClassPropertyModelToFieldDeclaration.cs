@@ -30,7 +30,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			}
 			return new FieldDeclaration(name) {
 				Type = typeConverter.Convert(from.PropertyType),
-				Initializer = new InvocationExpressionBuilder()
+				Initializer = new InvocationSyntaxNodeBuilder()
 					.WithCallableExpression(Defined.Identifiers.PydanticField)
 					.AddArgument(new ScopedVariableExpression {
 						Identifier = new IdentifierNameExpression("alias"),
@@ -41,7 +41,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		}
 
 		IExpression GetDefaultExpression(DtoClassPropertyInfo from) {
-			var builder = new ScopedVariableExpressionBuilder();
+			var builder = new ScopedVariableSyntaxNodeBuilder();
 			if (from.PropertyType.IsCollection(compilation)) {
 				builder.WithName("default_factory");
 				builder.WithExpression(Defined.Identifiers.List);

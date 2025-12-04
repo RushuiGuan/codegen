@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public class InfixExpression : IExpression {
+	public record class InfixExpression : IExpression {
 		public InfixExpression(string @operator) {
 			Operator = @operator;
 		}
@@ -21,8 +21,6 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() {
-			return new ISyntaxNode[] { Left, Right };
-		}
+		public IEnumerable<ISyntaxNode> GetDescendants() => [Left, Right];
 	}
 }

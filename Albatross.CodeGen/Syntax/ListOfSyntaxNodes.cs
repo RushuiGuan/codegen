@@ -12,18 +12,17 @@ namespace Albatross.CodeGen.Syntax {
 	public record class ListOfSyntaxNodes<T> : SyntaxNode, IEnumerable<T> where T : ISyntaxNode {
 		public T[] Nodes { get; init; } = [];
 		protected virtual string Separator => ", ";
-		public string Padding { get; init; } = string.Empty;
+		public string LeftPadding { get; init; } = string.Empty;
+		public string RightPadding { get; init; } = string.Empty;
 
-		public ListOfSyntaxNodes(params T[] nodes) {
-			Nodes = nodes;
-		}
-		public ListOfSyntaxNodes(IEnumerable<T> nodes) {
+		public ListOfSyntaxNodes(params IEnumerable<T> nodes) {
 			Nodes = nodes.ToArray();
 		}
+
 		public int Count => Nodes.Length;
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.WriteItems(this.Nodes, Separator, (w, item) => w.Code(item), this.Padding, this.Padding);
+			writer.WriteItems(this.Nodes, Separator, (w, item) => w.Code(item), this.LeftPadding, this.RightPadding);
 			return writer;
 		}
 

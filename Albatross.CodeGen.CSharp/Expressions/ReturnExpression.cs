@@ -1,22 +1,23 @@
 ﻿using Albatross.CodeGen.Syntax;
+using Albatross.Collections;
 using Albatross.Text;
+using Microsoft.CodeAnalysis.Diagnostics;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
 	public record class ReturnExpression : SyntaxNode, IExpression {
-		public ReturnExpression(IExpression expression) {
-			this.Expression = expression;
-		}
-		public override IEnumerable<ISyntaxNode> Children => [this.Expression];
-		public IExpression Expression { get; }
+		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode>().AddIfNotNull(this.Expression);
+		public IExpression? Expression { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {
-			if (this.Expression is NullExpression) {
-				return writer.Append("return");
+			writer.Code(Defined.Keywords.Return);
+			if(this.Expression!= null) {
+				writer.Code(this.Expression);
 			} else {
-				return writer.Append("return ").Code(this.Expression);
+				writer.Semicolon();
 			}
+			return writer;
 		}
 	}
 }

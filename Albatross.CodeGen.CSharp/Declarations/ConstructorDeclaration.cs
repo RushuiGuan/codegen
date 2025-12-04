@@ -1,16 +1,17 @@
 using Albatross.CodeGen.CSharp.Expressions;
-using Albatross.CodeGen.CSharp.Modifiers;
+using Albatross.CodeGen.CSharp.Keywords;
 using Albatross.CodeGen.Syntax;
+using Albatross.Collections;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
-using NoOpExpression = Albatross.CodeGen.Syntax.NoOpExpression;
+using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public class ConstructorDeclaration : IDeclaration, ISyntaxNode {
-		public AccessModifier? AccessModifier { get; init; } = AccessModifier.Public;
+	public record class ConstructorDeclaration : IDeclaration {
+		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
 		public required IdentifierNameExpression Name { get; init; }
-		public List<ParameterDeclaration> Parameters { get; init; } = new();
+		public IEnumerable<ParameterDeclaration> Parameters { get; init; } = [];
 		public InvocationExpression? BaseConstructorInvocation { get; init; }
 		public IExpression Body { get; init; } = new NoOpExpression();
 
@@ -31,6 +32,6 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public IEnumerable<ISyntaxNode> GetDescendants() => new List<ISyntaxNode>(Parameters) {
 			Name,
 			Body
-		};
+		}.AddIfNotNull(BaseConstructorInvocation);
 	}
 }

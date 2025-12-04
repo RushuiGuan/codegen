@@ -55,15 +55,15 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 										Type = new SimpleTypeExpression {
 											Identifier = new QualifiedIdentifierNameExpression("ConfigService", new ModuleSourceExpression(settings.ConfigServiceModule)),
 										},
-										Modifiers = [AccessModifier.Private],
+										Modifiers = [Defined.Keywords.Private],
 									},
 									new ParameterDeclaration("client") {
 										Type = Defined.Types.HttpClient(),
-										Modifiers = [AccessModifier.Protected],
+										Modifiers = [Defined.Keywords.Protected],
 									}
 								],
 							},
-							Body = new CompositeExpression {
+							Body = new CompositeNode {
 								Items = [
 									new InvocationExpression {
 										Identifier = new IdentifierNameExpression("super"),
@@ -94,10 +94,10 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			}
 			var name = index == 0 ? method.Name.CamelCase() : $"{method.Name.CamelCase()}{index}";
 			return new MethodDeclaration(name) {
-				Modifiers = settings.UsePromise ? [new AsyncModifier()] : [],
+				Modifiers = settings.UsePromise ? [new AsyncKeyword()] : [],
 				ReturnType = settings.UsePromise ? returnType.ToPromise() : returnType.ToObservable(),
 				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(method.Parameters.Select(x => new ParameterDeclaration(x.Name) { Type = typeConverter.Convert(x.Type) })),
-				Body = new ScopedVariableExpressionBuilder()
+				Body = new ScopedVariableSyntaxNodeBuilder()
 					.IsConstant()
 					.WithName("relativeUrl").WithExpression(new StringInterpolationExpression(method.RouteSegments.Select(x => BuildRouteSegment(method, x))))
 					.Add(() => CreateHttpInvocationExpression(method))
@@ -182,7 +182,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		}
 
 		IExpression CreateHttpInvocationExpression(MethodInfo method) {
-			var builder = new InvocationExpressionBuilder();
+			var builder = new InvocationSyntaxNodeBuilder();
 			var returnType = this.typeConverter.Convert(method.ReturnType);
 			if (object.Equals(returnType, Defined.Types.Void())) {
 				returnType = Defined.Types.Object();
@@ -240,7 +240,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			builder.AddArgument(BuildQueryStringParameters(method));
 
 			if (settings.UsePromise) {
-				return new ScopedVariableExpressionBuilder()
+				return new ScopedVariableSyntaxNodeBuilder()
 					.IsConstant().WithName("result").WithExpression(builder.Build())
 					.Add(() => new ReturnExpression(new InvocationExpression() {
 						Identifier = Defined.Identifiers.FirstValueFrom,
@@ -249,7 +249,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 					}))
 					.BuildAll();
 			} else {
-				return new ScopedVariableExpressionBuilder()
+				return new ScopedVariableSyntaxNodeBuilder()
 					.IsConstant().WithName("result").WithExpression(builder.Build())
 					.Add(() => new ReturnExpression(new IdentifierNameExpression("result")))
 					.BuildAll();

@@ -8,9 +8,8 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		}
 
 		public string Value { get; }
-
-		public override TextWriter Generate(TextWriter writer) {
-			writer.AppendChar('"');
+		
+		public void WriteEscapedValue(TextWriter writer){
 			foreach (char c in Value) {
 				switch (c) {
 					case '"':
@@ -39,6 +38,11 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 						break;
 				}
 			}
+		}
+
+		public override TextWriter Generate(TextWriter writer) {
+			writer.AppendChar('"');
+			WriteEscapedValue(writer);
 			writer.AppendChar('"');
 			return writer;
 		}

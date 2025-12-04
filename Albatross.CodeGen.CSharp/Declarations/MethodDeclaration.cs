@@ -1,40 +1,40 @@
 using Albatross.CodeGen.CSharp.Expressions;
-using Albatross.CodeGen.CSharp.Modifiers;
+using Albatross.CodeGen.CSharp.Keywords;
 using Albatross.CodeGen.Syntax;
+using Albatross.Collections;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public class MethodDeclaration : IDeclaration, ISyntaxNode {
-		public bool IsAbstract { get; set; }
-		public bool IsVirtual { get; set; }
-		public bool IsPartial { get; set; }
+	public class MethodDeclaration : IDeclaration {
+		public bool IsAbstract { get; init; }
+		public bool IsVirtual { get; init; }
+		public bool IsPartial { get; init; }
 
 		public required IdentifierNameExpression Name { get; init; }
-		public required ITypeExpression ReturnType { get; set; }
-		public AccessModifier? AccessModifier { get; set; } = AccessModifier.Public;
+		public required ITypeExpression ReturnType { get; init; }
+		public ListOfGenericArguments GenericArguments { get; init; } = new();
+		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
 
-		public List<ITypeExpression> GenericArguments { get; init; } = new();
-		public List<AttributeExpression> AttributeExpressions { get; init; } = new();
-		public List<ParameterDeclaration> Parameters { get; init; } = new();
-		public IExpression? Body { get; set; }
-		public bool IsAsync { get; set; }
+		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];
+		public ListOfParameterDeclarations Parameters { get; init; } = new();
+		public IExpression? Body { get; init; }
+		public bool IsAsync { get; init; }
 
 		public TextWriter Generate(TextWriter writer) {
-			if (AccessModifier != null) {
-				writer.Append(AccessModifier.Name).Space();
+			if (AccessModifier != null) { writer.Append(AccessModifier.Name).Space(); }
+			if (IsAbstract) { writer.Code(Defined.Keywords.Abstract); }
+			if (IsVirtual) { writer.Code(Defined.Keywords.Virtual); }
+			if (IsPartial) {
+				writer.Code(Defined.Keywords.Partial);
 			}
-			if (IsAbstract) { writer.Append("abstract "); }
-			if (IsVirtual) { writer.Append("virtual "); }
-			if (IsPartial) { writer.Append("partial "); }
-			if (IsAsync) { writer.Append("async").Space(); }
-			writer.Code(ReturnType).Space().Code(Name);
-			if (GenericArguments.Any()) {
-				writer.WriteItems(GenericArguments, ",", (w, item) => w.Code(item), "<", ">");
+			if (IsAsync) {
+				writer.Code(Defined.Keywords.Async);
 			}
-			writer.WriteItems(Parameters, ",", (w, item) => w.Code(item), "(", ")");
+			writer.Code(ReturnType).Space().Code(Name).Code(GenericArguments);
+			writer.Code(Parameters);
 			if (Body != null) {
 				using var scope = writer.BeginScope();
 				scope.Writer.Code(Body);
@@ -46,9 +46,10 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 
 		public IEnumerable<ISyntaxNode> GetDescendants() {
 			var list = new List<ISyntaxNode>(Parameters) {
-				ReturnType, Name, Body ?? new NoOpExpression()
-			};
+				ReturnType, Name
+			}.AddIfNotNull(Body);
 			list.AddRange(GenericArguments);
+			list.AddRange(Attributes);
 			return list;
 		}
 	}

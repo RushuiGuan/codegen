@@ -6,13 +6,7 @@ using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
 	public record class StringInterpolationExpression : SyntaxNode, IExpression {
-		public StringInterpolationExpression(params IExpression[] expressions) {
-			this.Expressions = expressions.ToList();
-		}
-
-
-		public List<IExpression> Expressions { get; init; } = new();
-
+		public required IEnumerable<IExpression> Expressions { get; init; }
 		public override IEnumerable<ISyntaxNode> Children => Expressions;
 
 		public override TextWriter Generate(TextWriter writer) {
@@ -23,7 +17,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			}
 			foreach (var item in Expressions) {
 				if (item is StringLiteralExpression literal) {
-					writer.Append(literal.Value);
+					literal.WriteEscapedValue(writer);
 				} else {
 					writer.Append("{");
 					writer.Code(item);

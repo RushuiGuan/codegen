@@ -14,13 +14,13 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		}
 		public bool Optional { get; init; } = false;
 		public required ITypeExpression Type { get; init; }
-		public IEnumerable<IModifier> Modifiers { get; init; } = [];
+		public IEnumerable<IKeyword> Modifiers { get; init; } = [];
 		public IdentifierNameExpression Identifier { get; }
 
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Type, Identifier };
 
 		public override TextWriter Generate(TextWriter writer) {
-			var items = Modifiers.Where(x => x is AccessModifier).ToArray();
+			var items = Modifiers.Where(x => x is AccessKeyword).ToArray();
 			if (items.Length > 1) {
 				throw new InvalidOperationException("AccessModifier can only be specified once");
 			} else if (items.Length == 1) {

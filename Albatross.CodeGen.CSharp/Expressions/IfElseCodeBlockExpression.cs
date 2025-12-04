@@ -5,18 +5,12 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class IfElseCodeBlockExpression : SyntaxNode, IExpression {
-		public IfElseCodeBlockExpression() { }
-
+	public record class IfElseCodeBlockExpression : ISyntaxNode, IExpression {
 		public required IExpression Condition { get; init; }
-		public IExpression CodeBlock { get; init; } = new NoOpExpression();
+		public required IExpression CodeBlock { get; init; }
 		public IExpression? ElseBlock { get; init; }
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> {
-			Condition, CodeBlock
-		}.AddIfNotNull(ElseBlock);
-
-		public override TextWriter Generate(TextWriter writer) {
+		public  TextWriter Generate(TextWriter writer) {
 			using (var mainScope = writer.Append("if ").OpenParenthesis().Code(Condition).CloseParenthesis().BeginScope()) {
 				mainScope.Writer.Code(CodeBlock);
 			}
@@ -27,5 +21,9 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			}
 			return writer;
 		}
+
+		public IEnumerable<ISyntaxNode> GetDescendants() => new List<ISyntaxNode> {
+			Condition, CodeBlock
+		}.AddIfNotNull(ElseBlock);
 	}
 }

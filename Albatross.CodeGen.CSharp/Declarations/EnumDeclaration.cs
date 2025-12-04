@@ -1,39 +1,38 @@
 using Albatross.CodeGen.CSharp.Expressions;
-using Albatross.CodeGen.CSharp.Modifiers;
+using Albatross.CodeGen.CSharp.Keywords;
 using Albatross.CodeGen.Syntax;
+using Albatross.Collections;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public class EnumDeclaration : ISyntaxNode, IDeclaration{
-		public AccessModifier ? AccessModifier { get; init; } = AccessModifier.Public;
-		public IEnumerable<AttributeExpression> AttributeExpressions { get; init; } = [];
+	public class EnumDeclaration : IDeclaration {
+		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
+
 		public required IdentifierNameExpression Name { get; init; }
+		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];
 		public required IExpression[] Members { get; init; }
-		
+
 		public TextWriter Generate(TextWriter writer) {
-			foreach (var attribute in AttributeExpressions) {
+			foreach (var attribute in Attributes) {
 				writer.Code(attribute).WriteLine();
 			}
-			if(AccessModifier != null){
+			if (AccessModifier != null) {
 				writer.Append(AccessModifier.Name).Space();
 			}
 			writer.Append("enum ").Code(Name).Space();
 			using (var scope = writer.BeginScope()) {
-				foreach(var member in Members){
+				foreach (var member in Members) {
 					scope.Writer.Code(member).WriteLine();
 				}
 			}
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() {
-			var list = new List<ISyntaxNode>(AttributeExpressions){
+		public IEnumerable<ISyntaxNode> GetDescendants()
+			=> new List<ISyntaxNode>(Attributes) {
 				Name
-			};
-			list.AddRange(Members);
-			return list;
-		}
+			}.UnionAll(Members);
 	}
 }

@@ -4,38 +4,39 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public class FileDeclaration : IDeclaration, ISyntaxNode{
+	public class FileDeclaration : IDeclaration{
 		public FileDeclaration(string name) {
 			this.Name = name;
 		}
 		public string FileName => $"{Name}.cs";
 		public string Name { get; }
 
-		public List<UsingExpression> UsingExpressions { get; init; } = new();
-		public List<AttributeExpression> AttributeExpressions { get; init; } = new();
-		public List<ClassDeclaration> ClassDeclarations { get; init; } = new();
-		public List<InterfaceDeclaration> InterfaceDeclarations { get; init; } = new();
+		public IEnumerable<UsingExpression> Imports { get; init; } = [];
+		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];
+		public IEnumerable<ClassDeclaration> Classes { get; init; } = [];
+		public IEnumerable<InterfaceDeclaration> Interfaces { get; init; } = [];
+	
 		public TextWriter Generate(TextWriter writer) {
-			foreach(var item in UsingExpressions){
+			foreach(var item in Imports){
 				writer.Code(item).WriteLine();
 			}
-			foreach(var item in AttributeExpressions){
+			foreach(var item in Attributes){
 				writer.Code(item).WriteLine();
 			}
-			foreach (var item in InterfaceDeclarations) {
+			foreach (var item in Interfaces) {
 				writer.Code(item).WriteLine();
 			}
-			foreach (var item in ClassDeclarations) {
+			foreach (var item in Classes) {
 				writer.Code(item).WriteLine();
 			}
 			return writer;
 		}
 
 		public IEnumerable<ISyntaxNode> GetDescendants() {
-			var list = new List<ISyntaxNode>(UsingExpressions);
-			list.AddRange(AttributeExpressions);
-			list.AddRange(ClassDeclarations);
-			list.AddRange(InterfaceDeclarations);
+			var list = new List<ISyntaxNode>(Imports);
+			list.AddRange(Attributes);
+			list.AddRange(Classes);
+			list.AddRange(Interfaces);
 			return list;
 		}
 	}

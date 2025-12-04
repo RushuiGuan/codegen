@@ -7,7 +7,7 @@ using Microsoft.CodeAnalysis;
 using System.Linq;
 using Albatross.CodeGen.CSharp.Declarations;
 using Albatross.CodeGen.CSharp.Expressions;
-using Albatross.CodeGen.CSharp.Modifiers;
+using Albatross.CodeGen.CSharp.Keywords;
 using Albatross.CodeGen.Syntax;
 using System.Collections.Generic;
 
@@ -24,12 +24,38 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			this.typeConverter = typeConverter;
 		}
 
+		ITypeExpression GetMethodReturnType(ITypeSymbol typeSymbol) {
+			if (typeSymbol.SpecialType == SpecialType.System_Void) {
+				return Defined.Types.Task;
+			} else {
+				return new TypeExpression("Task") {
+					GenericArguments = [typeConverter.Convert(typeSymbol),]
+				};
+			}
+		}
+		
+		InterfaceDeclaration CreateInterface(ControllerInfo controller) {
+			var interfaceName = $"I{controller.ControllerName}{ProxyService}";
+			return new InterfaceDeclaration(interfaceName) {
+				IsPartial = true,
+				Attributes = new List<AttributeExpression>().AddIf(controller.IsObsolete, Defined.Attributes.Obsolete),
+				Methods = from method in controller.Methods select new MethodDeclaration {
+					Name = new IdentifierNameExpression(method.Name),
+					ReturnType = GetMethodReturnType(method.ReturnType),
+					Parameters = method.Parameters.Select(param => new ParameterDeclaration {
+						Name = new IdentifierNameExpression(param.Name),
+						Type = typeConverter.Convert(param.Type),
+					}).ToList(),
+				}
+			};
+		}
+
 		public FileDeclaration Convert(ControllerInfo from) {
 			var proxyClassName = from.ControllerName + ProxyService;
 			var interfaceName = $"I{proxyClassName}";
 			var fileName = $"{proxyClassName}.generated";
 			var file = new FileDeclaration(fileName) {
-				UsingExpressions = {
+				Imports =new List<UsingExpression> {
 					new UsingExpression("Albatross.Dates"),
 					new UsingExpression("System.Net.Http"),
 					new UsingExpression("System.Threading.Tasks"),
@@ -40,12 +66,11 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			};
 			if (settings.CSharpWebClientSettings.UseInterface) {
 				var @interface = new InterfaceDeclaration(interfaceName) {
-					AccessModifier = AccessModifier.Public,
 					IsPartial = true,
 				};
-				file.InterfaceDeclarations.Add(@interface);
+				file.Interfaces.Add(@interface);
 				if (from.IsObsolete) {
-					@interface.AttributeExpressions.Add(new AttributeExpression {
+					@interface.Attributes.Add(new AttributeExpression {
 						CallableExpression = new IdentifierNameExpression("System.ObsoleteAttribute"),
 					});
 				}
@@ -65,7 +90,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			}
 			var classDeclaration = new ClassDeclaration(proxyClassName) {
 				IsPartial = true,
-				AccessModifier = settings.CSharpWebClientSettings.UseInternalProxy ? AccessModifier.Internal : AccessModifier.Public,
+				AccessModifier = settings.CSharpWebClientSettings.UseInternalProxy ? AccessModifierKeyword.Internal : AccessModifierKeyword.Public,
 				BaseTypes = [new TypeExpression("ClientBase")],
 			};
 			if (settings.CSharpWebClientSettings.UseInterface) {
@@ -106,7 +131,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				}
 				classDeclaration.Constructors.Add(constructor);
 				classDeclaration.Fields.Add(new FieldDeclaration {
-					AccessModifier = AccessModifier.Public,
+					AccessModifier = AccessModifierKeyword.Public,
 					IsConst = true,
 					Type = new TypeExpression("string"),
 					Name = new IdentifierNameExpression("ControllerPath"),
@@ -119,7 +144,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 							? new TypeExpression("Task") : new TypeExpression("Task") {
 								GenericArguments = [typeConverter.Convert(method.ReturnType),]
 							},
-						AccessModifier = AccessModifier.Public,
+						AccessModifier = AccessModifierKeyword.Public,
 						IsAsync = true,
 						Parameters = method.Parameters.Select(param => new ParameterDeclaration {
 							Name = new IdentifierNameExpression(param.Name),
@@ -127,12 +152,12 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						}).ToList(),
 					};
 					if (method.IsObsolete) {
-						methodDeclaration.AttributeExpressions.Add(new AttributeExpression {
+						methodDeclaration.Attributes.Add(new AttributeExpression {
 							CallableExpression = new IdentifierNameExpression("System.ObsoleteAttribute"),
 						});
 					}
 					classDeclaration.Methods.Add(methodDeclaration);
-					var builder = new CompositeExpressionBuilder();
+					var builder = new CompositeNodeBuilder();
 					builder.Add(() => {
 						var variable = new VariableDeclaration {
 							Type = new TypeExpression("string"),

@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public IEnumerable<DecoratorExpression> Decorators { get; init; } = [];
 		public ITypeExpression ReturnType { get; init; } = Defined.Types.None;
 		public ListOfSyntaxNodes<ParameterDeclaration> Parameters { get; init; } = new();
-		public IEnumerable<IModifier> Modifiers { get; init; } = [];
+		public IEnumerable<IKeyword> Modifiers { get; init; } = [];
 		public IExpression Body { get; init; } = new EmptyExpression();
 		public IExpression? DocString { get; init; }
 

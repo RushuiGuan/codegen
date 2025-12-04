@@ -10,8 +10,8 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		}
 
 		public override TextWriter Generate(TextWriter writer) {
-			var modifier = Modifiers.Where(x => x is AccessModifier).FirstOrDefault() ?? AccessModifier.Public;
-			if (!object.Equals(modifier, AccessModifier.Public)) {
+			var modifier = Modifiers.Where(x => x is AccessKeyword).FirstOrDefault() ?? Defined.Keywords.Public;
+			if (!object.Equals(modifier, Defined.Keywords.Public)) {
 				writer.Append(modifier.Name).Space();
 			}
 			writer.Append("get ");

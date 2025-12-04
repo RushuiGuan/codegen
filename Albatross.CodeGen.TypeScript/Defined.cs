@@ -1,5 +1,6 @@
 ﻿using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.TypeScript.Expressions;
+using Albatross.CodeGen.TypeScript.Modifiers;
 using System.Text.RegularExpressions;
 
 namespace Albatross.CodeGen.TypeScript {
@@ -97,6 +98,12 @@ namespace Albatross.CodeGen.TypeScript {
 			public static IIdentifierNameExpression Promise => new IdentifierNameExpression("Promise");
 			public static IIdentifierNameExpression Observable => new QualifiedIdentifierNameExpression("Observable", Sources.Rxjs);
 			public static IIdentifierNameExpression FirstValueFrom => new QualifiedIdentifierNameExpression("firstValueFrom", Sources.Rxjs);
+		}
+		
+		public static class Keywords {
+			public static AccessKeyword Public = new AccessKeyword("public");
+			public static AccessKeyword Private = new AccessKeyword("private");
+			public static AccessKeyword Protected = new AccessKeyword("protected");
 		}
 	}
 }

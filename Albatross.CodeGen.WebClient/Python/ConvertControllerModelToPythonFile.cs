@@ -81,7 +81,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 					},
 				],
 			},
-			Body = new CompositeExpression {
+			Body = new CompositeNode {
 				Items = [
 					new ScopedVariableExpression {
 						Identifier = new MultiPartIdentifierNameExpression("self", "_base_url"),
@@ -119,24 +119,24 @@ namespace Albatross.CodeGen.WebClient.Python {
 		};
 
 		MethodDeclaration CreateCloseMethod() => new MethodDeclaration("close") {
-			Modifiers = settings.Async ? [new AsyncModifier()] : [],
+			Modifiers = settings.Async ? [new AsyncKeyword()] : [],
 			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(Defined.Parameters.Self),
 			ReturnType = Defined.Types.None,
-			Body = new InvocationExpressionBuilder()
+			Body = new InvocationSyntaxNodeBuilder()
 				.Await(settings.Async)
 				.WithMultiPartFunctionName("self", "_client", settings.Async ? "aclose" : "close")
 				.Build(),
 		};
 
 		MethodDeclaration CreateEnterMethod() => new MethodDeclaration(settings.Async ? "__aenter__" : "__enter__") {
-			Modifiers = settings.Async ? [new AsyncModifier()] : [],
+			Modifiers = settings.Async ? [new AsyncKeyword()] : [],
 			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(Defined.Parameters.Self),
 			ReturnType = Defined.Types.Self,
 			Body = new ReturnExpression(Defined.Identifiers.Self),
 		};
 
 		MethodDeclaration CreateExitMethod() => new MethodDeclaration(settings.Async ? "__aexit__" : "__exit__") {
-			Modifiers = settings.Async ? [new AsyncModifier()] : [],
+			Modifiers = settings.Async ? [new AsyncKeyword()] : [],
 			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
 				Defined.Parameters.Self,
 				new ParameterDeclaration {
@@ -152,7 +152,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 					Type = Defined.Types.None
 				}),
 			ReturnType = Defined.Types.None,
-			Body = new InvocationExpressionBuilder().Await(settings.Async).WithMultiPartFunctionName("self", "close").Build(),
+			Body = new InvocationSyntaxNodeBuilder().Await(settings.Async).WithMultiPartFunctionName("self", "close").Build(),
 		};
 
 		// has to do this since python doesn't support methods of the same name
@@ -170,7 +170,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			var name = index == 0 ? method.Name.Underscore() : $"{method.Name.Underscore()}{index}";
 			return new MethodDeclaration(name) {
 				DocString = method.RequiresAuthentication ? new DocStringExpression("Authentication required") : null,
-				Modifiers = settings.Async ? [new AsyncModifier()] : [],
+				Modifiers = settings.Async ? [new AsyncKeyword()] : [],
 				Decorators = method.IsObsolete ? [new DecoratorExpression { CallableExpression = Defined.Identifiers.Deprecated, }] : Array.Empty<DecoratorExpression>(),
 				ReturnType = returnType,
 				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
@@ -178,7 +178,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 						Identifier = new IdentifierNameExpression(x.Name.Underscore()),
 						Type = this.typeConverter.Convert(x.Type)
 					})).WithSelf(),
-				Body = new CompositeExpression(
+				Body = new CompositeNode(
 					BuildRequestUrl(method),
 					BuildQueryParameters(method),
 					CreateHttpInvocationExpression(method),
@@ -191,7 +191,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			if (method.ReturnType.SpecialType == SpecialType.System_Void) {
 				return new NoOpExpression();
 			}
-			ExpressionBuilder builder = new CompositeExpressionBuilder();
+			SyntaxNodeBuilder builder = new CompositeNodeBuilder();
 			if (method.ReturnType.IsNullable(compilation)) {
 				builder.Add(() => new IfElseCodeBlockExpression {
 					Condition = new ConditionExpression("==") {
@@ -206,7 +206,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			} else {
 				builder.Add(() =>
 					new ReturnExpression(
-						new InvocationExpressionBuilder()
+						new InvocationSyntaxNodeBuilder()
 							.WithIdentifier(Defined.Identifiers.TypeAdapter)
 							.AddArgument(this.typeConverter.Convert(method.ReturnType))
 							.Chain("validate_python")
@@ -219,7 +219,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		}
 
 		IExpression BuildRequestUrl(MethodInfo method) {
-			var builder = new ScopedVariableExpressionBuilder().WithName("request_url");
+			var builder = new ScopedVariableSyntaxNodeBuilder().WithName("request_url");
 			var segments = new List<IExpression>();
 			if (!settings.Async) {
 				segments.Add(new MultiPartIdentifierNameExpression("self", "_base_url"));
@@ -237,7 +237,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				properties.Add(new KeyValuePairExpression(new StringLiteralExpression(param.QueryKey), value));
 			}
 			if (properties.Any()) {
-				return new ScopedVariableExpressionBuilder().WithName("params").WithExpression(new DictionaryExpression(properties) { LineBreak = true, }).Build();
+				return new ScopedVariableSyntaxNodeBuilder().WithName("params").WithExpression(new DictionaryExpression(properties) { LineBreak = true, }).Build();
 			} else {
 				return new NoOpExpression();
 			}
@@ -257,7 +257,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				// value.astimezone(timezone.utc).isoformat().replace('+00:00', 'Z') if value.tzinfo else value.isoformat()
 				return new TernaryExpression {
 					LineBreak = true,
-					TrueExpression = new InvocationExpressionBuilder()
+					TrueExpression = new InvocationSyntaxNodeBuilder()
 						.WithMultiPartFunctionName(variableName, "astimezone")
 						.AddArgument(Defined.Identifiers.TimeZoneUtc)
 						.Chain("isoformat")
@@ -346,7 +346,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		bool IsEnum(ITypeSymbol type) => type.TypeKind == TypeKind.Enum;
 
 		IExpression CreateHttpInvocationExpression(MethodInfo method) {
-			var builder = new InvocationExpressionBuilder();
+			var builder = new InvocationSyntaxNodeBuilder();
 			switch (method.HttpMethod) {
 				case My.HttpMethodGet:
 					builder.WithMultiPartFunctionName("self", "_client", "get");
@@ -399,7 +399,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 					// TypeAdapter(datetime).dump_python(datetime.now(), mode="json")
 					builder.AddArgument(new ScopedVariableExpression {
 						Identifier = new IdentifierNameExpression("json"),
-						Assignment = new InvocationExpressionBuilder()
+						Assignment = new InvocationSyntaxNodeBuilder()
 							.WithIdentifier(Defined.Identifiers.TypeAdapter)
 							.AddArgument(this.typeConverter.Convert(fromBodyParameter.Type))
 							.Chain("dump_python")
@@ -415,13 +415,13 @@ namespace Albatross.CodeGen.WebClient.Python {
 			if (method.HasQueryStringParameter) {
 				// build query string
 				builder.AddArgument(
-					new ScopedVariableExpressionBuilder()
+					new ScopedVariableSyntaxNodeBuilder()
 						.WithName("params")
 						.WithExpression(new IdentifierNameExpression("params")).Build()).Await(settings.Async);
 			}
-			return new ScopedVariableExpressionBuilder()
+			return new ScopedVariableSyntaxNodeBuilder()
 				.WithName("response").WithExpression(builder.Build())
-				.Add(() => new InvocationExpressionBuilder().WithMultiPartFunctionName("response", "raise_for_status").Build())
+				.Add(() => new InvocationSyntaxNodeBuilder().WithMultiPartFunctionName("response", "raise_for_status").Build())
 				.BuildAll();
 		}
 

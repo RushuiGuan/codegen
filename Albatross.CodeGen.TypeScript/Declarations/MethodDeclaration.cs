@@ -14,17 +14,17 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public IdentifierNameExpression Identifier { get; }
 		public ITypeExpression ReturnType { get; init; } = Defined.Types.Any();
 		public ListOfSyntaxNodes<ParameterDeclaration> Parameters { get; init; } = new();
-		public IEnumerable<IModifier> Modifiers { get; init; } = [];
+		public IEnumerable<IKeyword> Modifiers { get; init; } = [];
 		public IExpression Body { get; init; } = new EmptyExpression();
 
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier, ReturnType, Parameters, Body };
 
 		public override TextWriter Generate(TextWriter writer) {
-			var modifier = Modifiers.Where(x => x is AccessModifier).FirstOrDefault() ?? AccessModifier.Public;
-			if (!object.Equals(modifier, AccessModifier.Public)) {
+			var modifier = Modifiers.Where(x => x is AccessKeyword).FirstOrDefault() ?? Defined.Keywords.Public;
+			if (!object.Equals(modifier, Defined.Keywords.Public)) {
 				writer.Append(modifier.Name).Space();
 			}
-			if (Modifiers.Where(x => x is AsyncModifier).Any()) {
+			if (Modifiers.Where(x => x is AsyncKeyword).Any()) {
 				writer.Append("async").Space();
 			}
 			writer.Code(Identifier).OpenParenthesis().Code(Parameters).CloseParenthesis();

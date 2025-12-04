@@ -3,46 +3,46 @@ using System;
 using System.Collections.Generic;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public class InvocationExpressionBuilder : ExpressionBuilder<InvocationExpression> {
+	public class InvocationSyntaxNodeBuilder : SyntaxNodeBuilder<InvocationExpression> {
 		private bool useAwaitOperator;
 		private IExpression? callableExpression;
 		private IIdentifierNameExpression? chained;
 		private readonly List<IExpression> arguments = new List<IExpression>();
 		private readonly List<ITypeExpression> genericArguments = new List<ITypeExpression>();
 
-		public InvocationExpressionBuilder WithIdentifier(IIdentifierNameExpression identifier) {
+		public InvocationSyntaxNodeBuilder WithIdentifier(IIdentifierNameExpression identifier) {
 			this.callableExpression = identifier;
 			return this;
 		}
 
-		public InvocationExpressionBuilder WithFunctionName(string name) {
+		public InvocationSyntaxNodeBuilder WithFunctionName(string name) {
 			this.callableExpression = new IdentifierNameExpression(name);
 			return this;
 		}
 
-		public InvocationExpressionBuilder WithMultiPartFunctionName(params string[] names) {
+		public InvocationSyntaxNodeBuilder WithMultiPartFunctionName(params string[] names) {
 			this.callableExpression = new MultiPartIdentifierNameExpression(names);
 			return this;
 		}
 
-		public InvocationExpressionBuilder WithCallableExpression(IExpression expression) {
+		public InvocationSyntaxNodeBuilder WithCallableExpression(IExpression expression) {
 			this.callableExpression = expression;
 			return this;
 		}
 
-		public InvocationExpressionBuilder AddGenericArgument(ITypeExpression typeExpression) {
+		public InvocationSyntaxNodeBuilder AddGenericArgument(ITypeExpression typeExpression) {
 			this.genericArguments.Add(typeExpression);
 			return this;
 		}
 
-		public InvocationExpressionBuilder AddArgument(IExpression expression) {
+		public InvocationSyntaxNodeBuilder AddArgument(IExpression expression) {
 			if (expression is not NoOpExpression) {
 				this.arguments.Add(expression);
 			}
 			return this;
 		}
 
-		public InvocationExpressionBuilder Await(bool useAwait = true) {
+		public InvocationSyntaxNodeBuilder Await(bool useAwait = true) {
 			this.useAwaitOperator = useAwait;
 			return this;
 		}
@@ -57,8 +57,8 @@ namespace Albatross.CodeGen.Python.Expressions {
 			};
 		}
 
-		public InvocationExpressionBuilder Chain(string functionName) {
-			return new InvocationExpressionBuilder {
+		public InvocationSyntaxNodeBuilder Chain(string functionName) {
+			return new InvocationSyntaxNodeBuilder {
 				callableExpression = this.Build(),
 				chained = new IdentifierNameExpression(functionName)
 			};

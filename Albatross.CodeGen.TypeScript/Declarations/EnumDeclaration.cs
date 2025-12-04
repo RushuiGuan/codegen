@@ -10,7 +10,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public EnumDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
-		public IEnumerable<IModifier> Modifiers { get; init; } = [];
+		public IEnumerable<IKeyword> Modifiers { get; init; } = [];
 		public required ListOfEnumItems Items { get; init; }
 
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier, Items };
