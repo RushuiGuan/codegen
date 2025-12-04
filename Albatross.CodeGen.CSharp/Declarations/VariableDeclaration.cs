@@ -8,7 +8,7 @@ using System.IO;
 namespace Albatross.CodeGen.CSharp.Declarations {
 	public record class VariableDeclaration : SyntaxNode, IExpression {
 		public required IdentifierNameExpression Identifier { get; init; }
-		public required ITypeExpression Type { get; init; }
+		public ITypeExpression Type { get; init; } = Defined.Types.Var;
 		public IExpression? Assignment { get; init; }
 
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier, Type }.AddIfNotNull(Assignment);

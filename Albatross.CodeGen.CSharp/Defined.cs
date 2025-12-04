@@ -18,6 +18,23 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly ITypeExpression Task = new TypeExpression("System.Threading.Tasks.Task");
 		}
 
+		public static class Literals {
+			public static readonly IExpression Null = new NullExpression();
+			public static readonly IExpression True = new BooleanLiteralExpression(true);
+			public static readonly IExpression False = new BooleanLiteralExpression(false);
+		}
+
+		public static class Operators {
+			public static readonly IOperator NotEqual = new Operator("!=");
+			public static readonly IOperator Equal = new Operator("==");
+			public static readonly IOperator GreaterThan = new Operator(">");
+			public static readonly IOperator LessThan = new Operator("<");
+			public static readonly IOperator GreaterThanOrEqual = new Operator(">=");
+			public static readonly IOperator LessThanOrEqual = new Operator("<=");
+			public static readonly IOperator Plus = new Operator("+");
+			public static readonly IOperator Minus = new Operator("-");
+		}
+
 		public static class Keywords {
 			public static readonly AccessModifierKeyword Public = new AccessModifierKeyword("public");
 			public static readonly AccessModifierKeyword Private = new AccessModifierKeyword("private");
@@ -36,8 +53,13 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IKeyword Partial = new Keyword("partial");
 			public static readonly IKeyword Readonly = new Keyword("readonly");
 			public static readonly IKeyword Return = new Keyword("return");
+			public static readonly IKeyword ForEach = new Keyword("foreach");
+			public static readonly IKeyword In = new Keyword("in");
+			public static readonly IKeyword If = new Keyword("if");
+			public static readonly IKeyword Else = new Keyword("else");
+			public static readonly IKeyword Using = new Keyword("using");
 		}
-		
+
 		public static class Attributes {
 			public static readonly AttributeExpression Obsolete = new AttributeExpression {
 				CallableExpression = new IdentifierNameExpression("System.ObsoleteAttribute")

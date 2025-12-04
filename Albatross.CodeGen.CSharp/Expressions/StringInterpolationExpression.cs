@@ -5,11 +5,10 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class StringInterpolationExpression : SyntaxNode, IExpression {
+	public record class StringInterpolationExpression : ISyntaxNode, IExpression {
 		public required IEnumerable<IExpression> Expressions { get; init; }
-		public override IEnumerable<ISyntaxNode> Children => Expressions;
 
-		public override TextWriter Generate(TextWriter writer) {
+		public TextWriter Generate(TextWriter writer) {
 			if (Expressions.Any(x => !(x is StringLiteralExpression))) {
 				writer.Append("$\"");
 			} else {
@@ -27,5 +26,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			writer.Append("\"");
 			return writer;
 		}
+
+		public IEnumerable<ISyntaxNode> GetDescendants() => Expressions;
 	}
 }

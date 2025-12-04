@@ -1,8 +1,10 @@
 ﻿using Albatross.CodeAnalysis.Syntax;
+using Albatross.CodeGen.Syntax;
 using Albatross.Reflection;
 using Albatross.Text;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -30,7 +32,7 @@ namespace Albatross.CodeGen {
 		public static CodeGeneratorScope BeginScope(this TextWriter writer, string? text = null) {
 			return new CodeGeneratorScope(writer, args => args.AppendLine($"{text} {{"), args => args.Append("}"));
 		}
-		
+
 		public static CodeStack Condition(this CodeStack codeStack, Func<bool> predicate, Action<CodeStack> action) {
 			if (predicate()) { action(codeStack); }
 			return codeStack;

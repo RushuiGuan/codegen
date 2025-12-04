@@ -52,8 +52,8 @@ namespace Albatross.CodeGen.Python.Expressions {
 				UseAwaitOperator = useAwaitOperator,
 				CallableExpression = callableExpression ?? throw new InvalidOperationException("Name is not set"),
 				Chained = chained,
-				ArgumentList = new ListOfSyntaxNodes<IExpression>(arguments),
-				GenericArguments = new ListOfSyntaxNodes<ITypeExpression>(genericArguments),
+				ArgumentList = new ListOfSyntaxNodes<IExpression> { Nodes = arguments },
+				GenericArguments = new ListOfSyntaxNodes<ITypeExpression> { Nodes = genericArguments },
 			};
 		}
 

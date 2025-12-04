@@ -45,10 +45,9 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		}
 
 		public IEnumerable<ISyntaxNode> GetDescendants() {
-			var list = new List<ISyntaxNode>(Parameters) {
-				ReturnType, Name
+			var list = new List<ISyntaxNode>{
+				Parameters, ReturnType, Name, GenericArguments
 			}.AddIfNotNull(Body);
-			list.AddRange(GenericArguments);
 			list.AddRange(Attributes);
 			return list;
 		}

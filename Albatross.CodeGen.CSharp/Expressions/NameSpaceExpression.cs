@@ -11,8 +11,9 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		}
 
 		public override IEnumerable<ISyntaxNode> Children => [];
-		public override TextWriter Generate(TextWriter writer) {
-			return writer.Code(Name);
-		}
+
+		public string Source => this.Name.Name;
+
+		public override TextWriter Generate(TextWriter writer) => writer.Code(Name);
 	}
 }

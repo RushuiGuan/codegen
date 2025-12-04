@@ -5,6 +5,7 @@ using Albatross.Collections;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
 	public class EnumDeclaration : IDeclaration {
@@ -33,6 +34,6 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public IEnumerable<ISyntaxNode> GetDescendants()
 			=> new List<ISyntaxNode>(Attributes) {
 				Name
-			}.UnionAll(Members);
+			}.Concat(Members);
 	}
 }

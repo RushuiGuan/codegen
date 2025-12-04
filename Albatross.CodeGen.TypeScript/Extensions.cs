@@ -38,7 +38,9 @@ namespace Albatross.CodeGen.TypeScript {
 		public static ITypeExpression ToPromise(this ITypeExpression type) {
 			if (!type.IsPromise()) {
 				type = new GenericTypeExpression(Defined.Identifiers.Promise) {
-					Arguments = new ListOfSyntaxNodes<ITypeExpression>(type),
+					Arguments = new ListOfSyntaxNodes<ITypeExpression> {
+						Nodes = [type],
+					}
 				};
 			}
 			return type;
@@ -47,7 +49,9 @@ namespace Albatross.CodeGen.TypeScript {
 		public static ITypeExpression ToObservable(this ITypeExpression type) {
 			if (!type.IsObservable()) {
 				type = new GenericTypeExpression(Defined.Identifiers.Observable) {
-					Arguments = new ListOfSyntaxNodes<ITypeExpression>(type),
+					Arguments = new ListOfSyntaxNodes<ITypeExpression> {
+						Nodes = [type],
+					}
 				};
 			}
 			return type;
@@ -65,7 +69,7 @@ namespace Albatross.CodeGen.TypeScript {
 				source = name.Substring(index + 1).Trim();
 				name = name.Substring(0, index).Trim();
 			}
-			if (string.IsNullOrEmpty(name)){
+			if (string.IsNullOrEmpty(name)) {
 				throw new ArgumentException($"{name} is not valid identifier name");
 			}
 			if (string.IsNullOrEmpty(source)) {

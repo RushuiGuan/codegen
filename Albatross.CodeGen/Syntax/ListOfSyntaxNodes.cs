@@ -1,4 +1,5 @@
 ﻿using Albatross.Text;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -10,19 +11,20 @@ namespace Albatross.CodeGen.Syntax {
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	public record class ListOfSyntaxNodes<T> : SyntaxNode, IEnumerable<T> where T : ISyntaxNode {
-		public T[] Nodes { get; init; } = [];
-		protected virtual string Separator => ", ";
+		public ListOfSyntaxNodes(params IEnumerable<T> nodes) {
+			Nodes = nodes;
+		}
+		public IEnumerable<T> Nodes { get; init; } = Array.Empty<T>();
+		public string Separator { get; init; } = ", ";
 		public string LeftPadding { get; init; } = string.Empty;
 		public string RightPadding { get; init; } = string.Empty;
-
-		public ListOfSyntaxNodes(params IEnumerable<T> nodes) {
-			Nodes = nodes.ToArray();
-		}
-
-		public int Count => Nodes.Length;
+		public string Prefix { get; init; } = string.Empty;
+		public string PostFix { get; init; } = string.Empty;
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.WriteItems(this.Nodes, Separator, (w, item) => w.Code(item), this.LeftPadding, this.RightPadding);
+			writer.Append(this.Prefix)
+				.WriteItems(this.Nodes, Separator, (w, item) => w.Code(item), this.LeftPadding, this.RightPadding)
+				.Append(this.PostFix);
 			return writer;
 		}
 

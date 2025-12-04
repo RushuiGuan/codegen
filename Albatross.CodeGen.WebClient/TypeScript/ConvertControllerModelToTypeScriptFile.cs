@@ -42,7 +42,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 								Body = new ReturnExpression(new InfixExpression("+") {
 									Left = new InvocationExpression {
 										Identifier = new MultiPartIdentifierNameExpression("this", "config", "endpoint"),
-										ArgumentList = new ListOfSyntaxNodes<IExpression>(new StringLiteralExpression(settings.EndPointName)),
+										ArgumentList = new ListOfSyntaxNodes<IExpression>{ Nodes =[new StringLiteralExpression(settings.EndPointName)] },
 									},
 									Right = new StringLiteralExpression(model.Route),
 								}),
@@ -63,7 +63,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 									}
 								],
 							},
-							Body = new CompositeNode {
+							Body = new CompositeExpression {
 								Items = [
 									new InvocationExpression {
 										Identifier = new IdentifierNameExpression("super"),

@@ -5,17 +5,17 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class IfElseCodeBlockExpression : ISyntaxNode, IExpression {
+	public record class IfExpression : ISyntaxNode, IExpression {
 		public required IExpression Condition { get; init; }
-		public required IExpression CodeBlock { get; init; }
+		public required IExpression IfBlock { get; init; }
 		public IExpression? ElseBlock { get; init; }
 
 		public  TextWriter Generate(TextWriter writer) {
-			using (var mainScope = writer.Append("if ").OpenParenthesis().Code(Condition).CloseParenthesis().BeginScope()) {
-				mainScope.Writer.Code(CodeBlock);
+			using (var mainScope = writer.Code(Defined.Keywords.If).OpenParenthesis().Code(Condition).CloseParenthesis().BeginScope()) {
+				mainScope.Writer.Code(IfBlock);
 			}
 			if (ElseBlock != null) {
-				using (var elseScope = writer.Append(" else ").BeginScope()) {
+				using (var elseScope = writer.Code(Defined.Keywords.Else).BeginScope()) {
 					elseScope.Writer.Code(ElseBlock);
 				}
 			}
@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		}
 
 		public IEnumerable<ISyntaxNode> GetDescendants() => new List<ISyntaxNode> {
-			Condition, CodeBlock
+			Condition, IfBlock
 		}.AddIfNotNull(ElseBlock);
 	}
 }

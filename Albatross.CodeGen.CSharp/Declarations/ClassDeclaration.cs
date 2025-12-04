@@ -17,14 +17,14 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public bool IsPartial { get; init; }
 		public bool IsRecord { get; init; }
 
-		public IEnumerable<AttributeExpression> AttributeExpressions { get; init; } = [];
+		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];
 		public IEnumerable<ConstructorDeclaration> Constructors { get; init; } = [];
 		public IEnumerable<PropertyDeclaration> Properties { get; init; } = [];
 		public IEnumerable<FieldDeclaration> Fields { get; init; } = [];
 		public IEnumerable<MethodDeclaration> Methods { get; init; } = [];
 
 		public TextWriter Generate(TextWriter writer) {
-			foreach (var attribute in AttributeExpressions) {
+			foreach (var attribute in Attributes) {
 				writer.Code(attribute).WriteLine();
 			}
 			if (AccessModifier != null) {

@@ -73,13 +73,17 @@ namespace Albatross.CodeGen.TypeScript {
 			public static InvocationExpression InjectableDecorator(string providedIn) {
 				return new DecoratorExpression {
 					Identifier = new QualifiedIdentifierNameExpression("Injectable", Sources.AngularCore),
-					ArgumentList = new ListOfSyntaxNodes<IExpression>(new JsonValueExpression(new JsonPropertyExpression("providedIn", new StringLiteralExpression(providedIn))))
+					ArgumentList = new ListOfSyntaxNodes<IExpression> {
+						Nodes = [new JsonValueExpression(new JsonPropertyExpression("providedIn", new StringLiteralExpression(providedIn)))]
+					}
 				};
 			}
 			public static InvocationExpression ConsoleLog(string message) {
 				return new InvocationExpression {
 					Identifier = new MultiPartIdentifierNameExpression(new IdentifierNameExpression("console"), new IdentifierNameExpression("log")),
-					ArgumentList = new ListOfSyntaxNodes<IExpression>(new StringLiteralExpression(message)),
+					ArgumentList = new ListOfSyntaxNodes<IExpression> {
+						Nodes = [new StringLiteralExpression(message)]
+					},
 					Terminate = true,
 				};
 			}
@@ -99,11 +103,12 @@ namespace Albatross.CodeGen.TypeScript {
 			public static IIdentifierNameExpression Observable => new QualifiedIdentifierNameExpression("Observable", Sources.Rxjs);
 			public static IIdentifierNameExpression FirstValueFrom => new QualifiedIdentifierNameExpression("firstValueFrom", Sources.Rxjs);
 		}
-		
+
 		public static class Keywords {
 			public static AccessKeyword Public = new AccessKeyword("public");
 			public static AccessKeyword Private = new AccessKeyword("private");
 			public static AccessKeyword Protected = new AccessKeyword("protected");
+
 		}
 	}
 }

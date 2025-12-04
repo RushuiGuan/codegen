@@ -14,5 +14,10 @@ namespace Albatross.CodeGen.Syntax {
 				}
 			}
 		}
+		public override string ToString() {
+			var writer = new StringWriter();
+			Generate(writer);
+			return writer.ToString();
+		}
 	}
 }

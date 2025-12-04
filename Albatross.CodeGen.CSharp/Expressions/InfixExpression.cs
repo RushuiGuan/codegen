@@ -5,18 +5,14 @@ using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
 	public record class InfixExpression : IExpression {
-		public InfixExpression(string @operator) {
-			Operator = @operator;
-		}
-
-		public string Operator { get; }
 		public bool UseParenthesis { get; init; }
+		public required IOperator Operator { get; init; }
 		public required IExpression Left { get; init; }
 		public required IExpression Right { get; init; }
 
 		public TextWriter Generate(TextWriter writer) {
 			if (UseParenthesis) { writer.OpenParenthesis(); }
-			writer.Code(Left).Append(" ").Append(Operator).Append(" ").Code(Right);
+			writer.Code(Left).Code(Operator).Code(Right);
 			if (UseParenthesis) { writer.CloseParenthesis(); }
 			return writer;
 		}

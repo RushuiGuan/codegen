@@ -39,8 +39,8 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 			return new InvocationExpression() {
 				UseAwaitOperator = useAwaitOperator,
 				Identifier = name ?? throw new InvalidOperationException("Name is not set"),
-				ArgumentList = new ListOfSyntaxNodes<IExpression>(arguments),
-				GenericArguments = new ListOfSyntaxNodes<ITypeExpression>(genericArguments),
+				ArgumentList = new ListOfSyntaxNodes<IExpression> { Nodes = arguments },
+				GenericArguments = new ListOfSyntaxNodes<ITypeExpression> { Nodes = genericArguments },
 				Terminate = setTerminate,
 			};
 		}

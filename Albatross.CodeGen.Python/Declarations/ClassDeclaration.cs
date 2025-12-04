@@ -4,6 +4,7 @@ using Albatross.Collections;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Albatross.CodeGen.Python.Declarations {
 	public record class ClassDeclaration : SyntaxNode, IDeclaration {
@@ -26,7 +27,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 			=> new List<ISyntaxNode> { Identifier, }
 				.AddIfNotNull(BaseClassName)
 				.AddIfNotNull(Constructor)
-				.UnionAll(Decorators, Imports, Fields, GetProperties, Methods);
+				.Concat(Decorators).Concat(Imports).Concat(Fields).Concat(GetProperties).Concat(Methods);
 
 		public override TextWriter Generate(TextWriter writer) {
 			Decorators.ForEach(x => writer.Code(x).AppendLine());

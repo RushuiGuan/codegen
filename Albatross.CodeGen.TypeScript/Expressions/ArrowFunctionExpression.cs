@@ -2,6 +2,7 @@
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
 	public record class ArrowFunctionExpression : SyntaxNode, IExpression, ICodeElement {
@@ -11,7 +12,7 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Arguments, Body };
 
 		public override TextWriter Generate(TextWriter writer) {
-			if (Arguments.Count == 1) {
+			if (Arguments.Count() == 1) {
 				writer.Code(Arguments);
 			} else {
 				writer.OpenParenthesis().Code(Arguments).CloseParenthesis();

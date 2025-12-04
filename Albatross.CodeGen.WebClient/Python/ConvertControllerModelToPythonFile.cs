@@ -28,7 +28,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		private static readonly IIdentifierNameExpression syncClient = new QualifiedIdentifierNameExpression("Session", Defined.Sources.Requests);
 
 		public PythonFileDeclaration Convert(ControllerInfo model) {
-			if(!settings.HttpClientClassNameMapping.TryGetValue(model.Controller.GetFullName(), out var clientClassName)) {
+			if (!settings.HttpClientClassNameMapping.TryGetValue(model.Controller.GetFullName(), out var clientClassName)) {
 				clientClassName = $"{model.ControllerName}Client";
 			}
 			var fileName = clientClassName.Underscore();
@@ -81,14 +81,16 @@ namespace Albatross.CodeGen.WebClient.Python {
 					},
 				],
 			},
-			Body = new CompositeNode {
+			Body = new CompositeExpression {
 				Items = [
 					new ScopedVariableExpression {
 						Identifier = new MultiPartIdentifierNameExpression("self", "_base_url"),
 						Assignment = new StringInterpolationExpression(
 							new InvocationExpression {
 								CallableExpression = new MultiPartIdentifierNameExpression("base_url", "rstrip"),
-								ArgumentList = new ListOfSyntaxNodes<IExpression>(new StringLiteralExpression("/", true)),
+								ArgumentList = new ListOfSyntaxNodes<IExpression>{
+									Nodes = [new StringLiteralExpression("/", true)]
+								},
 							},
 							new StringLiteralExpression("/"),
 							new StringLiteralExpression(model.Route)
@@ -98,16 +100,18 @@ namespace Albatross.CodeGen.WebClient.Python {
 						Identifier = new MultiPartIdentifierNameExpression("self", "_client"),
 						Assignment = new InvocationExpression {
 							CallableExpression = settings.Async? asyncClient : syncClient,
-							ArgumentList = settings.Async ? new ListOfSyntaxNodes<IExpression>(
-								new ScopedVariableExpression {
-									Identifier = new IdentifierNameExpression("base_url"),
-									Assignment = new MultiPartIdentifierNameExpression("self", "_base_url"),
-								},
-								new ScopedVariableExpression {
-									Identifier = new IdentifierNameExpression("auth"),
-									Assignment = new IdentifierNameExpression("auth")
-								}
-							): new ListOfSyntaxNodes<IExpression>(),
+							ArgumentList = settings.Async ? new ListOfSyntaxNodes<IExpression>{
+								Nodes = [
+									new ScopedVariableExpression {
+										Identifier = new IdentifierNameExpression("base_url"),
+										Assignment = new MultiPartIdentifierNameExpression("self", "_base_url"),
+									},
+									new ScopedVariableExpression {
+										Identifier = new IdentifierNameExpression("auth"),
+										Assignment = new IdentifierNameExpression("auth")
+									}
+								]
+							} : new ListOfSyntaxNodes<IExpression>(),
 						}
 					},
 					settings.Async ? new NoOpExpression() : new ScopedVariableExpression{
@@ -118,51 +122,55 @@ namespace Albatross.CodeGen.WebClient.Python {
 			},
 		};
 
-		MethodDeclaration CreateCloseMethod() => new MethodDeclaration("close") {
-			Modifiers = settings.Async ? [new AsyncKeyword()] : [],
-			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(Defined.Parameters.Self),
-			ReturnType = Defined.Types.None,
-			Body = new InvocationSyntaxNodeBuilder()
-				.Await(settings.Async)
-				.WithMultiPartFunctionName("self", "_client", settings.Async ? "aclose" : "close")
-				.Build(),
-		};
-
-		MethodDeclaration CreateEnterMethod() => new MethodDeclaration(settings.Async ? "__aenter__" : "__enter__") {
-			Modifiers = settings.Async ? [new AsyncKeyword()] : [],
-			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(Defined.Parameters.Self),
-			ReturnType = Defined.Types.Self,
-			Body = new ReturnExpression(Defined.Identifiers.Self),
-		};
-
-		MethodDeclaration CreateExitMethod() => new MethodDeclaration(settings.Async ? "__aexit__" : "__exit__") {
-			Modifiers = settings.Async ? [new AsyncKeyword()] : [],
-			Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
-				Defined.Parameters.Self,
-				new ParameterDeclaration {
-					Identifier = new IdentifierNameExpression("exc_type"),
-					Type = Defined.Types.None
+			MethodDeclaration CreateCloseMethod () => new MethodDeclaration("close") {
+				Modifiers = settings.Async ? [new AsyncKeyword()] : [],
+				Parameters = new ListOfSyntaxNodes<ParameterDeclaration> {
+					Nodes = [Defined.Parameters.Self]
 				},
-				new ParameterDeclaration {
-					Identifier = new IdentifierNameExpression("exc_value"),
-					Type = Defined.Types.None
-				},
-				new ParameterDeclaration {
-					Identifier = new IdentifierNameExpression("traceback"),
-					Type = Defined.Types.None
-				}),
-			ReturnType = Defined.Types.None,
-			Body = new InvocationSyntaxNodeBuilder().Await(settings.Async).WithMultiPartFunctionName("self", "close").Build(),
-		};
+				ReturnType = Defined.Types.None,
+				Body = new InvocationSyntaxNodeBuilder()
+					.Await(settings.Async)
+					.WithMultiPartFunctionName("self", "_client", settings.Async ? "aclose" : "close")
+					.Build(),
+			};
 
-		// has to do this since python doesn't support methods of the same name
-		IEnumerable<(MethodInfo Method, int Index)> GroupMethods(ControllerInfo model) {
+			MethodDeclaration CreateEnterMethod () => new MethodDeclaration(settings.Async ? "__aenter__" : "__enter__") {
+				Modifiers = settings.Async ? [new AsyncKeyword()] : [],
+				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>{ Nodes = [Defined.Parameters.Self] },
+				ReturnType = Defined.Types.Self,
+				Body = new ReturnExpression(Defined.Identifiers.Self),
+			};
+
+			MethodDeclaration CreateExitMethod () => new MethodDeclaration(settings.Async ? "__aexit__" : "__exit__") {
+				Modifiers = settings.Async ? [new AsyncKeyword()] : [],
+				Parameters = new ListOfSyntaxNodes<ParameterDeclaration> {
+					Nodes = [
+					Defined.Parameters.Self,
+					new ParameterDeclaration {
+						Identifier = new IdentifierNameExpression("exc_type"),
+						Type = Defined.Types.None
+					},
+					new ParameterDeclaration {
+						Identifier = new IdentifierNameExpression("exc_value"),
+						Type = Defined.Types.None
+					},
+					new ParameterDeclaration {
+						Identifier = new IdentifierNameExpression("traceback"),
+						Type = Defined.Types.None
+					}]
+				},
+				ReturnType = Defined.Types.None,
+				Body = new InvocationSyntaxNodeBuilder().Await(settings.Async).WithMultiPartFunctionName("self", "close").Build(),
+			};
+
+			// has to do this since python doesn't support methods of the same name
+			IEnumerable < (MethodInfo Method, int Index) > GroupMethods(ControllerInfo model) {
 			foreach (var group in model.Methods.GroupBy(x => x.Name)) {
 				var index = 0;
 				foreach (var item in group) {
 					yield return (item, index++);
 				}
-			}
+		}
 		}
 
 		MethodDeclaration BuildMethod(MethodInfo method, int index) {
@@ -173,12 +181,13 @@ namespace Albatross.CodeGen.WebClient.Python {
 				Modifiers = settings.Async ? [new AsyncKeyword()] : [],
 				Decorators = method.IsObsolete ? [new DecoratorExpression { CallableExpression = Defined.Identifiers.Deprecated, }] : Array.Empty<DecoratorExpression>(),
 				ReturnType = returnType,
-				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
-					method.Parameters.Select(x => new ParameterDeclaration {
+				Parameters = new ListOfSyntaxNodes<ParameterDeclaration> {
+					Nodes = method.Parameters.Select(x => new ParameterDeclaration {
 						Identifier = new IdentifierNameExpression(x.Name.Underscore()),
 						Type = this.typeConverter.Convert(x.Type)
-					})).WithSelf(),
-				Body = new CompositeNode(
+					})
+				}.WithSelf(),
+				Body = new CompositeExpression(
 					BuildRequestUrl(method),
 					BuildQueryParameters(method),
 					CreateHttpInvocationExpression(method),
@@ -191,7 +200,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			if (method.ReturnType.SpecialType == SpecialType.System_Void) {
 				return new NoOpExpression();
 			}
-			SyntaxNodeBuilder builder = new CompositeNodeBuilder();
+			SyntaxNodeBuilder builder = new CompositeExpressionBuilder();
 			if (method.ReturnType.IsNullable(compilation)) {
 				builder.Add(() => new IfElseCodeBlockExpression {
 					Condition = new ConditionExpression("==") {

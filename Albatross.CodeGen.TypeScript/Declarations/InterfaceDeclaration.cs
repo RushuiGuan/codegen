@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier, }
 				.AddIfNotNull(BaseInterfaceName)
-				.UnionAll(Properties);
+				.Concat(Properties);
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Append("export ").Append("interface ").Code(Identifier);

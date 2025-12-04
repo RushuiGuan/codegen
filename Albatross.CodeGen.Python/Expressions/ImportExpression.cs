@@ -5,14 +5,15 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class ImportExpression : SyntaxNode, ICodeElement {
+	public record class ImportExpression : IExpression {
 		public ImportExpression(IEnumerable<IdentifierNameExpression> symbols) {
-			this.Symbols = new ListOfSyntaxNodes<IdentifierNameExpression>(symbols.Distinct());
+			this.Symbols = new ListOfSyntaxNodes<IdentifierNameExpression> {
+				Nodes = symbols.Distinct(),
+			};
 		}
 		public ListOfSyntaxNodes<IdentifierNameExpression> Symbols { get; }
 		public required ISourceExpression Source { get; init; }
-		public override IEnumerable<ISyntaxNode> Children => [Symbols, Source];
-		public override TextWriter Generate(TextWriter writer) {
+		public TextWriter Generate(TextWriter writer) {
 			if(Symbols.Any()) {
 				writer.Append("from ").Code(Source).Append(" import ").WriteItems(Symbols, ", ", (w, x) => w.Code(x));
 			}else{
@@ -20,5 +21,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 			}
 			return writer;
 		}
+
+		public IEnumerable<ISyntaxNode> GetDescendants() => [Symbols, Source];
 	}
 }

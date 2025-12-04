@@ -10,19 +10,18 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 		// this regex is more restrictive than the actual module name regex
 		public ModuleSourceExpression(string name) {
 			if (Defined.Patterns.ModuleSource.IsMatch(name)) {
-				this.ModuleName = name;
+				this.Source = name;
 			} else {
 				throw new ArgumentException($"Invalid module name {name}");
 			}
 		}
-		public string ModuleName { get; }
+		public string Source { get; }
 
 		public override IEnumerable<ISyntaxNode> Children => [];
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Append('"').Append(ModuleName).Append('"');
+			writer.Append('"').Append(Source).Append('"');
 			return writer;
 		}
-		public override string ToString() => this.ModuleName;
 	}
 }

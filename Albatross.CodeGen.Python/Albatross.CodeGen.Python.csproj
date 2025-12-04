@@ -7,7 +7,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.0-42.main" />
-		<PackageReference Include="Albatross.Collections" Version="8.0.1-37.main" />
+		<PackageReference Include="Albatross.Collections" Version="8.0.1-44.main" />
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
 	</ItemGroup>
 	<ItemGroup>

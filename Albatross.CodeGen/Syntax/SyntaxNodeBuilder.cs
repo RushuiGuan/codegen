@@ -31,6 +31,6 @@ namespace Albatross.CodeGen.Syntax {
 			return this;
 		}
 		protected abstract ISyntaxNode InternalBuild();
-		public CompositeNode BuildAll() => new CompositeNode(this.queue.Select(x => x()).ToArray());
+		public CompositeExpression BuildAll() => new CompositeExpression(this.queue.Select(x => x()).ToArray());
 	}
 }

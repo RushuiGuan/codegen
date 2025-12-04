@@ -4,6 +4,7 @@ using Albatross.Collections;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Declarations {
 	public record class ClassDeclaration : SyntaxNode, IDeclaration {
@@ -24,7 +25,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 			=> new List<ISyntaxNode> { Identifier, }
 					.AddIfNotNull(BaseClassName)
 					.AddIfNotNull(Constructor)
-					.UnionAll(Decorators, Imports, Getters, Setters, Properties, Methods);
+					.Concat(Decorators).Concat(Imports).Concat(Getters).Concat(Setters).Concat(Properties).Concat(Methods);
 
 		public override TextWriter Generate(TextWriter writer) {
 			Decorators.ForEach(x => writer.Code(x).AppendLine());

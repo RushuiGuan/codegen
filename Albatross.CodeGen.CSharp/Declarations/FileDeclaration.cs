@@ -11,7 +11,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public string FileName => $"{Name}.cs";
 		public string Name { get; }
 
-		public IEnumerable<UsingExpression> Imports { get; init; } = [];
+		public IEnumerable<ImportExpression> Imports { get; init; } = [];
 		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];
 		public IEnumerable<ClassDeclaration> Classes { get; init; } = [];
 		public IEnumerable<InterfaceDeclaration> Interfaces { get; init; } = [];

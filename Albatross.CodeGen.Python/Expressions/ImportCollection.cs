@@ -6,19 +6,18 @@ using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
 	public record class ImportCollection : ListOfSyntaxNodes<ImportExpression> {
-		public ImportCollection(IEnumerable<ImportExpression> imports) : base(imports.GroupBy(x => x.Source)
-			.Select(x => new ImportExpression(x.SelectMany(y => y.Symbols)) {
+		public ImportCollection(IEnumerable<ImportExpression> imports) {
+			this.Nodes = imports.GroupBy(x => x.Source).Select(x => new ImportExpression(x.SelectMany(y => y.Symbols)) {
 				Source = x.Key,
-			})
-		) { }
+			});
+		}
 
-		public ImportCollection(IEnumerable<ISyntaxNode> nodes) : base(
-			nodes.Where(x => x is QualifiedIdentifierNameExpression)
-				.Cast<QualifiedIdentifierNameExpression>()
+		public ImportCollection(IEnumerable<ISyntaxNode> nodes) {
+			this.Nodes = nodes.OfType<QualifiedIdentifierNameExpression>()
 				.GroupBy(x => x.Source)
 				.Select(x => new ImportExpression(x.Select(y => y.Identifier)) {
 					Source = x.Key,
-				})) {
+				}).OrderBy(x => x.Source);
 		}
 		public override TextWriter Generate(TextWriter writer) {
 			var sorted = this.OrderBy(x => x.Source.ToString()).ToArray();
