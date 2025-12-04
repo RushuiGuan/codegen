@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.WebClient {
 			services.AddSingleton<ITypeConverter, TypeScript.MappedTypeConverter>();
 			services.AddSingleton<ISourceLookup>(provider => {
 				var settings = provider.GetRequiredService<CodeGenSettings>();
-				return new DefaultTypeScriptSourceLookup(settings.TypeScriptWebClientSettings.NameSpaceModuleMapping);
+				return new DefaultTypeScriptSourceLookup(settings.TypeScriptWebClientSettings.NamespaceModuleMapping);
 			});
 			return services;
 		}
@@ -32,7 +32,7 @@ namespace Albatross.CodeGen.WebClient {
 			services.AddSingleton<ITypeConverter, Python.MappedTypeConverter>();
 			services.AddSingleton<ISourceLookup>(provider => {
 				var settings = provider.GetRequiredService<CodeGenSettings>();
-				return new DefaultPythonSourceLookup(settings.PythonWebClientSettings.NameSpaceModuleMapping);
+				return new DefaultPythonSourceLookup(settings.PythonWebClientSettings.NamespaceModuleMapping);
 			});
 			return services;
 		}

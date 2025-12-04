@@ -7,7 +7,10 @@ using System.Text.RegularExpressions;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
 	public record class IdentifierNameExpression : SyntaxNode, IIdentifierNameExpression {
-		public static readonly Regex IdentifierName = new Regex(@"^[a-z_][a-z0-9_]*$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+		public static readonly Regex IdentifierName = new Regex(@"^
+			(?:[a-z_][a-z0-9_]*)
+			(?:\.[a-z_][a-z0-9_]*)*
+			$", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
 		public IdentifierNameExpression(string name) {
 			if (IdentifierName.IsMatch(name)) {
@@ -16,15 +19,10 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 				throw new ArgumentException($"Invalid identifier name {name}");
 			}
 		}
-		public bool ForwardReference { get; init; }
 		public override IEnumerable<ISyntaxNode> Children => [];
 		public string Name { get; }
 
-		public override TextWriter Generate(TextWriter writer) {
-			if (ForwardReference) { writer.Append("'"); }
-			writer.Append(Name);
-			if (ForwardReference) { writer.Append("'"); }
-			return writer;
-		}
+		public override TextWriter Generate(TextWriter writer)
+			=> writer.Append(Name);
 	}
 }

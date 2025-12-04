@@ -6,23 +6,36 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public class FieldDeclaration : IDeclaration, ISyntaxNode{
-		public required ITypeExpression Type { get; init; }
-		public required IdentifierNameExpression Name { get; init; }
-		public AccessModifier? AccessModifier { get; init; } = AccessModifier.Private;
-		public IEnumerable<AttributeExpression> AttributeExpressions { get; init; } = [];
-		
+	public class FieldDeclaration : IDeclaration, ISyntaxNode {
+		public required ITypeExpression Type { get; set; }
+		public required IdentifierNameExpression Name { get; set; }
+		public AccessModifier? AccessModifier { get; set; } = AccessModifier.Private;
+		public IEnumerable<AttributeExpression> AttributeExpressions { get; set; } = [];
+		public bool IsConst { get; set; }
+		public IExpression? Initializer { get; set; }
+
 		public TextWriter Generate(TextWriter writer) {
 			foreach (var attribute in AttributeExpressions) {
 				writer.Code(attribute).WriteLine();
 			}
-			if(AccessModifier != null){
+			if (AccessModifier != null) {
 				writer.Append(AccessModifier.Name).Space();
 			}
-			writer.Code(Type).Space().Code(Name).Semicolon();
+			if (IsConst) { writer.Append(" const "); }
+			writer.Code(Type).Space().Code(Name);
+			if (Initializer != null) {
+				writer.Append(" = ").Code(Initializer);
+			}
+			writer.Semicolon();
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() => [Type, Name];
+		public IEnumerable<ISyntaxNode> GetDescendants() {
+			var list = new List<ISyntaxNode>{
+				Type, Name 
+			};
+			list.AddRange(AttributeExpressions);
+			return list;
+		}
 	}
 }

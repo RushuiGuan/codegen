@@ -10,7 +10,8 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 	public class ConstructorDeclaration : IDeclaration, ISyntaxNode {
 		public AccessModifier? AccessModifier { get; init; } = AccessModifier.Public;
 		public required IdentifierNameExpression Name { get; init; }
-		public IEnumerable<ParameterDeclaration> Parameters { get; init; } = [];
+		public List<ParameterDeclaration> Parameters { get; init; } = new();
+		public InvocationExpression? BaseConstructorInvocation { get; init; }
 		public IExpression Body { get; init; } = new NoOpExpression();
 
 		public TextWriter Generate(TextWriter writer) {
@@ -19,6 +20,9 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			}
 			writer.Code(Name);
 			writer.WriteItems(Parameters, ",", (w, item) => w.Code(item), "(", ")");
+			if(BaseConstructorInvocation != null) {
+				writer.Append(" : ").Code(BaseConstructorInvocation);
+			}
 			using var scope = writer.BeginScope();
 			scope.Writer.Code(Body);
 			return writer;

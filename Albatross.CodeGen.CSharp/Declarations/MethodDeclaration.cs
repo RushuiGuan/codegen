@@ -5,22 +5,22 @@ using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using NoOpExpression = Albatross.CodeGen.Syntax.NoOpExpression;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
 	public class MethodDeclaration : IDeclaration, ISyntaxNode {
-		public bool IsAbstract { get; init; }
-		public bool IsVirtual { get; init; }
-		public bool IsPartial { get; init; }
+		public bool IsAbstract { get; set; }
+		public bool IsVirtual { get; set; }
+		public bool IsPartial { get; set; }
 
-		public AccessModifier? AccessModifier { get; init; } = AccessModifier.Public;
-		public required ITypeExpression ReturnType { get; init; }
-		public ITypeExpression[] GenericArguments { get; init; } = [];
 		public required IdentifierNameExpression Name { get; init; }
-		public IEnumerable<AttributeExpression> AttributeExpressions { get; init; } = [];
-		public IEnumerable<ParameterDeclaration> Parameters { get; init; } = [];
-		public IExpression? Body { get; init; }
-		public bool IsAsync { get; init; }
+		public required ITypeExpression ReturnType { get; set; }
+		public AccessModifier? AccessModifier { get; set; } = AccessModifier.Public;
+
+		public List<ITypeExpression> GenericArguments { get; init; } = new();
+		public List<AttributeExpression> AttributeExpressions { get; init; } = new();
+		public List<ParameterDeclaration> Parameters { get; init; } = new();
+		public IExpression? Body { get; set; }
+		public bool IsAsync { get; set; }
 
 		public TextWriter Generate(TextWriter writer) {
 			if (AccessModifier != null) {

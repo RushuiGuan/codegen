@@ -12,7 +12,7 @@ namespace Albatross.CodeGen.WebClient.Settings {
 		/// <summary>
 		/// mapping bewteen c# namespace and typescript module
 		/// </summary>
-		public Dictionary<string, string> NameSpaceModuleMapping { get; init; } = new Dictionary<string, string>();
+		public Dictionary<string, string> NamespaceModuleMapping { get; init; } = new Dictionary<string, string>();
 		public Dictionary<string, string> TypeMapping { get; init; } = new Dictionary<string, string>();
 	}
 }

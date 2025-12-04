@@ -10,15 +10,19 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		}
 		public string FileName => $"{Name}.cs";
 		public string Name { get; }
-		
-		public IEnumerable<UsingExpression> UsingExpressions { get; init; } = [];
-		public IEnumerable<AttributeExpression> AttributeExpressions { get; init; } = [];
-		public IEnumerable<ClassDeclaration> ClassDeclarations { get; init; } = [];
+
+		public List<UsingExpression> UsingExpressions { get; init; } = new();
+		public List<AttributeExpression> AttributeExpressions { get; init; } = new();
+		public List<ClassDeclaration> ClassDeclarations { get; init; } = new();
+		public List<InterfaceDeclaration> InterfaceDeclarations { get; init; } = new();
 		public TextWriter Generate(TextWriter writer) {
 			foreach(var item in UsingExpressions){
 				writer.Code(item).WriteLine();
 			}
 			foreach(var item in AttributeExpressions){
+				writer.Code(item).WriteLine();
+			}
+			foreach (var item in InterfaceDeclarations) {
 				writer.Code(item).WriteLine();
 			}
 			foreach (var item in ClassDeclarations) {
@@ -31,6 +35,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			var list = new List<ISyntaxNode>(UsingExpressions);
 			list.AddRange(AttributeExpressions);
 			list.AddRange(ClassDeclarations);
+			list.AddRange(InterfaceDeclarations);
 			return list;
 		}
 	}

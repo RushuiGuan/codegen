@@ -5,25 +5,27 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class InvocationExpression : SyntaxNode, IExpression {
+	public record class InvocationExpression : ISyntaxNode, IExpression {
 		public bool UseAwaitOperator { get; init; }
 		public required IExpression CallableExpression { get; init; }
-		public IIdentifierNameExpression? Chained { get; init; }
-		public ListOfSyntaxNodes<ITypeExpression> GenericArguments { get; init; } = new ListOfSyntaxNodes<ITypeExpression>();
-		public ListOfSyntaxNodes<IExpression> ArgumentList { get; init; } = new ListOfSyntaxNodes<IExpression>();
-		public override IEnumerable<ISyntaxNode> Children => [CallableExpression, ArgumentList];
+		public List<ITypeExpression> GenericArguments { get; init; } = new();
+		public List<IExpression> ArgumentList { get; init; } = new();
 
-		public override TextWriter Generate(TextWriter writer) {
-			if (UseAwaitOperator) {
-				writer.Append("await ");
-			}
+		public virtual TextWriter Generate(TextWriter writer) {
+			if (UseAwaitOperator) { writer.Append("await "); }
 			writer.Code(CallableExpression);
-			if (Chained != null) { writer.Append(".").Code(Chained); }
-			if (GenericArguments.Any()) {
-				writer.Append("<").Code(GenericArguments).Append(">");
-			}
-			writer.OpenParenthesis().Code(ArgumentList).CloseParenthesis();
+			writer.WriteItems(GenericArguments, ", ", (w, args)=> w.Code(args), prefix: "<", postfix: ">");
+			writer.WriteItems(ArgumentList, ", ", (w, arg) => w.Code(arg), prefix: "(", postfix: ")");
 			return writer;
+		}
+
+		public IEnumerable<ISyntaxNode> GetDescendants() {
+			var list = new List<ISyntaxNode>{
+				CallableExpression
+			};
+			list.AddRange(GenericArguments);
+			list.AddRange(ArgumentList);
+			return list;
 		}
 	}
 }

@@ -2,6 +2,7 @@
 using Albatross.CodeGen.CSharp.Modifiers;
 using Albatross.CodeGen.Syntax;
 using Albatross.Text;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -11,20 +12,20 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			Name = new IdentifierNameExpression(name);
 		}
 
-		public AccessModifier? AccessModifier { get; init; } = AccessModifier.Public;
-		public IdentifierNameExpression Name { get; init; }
-		public ITypeExpression? BaseType { get; init; }
-		public bool IsStatic { get; init; }
-		public bool IsSealed { get; init; }
-		public bool IsAbstract { get; init; }
-		public bool IsPartial { get; init; }
-		public bool IsRecord { get; init; }
+		public AccessModifier? AccessModifier { get; set; } = AccessModifier.Public;
+		public IdentifierNameExpression Name { get; set; }
+		public List<ITypeExpression> BaseTypes { get; set; } = new();
+		public bool IsStatic { get; set; }
+		public bool IsSealed { get; set; }
+		public bool IsAbstract { get; set; }
+		public bool IsPartial { get; set; }
+		public bool IsRecord { get; set; }
 
-		public IEnumerable<AttributeExpression> AttributeExpressions { get; init; } = [];
-		public IEnumerable<ConstructorDeclaration> Constructors { get; init; } = [];
-		public IEnumerable<PropertyDeclaration> Properties { get; init; } = [];
-		public IEnumerable<FieldDeclaration> Fields { get; init; } = [];
-		public IEnumerable<MethodDeclaration> Methods { get; init; } = [];
+		public List<AttributeExpression> AttributeExpressions { get; init; } = new();
+		public List<ConstructorDeclaration> Constructors { get; init; } = new();
+		public List<PropertyDeclaration> Properties { get; init; } = new();
+		public List<FieldDeclaration> Fields { get; init; } = new();
+		public List<MethodDeclaration> Methods { get; init; } = new();
 
 		public TextWriter Generate(TextWriter writer) {
 			foreach (var attribute in AttributeExpressions) {
@@ -39,9 +40,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			if (IsPartial) { writer.Append("partial ");}
 			if(IsAbstract) { writer.Append("abstract "); }
 			writer.Append("class ").Code(Name);
-			if (BaseType != null) {
-				writer.Append(" : ").Code(BaseType);
-			}
+			writer.WriteItems(BaseTypes, ", ", (w, args) => w.Code(args), " : ", null);
 			using (var scope = writer.BeginScope()) {
 				foreach(var constructor in Constructors) {
 					scope.Writer.Code(constructor).WriteLine();
@@ -65,9 +64,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			list.AddRange(Fields);
 			list.AddRange(Properties);
 			list.AddRange(Methods);
-			if (BaseType != null) {
-				list.Add(BaseType);
-			}
+			list.AddRange(BaseTypes);
 			return list;
 		}
 	}
