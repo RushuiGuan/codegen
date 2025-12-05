@@ -184,11 +184,11 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		IExpression CreateRequestFunction(ParameterInfo? fromBody) {
 			if (fromBody == null) {
-				return new IdentifierNameExpression("CreateRequest");
+				return new IdentifierNameExpression("this.CreateRequest");
 			} else if (fromBody.Type.SpecialType == SpecialType.System_String) {
-				return new IdentifierNameExpression("CreateStringRequest");
+				return new IdentifierNameExpression("this.CreateStringRequest");
 			} else {
-				return new IdentifierNameExpression("CreateJsonRequest") {
+				return new IdentifierNameExpression("this.CreateJsonRequest") {
 					GenericArguments = new ListOfGenericArguments(this.typeConverter.Convert(fromBody.Type))
 				};
 			}
@@ -196,7 +196,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		IExpression GetVoidResponseFunction() {
 			return new InvocationExpression {
-				CallableExpression = new IdentifierNameExpression("GetRawResponse"),
+				CallableExpression = new IdentifierNameExpression("this.GetRawResponse"),
 				Arguments = new ListOfArguments(new IdentifierNameExpression("request")),
 				UseAwaitOperator = true,
 			};
@@ -239,6 +239,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		}
 
 		IEnumerable<IExpression> BuildHttpCall(MethodInfo method) {
+			yield return new NewLineExpression();
 			var fromBody = method.Parameters.FirstOrDefault(x => x.WebType == ParameterType.FromBody);
 			yield return new UsingExpression {
 				Resource = new AssignmentExpression {
@@ -257,13 +258,14 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		public FileDeclaration Convert(ControllerInfo from) {
 			return new FileDeclaration(GetFilename(from)) {
+				Namespace = new NamespaceExpression(settings.CSharpWebClientSettings.Namespace),
+				NullableEnabled = true,
 				Imports = [
 					new ImportExpression("Albatross.Dates"),
 					new ImportExpression("System.Net.Http"),
 					new ImportExpression("System.Threading.Tasks"),
 					new ImportExpression("Microsoft.Extensions.Logging"),
 					new ImportExpression("Albatross.WebClient"),
-					new ImportExpression("System"),
 					new ImportExpression("System.Collections.Specialized"),
 				],
 				Interfaces = settings.CSharpWebClientSettings.UseInterface ? [CreateInterface(from)] : [],
@@ -314,7 +316,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		IExpression CreateAddQueryStringStatement(ITypeSymbol type, string queryKey, string variableName) {
 			return new InvocationExpression {
 				CallableExpression = new IdentifierNameExpression("queryString.Add"),
-				Arguments = new ListOfArguments(GetQueryStringValue(type, variableName))
+				Arguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
 			}.Terminate();
 		}
 

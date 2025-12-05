@@ -15,6 +15,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		public FileDeclaration Generate(IEnumerable<ControllerInfo> models) {
 			return new FileDeclaration("Extensions.generated") {
+				Namespace = new NamespaceExpression(settings.CSharpWebClientSettings.Namespace),
 				Imports = [
 					new ImportExpression("Microsoft.Extensions.DependencyInjection"),
 				],

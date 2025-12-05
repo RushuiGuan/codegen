@@ -41,6 +41,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 				foreach(var constructor in Constructors) {
 					scope.Writer.Code(constructor).WriteLine();
 				}
+				scope.Writer.WriteLine();
 				foreach (var field in Fields) {
 					scope.Writer.Code(field).WriteLine();
 				}

@@ -11,14 +11,21 @@ namespace Albatross.CodeGen.Syntax {
 		public CompositeExpression(params IEnumerable<ISyntaxNode> items) {
 			Items = items;
 		}
+
 		public IEnumerable<ISyntaxNode> Items { get; init; }
+
 		public override TextWriter Generate(TextWriter writer) {
-			writer.WriteItems(Items.Where(x => !(x is NoOpExpression)), "\n", (w, x) => w.Code(x));
+			writer.WriteItems(Items.Where(x => !(x is NoOpExpression)), "\n", (w, x) => {
+				if (x is not NewLineExpression) {
+					w.Code(x);
+				}
+			});
 			return writer;
 		}
 
 		public override IEnumerable<ISyntaxNode> Children => Items;
 	}
+
 	public class CompositeExpressionBuilder : SyntaxNodeBuilder<ISyntaxNode> {
 		public override ISyntaxNode Build() => new NoOpExpression();
 	}

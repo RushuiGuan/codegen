@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly ITypeExpression Object = new TypeExpression("object");
 			public static readonly ITypeExpression Void = new TypeExpression("void");
 			public static readonly ITypeExpression Var = new TypeExpression("var");
-			public static readonly ITypeExpression Task = new TypeExpression("System.Threading.Tasks.Task");
+			public static readonly ITypeExpression Task = new TypeExpression("Task");
 			public static readonly ITypeExpression Char = new TypeExpression("char");
 		}
 
@@ -35,6 +35,13 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IOperator Plus = new Operator("+");
 			public static readonly IOperator Minus = new Operator("-");
 			public static readonly IOperator Assignment = new Operator("=");
+		}
+		
+		public static class PreprocessorDirectives {
+			public static readonly PreprocessorDirectiveExpression Region = new PreprocessorDirectiveExpression("region");
+			public static readonly PreprocessorDirectiveExpression EndRegion = new PreprocessorDirectiveExpression("endregion");
+			public static readonly PreprocessorDirectiveExpression NullableEnable = new PreprocessorDirectiveExpression("nullable enable");
+			public static readonly PreprocessorDirectiveExpression NullableRestore = new PreprocessorDirectiveExpression("nullable restore");
 		}
 
 		public static class Keywords {
@@ -61,6 +68,7 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IKeyword Else = new Keyword("else");
 			public static readonly IKeyword Using = new Keyword("using");
 			public static readonly IKeyword This = new Keyword("this");
+			public static readonly IKeyword Namespace = new Keyword("namespace");
 		}
 
 		public static class Attributes {

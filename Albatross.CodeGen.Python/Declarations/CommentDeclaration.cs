@@ -1,5 +1,6 @@
 using Albatross.CodeGen.Syntax;
 using Albatross.Text;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -19,6 +20,6 @@ namespace Albatross.CodeGen.Python.Declarations {
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() => [];
+		public IEnumerable<ISyntaxNode> GetDescendants() => Array.Empty<ISyntaxNode>();
 	}
 }
