@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
+using Albatross.CodeAnalysis.Syntax;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CodeGen.CSharp;
@@ -133,7 +134,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						Body = CreateAddQueryStringStatement(elementType, param.QueryKey, "item")
 					};
 				} else {
-					CreateAddQueryStringStatement(param.Type, param.QueryKey, param.Name);
+					yield return CreateAddQueryStringStatement(param.Type, param.QueryKey, param.Name);
 				}
 			}
 		}
@@ -211,11 +212,11 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		IExpression GetJsonResponseFunction(MethodInfo method) {
 			string functionName;
 			if (method.ReturnType.IsNullable(compilation)) {
-				functionName = "GetJsonResponse";
+				functionName = "this.GetJsonResponse";
 			} else if (method.ReturnType.IsValueType) {
-				functionName = "GetRequiredJsonResponseForValueType";
+				functionName = "this.GetRequiredJsonResponseForValueType";
 			} else {
-				functionName = "GetRequiredJsonResponse";
+				functionName = "this.GetRequiredJsonResponse";
 			}
 			return new ReturnExpression {
 				Expression = new InvocationExpression {
@@ -261,6 +262,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				Namespace = new NamespaceExpression(settings.CSharpWebClientSettings.Namespace),
 				NullableEnabled = true,
 				Imports = [
+					new ImportExpression("System"),
 					new ImportExpression("Albatross.Dates"),
 					new ImportExpression("System.Net.Http"),
 					new ImportExpression("System.Threading.Tasks"),
@@ -314,10 +316,24 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		}
 
 		IExpression CreateAddQueryStringStatement(ITypeSymbol type, string queryKey, string variableName) {
-			return new InvocationExpression {
-				CallableExpression = new IdentifierNameExpression("queryString.Add"),
-				Arguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
-			}.Terminate();
+			if (type.IsNullable(compilation)) {
+				return new IfExpression {
+					Condition = new InfixExpression{
+						Left = new IdentifierNameExpression(variableName),
+						Operator = Defined.Operators.NotEqual,
+						Right = new NullExpression()
+					},
+					IfBlock = new InvocationExpression {
+						CallableExpression = new IdentifierNameExpression("queryString.Add"),
+						Arguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
+					}.Terminate()
+				};
+			} else {
+				return new InvocationExpression {
+					CallableExpression = new IdentifierNameExpression("queryString.Add"),
+					Arguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
+				}.Terminate();
+			}
 		}
 
 		object IConvertObject<ControllerInfo>.Convert(ControllerInfo from) {

@@ -18,10 +18,12 @@ namespace Albatross.CodeGen.CSharp.TypeConversions {
 			return Convert(from);
 		}
 
+		static string GetFullName(INamedTypeSymbol symbol) => $"{symbol.ContainingNamespace.GetFullNamespace()}.{symbol.Name}";
+
 		public ITypeExpression Convert(ITypeSymbol symbol) {
 			switch (symbol.SpecialType) {
 				case SpecialType.System_String:
-					return Defined.Types.String;
+					return symbol.IsNullableReferenceType() ? Defined.Types.NullableString : Defined.Types.String;
 				case SpecialType.System_Boolean:
 					return Defined.Types.Bool;
 				case SpecialType.System_Int32:
@@ -39,17 +41,19 @@ namespace Albatross.CodeGen.CSharp.TypeConversions {
 				case SpecialType.System_Char:
 					return Defined.Types.Char;
 				case SpecialType.System_Object:
-					return Defined.Types.Object;
+					return symbol.IsNullableReferenceType() ? Defined.Types.NullableObject : Defined.Types.Object;
 			}
 			if (symbol is INamedTypeSymbol namedTypeSymbol) {
 				if (namedTypeSymbol.IsGenericTypeDefinition()) {
 					throw new InvalidOperationException("Cannot convert generic type definition");
 				} else if (namedTypeSymbol.IsGenericType) {
-					return new TypeExpression(namedTypeSymbol.Name) {
+					return new TypeExpression(GetFullName(namedTypeSymbol)) {
 						GenericArguments = namedTypeSymbol.TypeArguments.Select(Convert).ToArray()
 					};
 				} else {
-					return new TypeExpression(namedTypeSymbol.Name);
+					return new TypeExpression(GetFullName(namedTypeSymbol)) {
+						Nullable = symbol.IsNullableReferenceType()
+					};
 				}
 			} else if (symbol is IArrayTypeSymbol arrayTypeSymbol) {
 				return new ArrayTypeExpression {
