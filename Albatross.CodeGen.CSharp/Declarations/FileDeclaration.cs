@@ -37,14 +37,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 				}
 				foreach (var item in Classes) {
 					scope.Writer.Code(item).WriteLine();
-					//TODO: delete after verification
-					scope.Writer.WriteLine();
 				}
-			}
-			//TODO: delete after verification
-			if (NullableEnabled) {
-				writer.WriteLine();
-				writer.Code(Defined.PreprocessorDirectives.NullableDisable).WriteLine();
 			}
 			return writer;
 		}

@@ -10,16 +10,15 @@ namespace Test.Proxy {
 	public partial class PartiallyObsoleteProxyService : ClientBase {
 		public PartiallyObsoleteProxyService(ILogger<PartiallyObsoleteProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-
+		
 		public const string ControllerPath = "api/partiallyobsolete";
-		[System.ObsoleteAttribute]
-		public async Task<System.String> Get() {
+		public async Task<string> Get() {
 			string path = $"{ControllerPath}/get";
 			var queryString = new NameValueCollection();
+			
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
 		}
 	}
 }
-#nullable disable

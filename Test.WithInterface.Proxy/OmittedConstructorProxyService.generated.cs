@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 namespace Test.WithInterface.Proxy {
 	public partial interface IOmittedConstructorProxyService {
 	}
-
 	public partial class OmittedConstructorProxyService : ClientBase, IOmittedConstructorProxyService {
+		
 		public const string ControllerPath = "api/omittedconstructor";
 	}
 }
-#nullable disable

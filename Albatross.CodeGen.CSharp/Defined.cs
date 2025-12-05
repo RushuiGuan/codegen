@@ -5,13 +5,10 @@ using Albatross.CodeGen.Syntax;
 namespace Albatross.CodeGen.CSharp {
 	public static class Defined {
 		public static class Types {
-			//public static readonly ITypeExpression Int = new TypeExpression("int");
-			public static readonly ITypeExpression Int = new TypeExpression("System.Int32");
+			public static readonly ITypeExpression Int = new TypeExpression("int");
 			public static readonly ITypeExpression Long = new TypeExpression("long");
-			// public static readonly ITypeExpression String = new TypeExpression("string");
-			public static readonly ITypeExpression String = new TypeExpression("System.String");
-			//public static readonly ITypeExpression NullableString = new TypeExpression("string"){
-			public static readonly ITypeExpression NullableString = new TypeExpression("System.String"){
+			public static readonly ITypeExpression String = new TypeExpression("string");
+			public static readonly ITypeExpression NullableString = new TypeExpression("string") {
 				Nullable = true
 			};
 			public static readonly ITypeExpression Bool = new TypeExpression("bool");
@@ -19,7 +16,7 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly ITypeExpression Float = new TypeExpression("float");
 			public static readonly ITypeExpression Decimal = new TypeExpression("decimal");
 			public static readonly ITypeExpression Object = new TypeExpression("object");
-			public static readonly ITypeExpression NullableObject = new TypeExpression("object"){
+			public static readonly ITypeExpression NullableObject = new TypeExpression("object") {
 				Nullable = true
 			};
 			public static readonly ITypeExpression Void = new TypeExpression("void");
@@ -45,7 +42,7 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IOperator Minus = new Operator("-");
 			public static readonly IOperator Assignment = new Operator("=");
 		}
-		
+
 		public static class PreprocessorDirectives {
 			public static readonly PreprocessorDirectiveExpression Region = new PreprocessorDirectiveExpression("region");
 			public static readonly PreprocessorDirectiveExpression EndRegion = new PreprocessorDirectiveExpression("endregion");

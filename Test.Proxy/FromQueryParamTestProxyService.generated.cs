@@ -10,97 +10,97 @@ namespace Test.Proxy {
 	public partial class FromQueryParamTestProxyService : ClientBase {
 		public FromQueryParamTestProxyService(ILogger<FromQueryParamTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-
+		
 		public const string ControllerPath = "api/from-query-param-test";
-		public async Task RequiredString(System.String name) {
+		public async Task RequiredString(string name) {
 			string path = $"{ControllerPath}/required-string";
 			var queryString = new NameValueCollection();
 			queryString.Add("name", name);
+			
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
-
-		public async Task RequiredStringImplied(System.String name) {
+		public async Task RequiredStringImplied(string name) {
 			string path = $"{ControllerPath}/required-string-implied";
 			var queryString = new NameValueCollection();
 			queryString.Add("name", name);
+			
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
-
-		public async Task RequiredStringDiffName(System.String name) {
+		public async Task RequiredStringDiffName(string name) {
 			string path = $"{ControllerPath}/required-string-diff-name";
 			var queryString = new NameValueCollection();
 			queryString.Add("n", name);
+			
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
-
 		public async Task RequiredDateTime(System.DateTime datetime) {
 			string path = $"{ControllerPath}/required-datetime";
 			var queryString = new NameValueCollection();
 			queryString.Add("datetime", datetime.ISO8601String());
+			
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
-
 		public async Task RequiredDateTimeDiffName(System.DateTime datetime) {
 			string path = $"{ControllerPath}/required-datetime_diff-name";
 			var queryString = new NameValueCollection();
 			queryString.Add("d", datetime.ISO8601String());
+			
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
-
 		public async Task RequiredDateOnly(System.DateOnly dateonly) {
 			string path = $"{ControllerPath}/required-dateonly";
 			var queryString = new NameValueCollection();
 			queryString.Add("dateonly", dateonly.ISO8601String());
+			
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
-
 		public async Task RequiredDateOnlyDiffName(System.DateOnly dateonly) {
 			string path = $"{ControllerPath}/required-dateonly_diff-name";
 			var queryString = new NameValueCollection();
 			queryString.Add("d", dateonly.ISO8601String());
+			
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
-
 		public async Task RequiredDateTimeOffset(System.DateTimeOffset dateTimeOffset) {
 			string path = $"{ControllerPath}/required-datetimeoffset";
 			var queryString = new NameValueCollection();
 			queryString.Add("dateTimeOffset", dateTimeOffset.ISO8601String());
+			
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
-
 		public async Task RequiredDateTimeOffsetDiffName(System.DateTimeOffset dateTimeOffset) {
 			string path = $"{ControllerPath}/required-datetimeoffset_diff-name";
 			var queryString = new NameValueCollection();
 			queryString.Add("d", dateTimeOffset.ISO8601String());
+			
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
-
 		public async Task<Test.Dto.Enums.MyEnum> RequiredEnumParameter(Test.Dto.Enums.MyEnum value) {
 			string path = $"{ControllerPath}/required-enum-parameter";
 			var queryString = new NameValueCollection();
 			queryString.Add("value", $"{value}");
+			
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<Test.Dto.Enums.MyEnum>(request);
 			}
 		}
 	}
 }
-#nullable disable

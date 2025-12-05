@@ -10,19 +10,18 @@ namespace Test.WithInterface.Proxy {
 	public partial interface IFilteredMethodProxyService {
 		Task FilteredByNone();
 	}
-
 	public partial class FilteredMethodProxyService : ClientBase, IFilteredMethodProxyService {
 		public FilteredMethodProxyService(ILogger<FilteredMethodProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-
+		
 		public const string ControllerPath = "api/filtered-method";
 		public async Task FilteredByNone() {
 			string path = $"{ControllerPath}/none";
 			var queryString = new NameValueCollection();
+			
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
 		}
 	}
 }
-#nullable disable
