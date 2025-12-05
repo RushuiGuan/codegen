@@ -61,7 +61,7 @@
         "sourcePathRelatedToEntryFile": {
           "type": "string"
         },
-        "nameSpaceModuleMapping": {
+        "namespaceModuleMapping": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
@@ -82,7 +82,7 @@
         "async": {
           "type": "boolean"
         },
-        "nameSpaceModuleMapping": {
+        "namespaceModuleMapping": {
           "type": "object",
           "additionalProperties": {
             "type": "string"

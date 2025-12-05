@@ -11,8 +11,6 @@ try {
 		-s $PSScriptRoot/codegen-settings.json `
 		-o $PSScriptRoot/ `
 		--show-stack
-	
-	dotnet format $PSScriptRoot/Test.Proxy.csproj --include-generated
 } finally {
 	set-Location $location
 }
