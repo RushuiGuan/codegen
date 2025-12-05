@@ -91,6 +91,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		MethodDeclaration CreateMethod(MethodInfo method) {
 			return new MethodDeclaration {
+				AccessModifier = Defined.Keywords.Public,
 				Attributes = method.IsObsolete ? [Defined.Attributes.Obsolete] : [],
 				Name = new IdentifierNameExpression(method.Name),
 				ReturnType = GetMethodReturnType(method.ReturnType),

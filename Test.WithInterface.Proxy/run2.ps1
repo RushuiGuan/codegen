@@ -7,7 +7,7 @@ try {
 
 	dotnet run --no-launch-profile -- schema settings --file $PSScriptRoot/codegen-settings.schema.json
 	
-	dotnet run -- csharp web-client `
+	dotnet run -- csharp2 web-client `
 		-p $PSScriptRoot/../Test.WebApi/Test.WebApi.csproj `
 		-s $PSScriptRoot/codegen-settings.json `
 		-o $PSScriptRoot/

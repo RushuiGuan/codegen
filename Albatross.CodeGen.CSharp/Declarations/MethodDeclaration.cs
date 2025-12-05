@@ -16,7 +16,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public required IdentifierNameExpression Name { get; init; }
 		public required ITypeExpression ReturnType { get; init; }
 		public ListOfGenericArguments GenericArguments { get; init; } = new();
-		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
+		public AccessModifierKeyword? AccessModifier { get; init; }
 
 		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];
 		public ListOfParameterDeclarations Parameters { get; init; } = new();
