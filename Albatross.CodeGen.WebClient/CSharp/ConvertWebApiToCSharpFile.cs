@@ -262,7 +262,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				Namespace = new NamespaceExpression(settings.CSharpWebClientSettings.Namespace),
 				NullableEnabled = true,
 				Imports = [
-					new ImportExpression("System"),
+					// new ImportExpression("System"),
 					new ImportExpression("Albatross.Dates"),
 					new ImportExpression("System.Net.Http"),
 					new ImportExpression("System.Threading.Tasks"),

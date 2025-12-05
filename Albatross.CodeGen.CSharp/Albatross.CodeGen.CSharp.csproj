@@ -6,7 +6,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
-		<PackageReference Include="Albatross.Collections" Version="8.0.1-44.main" />
+		<PackageReference Include="Albatross.Collections" Version="8.0.1-46.main" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\icon.png">

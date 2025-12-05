@@ -1,11 +1,11 @@
-﻿using Albatross.CodeAnalysis.MSBuild;
-using Albatross.CodeAnalysis.Symbols;
+﻿using Albatross.CodeAnalysis.Symbols;
 using Albatross.CodeGen.TypeScript;
 using Albatross.CodeGen.TypeScript.Expressions;
 using Albatross.CodeGen.TypeScript.TypeConversions;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Albatross.CodeGen.UnitTest.TypeScript {
@@ -17,8 +17,8 @@ namespace Albatross.CodeGen.UnitTest.TypeScript {
 		[InlineData(@"class Example { public string[] P1 { get; } }")]
 		[InlineData(@"class Example { public System.Collections.Generic.List<string> P1 { get; } }")]
 		[InlineData(@"class Example { public System.Collections.Generic.ICollection<string> P1 { get; } }")]
-		public void TestStringArray(string code) {
-			var compilation = code.CreateCompilation();
+		public async Task TestStringArray(string code) {
+			var compilation = await code.CreateNet8CompilationAsync();
 
 			var symbol = compilation.GetRequiredSymbol("Example");
 			var p1Symbol = symbol.GetMembers().OfType<IPropertySymbol>().Where(x => x.Name == "P1").First();
@@ -32,8 +32,8 @@ namespace Albatross.CodeGen.UnitTest.TypeScript {
 
 		[Theory]
 		[InlineData(@"class Example { public byte[] P1 { get; } }")]
-		public void TestByteArray(string code) {
-			var compilation = code.CreateCompilation();
+		public async Task TestByteArray(string code) {
+			var compilation = await code.CreateNet8CompilationAsync();
 
 			var symbol = compilation.GetRequiredSymbol("Example");
 			var p1Symbol = symbol.GetMembers().OfType<IPropertySymbol>().Where(x => x.Name == "P1").First();
@@ -45,8 +45,8 @@ namespace Albatross.CodeGen.UnitTest.TypeScript {
 		[Theory]
 		[InlineData(@"class Example { public string? P1 { get; } }")]
 		[InlineData(@"class Example { public System.String? P1 { get; } }")]
-		public void TestNullableString(string code) {
-			var compilation = code.CreateCompilation();
+		public async Task TestNullableString(string code) {
+			var compilation = await code.CreateNet8CompilationAsync();
 
 			var symbol = compilation.GetRequiredSymbol("Example");
 			var p1Symbol = symbol.GetMembers().OfType<IPropertySymbol>().Where(x => x.Name == "P1").First();

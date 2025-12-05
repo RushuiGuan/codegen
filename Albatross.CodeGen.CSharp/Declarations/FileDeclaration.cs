@@ -41,6 +41,10 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 				//TODO: delete after verification
 				scope.Writer.WriteLine();
 			}
+			//TODO: delete after verification
+			if (NullableEnabled) {
+				writer.Code(Defined.PreprocessorDirectives.NullableDisable).WriteLine();
+			}
 			return writer;
 		}
 

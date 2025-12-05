@@ -50,6 +50,7 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly PreprocessorDirectiveExpression Region = new PreprocessorDirectiveExpression("region");
 			public static readonly PreprocessorDirectiveExpression EndRegion = new PreprocessorDirectiveExpression("endregion");
 			public static readonly PreprocessorDirectiveExpression NullableEnable = new PreprocessorDirectiveExpression("nullable enable");
+			public static readonly PreprocessorDirectiveExpression NullableDisable = new PreprocessorDirectiveExpression("nullable disable");
 			public static readonly PreprocessorDirectiveExpression NullableRestore = new PreprocessorDirectiveExpression("nullable restore");
 		}
 
