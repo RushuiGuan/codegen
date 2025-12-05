@@ -1,15 +1,16 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
 using Albatross.CodeAnalysis.Syntax;
-using Albatross.CodeGen.WebClient.Models;
-using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CodeGen.CSharp;
-using Microsoft.CodeAnalysis;
-using System.Linq;
 using Albatross.CodeGen.CSharp.Declarations;
 using Albatross.CodeGen.CSharp.Expressions;
 using Albatross.CodeGen.Syntax;
-using System.Collections.Generic;
+using Albatross.CodeGen.WebClient.Models;
+using Albatross.CodeGen.WebClient.Settings;
 using Albatross.Collections;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Albatross.CodeGen.WebClient.CSharp {
 	public class ConvertWebApiToCSharpFile : IConvertObject<ControllerInfo, FileDeclaration> {
@@ -90,6 +91,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		MethodDeclaration CreateMethod(MethodInfo method) {
 			return new MethodDeclaration {
+				Attributes = method.IsObsolete ? [Defined.Attributes.Obsolete] : [],
 				Name = new IdentifierNameExpression(method.Name),
 				ReturnType = GetMethodReturnType(method.ReturnType),
 				Parameters = GetMethodParameters(method),
@@ -307,6 +309,10 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			} else if (IsDate(type)) {
 				return new InvocationExpression {
 					CallableExpression = new IdentifierNameExpression($"{variableName}.ISO8601String"),
+				};
+			} else if (type.TryGetNullableValueType(compilation, out var valueType) && IsDate(valueType)) {
+				return new InvocationExpression {
+					CallableExpression = new IdentifierNameExpression($"{variableName}.Value.ISO8601String"),
 				};
 			} else {
 				return new StringInterpolationExpression {

@@ -1,7 +1,6 @@
 using Albatross.CodeGen.CSharp.Expressions;
 using Albatross.CodeGen.Syntax;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 
@@ -29,20 +28,22 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			if(NullableEnabled) {
 				writer.Code(Defined.PreprocessorDirectives.NullableEnable).WriteLine();
 			}
-			using var scope = writer.Code(Defined.Keywords.Namespace).Code(Namespace).BeginScope();
-			foreach (var item in Attributes) {
-				scope.Writer.Code(item).WriteLine();
-			}
-			foreach (var item in Interfaces) {
-				scope.Writer.Code(item).WriteLine();
-			}
-			foreach (var item in Classes) {
-				scope.Writer.Code(item).WriteLine();
-				//TODO: delete after verification
-				scope.Writer.WriteLine();
+			using (var scope = writer.Code(Defined.Keywords.Namespace).Code(Namespace).BeginScope()) {
+				foreach (var item in Attributes) {
+					scope.Writer.Code(item).WriteLine();
+				}
+				foreach (var item in Interfaces) {
+					scope.Writer.Code(item).WriteLine();
+				}
+				foreach (var item in Classes) {
+					scope.Writer.Code(item).WriteLine();
+					//TODO: delete after verification
+					scope.Writer.WriteLine();
+				}
 			}
 			//TODO: delete after verification
 			if (NullableEnabled) {
+				writer.WriteLine();
 				writer.Code(Defined.PreprocessorDirectives.NullableDisable).WriteLine();
 			}
 			return writer;
