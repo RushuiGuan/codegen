@@ -1,10 +1,10 @@
-import { MyEnum }  from "./dto.generated";
-import { HttpClient }  from "@angular/common/http";
-import { Injectable }  from "@angular/core";
-import { ConfigService }  from "@mirage/config";
-import { WebClient }  from "@mirage/webclient";
-import { format }  from "date-fns";
-import { Observable }  from "rxjs";
+import { MyEnum } from "./dto.generated";
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { ConfigService } from "@mirage/config";
+import { WebClient } from "@mirage/webclient";
+import { format } from "date-fns";
+import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class FromRoutingParamTestService extends WebClient {

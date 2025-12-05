@@ -1,9 +1,9 @@
-import { ICommand, MyBaseClass }  from "./dto";
-import { HttpClient }  from "@angular/common/http";
-import { Injectable }  from "@angular/core";
-import { ConfigService }  from "@mirage/config";
-import { WebClient }  from "@mirage/webclient";
-import { Observable }  from "rxjs";
+import { ICommand, MyBaseClass } from "./dto";
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { ConfigService } from "@mirage/config";
+import { WebClient } from "@mirage/webclient";
+import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class InterfaceAndAbstractClassTestService extends WebClient {

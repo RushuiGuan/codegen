@@ -5,7 +5,7 @@
 		"baseClassModule": "@mirage/webclient",
 		"configServiceModule": "@mirage/config",
 		"usePromise": false,
-		"nameSpaceModuleMapping": {
+		"namespaceModuleMapping": {
 			"Test.Dto": "./dto.generated"
 		},
 		"typeMapping": {
