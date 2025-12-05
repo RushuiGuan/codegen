@@ -14,8 +14,8 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
 		public AccessModifierKeyword? GetterAccessModifier { get; init; }
 		public AccessModifierKeyword? SetterAccessModifier { get; init; }
-		public IExpression? GetterBody { get; init; } = new StatementTerminator();
-		public IExpression? SetterBody { get; init; } = new StatementTerminator();
+		public IExpression? GetterBody { get; init; } = new TerminateExpression();
+		public IExpression? SetterBody { get; init; } = new TerminateExpression();
 
 		public TextWriter Generate(TextWriter writer) {
 			writer.CodeIfNotNull(this.AccessModifier);

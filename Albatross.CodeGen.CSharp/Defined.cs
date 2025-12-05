@@ -16,6 +16,7 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly ITypeExpression Void = new TypeExpression("void");
 			public static readonly ITypeExpression Var = new TypeExpression("var");
 			public static readonly ITypeExpression Task = new TypeExpression("System.Threading.Tasks.Task");
+			public static readonly ITypeExpression Char = new TypeExpression("char");
 		}
 
 		public static class Literals {
@@ -33,6 +34,7 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IOperator LessThanOrEqual = new Operator("<=");
 			public static readonly IOperator Plus = new Operator("+");
 			public static readonly IOperator Minus = new Operator("-");
+			public static readonly IOperator Assignment = new Operator("=");
 		}
 
 		public static class Keywords {

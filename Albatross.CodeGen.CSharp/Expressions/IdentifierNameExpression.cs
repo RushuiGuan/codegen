@@ -20,7 +20,8 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			}
 		}
 		public string Name { get; }
-		public virtual TextWriter Generate(TextWriter writer) => writer.Append(Name);
-		public virtual IEnumerable<ISyntaxNode> GetDescendants() =>[];
+		public ListOfGenericArguments GenericArguments { get; init; } = new();
+		public virtual TextWriter Generate(TextWriter writer) => writer.Append(Name).Code(GenericArguments);
+		public virtual IEnumerable<ISyntaxNode> GetDescendants() => [GenericArguments];
 	}
 }

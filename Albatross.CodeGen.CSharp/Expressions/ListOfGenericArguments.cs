@@ -8,9 +8,6 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 	public record ListOfGenericArguments : IExpression {
 		readonly ListOfSyntaxNodes<ITypeExpression> list;
 		public ListOfGenericArguments(params IEnumerable<ITypeExpression> nodes) {
-			if (!nodes.Any()) {
-				throw new ArgumentException("ListOfGenericArguments requires at least one type argument");
-			}
 			list = new ListOfSyntaxNodes<ITypeExpression> {
 				Nodes = nodes,
 				LeftPadding = "<",

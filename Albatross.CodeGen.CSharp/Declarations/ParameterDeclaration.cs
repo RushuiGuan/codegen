@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			if (UseThisKeyword) {
 				writer.Code(Defined.Keywords.This);
 			}
-			return writer.Code(Type).Space().Code(Name).Semicolon();
+			return writer.Code(Type).Space().Code(Name);
 		}
 
 		public IEnumerable<ISyntaxNode> GetDescendants()

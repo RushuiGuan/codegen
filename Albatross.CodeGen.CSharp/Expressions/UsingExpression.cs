@@ -9,7 +9,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		public IExpression Body { get; init; } = new NoOpExpression();
 
 		public TextWriter Generate(TextWriter writer) {
-			var scope = writer.Code(Defined.Keywords.Using).BeginScope();
+			using var scope = writer.Code(Defined.Keywords.Using).Code(new ParenthesizedExpression(Resource)).BeginScope();
 			scope.Writer.Code(Body);
 			return writer;
 		}

@@ -82,7 +82,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		string GetClassName(ControllerInfo controller) {
 			return $"{controller.ControllerName}{ProxyService}";
 		}
-		
+
 		string GetFilename(ControllerInfo controller) {
 			return $"{GetClassName(controller)}.generated";
 		}
@@ -92,6 +92,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				Name = new IdentifierNameExpression(method.Name),
 				ReturnType = GetMethodReturnType(method.ReturnType),
 				Parameters = GetMethodParameters(method),
+				IsAsync = true,
 				Body = new CompositeExpression(
 					BuildPath(method).AsEnumerable()
 						.Concat(BuildQuery(method))
@@ -101,23 +102,27 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		}
 
 		IExpression BuildPath(MethodInfo method) {
-			return new VariableDeclaration {
-				Type = Defined.Types.String,
-				Identifier = new IdentifierNameExpression("path"),
-				Assignment = new StringInterpolationExpression {
+			return new AssignmentExpression {
+				Left = new VariableDeclaration {
+					Type = Defined.Types.String,
+					Identifier = new IdentifierNameExpression("path"),
+				},
+				Expression = new StringInterpolationExpression {
 					Expressions = BuildRouteSegments(method.RouteSegments).ToArray(),
 				}
-			};
+			}.Terminate();
 		}
 
 		IEnumerable<IExpression> BuildQuery(MethodInfo method) {
-			yield return new VariableDeclaration {
-				Type = Defined.Types.Var,
-				Identifier = new IdentifierNameExpression("queryString"),
-				Assignment = new NewObjectExpression {
+			yield return new AssignmentExpression {
+				Left = new VariableDeclaration {
+					Type = Defined.Types.Var,
+					Identifier = new IdentifierNameExpression("queryString"),
+				},
+				Expression = new NewObjectExpression {
 					CallableExpression = new IdentifierNameExpression("NameValueCollection"),
 				}
-			};
+			}.Terminate();
 			foreach (var param in method.Parameters.Where(x => x.WebType == ParameterType.FromQuery)) {
 				if (param.Type.TryGetCollectionElementType(compilation, out var elementType)) {
 					yield return new ForeachExpression {
@@ -141,7 +146,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			if (constructorSettings?.Omit != true) {
 				var constructor = new ConstructorDeclaration {
 					Name = new IdentifierNameExpression(GetClassName(from)),
-					Parameters = [
+					Parameters = new(
 						new ParameterDeclaration {
 							Name = new IdentifierNameExpression("logger"),
 							Type = new TypeExpression("ILogger", GetClassName(from)),
@@ -149,8 +154,8 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						new ParameterDeclaration {
 							Name = new IdentifierNameExpression("client"),
 							Type = new TypeExpression("HttpClient"),
-						},
-					],
+						}
+					),
 					BaseConstructorInvocation = new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("base"),
 						Arguments = new ListOfArguments(new List<IExpression> {
@@ -183,7 +188,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			} else if (fromBody.Type.SpecialType == SpecialType.System_String) {
 				return new IdentifierNameExpression("CreateStringRequest");
 			} else {
-				return new GenericIdentifierNameExpression("CreateJsonRequest") {
+				return new IdentifierNameExpression("CreateJsonRequest") {
 					GenericArguments = new ListOfGenericArguments(this.typeConverter.Convert(fromBody.Type))
 				};
 			}
@@ -212,15 +217,17 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			} else {
 				functionName = "GetRequiredJsonResponse";
 			}
-			return new InvocationExpression {
-				CallableExpression = new GenericIdentifierNameExpression(functionName) {
-					GenericArguments = new ListOfGenericArguments(this.typeConverter.Convert(method.ReturnType))
-				},
-				Arguments = new ListOfArguments(new IdentifierNameExpression("request")),
-				UseAwaitOperator = true,
+			return new ReturnExpression {
+				Expression = new InvocationExpression {
+					CallableExpression = new IdentifierNameExpression(functionName) {
+						GenericArguments = new ListOfGenericArguments(this.typeConverter.Convert(method.ReturnType))
+					},
+					Arguments = new ListOfArguments(new IdentifierNameExpression("request")),
+					UseAwaitOperator = true,
+				}
 			};
 		}
-		
+
 		IExpression GetResponseFunction(MethodInfo method) {
 			if (method.ReturnType.SpecialType == SpecialType.System_Void) {
 				return GetVoidResponseFunction();
@@ -230,19 +237,21 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				return GetJsonResponseFunction(method);
 			}
 		}
-		
+
 		IEnumerable<IExpression> BuildHttpCall(MethodInfo method) {
 			var fromBody = method.Parameters.FirstOrDefault(x => x.WebType == ParameterType.FromBody);
 			yield return new UsingExpression {
-				Resource = new VariableDeclaration {
-					Identifier = new IdentifierNameExpression("request"),
-					Type = Defined.Types.Var,
-					Assignment = new InvocationExpression {
+				Resource = new AssignmentExpression {
+					Left = new VariableDeclaration {
+						Type = Defined.Types.Var,
+						Identifier = new IdentifierNameExpression("request"),
+					},
+					Expression = new InvocationExpression {
 						CallableExpression = CreateRequestFunction(fromBody),
 						Arguments = CreateRequestFunctionArguments(method, fromBody)
-					},
+					}
 				},
-				Body = GetResponseFunction(method)
+				Body = GetResponseFunction(method).Terminate()
 			};
 		}
 
@@ -254,6 +263,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					new ImportExpression("System.Threading.Tasks"),
 					new ImportExpression("Microsoft.Extensions.Logging"),
 					new ImportExpression("Albatross.WebClient"),
+					new ImportExpression("System"),
 					new ImportExpression("System.Collections.Specialized"),
 				],
 				Interfaces = settings.CSharpWebClientSettings.UseInterface ? [CreateInterface(from)] : [],
@@ -263,13 +273,15 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		IEnumerable<IExpression> BuildRouteSegments(IEnumerable<IRouteSegment> segments) {
 			yield return new IdentifierNameExpression("ControllerPath");
+			if (segments.Any()) {
+				yield return new StringLiteralExpression("/");
+			}
 			foreach (var segment in segments) {
 				if (segment is RouteParameterSegment routeParam) {
 					var type = routeParam.ParameterInfo?.Type;
 					if (type.Is(compilation.DateTime()) || type.Is(compilation.DateTimeOffset()) || type.Is(compilation.TimeOnly()) || type.Is(compilation.DateOnly())) {
 						yield return new InvocationExpression {
-							CallableExpression = new IdentifierNameExpression("ISO8601String"),
-							Arguments = new ListOfArguments(new IdentifierNameExpression(routeParam.Text))
+							CallableExpression = new IdentifierNameExpression($"{routeParam.Text}.ISO8601String"),
 						};
 					} else {
 						yield return new IdentifierNameExpression(routeParam.Text);
@@ -303,7 +315,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			return new InvocationExpression {
 				CallableExpression = new IdentifierNameExpression("queryString.Add"),
 				Arguments = new ListOfArguments(GetQueryStringValue(type, variableName))
-			};
+			}.Terminate();
 		}
 
 		object IConvertObject<ControllerInfo>.Convert(ControllerInfo from) {

@@ -50,7 +50,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				var interfaceName = $"I{model.ControllerName}ProxyService";
 				var className = $"{model.ControllerName}ProxyService";
 				yield return new InvocationExpression {
-					CallableExpression = new GenericIdentifierNameExpression("AddTypedClient") {
+					CallableExpression = new IdentifierNameExpression("AddTypedClient") {
 						GenericArguments = useInterface
 							? new ListOfGenericArguments(
 								new TypeExpression(interfaceName),

@@ -22,10 +22,10 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			if (AccessModifier != null) {
 				writer.Append(AccessModifier.Name).Space();
 			}
-			if (IsConst) { writer.Append(" const "); }
+			if (IsConst) { writer.Code(Defined.Keywords.Const); }
 			writer.Code(Type).Space().Code(Name);
 			if (Initializer != null) {
-				writer.Append(" = ").Code(Initializer);
+				writer.Code(Defined.Operators.Assignment).Code(Initializer);
 			}
 			writer.Semicolon();
 			return writer;

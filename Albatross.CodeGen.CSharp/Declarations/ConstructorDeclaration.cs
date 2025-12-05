@@ -11,7 +11,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 	public record class ConstructorDeclaration : IDeclaration {
 		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
 		public required IdentifierNameExpression Name { get; init; }
-		public IEnumerable<ParameterDeclaration> Parameters { get; init; } = [];
+		public ListOfParameterDeclarations Parameters { get; init; } = new();
 		public InvocationExpression? BaseConstructorInvocation { get; init; }
 		public IExpression Body { get; init; } = new NoOpExpression();
 
@@ -19,9 +19,8 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			if (AccessModifier != null) {
 				writer.Append(AccessModifier.Name).Space();
 			}
-			writer.Code(Name);
-			writer.WriteItems(Parameters, ",", (w, item) => w.Code(item), "(", ")");
-			if(BaseConstructorInvocation != null) {
+			writer.Code(Name).Code(Parameters);
+			if (BaseConstructorInvocation != null) {
 				writer.Append(" : ").Code(BaseConstructorInvocation);
 			}
 			using var scope = writer.BeginScope();
@@ -29,7 +28,8 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() => new List<ISyntaxNode>(Parameters) {
+		public IEnumerable<ISyntaxNode> GetDescendants() => new List<ISyntaxNode> {
+			Parameters,
 			Name,
 			Body
 		}.AddIfNotNull(BaseConstructorInvocation);
