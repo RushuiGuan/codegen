@@ -1,7 +1,7 @@
 {
 	"$schema": "codegen-settings.schema.json",
 	"pythonWebClientSettings": {
-		"nameSpaceModuleMapping": {
+		"namespaceModuleMapping": {
 			"Test.Dto": "dto"
 		}
 	},
