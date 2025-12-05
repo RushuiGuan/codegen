@@ -18,9 +18,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 			}
 		}
 		public bool ForwardReference { get; init; }
-		public override IEnumerable<ISyntaxNode> Children => [];
 		public string Name { get; }
-
 		public override TextWriter Generate(TextWriter writer) {
 			if (ForwardReference) { writer.Append("'"); }
 			writer.Append(Name);

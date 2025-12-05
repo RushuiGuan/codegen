@@ -10,11 +10,12 @@ namespace Albatross.CodeGen.Python.Expressions {
 		}
 		public IdentifierNameExpression Identifier { get; }
 		public ISourceExpression Source { get; }
-		public override IEnumerable<ISyntaxNode> Children => [Identifier, Source];
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Identifier);
 			return writer;
 		}
+
+		public override IEnumerable<ISyntaxNode> Children => [Identifier, Source];
 	}
 }

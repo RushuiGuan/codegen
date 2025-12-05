@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public class InfixExpression : IExpression {
+	public record class InfixExpression : SyntaxNode, IExpression {
 		public InfixExpression(string @operator) {
 			Operator = @operator;
 		}
@@ -14,15 +14,13 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public required IExpression Left { get; init; }
 		public required IExpression Right { get; init; }
 
-		public TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			if (UseParenthesis) { writer.OpenParenthesis(); }
 			writer.Code(Left).Append(" ").Append(Operator).Append(" ").Code(Right);
 			if (UseParenthesis) { writer.CloseParenthesis(); }
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() {
-			return new ISyntaxNode[] { Left, Right };
-		}
+		public override IEnumerable<ISyntaxNode> Children => new ISyntaxNode[] { Left, Right };
 	}
 }

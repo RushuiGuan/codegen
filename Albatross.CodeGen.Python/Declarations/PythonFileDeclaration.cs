@@ -31,8 +31,10 @@ namespace Albatross.CodeGen.Python.Declarations {
 				writer.Code(item);
 			}
 			writer.WriteLine();
+			var array = this.GetDescendants().ToArray();
+
 			var importExpressions = this.ImportDeclarations
-				.Union(new ImportCollection(this.GetDescendants()))
+				.Union(new ImportCollection(this.GetDescendants().OfType<QualifiedIdentifierNameExpression>()).Imports)
 				.Where(x => !IsSelf(x.Source));
 			new ImportCollection(importExpressions).Generate(writer);
 			writer.WriteLine();

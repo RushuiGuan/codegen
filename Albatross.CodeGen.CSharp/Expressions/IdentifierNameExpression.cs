@@ -6,7 +6,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class IdentifierNameExpression : IIdentifierNameExpression {
+	public record class IdentifierNameExpression : SyntaxNode, IIdentifierNameExpression {
 		public static readonly Regex IdentifierName = new Regex(@"^
 			(?:[a-z_][a-z0-9_]*)
 			(?:\.[a-z_][a-z0-9_]*)*
@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		}
 		public string Name { get; }
 		public ListOfGenericArguments GenericArguments { get; init; } = new();
-		public virtual TextWriter Generate(TextWriter writer) => writer.Append(Name).Code(GenericArguments);
-		public virtual IEnumerable<ISyntaxNode> GetDescendants() => [GenericArguments];
+		public override TextWriter Generate(TextWriter writer) => writer.Append(Name).Code(GenericArguments);
+		public override IEnumerable<ISyntaxNode> Children => [GenericArguments];
 	}
 }

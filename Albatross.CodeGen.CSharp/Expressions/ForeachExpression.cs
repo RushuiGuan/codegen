@@ -6,17 +6,17 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public class ForeachExpression : IExpression {
+	public record class ForeachExpression :SyntaxNode, IExpression {
 		public required VariableDeclaration IterationVariable { get; init; }
 		public required IExpression Collection { get; init; }
 		public IExpression Body { get; init; } = new NoOpExpression();
 
-		public TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Defined.Keywords.ForEach).OpenParenthesis().Code(IterationVariable).Space().Code(Defined.Keywords.In).Code(Collection).CloseParenthesis();
 			using var scope = writer.BeginScope();
 			scope.Writer.Code(Body);
 			return writer;
 		}
-		public IEnumerable<ISyntaxNode> GetDescendants() => [IterationVariable, Collection, Body];
+		public override IEnumerable<ISyntaxNode> Children => [IterationVariable, Collection, Body];
 	}
 }

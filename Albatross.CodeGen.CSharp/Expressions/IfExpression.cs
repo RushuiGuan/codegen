@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class IfExpression : ISyntaxNode, IExpression {
+	public record class IfExpression : SyntaxNode, IExpression {
 		public required IExpression Condition { get; init; }
 		public required IExpression IfBlock { get; init; }
 		public IExpression? ElseBlock { get; init; }
 
-		public  TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			using (var mainScope = writer.Code(Defined.Keywords.If).OpenParenthesis().Code(Condition).CloseParenthesis().BeginScope()) {
 				mainScope.Writer.Code(IfBlock);
 			}
@@ -22,7 +22,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() => new List<ISyntaxNode> {
+		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> {
 			Condition, IfBlock
 		}.AddIfNotNull(ElseBlock);
 	}

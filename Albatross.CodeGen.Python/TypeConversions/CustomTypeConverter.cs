@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {
 			if (sourceLookup.TryGet(symbol, out var source)) {
-				logger.LogInformation("Found source {source} for symbol {symbol}", source.ToString(), symbol.GetFullName());
+				logger.LogInformation("Found source {source} for symbol {symbol}", source.Source, symbol.GetFullName());
 				expression = new SimpleTypeExpression {
 					Identifier = new QualifiedIdentifierNameExpression(symbol.Name, source)
 				};

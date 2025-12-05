@@ -6,7 +6,6 @@ using System.Text.Json;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
 	public abstract record class LiteralExpression : SyntaxNode, IExpression {
-		public override IEnumerable<ISyntaxNode> Children => [];
 	}
 
 	public record class StringLiteralExpression : LiteralExpression {

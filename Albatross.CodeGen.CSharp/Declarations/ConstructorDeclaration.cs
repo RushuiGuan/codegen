@@ -8,14 +8,14 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public record class ConstructorDeclaration : IDeclaration {
+	public record class ConstructorDeclaration : SyntaxNode, IDeclaration {
 		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
 		public required IdentifierNameExpression Name { get; init; }
 		public ListOfParameterDeclarations Parameters { get; init; } = new();
 		public InvocationExpression? BaseConstructorInvocation { get; init; }
 		public IExpression Body { get; init; } = new NoOpExpression();
 
-		public TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			if (AccessModifier != null) {
 				writer.Append(AccessModifier.Name).Space();
 			}
@@ -28,10 +28,12 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() => new List<ISyntaxNode> {
-			Parameters,
-			Name,
-			Body
-		}.AddIfNotNull(BaseConstructorInvocation);
+		public override IEnumerable<ISyntaxNode> Children {
+			get => new List<ISyntaxNode> {
+				Parameters,
+				Name,
+				Body
+			}.AddIfNotNull(BaseConstructorInvocation);
+		}
 	}
 }

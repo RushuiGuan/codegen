@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class TypeExpression : ITypeExpression {
+	public record class TypeExpression : SyntaxNode, ITypeExpression {
 		public TypeExpression(string name, params string[] genericArguments) {
 			this.Identifier = new IdentifierNameExpression(name);
 			this.GenericArguments = genericArguments.Select(arg => new TypeExpression(arg));
@@ -15,17 +15,19 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		public IEnumerable<ITypeExpression> GenericArguments { get; init; } = [];
 		public IIdentifierNameExpression Identifier { get; init; }
 
-		public TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Identifier);
 			writer.WriteItems(GenericArguments, ",", (w, args) => w.Code(args), "<", ">");
 			writer.AppendIf(Nullable, "?");
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() {
-			var list = new List<ISyntaxNode> { Identifier };
-			list.AddRange(GenericArguments);
-			return list;
+		public override IEnumerable<ISyntaxNode> Children {
+			get {
+				var list = new List<ISyntaxNode> { Identifier };
+				list.AddRange(GenericArguments);
+				return list;
+			}
 		}
 	}
 }

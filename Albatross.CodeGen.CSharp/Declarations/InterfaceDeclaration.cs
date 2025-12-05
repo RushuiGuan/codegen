@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public class InterfaceDeclaration : IDeclaration {
+	public record class InterfaceDeclaration : SyntaxNode, IDeclaration {
 		public InterfaceDeclaration(string name) {
 			Name = new IdentifierNameExpression(name);
 		}
@@ -23,14 +23,14 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public IEnumerable<FieldDeclaration> Fields { get; init; } = [];
 		public IEnumerable<MethodDeclaration> Methods { get; init; } = [];
 
-		public TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			foreach (var attribute in Attributes) {
 				writer.Code(attribute).WriteLine();
 			}
 			if (AccessModifier != null) {
 				writer.Append(AccessModifier.Name).Space();
 			}
-			if (IsPartial) { writer.Append("partial ");}
+			if (IsPartial) { writer.Append("partial "); }
 			writer.Append("interface ").Code(Name).Code(GenericArguments);
 			if (BaseType != null) {
 				writer.Append(" : ").Code(BaseType);
@@ -49,15 +49,17 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() {
-			var list = new List<ISyntaxNode>(Attributes);
-			list.AddRange(Fields);
-			list.AddRange(Properties);
-			list.AddRange(Methods);
-			list.AddIfNotNull(BaseType);
-			list.Add(Name);
-			list.Add(GenericArguments);
-			return list;
+		public override IEnumerable<ISyntaxNode> Children {
+			get {
+				var list = new List<ISyntaxNode>(Attributes);
+				list.AddRange(Fields);
+				list.AddRange(Properties);
+				list.AddRange(Methods);
+				list.AddIfNotNull(BaseType);
+				list.Add(Name);
+				list.Add(GenericArguments);
+				return list;
+			}
 		}
 	}
 }

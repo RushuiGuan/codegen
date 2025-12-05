@@ -34,7 +34,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 
 		public override TextWriter Generate(TextWriter writer) {
 			var importExpressions = this.ImportDeclarations
-				.Union(new ImportCollection(this.GetDescendants()))
+				.Union(new ImportCollection(this.GetDescendants()).Imports)
 				.Where(x => !IsSelf(x.Source));
 			new ImportCollection(importExpressions).Generate(writer);
 			writer.WriteLine();

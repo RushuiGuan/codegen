@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public class SinglelineExpression : IExpression {
+	public record class SinglelineExpression : SyntaxNode, IExpression {
 		private readonly IExpression expression;
 
 		public SinglelineExpression(IExpression expression) {
 			this.expression = expression;
 		}
 
-		public TextWriter Generate(TextWriter writer)
+		public override TextWriter Generate(TextWriter writer)
 			=> writer.Code(expression).Semicolon();
 
-		public IEnumerable<ISyntaxNode> GetDescendants() => [expression];
+		public override IEnumerable<ISyntaxNode> Children => [expression];
 	}
 }

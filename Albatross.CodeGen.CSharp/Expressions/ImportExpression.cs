@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class ImportExpression : ISyntaxNode {
+	public record class ImportExpression : SyntaxNode {
 		public IdentifierNameExpression? Alias { get; init; }
 		public NamespaceExpression Namespace { get; init; }
 
@@ -13,7 +13,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			Namespace = new NamespaceExpression(name);
 		}
 
-		public TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Defined.Keywords.Using);
 			if (Alias != null) {
 				writer.Code(Alias).Append(" = ");
@@ -21,6 +21,6 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			writer.Code(Namespace).Semicolon();
 			return writer;
 		}
-		public IEnumerable<ISyntaxNode> GetDescendants() => new ISyntaxNode[] { Namespace }.UnionIfNotNull(Alias);
+		public override IEnumerable<ISyntaxNode> Children => new ISyntaxNode[] { Namespace }.UnionIfNotNull(Alias);
 	}
 }

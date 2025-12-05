@@ -1,11 +1,9 @@
 using Albatross.CodeGen.Syntax;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record ListOfGenericArguments : IExpression {
+	public record ListOfGenericArguments : SyntaxNode, IExpression {
 		readonly ListOfSyntaxNodes<ITypeExpression> list;
 		public ListOfGenericArguments(params IEnumerable<ITypeExpression> nodes) {
 			list = new ListOfSyntaxNodes<ITypeExpression> {
@@ -14,7 +12,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 				RightPadding = ">"
 			};
 		}
-		public TextWriter Generate(TextWriter writer) => writer.Code(list);
-		public IEnumerable<ISyntaxNode> GetDescendants() => list;
+		public override TextWriter Generate(TextWriter writer) => writer.Code(list);
+		public override IEnumerable<ISyntaxNode> Children => list;
 	}
 }

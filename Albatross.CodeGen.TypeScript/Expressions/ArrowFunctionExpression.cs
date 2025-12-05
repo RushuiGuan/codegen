@@ -7,7 +7,7 @@ using System.Linq;
 namespace Albatross.CodeGen.TypeScript.Expressions {
 	public record class ArrowFunctionExpression : SyntaxNode, IExpression, ICodeElement {
 		public ListOfSyntaxNodes<IIdentifierNameExpression> Arguments { get; init; } = new();
-		public IExpression Body { get; init; } = new EmptyExpression();
+		public IExpression Body { get; init; } = new NoOpExpression();
 
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Arguments, Body };
 

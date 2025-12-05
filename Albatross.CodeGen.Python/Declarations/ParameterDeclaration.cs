@@ -10,7 +10,6 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public ITypeExpression Type { get; init; } = Defined.Types.None;
 		public required IIdentifierNameExpression Identifier { get; init; }
 		public LiteralExpression? DefaultValue { get; init; }
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Type, Identifier };
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Identifier);
@@ -22,5 +21,6 @@ namespace Albatross.CodeGen.Python.Declarations {
 			}
 			return writer;
 		}
+		public override IEnumerable<ISyntaxNode> Children => [Type, Identifier];
 	}
 }

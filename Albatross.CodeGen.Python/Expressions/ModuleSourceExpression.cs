@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 			}
 		}
 		public string Source { get; }
-		public override IEnumerable<ISyntaxNode> Children => [];
 		public override TextWriter Generate(TextWriter writer) =>  writer.Append(Source);
+		public override IEnumerable<ISyntaxNode> Children => Array.Empty<ISyntaxNode>();
 	}
 }

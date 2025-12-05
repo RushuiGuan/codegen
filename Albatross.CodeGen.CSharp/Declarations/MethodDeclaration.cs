@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public class MethodDeclaration : IDeclaration {
+	public record class MethodDeclaration : SyntaxNode, IDeclaration {
 		public bool IsAbstract { get; init; }
 		public bool IsVirtual { get; init; }
 		public bool IsPartial { get; init; }
@@ -24,7 +24,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public bool IsAsync { get; init; }
 		public bool IsStatic { get; set; }
 
-		public TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			if (AccessModifier != null) { writer.Append(AccessModifier.Name).Space(); }
 			if (IsStatic) { writer.Code(Defined.Keywords.Static); }
 			if (IsAbstract) { writer.Code(Defined.Keywords.Abstract); }
@@ -42,12 +42,14 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() {
-			var list = new List<ISyntaxNode>{
-				Parameters, ReturnType, Name, GenericArguments
-			}.AddIfNotNull(Body);
-			list.AddRange(Attributes);
-			return list;
+		public override IEnumerable<ISyntaxNode> Children {
+			get {
+				var list = new List<ISyntaxNode>{
+					Parameters, ReturnType, Name, GenericArguments
+				}.AddIfNotNull(Body);
+				list.AddRange(Attributes);
+				return list;
+			}
 		}
 	}
 }

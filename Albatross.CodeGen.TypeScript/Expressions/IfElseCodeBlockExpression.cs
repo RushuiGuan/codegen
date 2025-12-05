@@ -9,7 +9,7 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 		public IfElseCodeBlockExpression() { }
 
 		public required IExpression Condition { get; init; }
-		public IExpression CodeBlock { get; init; } = new EmptyExpression();
+		public IExpression CodeBlock { get; init; } = new NoOpExpression();
 		public IExpression? ElseBlock { get; init; }
 
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> {

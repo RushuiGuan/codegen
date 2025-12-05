@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public record class ClassDeclaration : IDeclaration {
+	public record class ClassDeclaration : SyntaxNode, IDeclaration {
 		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
 		public required IdentifierNameExpression Name { get; init; }
 		public IEnumerable<ITypeExpression> BaseTypes { get; init; } = [];
@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public IEnumerable<FieldDeclaration> Fields { get; init; } = [];
 		public IEnumerable<MethodDeclaration> Methods { get; init; } = [];
 
-		public TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			foreach (var attribute in Attributes) {
 				writer.Code(attribute).WriteLine();
 			}
@@ -55,15 +55,17 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() {
-			var list = new List<ISyntaxNode>();
-			list.Add(GenericArguments);
-			list.AddRange(Constructors);
-			list.AddRange(Fields);
-			list.AddRange(Properties);
-			list.AddRange(Methods);
-			list.AddRange(BaseTypes);
-			return list;
+		public override IEnumerable<ISyntaxNode> Children {
+			get {
+				var list = new List<ISyntaxNode>();
+				list.Add(GenericArguments);
+				list.AddRange(Constructors);
+				list.AddRange(Fields);
+				list.AddRange(Properties);
+				list.AddRange(Methods);
+				list.AddRange(BaseTypes);
+				return list;
+			}
 		}
 	}
 }

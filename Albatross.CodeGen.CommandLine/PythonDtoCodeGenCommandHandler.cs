@@ -55,7 +55,7 @@ namespace Albatross.CodeGen.CommandLine {
 			}
 			var dtoFile = new PythonFileDeclaration("dto") {
 				Banner = [new CommentDeclaration("@generated"),],
-				ImportDeclarations = new ImportCollection([Defined.Identifiers.FutureAnnotations]),
+				ImportDeclarations = new ImportCollection([Defined.Identifiers.FutureAnnotations]).Imports,
 				ClasseDeclarations = enumModels.Select(x => enumModel2Python.Convert(x))
 					.Concat(dtoModels.Select(x => dtoModel2Python.Convert(x)))
 					.ToList(),

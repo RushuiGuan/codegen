@@ -27,10 +27,9 @@ namespace Albatross.CodeGen.Syntax {
 				.Append(this.PostFix);
 			return writer;
 		}
-
+		public override IEnumerable<ISyntaxNode> Children => Nodes.Cast<ISyntaxNode>();
 		public IEnumerator<T> GetEnumerator() => ((IEnumerable<T>)Nodes).GetEnumerator();
 		IEnumerator IEnumerable.GetEnumerator() => Nodes.GetEnumerator();
 		public bool HasAny => Nodes.Any();
-		public override IEnumerable<ISyntaxNode> Children => Nodes.Cast<ISyntaxNode>();
 	}
 }

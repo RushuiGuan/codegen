@@ -4,7 +4,7 @@ using System.IO;
 namespace Albatross.CodeGen.Syntax {
 	public abstract record class SyntaxNode : ISyntaxNode, ICodeElement {
 		public abstract TextWriter Generate(TextWriter writer);
-		public abstract IEnumerable<ISyntaxNode> Children { get; }
+		public virtual IEnumerable<ISyntaxNode> Children => System.Array.Empty<ISyntaxNode>();
 
 		public IEnumerable<ISyntaxNode> GetDescendants() {
 			foreach (var child in Children) {

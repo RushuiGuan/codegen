@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public class FileDeclaration : IDeclaration {
+	public record class FileDeclaration : SyntaxNode, IDeclaration {
 		public FileDeclaration(string name) {
 			this.Name = name;
 		}
@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public IEnumerable<ClassDeclaration> Classes { get; init; } = [];
 		public IEnumerable<InterfaceDeclaration> Interfaces { get; init; } = [];
 
-		public TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			foreach (var item in Imports.OrderBy(x => x.Namespace.Source)) {
 				writer.Code(item).WriteLine();
 			}
@@ -49,12 +49,14 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() {
-			var list = new List<ISyntaxNode>(Imports);
-			list.AddRange(Attributes);
-			list.AddRange(Classes);
-			list.AddRange(Interfaces);
-			return list;
+		public override IEnumerable<ISyntaxNode> Children {
+			get {
+				var list = new List<ISyntaxNode>(Imports);
+				list.AddRange(Attributes);
+				list.AddRange(Classes);
+				list.AddRange(Interfaces);
+				return list;
+			}
 		}
 	}
 }

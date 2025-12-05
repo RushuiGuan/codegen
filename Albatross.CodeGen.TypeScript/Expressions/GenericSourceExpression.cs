@@ -9,8 +9,6 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 		public GenericSourceExpression(string name) {
 			Source = name;
 		}
-		public override IEnumerable<ISyntaxNode> Children => [];
-
 		public string Source { get; }
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Append('"').Append(Source).Append('"');

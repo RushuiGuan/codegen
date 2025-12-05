@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public ITypeExpression ReturnType { get; init; } = Defined.Types.Any();
 		public ListOfSyntaxNodes<ParameterDeclaration> Parameters { get; init; } = new();
 		public IEnumerable<IKeyword> Modifiers { get; init; } = [];
-		public IExpression Body { get; init; } = new EmptyExpression();
+		public IExpression Body { get; init; } = new NoOpExpression();
 
 		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier, ReturnType, Parameters, Body };
 

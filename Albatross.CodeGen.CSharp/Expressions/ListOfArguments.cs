@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record ListOfArguments : IExpression {
+	public record ListOfArguments : SyntaxNode, IExpression {
 		ListOfSyntaxNodes<IExpression> list;
 		public ListOfArguments(params IEnumerable<IExpression> nodes) {
 			list = new ListOfSyntaxNodes<IExpression> {
@@ -13,7 +13,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			};
 		}
 
-		public TextWriter Generate(TextWriter writer) => writer.Code(list);
-		public IEnumerable<ISyntaxNode> GetDescendants() => list;
+		public override TextWriter Generate(TextWriter writer) => writer.Code(list);
+		public override IEnumerable<ISyntaxNode> Children => list;
 	}
 }

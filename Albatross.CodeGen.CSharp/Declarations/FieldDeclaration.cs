@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public class FieldDeclaration : IDeclaration {
+	public record class FieldDeclaration : SyntaxNode, IDeclaration {
 		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Private;
 		public required ITypeExpression Type { get; init; }
 		public required IdentifierNameExpression Name { get; init; }
@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public bool IsConst { get; init; }
 		public IExpression? Initializer { get; init; }
 
-		public TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			foreach (var attribute in Attributes) {
 				writer.Code(attribute).WriteLine();
 			}
@@ -31,9 +31,10 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants()
-			=> new List<ISyntaxNode>(Attributes) {
+		public override IEnumerable<ISyntaxNode> Children {
+			get => new List<ISyntaxNode>(Attributes) {
 				Type, Name
 			}.AddIfNotNull(Initializer);
+		}
 	}
 }

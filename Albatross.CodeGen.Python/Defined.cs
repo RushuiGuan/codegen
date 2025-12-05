@@ -155,7 +155,7 @@ namespace Albatross.CodeGen.Python {
 			public static readonly IIdentifierNameExpression TimeZone = new QualifiedIdentifierNameExpression("timezone", Sources.DateTime);
 			public static readonly IIdentifierNameExpression TimeZoneUtc = new MultiPartIdentifierNameExpression(TimeZone, new IdentifierNameExpression("utc"));
 			public static readonly IIdentifierNameExpression None = new IdentifierNameExpression("None");
-			public static readonly IIdentifierNameExpression FutureAnnotations = new QualifiedIdentifierNameExpression("annotations", Sources.Future);
+			public static readonly QualifiedIdentifierNameExpression FutureAnnotations = new QualifiedIdentifierNameExpression("annotations", Sources.Future);
 		}
 		
 		public static class Parameters {

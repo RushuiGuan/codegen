@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public class PropertyDeclaration : IDeclaration {
+	public record class PropertyDeclaration : SyntaxNode, IDeclaration {
 		public required ITypeExpression Type { get; init; }
 		public required IdentifierNameExpression Name { get; init; }
 		public IEnumerable<AttributeExpression> AttributeExpressions { get; init; } = [];
@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public IExpression? GetterBody { get; init; } = new TerminateExpression();
 		public IExpression? SetterBody { get; init; } = new TerminateExpression();
 
-		public TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			writer.CodeIfNotNull(this.AccessModifier);
 			foreach (var attribute in AttributeExpressions) {
 				writer.Code(attribute).WriteLine();
@@ -39,12 +39,14 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() {
-			var list = new List<ISyntaxNode> {
+		public override IEnumerable<ISyntaxNode> Children {
+			get {
+				var list = new List<ISyntaxNode> {
 					Type, Name
 				}.AddIfNotNull(GetterBody)
 				.AddIfNotNull(SetterBody);
-			return list;
+				return list;
+			}
 		}
 	}
 }

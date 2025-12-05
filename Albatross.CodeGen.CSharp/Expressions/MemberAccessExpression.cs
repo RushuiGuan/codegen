@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public class MemberAccessExpression : IExpression {
+	public record class MemberAccessExpression : SyntaxNode, IExpression {
 		public MemberAccessExpression(IExpression expression, params IEnumerable<IExpression> members) {
 			Expression = expression;
 			Members = members;
@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		public IExpression Expression { get; init; }
 		public IEnumerable<IExpression> Members { get; init; }
 
-		public TextWriter Generate(TextWriter writer) {
+		public override TextWriter Generate(TextWriter writer) {
 			if (Expression is InfixExpression) {
 				writer.Code(new ParenthesizedExpression(Expression));
 			} else {
@@ -31,6 +31,6 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			return writer;
 		}
 
-		public IEnumerable<ISyntaxNode> GetDescendants() => new ISyntaxNode[] { Expression }.Concat(Members);
+		public override IEnumerable<ISyntaxNode> Children => new ISyntaxNode[] { Expression }.Concat(Members);
 	}
 }
