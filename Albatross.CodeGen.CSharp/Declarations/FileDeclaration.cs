@@ -38,6 +38,8 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			}
 			foreach (var item in Classes) {
 				scope.Writer.Code(item).WriteLine();
+				//TODO: delete after verification
+				scope.Writer.WriteLine();
 			}
 			return writer;
 		}

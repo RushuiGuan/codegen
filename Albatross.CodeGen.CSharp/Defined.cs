@@ -5,10 +5,13 @@ using Albatross.CodeGen.Syntax;
 namespace Albatross.CodeGen.CSharp {
 	public static class Defined {
 		public static class Types {
-			public static readonly ITypeExpression Int = new TypeExpression("int");
+			//public static readonly ITypeExpression Int = new TypeExpression("int");
+			public static readonly ITypeExpression Int = new TypeExpression("System.Int32");
 			public static readonly ITypeExpression Long = new TypeExpression("long");
-			public static readonly ITypeExpression String = new TypeExpression("string");
-			public static readonly ITypeExpression NullableString = new TypeExpression("string"){
+			// public static readonly ITypeExpression String = new TypeExpression("string");
+			public static readonly ITypeExpression String = new TypeExpression("System.String");
+			//public static readonly ITypeExpression NullableString = new TypeExpression("string"){
+			public static readonly ITypeExpression NullableString = new TypeExpression("System.String"){
 				Nullable = true
 			};
 			public static readonly ITypeExpression Bool = new TypeExpression("bool");
