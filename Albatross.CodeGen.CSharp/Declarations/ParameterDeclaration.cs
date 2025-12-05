@@ -11,10 +11,14 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public required ITypeExpression Type { get; init; }
 		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];
 		public required IdentifierNameExpression Name { get; init; }
+		public bool UseThisKeyword { get; init; }
 
 		public TextWriter Generate(TextWriter writer) {
 			foreach (var attrib in Attributes) {
 				writer.Code(attrib);
+			}
+			if (UseThisKeyword) {
+				writer.Code(Defined.Keywords.This);
 			}
 			return writer.Code(Type).Space().Code(Name).Semicolon();
 		}

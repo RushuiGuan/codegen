@@ -22,17 +22,15 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public ListOfParameterDeclarations Parameters { get; init; } = new();
 		public IExpression? Body { get; init; }
 		public bool IsAsync { get; init; }
+		public bool IsStatic { get; set; }
 
 		public TextWriter Generate(TextWriter writer) {
 			if (AccessModifier != null) { writer.Append(AccessModifier.Name).Space(); }
+			if (IsStatic) { writer.Code(Defined.Keywords.Static); }
 			if (IsAbstract) { writer.Code(Defined.Keywords.Abstract); }
 			if (IsVirtual) { writer.Code(Defined.Keywords.Virtual); }
-			if (IsPartial) {
-				writer.Code(Defined.Keywords.Partial);
-			}
-			if (IsAsync) {
-				writer.Code(Defined.Keywords.Async);
-			}
+			if (IsPartial) { writer.Code(Defined.Keywords.Partial); }
+			if (IsAsync) { writer.Code(Defined.Keywords.Async); }
 			writer.Code(ReturnType).Space().Code(Name).Code(GenericArguments);
 			writer.Code(Parameters);
 			if (Body != null) {

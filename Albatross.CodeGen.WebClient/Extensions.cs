@@ -1,4 +1,5 @@
-﻿using Albatross.CodeGen.Python;
+﻿using Albatross.CodeGen.CSharp;
+using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.TypeScript;
 using Albatross.CodeGen.WebClient.CSharp;
@@ -16,6 +17,7 @@ namespace Albatross.CodeGen.WebClient {
 
 		public static IServiceCollection AddCSharpWebClientCodeGen(this IServiceCollection services) {
 			services.AddSingleton<CreateHttpClientRegistrations>();
+			services.AddCSharpCodeGen();
 			return services;
 		}
 

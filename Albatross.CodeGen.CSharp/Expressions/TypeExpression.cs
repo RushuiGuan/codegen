@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class TypeExpression : ISyntaxNode, ITypeExpression {
+	public record class TypeExpression : ITypeExpression {
 		public TypeExpression(string name, params string[] genericArguments) {
 			this.Identifier = new IdentifierNameExpression(name);
 			this.GenericArguments = genericArguments.Select(arg => new TypeExpression(arg));

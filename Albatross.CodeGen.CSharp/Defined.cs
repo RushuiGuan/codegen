@@ -58,6 +58,7 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IKeyword If = new Keyword("if");
 			public static readonly IKeyword Else = new Keyword("else");
 			public static readonly IKeyword Using = new Keyword("using");
+			public static readonly IKeyword This = new Keyword("this");
 		}
 
 		public static class Attributes {

@@ -2,6 +2,7 @@
 using System.IO;
 
 namespace Albatross.CodeGen.CommandLine {
+	[Verb("csharp2 web-client", typeof(CSharpWebClientCodeGenCommandHandler_Client), Description = "Generate CSharp Http Proxy class that works with the current version of Albatross.WebClient assembly")]
 	[Verb("csharp web-client", typeof(CSharpWebClientCodeGenCommandHandler_Client800), Description = "Generate CSharp Http Proxy class that works with the current version of Albatross.WebClient assembly")]
 	[Verb("csharp web-client740", typeof(CSharpWebClientCodeGenCommandHandler_Client740), Description = "Generate CSharp Http Proxy class that works with Albatross.WebClient assembly version 7.4.*")]
 	[Verb("csharp web-client402", typeof(CSharpWebClientCodeGenCommandHandler_Client402), Description = "Generate CSharp Http Proxy class that works with Albatross.WebClient assembly version 4.0.*")]

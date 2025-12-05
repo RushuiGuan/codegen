@@ -30,6 +30,8 @@ namespace Albatross.CodeGen.CommandLine {
 				services.AddTypeScriptWebClientCodeGen();
 			} else if (context.ParseResult.CommandResult.Parent?.Symbol.Name == "csharp") {
 				services.AddCSharpWebClientCodeGen();
+			}else if (context.ParseResult.CommandResult.Parent?.Symbol.Name == "csharp2") {
+				services.AddCSharpWebClientCodeGen();
 			}
 			services.AddScoped<Compilation>(provider => {
 				var options = provider.GetRequiredService<IOptions<CodeGenCommandOptions>>().Value;
