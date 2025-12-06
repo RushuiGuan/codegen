@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
-
 #nullable enable
 namespace Test.WithInterface.Proxy {
 	public partial interface IArrayParamTestProxyService {
@@ -18,7 +17,7 @@ namespace Test.WithInterface.Proxy {
 	public partial class ArrayParamTestProxyService : ClientBase, IArrayParamTestProxyService {
 		public ArrayParamTestProxyService(ILogger<ArrayParamTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-		
+
 		public const string ControllerPath = "api/array-param-test";
 		public async Task<string> ArrayStringParam(string[] array) {
 			string path = $"{ControllerPath}/array-string-param";
@@ -26,7 +25,7 @@ namespace Test.WithInterface.Proxy {
 			foreach (var item in array) {
 				queryString.Add("a", item);
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -37,7 +36,7 @@ namespace Test.WithInterface.Proxy {
 			foreach (var item in array) {
 				queryString.Add("a", $"{item}");
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -48,7 +47,7 @@ namespace Test.WithInterface.Proxy {
 			foreach (var item in collection) {
 				queryString.Add("c", item);
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -59,7 +58,7 @@ namespace Test.WithInterface.Proxy {
 			foreach (var item in collection) {
 				queryString.Add("c", $"{item}");
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -70,7 +69,7 @@ namespace Test.WithInterface.Proxy {
 			foreach (var item in collection) {
 				queryString.Add("c", item.ISO8601String());
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -81,7 +80,7 @@ namespace Test.WithInterface.Proxy {
 			foreach (var item in collection) {
 				queryString.Add("c", item.ISO8601String());
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
