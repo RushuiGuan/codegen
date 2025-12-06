@@ -10,7 +10,6 @@ namespace Test.Proxy {
 	public partial class ObsoleteProxyService : ClientBase {
 		public ObsoleteProxyService(ILogger<ObsoleteProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-
 		public const string ControllerPath = "api/obsolete";
 		public async Task<string> Get() {
 			string path = $"{ControllerPath}/get";

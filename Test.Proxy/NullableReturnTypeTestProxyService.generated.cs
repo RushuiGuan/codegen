@@ -9,7 +9,6 @@ namespace Test.Proxy {
 	public partial class NullableReturnTypeTestProxyService : ClientBase {
 		public NullableReturnTypeTestProxyService(ILogger<NullableReturnTypeTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-
 		public const string ControllerPath = "api/nullable-return-type";
 		public async Task<string?> GetString(string? text) {
 			string path = $"{ControllerPath}/string";

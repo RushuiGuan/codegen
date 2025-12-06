@@ -1,6 +1,7 @@
 using Albatross.CodeGen.CSharp.Expressions;
 using Albatross.CodeGen.CSharp.Keywords;
 using Albatross.CodeGen.Syntax;
+using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CSharp {
 	public static class Defined {
@@ -21,8 +22,17 @@ namespace Albatross.CodeGen.CSharp {
 			};
 			public static readonly ITypeExpression Void = new TypeExpression("void");
 			public static readonly ITypeExpression Var = new TypeExpression("var");
-			public static readonly ITypeExpression Task = new TypeExpression("Task");
+			public static readonly ITypeExpression Task = new TypeExpression(Defined.Identifiers.Task);
 			public static readonly ITypeExpression Char = new TypeExpression("char");
+		}
+		public static class Identifiers {
+			public static readonly IIdentifierNameExpression Task = new QualifiedIdentifierNameExpression("Task", Defined.Namespaces.SystemThreadingTasks);
+			public static readonly IIdentifierNameExpression NameValueCollection = new QualifiedIdentifierNameExpression("NameValueCollection", Defined.Namespaces.SystemCollectionsSpecialized);
+		}
+		public static class Namespaces {
+			public static readonly NamespaceExpression System = new ("System");
+			public static readonly NamespaceExpression SystemThreadingTasks = new ("System.Threading.Tasks");
+			public static readonly NamespaceExpression SystemCollectionsSpecialized = new ("System.Collections.Specialized");
 		}
 
 		public static class Literals {
@@ -76,6 +86,8 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IKeyword Using = new Keyword("using");
 			public static readonly IKeyword This = new Keyword("this");
 			public static readonly IKeyword Namespace = new Keyword("namespace");
+			public static readonly IKeyword Record = new Keyword("record");
+			public static readonly IKeyword Class =new Keyword("class");
 		}
 
 		public static class Attributes {

@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public IEnumerable<InterfaceDeclaration> Interfaces { get; init; } = [];
 
 		public override TextWriter Generate(TextWriter writer) {
-			var importCollection = new ImportCollection(Imports, Children);
+			var importCollection = new ImportCollection(Imports, GetDescendants());
 			writer.Code(importCollection);
 			if(NullableEnabled) {
 				writer.Code(Defined.PreprocessorDirectives.NullableEnable).WriteLine();

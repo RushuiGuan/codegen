@@ -1,12 +1,19 @@
 using Albatross.CodeGen.Syntax;
 using Albatross.Text;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
 	public record class MemberAccessExpression : SyntaxNode, IExpression {
-		public MemberAccessExpression(IExpression expression, params IEnumerable<IExpression> members) {
+		private readonly bool lineBreak;
+
+		public MemberAccessExpression(IExpression expression, bool lineBreak, params IEnumerable<IExpression> members) {
+			if (!members.Any()) {
+				throw new ArgumentException("MemberAccessExpression must have at least one member.");
+			}
+			this.lineBreak = lineBreak;
 			Expression = expression;
 			Members = members;
 		}
@@ -15,22 +22,20 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		public IEnumerable<IExpression> Members { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {
-			if (Expression is InfixExpression) {
-				writer.Code(new ParenthesizedExpression(Expression));
+			writer.Code(Expression is InfixExpression ? new ParenthesizedExpression(Expression) : Expression);
+			if (lineBreak) {
+				// start a new indent scope after the first member
+				writer.Append(".").Code(Members.First());
+				using var scope = writer.BeginIndentScope();
+				scope.Writer.WriteItems(Members.Skip(1), "\n", (w, member) => w.Append(".").Code(member is InfixExpression ? new ParenthesizedExpression(member) : member));
 			} else {
-				writer.Code(Expression);
-			}
-			foreach (var member in Members) {
-				writer.Append(".");
-				if (member is InfixExpression) {
-					writer.Code(new ParenthesizedExpression(member));
-				} else {
-					writer.Code(member);
+				foreach (var member in Members) {
+					writer.Append(".").Code(member is InfixExpression ? new ParenthesizedExpression(member) : member);
 				}
 			}
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => new ISyntaxNode[] { Expression }.Concat(Members);
+		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode>(Members) { Expression };
 	}
 }

@@ -32,6 +32,9 @@ namespace Albatross.CodeGen {
 		public static CodeGeneratorScope BeginScope(this TextWriter writer, string? text = null) {
 			return new CodeGeneratorScope(writer, args => args.AppendLine($"{text} {{"), args => args.Append("}"));
 		}
+		public static CodeGeneratorScope BeginIndentScope(this TextWriter writer, string? text = null) {
+			return new CodeGeneratorScope(writer, args => args.AppendLine($"{text}"), _ => { });
+		}
 
 		public static CodeStack Condition(this CodeStack codeStack, Func<bool> predicate, Action<CodeStack> action) {
 			if (predicate()) { action(codeStack); }

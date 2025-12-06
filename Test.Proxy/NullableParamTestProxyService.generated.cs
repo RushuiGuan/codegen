@@ -9,7 +9,6 @@ namespace Test.Proxy {
 	public partial class NullableParamTestProxyService : ClientBase {
 		public NullableParamTestProxyService(ILogger<NullableParamTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-
 		public const string ControllerPath = "api/nullable-param-test";
 		public async Task<string> NullableStringParam(string? text) {
 			string path = $"{ControllerPath}/nullable-string-param";

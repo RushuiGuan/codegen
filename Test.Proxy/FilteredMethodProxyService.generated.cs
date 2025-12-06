@@ -9,7 +9,6 @@ namespace Test.Proxy {
 	public partial class FilteredMethodProxyService : ClientBase {
 		public FilteredMethodProxyService(ILogger<FilteredMethodProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-
 		public const string ControllerPath = "api/filtered-method";
 		public async Task FilteredByNone() {
 			string path = $"{ControllerPath}/none";

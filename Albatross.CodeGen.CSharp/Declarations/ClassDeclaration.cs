@@ -30,18 +30,17 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			if (AccessModifier != null) {
 				writer.Append(AccessModifier.Name).Space();
 			}
-			if(IsStatic) { writer.Append("static "); }
-			if(IsSealed) { writer.Append("sealed "); }
-			if(IsRecord) { writer.Append("record "); }
-			if (IsPartial) { writer.Append("partial ");}
-			if(IsAbstract) { writer.Append("abstract "); }
-			writer.Append("class ").Code(Name).Code(GenericArguments);
+			if (IsStatic) { writer.Code(Defined.Keywords.Static); }
+			if (IsSealed) { writer.Code(Defined.Keywords.Sealed);}
+			if (IsRecord) { writer.Code(Defined.Keywords.Record);}
+			if (IsPartial) { writer.Code(Defined.Keywords.Partial); }
+			if(IsAbstract) { writer.Code(Defined.Keywords.Abstract); }
+			writer.Code(Defined.Keywords.Class).Code(Name).Code(GenericArguments);
 			writer.WriteItems(BaseTypes, ", ", (w, args) => w.Code(args), " : ", null);
 			using (var scope = writer.BeginScope()) {
 				foreach(var constructor in Constructors) {
 					scope.Writer.Code(constructor).WriteLine();
 				}
-				scope.Writer.WriteLine();
 				foreach (var field in Fields) {
 					scope.Writer.Code(field).WriteLine();
 				}

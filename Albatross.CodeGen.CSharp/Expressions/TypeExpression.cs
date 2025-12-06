@@ -10,24 +10,26 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			this.Identifier = new IdentifierNameExpression(name);
 			this.GenericArguments = genericArguments.Select(arg => new TypeExpression(arg));
 		}
+
+		public TypeExpression(IIdentifierNameExpression identifier, params IEnumerable<IIdentifierNameExpression> genericArguments) {
+			this.Identifier = identifier;
+			this.GenericArguments = genericArguments.Select(x => new TypeExpression(x)).ToArray();
+		}
+
 		public bool Nullable { get; init; }
 		public bool IsGeneric => GenericArguments.Any();
 		public IEnumerable<ITypeExpression> GenericArguments { get; init; } = [];
 		public IIdentifierNameExpression Identifier { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Code(Identifier);
-			writer.WriteItems(GenericArguments, ",", (w, args) => w.Code(args), "<", ">");
-			writer.AppendIf(Nullable, "?");
-			return writer;
+			return writer.Code(Identifier)
+				.WriteItems(GenericArguments, ",", (w, args) => w.Code(args), "<", ">")
+				.AppendIf(Nullable, "?");
 		}
 
-		public override IEnumerable<ISyntaxNode> Children {
-			get {
-				var list = new List<ISyntaxNode> { Identifier };
-				list.AddRange(GenericArguments);
-				return list;
-			}
-		}
+		public override IEnumerable<ISyntaxNode> Children =>
+			new List<ISyntaxNode>(GenericArguments) {
+				Identifier
+			};
 	}
 }

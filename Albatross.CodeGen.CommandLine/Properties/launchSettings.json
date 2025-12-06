@@ -22,10 +22,10 @@
       "commandName": "Project",
       "commandLineArgs": "typescript dto -p C:\\app\\secmaster\\src\\SecMaster.Core\\SecMaster.Core.csproj"
     },
-    "csharp-proxy": {
+    "csharp-webclient": {
       "commandName": "Project",
-      "commandLineArgs": "csharp proxy -p .\\Test.WebApi\\Test.WebApi.csproj -s .\\Test.Proxy\\codegen-settings.json -o .\\Test.Proxy",
-      "workingDirectory": "c:\\app\\codegen"
+      "commandLineArgs": "csharp2 web-client -p ./Test.WebApi/Test.WebApi.csproj -s ./Test.Proxy/codegen-settings.json -o ./Test.Proxy",
+      "workingDirectory": ".."
     },
     "dto-model": {
       "commandName": "Project",

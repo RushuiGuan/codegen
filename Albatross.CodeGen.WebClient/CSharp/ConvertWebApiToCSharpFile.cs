@@ -29,7 +29,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			if (typeSymbol.SpecialType == SpecialType.System_Void) {
 				return Defined.Types.Task;
 			} else {
-				return new TypeExpression("Task") {
+				return new TypeExpression(Defined.Identifiers.Task) {
 					GenericArguments = [typeConverter.Convert(typeSymbol),]
 				};
 			}
@@ -124,7 +124,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					Identifier = new IdentifierNameExpression("queryString"),
 				},
 				Expression = new NewObjectExpression {
-					CallableExpression = new IdentifierNameExpression("NameValueCollection"),
+					CallableExpression = Defined.Identifiers.NameValueCollection,
 				}
 			}.Terminate();
 			foreach (var param in method.Parameters.Where(x => x.WebType == ParameterType.FromQuery)) {
@@ -265,13 +265,10 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				Namespace = new NamespaceExpression(settings.CSharpWebClientSettings.Namespace),
 				NullableEnabled = true,
 				Imports = [
-					// new ImportExpression("System"),
 					new ImportExpression("Albatross.Dates"),
 					new ImportExpression("System.Net.Http"),
-					new ImportExpression("System.Threading.Tasks"),
 					new ImportExpression("Microsoft.Extensions.Logging"),
 					new ImportExpression("Albatross.WebClient"),
-					new ImportExpression("System.Collections.Specialized"),
 				],
 				Interfaces = settings.CSharpWebClientSettings.UseInterface ? [CreateInterface(from)] : [],
 				Classes = [CreateClass(from)],

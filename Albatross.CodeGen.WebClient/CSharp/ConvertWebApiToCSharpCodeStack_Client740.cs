@@ -41,7 +41,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 								} else {
 									returnType = new GenericIdentifierNode("Task", method.ReturnType.AsTypeNode());
 								}
-								using (codeStack.NewScope(new MethodDeclarationBuilder(returnType, method.Name).UsedByInterface())) {
+								using (codeStack.NewScope(new MethodDeclarationBuilder(returnType, method.Name).SignatureOnly())) {
 									foreach (var param in method.Parameters) {
 										codeStack.With(new ParameterNode(param.Type.AsTypeNode(), param.Name));
 									}
