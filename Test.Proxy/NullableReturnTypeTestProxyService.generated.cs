@@ -4,13 +4,12 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
-
 #nullable enable
 namespace Test.Proxy {
 	public partial class NullableReturnTypeTestProxyService : ClientBase {
 		public NullableReturnTypeTestProxyService(ILogger<NullableReturnTypeTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-		
+
 		public const string ControllerPath = "api/nullable-return-type";
 		public async Task<string?> GetString(string? text) {
 			string path = $"{ControllerPath}/string";
@@ -18,7 +17,7 @@ namespace Test.Proxy {
 			if (text != null) {
 				queryString.Add("text", text);
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -29,7 +28,7 @@ namespace Test.Proxy {
 			if (text != null) {
 				queryString.Add("text", text);
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -40,7 +39,7 @@ namespace Test.Proxy {
 			if (text != null) {
 				queryString.Add("text", text);
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -51,7 +50,7 @@ namespace Test.Proxy {
 			if (text != null) {
 				queryString.Add("text", text);
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -62,7 +61,7 @@ namespace Test.Proxy {
 			if (n != null) {
 				queryString.Add("n", $"{n}");
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<int>>(request);
 			}
@@ -73,7 +72,7 @@ namespace Test.Proxy {
 			if (n != null) {
 				queryString.Add("n", $"{n}");
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<int>>(request);
 			}
@@ -84,7 +83,7 @@ namespace Test.Proxy {
 			if (n != null) {
 				queryString.Add("n", $"{n}");
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<int>>(request);
 			}
@@ -95,7 +94,7 @@ namespace Test.Proxy {
 			if (n != null) {
 				queryString.Add("n", $"{n}");
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<int>>(request);
 			}
@@ -106,7 +105,7 @@ namespace Test.Proxy {
 			if (v != null) {
 				queryString.Add("v", v.Value.ISO8601String());
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<System.DateTime>>(request);
 			}
@@ -117,7 +116,7 @@ namespace Test.Proxy {
 			if (v != null) {
 				queryString.Add("v", v.Value.ISO8601String());
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<System.DateTime>>(request);
 			}
@@ -128,7 +127,7 @@ namespace Test.Proxy {
 			if (v != null) {
 				queryString.Add("v", v.Value.ISO8601String());
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<System.DateTime>>(request);
 			}
@@ -139,7 +138,7 @@ namespace Test.Proxy {
 			if (v != null) {
 				queryString.Add("v", v.Value.ISO8601String());
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<System.DateTime>>(request);
 			}
@@ -147,7 +146,7 @@ namespace Test.Proxy {
 		public async Task<Test.Dto.Classes.MyDto?> GetMyDto(Test.Dto.Classes.MyDto? value) {
 			string path = $"{ControllerPath}/object";
 			var queryString = new NameValueCollection();
-			
+
 			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?>(HttpMethod.Post, path, queryString, value)) {
 				return await this.GetJsonResponse<Test.Dto.Classes.MyDto?>(request);
 			}
@@ -155,7 +154,7 @@ namespace Test.Proxy {
 		public async Task<Test.Dto.Classes.MyDto?> GetAsyncMyDto(Test.Dto.Classes.MyDto? value) {
 			string path = $"{ControllerPath}/async-object";
 			var queryString = new NameValueCollection();
-			
+
 			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?>(HttpMethod.Post, path, queryString, value)) {
 				return await this.GetJsonResponse<Test.Dto.Classes.MyDto?>(request);
 			}
@@ -163,7 +162,7 @@ namespace Test.Proxy {
 		public async Task<Test.Dto.Classes.MyDto?> ActionResultObject(Test.Dto.Classes.MyDto? value) {
 			string path = $"{ControllerPath}/action-result-object";
 			var queryString = new NameValueCollection();
-			
+
 			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?>(HttpMethod.Post, path, queryString, value)) {
 				return await this.GetJsonResponse<Test.Dto.Classes.MyDto?>(request);
 			}
@@ -171,7 +170,7 @@ namespace Test.Proxy {
 		public async Task<Test.Dto.Classes.MyDto?> AsyncActionResultObject(Test.Dto.Classes.MyDto? value) {
 			string path = $"{ControllerPath}/async-action-result-object";
 			var queryString = new NameValueCollection();
-			
+
 			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?>(HttpMethod.Post, path, queryString, value)) {
 				return await this.GetJsonResponse<Test.Dto.Classes.MyDto?>(request);
 			}
@@ -179,7 +178,7 @@ namespace Test.Proxy {
 		public async Task<Test.Dto.Classes.MyDto?[]> GetMyDtoNullableArray(Test.Dto.Classes.MyDto?[] values) {
 			string path = $"{ControllerPath}/nullable-array-return-type";
 			var queryString = new NameValueCollection();
-			
+
 			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?[]>(HttpMethod.Post, path, queryString, values)) {
 				return await this.GetRequiredJsonResponse<Test.Dto.Classes.MyDto?[]>(request);
 			}
@@ -187,7 +186,7 @@ namespace Test.Proxy {
 		public async Task<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto?>> GetMyDtoCollection(System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto?> values) {
 			string path = $"{ControllerPath}/nullable-collection-return-type";
 			var queryString = new NameValueCollection();
-			
+
 			using (var request = this.CreateJsonRequest<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto?>>(HttpMethod.Post, path, queryString, values)) {
 				return await this.GetRequiredJsonResponse<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto?>>(request);
 			}

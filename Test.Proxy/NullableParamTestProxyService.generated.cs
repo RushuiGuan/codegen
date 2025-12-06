@@ -4,13 +4,12 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
-
 #nullable enable
 namespace Test.Proxy {
 	public partial class NullableParamTestProxyService : ClientBase {
 		public NullableParamTestProxyService(ILogger<NullableParamTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-		
+
 		public const string ControllerPath = "api/nullable-param-test";
 		public async Task<string> NullableStringParam(string? text) {
 			string path = $"{ControllerPath}/nullable-string-param";
@@ -18,7 +17,7 @@ namespace Test.Proxy {
 			if (text != null) {
 				queryString.Add("text", text);
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -29,7 +28,7 @@ namespace Test.Proxy {
 			if (id != null) {
 				queryString.Add("id", $"{id}");
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -40,7 +39,7 @@ namespace Test.Proxy {
 			if (date != null) {
 				queryString.Add("date", date.Value.ISO8601String());
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -48,7 +47,7 @@ namespace Test.Proxy {
 		public async Task NullablePostParam(Test.Dto.Classes.MyDto? dto) {
 			string path = $"{ControllerPath}/nullable-post-param";
 			var queryString = new NameValueCollection();
-			
+
 			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?>(HttpMethod.Post, path, queryString, dto)) {
 				await this.GetRawResponse(request);
 			}
@@ -61,7 +60,7 @@ namespace Test.Proxy {
 					queryString.Add("values", item);
 				}
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -74,7 +73,7 @@ namespace Test.Proxy {
 					queryString.Add("values", item);
 				}
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -87,7 +86,7 @@ namespace Test.Proxy {
 					queryString.Add("values", $"{item}");
 				}
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -100,7 +99,7 @@ namespace Test.Proxy {
 					queryString.Add("values", $"{item}");
 				}
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -113,7 +112,7 @@ namespace Test.Proxy {
 					queryString.Add("dates", item.Value.ISO8601String());
 				}
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -126,7 +125,7 @@ namespace Test.Proxy {
 					queryString.Add("dates", item.Value.ISO8601String());
 				}
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -137,7 +136,7 @@ namespace Test.Proxy {
 			if (value != null) {
 				queryString.Add("value", $"{value}");
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<Test.Dto.Enums.MyEnum>>(request);
 			}
@@ -150,7 +149,7 @@ namespace Test.Proxy {
 					queryString.Add("value", $"{item}");
 				}
 			}
-			
+
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponse<System.Nullable<Test.Dto.Enums.MyEnum>[]>(request);
 			}
