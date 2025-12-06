@@ -2,7 +2,7 @@
 using System.IO;
 
 namespace Albatross.CodeGen.Syntax {
-	public abstract record class SyntaxNode : ISyntaxNode, ICodeElement {
+	public abstract record class SyntaxNode : ISyntaxNode {
 		public abstract TextWriter Generate(TextWriter writer);
 		public virtual IEnumerable<ISyntaxNode> Children => System.Array.Empty<ISyntaxNode>();
 
@@ -13,11 +13,6 @@ namespace Albatross.CodeGen.Syntax {
 					yield return descendant;
 				}
 			}
-		}
-		public override string ToString() {
-			var writer = new StringWriter();
-			Generate(writer);
-			return writer.ToString();
 		}
 	}
 }

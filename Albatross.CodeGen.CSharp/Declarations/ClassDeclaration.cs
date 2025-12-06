@@ -57,8 +57,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 
 		public override IEnumerable<ISyntaxNode> Children {
 			get {
-				var list = new List<ISyntaxNode>();
-				list.Add(GenericArguments);
+				var list = new List<ISyntaxNode> { GenericArguments };
 				list.AddRange(Constructors);
 				list.AddRange(Fields);
 				list.AddRange(Properties);

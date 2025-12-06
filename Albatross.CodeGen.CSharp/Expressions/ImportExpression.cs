@@ -12,6 +12,9 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		public ImportExpression(string name) {
 			Namespace = new NamespaceExpression(name);
 		}
+		public ImportExpression(NamespaceExpression namespaceExpression) {
+			Namespace = namespaceExpression;
+		}
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Defined.Keywords.Using);

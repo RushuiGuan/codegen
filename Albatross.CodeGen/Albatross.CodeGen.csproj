@@ -13,7 +13,7 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0" />
 		<PackageReference Include="Albatross.Reflection" Version="8.0.7-53.main" />
 		<PackageReference Include="Albatross.Text" Version="9.0.1-105.main" />
-        <PackageReference Include="Albatross.CodeAnalysis" Version="8.0.0-42.main" />
+		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.0-42.main" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\icon.png">
@@ -30,10 +30,6 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference
-			Condition="'$(TargetFramework)' == 'netstandard2.0'"
-			Include="Albatross.CodeAnalysis.Polyfill"
-			Version="8.0.0-42.main"
-			PrivateAssets="All" />
+		<PackageReference Condition="'$(TargetFramework)' == 'netstandard2.0'" Include="Albatross.CodeAnalysis.Polyfill" Version="8.0.0-42.main" PrivateAssets="All" />
 	</ItemGroup>
 </Project>

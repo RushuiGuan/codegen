@@ -15,7 +15,7 @@
 	<ItemGroup>
 		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.0-42.main" />
 		<PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="5.0.0" />
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="5.0.0" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="5.0.0" />
 		<PackageReference Include="NJsonSchema" Version="11.5.2" />
 		<PackageReference Include="Albatross.CommandLine" Version="8.0.0" />
 		<PackageReference Include="Albatross.Logging" Version="10.0.1" />

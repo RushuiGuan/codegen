@@ -12,7 +12,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 
 		public string FileName => $"{Name}.cs";
 		public string Name { get; }
-		public bool NullableEnabled { get; init; } = false;
+		public bool NullableEnabled { get; init; } = true;
 
 		public required NamespaceExpression Namespace { get; init; }
 		public IEnumerable<ImportExpression> Imports { get; init; } = [];
@@ -21,10 +21,8 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public IEnumerable<InterfaceDeclaration> Interfaces { get; init; } = [];
 
 		public override TextWriter Generate(TextWriter writer) {
-			foreach (var item in Imports.OrderBy(x => x.Namespace.Source)) {
-				writer.Code(item).WriteLine();
-			}
-			writer.WriteLine();
+			var importCollection = new ImportCollection(Imports, Children);
+			writer.Code(importCollection);
 			if(NullableEnabled) {
 				writer.Code(Defined.PreprocessorDirectives.NullableEnable).WriteLine();
 			}
