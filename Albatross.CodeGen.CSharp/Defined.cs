@@ -22,8 +22,10 @@ namespace Albatross.CodeGen.CSharp {
 			};
 			public static readonly ITypeExpression Void = new TypeExpression("void");
 			public static readonly ITypeExpression Var = new TypeExpression("var");
-			public static readonly ITypeExpression Task = new TypeExpression(Defined.Identifiers.Task);
+			public static readonly ITypeExpression Task = new TypeExpression(Identifiers.Task);
 			public static readonly ITypeExpression Char = new TypeExpression("char");
+			
+			public static readonly ITypeExpression NameValueCollection = new TypeExpression(Identifiers.NameValueCollection);
 		}
 		public static class Identifiers {
 			public static readonly IIdentifierNameExpression Task = new QualifiedIdentifierNameExpression("Task", Defined.Namespaces.SystemThreadingTasks);
@@ -88,6 +90,7 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IKeyword Namespace = new Keyword("namespace");
 			public static readonly IKeyword Record = new Keyword("record");
 			public static readonly IKeyword Class =new Keyword("class");
+			public static readonly IKeyword New =new Keyword("new");
 		}
 
 		public static class Attributes {

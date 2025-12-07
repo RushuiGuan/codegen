@@ -11,9 +11,9 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			this.GenericArguments = genericArguments.Select(arg => new TypeExpression(arg));
 		}
 
-		public TypeExpression(IIdentifierNameExpression identifier, params IEnumerable<IIdentifierNameExpression> genericArguments) {
+		public TypeExpression(IIdentifierNameExpression identifier, params IEnumerable<ITypeExpression> genericArguments) {
 			this.Identifier = identifier;
-			this.GenericArguments = genericArguments.Select(x => new TypeExpression(x)).ToArray();
+			this.GenericArguments = genericArguments;
 		}
 
 		public bool Nullable { get; init; }

@@ -124,7 +124,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					Identifier = new IdentifierNameExpression("queryString"),
 				},
 				Expression = new NewObjectExpression {
-					CallableExpression = Defined.Identifiers.NameValueCollection,
+					Type = Defined.Types.NameValueCollection,
 				}
 			}.Terminate();
 			foreach (var param in method.Parameters.Where(x => x.WebType == ParameterType.FromQuery)) {
