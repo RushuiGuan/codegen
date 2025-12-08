@@ -3,16 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record ListOfGenericArguments : SyntaxNode, IExpression {
-		readonly ListOfSyntaxNodes<ITypeExpression> list;
-		public ListOfGenericArguments(params IEnumerable<ITypeExpression> nodes) {
-			list = new ListOfSyntaxNodes<ITypeExpression> {
-				Nodes = nodes,
-				LeftPadding = "<",
-				RightPadding = ">"
-			};
+	public record ListOfGenericArguments : ListOfSyntaxNodes<ITypeExpression>, IExpression {
+		public ListOfGenericArguments(params IEnumerable<ITypeExpression> nodes) :base(nodes) {
+			LeftPadding = "<";
+			RightPadding = ">";
 		}
-		public override TextWriter Generate(TextWriter writer) => writer.Code(list);
-		public override IEnumerable<ISyntaxNode> Children => list;
 	}
 }

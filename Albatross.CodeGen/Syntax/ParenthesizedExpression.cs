@@ -1,9 +1,8 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Albatross.CodeGen.CSharp.Expressions {
+namespace Albatross.CodeGen.Syntax {
 	public record class ParenthesizedExpression : SyntaxNode, IExpression {
 		public ParenthesizedExpression(IExpression expression) {
 			this.Expression = expression;

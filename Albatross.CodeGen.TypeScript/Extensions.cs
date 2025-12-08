@@ -39,7 +39,7 @@ namespace Albatross.CodeGen.TypeScript {
 			if (!type.IsPromise()) {
 				type = new GenericTypeExpression(Defined.Identifiers.Promise) {
 					Arguments = new ListOfSyntaxNodes<ITypeExpression> {
-						Nodes = [type],
+						type
 					}
 				};
 			}
@@ -50,12 +50,13 @@ namespace Albatross.CodeGen.TypeScript {
 			if (!type.IsObservable()) {
 				type = new GenericTypeExpression(Defined.Identifiers.Observable) {
 					Arguments = new ListOfSyntaxNodes<ITypeExpression> {
-						Nodes = [type],
+						type
 					}
 				};
 			}
 			return type;
 		}
+
 		/// <summary>
 		/// Parse a string into an IdentifierNameExpression, a fully qualified name can be constructed by using the format name,soure
 		/// </summary>

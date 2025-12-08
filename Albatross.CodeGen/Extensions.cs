@@ -1,10 +1,8 @@
 ﻿using Albatross.CodeAnalysis.Syntax;
-using Albatross.CodeGen.Syntax;
 using Albatross.Reflection;
 using Albatross.Text;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 

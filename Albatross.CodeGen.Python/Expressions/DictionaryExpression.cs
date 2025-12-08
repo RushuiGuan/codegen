@@ -7,9 +7,7 @@ using System.Linq;
 namespace Albatross.CodeGen.Python.Expressions {
 	public record class DictionaryExpression : SyntaxNode, IExpression {
 		public DictionaryExpression(params KeyValuePairExpression[] properties) {
-			Properties = new ListOfSyntaxNodes<KeyValuePairExpression> {
-				Nodes = properties
-			};
+			Properties = new ListOfSyntaxNodes<KeyValuePairExpression>(properties);
 		}
 
 		public bool LineBreak { get; set; }

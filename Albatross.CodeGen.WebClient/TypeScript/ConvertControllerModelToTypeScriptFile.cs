@@ -9,9 +9,11 @@ using Albatross.CodeGen.WebClient.Settings;
 using Albatross.Text;
 using Humanizer;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 
 namespace Albatross.CodeGen.WebClient.TypeScript {
 	public class ConvertControllerModelToTypeScriptFile : IConvertObject<ControllerInfo, TypeScriptFileDeclaration> {
@@ -39,10 +41,11 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 						Getters = [
 							new GetterDeclaration("endPoint") {
 								ReturnType = Defined.Types.String(),
-								Body = new ReturnExpression(new InfixExpression("+") {
+								Body = new ReturnExpression(new InfixExpression{
+									Operator = new Operator("+"),
 									Left = new InvocationExpression {
 										Identifier = new MultiPartIdentifierNameExpression("this", "config", "endpoint"),
-										ArgumentList = new ListOfSyntaxNodes<IExpression>{ Nodes =[new StringLiteralExpression(settings.EndPointName)] },
+										ArgumentList = new ListOfSyntaxNodes<IExpression> { new StringLiteralExpression(settings.EndPointName) },
 									},
 									Right = new StringLiteralExpression(model.Route),
 								}),
@@ -50,20 +53,18 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 						],
 						Constructor = new ConstructorDeclaration() {
 							Parameters = new ListOfSyntaxNodes<ParameterDeclaration> {
-								Nodes = [
-									new ParameterDeclaration("config") {
-										Type = new SimpleTypeExpression {
-											Identifier = new QualifiedIdentifierNameExpression("ConfigService", new ModuleSourceExpression(settings.ConfigServiceModule)),
-										},
-										Modifiers = [Defined.Keywords.Private],
+								new ParameterDeclaration("config") {
+									Type = new SimpleTypeExpression {
+										Identifier = new QualifiedIdentifierNameExpression("ConfigService", new ModuleSourceExpression(settings.ConfigServiceModule)),
 									},
-									new ParameterDeclaration("client") {
-										Type = Defined.Types.HttpClient(),
-										Modifiers = [Defined.Keywords.Protected],
-									}
-								],
+									Modifiers = [Defined.Keywords.Private],
+								},
+								new ParameterDeclaration("client") {
+									Type = Defined.Types.HttpClient(),
+									Modifiers = [Defined.Keywords.Protected],
+								}
 							},
-							Body = new CompositeExpression {
+							Body = new CodeBlock {
 								Items = [
 									new InvocationExpression {
 										Identifier = new IdentifierNameExpression("super"),
@@ -73,11 +74,12 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 								]
 							},
 						},
-						Methods = GroupMethods(model).Select(x=> BuildMethod(x.Method, x.Index)).ToArray(),
+						Methods = GroupMethods(model).Select(x => BuildMethod(x.Method, x.Index)).ToArray(),
 					}
 				],
 			};
 		}
+
 		// has to do this since typescript doesn't support methods of the same name
 		IEnumerable<(MethodInfo Method, int Index)> GroupMethods(ControllerInfo model) {
 			foreach (var group in model.Methods.GroupBy(x => x.Name)) {
@@ -87,6 +89,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 				}
 			}
 		}
+
 		MethodDeclaration BuildMethod(MethodInfo method, int index) {
 			var returnType = this.typeConverter.Convert(method.ReturnType);
 			if (object.Equals(returnType, Defined.Types.Void())) {
@@ -97,11 +100,13 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 				Modifiers = settings.UsePromise ? [new AsyncKeyword()] : [],
 				ReturnType = settings.UsePromise ? returnType.ToPromise() : returnType.ToObservable(),
 				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(method.Parameters.Select(x => new ParameterDeclaration(x.Name) { Type = typeConverter.Convert(x.Type) })),
-				Body = new ScopedVariableSyntaxNodeBuilder()
-					.IsConstant()
-					.WithName("relativeUrl").WithExpression(new StringInterpolationExpression(method.RouteSegments.Select(x => BuildRouteSegment(method, x))))
-					.Add(() => CreateHttpInvocationExpression(method))
-					.BuildAll()
+				Body = new CodeBlock(
+					new ScopedVariableExpression("relativeUrl") {
+						IsConstant = true,
+						Assignment = new StringInterpolationExpression(method.RouteSegments.Select(x => BuildRouteSegment(method, x)))
+					},
+					CreateHttpInvocationExpression(method)
+				),
 			};
 		}
 
@@ -121,9 +126,8 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			return new InvocationExpression {
 				Identifier = new QualifiedIdentifierNameExpression("format", Defined.Sources.DateFns),
 				ArgumentList = new ListOfSyntaxNodes<IExpression>(
-							new IdentifierNameExpression(text),
-							new StringLiteralExpression(format)),
-
+					new IdentifierNameExpression(text),
+					new StringLiteralExpression(format)),
 			};
 		}
 
@@ -149,13 +153,15 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			}
 			return new JsonValueExpression(properties);
 		}
+
 		bool IsDate(ITypeSymbol type) {
 			var typeName = type.GetFullName();
 			return typeName == typeof(TimeOnly).FullName
-				|| typeName == typeof(DateOnly).FullName
-				|| typeName == typeof(DateTime).FullName
-				|| typeName == typeof(DateTimeOffset).FullName;
+			       || typeName == typeof(DateOnly).FullName
+			       || typeName == typeof(DateTime).FullName
+			       || typeName == typeof(DateTimeOffset).FullName;
 		}
+
 		/// <summary>
 		/// This method will generate this
 		/// { dates:dates.map(x=>format(x, "yyyy-MM-dd")) }
@@ -181,81 +187,71 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			return new JsonPropertyExpression(parameter.QueryKey, value);
 		}
 
-		IExpression CreateHttpInvocationExpression(MethodInfo method) {
-			var builder = new InvocationSyntaxNodeBuilder();
+		IExpression CreateHttpRequestInvocationExpression(MethodInfo method) {
+			var fromBodyParameter = method.Parameters.FirstOrDefault(x => x.WebType == ParameterType.FromBody);
+			var hasFromBodyParameter = fromBodyParameter != null;
 			var returnType = this.typeConverter.Convert(method.ReturnType);
 			if (object.Equals(returnType, Defined.Types.Void())) {
 				returnType = Defined.Types.Object();
 			}
 			var hasStringReturnType = object.Equals(returnType, Defined.Types.String());
-			switch (method.HttpMethod) {
-				case My.HttpMethodGet:
-					if (hasStringReturnType) {
-						builder.WithMultiPartName("this", "doGetStringAsync");
-					} else {
-						builder.WithMultiPartName("this", "doGetAsync").AddGenericArgument(returnType);
-					}
-					break;
-				case My.HttpMethodPost:
-					if (hasStringReturnType) {
-						builder.WithMultiPartName("this", "doPostStringAsync");
-					} else {
-						builder.WithMultiPartName("this", "doPostAsync");
-						builder.AddGenericArgument(returnType);
-					}
-					break;
-				case My.HttpMethodPatch:
-					if (hasStringReturnType) {
-						builder.WithMultiPartName("this", "doPatchStringAsync");
-					} else {
-						builder.WithMultiPartName("this", "doPatchAsync");
-						builder.AddGenericArgument(returnType);
-					}
-					break;
-				case My.HttpMethodPut:
-					if (hasStringReturnType) {
-						builder.WithMultiPartName("this", "doPutStringAsync");
-					} else {
-						builder.WithMultiPartName("this", "doPutAsync");
-						builder.AddGenericArgument(returnType);
-					}
-					break;
-				case My.HttpMethodDelete:
-					builder.WithMultiPartName("this", "doDeleteAsync");
-					break;
-			}
-			// add relativeUrl parameter
-			builder.AddArgument(new IdentifierNameExpression("relativeUrl"));
-			// add from body parameter if it exists
-			var fromBodyParameter = method.Parameters.FirstOrDefault(x => x.WebType == ParameterType.FromBody);
-			if (fromBodyParameter != null) {
-				builder.AddGenericArgument(this.typeConverter.Convert(fromBodyParameter.Type));
-				builder.AddArgument(new IdentifierNameExpression(fromBodyParameter.Name.CamelCase()));
-			} else if (method.HttpMethod == My.HttpMethodPost || method.HttpMethod == My.HttpMethodPut || method.HttpMethod == My.HttpMethodPatch) {
-				builder.AddGenericArgument(Defined.Types.String());
-				builder.AddArgument(new StringLiteralExpression(""));
-			}
 
-			// build query string
-			builder.AddArgument(BuildQueryStringParameters(method));
+			return new InvocationExpression {
+				Identifier = new MultiPartIdentifierNameExpression("this", GetHttpRquestMethodName(method.HttpMethod, hasStringReturnType)),
+				ArgumentList = new ListOfSyntaxNodes<IExpression> {
+					new IdentifierNameExpression("relativeUrl"), {
+						HasRequestBody(method.HttpMethod), () => {
+							if (hasFromBodyParameter) {
+								return new IdentifierNameExpression(fromBodyParameter!.Name.CamelCase());
+							} else {
+								return new StringLiteralExpression("");
+							}
+						}
+					},
+					BuildQueryStringParameters(method)
+				},
+			};
+		}
 
+		IExpression CreateHttpInvocationExpression(MethodInfo method) {
 			if (settings.UsePromise) {
-				return new ScopedVariableSyntaxNodeBuilder()
-					.IsConstant().WithName("result").WithExpression(builder.Build())
-					.Add(() => new ReturnExpression(new InvocationExpression() {
+				return new CodeBlock(
+					new ScopedVariableExpression("result") {
+						IsConstant = true,
+						Assignment = CreateHttpRequestInvocationExpression(method),
+					},
+					new ReturnExpression(new InvocationExpression {
 						Identifier = Defined.Identifiers.FirstValueFrom,
 						ArgumentList = new ListOfSyntaxNodes<IExpression>(new IdentifierNameExpression("result")),
 						UseAwaitOperator = true,
-					}))
-					.BuildAll();
+					}));
 			} else {
-				return new ScopedVariableSyntaxNodeBuilder()
-					.IsConstant().WithName("result").WithExpression(builder.Build())
-					.Add(() => new ReturnExpression(new IdentifierNameExpression("result")))
-					.BuildAll();
+				return new CodeBlock(
+					new ScopedVariableExpression("result") {
+						Assignment = CreateHttpRequestInvocationExpression(method),
+						IsConstant = true,
+					},
+					new ReturnExpression(new IdentifierNameExpression("result")));
 			}
 		}
 
-		object IConvertObject<ControllerInfo>.Convert(ControllerInfo from) => this.Convert(from);
+		bool HasRequestBody(string httpMethod) {
+			return httpMethod == "post" || httpMethod == "put" || httpMethod == "patch";
+		}
+
+		string GetHttpRquestMethodName(string method, bool hasStringReturnType) {
+			return method switch {
+				"get" => hasStringReturnType ? "doGetStringAsync" : "doGetAsync",
+				"post" => hasStringReturnType ? "doPostStringAsync" : "doPostAsync",
+				"put" => hasStringReturnType ? "doPutStringAsync" : "doPutAsync",
+				"patch" => hasStringReturnType ? "doPatchStringAsync" : "doPatchAsync",
+				"delete" => "doDeleteAsync",
+				_ => throw new NotSupportedException($"HTTP method {method} is not supported"),
+			};
+		}
+
+
+		object IConvertObject<ControllerInfo>.
+			Convert(ControllerInfo from) => this.Convert(from);
 	}
 }

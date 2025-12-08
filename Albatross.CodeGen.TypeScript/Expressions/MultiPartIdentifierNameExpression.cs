@@ -16,10 +16,12 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 			this.Parts = names.Select(x => new IdentifierNameExpression(x));
 		}
 		IEnumerable<IIdentifierNameExpression> Parts { get; }
+		public ListOfGenericArguments GenericArguments { get; init; } = new();
 
 		public override IEnumerable<ISyntaxNode> Children => Parts;
 		public override TextWriter Generate(TextWriter writer) {
 			writer.WriteItems(Parts, ".", (w, t) => w.Code(t));
+			writer.Code(GenericArguments);
 			return writer;
 		}
 	}

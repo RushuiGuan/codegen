@@ -97,7 +97,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				ReturnType = GetMethodReturnType(method.ReturnType),
 				Parameters = GetMethodParameters(method),
 				IsAsync = true,
-				Body = new CompositeExpression(
+				Body = new CodeBlock(
 					BuildPath(method).AsEnumerable()
 						.Concat(BuildQuery(method))
 						.Concat(BuildHttpCall(method))
@@ -114,7 +114,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				Expression = new StringInterpolationExpression {
 					Expressions = BuildRouteSegments(method.RouteSegments).ToArray(),
 				}
-			}.Terminate();
+			}.EndOfStatement();
 		}
 
 		IEnumerable<IExpression> BuildQuery(MethodInfo method) {
@@ -126,10 +126,10 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				Expression = new NewObjectExpression {
 					Type = Defined.Types.NameValueCollection,
 				}
-			}.Terminate();
+			}.EndOfStatement();
 			foreach (var param in method.Parameters.Where(x => x.WebType == ParameterType.FromQuery)) {
 				if (param.Type.TryGetCollectionElementType(compilation, out var elementType)) {
-					yield return new ForeachExpression {
+					yield return new ForEachExpression {
 						IterationVariable = new VariableDeclaration {
 							Identifier = new IdentifierNameExpression("item"),
 						},
@@ -256,7 +256,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						Arguments = CreateRequestFunctionArguments(method, fromBody)
 					}
 				},
-				Body = GetResponseFunction(method).Terminate()
+				Body = GetResponseFunction(method).EndOfStatement()
 			};
 		}
 
@@ -330,13 +330,13 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					IfBlock = new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("queryString.Add"),
 						Arguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
-					}.Terminate()
+					}.EndOfStatement()
 				};
 			} else {
 				return new InvocationExpression {
 					CallableExpression = new IdentifierNameExpression("queryString.Add"),
 					Arguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
-				}.Terminate();
+				}.EndOfStatement();
 			}
 		}
 

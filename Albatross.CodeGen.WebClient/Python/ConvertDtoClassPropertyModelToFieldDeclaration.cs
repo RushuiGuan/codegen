@@ -30,34 +30,41 @@ namespace Albatross.CodeGen.WebClient.Python {
 			}
 			return new FieldDeclaration(name) {
 				Type = typeConverter.Convert(from.PropertyType),
-				Initializer = new InvocationSyntaxNodeBuilder()
-					.WithCallableExpression(Defined.Identifiers.PydanticField)
-					.AddArgument(new ScopedVariableExpression {
-						Identifier = new IdentifierNameExpression("alias"),
-						Assignment = new StringLiteralExpression(from.Name.CamelCase())
-					})
-					.AddArgument(GetDefaultExpression(from)).Build()
+				Initializer = new InvocationExpression {
+					CallableExpression = Defined.Identifiers.PydanticField,
+					ArgumentList = new ListOfSyntaxNodes<IExpression>(
+						new ScopedVariableExpression {
+							Identifier = new IdentifierNameExpression("alias"),
+							Assignment = new StringLiteralExpression(from.Name.CamelCase())
+						},
+						GetDefaultExpression(from))
+				}
 			};
 		}
 
 		IExpression GetDefaultExpression(DtoClassPropertyInfo from) {
-			var builder = new ScopedVariableSyntaxNodeBuilder();
 			if (from.PropertyType.IsCollection(compilation)) {
-				builder.WithName("default_factory");
-				builder.WithExpression(Defined.Identifiers.List);
+				return new ScopedVariableExpression {
+					Identifier = new IdentifierNameExpression("default_factory"),
+					Assignment = Defined.Identifiers.List
+				};
 			} else {
-				builder.WithName("default");
-				if (from.PropertyType.IsNullable(compilation)) {
-					builder.WithExpression(new NoneLiteralExpression());
+				IExpression assignment;
+				if(from.PropertyType.IsNullable(compilation)) {
+					assignment = new NoneLiteralExpression();
 				} else if (from.PropertyType.SpecialType == SpecialType.System_Boolean) {
-					builder.WithExpression(new BooleanLiteralExpression(false));
+					assignment = new BooleanLiteralExpression(false);
 				} else {
-					return new NoOpExpression();
+					assignment = new NoOpExpression();
 				}
+				return new ScopedVariableExpression {
+					Identifier = new IdentifierNameExpression("default"),
+					Assignment = assignment,
+				};
 			}
-			return builder.Build();
 		}
 
-		object IConvertObject<DtoClassPropertyInfo>.Convert(DtoClassPropertyInfo from) => Convert(from);
+		object IConvertObject<DtoClassPropertyInfo>.
+			Convert(DtoClassPropertyInfo from) => Convert(from);
 	}
 }

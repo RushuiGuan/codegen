@@ -7,9 +7,9 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 	public record class SetterDeclaration : MethodDeclaration, ICodeElement {
 		public SetterDeclaration(string name, ITypeExpression propertyType) : base(name) {
 			base.Parameters = new ListOfSyntaxNodes<ParameterDeclaration> {
-				Nodes = [new ParameterDeclaration("value") {
+				new ParameterDeclaration("value") {
 					Type = propertyType,
-				}]
+				}
 			};
 		}
 

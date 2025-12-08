@@ -14,8 +14,8 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
 		public AccessModifierKeyword? GetterAccessModifier { get; init; }
 		public AccessModifierKeyword? SetterAccessModifier { get; init; }
-		public IExpression? GetterBody { get; init; } = new TerminateExpression();
-		public IExpression? SetterBody { get; init; } = new TerminateExpression();
+		public IExpression? GetterBody { get; init; } = new NoOpExpression();
+		public IExpression? SetterBody { get; init; } = new NoOpExpression();
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.CodeIfNotNull(this.AccessModifier);
@@ -26,14 +26,14 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			using var scope = writer.BeginScope();
 			if (GetterBody != null) {
 				scope.Writer.CodeIfNotNull(GetterAccessModifier)
-					.Append("get ")
-					.Code(GetterBody)
+					.Code(Defined.Keywords.Get)
+					.Code(GetterBody is NoOpExpression ? new EndOfStatement() : GetterBody)
 					.WriteLine();
 			}
 			if (SetterBody != null) {
 				scope.Writer.CodeIfNotNull(SetterAccessModifier)
-					.Append("set ")
-					.Code(SetterBody)
+					.Code(Defined.Keywords.Set)
+					.Code(SetterBody is NoOpExpression ? new EndOfStatement() : SetterBody)
 					.AppendLine();
 			}
 			return writer;
@@ -42,9 +42,9 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public override IEnumerable<ISyntaxNode> Children {
 			get {
 				var list = new List<ISyntaxNode> {
-					Type, Name
-				}.AddIfNotNull(GetterBody)
-				.AddIfNotNull(SetterBody);
+						Type, Name
+					}.AddIfNotNull(GetterBody)
+					.AddIfNotNull(SetterBody);
 				return list;
 			}
 		}

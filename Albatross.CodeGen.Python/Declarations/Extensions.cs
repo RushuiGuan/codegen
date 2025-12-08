@@ -8,8 +8,8 @@ namespace Albatross.CodeGen.Python.Declarations {
 			var list = new List<ParameterDeclaration> {
 				Defined.Parameters.Self,
 			};
-			list.AddRange(parameters.Nodes);
-			return new ListOfSyntaxNodes<ParameterDeclaration> { Nodes = list };
+			list.AddRange(parameters);
+			return new ListOfSyntaxNodes<ParameterDeclaration>(list);
 		}
 	}
 }

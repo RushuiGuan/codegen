@@ -3,7 +3,6 @@ using Albatross.Text;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Albatross.CodeGen.Python.Expressions {
@@ -17,13 +16,18 @@ namespace Albatross.CodeGen.Python.Expressions {
 				throw new ArgumentException($"Invalid identifier name {name}");
 			}
 		}
+
 		public bool ForwardReference { get; init; }
 		public string Name { get; }
+		public ListOfGenericArguments GenericArguments { get; init; } = new();
+
 		public override TextWriter Generate(TextWriter writer) {
 			if (ForwardReference) { writer.Append("'"); }
-			writer.Append(Name);
+			writer.Append(Name).Code(GenericArguments);
 			if (ForwardReference) { writer.Append("'"); }
 			return writer;
 		}
+
+		public override IEnumerable<ISyntaxNode> Children => [GenericArguments];
 	}
 }

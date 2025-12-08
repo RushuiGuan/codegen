@@ -1,9 +1,8 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Albatross.CodeGen.CSharp.Expressions {
+namespace Albatross.CodeGen.Syntax {
 	public record class InfixExpression : SyntaxNode, IExpression {
 		public bool UseParenthesis { get; init; }
 		public required IOperator Operator { get; init; }

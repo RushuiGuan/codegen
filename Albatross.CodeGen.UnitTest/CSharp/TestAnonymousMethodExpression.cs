@@ -94,10 +94,10 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 							Identifier = new IdentifierNameExpression("x"),
 						},
 						Expression = new IntLiteralExpression(10)
-					}.Terminate(),
+					}.EndOfStatement(),
 					new ReturnExpression{
 						Expression = new IdentifierNameExpression("x")
-					}.Terminate(),
+					}.EndOfStatement(),
 					new NewLineExpression(),
 				]
 			};

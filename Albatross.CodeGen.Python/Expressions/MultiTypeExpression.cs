@@ -7,11 +7,11 @@ namespace Albatross.CodeGen.Python.Expressions {
 		ListOfSyntaxNodes<ITypeExpression> types;
 
 		public MultiTypeExpression(params IEnumerable<ITypeExpression> nodes) {
-			types = new ListOfSyntaxNodes<ITypeExpression> {
+			types = new ListOfSyntaxNodes<ITypeExpression>(nodes) {
 				Separator = " | ",
-				Nodes = nodes,
 			};
 		}
+
 		public override TextWriter Generate(TextWriter writer) => writer.Code(types);
 		public override IEnumerable<ISyntaxNode> Children => types;
 	}

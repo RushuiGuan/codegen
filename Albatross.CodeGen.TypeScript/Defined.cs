@@ -74,7 +74,7 @@ namespace Albatross.CodeGen.TypeScript {
 				return new DecoratorExpression {
 					Identifier = new QualifiedIdentifierNameExpression("Injectable", Sources.AngularCore),
 					ArgumentList = new ListOfSyntaxNodes<IExpression> {
-						Nodes = [new JsonValueExpression(new JsonPropertyExpression("providedIn", new StringLiteralExpression(providedIn)))]
+						new JsonValueExpression(new JsonPropertyExpression("providedIn", new StringLiteralExpression(providedIn)))
 					}
 				};
 			}
@@ -82,7 +82,7 @@ namespace Albatross.CodeGen.TypeScript {
 				return new InvocationExpression {
 					Identifier = new MultiPartIdentifierNameExpression(new IdentifierNameExpression("console"), new IdentifierNameExpression("log")),
 					ArgumentList = new ListOfSyntaxNodes<IExpression> {
-						Nodes = [new StringLiteralExpression(message)]
+						new StringLiteralExpression(message)
 					},
 					Terminate = true,
 				};

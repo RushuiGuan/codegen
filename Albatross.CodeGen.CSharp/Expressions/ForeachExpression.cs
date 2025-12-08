@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class ForeachExpression :SyntaxNode, IExpression {
+	public record class ForEachExpression :SyntaxNode, IExpression {
 		public required VariableDeclaration IterationVariable { get; init; }
 		public required IExpression Collection { get; init; }
 		public IExpression Body { get; init; } = new NoOpExpression();

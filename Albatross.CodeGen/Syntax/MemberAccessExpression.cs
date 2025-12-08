@@ -1,11 +1,10 @@
-using Albatross.CodeGen.Syntax;
 using Albatross.Text;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Albatross.CodeGen.CSharp.Expressions {
+namespace Albatross.CodeGen.Syntax {
 	public record class MemberAccessExpression : SyntaxNode, IExpression {
 		private readonly bool lineBreak;
 

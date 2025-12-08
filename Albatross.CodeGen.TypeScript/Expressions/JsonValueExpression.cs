@@ -7,10 +7,9 @@ using System.Linq;
 namespace Albatross.CodeGen.TypeScript.Expressions {
 	public record class JsonValueExpression : SyntaxNode, IExpression {
 		public JsonValueExpression(params JsonPropertyExpression[] properties) {
-			Properties = new ListOfSyntaxNodes<JsonPropertyExpression> {
+			Properties = new ListOfSyntaxNodes<JsonPropertyExpression>(properties) {
 				LeftPadding = " ",
 				RightPadding = " ",
-				Nodes = properties
 			};
 		}
 

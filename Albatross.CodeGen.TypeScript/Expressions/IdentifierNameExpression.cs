@@ -14,11 +14,15 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 				throw new ArgumentException($"Invalid identifier name {name}");
 			}
 		}
-		public override IEnumerable<ISyntaxNode> Children => [];
+
 		public string Name { get; }
+		public ListOfGenericArguments GenericArguments { get; init; } = new();
+
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Append(Name);
+			writer.Append(Name).Code(GenericArguments);
 			return writer;
 		}
+
+		public override IEnumerable<ISyntaxNode> Children => [GenericArguments];
 	}
 }

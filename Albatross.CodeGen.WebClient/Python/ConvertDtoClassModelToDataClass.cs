@@ -1,6 +1,7 @@
 ﻿using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.Python.Expressions;
+using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
 using System.Collections.Generic;
@@ -20,21 +21,23 @@ namespace Albatross.CodeGen.WebClient.Python {
 			if (!settings.DtoClassNameMapping.TryGetValue(from.FullName, out var className)) {
 				className = from.Name;
 			}
-			var fields = new List<FieldDeclaration>{
+			var fields = new List<FieldDeclaration> {
 				modelConfig
 			};
 			if (!string.IsNullOrEmpty(from.TypeDiscriminator)) {
 				fields.Add(new FieldDeclaration("discriminator_") {
 					Type = Defined.Types.String,
-					Initializer = new InvocationSyntaxNodeBuilder()
-						.WithCallableExpression(Defined.Identifiers.PydanticField)
-						.AddArgument(new ScopedVariableExpression {
-							Identifier = new IdentifierNameExpression("alias"),
-							Assignment = new StringLiteralExpression("$type")
-						}).AddArgument(new ScopedVariableExpression {
-							Identifier = new IdentifierNameExpression("default"),
-							Assignment = new StringLiteralExpression(from.TypeDiscriminator)
-						}).Build()
+					Initializer = new InvocationExpression {
+						CallableExpression = Defined.Identifiers.PydanticField,
+						ArgumentList = new ListOfSyntaxNodes<IExpression>(
+							new ScopedVariableExpression {
+								Identifier = new IdentifierNameExpression("alias"),
+								Assignment = new StringLiteralExpression("$type")
+							}, new ScopedVariableExpression {
+								Identifier = new IdentifierNameExpression("default"),
+								Assignment = new StringLiteralExpression(from.TypeDiscriminator)
+							})
+					}
 				});
 			}
 			fields.AddRange(from.Properties.Select(propertyConverter.Convert));
@@ -45,18 +48,20 @@ namespace Albatross.CodeGen.WebClient.Python {
 			return declaration;
 		}
 
-		FieldDeclaration modelConfig = new FieldDeclaration("model_config") {
-			Initializer = new InvocationSyntaxNodeBuilder()
-				.WithCallableExpression(new QualifiedIdentifierNameExpression("ConfigDict", Defined.Sources.Pydantic))
-				.AddArgument(new ScopedVariableExpression {
-					Identifier = new IdentifierNameExpression("populate_by_name"),
-					Assignment = Defined.Literals.BooleanLiteral(true),
-				}).AddArgument(new ScopedVariableExpression {
-					Identifier = new IdentifierNameExpression("serialize_by_alias"),
-					Assignment = Defined.Literals.BooleanLiteral(true),
-				}).Build()
+		private FieldDeclaration modelConfig = new FieldDeclaration("model_config") {
+			Initializer = new InvocationExpression {
+				CallableExpression = new QualifiedIdentifierNameExpression("ConfigDict", Defined.Sources.Pydantic),
+				ArgumentList = new ListOfSyntaxNodes<IExpression>(
+					new ScopedVariableExpression {
+						Identifier = new IdentifierNameExpression("populate_by_name"),
+						Assignment = Defined.Literals.BooleanLiteral(true),
+					},
+					new ScopedVariableExpression {
+						Identifier = new IdentifierNameExpression("serialize_by_alias"),
+						Assignment = Defined.Literals.BooleanLiteral(true),
+					})
+			}
 		};
-
 		object IConvertObject<DtoClassInfo>.Convert(DtoClassInfo from) => Convert(from);
 	}
 }
