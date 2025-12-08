@@ -6,7 +6,5 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 		public MultiTypeExpression(params IEnumerable<ITypeExpression> nodes) : base(nodes) {
 			this.Separator = "|";
 		}
-
-		public bool Optional { get; init; }
 	}
 }
