@@ -17,7 +17,6 @@ namespace Test.WithInterface.Proxy {
 	public partial class InterfaceAndAbstractClassTestProxyService : ClientBase, IInterfaceAndAbstractClassTestProxyService {
 		public InterfaceAndAbstractClassTestProxyService(ILogger<InterfaceAndAbstractClassTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-
 		public const string ControllerPath = "api/interface-abstract-class-test";
 		public async Task SubmitByInterface(Test.Dto.Classes.ICommand command) {
 			string path = $"{ControllerPath}/interface-as-param";

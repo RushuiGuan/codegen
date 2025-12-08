@@ -21,7 +21,6 @@ namespace Test.WithInterface.Proxy {
 	public partial class FromQueryParamTestProxyService : ClientBase, IFromQueryParamTestProxyService {
 		public FromQueryParamTestProxyService(ILogger<FromQueryParamTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-
 		public const string ControllerPath = "api/from-query-param-test";
 		public async Task RequiredString(string name) {
 			string path = $"{ControllerPath}/required-string";

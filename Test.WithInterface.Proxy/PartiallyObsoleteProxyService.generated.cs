@@ -12,7 +12,6 @@ namespace Test.WithInterface.Proxy {
 	public partial class PartiallyObsoleteProxyService : ClientBase, IPartiallyObsoleteProxyService {
 		public PartiallyObsoleteProxyService(ILogger<PartiallyObsoleteProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-
 		public const string ControllerPath = "api/partiallyobsolete";
 		public async Task<string> Get() {
 			string path = $"{ControllerPath}/get";

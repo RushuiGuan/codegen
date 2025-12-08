@@ -12,7 +12,6 @@ namespace Test.WithInterface.Proxy {
 	public partial class FromHeaderParamTestProxyService : ClientBase, IFromHeaderParamTestProxyService {
 		public FromHeaderParamTestProxyService(ILogger<FromHeaderParamTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-
 		public const string ControllerPath = "api/from-header-param-test";
 		public async Task OmitFromHeaderParameters() {
 			string path = $"{ControllerPath}";

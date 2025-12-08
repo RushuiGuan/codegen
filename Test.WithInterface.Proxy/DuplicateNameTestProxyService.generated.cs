@@ -13,7 +13,6 @@ namespace Test.WithInterface.Proxy {
 	public partial class DuplicateNameTestProxyService : ClientBase, IDuplicateNameTestProxyService {
 		public DuplicateNameTestProxyService(ILogger<DuplicateNameTestProxyService> logger, HttpClient client) : base(logger, client) {
 		}
-
 		public const string ControllerPath = "api/duplicate-name-test";
 		public async Task Submit(int id) {
 			string path = $"{ControllerPath}/by-id";
