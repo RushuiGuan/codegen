@@ -9,11 +9,9 @@ using Albatross.CodeGen.WebClient.Settings;
 using Albatross.Text;
 using Humanizer;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 
 namespace Albatross.CodeGen.WebClient.TypeScript {
 	public class ConvertControllerModelToTypeScriptFile : IConvertObject<ControllerInfo, TypeScriptFileDeclaration> {
@@ -23,8 +21,8 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		private readonly Compilation compilation;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertControllerModelToTypeScriptFile(Compilation compilation, CodeGenSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
-			this.settings = settings.TypeScriptWebClientSettings;
+		public ConvertControllerModelToTypeScriptFile(Compilation compilation, TypeScriptWebClientSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+			this.settings = settings;
 			this.compilation = compilation;
 			this.typeConverter = typeConverter;
 		}
@@ -197,7 +195,12 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			var hasStringReturnType = object.Equals(returnType, Defined.Types.String());
 
 			return new InvocationExpression {
-				Identifier = new MultiPartIdentifierNameExpression("this", GetHttpRquestMethodName(method.HttpMethod, hasStringReturnType)),
+				Identifier = new MultiPartIdentifierNameExpression("this", GetHttpRquestMethodIdentifier(method.HttpMethod, hasStringReturnType)){
+					GenericArguments = new ListOfGenericArguments{
+						{method.HttpMethod == "Post" || method.HttpMethod == "Put" || method.HttpMethod == "Patch" ? typeConverter.Convert(fromBodyParameter!.Type) : null},
+						{returnType},
+					},
+				},
 				ArgumentList = new ListOfSyntaxNodes<IExpression> {
 					new IdentifierNameExpression("relativeUrl"), {
 						HasRequestBody(method.HttpMethod), () => {
@@ -239,13 +242,13 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			return httpMethod == "post" || httpMethod == "put" || httpMethod == "patch";
 		}
 
-		string GetHttpRquestMethodName(string method, bool hasStringReturnType) {
+		string GetHttpRquestMethodIdentifier(string method, bool hasStringReturnType) {
 			return method switch {
-				"get" => hasStringReturnType ? "doGetStringAsync" : "doGetAsync",
-				"post" => hasStringReturnType ? "doPostStringAsync" : "doPostAsync",
-				"put" => hasStringReturnType ? "doPutStringAsync" : "doPutAsync",
-				"patch" => hasStringReturnType ? "doPatchStringAsync" : "doPatchAsync",
-				"delete" => "doDeleteAsync",
+				"Get" => hasStringReturnType ? "doGetStringAsync" : "doGetAsync",
+				"Post" => hasStringReturnType ? "doPostStringAsync" : "doPostAsync",
+				"Put" => hasStringReturnType ? "doPutStringAsync" : "doPutAsync",
+				"Patch" => hasStringReturnType ? "doPatchStringAsync" : "doPatchAsync",
+				"Delete" => "doDeleteAsync",
 				_ => throw new NotSupportedException($"HTTP method {method} is not supported"),
 			};
 		}

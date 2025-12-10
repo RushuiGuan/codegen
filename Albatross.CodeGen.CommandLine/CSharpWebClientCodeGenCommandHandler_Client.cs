@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.CommandLine {
 	public class CSharpWebClientCodeGenCommandHandler_Client : BaseHandler<CodeGenCommandOptions> {
 		private readonly CreateHttpClientRegistrations2 createHttpClientRegistrations;
 		private readonly Compilation compilation;
-		private readonly CodeGenSettings settings;
+		private readonly CSharpWebClientSettings settings;
 		private readonly ILogger<CSharpWebClientCodeGenCommandHandler_Client> logger;
 		private readonly ConvertApiControllerToControllerModel convertToWebApi;
 		private readonly ConvertWebApiToCSharpFile converToCSharpCodeStack;
@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.CommandLine {
 		public CSharpWebClientCodeGenCommandHandler_Client(IOptions<CodeGenCommandOptions> options,
 			CreateHttpClientRegistrations2 createHttpClientRegistrations,
 			Compilation compilation,
-			CodeGenSettings settings,
+			CSharpWebClientSettings settings,
 			ILogger<CSharpWebClientCodeGenCommandHandler_Client> logger,
 			ConvertApiControllerToControllerModel convertToWebApi,
 			ConvertWebApiToCSharpFile converToCSharpFile) : base(options) {

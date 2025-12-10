@@ -1,5 +1,7 @@
-﻿using Albatross.CodeGen.Python.Expressions;
+﻿using Albatross.CodeGen.Python;
+using Albatross.CodeGen.Python.Expressions;
 using Albatross.CodeGen.Syntax;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -7,6 +9,7 @@ using System.Text.RegularExpressions;
 namespace Albatross.CodeGen.WebClient.Python {
 	public static class Extensions {
 		static Regex VariableRegex = new Regex(@"\{\*?(\w+)\}", RegexOptions.Compiled);
+
 		/// <summary>
 		/// Give a aspnet route string, convert it to a string interpolation expression
 		/// for example: /api/{controller}/{id} => `/api/${controller}/${id}`
@@ -38,6 +41,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				};
 			}
 		}
+
 		/// <summary>
 		/// Parse a string into an IdentifierNameExpression, a fully qualified name can be constructed by using the format name,soure
 		/// </summary>
@@ -51,7 +55,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				source = name.Substring(index + 1).Trim();
 				name = name.Substring(0, index).Trim();
 			}
-			if (string.IsNullOrEmpty(name)){
+			if (string.IsNullOrEmpty(name)) {
 				throw new ArgumentException($"{name} is not valid identifier name");
 			}
 			if (string.IsNullOrEmpty(source)) {
@@ -59,6 +63,16 @@ namespace Albatross.CodeGen.WebClient.Python {
 			} else {
 				return new QualifiedIdentifierNameExpression(name, new ModuleSourceExpression(source));
 			}
+		}
+
+		public static IServiceCollection AddPythonWebClientCodeGen(this IServiceCollection services) {
+			services.AddCodeGen(typeof(Extensions).Assembly);
+			services.AddSingleton<ITypeConverter, Python.MappedTypeConverter>();
+			services.AddSingleton<ISourceLookup>(provider => {
+				var settings = provider.GetRequiredService<PythonWebClientSettings>();
+				return new DefaultPythonSourceLookup(settings.NamespaceModuleMapping);
+			});
+			return services;
 		}
 	}
 }

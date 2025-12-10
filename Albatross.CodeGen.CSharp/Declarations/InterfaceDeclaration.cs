@@ -16,7 +16,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public IdentifierNameExpression Name { get; init; }
 		public ITypeExpression? BaseType { get; init; }
 		public bool IsPartial { get; init; }
-		public ListOfGenericArguments GenericArguments { get; init; } = new();
+		public ListOfGenericArguments ListOfGenericArguments { get; init; } = new();
 
 		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];
 		public IEnumerable<PropertyDeclaration> Properties { get; init; } = [];
@@ -31,7 +31,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 				writer.Append(AccessModifier.Name).Space();
 			}
 			if (IsPartial) { writer.Append("partial "); }
-			writer.Append("interface ").Code(Name).Code(GenericArguments);
+			writer.Append("interface ").Code(Name).Code(ListOfGenericArguments);
 			if (BaseType != null) {
 				writer.Append(" : ").Code(BaseType);
 			}
@@ -57,7 +57,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 				list.AddRange(Methods);
 				list.AddIfNotNull(BaseType);
 				list.Add(Name);
-				list.Add(GenericArguments);
+				list.Add(ListOfGenericArguments);
 				return list;
 			}
 		}

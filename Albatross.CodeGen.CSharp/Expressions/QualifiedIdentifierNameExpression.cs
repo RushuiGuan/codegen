@@ -1,21 +1,9 @@
-﻿using Albatross.CodeGen.Syntax;
-using System.Collections.Generic;
-using System.IO;
-
-namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class QualifiedIdentifierNameExpression : SyntaxNode, IIdentifierNameExpression {
-		public IdentifierNameExpression Identifier { get; }
+﻿namespace Albatross.CodeGen.CSharp.Expressions {
+	public record class QualifiedIdentifierNameExpression : IdentifierNameExpression {
 		public NamespaceExpression Source { get; }
-		
-		public QualifiedIdentifierNameExpression(string name, NamespaceExpression source) {
-			Identifier = new IdentifierNameExpression(name);
+
+		public QualifiedIdentifierNameExpression(string name, NamespaceExpression source) : base(name) {
 			this.Source = source;
 		}
-		public override TextWriter Generate(TextWriter writer) {
-			writer.Code(Identifier);
-			return writer;
-		}
-
-		public override IEnumerable<ISyntaxNode> Children => [Identifier, Source];
 	}
 }

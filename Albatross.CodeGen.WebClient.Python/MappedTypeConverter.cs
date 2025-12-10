@@ -1,18 +1,16 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
 using Albatross.CodeGen.Syntax;
-using Albatross.CodeGen.TypeScript;
-using Albatross.CodeGen.TypeScript.Expressions;
-using Albatross.CodeGen.TypeScript.TypeConversions;
+using Albatross.CodeGen.Python.Expressions;
 using Albatross.CodeGen.WebClient.Settings;
 using Microsoft.CodeAnalysis;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Albatross.CodeGen.WebClient.TypeScript {
+namespace Albatross.CodeGen.WebClient.Python {
 	public class MappedTypeConverter : ITypeConverter {
-		private TypeScriptWebClientSettings settings;
+		private PythonWebClientSettings settings;
 
-		public MappedTypeConverter(CodeGenSettings settings) {
-			this.settings = settings.TypeScriptWebClientSettings;
+		public MappedTypeConverter(PythonWebClientSettings settings) {
+			this.settings = settings;
 		}
 		// this should have higher precedence than CustomTypeConversion
 		public int Precedence => 998;

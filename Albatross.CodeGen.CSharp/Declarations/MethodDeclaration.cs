@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 
 		public required IdentifierNameExpression Name { get; init; }
 		public required ITypeExpression ReturnType { get; init; }
-		public ListOfGenericArguments GenericArguments { get; init; } = new();
+		public ListOfGenericArguments ListOfGenericArguments { get; init; } = new();
 		public AccessModifierKeyword? AccessModifier { get; init; }
 
 		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];
@@ -31,7 +31,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			if (IsVirtual) { writer.Code(Defined.Keywords.Virtual); }
 			if (IsPartial) { writer.Code(Defined.Keywords.Partial); }
 			if (IsAsync) { writer.Code(Defined.Keywords.Async); }
-			writer.Code(ReturnType).Space().Code(Name).Code(GenericArguments);
+			writer.Code(ReturnType).Space().Code(Name).Code(ListOfGenericArguments);
 			writer.Code(Parameters);
 			if (Body != null) {
 				using var scope = writer.BeginScope();
@@ -45,7 +45,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public override IEnumerable<ISyntaxNode> Children {
 			get {
 				var list = new List<ISyntaxNode>{
-					Parameters, ReturnType, Name, GenericArguments
+					Parameters, ReturnType, Name, ListOfGenericArguments
 				}.AddIfNotNull(Body);
 				list.AddRange(Attributes);
 				return list;

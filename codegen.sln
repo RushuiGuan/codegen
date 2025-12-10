@@ -42,6 +42,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.Python", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.SymbolProviders", "Albatross.CodeGen.SymbolProviders\Albatross.CodeGen.SymbolProviders.csproj", "{31EB3A43-4F89-9591-AE35-E2BC49D81445}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.WebClient.CSharp", "Albatross.CodeGen.WebClient.CSharp\Albatross.CodeGen.WebClient.CSharp.csproj", "{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.WebClient.Python", "Albatross.CodeGen.WebClient.Python\Albatross.CodeGen.WebClient.Python.csproj", "{A1E13EB5-8DF0-4725-A5F5-C828636A1054}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.WebClient.TypeScript", "Albatross.CodeGen.WebClient.TypeScript\Albatross.CodeGen.WebClient.TypeScript.csproj", "{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -208,6 +214,42 @@ Global
 		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Release|arm64.Build.0 = Release|Any CPU
 		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Release|x86.ActiveCfg = Release|Any CPU
 		{31EB3A43-4F89-9591-AE35-E2BC49D81445}.Release|x86.Build.0 = Release|Any CPU
+		{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}.Debug|arm64.Build.0 = Debug|Any CPU
+		{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}.Debug|x86.Build.0 = Debug|Any CPU
+		{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}.Release|arm64.ActiveCfg = Release|Any CPU
+		{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}.Release|arm64.Build.0 = Release|Any CPU
+		{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}.Release|x86.ActiveCfg = Release|Any CPU
+		{CCB73FFD-27D3-4461-8B1E-A2D7FE0A180E}.Release|x86.Build.0 = Release|Any CPU
+		{A1E13EB5-8DF0-4725-A5F5-C828636A1054}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1E13EB5-8DF0-4725-A5F5-C828636A1054}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1E13EB5-8DF0-4725-A5F5-C828636A1054}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{A1E13EB5-8DF0-4725-A5F5-C828636A1054}.Debug|arm64.Build.0 = Debug|Any CPU
+		{A1E13EB5-8DF0-4725-A5F5-C828636A1054}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A1E13EB5-8DF0-4725-A5F5-C828636A1054}.Debug|x86.Build.0 = Debug|Any CPU
+		{A1E13EB5-8DF0-4725-A5F5-C828636A1054}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1E13EB5-8DF0-4725-A5F5-C828636A1054}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1E13EB5-8DF0-4725-A5F5-C828636A1054}.Release|arm64.ActiveCfg = Release|Any CPU
+		{A1E13EB5-8DF0-4725-A5F5-C828636A1054}.Release|arm64.Build.0 = Release|Any CPU
+		{A1E13EB5-8DF0-4725-A5F5-C828636A1054}.Release|x86.ActiveCfg = Release|Any CPU
+		{A1E13EB5-8DF0-4725-A5F5-C828636A1054}.Release|x86.Build.0 = Release|Any CPU
+		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Debug|arm64.Build.0 = Debug|Any CPU
+		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Debug|x86.Build.0 = Debug|Any CPU
+		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Release|arm64.ActiveCfg = Release|Any CPU
+		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Release|arm64.Build.0 = Release|Any CPU
+		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Release|x86.ActiveCfg = Release|Any CPU
+		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

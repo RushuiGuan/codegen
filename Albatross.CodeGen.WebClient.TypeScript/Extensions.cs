@@ -1,11 +1,15 @@
 ﻿using Albatross.CodeGen.Syntax;
+using Albatross.CodeGen.TypeScript;
 using Albatross.CodeGen.TypeScript.Expressions;
+using Albatross.CodeGen.WebClient.Settings;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Albatross.CodeGen.WebClient.TypeScript {
 	public static class Extensions {
 		static Regex VariableRegex = new Regex(@"\{\*?(\w+)\}", RegexOptions.Compiled);
+
 		/// <summary>
 		/// Give a aspnet route string, convert it to a string interpolation expression
 		/// for example: /api/{controller}/{id} => `/api/${controller}/${id}`
@@ -38,6 +42,14 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			}
 		}
 
-
+		public static IServiceCollection AddTypeScriptWebClientCodeGen(this IServiceCollection services) {
+			services.AddCodeGen(typeof(Extensions).Assembly);
+			services.AddSingleton<ITypeConverter, TypeScript.MappedTypeConverter>();
+			services.AddSingleton<ISourceLookup>(provider => {
+				var settings = provider.GetRequiredService<TypeScriptWebClientSettings>();
+				return new DefaultTypeScriptSourceLookup(settings.NamespaceModuleMapping);
+			});
+			return services;
+		}
 	}
 }

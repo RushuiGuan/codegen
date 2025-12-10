@@ -17,14 +17,14 @@ namespace Albatross.CodeGen.Python.Expressions {
 
 		public ImportCollection(params IEnumerable<QualifiedIdentifierNameExpression> nodes) {
 			this.Imports = nodes.GroupBy(x => x.Source)
-				.Select(x => new ImportExpression(x.Select(y => y.Identifier)) {
+				.Select(x => new ImportExpression(x) {
 					Source = x.Key,
 				})
 				.OrderBy(x => x.Source.Source).ToArray();
 		}
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.WriteItems(Imports, "", (writer, t) => writer.Code(t).AppendLine(), null, null);
+			writer.WriteItems(Imports, "", (w, t) => w.Code(t).AppendLine(), null, null);
 			return writer;
 		}
 

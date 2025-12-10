@@ -1,21 +1,11 @@
 ﻿using Albatross.CodeGen.Syntax;
-using System.Collections.Generic;
-using System.IO;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class QualifiedIdentifierNameExpression : SyntaxNode, IIdentifierNameExpression {
-		public QualifiedIdentifierNameExpression(string name, ISourceExpression source) {
-			Identifier = new IdentifierNameExpression(name);
+	public record class QualifiedIdentifierNameExpression : IdentifierNameExpression {
+		public QualifiedIdentifierNameExpression(string name, ISourceExpression source) : base(name) {
 			this.Source = source;
 		}
-		public IdentifierNameExpression Identifier { get; }
+
 		public ISourceExpression Source { get; }
-
-		public override TextWriter Generate(TextWriter writer) {
-			writer.Code(Identifier);
-			return writer;
-		}
-
-		public override IEnumerable<ISyntaxNode> Children => [Identifier, Source];
 	}
 }

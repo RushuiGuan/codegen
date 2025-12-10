@@ -8,15 +8,15 @@ using System.Collections.Generic;
 
 namespace Albatross.CodeGen.WebClient.CSharp {
 	public class CreateHttpClientRegistrations2 {
-		private readonly CodeGenSettings settings;
+		private readonly CSharpWebClientSettings settings;
 
-		public CreateHttpClientRegistrations2(CodeGenSettings settings) {
+		public CreateHttpClientRegistrations2(CSharpWebClientSettings settings) {
 			this.settings = settings;
 		}
 
 		public FileDeclaration Generate(IEnumerable<ControllerInfo> models) {
 			return new FileDeclaration("Extensions.generated") {
-				Namespace = new NamespaceExpression(settings.CSharpWebClientSettings.Namespace),
+				Namespace = new NamespaceExpression(settings.Namespace),
 				NullableEnabled = true,
 				Imports = [
 					new ImportExpression("Microsoft.Extensions.DependencyInjection"),
@@ -40,7 +40,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 								}),
 								Body = new ReturnExpression {
 									Expression = new IdentifierNameExpression("builder")
-										.Chain(true, GetRegistrationFunctions(settings.CSharpWebClientSettings.UseInterface, models))
+										.Chain(true, GetRegistrationFunctions(settings.UseInterface, models))
 										.EndOfStatement()
 								}
 							}

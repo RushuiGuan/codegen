@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 
 		public bool ForwardReference { get; init; }
 		public string Name { get; }
-		public ListOfGenericArguments GenericArguments { get; init; } = new();
+		public ListGenericArguments GenericArguments { get; init; } = new();
 
 		public override TextWriter Generate(TextWriter writer) {
 			if (ForwardReference) { writer.Append("'"); }

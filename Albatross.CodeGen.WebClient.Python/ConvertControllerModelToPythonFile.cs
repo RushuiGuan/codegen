@@ -19,8 +19,8 @@ namespace Albatross.CodeGen.WebClient.Python {
 		private readonly Compilation compilation;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertControllerModelToPythonFile(Compilation compilation, CodeGenSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
-			this.settings = settings.PythonWebClientSettings;
+		public ConvertControllerModelToPythonFile(Compilation compilation, PythonWebClientSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+			this.settings = settings;
 			this.compilation = compilation;
 			this.typeConverter = typeConverter;
 		}
@@ -382,7 +382,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 
 		IExpression CreateHttpInvocationExpression(MethodInfo method) {
 			var fromBodyParameter = method.Parameters.FirstOrDefault(x => x.WebType == ParameterType.FromBody);
-			var exprsesion = new InvocationExpression {
+			var expression = new InvocationExpression {
 				CallableExpression = GetHttpRequestMethodName(method),
 				UseAwaitOperator = settings.Async,
 				ArgumentList = {
@@ -445,7 +445,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			return new CodeBlock(
 				new ScopedVariableExpression {
 					Identifier = new IdentifierNameExpression("response"),
-					Assignment = exprsesion,
+					Assignment = expression,
 				},
 				new InvocationExpression {
 					CallableExpression = new MultiPartIdentifierNameExpression("response", "raise_for_status"),

@@ -9,8 +9,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 	public record class MethodInfo {
 		private readonly Compilation compilation;
 
-		public MethodInfo(WebClientMethodSettings settings, Compilation compilation, IMethodSymbol symbol) {
-			this.Settings = settings;
+		public MethodInfo(Compilation compilation, IMethodSymbol symbol) {
 			this.compilation = compilation;
 			this.Name = symbol.Name;
 			this.ReturnType = GetReturnType(symbol.ReturnType);
@@ -28,7 +27,6 @@ namespace Albatross.CodeGen.WebClient.Models {
 			this.IsObsolete = symbol.GetAttributes().Any(x => x.AttributeClass?.GetFullName() == My.ObsoleteAttribute_ClassName);
 			this.RequiresAuthentication = symbol.GetAttributes().Any(x => x.AttributeClass?.GetFullName() == My.AuthorizeAttribute_ClassName);
 		}
-		public WebClientMethodSettings Settings { get; init; }
 		public string HttpMethod { get; set; }
 		public string Name { get; set; }
 		public bool CanCancel { get; set; }

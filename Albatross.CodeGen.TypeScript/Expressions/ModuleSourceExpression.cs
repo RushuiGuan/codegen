@@ -17,8 +17,6 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 		}
 		public string Source { get; }
 
-		public override IEnumerable<ISyntaxNode> Children => [];
-
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Append('"').Append(Source).Append('"');
 			return writer;

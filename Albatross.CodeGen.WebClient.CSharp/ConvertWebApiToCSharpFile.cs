@@ -16,10 +16,10 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 	public class ConvertWebApiToCSharpFile : IConvertObject<ControllerInfo, FileDeclaration> {
 		const string ProxyService = "ProxyService";
 		private readonly Compilation compilation;
-		private readonly CodeGenSettings settings;
+		private readonly CSharpWebClientSettings settings;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertWebApiToCSharpFile(Compilation compilation, CodeGenSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+		public ConvertWebApiToCSharpFile(Compilation compilation, CSharpWebClientSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
 			this.compilation = compilation;
 			this.settings = settings;
 			this.typeConverter = typeConverter;
@@ -59,9 +59,9 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			return new ClassDeclaration {
 				Name = new IdentifierNameExpression(GetClassName(controller)),
 				IsPartial = true,
-				AccessModifier = settings.CSharpWebClientSettings.UseInternalProxy ? Defined.Keywords.Internal : Defined.Keywords.Public,
+				AccessModifier = settings.UseInternalProxy ? Defined.Keywords.Internal : Defined.Keywords.Public,
 				BaseTypes = new ITypeExpression[] { new TypeExpression("ClientBase") }
-					.Concat(settings.CSharpWebClientSettings.UseInterface ? [new TypeExpression(GetInterfaceName(controller))] : []),
+					.Concat(settings.UseInterface ? [new TypeExpression(GetInterfaceName(controller))] : []),
 				Attributes = controller.IsObsolete ? [Defined.Attributes.Obsolete] : [],
 				Constructors = CreateConstructors(controller).ToList(),
 				Fields = [
@@ -143,9 +143,9 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		}
 
 		IEnumerable<ConstructorDeclaration> CreateConstructors(ControllerInfo from) {
-			settings.CSharpWebClientSettings.ConstructorSettings.TryGetValue(from.Controller.Name, out var constructorSettings);
+			settings.ConstructorSettings.TryGetValue(from.Controller.Name, out var constructorSettings);
 			if (constructorSettings == null) {
-				settings.CSharpWebClientSettings.ConstructorSettings.TryGetValue("*", out constructorSettings);
+				settings.ConstructorSettings.TryGetValue("*", out constructorSettings);
 			}
 			if (constructorSettings?.Omit != true) {
 				var constructor = new ConstructorDeclaration {
@@ -162,7 +162,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					),
 					BaseConstructorInvocation = new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("base"),
-						Arguments = new ListOfArguments(new List<IExpression> {
+						ListOfArguments = new ListOfArguments(new List<IExpression> {
 							new IdentifierNameExpression("logger"),
 							new IdentifierNameExpression("client"),
 						}.AddIfNotNull(string.IsNullOrEmpty(constructorSettings?.CustomJsonSettings) ? null : new IdentifierNameExpression(constructorSettings!.CustomJsonSettings)))
@@ -201,7 +201,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		IExpression GetVoidResponseFunction() {
 			return new InvocationExpression {
 				CallableExpression = new IdentifierNameExpression("this.GetRawResponse"),
-				Arguments = new ListOfArguments(new IdentifierNameExpression("request")),
+				ListOfArguments = new ListOfArguments(new IdentifierNameExpression("request")),
 				UseAwaitOperator = true,
 			};
 		}
@@ -226,7 +226,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					CallableExpression = new IdentifierNameExpression(functionName) {
 						GenericArguments = new ListOfGenericArguments(this.typeConverter.Convert(method.ReturnType))
 					},
-					Arguments = new ListOfArguments(new IdentifierNameExpression("request")),
+					ListOfArguments = new ListOfArguments(new IdentifierNameExpression("request")),
 					UseAwaitOperator = true,
 				}
 			};
@@ -253,7 +253,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					},
 					Expression = new InvocationExpression {
 						CallableExpression = CreateRequestFunction(fromBody),
-						Arguments = CreateRequestFunctionArguments(method, fromBody)
+						ListOfArguments = CreateRequestFunctionArguments(method, fromBody)
 					}
 				},
 				Body = GetResponseFunction(method).EndOfStatement()
@@ -262,7 +262,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		public FileDeclaration Convert(ControllerInfo from) {
 			return new FileDeclaration(GetFilename(from)) {
-				Namespace = new NamespaceExpression(settings.CSharpWebClientSettings.Namespace),
+				Namespace = new NamespaceExpression(settings.Namespace),
 				NullableEnabled = true,
 				Imports = [
 					new ImportExpression("Albatross.Dates"),
@@ -270,7 +270,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					new ImportExpression("Microsoft.Extensions.Logging"),
 					new ImportExpression("Albatross.WebClient"),
 				],
-				Interfaces = settings.CSharpWebClientSettings.UseInterface ? [CreateInterface(from)] : [],
+				Interfaces = settings.UseInterface ? [CreateInterface(from)] : [],
 				Classes = [CreateClass(from)],
 			};
 		}
@@ -329,13 +329,13 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					},
 					IfBlock = new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("queryString.Add"),
-						Arguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
+						ListOfArguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
 					}.EndOfStatement()
 				};
 			} else {
 				return new InvocationExpression {
 					CallableExpression = new IdentifierNameExpression("queryString.Add"),
-					Arguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
+					ListOfArguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
 				}.EndOfStatement();
 			}
 		}

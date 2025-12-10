@@ -12,7 +12,6 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 			this.Source = name;
 		}
 		public string Source { get; }
-		public override IEnumerable<ISyntaxNode> Children => [];
 
 		public override TextWriter Generate(TextWriter writer) {
 			if (Path.IsPathRooted(Source)) {

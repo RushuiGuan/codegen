@@ -1,42 +1,63 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "CodeGenSettings",
-  "type": "object",
-  "additionalProperties": false,
+  "title": "TypeScriptWebClientSettings",
   "properties": {
-    "typeScriptWebClientSettings": {
-      "$ref": "#/definitions/TypeScriptWebClientSettings"
-    },
-    "pythonWebClientSettings": {
-      "$ref": "#/definitions/PythonWebClientSettings"
-    },
-    "cSharpWebClientSettings": {
-      "$ref": "#/definitions/CSharpWebClientSettings"
-    },
-    "controllerFilters": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/SymbolFilterPatterns"
-      }
-    },
-    "controllerMethodFilters": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/SymbolFilterPatterns"
-      }
-    },
-    "dtoEnumFilters": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/SymbolFilterPatterns"
-      }
-    },
     "$schema": {
       "type": "string"
     }
   },
   "definitions": {
-    "TypeScriptWebClientSettings": {
+    "CodeGenSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "controllerFilters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SymbolFilterPatterns"
+          }
+        },
+        "controllerMethodFilters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SymbolFilterPatterns"
+          }
+        },
+        "dtoEnumFilters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SymbolFilterPatterns"
+          }
+        }
+      }
+    },
+    "SymbolFilterPatterns": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exclude": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "include": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "hasValue": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/CodeGenSettings"
+    },
+    {
       "type": "object",
       "additionalProperties": false,
       "properties": {
@@ -74,137 +95,6 @@
           }
         }
       }
-    },
-    "PythonWebClientSettings": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "async": {
-          "type": "boolean"
-        },
-        "namespaceModuleMapping": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "typeMapping": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "propertyNameMapping": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "httpClientClassNameMapping": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "dtoClassNameMapping": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "constructorSettings": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/WebClientConstructorSettings"
-          }
-        }
-      }
-    },
-    "WebClientConstructorSettings": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "compressionEncoding": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "omit": {
-          "type": "boolean"
-        },
-        "customJsonSettings": {
-          "type": [
-            "null",
-            "string"
-          ]
-        }
-      }
-    },
-    "CSharpWebClientSettings": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "namespace": {
-          "type": "string"
-        },
-        "useTextContentTypeForStringPostRequest": {
-          "type": "boolean"
-        },
-        "useInterface": {
-          "type": "boolean"
-        },
-        "useInternalProxy": {
-          "type": "boolean"
-        },
-        "globalMethodSettings": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "$ref": "#/definitions/WebClientMethodSettings"
-            }
-          ]
-        },
-        "methodSettings": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/WebClientMethodSettings"
-          }
-        },
-        "constructorSettings": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/WebClientConstructorSettings"
-          }
-        }
-      }
-    },
-    "WebClientMethodSettings": {
-      "type": "object",
-      "additionalProperties": false
-    },
-    "SymbolFilterPatterns": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "exclude": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "include": {
-          "type": [
-            "null",
-            "string"
-          ]
-        },
-        "hasValue": {
-          "type": "boolean"
-        }
-      }
     }
-  }
+  ]
 }

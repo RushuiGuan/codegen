@@ -9,9 +9,9 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 	public class ConvertWebApiToCSharpCodeStack_Client800 : IConvertObject<ControllerInfo, CodeStack> {
 		const string ProxyService = "ProxyService";
 		private readonly Compilation compilation;
-		private readonly CodeGenSettings settings;
+		private readonly CSharpWebClientSettings settings;
 
-		public ConvertWebApiToCSharpCodeStack_Client800(Compilation compilation, CodeGenSettings settings) {
+		public ConvertWebApiToCSharpCodeStack_Client800(Compilation compilation, CSharpWebClientSettings settings) {
 			this.compilation = compilation;
 			this.settings = settings;
 		}
@@ -27,11 +27,11 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					.With(new UsingDirectiveNode("Albatross.WebClient"))
 					.With(new UsingDirectiveNode("System.Collections.Specialized"));
 
-				using (codeStack.NewScope(new NamespaceDeclarationBuilder(settings.CSharpWebClientSettings.Namespace))) {
+				using (codeStack.NewScope(new NamespaceDeclarationBuilder(settings.Namespace))) {
 					var proxyClassName = from.ControllerName + ProxyService;
 					var interfaceClassName = $"I{proxyClassName}";
 					codeStack.FileName = $"{proxyClassName}.generated.cs";
-					if (settings.CSharpWebClientSettings.UseInterface) {
+					if (settings.UseInterface) {
 						using (codeStack.NewScope(new InterfaceDeclarationBuilder(interfaceClassName).Public().Partial())) {
 							if (from.IsObsolete) {
 								codeStack.Complete(new AttributeBuilder("System.ObsoleteAttribute"));
@@ -52,22 +52,22 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						}
 					}
 					var classBuilder = new ClassDeclarationBuilder(proxyClassName);
-					if (settings.CSharpWebClientSettings.UseInternalProxy) {
+					if (settings.UseInternalProxy) {
 						classBuilder.Internal();
 					} else {
 						classBuilder.Public();
 					}
 					using (codeStack.NewScope(classBuilder.Partial())) {
 						codeStack.With(new BaseTypeNode("ClientBase"));
-						if (settings.CSharpWebClientSettings.UseInterface) {
+						if (settings.UseInterface) {
 							codeStack.With(new BaseTypeNode(interfaceClassName));
 						}
 						if (from.IsObsolete) {
 							codeStack.Complete(new AttributeBuilder("System.ObsoleteAttribute"));
 						}
-						settings.CSharpWebClientSettings.ConstructorSettings.TryGetValue(from.Controller.Name, out var constructorSettings);
+						settings.ConstructorSettings.TryGetValue(from.Controller.Name, out var constructorSettings);
 						if (constructorSettings == null) {
-							settings.CSharpWebClientSettings.ConstructorSettings.TryGetValue("*", out constructorSettings);
+							settings.ConstructorSettings.TryGetValue("*", out constructorSettings);
 						}
 						if (constructorSettings?.Omit != true) {
 							using (codeStack.NewScope(new ConstructorDeclarationBuilder(proxyClassName).Public())) {
@@ -115,10 +115,10 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 									using (codeStack.NewScope()) {
 										if (param.Type.TryGetCollectionElementType(compilation, out var elementType)) {
 											using (codeStack.NewScope(new ForEachStatementBuilder(null, "item", param.Name))) {
-												CreateAddQueryStringStatement(codeStack, method.Settings, elementType!, param.QueryKey, "item");
+												CreateAddQueryStringStatement(codeStack, elementType!, param.QueryKey, "item");
 											}
 										} else {
-											CreateAddQueryStringStatement(codeStack, method.Settings, param.Type, param.QueryKey, param.Name);
+											CreateAddQueryStringStatement(codeStack, param.Type, param.QueryKey, param.Name);
 										}
 									}
 								}
@@ -206,7 +206,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			return cs;
 		}
 
-		CodeStack CreateAddQueryStringStatement(CodeStack codeStack, WebClientMethodSettings settings, ITypeSymbol type, string queryKey, string variableName) {
+		CodeStack CreateAddQueryStringStatement(CodeStack codeStack, ITypeSymbol type, string queryKey, string variableName) {
 			ITypeSymbol finalType = type;
 			if (type.IsNullable(compilation)) {
 				codeStack.Begin(new IfStatementBuilder());

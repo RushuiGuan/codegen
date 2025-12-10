@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Albatross.CodeGen.WebClient.CSharp {
 	public class CreateHttpClientRegistrations {
-		private readonly CodeGenSettings settings;
+		private readonly CSharpWebClientSettings settings;
 
-		public CreateHttpClientRegistrations(CodeGenSettings settings) {
+		public CreateHttpClientRegistrations(CSharpWebClientSettings settings) {
 			this.settings = settings;
 		}
 
@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			};
 			using (codeStack.NewScope(new CompilationUnitBuilder())) {
 				codeStack.With(new UsingDirectiveNode("Microsoft.Extensions.DependencyInjection"));
-				using (codeStack.NewScope(new NamespaceDeclarationBuilder(settings.CSharpWebClientSettings.Namespace))) {
+				using (codeStack.NewScope(new NamespaceDeclarationBuilder(settings.Namespace))) {
 					using (codeStack.NewScope(new ClassDeclarationBuilder("Extensions").Public().Static().Partial())) {
 						using (codeStack.NewScope(new MethodDeclarationBuilder("IHttpClientBuilder", "AddClients").Public().Static())) {
 							codeStack.With(new ParameterNode(new TypeNode("IHttpClientBuilder"), "builder").WithThis());
@@ -25,7 +25,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 								codeStack.With(new IdentifierNode("builder"));
 								foreach (var model in models) {
 									GenericIdentifierNode addTypedClientIdentifier;
-									if (settings.CSharpWebClientSettings.UseInterface) {
+									if (settings.UseInterface) {
 										addTypedClientIdentifier = new GenericIdentifierNode("AddTypedClient", $"I{model.ControllerName}ProxyService", $"{model.ControllerName}ProxyService");
 									} else {
 										addTypedClientIdentifier = new GenericIdentifierNode("AddTypedClient", model.ControllerName + "ProxyService");

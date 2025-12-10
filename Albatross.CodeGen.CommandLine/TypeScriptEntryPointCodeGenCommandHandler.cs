@@ -12,9 +12,6 @@ namespace Albatross.CodeGen.CommandLine {
 	public record TypeScriptEntryPointCodeGenOptions {
 		[Option("o")]
 		public DirectoryInfo OutputDirectory { get; init; } = null!;
-
-		[Option("s")]
-		public FileInfo? SettingsFile { get; set; }
 	}
 	public class TypeScriptEntryPointCodeGenCommandHandler : BaseHandler<TypeScriptEntryPointCodeGenOptions> {
 		private readonly ILogger<TypeScriptEntryPointCodeGenCommandHandler> logger;
@@ -22,9 +19,9 @@ namespace Albatross.CodeGen.CommandLine {
 
 		public TypeScriptEntryPointCodeGenCommandHandler(IOptions<TypeScriptEntryPointCodeGenOptions> options,
 			ILogger<TypeScriptEntryPointCodeGenCommandHandler> logger,
-			CodeGenSettings settings) : base(options) {
+			TypeScriptWebClientSettings settings) : base(options) {
 			this.logger = logger;
-			this.settings = settings.TypeScriptWebClientSettings;
+			this.settings = settings;
 		}
 
 		public override int Invoke(InvocationContext context) {

@@ -12,10 +12,10 @@ using Albatross.CodeAnalysis.Symbols;
 namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertDtoClassPropertyModelToFieldDeclaration : IConvertObject<DtoClassPropertyInfo, FieldDeclaration> {
 		private readonly Compilation compilation;
-		private readonly CodeGenSettings settings;
+		private readonly PythonWebClientSettings settings;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertDtoClassPropertyModelToFieldDeclaration(Compilation compilation, CodeGenSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+		public ConvertDtoClassPropertyModelToFieldDeclaration(Compilation compilation, PythonWebClientSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
 			this.compilation = compilation;
 			this.settings = settings;
 			this.typeConverter = typeConverter;
@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 
 		public FieldDeclaration Convert(DtoClassPropertyInfo from) {
 			string name;
-			if (settings.PythonWebClientSettings.PropertyNameMapping.TryGetValue(from.FullName, out var mappedName)) {
+			if (settings.PropertyNameMapping.TryGetValue(from.FullName, out var mappedName)) {
 				name = mappedName.Underscore();
 			} else {
 				name = from.Name.Underscore();

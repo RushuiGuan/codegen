@@ -22,8 +22,9 @@
 		<PackageReference Include="Albatross.Serialization.Json" Version="10.0.0-20.main" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\Albatross.CodeGen.TypeScript\Albatross.CodeGen.TypeScript.csproj" />
-		<ProjectReference Include="..\Albatross.CodeGen.WebClient\Albatross.CodeGen.WebClient.csproj" />
+		<ProjectReference Include="..\Albatross.CodeGen.WebClient.CSharp\Albatross.CodeGen.WebClient.CSharp.csproj" />
+		<ProjectReference Include="..\Albatross.CodeGen.WebClient.Python\Albatross.CodeGen.WebClient.Python.csproj" />
+		<ProjectReference Include="..\Albatross.CodeGen.WebClient.TypeScript\Albatross.CodeGen.WebClient.TypeScript.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\icon.png">

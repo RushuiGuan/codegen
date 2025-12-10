@@ -19,7 +19,7 @@ namespace Albatross.CodeGen {
 
 		public void Dispose() {
 			Writer.Flush();
-			StringReader reader = new StringReader(content.ToString());
+			var reader = new StringReader(content.ToString());
 			string? line = reader.ReadLine();
 			while (line != null) {
 				parentWriter.Tab().WriteLine(line);

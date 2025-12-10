@@ -1,6 +1,4 @@
 using Albatross.Text;
-using System;
-using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.Syntax {

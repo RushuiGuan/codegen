@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace Albatross.CodeGen.WebClient.Settings {
-	public record class TypeScriptWebClientSettings {
+	public record class TypeScriptWebClientSettings : CodeGenSettings {
 		public string EndPointName { get; init; } = "endpoint_name";
 		public string BaseClassName { get; init; } = "WebClient";
 		public string BaseClassModule { get; init; } = "@my_module/webclient";
@@ -9,10 +9,12 @@ namespace Albatross.CodeGen.WebClient.Settings {
 		public bool UsePromise { get; set; }
 		public string EntryFile { get; init; } = "public-api.ts";
 		public string SourcePathRelatedToEntryFile { get; init; } = "lib";
+
 		/// <summary>
 		/// mapping bewteen c# namespace and typescript module
 		/// </summary>
 		public Dictionary<string, string> NamespaceModuleMapping { get; init; } = new Dictionary<string, string>();
+
 		public Dictionary<string, string> TypeMapping { get; init; } = new Dictionary<string, string>();
 	}
 }
