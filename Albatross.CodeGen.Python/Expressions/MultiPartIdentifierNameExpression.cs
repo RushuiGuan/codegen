@@ -16,12 +16,12 @@ namespace Albatross.CodeGen.Python.Expressions {
 			this.Parts = names.Select(x => new IdentifierNameExpression(x));
 		}
 		IEnumerable<IIdentifierNameExpression> Parts { get; }
-		public ListGenericArguments GenericArguments { get; init; } = new();
+		public ListOfGenericArguments OfGenericArguments { get; init; } = new();
 		
 		public override IEnumerable<ISyntaxNode> Children => Parts;
 		public override TextWriter Generate(TextWriter writer) {
 			writer.WriteItems(Parts, ".", (w, t) => w.Code(t));
-			writer.Code(GenericArguments);
+			writer.Code(OfGenericArguments);
 			return writer;
 		}
 	}
