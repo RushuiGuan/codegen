@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public override TextWriter Generate(TextWriter writer) {
 			var importCollection = new ImportCollection(Imports, GetDescendants());
 			writer.Code(importCollection);
-			if(NullableEnabled) {
+			if (NullableEnabled) {
 				writer.Code(Defined.PreprocessorDirectives.NullableEnable).WriteLine();
 			}
 			using (var scope = writer.Code(Defined.Keywords.Namespace).Code(Namespace).BeginScope()) {

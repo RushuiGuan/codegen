@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Albatross.CodeGen.UnitTest.Python {
 	public class TestRegex {
-		
+
 		[Theory]
 		[InlineData(".xyz", true)]
 		[InlineData("..xyz", true)]

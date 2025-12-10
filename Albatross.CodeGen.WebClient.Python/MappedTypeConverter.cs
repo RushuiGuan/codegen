@@ -1,6 +1,6 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
-using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.Python.Expressions;
+using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.WebClient.Settings;
 using Microsoft.CodeAnalysis;
 using System.Diagnostics.CodeAnalysis;
@@ -18,7 +18,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {
 			if (settings.TypeMapping.TryGetValue(symbol.GetFullName(), out var mappedType)) {
 				expression = new SimpleTypeExpression {
-					 Identifier = mappedType.ParseIdentifierName(),
+					Identifier = mappedType.ParseIdentifierName(),
 				};
 				return true;
 			} else {

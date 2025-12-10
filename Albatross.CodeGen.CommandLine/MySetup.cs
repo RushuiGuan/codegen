@@ -68,7 +68,7 @@ namespace Albatross.CodeGen.CommandLine {
 					throw new InvalidOperationException($"File {options.SettingsFile.Name} doesn't exist");
 				}
 			});
-			
+
 			return services;
 		}
 	}

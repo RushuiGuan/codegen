@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 			"System.Guid"
 		];
 
-		protected override ITypeExpression GetResult(ITypeSymbol symbol) 
+		protected override ITypeExpression GetResult(ITypeSymbol symbol)
 			=> Defined.Types.UUID;
 	}
 }

@@ -225,9 +225,9 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 							codeStack.With(new IdentifierNode(variableName));
 						} else {
 							if (finalType.SpecialType == SpecialType.System_DateTime
-							    || finalType.GetFullName() == "System.DateTimeOffset"
-							    || finalType.GetFullName() == "System.DateOnly"
-							    || finalType.GetFullName() == "System.TimeOnly") {
+								|| finalType.GetFullName() == "System.DateTimeOffset"
+								|| finalType.GetFullName() == "System.DateOnly"
+								|| finalType.GetFullName() == "System.TimeOnly") {
 								using (codeStack.NewScope()) {
 									codeStack.With(new IdentifierNode(variableName));
 									if (type.IsNullableValueType(compilation)) {

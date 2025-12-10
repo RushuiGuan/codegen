@@ -27,7 +27,7 @@ namespace Albatross.CodeGen.CommandLine {
 			ConvertEnumSymbolToDtoEnumModel enum2Model,
 			ConvertDtoClassModelToTypeScriptInterface dtoModel2TypeScript,
 			ConvertEnumModelToTypeScriptEnum enumModel2TypeScript,
-			IOptions<CodeGenCommandOptions> options) :base(options){
+			IOptions<CodeGenCommandOptions> options) : base(options) {
 			this.compilation = compilation;
 			this.settings = settings;
 			this.dto2Model = dto2Model;

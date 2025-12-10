@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Albatross.CodeGen.Python.Expressions {
 	public record class ModuleSourceExpression : SyntaxNode, ISourceExpression {
-		public static readonly Regex ModuleSource = new Regex(@"^(?:\.+)?(?:[a-z_][a-z0-9_]*)(?:\.[a-z_][a-z0-9_]*)*$", 
+		public static readonly Regex ModuleSource = new Regex(@"^(?:\.+)?(?:[a-z_][a-z0-9_]*)(?:\.[a-z_][a-z0-9_]*)*$",
 			RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
 		// this regex is more restrictive than the actual module name regex
@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 			}
 		}
 		public string Source { get; }
-		public override TextWriter Generate(TextWriter writer) =>  writer.Append(Source);
+		public override TextWriter Generate(TextWriter writer) => writer.Append(Source);
 		public override IEnumerable<ISyntaxNode> Children => Array.Empty<ISyntaxNode>();
 	}
 }

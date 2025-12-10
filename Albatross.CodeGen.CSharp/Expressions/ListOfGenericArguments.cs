@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
 	public record ListOfGenericArguments : ListOfSyntaxNodes<ITypeExpression>, IExpression {
-		public ListOfGenericArguments(params IEnumerable<ITypeExpression> nodes) :base(nodes) {
+		public ListOfGenericArguments(params IEnumerable<ITypeExpression> nodes) : base(nodes) {
 			LeftPadding = "<";
 			RightPadding = ">";
 		}

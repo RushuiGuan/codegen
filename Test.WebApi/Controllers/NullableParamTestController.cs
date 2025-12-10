@@ -40,7 +40,7 @@ namespace Test.WebApi.Controllers {
 
 		[HttpGet("nullable-enum-parameter")]
 		public MyEnum? NullableEnumParameter([FromQuery] MyEnum? value) => value;
-		
+
 		[HttpGet("nullable-enum-array")]
 		public MyEnum?[] NullableEnumArray([FromQuery] MyEnum?[] value) => value;
 	}

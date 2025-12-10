@@ -2,7 +2,7 @@ using Albatross.Text;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public class PreprocessorDirectiveExpression : ICodeElement{
+	public class PreprocessorDirectiveExpression : ICodeElement {
 		private readonly string text;
 
 		public PreprocessorDirectiveExpression(string text) {

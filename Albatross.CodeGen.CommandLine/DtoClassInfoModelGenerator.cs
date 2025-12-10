@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.CommandLine {
 
 		public DtoClassInfoModelGenerator(Compilation compilation, ConvertClassSymbolToDtoClassModel dtoConverter,
 			ConvertEnumSymbolToDtoEnumModel enumConverter,
-			CodeGenSettings settings, 
+			CodeGenSettings settings,
 			IOptions<CodeGenCommandOptions> options) : base(options) {
 			this.compilation = compilation;
 			this.dtoConverter = dtoConverter;

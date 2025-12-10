@@ -25,7 +25,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 			// note that file name is case sensitive in the world of unix
 			if (source is FileNameSourceExpression fileNameSource && fileNameSource.Source == this.FileName) {
 				return true;
-			}else if(source is GenericSourceExpression genericSource && genericSource.Source.Trim('.', '/', '\\', ' ') == this.Name){
+			} else if (source is GenericSourceExpression genericSource && genericSource.Source.Trim('.', '/', '\\', ' ') == this.Name) {
 				return true;
 			} else {
 				return false;

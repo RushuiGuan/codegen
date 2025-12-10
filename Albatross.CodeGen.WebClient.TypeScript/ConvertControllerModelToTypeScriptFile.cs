@@ -155,9 +155,9 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		bool IsDate(ITypeSymbol type) {
 			var typeName = type.GetFullName();
 			return typeName == typeof(TimeOnly).FullName
-			       || typeName == typeof(DateOnly).FullName
-			       || typeName == typeof(DateTime).FullName
-			       || typeName == typeof(DateTimeOffset).FullName;
+				   || typeName == typeof(DateOnly).FullName
+				   || typeName == typeof(DateTime).FullName
+				   || typeName == typeof(DateTimeOffset).FullName;
 		}
 
 		/// <summary>

@@ -20,7 +20,8 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 			writer.Code(Identifier);
 			if (Optional) {
 				writer.Append(" ?");
-			};
+			}
+			;
 			writer.Append(": ").Code(Type);
 			return writer;
 		}

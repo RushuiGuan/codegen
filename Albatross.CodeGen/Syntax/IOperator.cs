@@ -7,7 +7,7 @@ namespace Albatross.CodeGen.Syntax {
 		public string Name { get; }
 	}
 	public record class Operator : IOperator {
-		public Operator(string name){
+		public Operator(string name) {
 			Name = name;
 		}
 		public string Name { get; }

@@ -8,8 +8,8 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		}
 
 		public string Value { get; }
-		
-		public void WriteEscapedValue(TextWriter writer){
+
+		public void WriteEscapedValue(TextWriter writer) {
 			foreach (char c in Value) {
 				switch (c) {
 					case '"':

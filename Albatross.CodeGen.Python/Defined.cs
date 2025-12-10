@@ -1,6 +1,6 @@
 ﻿using Albatross.CodeGen.Python.Declarations;
-using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.Python.Expressions;
+using Albatross.CodeGen.Syntax;
 
 namespace Albatross.CodeGen.Python {
 	public static class Defined {
@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.Python {
 			public static readonly SimpleTypeExpression None = new SimpleTypeExpression {
 				Identifier = Identifiers.None,
 			};
-			
+
 			public static readonly SimpleTypeExpression Any = new SimpleTypeExpression {
 				Identifier = new QualifiedIdentifierNameExpression("Any", Sources.Typing),
 			};
@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.Python {
 			public static readonly SimpleTypeExpression Float = new SimpleTypeExpression {
 				Identifier = new IdentifierNameExpression("float"),
 			};
-			
+
 			public static readonly SimpleTypeExpression Decimal = new SimpleTypeExpression {
 				Identifier = new QualifiedIdentifierNameExpression("Decimal", Sources.Decimal),
 			};
@@ -36,7 +36,7 @@ namespace Albatross.CodeGen.Python {
 			public static readonly SimpleTypeExpression Complex = new SimpleTypeExpression {
 				Identifier = new IdentifierNameExpression("complex"),
 			};
-			
+
 			public static readonly SimpleTypeExpression List = new SimpleTypeExpression {
 				Identifier = Defined.Identifiers.List,
 			};
@@ -44,11 +44,11 @@ namespace Albatross.CodeGen.Python {
 			public static readonly SimpleTypeExpression Dictionary = new SimpleTypeExpression {
 				Identifier = new IdentifierNameExpression("dict"),
 			};
-			
+
 			public static readonly SimpleTypeExpression Tuple = new SimpleTypeExpression {
 				Identifier = new IdentifierNameExpression("tuple"),
 			};
-			
+
 			public static readonly SimpleTypeExpression Set = new SimpleTypeExpression {
 				Identifier = new IdentifierNameExpression("set"),
 			};
@@ -60,19 +60,19 @@ namespace Albatross.CodeGen.Python {
 			public static readonly SimpleTypeExpression DateTime = new SimpleTypeExpression {
 				Identifier = new QualifiedIdentifierNameExpression("datetime", Sources.DateTime),
 			};
-			
+
 			public static readonly SimpleTypeExpression Date = new SimpleTypeExpression {
 				Identifier = new QualifiedIdentifierNameExpression("date", Sources.DateTime),
 			};
-			
+
 			public static readonly SimpleTypeExpression TimeDelta = new SimpleTypeExpression {
 				Identifier = new QualifiedIdentifierNameExpression("timedelta", Sources.DateTime),
 			};
-			
+
 			public static readonly SimpleTypeExpression Time = new SimpleTypeExpression {
 				Identifier = new QualifiedIdentifierNameExpression("time", Sources.DateTime),
 			};
-			
+
 			public static readonly SimpleTypeExpression Object = new SimpleTypeExpression {
 				Identifier = new IdentifierNameExpression("object"),
 			};
@@ -80,11 +80,11 @@ namespace Albatross.CodeGen.Python {
 			public static SimpleTypeExpression Type(string name) => new SimpleTypeExpression {
 				Identifier = new IdentifierNameExpression(name),
 			};
-			
+
 			public static SimpleTypeExpression UUID = new SimpleTypeExpression {
 				Identifier = new QualifiedIdentifierNameExpression("UUID", Sources.Uuid),
 			};
-			
+
 			public static SimpleTypeExpression Bytes = new SimpleTypeExpression {
 				Identifier = new IdentifierNameExpression("bytes"),
 			};
@@ -157,7 +157,7 @@ namespace Albatross.CodeGen.Python {
 			public static readonly IIdentifierNameExpression None = new IdentifierNameExpression("None");
 			public static readonly QualifiedIdentifierNameExpression FutureAnnotations = new QualifiedIdentifierNameExpression("annotations", Sources.Future);
 		}
-		
+
 		public static class Parameters {
 			public static readonly ParameterDeclaration Self = new ParameterDeclaration {
 				Identifier = Identifiers.Self,

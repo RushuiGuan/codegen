@@ -41,7 +41,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 		RouteParameterSegment? FindSegment(string name, IRouteSegment[] segments) {
 			foreach (var segment in segments) {
 				if (segment is RouteParameterSegment parameterSegment
-				    && string.Equals(parameterSegment.Text, name, System.StringComparison.InvariantCultureIgnoreCase)) {
+					&& string.Equals(parameterSegment.Text, name, System.StringComparison.InvariantCultureIgnoreCase)) {
 					return parameterSegment;
 				}
 			}

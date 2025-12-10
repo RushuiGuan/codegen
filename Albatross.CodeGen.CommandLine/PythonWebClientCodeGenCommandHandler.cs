@@ -2,8 +2,8 @@
 using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.WebClient;
 using Albatross.CodeGen.WebClient.Models;
-using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CodeGen.WebClient.Python;
+using Albatross.CodeGen.WebClient.Settings;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;

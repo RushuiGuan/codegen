@@ -17,10 +17,10 @@ namespace Test.WebApi.Controllers {
 
 		[HttpGet("collection-value-type")]
 		public string CollectionValueType([FromQuery(Name = "c")] IEnumerable<int> collection) => string.Join(',', collection);
-		
+
 		[HttpGet("collection-date-param")]
 		public string CollectionDateParam([FromQuery(Name = "c")] IEnumerable<DateOnly> collection) => string.Join(',', collection);
-		
+
 		[HttpGet("collection-datetime-param")]
 		public string CollectionDateTimeParam([FromQuery(Name = "c")] IEnumerable<DateTime> collection) => string.Join(',', collection);
 

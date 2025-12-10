@@ -2,7 +2,7 @@ using Xunit;
 
 namespace Albatross.CodeGen.UnitTest.Python {
 	public class TestLiteral {
-		
+
 		[Theory]
 		[InlineData(true, "True")]
 		public void TestBoolean(bool value, string expected) {

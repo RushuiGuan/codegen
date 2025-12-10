@@ -25,7 +25,7 @@ namespace Albatross.CodeGen.Syntax {
 
 		public void Add(bool condition, Func<IEnumerable<T>> func) {
 			if (condition) {
-				foreach(var item in func()) {
+				foreach (var item in func()) {
 					nodes.Add(item);
 				}
 			}
@@ -40,7 +40,7 @@ namespace Albatross.CodeGen.Syntax {
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Append(this.Prefix)
-				.WriteItems(this.nodes.Where(x=>x is not NoOpExpression), Separator, (w, item) => w.Code(item), this.LeftPadding, this.RightPadding)
+				.WriteItems(this.nodes.Where(x => x is not NoOpExpression), Separator, (w, item) => w.Code(item), this.LeftPadding, this.RightPadding)
 				.Append(this.PostFix);
 			return writer;
 		}
@@ -52,11 +52,11 @@ namespace Albatross.CodeGen.Syntax {
 		}
 
 		public virtual bool Equals(ListOfSyntaxNodes<T>? other) {
-			if(ReferenceEquals(this, other)){
+			if (ReferenceEquals(this, other)) {
 				return true;
-			}else if (other == null) {
+			} else if (other == null) {
 				return false;
-			}else {
+			} else {
 				return this.nodes.SequenceEqual(other.nodes);
 			}
 		}

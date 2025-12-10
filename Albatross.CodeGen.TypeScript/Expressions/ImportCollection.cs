@@ -27,6 +27,6 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 			return writer;
 		}
 
-		public override	IEnumerable<ISyntaxNode> Children => Imports;
+		public override IEnumerable<ISyntaxNode> Children => Imports;
 	}
 }

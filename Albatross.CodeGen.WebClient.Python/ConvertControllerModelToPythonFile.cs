@@ -1,12 +1,12 @@
-﻿using Humanizer;
-using Albatross.CodeAnalysis.Symbols;
-using Albatross.CodeGen.Syntax;
+﻿using Albatross.CodeAnalysis.Symbols;
 using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.Python.Expressions;
 using Albatross.CodeGen.Python.Modifiers;
+using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
+using Humanizer;
 using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
@@ -220,12 +220,12 @@ namespace Albatross.CodeGen.WebClient.Python {
 						CallableExpression = Defined.Identifiers.TypeAdapter,
 						ArgumentList = new ListOfSyntaxNodes<IExpression>(this.typeConverter.Convert(method.ReturnType))
 					}.Chain(false, new InvocationExpression {
-							CallableExpression = new IdentifierNameExpression("validate_python"),
-							ArgumentList = new ListOfSyntaxNodes<IExpression>(
+						CallableExpression = new IdentifierNameExpression("validate_python"),
+						ArgumentList = new ListOfSyntaxNodes<IExpression>(
 								new InvocationExpression {
 									CallableExpression = new MultiPartIdentifierNameExpression("response", "json")
 								})
-						}
+					}
 					)
 				));
 			}

@@ -37,7 +37,7 @@ namespace Test.WebApi.Controllers {
 
 		[HttpGet("timeonly-route/{time}/{id}")]
 		public void TimeOnlyRoute([FromRoute] TimeOnly time, [FromRoute] int id) { }
-		
+
 		[HttpGet("enum-route/{value}/{id}")]
 		public void EnumRoute([FromRoute] MyEnum value, [FromRoute] int id) { }
 	}

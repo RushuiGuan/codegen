@@ -48,7 +48,7 @@ namespace Test.WebApi.Controllers {
 		public MyDto? GetMyDto([FromBody] MyDto? value) => value;
 
 		[HttpPost("async-object")]
-		public Task<MyDto?> GetAsyncMyDto([FromBody]MyDto? value) => Task.FromResult<MyDto?>(value);
+		public Task<MyDto?> GetAsyncMyDto([FromBody] MyDto? value) => Task.FromResult<MyDto?>(value);
 
 		[HttpPost("action-result-object")]
 		public ActionResult<MyDto?> ActionResultObject([FromBody] MyDto? value) {

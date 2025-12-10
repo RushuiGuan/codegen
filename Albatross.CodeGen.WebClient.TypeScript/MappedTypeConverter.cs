@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {
 			if (settings.TypeMapping.TryGetValue(symbol.GetFullName(), out var mappedType)) {
 				expression = new SimpleTypeExpression {
-					 Identifier = mappedType.ParseIdentifierName(),
+					Identifier = mappedType.ParseIdentifierName(),
 				};
 				return true;
 			} else {

@@ -11,7 +11,7 @@ namespace Albatross.CodeGen.WebClient.Settings {
 
 		public static SymbolFilter[] ControllerFilters(this CodeGenSettings settings)
 			=> settings.ControllerFilters.Where(x => x.HasValue).Select(x => new SymbolFilter(x)).ToArray();
-		
+
 		/// <summary>
 		/// Implement the same behavior with the single pattern filter.  Include wins over exclude
 		/// </summary>

@@ -11,7 +11,7 @@ namespace Albatross.CodeGen.Syntax {
 	public record class CodeBlock : SyntaxNode, IExpression {
 		public string LineTerminator { get; init; } = string.Empty;
 		public IEnumerable<IExpression> Items { get; init; }
-		
+
 		public CodeBlock(params IEnumerable<IExpression> items) {
 			Items = items;
 		}

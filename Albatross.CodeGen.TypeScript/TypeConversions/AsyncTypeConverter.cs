@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.TypeScript.TypeConversions {
 	public class AsyncTypeConverter : ITypeConverter {
 		private readonly Compilation compilation;
 		public int Precedence => 90;
-		
+
 		public AsyncTypeConverter(Compilation compilation) {
 			this.compilation = compilation;
 		}

@@ -1,13 +1,13 @@
-﻿using Albatross.CodeGen.Python;
-using Albatross.CodeGen.Syntax;
+﻿using Albatross.CodeAnalysis.Symbols;
+using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.Python.Expressions;
+using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.WebClient.Models;
-using Humanizer;
-using Microsoft.CodeAnalysis;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.Text;
-using Albatross.CodeAnalysis.Symbols;
+using Humanizer;
+using Microsoft.CodeAnalysis;
 
 namespace Albatross.CodeGen.WebClient.Python {
 	public class ConvertDtoClassPropertyModelToFieldDeclaration : IConvertObject<DtoClassPropertyInfo, FieldDeclaration> {
@@ -50,7 +50,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				};
 			} else {
 				IExpression assignment;
-				if(from.PropertyType.IsNullable(compilation)) {
+				if (from.PropertyType.IsNullable(compilation)) {
 					assignment = new NoneLiteralExpression();
 				} else if (from.PropertyType.SpecialType == SpecialType.System_Boolean) {
 					assignment = new BooleanLiteralExpression(false);

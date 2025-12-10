@@ -12,7 +12,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Defined.Keywords.Return);
-			if(this.Expression!= null) {
+			if (this.Expression != null) {
 				writer.Code(this.Expression);
 			} else {
 				writer.Semicolon();

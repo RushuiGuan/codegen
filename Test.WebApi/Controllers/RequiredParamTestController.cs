@@ -53,10 +53,10 @@ namespace Test.WebApi.Controllers {
 
 		[HttpGet("required-datetime-array")]
 		public string RequiredDateTimeArray([FromQuery] DateTime[] dates) => string.Join(",", dates);
-		
+
 		[HttpGet("required-enum")]
 		public MyEnum RequiredEnum([FromQuery] MyEnum value) => value;
-		
+
 		[HttpGet("required-enum-array")]
 		public MyEnum[] RequiredEnumArray([FromQuery] MyEnum[] values) => values;
 	}

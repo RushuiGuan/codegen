@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 		}
 		IEnumerable<IIdentifierNameExpression> Parts { get; }
 		public ListOfGenericArguments OfGenericArguments { get; init; } = new();
-		
+
 		public override IEnumerable<ISyntaxNode> Children => Parts;
 		public override TextWriter Generate(TextWriter writer) {
 			writer.WriteItems(Parts, ".", (w, t) => w.Code(t));

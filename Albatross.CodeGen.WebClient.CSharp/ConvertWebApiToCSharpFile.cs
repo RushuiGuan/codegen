@@ -297,9 +297,9 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		}
 
 		bool IsDate(ITypeSymbol type) => type.Is(compilation.DateTime())
-		                                 || type.Is(compilation.DateTimeOffset())
-		                                 || type.Is(compilation.TimeOnly())
-		                                 || type.Is(compilation.DateOnly());
+										 || type.Is(compilation.DateTimeOffset())
+										 || type.Is(compilation.TimeOnly())
+										 || type.Is(compilation.DateOnly());
 
 		IExpression GetQueryStringValue(ITypeSymbol type, string variableName) {
 			if (type.SpecialType == SpecialType.System_String) {
@@ -322,7 +322,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		IExpression CreateAddQueryStringStatement(ITypeSymbol type, string queryKey, string variableName) {
 			if (type.IsNullable(compilation)) {
 				return new IfExpression {
-					Condition = new InfixExpression{
+					Condition = new InfixExpression {
 						Left = new IdentifierNameExpression(variableName),
 						Operator = Defined.Operators.NotEqual,
 						Right = new NullExpression()

@@ -13,7 +13,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 
 		public override TextWriter Generate(TextWriter writer) {
 			if (LineBreak) {
-				using var scope= writer.BeginPythonLineBreak("[", "]");
+				using var scope = writer.BeginPythonLineBreak("[", "]");
 				scope.Writer.Code(Expression)
 					.AppendLine()
 					.Append("for ").Append(VariableName).Append(" in ").Code(IterableExpression);

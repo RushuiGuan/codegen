@@ -31,14 +31,14 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 				writer.Append(AccessModifier.Name).Space();
 			}
 			if (IsStatic) { writer.Code(Defined.Keywords.Static); }
-			if (IsSealed) { writer.Code(Defined.Keywords.Sealed);}
-			if (IsRecord) { writer.Code(Defined.Keywords.Record);}
+			if (IsSealed) { writer.Code(Defined.Keywords.Sealed); }
+			if (IsRecord) { writer.Code(Defined.Keywords.Record); }
 			if (IsPartial) { writer.Code(Defined.Keywords.Partial); }
-			if(IsAbstract) { writer.Code(Defined.Keywords.Abstract); }
+			if (IsAbstract) { writer.Code(Defined.Keywords.Abstract); }
 			writer.Code(Defined.Keywords.Class).Code(Name).Code(ListOfGenericArguments);
 			writer.WriteItems(BaseTypes, ", ", (w, args) => w.Code(args), " : ", null);
 			using (var scope = writer.BeginScope()) {
-				foreach(var constructor in Constructors) {
+				foreach (var constructor in Constructors) {
 					scope.Writer.Code(constructor).WriteLine();
 				}
 				foreach (var field in Fields) {

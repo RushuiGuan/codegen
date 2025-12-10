@@ -7,16 +7,16 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class AnonymousMethodExpression: SyntaxNode , IExpression {
+	public record class AnonymousMethodExpression : SyntaxNode, IExpression {
 		public IEnumerable<ParameterDeclaration> Parameters { get; init; } = Array.Empty<ParameterDeclaration>();
 		public IEnumerable<IExpression> Body { get; init; } = [];
 		public override TextWriter Generate(TextWriter writer) {
 			if (!Parameters.Any()) {
 				writer.Append("()");
-			}else if (Parameters.Count() == 1 && Object.Equals(Parameters.First().Type, Defined.Types.Var)){
+			} else if (Parameters.Count() == 1 && Object.Equals(Parameters.First().Type, Defined.Types.Var)) {
 				// omit parantheses and type for single var parameter
 				writer.Code(Parameters.First().Name);
-			}else {
+			} else {
 				writer.WriteItems(Parameters, ", ", (w, param) => {
 					if (object.Equals(param.Type, Defined.Types.Var)) {
 						w.Code(param.Name);
@@ -26,7 +26,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 				}, "(", ")");
 			}
 			writer.Append(" =>");
-			if(!Body.Any()) {
+			if (!Body.Any()) {
 				writer.Append(" { }");
 			} else if (Body.Count() == 1) {
 				writer.Space().Code(Body.First());

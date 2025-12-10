@@ -9,7 +9,7 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 			"System.Text.Json.JsonDocument",
 		];
 
-		protected override ITypeExpression GetResult(ITypeSymbol symbol) 
+		protected override ITypeExpression GetResult(ITypeSymbol symbol)
 			=> Defined.Types.Any;
 	}
 }
