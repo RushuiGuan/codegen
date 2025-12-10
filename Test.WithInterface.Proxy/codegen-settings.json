@@ -1,16 +1,14 @@
 {
   "$schema": "codegen-settings.schema.json",
-  "cSharpWebClientSettings": {
-    "namespace": "Test.WithInterface.Proxy",
-    "useInterface": true,
-    "useInternalProxy": false,
-    "constructorSettings": {
-      "OmittedConstructorController": {
-        "omit": true
-      },
-      "CustomJsonSettingsController": {
-        "customJsonSettings": "MyCustomJsonSettings.Options"
-      }
+  "namespace": "Test.WithInterface.Proxy",
+  "useInterface": true,
+  "useInternalProxy": false,
+  "constructorSettings": {
+    "OmittedConstructorController": {
+      "omit": true
+    },
+    "CustomJsonSettingsController": {
+      "customJsonSettings": "MyCustomJsonSettings.Options"
     }
   },
   "controllerFilters": [
@@ -22,6 +20,8 @@
     }
   ],
   "controllerMethodFilters": [
-    { "exclude": "FilteredByAll$" }
+    {
+      "exclude": "FilteredByAll$"
+    }
   ]
 }
