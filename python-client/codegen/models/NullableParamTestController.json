@@ -3,7 +3,6 @@
   "route": "api/nullable-param-test",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "NullableStringParam",
       "canCancel": false,
@@ -27,7 +26,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "NullableValueType",
       "canCancel": false,
@@ -51,7 +49,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "NullableDateOnly",
       "canCancel": false,
@@ -75,7 +72,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "NullablePostParam",
       "canCancel": false,
@@ -99,7 +95,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "NullableStringArray",
       "canCancel": false,
@@ -123,7 +118,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "NullableStringCollection",
       "canCancel": false,
@@ -147,7 +141,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "NullableValueTypeArray",
       "canCancel": false,
@@ -171,7 +164,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "NullableValueTypeCollection",
       "canCancel": false,
@@ -195,7 +187,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "NullableDateOnlyCollection",
       "canCancel": false,
@@ -219,7 +210,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "NullableDateOnlyArray",
       "canCancel": false,
@@ -243,7 +233,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "NullableEnumParameter",
       "canCancel": false,
@@ -267,7 +256,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "NullableEnumArray",
       "canCancel": false,

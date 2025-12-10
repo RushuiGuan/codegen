@@ -3,7 +3,6 @@
   "route": "api/nullable-return-type",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "GetString",
       "canCancel": false,
@@ -27,7 +26,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncString",
       "canCancel": false,
@@ -51,7 +49,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "GetActionResultString",
       "canCancel": false,
@@ -75,7 +72,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncActionResultString",
       "canCancel": false,
@@ -99,7 +95,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "GetInt",
       "canCancel": false,
@@ -123,7 +118,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncInt",
       "canCancel": false,
@@ -147,7 +141,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "GetActionResultInt",
       "canCancel": false,
@@ -171,7 +164,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncActionResultInt",
       "canCancel": false,
@@ -195,7 +187,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "GetDateTime",
       "canCancel": false,
@@ -219,7 +210,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncDateTime",
       "canCancel": false,
@@ -243,7 +233,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "GetActionResultDateTime",
       "canCancel": false,
@@ -267,7 +256,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "GetAsyncActionResultDateTime",
       "canCancel": false,
@@ -291,7 +279,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "GetMyDto",
       "canCancel": false,
@@ -315,7 +302,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "GetAsyncMyDto",
       "canCancel": false,
@@ -339,7 +325,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "ActionResultObject",
       "canCancel": false,
@@ -363,7 +348,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "AsyncActionResultObject",
       "canCancel": false,
@@ -387,7 +371,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "GetMyDtoNullableArray",
       "canCancel": false,
@@ -411,7 +394,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "GetMyDtoCollection",
       "canCancel": false,

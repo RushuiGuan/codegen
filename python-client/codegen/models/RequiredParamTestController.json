@@ -3,7 +3,6 @@
   "route": "api/required-param-test",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "ExplicitStringParam",
       "canCancel": false,
@@ -27,7 +26,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "ImplicitStringParam",
       "canCancel": false,
@@ -51,7 +49,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredStringParam",
       "canCancel": false,
@@ -75,7 +72,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredValueType",
       "canCancel": false,
@@ -99,7 +95,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateOnly",
       "canCancel": false,
@@ -123,7 +118,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTime",
       "canCancel": false,
@@ -147,7 +141,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "RequiredPostParam",
       "canCancel": false,
@@ -171,7 +164,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredStringArray",
       "canCancel": false,
@@ -195,7 +187,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredStringCollection",
       "canCancel": false,
@@ -219,7 +210,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredValueTypeArray",
       "canCancel": false,
@@ -243,7 +233,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredValueTypeCollection",
       "canCancel": false,
@@ -267,7 +256,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateOnlyCollection",
       "canCancel": false,
@@ -291,7 +279,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateOnlyArray",
       "canCancel": false,
@@ -315,7 +302,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTimeCollection",
       "canCancel": false,
@@ -339,7 +325,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTimeArray",
       "canCancel": false,
@@ -363,7 +348,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredEnum",
       "canCancel": false,
@@ -387,7 +371,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredEnumArray",
       "canCancel": false,

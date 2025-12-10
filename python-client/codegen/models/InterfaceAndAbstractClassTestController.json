@@ -3,7 +3,6 @@
   "route": "api/interface-abstract-class-test",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "SubmitByInterface",
       "canCancel": false,
@@ -27,7 +26,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "SubmitByAbstractClass",
       "canCancel": false,
@@ -51,7 +49,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "ReturnInterfaceAsync",
       "canCancel": false,
@@ -67,7 +64,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "ReturnInterface",
       "canCancel": false,
@@ -83,7 +79,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "ReturnAbstractClassAsync",
       "canCancel": false,
@@ -99,7 +94,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "ReturnAbstractClass",
       "canCancel": false,

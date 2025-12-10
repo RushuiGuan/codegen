@@ -3,7 +3,6 @@
   "route": "api/from-header-param-test",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "OmitFromHeaderParameters",
       "canCancel": false,

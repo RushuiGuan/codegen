@@ -3,7 +3,6 @@
   "route": "api/from-routing-param-test",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "ImplicitRoute",
       "canCancel": false,
@@ -43,7 +42,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "ExplicitRoute",
       "canCancel": false,
@@ -83,7 +81,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "WildCardRouteDouble",
       "canCancel": false,
@@ -123,7 +120,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "WildCardRouteSingle",
       "canCancel": false,
@@ -163,7 +159,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "DateTimeRoute",
       "canCancel": false,
@@ -203,7 +198,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "DateOnlyRoute",
       "canCancel": false,
@@ -243,7 +237,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "DateTimeOffsetRoute",
       "canCancel": false,
@@ -283,7 +276,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "TimeOnlyRoute",
       "canCancel": false,
@@ -323,7 +315,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "EnumRoute",
       "canCancel": false,

@@ -3,7 +3,6 @@
   "route": "api/filtered-method",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "FilteredByNone",
       "canCancel": false,

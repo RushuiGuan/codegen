@@ -1,9 +1,7 @@
 {
 	"$schema": "codegen-settings.schema.json",
-	"pythonWebClientSettings": {
-		"namespaceModuleMapping": {
-			"Test.Dto": "dto"
-		}
+	"namespaceModuleMapping": {
+		"Test.Dto": "dto"
 	},
 	"controllerFilters": [
 		{

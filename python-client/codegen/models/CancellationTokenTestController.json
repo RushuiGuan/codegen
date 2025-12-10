@@ -3,7 +3,6 @@
   "route": "api/cancellationtokentest",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "Get",
       "canCancel": true,

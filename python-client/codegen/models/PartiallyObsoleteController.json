@@ -3,7 +3,6 @@
   "route": "api/partiallyobsolete",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "Get",
       "canCancel": false,

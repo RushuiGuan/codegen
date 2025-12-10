@@ -3,7 +3,6 @@
   "route": "api/array-param-test",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "ArrayStringParam",
       "canCancel": false,
@@ -27,7 +26,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "ArrayValueType",
       "canCancel": false,
@@ -51,7 +49,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "CollectionStringParam",
       "canCancel": false,
@@ -75,7 +72,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "CollectionValueType",
       "canCancel": false,
@@ -99,7 +95,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "CollectionDateParam",
       "canCancel": false,
@@ -123,7 +118,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "CollectionDateTimeParam",
       "canCancel": false,

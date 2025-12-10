@@ -3,7 +3,6 @@
   "route": "api/http-method-test",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Delete",
       "name": "Delete",
       "canCancel": false,
@@ -15,7 +14,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "Post",
       "canCancel": false,
@@ -27,7 +25,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Patch",
       "name": "Patch",
       "canCancel": false,
@@ -39,7 +36,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "Get",
       "canCancel": false,
@@ -51,7 +47,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Put",
       "name": "Put",
       "canCancel": false,

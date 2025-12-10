@@ -3,7 +3,6 @@
   "route": "api/from-query-param-test",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredString",
       "canCancel": false,
@@ -27,7 +26,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredStringImplied",
       "canCancel": false,
@@ -51,7 +49,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredStringDiffName",
       "canCancel": false,
@@ -75,7 +72,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTime",
       "canCancel": false,
@@ -99,7 +95,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTimeDiffName",
       "canCancel": false,
@@ -123,7 +118,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateOnly",
       "canCancel": false,
@@ -147,7 +141,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateOnlyDiffName",
       "canCancel": false,
@@ -171,7 +164,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTimeOffset",
       "canCancel": false,
@@ -195,7 +187,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredDateTimeOffsetDiffName",
       "canCancel": false,
@@ -219,7 +210,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Get",
       "name": "RequiredEnumParameter",
       "canCancel": false,

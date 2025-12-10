@@ -3,7 +3,6 @@
   "route": "api/duplicate-name-test",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "Submit",
       "canCancel": false,
@@ -27,7 +26,6 @@
       "isObsolete": false
     },
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "Submit",
       "canCancel": false,

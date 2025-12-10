@@ -3,7 +3,6 @@
   "route": "api/controllerroutetest",
   "methods": [
     {
-      "settings": {},
       "httpMethod": "Post",
       "name": "Post",
       "canCancel": false,
