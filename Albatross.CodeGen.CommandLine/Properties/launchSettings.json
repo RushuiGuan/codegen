@@ -29,6 +29,11 @@
       "commandName": "Project",
       "commandLineArgs": "model dto -p ./Test.Dto/Test.Dto.csproj -s ./Test.Proxy/codegen-settings.json --adhoc-filter mystringenum",
       "workingDirectory": ".."
+    },
+    "dto secmaster model": {
+      "commandName": "Project",
+      "commandLineArgs": "model dto -p C:\\app\\secmaster\\src\\secmaster.core\\secmaster.core.csproj -s C:\\app\\secmaster\\src\\python-client\\codegen\\codegen-settings-httpx.json",
+      "workingDirectory": ".."
     }
   }
 }

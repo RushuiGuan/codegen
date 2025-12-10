@@ -1,10 +1,10 @@
 # packages
 Albatross.CodeGen
-Albatross.CodeGen.CommandLine
 Albatross.CodeGen.TypeScript
 Albatross.CodeGen.Python
-Albatross.CodeGen.WebClient
 Albatross.CodeGen.CSharp
+Albatross.CodeGen.WebClient
+Albatross.CodeGen.CommandLine
 
 # tests
 Albatross.CodeGen.UnitTest

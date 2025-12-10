@@ -9,8 +9,13 @@ namespace Albatross.CodeGen.WebClient.Models {
 		(ITypeSymbol, string)[] GetDerivedTypeDiscriminators(ITypeSymbol symbol);
 	}
 	public sealed class JsonDerivedTypeIndex : IJsonDerivedTypeIndex {
+		public JsonDerivedTypeIndex(Compilation compilation) {
+			this.compilation = compilation;
+		}
+
 		readonly ConcurrentDictionary<ITypeSymbol, IReadOnlyDictionary<ITypeSymbol, string>> indexes = new ConcurrentDictionary<ITypeSymbol, IReadOnlyDictionary<ITypeSymbol, string>>(SymbolEqualityComparer.Default);
 		readonly ConcurrentDictionary<ITypeSymbol, (ITypeSymbol, string)[]> cache = new ConcurrentDictionary<ITypeSymbol, (ITypeSymbol, string)[]>(SymbolEqualityComparer.Default);
+		private readonly Compilation compilation;
 
 		public (ITypeSymbol, string)[] GetDerivedTypeDiscriminators(ITypeSymbol symbol) {
 			if (cache.TryGetValue(symbol, out var cachedItems)) {
@@ -41,7 +46,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 		IReadOnlyDictionary<ITypeSymbol, string> StoreTypeDiscriminator(ITypeSymbol type) {
 			Dictionary<ITypeSymbol, string> dict = new Dictionary<ITypeSymbol, string>(SymbolEqualityComparer.Default);
 			foreach (var attribute in type.GetAttributes()) {
-				if (attribute.AttributeClass?.GetFullName() == "System.Text.Json.Serialization.JsonDerivedTypeAttribute") {
+				if (attribute.AttributeClass.Is(compilation.JsonDerivedTypeAttribute())) {
 					var derivedType = attribute.ConstructorArguments[0].Value as ITypeSymbol;
 					if (derivedType != null) {
 						string discriminator;

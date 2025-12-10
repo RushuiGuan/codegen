@@ -1,5 +1,4 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
-using Albatross.CodeGen.SymbolProviders;
 using Albatross.Collections;
 using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
@@ -11,7 +10,6 @@ namespace Albatross.CodeGen.WebClient.Models {
 			this.Name = symbol.Name;
 			this.FullName = symbol.GetFullName();
 			var properties = new Dictionary<string, DtoClassPropertyInfo>();
-			symbol.AllInterfaces.ForEach(x => BaseTypes.Add(x.GetFullName()));
 			var derivedTypeDiscriminators = index.GetDerivedTypeDiscriminators(symbol);
 			if (derivedTypeDiscriminators.Length > 0) {
 				this.TypeDiscriminator = derivedTypeDiscriminators.First().Item2;
@@ -32,7 +30,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 					}
 				}
 				if (symbol.BaseType != null && symbol.BaseType.SpecialType != SpecialType.System_Object) {
-					BaseTypes.Add(symbol.BaseType.GetFullName());
+					// BaseTypes.Add(symbol.BaseType.GetFullName());
 					symbol = symbol.BaseType;
 				} else {
 					symbol = null;
@@ -44,7 +42,6 @@ namespace Albatross.CodeGen.WebClient.Models {
 		public string Name { get; }
 		public string FullName { get; }
 		public DtoClassPropertyInfo[] Properties { get; }
-		public HashSet<string> BaseTypes { get; } = new HashSet<string>();
 		/// <summary>
 		/// Looking for the JsonDerivedTypeAttribute of a base class to get the type discriminator value
 		/// the derivedType of the JsonDerivedTypeAttribute should be this class

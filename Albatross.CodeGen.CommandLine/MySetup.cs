@@ -10,12 +10,13 @@ using Albatross.Config;
 using Albatross.Logging;
 using Albatross.Serialization.Json;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.MSBuild;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System;
 using System.CommandLine.Invocation;
+using System.Linq;
 using System.Text.Json;
 
 namespace Albatross.CodeGen.CommandLine {
@@ -37,18 +38,9 @@ namespace Albatross.CodeGen.CommandLine {
 			} else if (context.ParseResult.CommandResult.Parent?.Symbol.Name == "csharp2") {
 				services.AddCSharpWebClientCodeGen();
 			}
-			services.AddScoped<Compilation>(provider => {
-				var options = provider.GetRequiredService<IOptions<CodeGenCommandOptions>>().Value;
-				if (options.ProjectFile.Exists) {
-					var workspace = MSBuildWorkspace.Create();
-					var project = workspace.OpenProjectAsync(options.ProjectFile.FullName).Result;
-					var compilation = project.GetCompilationAsync().Result;
-					return compilation;
-				} else {
-					throw new InvalidOperationException($"File {options.ProjectFile.Name} doesn't exist");
-				}
-			});
 			services.AddShortenLoggerName(false, "Albatross");
+			services.AddSingleton<IProjectCompilationFactory, ProjectCompilationFactory>();
+			services.AddSingleton<Compilation>(provider => provider.GetRequiredService<IProjectCompilationFactory>().Create().Result);
 			RegisterCodeGenSettings<CSharpWebClientSettings>(services);
 			RegisterCodeGenSettings<TypeScriptWebClientSettings>(services);
 			RegisterCodeGenSettings<PythonWebClientSettings>(services);
