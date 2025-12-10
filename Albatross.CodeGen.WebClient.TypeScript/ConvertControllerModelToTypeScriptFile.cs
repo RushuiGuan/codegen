@@ -39,7 +39,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 						Getters = [
 							new GetterDeclaration("endPoint") {
 								ReturnType = Defined.Types.String(),
-								Body = new ReturnExpression(new InfixExpression{
+								Body = new ReturnExpression(new InfixExpression {
 									Operator = new Operator("+"),
 									Left = new InvocationExpression {
 										Identifier = new MultiPartIdentifierNameExpression("this", "config", "endpoint"),
@@ -187,6 +187,10 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 
 		IExpression CreateHttpRequestInvocationExpression(MethodInfo method) {
 			var fromBodyParameter = method.Parameters.FirstOrDefault(x => x.WebType == ParameterType.FromBody);
+			var fromBodyParameterType = fromBodyParameter?.Type;
+			if (fromBodyParameterType == null && HasRequestBody(method.HttpMethod)) {
+				fromBodyParameterType = compilation.GetSpecialType(SpecialType.System_String);
+			}
 			var hasFromBodyParameter = fromBodyParameter != null;
 			var returnType = this.typeConverter.Convert(method.ReturnType);
 			if (object.Equals(returnType, Defined.Types.Void())) {
@@ -195,10 +199,10 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			var hasStringReturnType = object.Equals(returnType, Defined.Types.String());
 
 			return new InvocationExpression {
-				Identifier = new MultiPartIdentifierNameExpression("this", GetHttpRquestMethodIdentifier(method.HttpMethod, hasStringReturnType)){
-					GenericArguments = new ListOfGenericArguments{
-						{method.HttpMethod == "Post" || method.HttpMethod == "Put" || method.HttpMethod == "Patch" ? typeConverter.Convert(fromBodyParameter!.Type) : null},
-						{returnType},
+				Identifier = new MultiPartIdentifierNameExpression("this", GetHttpRquestMethodIdentifier(method.HttpMethod, hasStringReturnType)) {
+					GenericArguments = new ListOfGenericArguments {
+						{ !hasStringReturnType && method.HttpMethod != "Delete", () => returnType },
+						{ fromBodyParameterType != null, () => typeConverter.Convert(fromBodyParameterType!) }
 					},
 				},
 				ArgumentList = new ListOfSyntaxNodes<IExpression> {
@@ -239,7 +243,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		}
 
 		bool HasRequestBody(string httpMethod) {
-			return httpMethod == "post" || httpMethod == "put" || httpMethod == "patch";
+			return httpMethod == "Post" || httpMethod == "Put" || httpMethod == "Patch";
 		}
 
 		string GetHttpRquestMethodIdentifier(string method, bool hasStringReturnType) {

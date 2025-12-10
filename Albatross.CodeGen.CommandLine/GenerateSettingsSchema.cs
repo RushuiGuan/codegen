@@ -24,6 +24,7 @@ namespace Albatross.CodeGen.CommandLine {
 
 		public override Task<int> InvokeAsync(InvocationContext context) {
 			var settings = new SystemTextJsonSchemaGeneratorSettings {
+				FlattenInheritanceHierarchy = true,
 				SerializerOptions = new System.Text.Json.JsonSerializerOptions {
 					WriteIndented = true,
 					PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase,
