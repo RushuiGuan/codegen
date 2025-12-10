@@ -20,9 +20,8 @@ dotnet run -- typescript web-client `
 	-v information `
 	--show-stack
 
-# dotnet run -- typescript entrypoint `
-# 	-s $PSScriptRoot/codegen-settings.json `
-# 	-o $project/projects/test-webclient/src/ `
-# 	-v information
+dotnet run -- typescript entrypoint `
+	-o $project/projects/test-webclient/src/ `
+	-v information
 
 Set-Location $location;
