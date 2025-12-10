@@ -1,36 +1,65 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "TypeScriptWebClientSettings",
+  "type": "object",
+  "additionalProperties": false,
   "properties": {
+    "controllerFilters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SymbolFilterPatterns"
+      }
+    },
+    "controllerMethodFilters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SymbolFilterPatterns"
+      }
+    },
+    "dtoEnumFilters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SymbolFilterPatterns"
+      }
+    },
+    "endPointName": {
+      "type": "string"
+    },
+    "baseClassName": {
+      "type": "string"
+    },
+    "baseClassModule": {
+      "type": "string"
+    },
+    "configServiceModule": {
+      "type": "string"
+    },
+    "usePromise": {
+      "type": "boolean"
+    },
+    "entryFile": {
+      "type": "string"
+    },
+    "sourcePathRelatedToEntryFile": {
+      "type": "string"
+    },
+    "namespaceModuleMapping": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "typeMapping": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
     "$schema": {
       "type": "string"
     }
   },
   "definitions": {
-    "CodeGenSettings": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "controllerFilters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SymbolFilterPatterns"
-          }
-        },
-        "controllerMethodFilters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SymbolFilterPatterns"
-          }
-        },
-        "dtoEnumFilters": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SymbolFilterPatterns"
-          }
-        }
-      }
-    },
     "SymbolFilterPatterns": {
       "type": "object",
       "additionalProperties": false,
@@ -52,49 +81,5 @@
         }
       }
     }
-  },
-  "allOf": [
-    {
-      "$ref": "#/definitions/CodeGenSettings"
-    },
-    {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "endPointName": {
-          "type": "string"
-        },
-        "baseClassName": {
-          "type": "string"
-        },
-        "baseClassModule": {
-          "type": "string"
-        },
-        "configServiceModule": {
-          "type": "string"
-        },
-        "usePromise": {
-          "type": "boolean"
-        },
-        "entryFile": {
-          "type": "string"
-        },
-        "sourcePathRelatedToEntryFile": {
-          "type": "string"
-        },
-        "namespaceModuleMapping": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "typeMapping": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      }
-    }
-  ]
+  }
 }

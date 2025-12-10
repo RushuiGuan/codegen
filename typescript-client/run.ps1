@@ -13,12 +13,12 @@ dotnet run -- typescript dto `
 	-v information
 
 
-# dotnet run -- typescript web-client `
-# 	-p $project/../Test.WebApi/Test.WebApi.csproj `
-# 	-s $PSScriptRoot/codegen-settings.json `
-# 	-o $project/projects/test-webclient/src/lib/ `
-# 	-v information `
-# 	--show-stack
+dotnet run -- typescript web-client `
+	-p $project/../Test.WebApi/Test.WebApi.csproj `
+	-s $PSScriptRoot/codegen-settings.json `
+	-o $project/projects/test-webclient/src/lib/ `
+	-v information `
+	--show-stack
 
 # dotnet run -- typescript entrypoint `
 # 	-s $PSScriptRoot/codegen-settings.json `

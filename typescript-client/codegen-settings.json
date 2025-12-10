@@ -1,18 +1,16 @@
 {
 	"$schema": "codegen-settings.schema.json",
-	"typeScriptWebClientSettings": {
-		"endPointName": "test-client",
-		"baseClassModule": "@mirage/webclient",
-		"configServiceModule": "@mirage/config",
-		"usePromise": false,
-		"namespaceModuleMapping": {
-			"Test.Dto": "./dto.generated"
-		},
-		"typeMapping": {
-			"Test.Dto.Classes.AbstractClass": "MyBaseClass,./dto",
-			"Test.Dto.Classes.ICommand": "ICommand,./dto",
-			"Test.Dto.Classes.IEmptyInterface": "IEmptyInterface,./dto"
-		}
+	"endPointName": "test-client",
+	"baseClassModule": "@mirage/webclient",
+	"configServiceModule": "@mirage/config",
+	"usePromise": false,
+	"namespaceModuleMapping": {
+		"Test.Dto": "./dto.generated"
+	},
+	"typeMapping": {
+		"Test.Dto.Classes.AbstractClass": "MyBaseClass,./dto",
+		"Test.Dto.Classes.ICommand": "ICommand,./dto",
+		"Test.Dto.Classes.IEmptyInterface": "IEmptyInterface,./dto"
 	},
 	"controllerFilters": [
 		{
