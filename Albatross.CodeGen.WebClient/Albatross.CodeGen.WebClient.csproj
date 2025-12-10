@@ -29,6 +29,6 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="TypeScript\" />
+		<Folder Include="TypeScript\" />
 	</ItemGroup>
 </Project>

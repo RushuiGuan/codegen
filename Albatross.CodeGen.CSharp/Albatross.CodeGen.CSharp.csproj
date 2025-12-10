@@ -23,6 +23,6 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-	  <PackageReference Include="Albatross.CodeAnalysis.Polyfill" Version="8.0.0-46.main" />
+		<PackageReference Include="Albatross.CodeAnalysis.Polyfill" Version="8.0.0-46.main" />
 	</ItemGroup>
 </Project>
