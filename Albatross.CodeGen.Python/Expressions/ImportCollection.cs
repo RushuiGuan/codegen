@@ -10,17 +10,19 @@ namespace Albatross.CodeGen.Python.Expressions {
 
 		public ImportCollection(params IEnumerable<ImportExpression> imports) {
 			this.Imports = imports.GroupBy(x => x.Source)
-			   .Select(x => new ImportExpression(x.SelectMany(y => y.Symbols)) {
-				   Source = x.Key,
-			   }).OrderBy(x => x.Source.Source).ToArray();
+				.Select(x => new ImportExpression(x.SelectMany(y => y.Symbols).Distinct(EqualityComparer<IdentifierNameExpression>.Default)) {
+					Source = x.Key,
+				}).OrderBy(x => x.Source.Source).ToArray();
 		}
 
 		public ImportCollection(params IEnumerable<QualifiedIdentifierNameExpression> nodes) {
 			this.Imports = nodes.GroupBy(x => x.Source)
 				.Select(x => new ImportExpression(x.Select(y => y.Identifier)) {
 					Source = x.Key,
-				}).OrderBy(x => x.Source.Source).ToArray();
+				})
+				.OrderBy(x => x.Source.Source).ToArray();
 		}
+
 		public override TextWriter Generate(TextWriter writer) {
 			writer.WriteItems(Imports, "", (writer, t) => writer.Code(t).AppendLine(), null, null);
 			return writer;

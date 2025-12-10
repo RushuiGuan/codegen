@@ -7,7 +7,8 @@ using System.Linq;
 namespace Albatross.CodeGen.Python.Expressions {
 	public record class ImportExpression : SyntaxNode, IExpression {
 		public ImportExpression(params IEnumerable<IdentifierNameExpression> symbols) {
-			this.Symbols = new ListOfSyntaxNodes<IdentifierNameExpression>(symbols.Distinct());
+			var unique = symbols.Distinct(EqualityComparer<IdentifierNameExpression>.Default).ToArray();
+			this.Symbols = new ListOfSyntaxNodes<IdentifierNameExpression>(symbols.Distinct(EqualityComparer<IdentifierNameExpression>.Default));
 		}
 
 		public ListOfSyntaxNodes<IdentifierNameExpression> Symbols { get; }
@@ -21,7 +22,6 @@ namespace Albatross.CodeGen.Python.Expressions {
 			}
 			return writer;
 		}
-
 		public override IEnumerable<ISyntaxNode> Children => [Symbols, Source];
 	}
 }

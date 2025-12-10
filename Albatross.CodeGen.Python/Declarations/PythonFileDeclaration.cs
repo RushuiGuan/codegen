@@ -12,11 +12,11 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public string FileName => $"{Name}.py";
 		public string Name { get; }
 		public IEnumerable<CommentDeclaration> Banner { get; init; } = [];
-		public IEnumerable<ImportExpression> ImportDeclarations { get; init; } = [];
-		public IEnumerable<ClassDeclaration> ClasseDeclarations { get; init; } = [];
+		public IEnumerable<ImportExpression> Imports { get; init; } = [];
+		public IEnumerable<ClassDeclaration> Classes { get; init; } = [];
 
-		public override IEnumerable<ISyntaxNode> Children => ImportDeclarations.Cast<ISyntaxNode>()
-			.Union(ClasseDeclarations);
+		public override IEnumerable<ISyntaxNode> Children => Imports.Cast<ISyntaxNode>()
+			.Union(Classes);
 
 		bool IsSelf(ISourceExpression source) {
 			if (source is ModuleSourceExpression moduleSourceExpression && (moduleSourceExpression.Source.TrimStart('.') == this.Name)) {
@@ -31,14 +31,12 @@ namespace Albatross.CodeGen.Python.Declarations {
 				writer.Code(item);
 			}
 			writer.WriteLine();
-			var array = this.GetDescendants().ToArray();
-
-			var importExpressions = this.ImportDeclarations
+			var importExpressions = this.Imports
 				.Union(new ImportCollection(this.GetDescendants().OfType<QualifiedIdentifierNameExpression>()).Imports)
 				.Where(x => !IsSelf(x.Source));
 			new ImportCollection(importExpressions).Generate(writer);
 			writer.WriteLine();
-			foreach (var item in ClasseDeclarations) {
+			foreach (var item in Classes) {
 				writer.Code(item);
 			}
 			return writer;

@@ -40,7 +40,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 								}),
 								Body = new ReturnExpression {
 									Expression = new IdentifierNameExpression("builder")
-										.Chain(GetRegistrationFunctions(settings.CSharpWebClientSettings.UseInterface, models))
+										.Chain(true, GetRegistrationFunctions(settings.CSharpWebClientSettings.UseInterface, models))
 										.EndOfStatement()
 								}
 							}

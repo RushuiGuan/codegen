@@ -37,7 +37,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				Banner = [
 					new CommentDeclaration("@generated"),
 				],
-				ClasseDeclarations = [
+				Classes = [
 					new ClassDeclaration(clientClassName) {
 						DocString = model.RequiresAuthentication ? new DocStringExpression("Authentication required") : null,
 						Decorators = model.IsObsolete ? [new DecoratorExpression { CallableExpression = Defined.Identifiers.Deprecated, }] : [],
@@ -52,7 +52,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 							},
 						],
 						Constructor = CreateConstructor(model),
-						Methods = new MethodDeclaration[] {
+						Methods = new[] {
 							CreateCloseMethod(),
 							CreateEnterMethod(),
 							CreateExitMethod()
@@ -219,7 +219,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 					new InvocationExpression {
 						CallableExpression = Defined.Identifiers.TypeAdapter,
 						ArgumentList = new ListOfSyntaxNodes<IExpression>(this.typeConverter.Convert(method.ReturnType))
-					}.Chain(new InvocationExpression {
+					}.Chain(false, new InvocationExpression {
 							CallableExpression = new IdentifierNameExpression("validate_python"),
 							ArgumentList = new ListOfSyntaxNodes<IExpression>(
 								new InvocationExpression {
@@ -278,9 +278,9 @@ namespace Albatross.CodeGen.WebClient.Python {
 					TrueExpression = new InvocationExpression {
 						CallableExpression = new MultiPartIdentifierNameExpression(variableName, "astimezone"),
 						ArgumentList = new ListOfSyntaxNodes<IExpression>(Defined.Identifiers.TimeZoneUtc)
-					}.Chain(new InvocationExpression {
+					}.Chain(false, new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("isoformat"),
-					}).Chain(new InvocationExpression {
+					}).Chain(false, new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("replace"),
 						ArgumentList = new ListOfSyntaxNodes<IExpression>(
 							new StringLiteralExpression("+00:00"),
@@ -421,7 +421,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 									Assignment = new InvocationExpression {
 										CallableExpression = Defined.Identifiers.TypeAdapter,
 										ArgumentList = new ListOfSyntaxNodes<IExpression>(this.typeConverter.Convert(fromBodyParameter.Type))
-									}.Chain(new InvocationExpression {
+									}.Chain(false, new InvocationExpression {
 										CallableExpression = new IdentifierNameExpression("dump_python"),
 										ArgumentList = new ListOfSyntaxNodes<IExpression>(
 											new IdentifierNameExpression(fromBodyParameter.Name.Underscore()),

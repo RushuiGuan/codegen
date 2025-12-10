@@ -55,7 +55,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				} else if (from.PropertyType.SpecialType == SpecialType.System_Boolean) {
 					assignment = new BooleanLiteralExpression(false);
 				} else {
-					assignment = new NoOpExpression();
+					return new NoOpExpression();
 				}
 				return new ScopedVariableExpression {
 					Identifier = new IdentifierNameExpression("default"),

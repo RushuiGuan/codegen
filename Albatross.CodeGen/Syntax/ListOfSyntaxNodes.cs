@@ -1,4 +1,5 @@
 ﻿using Albatross.Text;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace Albatross.CodeGen.Syntax {
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Append(this.Prefix)
-				.WriteItems(this.nodes, Separator, (w, item) => w.Code(item), this.LeftPadding, this.RightPadding)
+				.WriteItems(this.nodes.Where(x=>x is not NoOpExpression), Separator, (w, item) => w.Code(item), this.LeftPadding, this.RightPadding)
 				.Append(this.PostFix);
 			return writer;
 		}
@@ -49,6 +50,29 @@ namespace Albatross.CodeGen.Syntax {
 		public override IEnumerable<ISyntaxNode> Children => nodes.Cast<ISyntaxNode>();
 		IEnumerator IEnumerable.GetEnumerator() {
 			return GetEnumerator();
+		}
+
+		public virtual bool Equals(ListOfSyntaxNodes<T>? other) {
+			if(ReferenceEquals(this, other)){
+				return true;
+			}else if (other == null) {
+				return false;
+			}else {
+				return this.nodes.SequenceEqual(other.nodes);
+			}
+		}
+
+		public override int GetHashCode() {
+			var hash = new HashCode();
+			hash.Add(Separator);
+			hash.Add(LeftPadding);
+			hash.Add(RightPadding);
+			hash.Add(Prefix);
+			hash.Add(PostFix);
+			foreach (var item in nodes) {
+				hash.Add(item);
+			}
+			return hash.ToHashCode();
 		}
 	}
 }
