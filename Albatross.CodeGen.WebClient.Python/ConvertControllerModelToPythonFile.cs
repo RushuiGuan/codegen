@@ -87,7 +87,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 						Assignment = new StringInterpolationExpression(
 							new InvocationExpression {
 								CallableExpression = new MultiPartIdentifierNameExpression("base_url", "rstrip"),
-								ArgumentList = new ListOfSyntaxNodes<IExpression> {
+								Arguments = new ListOfSyntaxNodes<IExpression> {
 									new StringLiteralExpression("/", true)
 								},
 							},
@@ -99,7 +99,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 						Identifier = new MultiPartIdentifierNameExpression("self", "_client"),
 						Assignment = new InvocationExpression {
 							CallableExpression = settings.Async ? asyncClient : syncClient,
-							ArgumentList = settings.Async
+							Arguments = settings.Async
 								? new ListOfSyntaxNodes<IExpression> {
 									new ScopedVariableExpression {
 										Identifier = new IdentifierNameExpression("base_url"),
@@ -218,10 +218,10 @@ namespace Albatross.CodeGen.WebClient.Python {
 				builder.Add(new ReturnExpression(
 					new InvocationExpression {
 						CallableExpression = Defined.Identifiers.TypeAdapter,
-						ArgumentList = new ListOfSyntaxNodes<IExpression>(this.typeConverter.Convert(method.ReturnType))
+						Arguments = new ListOfSyntaxNodes<IExpression>(this.typeConverter.Convert(method.ReturnType))
 					}.Chain(false, new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("validate_python"),
-						ArgumentList = new ListOfSyntaxNodes<IExpression>(
+						Arguments = new ListOfSyntaxNodes<IExpression>(
 								new InvocationExpression {
 									CallableExpression = new MultiPartIdentifierNameExpression("response", "json")
 								})
@@ -277,12 +277,12 @@ namespace Albatross.CodeGen.WebClient.Python {
 					LineBreak = true,
 					TrueExpression = new InvocationExpression {
 						CallableExpression = new MultiPartIdentifierNameExpression(variableName, "astimezone"),
-						ArgumentList = new ListOfSyntaxNodes<IExpression>(Defined.Identifiers.TimeZoneUtc)
+						Arguments = new ListOfSyntaxNodes<IExpression>(Defined.Identifiers.TimeZoneUtc)
 					}.Chain(false, new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("isoformat"),
 					}).Chain(false, new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("replace"),
-						ArgumentList = new ListOfSyntaxNodes<IExpression>(
+						Arguments = new ListOfSyntaxNodes<IExpression>(
 							new StringLiteralExpression("+00:00"),
 							new StringLiteralExpression("Z")
 						)
@@ -385,7 +385,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			var expression = new InvocationExpression {
 				CallableExpression = GetHttpRequestMethodName(method),
 				UseAwaitOperator = settings.Async,
-				ArgumentList = {
+				Arguments = {
 					new IdentifierNameExpression("request_url"), {
 						fromBodyParameter != null, () => {
 							var list = new List<IExpression>();
@@ -420,10 +420,10 @@ namespace Albatross.CodeGen.WebClient.Python {
 									Identifier = new IdentifierNameExpression("json"),
 									Assignment = new InvocationExpression {
 										CallableExpression = Defined.Identifiers.TypeAdapter,
-										ArgumentList = new ListOfSyntaxNodes<IExpression>(this.typeConverter.Convert(fromBodyParameter.Type))
+										Arguments = new ListOfSyntaxNodes<IExpression>(this.typeConverter.Convert(fromBodyParameter.Type))
 									}.Chain(false, new InvocationExpression {
 										CallableExpression = new IdentifierNameExpression("dump_python"),
-										ArgumentList = new ListOfSyntaxNodes<IExpression>(
+										Arguments = new ListOfSyntaxNodes<IExpression>(
 											new IdentifierNameExpression(fromBodyParameter.Name.Underscore()),
 											new ScopedVariableExpression {
 												Identifier = new IdentifierNameExpression("mode"),

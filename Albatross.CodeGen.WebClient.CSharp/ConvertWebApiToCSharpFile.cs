@@ -162,7 +162,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					),
 					BaseConstructorInvocation = new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("base"),
-						ListOfArguments = new ListOfArguments(new List<IExpression> {
+						Arguments = new ListOfArguments(new List<IExpression> {
 							new IdentifierNameExpression("logger"),
 							new IdentifierNameExpression("client"),
 						}.AddIfNotNull(string.IsNullOrEmpty(constructorSettings?.CustomJsonSettings) ? null : new IdentifierNameExpression(constructorSettings!.CustomJsonSettings)))
@@ -201,7 +201,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		IExpression GetVoidResponseFunction() {
 			return new InvocationExpression {
 				CallableExpression = new IdentifierNameExpression("this.GetRawResponse"),
-				ListOfArguments = new ListOfArguments(new IdentifierNameExpression("request")),
+				Arguments = new ListOfArguments(new IdentifierNameExpression("request")),
 				UseAwaitOperator = true,
 			};
 		}
@@ -226,7 +226,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					CallableExpression = new IdentifierNameExpression(functionName) {
 						GenericArguments = new ListOfGenericArguments(this.typeConverter.Convert(method.ReturnType))
 					},
-					ListOfArguments = new ListOfArguments(new IdentifierNameExpression("request")),
+					Arguments = new ListOfArguments(new IdentifierNameExpression("request")),
 					UseAwaitOperator = true,
 				}
 			};
@@ -253,7 +253,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					},
 					Expression = new InvocationExpression {
 						CallableExpression = CreateRequestFunction(fromBody),
-						ListOfArguments = CreateRequestFunctionArguments(method, fromBody)
+						Arguments = CreateRequestFunctionArguments(method, fromBody)
 					}
 				},
 				Body = GetResponseFunction(method).EndOfStatement()
@@ -329,13 +329,13 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					},
 					IfBlock = new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("queryString.Add"),
-						ListOfArguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
+						Arguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
 					}.EndOfStatement()
 				};
 			} else {
 				return new InvocationExpression {
 					CallableExpression = new IdentifierNameExpression("queryString.Add"),
-					ListOfArguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
+					Arguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
 				}.EndOfStatement();
 			}
 		}

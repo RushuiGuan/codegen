@@ -6,13 +6,10 @@ using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
 	public record class MultiPartIdentifierNameExpression : SyntaxNode, IIdentifierNameExpression {
-		public MultiPartIdentifierNameExpression(params IIdentifierNameExpression[] expressions) {
+		public MultiPartIdentifierNameExpression(params IEnumerable<IIdentifierNameExpression> expressions) {
 			this.Parts = expressions;
 		}
-		public MultiPartIdentifierNameExpression(IEnumerable<IIdentifierNameExpression> expressions) {
-			this.Parts = expressions;
-		}
-		public MultiPartIdentifierNameExpression(params string[] names) {
+		public MultiPartIdentifierNameExpression(params IEnumerable<string> names) {
 			this.Parts = names.Select(x => new IdentifierNameExpression(x));
 		}
 		IEnumerable<IIdentifierNameExpression> Parts { get; }

@@ -72,19 +72,18 @@ namespace Albatross.CodeGen.TypeScript {
 		public static class Invocations {
 			public static InvocationExpression InjectableDecorator(string providedIn) {
 				return new DecoratorExpression {
-					Identifier = new QualifiedIdentifierNameExpression("Injectable", Sources.AngularCore),
-					ArgumentList = new ListOfSyntaxNodes<IExpression> {
+					CallableExpression = new QualifiedIdentifierNameExpression("Injectable", Sources.AngularCore),
+					Arguments = new ListOfSyntaxNodes<IExpression> {
 						new JsonValueExpression(new JsonPropertyExpression("providedIn", new StringLiteralExpression(providedIn)))
 					}
 				};
 			}
-			public static InvocationExpression ConsoleLog(string message) {
+			public static IExpression ConsoleLog(string message) {
 				return new InvocationExpression {
-					Identifier = new MultiPartIdentifierNameExpression(new IdentifierNameExpression("console"), new IdentifierNameExpression("log")),
-					ArgumentList = new ListOfSyntaxNodes<IExpression> {
+					CallableExpression = new MultiPartIdentifierNameExpression("console", "log"),
+					Arguments = new ListOfSyntaxNodes<IExpression> {
 						new StringLiteralExpression(message)
 					},
-					Terminate = true,
 				};
 			}
 		}

@@ -29,7 +29,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 					Type = Defined.Types.String,
 					Initializer = new InvocationExpression {
 						CallableExpression = Defined.Identifiers.PydanticField,
-						ArgumentList = new ListOfSyntaxNodes<IExpression>(
+						Arguments = new ListOfSyntaxNodes<IExpression>(
 							new ScopedVariableExpression {
 								Identifier = new IdentifierNameExpression("alias"),
 								Assignment = new StringLiteralExpression("$type")
@@ -51,7 +51,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		private FieldDeclaration modelConfig = new FieldDeclaration("model_config") {
 			Initializer = new InvocationExpression {
 				CallableExpression = new QualifiedIdentifierNameExpression("ConfigDict", Defined.Sources.Pydantic),
-				ArgumentList = new ListOfSyntaxNodes<IExpression>(
+				Arguments = new ListOfSyntaxNodes<IExpression>(
 					new ScopedVariableExpression {
 						Identifier = new IdentifierNameExpression("populate_by_name"),
 						Assignment = Defined.Literals.BooleanLiteral(true),

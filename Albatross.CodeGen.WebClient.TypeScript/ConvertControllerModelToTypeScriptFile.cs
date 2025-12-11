@@ -42,8 +42,8 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 								Body = new ReturnExpression(new InfixExpression {
 									Operator = new Operator("+"),
 									Left = new InvocationExpression {
-										Identifier = new MultiPartIdentifierNameExpression("this", "config", "endpoint"),
-										ArgumentList = new ListOfSyntaxNodes<IExpression> { new StringLiteralExpression(settings.EndPointName) },
+										CallableExpression = new MultiPartIdentifierNameExpression("this", "config", "endpoint"),
+										Arguments = new ListOfSyntaxNodes<IExpression> { new StringLiteralExpression(settings.EndPointName) },
 									},
 									Right = new StringLiteralExpression(model.Route),
 								}),
@@ -65,7 +65,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 							Body = new CodeBlock {
 								Items = [
 									new InvocationExpression {
-										Identifier = new IdentifierNameExpression("super"),
+										CallableExpression = new IdentifierNameExpression("super"),
 										Terminate = true,
 									},
 									Defined.Invocations.ConsoleLog($"{model.ControllerName}Service instance created"),
@@ -122,8 +122,8 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 
 		InvocationExpression FormattedDate(string text, string format) {
 			return new InvocationExpression {
-				Identifier = new QualifiedIdentifierNameExpression("format", Defined.Sources.DateFns),
-				ArgumentList = new ListOfSyntaxNodes<IExpression>(
+				CallableExpression = new QualifiedIdentifierNameExpression("format", Defined.Sources.DateFns),
+				Arguments = new ListOfSyntaxNodes<IExpression>(
 					new IdentifierNameExpression(text),
 					new StringLiteralExpression(format)),
 			};
@@ -171,8 +171,8 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			IExpression value;
 			if (parameter.Type.TryGetCollectionElementType(compilation, out var elementType) && IsDate(elementType!)) {
 				value = new InvocationExpression {
-					Identifier = new MultiPartIdentifierNameExpression(parameter.Name.CamelCase(), "map"),
-					ArgumentList = new ListOfSyntaxNodes<IExpression>(
+					CallableExpression = new MultiPartIdentifierNameExpression(parameter.Name.CamelCase(), "map"),
+					Arguments = new ListOfSyntaxNodes<IExpression>(
 						new ArrowFunctionExpression {
 							Arguments = new ListOfSyntaxNodes<IIdentifierNameExpression>(new IdentifierNameExpression("x")),
 							Body = BuildParamValue("x", elementType!),
@@ -199,13 +199,13 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			var hasStringReturnType = object.Equals(returnType, Defined.Types.String());
 
 			return new InvocationExpression {
-				Identifier = new MultiPartIdentifierNameExpression("this", GetHttpRquestMethodIdentifier(method.HttpMethod, hasStringReturnType)) {
+				CallableExpression = new MultiPartIdentifierNameExpression("this", GetHttpRquestMethodIdentifier(method.HttpMethod, hasStringReturnType)) {
 					GenericArguments = new ListOfGenericArguments {
 						{ !hasStringReturnType && method.HttpMethod != "Delete", () => returnType },
 						{ fromBodyParameterType != null, () => typeConverter.Convert(fromBodyParameterType!) }
 					},
 				},
-				ArgumentList = new ListOfSyntaxNodes<IExpression> {
+				Arguments = new ListOfSyntaxNodes<IExpression> {
 					new IdentifierNameExpression("relativeUrl"), {
 						HasRequestBody(method.HttpMethod), () => {
 							if (hasFromBodyParameter) {
@@ -228,8 +228,8 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 						Assignment = CreateHttpRequestInvocationExpression(method),
 					},
 					new ReturnExpression(new InvocationExpression {
-						Identifier = Defined.Identifiers.FirstValueFrom,
-						ArgumentList = new ListOfSyntaxNodes<IExpression>(new IdentifierNameExpression("result")),
+						CallableExpression = Defined.Identifiers.FirstValueFrom,
+						Arguments = new ListOfSyntaxNodes<IExpression>(new IdentifierNameExpression("result")),
 						UseAwaitOperator = true,
 					}));
 			} else {

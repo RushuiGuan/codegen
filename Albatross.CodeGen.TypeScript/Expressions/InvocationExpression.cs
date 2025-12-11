@@ -6,17 +6,17 @@ using System.IO;
 namespace Albatross.CodeGen.TypeScript.Expressions {
 	public record class InvocationExpression : SyntaxNode, IExpression {
 		public bool UseAwaitOperator { get; init; }
-		public required IIdentifierNameExpression Identifier { get; init; }
+		public required IIdentifierNameExpression CallableExpression { get; init; }
 		public bool Terminate { get; init; }
-		public ListOfSyntaxNodes<IExpression> ArgumentList { get; init; } = new ListOfSyntaxNodes<IExpression>();
-		public override IEnumerable<ISyntaxNode> Children => [Identifier, ArgumentList];
+		public ListOfSyntaxNodes<IExpression> Arguments { get; init; } = new ListOfSyntaxNodes<IExpression>();
+		public override IEnumerable<ISyntaxNode> Children => [CallableExpression, Arguments];
 
 		public override TextWriter Generate(TextWriter writer) {
 			if (UseAwaitOperator) {
 				writer.Append("await ");
 			}
-			writer.Code(Identifier);
-			writer.OpenParenthesis().Code(ArgumentList).CloseParenthesis();
+			writer.Code(CallableExpression);
+			writer.OpenParenthesis().Code(Arguments).CloseParenthesis();
 			if (Terminate) {
 				writer.Append(";");
 			}

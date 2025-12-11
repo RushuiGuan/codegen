@@ -32,7 +32,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				Type = typeConverter.Convert(from.PropertyType),
 				Initializer = new InvocationExpression {
 					CallableExpression = Defined.Identifiers.PydanticField,
-					ArgumentList = new ListOfSyntaxNodes<IExpression>(
+					Arguments = new ListOfSyntaxNodes<IExpression>(
 						new ScopedVariableExpression {
 							Identifier = new IdentifierNameExpression("alias"),
 							Assignment = new StringLiteralExpression(from.Name.CamelCase())
