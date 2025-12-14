@@ -7,10 +7,10 @@
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Albatross.Text" Version="9.0.1-105.main" />
+		<PackageReference Include="Albatross.Text" Version="9.0.1" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Albatross.Hosting" Version="9.0.4" />
+		<PackageReference Include="Albatross.Hosting" Version="10.0.0" />
 		<ProjectReference Include="..\Test.Dto\Test.Dto.csproj" />
 	</ItemGroup>
 	<ItemGroup>

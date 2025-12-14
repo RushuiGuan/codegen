@@ -5,7 +5,7 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Albatross.CodeAnalysis.Testing" Version="8.0.0-46.main" />
+		<PackageReference Include="Albatross.CodeAnalysis.Testing" Version="8.0.0" />
 		<PackageReference Include="FluentAssertions" Version="[7.2.0]" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
@@ -14,8 +14,8 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Albatross.Testing" Version="8.0.0-12.main" />
-		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.0-46.main" />
+		<PackageReference Include="Albatross.Testing" Version="8.0.0" />
+		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.0" />
 		<ProjectReference Include="..\Albatross.CodeGen.CSharp\Albatross.CodeGen.CSharp.csproj" />
 		<ProjectReference Include="..\Albatross.CodeGen.Python\Albatross.CodeGen.Python.csproj" />
 		<ProjectReference Include="..\Albatross.CodeGen.TypeScript\Albatross.CodeGen.TypeScript.csproj" />
