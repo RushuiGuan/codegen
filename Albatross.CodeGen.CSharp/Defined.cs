@@ -96,8 +96,8 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IKeyword Record = new Keyword("record");
 			public static readonly IKeyword Class = new Keyword("class");
 			public static readonly IKeyword New = new Keyword("new");
-			public static readonly IKeyword Set = new Keyword("set");
-			public static readonly IKeyword Get = new Keyword("get");
+			// public static readonly IKeyword Set = new Keyword("set");
+			// public static readonly IKeyword Get = new Keyword("get");
 		}
 
 		public static class Attributes {

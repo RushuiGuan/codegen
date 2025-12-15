@@ -25,16 +25,22 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			writer.Code(this.Type).Space().Code(this.Name);
 			using var scope = writer.BeginScope();
 			if (GetterBody != null) {
-				scope.Writer.CodeIfNotNull(GetterAccessModifier)
-					.Code(Defined.Keywords.Get)
-					.Code(GetterBody is NoOpExpression ? new EndOfStatement() : GetterBody)
-					.WriteLine();
+				scope.Writer.CodeIfNotNull(GetterAccessModifier).Append("get");
+				if (GetterBody is NoOpExpression) {
+					scope.Writer.Code(new EndOfStatement());
+				} else {
+					var subScope = scope.Writer.BeginScope();
+					subScope.Writer.Code(GetterBody);
+				}
 			}
 			if (SetterBody != null) {
-				scope.Writer.CodeIfNotNull(SetterAccessModifier)
-					.Code(Defined.Keywords.Set)
-					.Code(SetterBody is NoOpExpression ? new EndOfStatement() : SetterBody)
-					.AppendLine();
+				scope.Writer.CodeIfNotNull(SetterAccessModifier).Append("set");
+				if (SetterBody is NoOpExpression) {
+					scope.Writer.Code(new EndOfStatement());
+				} else {
+					var subScope = scope.Writer.BeginScope();
+					subScope.Writer.Code(SetterBody);
+				}
 			}
 			return writer;
 		}
