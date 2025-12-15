@@ -13,7 +13,9 @@ namespace Albatross.CodeGen.Syntax {
 		public Keyword(string name) {
 			Name = name;
 		}
+
 		public string Name { get; }
-		public TextWriter Generate(TextWriter writer) => writer.Append(Name).Space();
+		public bool PadRight { get; init; } = true;
+		public TextWriter Generate(TextWriter writer) => writer.Append(Name).Space(PadRight ? 1 : 0);
 	}
 }

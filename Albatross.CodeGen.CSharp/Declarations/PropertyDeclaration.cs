@@ -25,7 +25,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			writer.Code(this.Type).Space().Code(this.Name);
 			using var scope = writer.BeginScope();
 			if (GetterBody != null) {
-				scope.Writer.CodeIfNotNull(GetterAccessModifier).Append("get");
+				scope.Writer.CodeIfNotNull(GetterAccessModifier).Code(Defined.Keywords.Get);
 				if (GetterBody is NoOpExpression) {
 					scope.Writer.Code(new EndOfStatement());
 				} else {
@@ -34,7 +34,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 				}
 			}
 			if (SetterBody != null) {
-				scope.Writer.CodeIfNotNull(SetterAccessModifier).Append("set");
+				scope.Writer.CodeIfNotNull(SetterAccessModifier).Append(Defined.Keywords.Set);
 				if (SetterBody is NoOpExpression) {
 					scope.Writer.Code(new EndOfStatement());
 				} else {
