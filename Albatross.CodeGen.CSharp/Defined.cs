@@ -72,7 +72,7 @@ namespace Albatross.CodeGen.CSharp {
 		}
 
 		public static class Keywords {
-			public static readonly AccessModifierKeyword Public = new AccessModifierKeyword("public");
+			public static readonly AccessModifierKeyword Public = new("public");
 			public static readonly AccessModifierKeyword Private = new AccessModifierKeyword("private");
 			public static readonly AccessModifierKeyword Protected = new AccessModifierKeyword("protected");
 			public static readonly AccessModifierKeyword Internal = new AccessModifierKeyword("internal");
