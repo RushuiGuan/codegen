@@ -98,11 +98,10 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 					new ReturnExpression{
 						Expression = new IdentifierNameExpression("x")
 					}.EndOfStatement(),
-					new NewLineExpression(),
 				]
 			};
 			var text = new StringWriter().Code(expression).ToString();
-			"() => {\tint x = 10;\n\treturn x;\n}".EqualsIgnoringLineEndings(text);
+			Assert.Equal("() => {\n\tint x = 10;\n\treturn x;\n}", text.NormalizeLineEnding());
 		}
 	}
 }
