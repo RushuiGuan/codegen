@@ -81,45 +81,43 @@ namespace Albatross.CodeGen.WebClient.Python {
 				},
 			},
 			Body = new CodeBlock {
-				Items = [
-					new ScopedVariableExpression {
-						Identifier = new MultiPartIdentifierNameExpression("self", "_base_url"),
-						Assignment = new StringInterpolationExpression(
-							new InvocationExpression {
-								CallableExpression = new MultiPartIdentifierNameExpression("base_url", "rstrip"),
-								Arguments = new ListOfSyntaxNodes<IExpression> {
-									new StringLiteralExpression("/", true)
-								},
+				new ScopedVariableExpression {
+					Identifier = new MultiPartIdentifierNameExpression("self", "_base_url"),
+					Assignment = new StringInterpolationExpression(
+						new InvocationExpression {
+							CallableExpression = new MultiPartIdentifierNameExpression("base_url", "rstrip"),
+							Arguments = new ListOfSyntaxNodes<IExpression> {
+								new StringLiteralExpression("/", true)
 							},
-							new StringLiteralExpression("/"),
-							new StringLiteralExpression(model.Route)
-						),
-					},
-					new ScopedVariableExpression {
-						Identifier = new MultiPartIdentifierNameExpression("self", "_client"),
-						Assignment = new InvocationExpression {
-							CallableExpression = settings.Async ? asyncClient : syncClient,
-							Arguments = settings.Async
-								? new ListOfSyntaxNodes<IExpression> {
-									new ScopedVariableExpression {
-										Identifier = new IdentifierNameExpression("base_url"),
-										Assignment = new MultiPartIdentifierNameExpression("self", "_base_url"),
-									},
-									new ScopedVariableExpression {
-										Identifier = new IdentifierNameExpression("auth"),
-										Assignment = new IdentifierNameExpression("auth")
-									}
-								}
-								: new ListOfSyntaxNodes<IExpression>(),
-						}
-					},
-					settings.Async
-						? new NoOpExpression()
-						: new ScopedVariableExpression {
-							Identifier = new MultiPartIdentifierNameExpression("self", "_client", "auth"),
-							Assignment = new IdentifierNameExpression("auth"),
 						},
-				]
+						new StringLiteralExpression("/"),
+						new StringLiteralExpression(model.Route)
+					),
+				},
+				new ScopedVariableExpression {
+					Identifier = new MultiPartIdentifierNameExpression("self", "_client"),
+					Assignment = new InvocationExpression {
+						CallableExpression = settings.Async ? asyncClient : syncClient,
+						Arguments = settings.Async
+							? new ListOfSyntaxNodes<IExpression> {
+								new ScopedVariableExpression {
+									Identifier = new IdentifierNameExpression("base_url"),
+									Assignment = new MultiPartIdentifierNameExpression("self", "_base_url"),
+								},
+								new ScopedVariableExpression {
+									Identifier = new IdentifierNameExpression("auth"),
+									Assignment = new IdentifierNameExpression("auth")
+								}
+							}
+							: new ListOfSyntaxNodes<IExpression>(),
+					}
+				},
+				settings.Async
+					? new NoOpExpression()
+					: new ScopedVariableExpression {
+						Identifier = new MultiPartIdentifierNameExpression("self", "_client", "auth"),
+						Assignment = new IdentifierNameExpression("auth"),
+					},
 			},
 		};
 
@@ -220,12 +218,12 @@ namespace Albatross.CodeGen.WebClient.Python {
 						CallableExpression = Defined.Identifiers.TypeAdapter,
 						Arguments = new ListOfSyntaxNodes<IExpression>(this.typeConverter.Convert(method.ReturnType))
 					}.Chain(false, new InvocationExpression {
-						CallableExpression = new IdentifierNameExpression("validate_python"),
-						Arguments = new ListOfSyntaxNodes<IExpression>(
+							CallableExpression = new IdentifierNameExpression("validate_python"),
+							Arguments = new ListOfSyntaxNodes<IExpression>(
 								new InvocationExpression {
 									CallableExpression = new MultiPartIdentifierNameExpression("response", "json")
 								})
-					}
+						}
 					)
 				));
 			}
