@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 	public record class NewObjectExpression : SyntaxNode, IExpression {
 		public required ITypeExpression Type { get; init; }
 		public ListOfArguments Arguments { get; init; } = new();
-		public IEnumerable<AssignmentExpression> Initializers { get; init; } = [];
+		public ListOfSyntaxNodes<AssignmentExpression> Initializers { get; init; } = new();
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Defined.Keywords.New).Code(Type).Code(Arguments);
@@ -21,9 +21,10 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode>(Initializers) {
+		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> {
 			Type,
 			Arguments,
+			Initializers,
 		};
 	}
 }
