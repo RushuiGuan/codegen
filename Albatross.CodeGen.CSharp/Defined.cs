@@ -29,17 +29,20 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly ITypeExpression Char = new TypeExpression("char");
 
 			public static readonly ITypeExpression NameValueCollection = new TypeExpression(Identifiers.NameValueCollection);
+			public static readonly TypeExpression IServiceCollection = new(Identifiers.IServiceCollection);
 		}
 
 		public static class Identifiers {
 			public static readonly IIdentifierNameExpression Task = new QualifiedIdentifierNameExpression("Task", Defined.Namespaces.SystemThreadingTasks);
 			public static readonly IIdentifierNameExpression NameValueCollection = new QualifiedIdentifierNameExpression("NameValueCollection", Defined.Namespaces.SystemCollectionsSpecialized);
+			public static readonly QualifiedIdentifierNameExpression IServiceCollection = new("IServiceCollection", Namespaces.MicrosoftExtensionsDependencyInjection);
 		}
 
 		public static class Namespaces {
 			public static readonly NamespaceExpression System = new("System");
 			public static readonly NamespaceExpression SystemThreadingTasks = new("System.Threading.Tasks");
 			public static readonly NamespaceExpression SystemCollectionsSpecialized = new("System.Collections.Specialized");
+			public static readonly NamespaceExpression MicrosoftExtensionsDependencyInjection = new("Microsoft.Extensions.DependencyInjection");
 		}
 
 		public static class Literals {
@@ -96,9 +99,11 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IKeyword Record = new Keyword("record");
 			public static readonly IKeyword Class = new Keyword("class");
 			public static readonly IKeyword New = new Keyword("new");
+
 			public static readonly IKeyword Set = new Keyword("set") {
 				PadRight = false
 			};
+
 			public static readonly IKeyword Get = new Keyword("get") {
 				PadRight = false
 			};

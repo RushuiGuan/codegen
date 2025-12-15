@@ -34,10 +34,12 @@ namespace Albatross.CodeGen {
 			return new CodeGeneratorScope(writer, args => args.AppendLine($"{text}"), _ => { });
 		}
 
+		[Obsolete]
 		public static CodeStack Condition(this CodeStack codeStack, Func<bool> predicate, Action<CodeStack> action) {
 			if (predicate()) { action(codeStack); }
 			return codeStack;
 		}
+		[Obsolete]
 		public static CodeStack Condition(this CodeStack codeStack, bool condition, Action<CodeStack> action)
 			=> codeStack.Condition(() => condition, action);
 	}
