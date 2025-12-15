@@ -62,14 +62,11 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 									Modifiers = [Defined.Keywords.Protected],
 								}
 							},
-							Body = new CodeBlock {
-								Items = [
-									new InvocationExpression {
-										CallableExpression = new IdentifierNameExpression("super"),
-										Terminate = true,
-									},
-									Defined.Invocations.ConsoleLog($"{model.ControllerName}Service instance created"),
-								]
+							Body = new TypeScriptCodeBlock {
+								new InvocationExpression {
+									CallableExpression = new IdentifierNameExpression("super"),
+								},
+								Defined.Invocations.ConsoleLog($"{model.ControllerName}Service instance created"),
 							},
 						},
 						Methods = GroupMethods(model).Select(x => BuildMethod(x.Method, x.Index)).ToArray(),
@@ -155,9 +152,9 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		bool IsDate(ITypeSymbol type) {
 			var typeName = type.GetFullName();
 			return typeName == typeof(TimeOnly).FullName
-				   || typeName == typeof(DateOnly).FullName
-				   || typeName == typeof(DateTime).FullName
-				   || typeName == typeof(DateTimeOffset).FullName;
+			       || typeName == typeof(DateOnly).FullName
+			       || typeName == typeof(DateTime).FullName
+			       || typeName == typeof(DateTimeOffset).FullName;
 		}
 
 		/// <summary>

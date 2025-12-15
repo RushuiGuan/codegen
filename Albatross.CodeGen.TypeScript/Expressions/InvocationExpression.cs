@@ -17,9 +17,6 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 			}
 			writer.Code(CallableExpression);
 			writer.OpenParenthesis().Code(Arguments).CloseParenthesis();
-			if (Terminate) {
-				writer.Append(";");
-			}
 			return writer;
 		}
 	}

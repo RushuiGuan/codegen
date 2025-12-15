@@ -32,15 +32,35 @@ namespace Albatross.CodeGen.Syntax {
 		}
 
 		private List<T> nodes = new();
+		/// <summary>
+		/// The separator used to separate each node
+		/// </summary>
 		public string Separator { get; init; } = ", ";
+		/// <summary>
+		/// String to add before the first node.  Will not be added if there are no nodes.
+		/// </summary>
 		public string LeftPadding { get; init; } = string.Empty;
+		/// <summary>
+		/// String to add after the last node.  Will not be added if there are no nodes.
+		/// </summary>
 		public string RightPadding { get; init; } = string.Empty;
+		/// <summary>
+		/// String to add before the entire list
+		/// </summary>
 		public string Prefix { get; init; } = string.Empty;
+		/// <summary>
+		/// String to add after the entire list
+		/// </summary>
 		public string PostFix { get; init; } = string.Empty;
+		
+		/// <summary>
+		/// String to add after each node
+		/// </summary>
+		public string NodePostfix { get; init; } = string.Empty;
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Append(this.Prefix)
-				.WriteItems(this.nodes.Where(x => x is not NoOpExpression), Separator, (w, item) => w.Code(item), this.LeftPadding, this.RightPadding)
+				.WriteItems(this.nodes.Where(x => x is not NoOpExpression), Separator, (w, item) => w.Code(item).Append(NodePostfix), this.LeftPadding, this.RightPadding)
 				.Append(this.PostFix);
 			return writer;
 		}

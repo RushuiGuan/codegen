@@ -9,10 +9,8 @@ namespace Albatross.CodeGen.Syntax {
 	/// the expression will skip any NewLineExpression and NoOpExpression nodes
 	/// </summary>
 	public record class CodeBlock : ListOfSyntaxNodes<IExpression>, IExpression {
-		public string LineTerminator { get; init; } = string.Empty;
 		public CodeBlock(params IEnumerable<IExpression> items) : base(items) {
 			Separator = "\n";
-			RightPadding = LineTerminator;
 		}
 	}
 }
