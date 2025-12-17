@@ -1,4 +1,4 @@
-﻿namespace Albatross.CodeGen.Syntax {
+﻿namespace Albatross.CodeGen {
 	/// <summary>
 	/// an expression that's used to reference a source file or module
 	/// </summary>

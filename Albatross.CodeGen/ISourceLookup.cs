@@ -1,7 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Albatross.CodeGen.Syntax {
+namespace Albatross.CodeGen {
 	/// <summary>
 	/// This interface is used to look up the typescript source for a given type symbol.  For example, when the codegen found a type 
 	/// "Albatross.CodeGen.Tests.Dto.MyDto", it could lookup the source for that type and return the a FileNameSourceExpression of "./dto"

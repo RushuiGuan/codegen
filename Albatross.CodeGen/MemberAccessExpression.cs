@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Albatross.CodeGen.Syntax {
+namespace Albatross.CodeGen {
 	public record class MemberAccessExpression : CodeNode, IExpression {
 		private readonly bool lineBreak;
 

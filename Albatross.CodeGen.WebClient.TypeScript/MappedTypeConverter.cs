@@ -1,5 +1,4 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
-using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.TypeScript;
 using Albatross.CodeGen.TypeScript.Expressions;
 using Albatross.CodeGen.TypeScript.TypeConversions;

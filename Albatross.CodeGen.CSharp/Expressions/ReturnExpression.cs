@@ -1,5 +1,4 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Collections;
+﻿using Albatross.Collections;
 using Albatross.Text;
 using Microsoft.CodeAnalysis.Diagnostics;
 using System.Collections.Generic;

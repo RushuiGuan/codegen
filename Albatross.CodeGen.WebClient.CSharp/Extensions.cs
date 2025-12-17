@@ -1,6 +1,5 @@
 ﻿using Albatross.CodeGen.CSharp;
 using Albatross.CodeGen.Python;
-using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.TypeScript;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;

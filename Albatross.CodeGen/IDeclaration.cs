@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Albatross.CodeGen.Syntax {
+﻿namespace Albatross.CodeGen {
 	/// <summary>
 	/// interface for declaration of a class, method etc.
 	/// </summary>

@@ -3,6 +3,7 @@ using Albatross.Reflection;
 using Albatross.Text;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -33,6 +34,9 @@ namespace Albatross.CodeGen {
 		public static CodeGeneratorScope BeginIndentScope(this TextWriter writer, string? text = null) {
 			return new CodeGeneratorScope(writer, args => args.AppendLine($"{text}"), _ => { });
 		}
+		
+		public static IExpression Chain(this IExpression expression, bool lineBreak, params IEnumerable<IExpression> members)
+			=> new MemberAccessExpression(expression, lineBreak, members);
 
 		[Obsolete]
 		public static CodeStack Condition(this CodeStack codeStack, Func<bool> predicate, Action<CodeStack> action) {

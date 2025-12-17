@@ -1,5 +1,4 @@
-﻿using Albatross.CodeGen.Syntax;
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
 
 namespace Albatross.CodeGen.Python.TypeConversions {

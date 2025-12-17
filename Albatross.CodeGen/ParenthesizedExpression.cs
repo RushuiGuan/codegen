@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Albatross.CodeGen.Syntax {
+namespace Albatross.CodeGen {
 	public record class ParenthesizedExpression : CodeNode, IExpression {
 		public ParenthesizedExpression(IExpression expression) {
 			this.Expression = expression;

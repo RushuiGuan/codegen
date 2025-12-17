@@ -2,7 +2,6 @@
 using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.Python.Expressions;
-using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.Text;

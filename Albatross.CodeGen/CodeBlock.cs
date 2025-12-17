@@ -1,9 +1,6 @@
-﻿using Albatross.Text;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Collections.Generic;
 
-namespace Albatross.CodeGen.Syntax {
+namespace Albatross.CodeGen {
 	/// <summary>
 	/// a node that's made of other nodes, each will be rendered on its own line
 	/// the expression will skip any NewLineExpression and NoOpExpression nodes

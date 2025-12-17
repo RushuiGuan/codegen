@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Albatross.CodeGen.Syntax {
+namespace Albatross.CodeGen {
 	/// <summary>
 	/// a list of syntax nodes, rendered with separator
 	/// </summary>

@@ -1,9 +1,10 @@
 ﻿using Albatross.CodeAnalysis.Syntax;
 using Albatross.CodeGen.WebClient.Models;
-using Albatross.CodeGen.WebClient.Settings;
+using System;
 using System.Collections.Generic;
 
 namespace Albatross.CodeGen.WebClient.CSharp {
+	[Obsolete]
 	public class CreateHttpClientRegistrations {
 		private readonly CSharpWebClientSettings settings;
 

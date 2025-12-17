@@ -1,6 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
 using Albatross.CodeGen.SymbolProviders;
-using Albatross.CodeGen.Syntax;
 using Microsoft.CodeAnalysis;
 using System.Diagnostics.CodeAnalysis;
 

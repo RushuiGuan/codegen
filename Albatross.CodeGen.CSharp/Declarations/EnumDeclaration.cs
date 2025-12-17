@@ -1,6 +1,5 @@
 using Albatross.CodeGen.CSharp.Expressions;
 using Albatross.CodeGen.CSharp.Keywords;
-using Albatross.CodeGen.Syntax;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;

@@ -1,5 +1,4 @@
 ﻿using Albatross.CodeGen.Python.Expressions;
-using Albatross.CodeGen.Syntax;
 using Microsoft.CodeAnalysis;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;

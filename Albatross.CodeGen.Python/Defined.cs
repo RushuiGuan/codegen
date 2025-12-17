@@ -1,6 +1,5 @@
 ﻿using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.Python.Expressions;
-using Albatross.CodeGen.Syntax;
 
 namespace Albatross.CodeGen.Python {
 	public static class Defined {

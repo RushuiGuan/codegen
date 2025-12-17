@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Albatross.CodeGen.Syntax {
+namespace Albatross.CodeGen {
 	public record class InfixExpression : CodeNode, IExpression {
 		public bool UseParenthesis { get; init; }
 		public required IOperator Operator { get; init; }

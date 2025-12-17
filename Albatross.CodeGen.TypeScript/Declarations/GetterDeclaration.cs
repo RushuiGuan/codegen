@@ -6,7 +6,7 @@ using System.Linq;
 namespace Albatross.CodeGen.TypeScript.Declarations {
 	public record class GetterDeclaration : MethodDeclaration, ICodeElement {
 		public GetterDeclaration(string name) : base(name) {
-			Parameters = new Syntax.ListOfNodes<ParameterDeclaration>();
+			Parameters = new ListOfNodes<ParameterDeclaration>();
 		}
 
 		public override TextWriter Generate(TextWriter writer) {

@@ -1,6 +1,5 @@
 using Albatross.CodeGen.CSharp.Expressions;
 using Albatross.CodeGen.CSharp.Keywords;
-using Albatross.CodeGen.Syntax;
 
 namespace Albatross.CodeGen.CSharp {
 	public static class Defined {

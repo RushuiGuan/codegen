@@ -1,5 +1,4 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.CodeGen.TypeScript.Expressions;
+﻿using Albatross.CodeGen.TypeScript.Expressions;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
