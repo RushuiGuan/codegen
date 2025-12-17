@@ -217,12 +217,12 @@ namespace Albatross.CodeGen.WebClient.Python {
 						CallableExpression = Defined.Identifiers.TypeAdapter,
 						Arguments = new ListOfNodes<IExpression>(this.typeConverter.Convert(method.ReturnType))
 					}.Chain(false, new InvocationExpression {
-							CallableExpression = new IdentifierNameExpression("validate_python"),
-							Arguments = new ListOfNodes<IExpression>(
+						CallableExpression = new IdentifierNameExpression("validate_python"),
+						Arguments = new ListOfNodes<IExpression>(
 								new InvocationExpression {
 									CallableExpression = new MultiPartIdentifierNameExpression("response", "json")
 								})
-						}
+					}
 					)
 				));
 			}

@@ -34,7 +34,7 @@ namespace Albatross.CodeGen {
 		public static CodeGeneratorScope BeginIndentScope(this TextWriter writer, string? text = null) {
 			return new CodeGeneratorScope(writer, args => args.AppendLine($"{text}"), _ => { });
 		}
-		
+
 		public static IExpression Chain(this IExpression expression, bool lineBreak, params IEnumerable<IExpression> members)
 			=> new MemberAccessExpression(expression, lineBreak, members);
 

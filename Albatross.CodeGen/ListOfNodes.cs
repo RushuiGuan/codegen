@@ -52,7 +52,7 @@ namespace Albatross.CodeGen {
 		/// String to add after the entire list
 		/// </summary>
 		public string PostFix { get; init; } = string.Empty;
-		
+
 		/// <summary>
 		/// String to add after each node
 		/// </summary>
