@@ -8,17 +8,14 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly ITypeExpression Int = new TypeExpression("int");
 			public static readonly ITypeExpression Long = new TypeExpression("long");
 			public static readonly ITypeExpression String = new TypeExpression("string");
-
 			public static readonly ITypeExpression NullableString = new TypeExpression("string") {
 				Nullable = true
 			};
-
 			public static readonly ITypeExpression Bool = new TypeExpression("bool");
 			public static readonly ITypeExpression Double = new TypeExpression("double");
 			public static readonly ITypeExpression Float = new TypeExpression("float");
 			public static readonly ITypeExpression Decimal = new TypeExpression("decimal");
 			public static readonly ITypeExpression Object = new TypeExpression("object");
-
 			public static readonly ITypeExpression NullableObject = new TypeExpression("object") {
 				Nullable = true
 			};
@@ -30,12 +27,16 @@ namespace Albatross.CodeGen.CSharp {
 
 			public static readonly ITypeExpression NameValueCollection = new TypeExpression(Identifiers.NameValueCollection);
 			public static readonly TypeExpression IServiceCollection = new(Identifiers.IServiceCollection);
+			public static readonly ITypeExpression DateTime = new TypeExpression(Identifiers.DateTime);
+			public static readonly ITypeExpression DateOnly = new TypeExpression(Identifiers.DateOnly);
 		}
 
 		public static class Identifiers {
 			public static readonly IIdentifierNameExpression Task = new QualifiedIdentifierNameExpression("Task", Defined.Namespaces.SystemThreadingTasks);
 			public static readonly IIdentifierNameExpression NameValueCollection = new QualifiedIdentifierNameExpression("NameValueCollection", Defined.Namespaces.SystemCollectionsSpecialized);
 			public static readonly QualifiedIdentifierNameExpression IServiceCollection = new("IServiceCollection", Namespaces.MicrosoftExtensionsDependencyInjection);
+			public static readonly QualifiedIdentifierNameExpression DateTime = new("DateTime", Namespaces.System);
+			public static readonly QualifiedIdentifierNameExpression DateOnly = new("DateOnly", Namespaces.System);
 		}
 
 		public static class Namespaces {

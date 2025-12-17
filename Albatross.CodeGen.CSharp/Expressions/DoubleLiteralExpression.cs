@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		}
 		public double Value { get; }
 		public override TextWriter Generate(TextWriter writer) {
-			return writer.Append(Value);
+			return writer.Append(Value).Append("d");
 		}
 	}
 }
