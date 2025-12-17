@@ -1,13 +1,12 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class AwaitMethodExpression : SyntaxNode, IExpression {
+	public record class AwaitMethodExpression : CodeNode, IExpression {
 		public required InvocationExpression MethodCallExpression { get; init; }
-		public override IEnumerable<ISyntaxNode> Children => [MethodCallExpression];
+		public override IEnumerable<ICodeNode> Children => [MethodCallExpression];
 		public override TextWriter Generate(TextWriter writer) {
 			return writer.Append("await ").Code(MethodCallExpression);
 		}

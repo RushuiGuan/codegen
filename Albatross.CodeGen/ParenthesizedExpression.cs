@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Albatross.CodeGen.Syntax {
-	public record class ParenthesizedExpression : SyntaxNode, IExpression {
+namespace Albatross.CodeGen {
+	public record class ParenthesizedExpression : CodeNode, IExpression {
 		public ParenthesizedExpression(IExpression expression) {
 			this.Expression = expression;
 		}
@@ -11,6 +11,6 @@ namespace Albatross.CodeGen.Syntax {
 		public IExpression Expression { get; }
 		public override TextWriter Generate(TextWriter writer)
 			=> writer.Append('(').Code(Expression).Append(')');
-		public override IEnumerable<ISyntaxNode> Children => [Expression];
+		public override IEnumerable<ICodeNode> Children => [Expression];
 	}
 }

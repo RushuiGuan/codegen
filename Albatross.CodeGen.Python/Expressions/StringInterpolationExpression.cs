@@ -1,11 +1,10 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class StringInterpolationExpression : SyntaxNode, IExpression {
+	public record class StringInterpolationExpression : CodeNode, IExpression {
 		public StringInterpolationExpression(params IExpression[] expressions) {
 			this.Expressions = expressions;
 		}
@@ -16,7 +15,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 
 		public IExpression[] Expressions { get; init; } = [];
 
-		public override IEnumerable<ISyntaxNode> Children => Expressions;
+		public override IEnumerable<ICodeNode> Children => Expressions;
 
 		public override TextWriter Generate(TextWriter writer) {
 			if (Expressions.Any(x => !(x is StringLiteralExpression))) {

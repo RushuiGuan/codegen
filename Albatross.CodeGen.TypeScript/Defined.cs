@@ -1,5 +1,4 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.CodeGen.TypeScript.Expressions;
+﻿using Albatross.CodeGen.TypeScript.Expressions;
 using Albatross.CodeGen.TypeScript.Modifiers;
 using System.Text.RegularExpressions;
 
@@ -73,7 +72,7 @@ namespace Albatross.CodeGen.TypeScript {
 			public static InvocationExpression InjectableDecorator(string providedIn) {
 				return new DecoratorExpression {
 					CallableExpression = new QualifiedIdentifierNameExpression("Injectable", Sources.AngularCore),
-					Arguments = new ListOfSyntaxNodes<IExpression> {
+					Arguments = new ListOfNodes<IExpression> {
 						new JsonValueExpression(new JsonPropertyExpression("providedIn", new StringLiteralExpression(providedIn)))
 					}
 				};
@@ -81,7 +80,7 @@ namespace Albatross.CodeGen.TypeScript {
 			public static IExpression ConsoleLog(string message) {
 				return new InvocationExpression {
 					CallableExpression = new MultiPartIdentifierNameExpression("console", "log"),
-					Arguments = new ListOfSyntaxNodes<IExpression> {
+					Arguments = new ListOfNodes<IExpression> {
 						new StringLiteralExpression(message)
 					},
 				};

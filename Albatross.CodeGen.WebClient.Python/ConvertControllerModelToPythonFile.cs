@@ -3,7 +3,6 @@ using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.Python.Expressions;
 using Albatross.CodeGen.Python.Modifiers;
-using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
 using Humanizer;
@@ -63,7 +62,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		}
 
 		MethodDeclaration CreateConstructor(ControllerInfo model) => new ConstructorDeclaration() {
-			Parameters = new ListOfSyntaxNodes<ParameterDeclaration> {
+			Parameters = new ListOfNodes<ParameterDeclaration> {
 				Defined.Parameters.Self,
 				new ParameterDeclaration {
 					Identifier = new IdentifierNameExpression("base_url"),
@@ -86,7 +85,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 					Assignment = new StringInterpolationExpression(
 						new InvocationExpression {
 							CallableExpression = new MultiPartIdentifierNameExpression("base_url", "rstrip"),
-							Arguments = new ListOfSyntaxNodes<IExpression> {
+							Arguments = new ListOfNodes<IExpression> {
 								new StringLiteralExpression("/", true)
 							},
 						},
@@ -99,7 +98,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 					Assignment = new InvocationExpression {
 						CallableExpression = settings.Async ? asyncClient : syncClient,
 						Arguments = settings.Async
-							? new ListOfSyntaxNodes<IExpression> {
+							? new ListOfNodes<IExpression> {
 								new ScopedVariableExpression {
 									Identifier = new IdentifierNameExpression("base_url"),
 									Assignment = new MultiPartIdentifierNameExpression("self", "_base_url"),
@@ -109,7 +108,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 									Assignment = new IdentifierNameExpression("auth")
 								}
 							}
-							: new ListOfSyntaxNodes<IExpression>(),
+							: new ListOfNodes<IExpression>(),
 					}
 				},
 				settings.Async
@@ -123,7 +122,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 
 		MethodDeclaration CreateCloseMethod() => new MethodDeclaration("close") {
 			Modifiers = settings.Async ? [new AsyncKeyword()] : [],
-			Parameters = new ListOfSyntaxNodes<ParameterDeclaration> {
+			Parameters = new ListOfNodes<ParameterDeclaration> {
 				Defined.Parameters.Self
 			},
 			ReturnType = Defined.Types.None,
@@ -135,14 +134,14 @@ namespace Albatross.CodeGen.WebClient.Python {
 
 		MethodDeclaration CreateEnterMethod() => new MethodDeclaration(settings.Async ? "__aenter__" : "__enter__") {
 			Modifiers = settings.Async ? [new AsyncKeyword()] : [],
-			Parameters = new ListOfSyntaxNodes<ParameterDeclaration> { Defined.Parameters.Self },
+			Parameters = new ListOfNodes<ParameterDeclaration> { Defined.Parameters.Self },
 			ReturnType = Defined.Types.Self,
 			Body = new ReturnExpression(Defined.Identifiers.Self),
 		};
 
 		MethodDeclaration CreateExitMethod() => new MethodDeclaration(settings.Async ? "__aexit__" : "__exit__") {
 			Modifiers = settings.Async ? [new AsyncKeyword()] : [],
-			Parameters = new ListOfSyntaxNodes<ParameterDeclaration> {
+			Parameters = new ListOfNodes<ParameterDeclaration> {
 				Defined.Parameters.Self,
 				new ParameterDeclaration {
 					Identifier = new IdentifierNameExpression("exc_type"),
@@ -182,7 +181,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 				Modifiers = settings.Async ? [new AsyncKeyword()] : [],
 				Decorators = method.IsObsolete ? [new DecoratorExpression { CallableExpression = Defined.Identifiers.Deprecated, }] : Array.Empty<DecoratorExpression>(),
 				ReturnType = returnType,
-				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(
+				Parameters = new ListOfNodes<ParameterDeclaration>(
 					method.Parameters.Select(x => new ParameterDeclaration {
 						Identifier = new IdentifierNameExpression(x.Name.Underscore()),
 						Type = this.typeConverter.Convert(x.Type)
@@ -216,14 +215,14 @@ namespace Albatross.CodeGen.WebClient.Python {
 				builder.Add(new ReturnExpression(
 					new InvocationExpression {
 						CallableExpression = Defined.Identifiers.TypeAdapter,
-						Arguments = new ListOfSyntaxNodes<IExpression>(this.typeConverter.Convert(method.ReturnType))
+						Arguments = new ListOfNodes<IExpression>(this.typeConverter.Convert(method.ReturnType))
 					}.Chain(false, new InvocationExpression {
-							CallableExpression = new IdentifierNameExpression("validate_python"),
-							Arguments = new ListOfSyntaxNodes<IExpression>(
+						CallableExpression = new IdentifierNameExpression("validate_python"),
+						Arguments = new ListOfNodes<IExpression>(
 								new InvocationExpression {
 									CallableExpression = new MultiPartIdentifierNameExpression("response", "json")
 								})
-						}
+					}
 					)
 				));
 			}
@@ -275,12 +274,12 @@ namespace Albatross.CodeGen.WebClient.Python {
 					LineBreak = true,
 					TrueExpression = new InvocationExpression {
 						CallableExpression = new MultiPartIdentifierNameExpression(variableName, "astimezone"),
-						Arguments = new ListOfSyntaxNodes<IExpression>(Defined.Identifiers.TimeZoneUtc)
+						Arguments = new ListOfNodes<IExpression>(Defined.Identifiers.TimeZoneUtc)
 					}.Chain(false, new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("isoformat"),
 					}).Chain(false, new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("replace"),
-						Arguments = new ListOfSyntaxNodes<IExpression>(
+						Arguments = new ListOfNodes<IExpression>(
 							new StringLiteralExpression("+00:00"),
 							new StringLiteralExpression("Z")
 						)
@@ -418,10 +417,10 @@ namespace Albatross.CodeGen.WebClient.Python {
 									Identifier = new IdentifierNameExpression("json"),
 									Assignment = new InvocationExpression {
 										CallableExpression = Defined.Identifiers.TypeAdapter,
-										Arguments = new ListOfSyntaxNodes<IExpression>(this.typeConverter.Convert(fromBodyParameter.Type))
+										Arguments = new ListOfNodes<IExpression>(this.typeConverter.Convert(fromBodyParameter.Type))
 									}.Chain(false, new InvocationExpression {
 										CallableExpression = new IdentifierNameExpression("dump_python"),
-										Arguments = new ListOfSyntaxNodes<IExpression>(
+										Arguments = new ListOfNodes<IExpression>(
 											new IdentifierNameExpression(fromBodyParameter.Name.Underscore()),
 											new ScopedVariableExpression {
 												Identifier = new IdentifierNameExpression("mode"),

@@ -1,5 +1,4 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +6,7 @@ using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
 	// should validate the name using regex
-	public record class FileNameSourceExpression : SyntaxNode, ISourceExpression {
+	public record class FileNameSourceExpression : CodeNode, ISourceExpression {
 		public FileNameSourceExpression(string name) {
 			this.Source = name;
 		}

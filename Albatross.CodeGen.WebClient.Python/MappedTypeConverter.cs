@@ -1,6 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
 using Albatross.CodeGen.Python.Expressions;
-using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.WebClient.Settings;
 using Microsoft.CodeAnalysis;
 using System.Diagnostics.CodeAnalysis;

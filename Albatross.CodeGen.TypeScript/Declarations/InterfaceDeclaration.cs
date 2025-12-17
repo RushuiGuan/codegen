@@ -1,5 +1,4 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.CodeGen.TypeScript.Expressions;
+﻿using Albatross.CodeGen.TypeScript.Expressions;
 using Albatross.Collections;
 using Albatross.Text;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Declarations {
-	public record class InterfaceDeclaration : SyntaxNode, IDeclaration, ICodeElement {
+	public record class InterfaceDeclaration : CodeNode, IDeclaration, ICodeElement {
 		public InterfaceDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
@@ -15,7 +14,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public ITypeExpression? BaseInterfaceName { get; init; }
 		public IEnumerable<PropertyDeclaration> Properties { get; init; } = [];
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier, }
+		public override IEnumerable<ICodeNode> Children => new List<ICodeNode> { Identifier, }
 				.AddIfNotNull(BaseInterfaceName)
 				.Concat(Properties);
 

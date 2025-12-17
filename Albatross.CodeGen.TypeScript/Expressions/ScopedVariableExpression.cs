@@ -1,12 +1,11 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Collections;
+﻿using Albatross.Collections;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class ScopedVariableExpression : SyntaxNode, IExpression, ICodeElement {
+	public record class ScopedVariableExpression : CodeNode, IExpression, ICodeElement {
 		public ScopedVariableExpression(string name) {
 			Identifier = new IdentifierNameExpression(name);
 		}
@@ -16,7 +15,7 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 		public ITypeExpression? Type { get; init; }
 		public IExpression? Assignment { get; init; }
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier }.AddIfNotNull(Type, Assignment);
+		public override IEnumerable<ICodeNode> Children => new List<ICodeNode> { Identifier }.AddIfNotNull(Type, Assignment);
 
 		public override TextWriter Generate(TextWriter writer) {
 			if (IsConstant) {

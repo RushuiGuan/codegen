@@ -7,11 +7,13 @@ using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.CommandLine.Invocation;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
+	[Obsolete]
 	public class CSharpWebClientCodeGenCommandHandler_Client800 : BaseHandler<CodeGenCommandOptions> {
 		private readonly CreateHttpClientRegistrations createHttpClientRegistrations;
 		private readonly Compilation compilation;

@@ -1,6 +1,5 @@
 using Albatross.CodeAnalysis.Symbols;
 using Albatross.CodeGen.CSharp.Expressions;
-using Albatross.CodeGen.Syntax;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;

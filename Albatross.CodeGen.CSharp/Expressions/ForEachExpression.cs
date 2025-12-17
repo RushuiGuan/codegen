@@ -1,12 +1,11 @@
 ﻿using Albatross.CodeGen.CSharp.Declarations;
-using Albatross.CodeGen.Syntax;
 using Albatross.Text;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class ForEachExpression : SyntaxNode, IExpression {
+	public record class ForEachExpression : CodeNode, IExpression {
 		public required VariableDeclaration IterationVariable { get; init; }
 		public required IExpression Collection { get; init; }
 		public IExpression Body { get; init; } = new NoOpExpression();
@@ -17,6 +16,6 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			scope.Writer.Code(Body);
 			return writer;
 		}
-		public override IEnumerable<ISyntaxNode> Children => [IterationVariable, Collection, Body];
+		public override IEnumerable<ICodeNode> Children => [IterationVariable, Collection, Body];
 	}
 }

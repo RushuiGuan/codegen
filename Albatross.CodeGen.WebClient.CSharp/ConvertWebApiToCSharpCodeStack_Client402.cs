@@ -3,9 +3,11 @@ using Albatross.CodeAnalysis.Syntax;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
 using Microsoft.CodeAnalysis;
+using System;
 using System.Linq;
 
 namespace Albatross.CodeGen.WebClient.CSharp {
+	[Obsolete]
 	public class ConvertWebApiToCSharpCodeStack_Client402 : IConvertObject<ControllerInfo, CodeStack> {
 		const string ProxyService = "ProxyService";
 		private readonly Compilation compilation;

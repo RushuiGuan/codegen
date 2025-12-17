@@ -1,12 +1,11 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class BinaryExpression : SyntaxNode, IExpression {
-		public override IEnumerable<ISyntaxNode> Children => [this.Left, this.Right,];
+	public record class BinaryExpression : CodeNode, IExpression {
+		public override IEnumerable<ICodeNode> Children => [this.Left, this.Right,];
 		public required IExpression Left { get; init; }
 		public required string Operator { get; init; }
 		public required IExpression Right { get; init; }

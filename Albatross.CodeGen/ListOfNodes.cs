@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Albatross.CodeGen.Syntax {
+namespace Albatross.CodeGen {
 	/// <summary>
 	/// a list of syntax nodes, rendered with separator
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
-	public record class ListOfSyntaxNodes<T> : SyntaxNode, IEnumerable<T> where T : ISyntaxNode {
-		public ListOfSyntaxNodes(params IEnumerable<T> nodes) {
+	public record class ListOfNodes<T> : CodeNode, IEnumerable<T> where T : ICodeNode {
+		public ListOfNodes(params IEnumerable<T> nodes) {
 			this.nodes.AddRange(nodes);
 		}
 
@@ -52,7 +52,7 @@ namespace Albatross.CodeGen.Syntax {
 		/// String to add after the entire list
 		/// </summary>
 		public string PostFix { get; init; } = string.Empty;
-		
+
 		/// <summary>
 		/// String to add after each node
 		/// </summary>
@@ -66,12 +66,12 @@ namespace Albatross.CodeGen.Syntax {
 		}
 
 		public IEnumerator<T> GetEnumerator() => ((IEnumerable<T>)nodes).GetEnumerator();
-		public override IEnumerable<ISyntaxNode> Children => nodes.Cast<ISyntaxNode>();
+		public override IEnumerable<ICodeNode> Children => nodes.Cast<ICodeNode>();
 		IEnumerator IEnumerable.GetEnumerator() {
 			return GetEnumerator();
 		}
 
-		public virtual bool Equals(ListOfSyntaxNodes<T>? other) {
+		public virtual bool Equals(ListOfNodes<T>? other) {
 			if (ReferenceEquals(this, other)) {
 				return true;
 			} else if (other == null) {

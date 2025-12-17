@@ -1,17 +1,16 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class ImportExpression : SyntaxNode, IExpression {
+	public record class ImportExpression : CodeNode, IExpression {
 		public ImportExpression(params IEnumerable<IdentifierNameExpression> symbols) {
 			var unique = symbols.Distinct(EqualityComparer<IdentifierNameExpression>.Default).ToArray();
-			this.Symbols = new ListOfSyntaxNodes<IdentifierNameExpression>(symbols.Distinct(EqualityComparer<IdentifierNameExpression>.Default));
+			this.Symbols = new ListOfNodes<IdentifierNameExpression>(symbols.Distinct(EqualityComparer<IdentifierNameExpression>.Default));
 		}
 
-		public ListOfSyntaxNodes<IdentifierNameExpression> Symbols { get; }
+		public ListOfNodes<IdentifierNameExpression> Symbols { get; }
 		public required ISourceExpression Source { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {
@@ -22,6 +21,6 @@ namespace Albatross.CodeGen.Python.Expressions {
 			}
 			return writer;
 		}
-		public override IEnumerable<ISyntaxNode> Children => [Symbols, Source];
+		public override IEnumerable<ICodeNode> Children => [Symbols, Source];
 	}
 }

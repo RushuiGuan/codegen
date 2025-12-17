@@ -1,8 +1,7 @@
 ﻿using Albatross.Text;
-using System;
 using System.IO;
 
-namespace Albatross.CodeGen.Syntax {
+namespace Albatross.CodeGen {
 	public interface IOperator : ICodeElement {
 		public string Name { get; }
 	}

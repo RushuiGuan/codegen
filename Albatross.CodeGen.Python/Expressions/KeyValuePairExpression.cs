@@ -1,13 +1,12 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class KeyValuePairExpression : SyntaxNode, IExpression {
+	public record class KeyValuePairExpression : CodeNode, IExpression {
 		public IExpression Key { get; }
 		public IExpression Value { get; }
-		public override IEnumerable<ISyntaxNode> Children => [Key, Value];
+		public override IEnumerable<ICodeNode> Children => [Key, Value];
 
 		public KeyValuePairExpression(IExpression key, IExpression value) {
 			this.Key = key;

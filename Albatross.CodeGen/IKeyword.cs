@@ -1,7 +1,7 @@
 ﻿using Albatross.Text;
 using System.IO;
 
-namespace Albatross.CodeGen.Syntax {
+namespace Albatross.CodeGen {
 	/// <summary>
 	/// interface for any modifier (public, private, static, readonly etc.)
 	/// </summary>

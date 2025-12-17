@@ -1,12 +1,11 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class ArrayTypeExpression : SyntaxNode, ITypeExpression {
+	public record class ArrayTypeExpression : CodeNode, ITypeExpression {
 		public ITypeExpression Type { get; init; } = Defined.Types.Any();
-		public override IEnumerable<ISyntaxNode> Children => [Type];
+		public override IEnumerable<ICodeNode> Children => [Type];
 		public bool Optional { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {

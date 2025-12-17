@@ -1,7 +1,6 @@
 ﻿using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.Python.Expressions;
-using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
 using System.Collections.Generic;
@@ -29,7 +28,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 					Type = Defined.Types.String,
 					Initializer = new InvocationExpression {
 						CallableExpression = Defined.Identifiers.PydanticField,
-						Arguments = new ListOfSyntaxNodes<IExpression>(
+						Arguments = new ListOfNodes<IExpression>(
 							new ScopedVariableExpression {
 								Identifier = new IdentifierNameExpression("alias"),
 								Assignment = new StringLiteralExpression("$type")
@@ -51,7 +50,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		private FieldDeclaration modelConfig = new FieldDeclaration("model_config") {
 			Initializer = new InvocationExpression {
 				CallableExpression = new QualifiedIdentifierNameExpression("ConfigDict", Defined.Sources.Pydantic),
-				Arguments = new ListOfSyntaxNodes<IExpression>(
+				Arguments = new ListOfNodes<IExpression>(
 					new ScopedVariableExpression {
 						Identifier = new IdentifierNameExpression("populate_by_name"),
 						Assignment = Defined.Literals.BooleanLiteral(true),

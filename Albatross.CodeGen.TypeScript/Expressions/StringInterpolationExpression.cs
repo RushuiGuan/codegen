@@ -1,11 +1,10 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class StringInterpolationExpression : SyntaxNode, IExpression {
+	public record class StringInterpolationExpression : CodeNode, IExpression {
 		public StringInterpolationExpression(params IExpression[] expressions) {
 			this.Expressions = expressions;
 		}
@@ -14,7 +13,7 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 		}
 		public IExpression[] Expressions { get; init; } = [];
 
-		public override IEnumerable<ISyntaxNode> Children => Expressions;
+		public override IEnumerable<ICodeNode> Children => Expressions;
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Append("`");

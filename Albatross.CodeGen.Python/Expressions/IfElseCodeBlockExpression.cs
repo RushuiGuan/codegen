@@ -1,18 +1,17 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Collections;
+﻿using Albatross.Collections;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class IfElseCodeBlockExpression : SyntaxNode, IExpression {
+	public record class IfElseCodeBlockExpression : CodeNode, IExpression {
 		public IfElseCodeBlockExpression() { }
 
 		public required IExpression Condition { get; init; }
 		public IExpression CodeBlock { get; init; } = new EmptyExpression();
 		public IExpression? ElseBlock { get; init; }
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> {
+		public override IEnumerable<ICodeNode> Children => new List<ICodeNode> {
 			Condition, CodeBlock
 		}.AddIfNotNull(ElseBlock);
 

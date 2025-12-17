@@ -1,11 +1,10 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.CodeGen.TypeScript.Expressions;
+﻿using Albatross.CodeGen.TypeScript.Expressions;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Declarations {
-	public record class TypeScriptFileDeclaration : SyntaxNode, IDeclaration, ICodeElement {
+	public record class TypeScriptFileDeclaration : CodeNode, IDeclaration, ICodeElement {
 		public TypeScriptFileDeclaration(string name) {
 			this.Name = name;
 		}
@@ -16,7 +15,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public IEnumerable<InterfaceDeclaration> InterfaceDeclarations { get; init; } = [];
 		public IEnumerable<ClassDeclaration> ClasseDeclarations { get; init; } = [];
 
-		public override IEnumerable<ISyntaxNode> Children => ImportDeclarations.Cast<ISyntaxNode>()
+		public override IEnumerable<ICodeNode> Children => ImportDeclarations.Cast<ICodeNode>()
 			.Union(EnumDeclarations)
 			.Union(InterfaceDeclarations)
 			.Union(ClasseDeclarations);

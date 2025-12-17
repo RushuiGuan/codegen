@@ -1,12 +1,11 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class IdentifierNameExpression : SyntaxNode, IIdentifierNameExpression {
+	public record class IdentifierNameExpression : CodeNode, IIdentifierNameExpression {
 		public static readonly Regex IdentifierName = new Regex(@"^[a-z_][a-z0-9_]*$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
 		public IdentifierNameExpression(string name) {
@@ -28,6 +27,6 @@ namespace Albatross.CodeGen.Python.Expressions {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => [GenericArguments];
+		public override IEnumerable<ICodeNode> Children => [GenericArguments];
 	}
 }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Albatross.CodeGen.Syntax {
-	public record class InfixExpression : SyntaxNode, IExpression {
+namespace Albatross.CodeGen {
+	public record class InfixExpression : CodeNode, IExpression {
 		public bool UseParenthesis { get; init; }
 		public required IOperator Operator { get; init; }
 		public required IExpression Left { get; init; }
@@ -16,6 +16,6 @@ namespace Albatross.CodeGen.Syntax {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => [Left, Right];
+		public override IEnumerable<ICodeNode> Children => [Left, Right];
 	}
 }

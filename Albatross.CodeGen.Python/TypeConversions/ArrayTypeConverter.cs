@@ -1,6 +1,5 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
 using Albatross.CodeGen.Python.Expressions;
-using Albatross.CodeGen.Syntax;
 using Microsoft.CodeAnalysis;
 using System.Diagnostics.CodeAnalysis;
 
@@ -27,7 +26,7 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 				return false;
 			}
 			expression = new ListTypeExpression {
-				Arguments = new ListOfSyntaxNodes<ITypeExpression> {
+				Arguments = new ListOfNodes<ITypeExpression> {
 					typeExpression
 				}
 			};

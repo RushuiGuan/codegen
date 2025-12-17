@@ -1,12 +1,11 @@
-using Albatross.CodeGen.Syntax;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class SetExpression : SyntaxNode, IExpression {
+	public record class SetExpression : CodeNode, IExpression {
 		public IExpression[] Items { get; init; }
-		public override IEnumerable<ISyntaxNode> Children => Items;
+		public override IEnumerable<ICodeNode> Children => Items;
 
 		public SetExpression(params IExpression[] items) {
 			this.Items = items;

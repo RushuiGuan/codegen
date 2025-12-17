@@ -1,5 +1,4 @@
 ﻿using Albatross.CodeAnalysis.Symbols;
-using Albatross.CodeGen.Syntax;
 using Albatross.CodeGen.TypeScript;
 using Albatross.CodeGen.TypeScript.Declarations;
 using Albatross.CodeGen.TypeScript.Expressions;
@@ -43,14 +42,14 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 									Operator = new Operator("+"),
 									Left = new InvocationExpression {
 										CallableExpression = new MultiPartIdentifierNameExpression("this", "config", "endpoint"),
-										Arguments = new ListOfSyntaxNodes<IExpression> { new StringLiteralExpression(settings.EndPointName) },
+										Arguments = new ListOfNodes<IExpression> { new StringLiteralExpression(settings.EndPointName) },
 									},
 									Right = new StringLiteralExpression(model.Route),
 								}),
 							}
 						],
 						Constructor = new ConstructorDeclaration() {
-							Parameters = new ListOfSyntaxNodes<ParameterDeclaration> {
+							Parameters = new ListOfNodes<ParameterDeclaration> {
 								new ParameterDeclaration("config") {
 									Type = new SimpleTypeExpression {
 										Identifier = new QualifiedIdentifierNameExpression("ConfigService", new ModuleSourceExpression(settings.ConfigServiceModule)),
@@ -94,7 +93,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			return new MethodDeclaration(name) {
 				Modifiers = settings.UsePromise ? [new AsyncKeyword()] : [],
 				ReturnType = settings.UsePromise ? returnType.ToPromise() : returnType.ToObservable(),
-				Parameters = new ListOfSyntaxNodes<ParameterDeclaration>(method.Parameters.Select(x => new ParameterDeclaration(x.Name) { Type = typeConverter.Convert(x.Type) })),
+				Parameters = new ListOfNodes<ParameterDeclaration>(method.Parameters.Select(x => new ParameterDeclaration(x.Name) { Type = typeConverter.Convert(x.Type) })),
 				Body = new CodeBlock(
 					new ScopedVariableExpression("relativeUrl") {
 						IsConstant = true,
@@ -120,7 +119,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		InvocationExpression FormattedDate(string text, string format) {
 			return new InvocationExpression {
 				CallableExpression = new QualifiedIdentifierNameExpression("format", Defined.Sources.DateFns),
-				Arguments = new ListOfSyntaxNodes<IExpression>(
+				Arguments = new ListOfNodes<IExpression>(
 					new IdentifierNameExpression(text),
 					new StringLiteralExpression(format)),
 			};
@@ -152,9 +151,9 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		bool IsDate(ITypeSymbol type) {
 			var typeName = type.GetFullName();
 			return typeName == typeof(TimeOnly).FullName
-			       || typeName == typeof(DateOnly).FullName
-			       || typeName == typeof(DateTime).FullName
-			       || typeName == typeof(DateTimeOffset).FullName;
+				   || typeName == typeof(DateOnly).FullName
+				   || typeName == typeof(DateTime).FullName
+				   || typeName == typeof(DateTimeOffset).FullName;
 		}
 
 		/// <summary>
@@ -169,9 +168,9 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			if (parameter.Type.TryGetCollectionElementType(compilation, out var elementType) && IsDate(elementType!)) {
 				value = new InvocationExpression {
 					CallableExpression = new MultiPartIdentifierNameExpression(parameter.Name.CamelCase(), "map"),
-					Arguments = new ListOfSyntaxNodes<IExpression>(
+					Arguments = new ListOfNodes<IExpression>(
 						new ArrowFunctionExpression {
-							Arguments = new ListOfSyntaxNodes<IIdentifierNameExpression>(new IdentifierNameExpression("x")),
+							Arguments = new ListOfNodes<IIdentifierNameExpression>(new IdentifierNameExpression("x")),
 							Body = BuildParamValue("x", elementType!),
 						}
 					)
@@ -202,7 +201,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 						{ fromBodyParameterType != null, () => typeConverter.Convert(fromBodyParameterType!) }
 					},
 				},
-				Arguments = new ListOfSyntaxNodes<IExpression> {
+				Arguments = new ListOfNodes<IExpression> {
 					new IdentifierNameExpression("relativeUrl"), {
 						HasRequestBody(method.HttpMethod), () => {
 							if (hasFromBodyParameter) {
@@ -226,7 +225,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 					},
 					new ReturnExpression(new InvocationExpression {
 						CallableExpression = Defined.Identifiers.FirstValueFrom,
-						Arguments = new ListOfSyntaxNodes<IExpression>(new IdentifierNameExpression("result")),
+						Arguments = new ListOfNodes<IExpression>(new IdentifierNameExpression("result")),
 						UseAwaitOperator = true,
 					}));
 			} else {

@@ -1,12 +1,11 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class ModuleSourceExpression : SyntaxNode, ISourceExpression {
+	public record class ModuleSourceExpression : CodeNode, ISourceExpression {
 		public static readonly Regex ModuleSource = new Regex(@"^(?:\.+)?(?:[a-z_][a-z0-9_]*)(?:\.[a-z_][a-z0-9_]*)*$",
 			RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
@@ -20,6 +19,6 @@ namespace Albatross.CodeGen.Python.Expressions {
 		}
 		public string Source { get; }
 		public override TextWriter Generate(TextWriter writer) => writer.Append(Source);
-		public override IEnumerable<ISyntaxNode> Children => Array.Empty<ISyntaxNode>();
+		public override IEnumerable<ICodeNode> Children => Array.Empty<ICodeNode>();
 	}
 }

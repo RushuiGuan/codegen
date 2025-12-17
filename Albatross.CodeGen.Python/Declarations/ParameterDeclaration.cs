@@ -1,12 +1,11 @@
 ﻿using Albatross.CodeGen.Python.Expressions;
-using Albatross.CodeGen.Syntax;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Declarations {
-	public record class ParameterDeclaration : SyntaxNode, IDeclaration {
+	public record class ParameterDeclaration : CodeNode, IDeclaration {
 		public ITypeExpression Type { get; init; } = Defined.Types.None;
 		public required IIdentifierNameExpression Identifier { get; init; }
 		public LiteralExpression? DefaultValue { get; init; }
@@ -21,6 +20,6 @@ namespace Albatross.CodeGen.Python.Declarations {
 			}
 			return writer;
 		}
-		public override IEnumerable<ISyntaxNode> Children => [Type, Identifier];
+		public override IEnumerable<ICodeNode> Children => [Type, Identifier];
 	}
 }

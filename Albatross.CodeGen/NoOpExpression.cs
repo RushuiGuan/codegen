@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Albatross.CodeGen.Syntax {
+namespace Albatross.CodeGen {
 	public record NoOpExpression : IExpression {
 		public TextWriter Generate(TextWriter writer) => writer;
-		public IEnumerable<ISyntaxNode> GetDescendants() => Array.Empty<ISyntaxNode>();
+		public IEnumerable<ICodeNode> GetDescendants() => Array.Empty<ICodeNode>();
 	}
 }

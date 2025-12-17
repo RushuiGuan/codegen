@@ -1,13 +1,12 @@
 using Albatross.CodeGen.CSharp.Expressions;
 using Albatross.CodeGen.CSharp.Keywords;
-using Albatross.CodeGen.Syntax;
 using Albatross.Collections;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public record class PropertyDeclaration : SyntaxNode, IDeclaration {
+	public record class PropertyDeclaration : CodeNode, IDeclaration {
 		public required ITypeExpression Type { get; init; }
 		public required IdentifierNameExpression Name { get; init; }
 		public IEnumerable<AttributeExpression> AttributeExpressions { get; init; } = [];
@@ -45,9 +44,9 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children {
+		public override IEnumerable<ICodeNode> Children {
 			get {
-				var list = new List<ISyntaxNode> {
+				var list = new List<ICodeNode> {
 						Type, Name
 					}.AddIfNotNull(GetterBody)
 					.AddIfNotNull(SetterBody);

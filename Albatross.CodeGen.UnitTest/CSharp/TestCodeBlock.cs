@@ -1,5 +1,4 @@
 using Albatross.CodeGen.CSharp.Expressions;
-using Albatross.CodeGen.Syntax;
 using System.Collections.Generic;
 using System.IO;
 using Xunit;

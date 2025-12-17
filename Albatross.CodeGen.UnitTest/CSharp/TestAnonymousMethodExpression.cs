@@ -1,7 +1,6 @@
 using Albatross.CodeGen.CSharp;
 using Albatross.CodeGen.CSharp.Declarations;
 using Albatross.CodeGen.CSharp.Expressions;
-using Albatross.CodeGen.Syntax;
 using Albatross.Testing;
 using System.IO;
 using Xunit;
@@ -97,7 +96,7 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 					}.EndOfStatement(),
 					new ReturnExpression{
 						Expression = new IdentifierNameExpression("x")
-					}.EndOfStatement(),
+					},
 				]
 			};
 			var text = new StringWriter().Code(expression).ToString();

@@ -1,13 +1,12 @@
 using Albatross.CodeGen.CSharp.Expressions;
 using Albatross.CodeGen.CSharp.Keywords;
-using Albatross.CodeGen.Syntax;
 using Albatross.Collections;
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public record class FieldDeclaration : SyntaxNode, IDeclaration {
+	public record class FieldDeclaration : CodeNode, IDeclaration {
 		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Private;
 		public required ITypeExpression Type { get; init; }
 		public required IdentifierNameExpression Name { get; init; }
@@ -31,8 +30,8 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children {
-			get => new List<ISyntaxNode>(Attributes) {
+		public override IEnumerable<ICodeNode> Children {
+			get => new List<ICodeNode>(Attributes) {
 				Type, Name
 			}.AddIfNotNull(Initializer);
 		}

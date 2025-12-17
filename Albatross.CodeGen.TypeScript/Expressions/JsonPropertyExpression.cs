@@ -1,13 +1,12 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class JsonPropertyExpression : SyntaxNode, IExpression {
+	public record class JsonPropertyExpression : CodeNode, IExpression {
 		public IdentifierNameExpression Identifier { get; }
 		public IExpression Expression { get; }
-		public override IEnumerable<ISyntaxNode> Children => [Identifier, Expression];
+		public override IEnumerable<ICodeNode> Children => [Identifier, Expression];
 
 		public JsonPropertyExpression(string name, IExpression expression) {
 			this.Identifier = new IdentifierNameExpression(name);

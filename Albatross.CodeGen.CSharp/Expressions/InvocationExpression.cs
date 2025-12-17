@@ -1,9 +1,8 @@
-﻿using Albatross.CodeGen.Syntax;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class InvocationExpression : SyntaxNode, IExpression {
+	public record class InvocationExpression : CodeNode, IExpression {
 		public bool UseAwaitOperator { get; init; }
 		public required IExpression CallableExpression { get; init; }
 		public ListOfArguments Arguments { get; init; } = new();
@@ -15,9 +14,9 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children {
+		public override IEnumerable<ICodeNode> Children {
 			get {
-				return new List<ISyntaxNode>{
+				return new List<ICodeNode>{
 					CallableExpression, Arguments
 				};
 			}

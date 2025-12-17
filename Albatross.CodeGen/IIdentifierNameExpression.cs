@@ -1,4 +1,4 @@
-﻿namespace Albatross.CodeGen.Syntax {
+﻿namespace Albatross.CodeGen {
 	/// <summary>
 	/// interface for any identifier expression
 	/// </summary>

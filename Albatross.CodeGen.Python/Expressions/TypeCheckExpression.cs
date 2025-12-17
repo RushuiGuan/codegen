@@ -1,18 +1,17 @@
-﻿using Albatross.CodeGen.Syntax;
-using Albatross.Text;
+﻿using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class TypeCheckExpression : SyntaxNode, IExpression {
+	public record class TypeCheckExpression : CodeNode, IExpression {
 		public TypeCheckExpression(bool inversed) {
 			Inversed = inversed;
 		}
 		public required IExpression Expression { get; init; }
 		public required ITypeExpression Type { get; init; }
 
-		public override IEnumerable<ISyntaxNode> Children => [Expression, Type];
+		public override IEnumerable<ICodeNode> Children => [Expression, Type];
 
 		public bool Inversed { get; }
 
