@@ -1,10 +1,7 @@
-﻿using Albatross.CodeGen.CommandLine;
-using Albatross.CommandLine;
-using System.CommandLine;
-using System.CommandLine.Parsing;
+﻿using System.CommandLine.Parsing;
 using System.Threading.Tasks;
 
-namespace Albatross.CodeGen.Tests.Utility {
+namespace Albatross.CodeGen.CommandLine {
 	internal class Program {
 		static async Task<int> Main(string[] args) {
 			var setup = new MySetup().AddCommands();
