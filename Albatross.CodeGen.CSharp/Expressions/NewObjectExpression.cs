@@ -5,10 +5,10 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class NewObjectExpression : SyntaxNode, IExpression {
+	public record class NewObjectExpression : CodeNode, IExpression {
 		public required ITypeExpression Type { get; init; }
 		public ListOfArguments Arguments { get; init; } = new();
-		public ListOfSyntaxNodes<AssignmentExpression> Initializers { get; init; } = new();
+		public ListOfNodes<AssignmentExpression> Initializers { get; init; } = new();
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Defined.Keywords.New).Code(Type).Code(Arguments);
@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> {
+		public override IEnumerable<ICodeNode> Children => new List<ICodeNode> {
 			Type,
 			Arguments,
 			Initializers,

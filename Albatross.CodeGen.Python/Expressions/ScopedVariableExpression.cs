@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class ScopedVariableExpression : SyntaxNode, IExpression {
+	public record class ScopedVariableExpression : CodeNode, IExpression {
 		public required IIdentifierNameExpression Identifier { get; init; }
 		public ITypeExpression? Type { get; init; }
 		public IExpression? Assignment { get; init; }
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier }.AddIfNotNull(Type, Assignment);
+		public override IEnumerable<ICodeNode> Children => new List<ICodeNode> { Identifier }.AddIfNotNull(Type, Assignment);
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Identifier);

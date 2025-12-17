@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class IfElseCodeBlockExpression : SyntaxNode, IExpression {
+	public record class IfElseCodeBlockExpression : CodeNode, IExpression {
 		public IfElseCodeBlockExpression() { }
 
 		public required IExpression Condition { get; init; }
 		public IExpression CodeBlock { get; init; } = new NoOpExpression();
 		public IExpression? ElseBlock { get; init; }
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> {
+		public override IEnumerable<ICodeNode> Children => new List<ICodeNode> {
 			Condition, CodeBlock
 		}.AddIfNotNull(ElseBlock);
 

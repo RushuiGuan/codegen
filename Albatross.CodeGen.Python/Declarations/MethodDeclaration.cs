@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Declarations {
-	public record class MethodDeclaration : SyntaxNode, IDeclaration {
+	public record class MethodDeclaration : CodeNode, IDeclaration {
 		public MethodDeclaration(string name) {
 			Identifier = new IdentifierNameExpression(name);
 		}
@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public IdentifierNameExpression Identifier { get; }
 		public IEnumerable<DecoratorExpression> Decorators { get; init; } = [];
 		public ITypeExpression ReturnType { get; init; } = Defined.Types.None;
-		public ListOfSyntaxNodes<ParameterDeclaration> Parameters { get; init; } = new();
+		public ListOfNodes<ParameterDeclaration> Parameters { get; init; } = new();
 		public IEnumerable<IKeyword> Modifiers { get; init; } = [];
 		public IExpression Body { get; init; } = new EmptyExpression();
 		public IExpression? DocString { get; init; }
@@ -37,8 +37,8 @@ namespace Albatross.CodeGen.Python.Declarations {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children
-			=> new ISyntaxNode[] {
+		public override IEnumerable<ICodeNode> Children
+			=> new ICodeNode[] {
 				this.Identifier,
 				this.ReturnType, this.Body,
 			}.Concat(Parameters).Concat(this.Decorators);

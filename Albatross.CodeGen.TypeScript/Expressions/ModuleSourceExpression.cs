@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class ModuleSourceExpression : SyntaxNode, ISourceExpression {
+	public record class ModuleSourceExpression : CodeNode, ISourceExpression {
 		// this regex is more restrictive than the actual module name regex
 		public ModuleSourceExpression(string name) {
 			if (Defined.Patterns.ModuleSource.IsMatch(name)) {

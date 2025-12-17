@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class UsingExpression : SyntaxNode, IExpression {
+	public record class UsingExpression : CodeNode, IExpression {
 		public required IExpression Resource { get; init; }
 		public IExpression Body { get; init; } = new NoOpExpression();
 
@@ -13,6 +13,6 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => [Resource, Body];
+		public override IEnumerable<ICodeNode> Children => [Resource, Body];
 	}
 }

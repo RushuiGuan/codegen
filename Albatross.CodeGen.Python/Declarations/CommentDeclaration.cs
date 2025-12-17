@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.Python.Declarations {
-	public record class CommentDeclaration : SyntaxNode, IDeclaration {
+	public record class CommentDeclaration : CodeNode, IDeclaration {
 		public string Text { get; }
 
 		public CommentDeclaration(string text) {

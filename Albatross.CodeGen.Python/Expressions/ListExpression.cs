@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class ListExpression : SyntaxNode, IExpression {
+	public record class ListExpression : CodeNode, IExpression {
 		public IExpression[] Items { get; init; }
-		public override IEnumerable<ISyntaxNode> Children => Items;
+		public override IEnumerable<ICodeNode> Children => Items;
 
 		public ListExpression(params IExpression[] items) {
 			this.Items = items;

@@ -5,6 +5,6 @@ using System.IO;
 namespace Albatross.CodeGen.Syntax {
 	public record NoOpExpression : IExpression {
 		public TextWriter Generate(TextWriter writer) => writer;
-		public IEnumerable<ISyntaxNode> GetDescendants() => Array.Empty<ISyntaxNode>();
+		public IEnumerable<ICodeNode> GetDescendants() => Array.Empty<ICodeNode>();
 	}
 }

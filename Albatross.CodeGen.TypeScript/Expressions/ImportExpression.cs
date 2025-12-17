@@ -5,18 +5,18 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class ImportExpression : SyntaxNode, ICodeElement {
+	public record class ImportExpression : CodeNode, ICodeElement {
 		public ImportExpression(IEnumerable<IdentifierNameExpression> items) {
-			this.Items = new ListOfSyntaxNodes<IdentifierNameExpression>(items.Distinct().OrderBy(x => x.Name)) {
+			this.Items = new ListOfNodes<IdentifierNameExpression>(items.Distinct().OrderBy(x => x.Name)) {
 				LeftPadding = "{ ",
 				RightPadding = " }"
 			};
 		}
 
-		public ListOfSyntaxNodes<IdentifierNameExpression> Items { get; }
+		public ListOfNodes<IdentifierNameExpression> Items { get; }
 		public required ISourceExpression Source { get; init; }
 
-		public override IEnumerable<ISyntaxNode> Children => [Items, Source];
+		public override IEnumerable<ICodeNode> Children => [Items, Source];
 
 		// import {format, parse} from 'date-fns';
 		public override TextWriter Generate(TextWriter writer) {

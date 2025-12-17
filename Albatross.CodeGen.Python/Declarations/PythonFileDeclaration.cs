@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Declarations {
-	public record class PythonFileDeclaration : SyntaxNode, IDeclaration {
+	public record class PythonFileDeclaration : CodeNode, IDeclaration {
 		public PythonFileDeclaration(string name) {
 			this.Name = name;
 		}
@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public IEnumerable<ImportExpression> Imports { get; init; } = [];
 		public IEnumerable<ClassDeclaration> Classes { get; init; } = [];
 
-		public override IEnumerable<ISyntaxNode> Children => Imports.Cast<ISyntaxNode>()
+		public override IEnumerable<ICodeNode> Children => Imports.Cast<ICodeNode>()
 			.Union(Classes);
 
 		bool IsSelf(ISourceExpression source) {

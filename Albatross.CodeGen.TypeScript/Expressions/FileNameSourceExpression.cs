@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
 	// should validate the name using regex
-	public record class FileNameSourceExpression : SyntaxNode, ISourceExpression {
+	public record class FileNameSourceExpression : CodeNode, ISourceExpression {
 		public FileNameSourceExpression(string name) {
 			this.Source = name;
 		}

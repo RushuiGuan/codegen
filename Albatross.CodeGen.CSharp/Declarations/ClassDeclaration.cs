@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public record class ClassDeclaration : SyntaxNode, IDeclaration {
+	public record class ClassDeclaration : CodeNode, IDeclaration {
 		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
 		public required IdentifierNameExpression Name { get; init; }
 		public IEnumerable<ITypeExpression> BaseTypes { get; init; } = [];
@@ -54,9 +54,9 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children {
+		public override IEnumerable<ICodeNode> Children {
 			get {
-				var list = new List<ISyntaxNode> { ListOfGenericArguments };
+				var list = new List<ICodeNode> { ListOfGenericArguments };
 				list.AddRange(Constructors);
 				list.AddRange(Fields);
 				list.AddRange(Properties);

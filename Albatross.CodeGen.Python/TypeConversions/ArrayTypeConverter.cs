@@ -27,7 +27,7 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 				return false;
 			}
 			expression = new ListTypeExpression {
-				Arguments = new ListOfSyntaxNodes<ITypeExpression> {
+				Arguments = new ListOfNodes<ITypeExpression> {
 					typeExpression
 				}
 			};

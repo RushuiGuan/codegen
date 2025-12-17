@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class GenericTypeExpression : SyntaxNode, ITypeExpression {
+	public record class GenericTypeExpression : CodeNode, ITypeExpression {
 		public GenericTypeExpression(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
@@ -12,8 +12,8 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 			this.Identifier = identifier;
 		}
 		public IIdentifierNameExpression Identifier { get; }
-		public required ListOfSyntaxNodes<ITypeExpression> Arguments { get; init; }
-		public override IEnumerable<ISyntaxNode> Children => [Identifier, Arguments];
+		public required ListOfNodes<ITypeExpression> Arguments { get; init; }
+		public override IEnumerable<ICodeNode> Children => [Identifier, Arguments];
 		public override TextWriter Generate(TextWriter writer) {
 			return writer.Code(Identifier).Append("<").Code(Arguments).Append(">");
 		}

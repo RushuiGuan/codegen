@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class AnonymousMethodExpression : SyntaxNode, IExpression {
+	public record class AnonymousMethodExpression : CodeNode, IExpression {
 		public IEnumerable<ParameterDeclaration> Parameters { get; init; } = Array.Empty<ParameterDeclaration>();
 		public IEnumerable<IExpression> Body { get; init; } = [];
 		public override TextWriter Generate(TextWriter writer) {
@@ -37,9 +37,9 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children {
+		public override IEnumerable<ICodeNode> Children {
 			get {
-				var list = new List<ISyntaxNode>(Parameters);
+				var list = new List<ICodeNode>(Parameters);
 				list.AddRange(Body);
 				return list;
 			}

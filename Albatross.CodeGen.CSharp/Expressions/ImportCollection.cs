@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 	public class ImportCollection : ICodeElement {
 		private IEnumerable<ImportExpression> items;
 
-		public ImportCollection(IEnumerable<ImportExpression> imports, IEnumerable<ISyntaxNode> dependencies) {
+		public ImportCollection(IEnumerable<ImportExpression> imports, IEnumerable<ICodeNode> dependencies) {
 			this.items = dependencies.OfType<QualifiedIdentifierNameExpression>().Select(x => new ImportExpression(x.Source))
 				.Union(imports)
 				.OrderBy(x => x.Namespace.Source)

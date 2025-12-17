@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public record class ConstructorDeclaration : SyntaxNode, IDeclaration {
+	public record class ConstructorDeclaration : CodeNode, IDeclaration {
 		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
 		public required IdentifierNameExpression Name { get; init; }
 		public ListOfParameterDeclarations Parameters { get; init; } = new();
@@ -28,8 +28,8 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children {
-			get => new List<ISyntaxNode> {
+		public override IEnumerable<ICodeNode> Children {
+			get => new List<ICodeNode> {
 				Parameters,
 				Name,
 				Body

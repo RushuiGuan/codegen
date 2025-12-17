@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class EnumItemExpression : SyntaxNode, IExpression {
+	public record class EnumItemExpression : CodeNode, IExpression {
 		public EnumItemExpression(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
 		public IdentifierNameExpression Identifier { get; }
-		public SyntaxNode? Expression { get; init; }
+		public CodeNode? Expression { get; init; }
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier, }.AddIfNotNull(Expression);
+		public override IEnumerable<ICodeNode> Children => new List<ICodeNode> { Identifier, }.AddIfNotNull(Expression);
 
 
 		public override TextWriter Generate(TextWriter writer) {

@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class ImportCollection : SyntaxNode, IExpression {
+	public record class ImportCollection : CodeNode, IExpression {
 		public IEnumerable<ImportExpression> Imports { get; }
 
 		public ImportCollection(IEnumerable<ImportExpression> imports) {
@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 			}).OrderBy(x => x.Source.Source);
 		}
 
-		public ImportCollection(IEnumerable<ISyntaxNode> nodes) {
+		public ImportCollection(IEnumerable<ICodeNode> nodes) {
 			Imports = nodes.OfType<QualifiedIdentifierNameExpression>()
 				.GroupBy(x => x.Source)
 				.Select(x => new ImportExpression(x.Select(y => y.Identifier)) {
@@ -27,6 +27,6 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => Imports;
+		public override IEnumerable<ICodeNode> Children => Imports;
 	}
 }

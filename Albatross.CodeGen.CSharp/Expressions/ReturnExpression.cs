@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class ReturnExpression : SyntaxNode, IExpression {
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode>().AddIfNotNull(this.Expression);
+	public record class ReturnExpression : CodeNode, IExpression {
+		public override IEnumerable<ICodeNode> Children => new List<ICodeNode>().AddIfNotNull(this.Expression);
 		public IExpression? Expression { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {

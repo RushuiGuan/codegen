@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Declarations {
-	public record class ClassDeclaration : SyntaxNode, IDeclaration {
+	public record class ClassDeclaration : CodeNode, IDeclaration {
 		public ClassDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
@@ -23,8 +23,8 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public IEnumerable<MethodDeclaration> Methods { get; init; } = [];
 		public DocStringExpression? DocString { get; init; }
 
-		public override IEnumerable<ISyntaxNode> Children
-			=> new List<ISyntaxNode> { Identifier, }
+		public override IEnumerable<ICodeNode> Children
+			=> new List<ICodeNode> { Identifier, }
 				.AddIfNotNull(BaseClassName)
 				.AddIfNotNull(Constructor)
 				.Concat(Decorators).Concat(Imports).Concat(Fields).Concat(GetProperties).Concat(Methods);

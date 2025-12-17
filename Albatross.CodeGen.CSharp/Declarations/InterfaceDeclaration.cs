@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public record class InterfaceDeclaration : SyntaxNode, IDeclaration {
+	public record class InterfaceDeclaration : CodeNode, IDeclaration {
 		public InterfaceDeclaration(string name) {
 			Name = new IdentifierNameExpression(name);
 		}
@@ -49,9 +49,9 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children {
+		public override IEnumerable<ICodeNode> Children {
 			get {
-				var list = new List<ISyntaxNode>(Attributes);
+				var list = new List<ICodeNode>(Attributes);
 				list.AddRange(Fields);
 				list.AddRange(Properties);
 				list.AddRange(Methods);

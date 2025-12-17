@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class TupleExpression : SyntaxNode, IExpression {
+	public record class TupleExpression : CodeNode, IExpression {
 		public IExpression[] Items { get; init; }
-		public override IEnumerable<ISyntaxNode> Children => Items;
+		public override IEnumerable<ICodeNode> Children => Items;
 		public bool LineBreak { get; set; }
 
 		public TupleExpression(params IExpression[] items) {

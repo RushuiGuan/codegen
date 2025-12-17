@@ -5,13 +5,13 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class DocStringExpression : SyntaxNode, IExpression {
+	public record class DocStringExpression : CodeNode, IExpression {
 		public DocStringExpression(string value) {
 			this.Value = value;
 		}
 		public string Value { get; }
 
-		public override IEnumerable<ISyntaxNode> Children => [];
+		public override IEnumerable<ICodeNode> Children => [];
 
 		public override TextWriter Generate(TextWriter writer) {
 			var lines = Value.Split('\n').Select(x => x.TrimEnd()).ToArray();

@@ -38,7 +38,7 @@ namespace Albatross.CodeGen.TypeScript {
 		public static ITypeExpression ToPromise(this ITypeExpression type) {
 			if (!type.IsPromise()) {
 				type = new GenericTypeExpression(Defined.Identifiers.Promise) {
-					Arguments = new ListOfSyntaxNodes<ITypeExpression> {
+					Arguments = new ListOfNodes<ITypeExpression> {
 						type
 					}
 				};
@@ -49,7 +49,7 @@ namespace Albatross.CodeGen.TypeScript {
 		public static ITypeExpression ToObservable(this ITypeExpression type) {
 			if (!type.IsObservable()) {
 				type = new GenericTypeExpression(Defined.Identifiers.Observable) {
-					Arguments = new ListOfSyntaxNodes<ITypeExpression> {
+					Arguments = new ListOfNodes<ITypeExpression> {
 						type
 					}
 				};

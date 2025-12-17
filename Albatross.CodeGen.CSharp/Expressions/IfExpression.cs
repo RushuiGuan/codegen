@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class IfExpression : SyntaxNode, IExpression {
+	public record class IfExpression : CodeNode, IExpression {
 		public required IExpression Condition { get; init; }
 		public required IExpression IfBlock { get; init; }
 		public IExpression? ElseBlock { get; init; }
@@ -22,7 +22,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> {
+		public override IEnumerable<ICodeNode> Children => new List<ICodeNode> {
 			Condition, IfBlock
 		}.AddIfNotNull(ElseBlock);
 	}

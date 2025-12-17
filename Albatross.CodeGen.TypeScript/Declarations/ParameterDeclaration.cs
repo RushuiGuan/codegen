@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Declarations {
-	public record class ParameterDeclaration : SyntaxNode, IDeclaration, ICodeElement {
+	public record class ParameterDeclaration : CodeNode, IDeclaration, ICodeElement {
 		public ParameterDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public IEnumerable<IKeyword> Modifiers { get; init; } = [];
 		public IdentifierNameExpression Identifier { get; }
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Type, Identifier };
+		public override IEnumerable<ICodeNode> Children => new List<ICodeNode> { Type, Identifier };
 
 		public override TextWriter Generate(TextWriter writer) {
 			var items = Modifiers.Where(x => x is AccessKeyword).ToArray();

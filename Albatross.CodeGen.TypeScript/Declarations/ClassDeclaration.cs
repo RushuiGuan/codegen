@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Declarations {
-	public record class ClassDeclaration : SyntaxNode, IDeclaration {
+	public record class ClassDeclaration : CodeNode, IDeclaration {
 		public ClassDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
@@ -21,8 +21,8 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public IEnumerable<PropertyDeclaration> Properties { get; init; } = [];
 		public IEnumerable<MethodDeclaration> Methods { get; init; } = [];
 
-		public override IEnumerable<ISyntaxNode> Children
-			=> new List<ISyntaxNode> { Identifier, }
+		public override IEnumerable<ICodeNode> Children
+			=> new List<ICodeNode> { Identifier, }
 					.AddIfNotNull(BaseClassName)
 					.AddIfNotNull(Constructor)
 					.Concat(Decorators).Concat(Imports).Concat(Getters).Concat(Setters).Concat(Properties).Concat(Methods);

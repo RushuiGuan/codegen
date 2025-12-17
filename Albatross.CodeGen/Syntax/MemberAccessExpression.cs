@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Syntax {
-	public record class MemberAccessExpression : SyntaxNode, IExpression {
+	public record class MemberAccessExpression : CodeNode, IExpression {
 		private readonly bool lineBreak;
 
 		public MemberAccessExpression(IExpression expression, bool lineBreak, params IEnumerable<IExpression> members) {
@@ -35,6 +35,6 @@ namespace Albatross.CodeGen.Syntax {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode>(Members) { Expression };
+		public override IEnumerable<ICodeNode> Children => new List<ICodeNode>(Members) { Expression };
 	}
 }

@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public record class ParameterDeclaration : SyntaxNode, IDeclaration {
+	public record class ParameterDeclaration : CodeNode, IDeclaration {
 		public required ITypeExpression Type { get; init; }
 		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];
 		public required IdentifierNameExpression Name { get; init; }
@@ -22,7 +22,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer.Code(Type).Space().Code(Name);
 		}
 
-		public override IEnumerable<ISyntaxNode> Children
-			=> Attributes.Cast<ISyntaxNode>().Concat([Type, Name]);
+		public override IEnumerable<ICodeNode> Children
+			=> Attributes.Cast<ICodeNode>().Concat([Type, Name]);
 	}
 }

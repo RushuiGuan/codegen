@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public record class MethodDeclaration : SyntaxNode, IDeclaration {
+	public record class MethodDeclaration : CodeNode, IDeclaration {
 		public bool IsAbstract { get; init; }
 		public bool IsVirtual { get; init; }
 		public bool IsPartial { get; init; }
@@ -42,9 +42,9 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children {
+		public override IEnumerable<ICodeNode> Children {
 			get {
-				var list = new List<ISyntaxNode>{
+				var list = new List<ICodeNode>{
 					Parameters, ReturnType, Name, ListOfGenericArguments
 				}.AddIfNotNull(Body);
 				list.AddRange(Attributes);

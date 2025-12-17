@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class IdentifierNameExpression : SyntaxNode, IIdentifierNameExpression {
+	public record class IdentifierNameExpression : CodeNode, IIdentifierNameExpression {
 		public IdentifierNameExpression(string name) {
 			if (Defined.Patterns.IdentifierName.IsMatch(name)) {
 				this.Name = name;
@@ -23,6 +23,6 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => [GenericArguments];
+		public override IEnumerable<ICodeNode> Children => [GenericArguments];
 	}
 }

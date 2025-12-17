@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class TypeExpression : SyntaxNode, ITypeExpression {
+	public record class TypeExpression : CodeNode, ITypeExpression {
 		public TypeExpression(string name, params string[] genericArguments) {
 			this.Identifier = new IdentifierNameExpression(name);
 			this.GenericArguments = genericArguments.Select(arg => new TypeExpression(arg));
@@ -27,8 +27,8 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 				.AppendIf(Nullable, "?");
 		}
 
-		public override IEnumerable<ISyntaxNode> Children =>
-			new List<ISyntaxNode>(GenericArguments) {
+		public override IEnumerable<ICodeNode> Children =>
+			new List<ICodeNode>(GenericArguments) {
 				Identifier
 			};
 	}

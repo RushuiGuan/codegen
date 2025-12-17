@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.TypeScript.Declarations {
-	public record class PropertyDeclaration : SyntaxNode, IDeclaration, ICodeElement {
+	public record class PropertyDeclaration : CodeNode, IDeclaration, ICodeElement {
 		public PropertyDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 		}
@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public IdentifierNameExpression Identifier { get; }
 		public bool Optional { get; init; }
 		public ITypeExpression Type { get; init; } = Defined.Types.Any();
-		public override IEnumerable<ISyntaxNode> Children => new List<ISyntaxNode> { Identifier, Type };
+		public override IEnumerable<ICodeNode> Children => new List<ICodeNode> { Identifier, Type };
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Identifier);

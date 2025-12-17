@@ -5,7 +5,7 @@ using System.IO;
 using System.Text.Json;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public abstract record class LiteralExpression : SyntaxNode, IExpression {
+	public abstract record class LiteralExpression : CodeNode, IExpression {
 	}
 
 	public record class StringLiteralExpression : LiteralExpression {
@@ -51,11 +51,11 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 	}
 
 	public record class ArrayLiteralExpression : LiteralExpression {
-		public ListOfSyntaxNodes<IExpression> Items { get; init; } = new ListOfSyntaxNodes<IExpression>();
+		public ListOfNodes<IExpression> Items { get; init; } = new ListOfNodes<IExpression>();
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Append("[").Code(Items).Append("]");
 			return writer;
 		}
-		public override IEnumerable<ISyntaxNode> Children => [Items];
+		public override IEnumerable<ICodeNode> Children => [Items];
 	}
 }

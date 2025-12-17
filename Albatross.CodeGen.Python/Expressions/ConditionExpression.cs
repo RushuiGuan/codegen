@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class ConditionExpression : SyntaxNode, IExpression {
+	public record class ConditionExpression : CodeNode, IExpression {
 		private readonly string @operator;
 
 		public ConditionExpression(string @operator) {
@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 		public required IExpression Left { get; init; }
 		public required IExpression Right { get; init; }
 
-		public override IEnumerable<ISyntaxNode> Children => [Left, Right];
+		public override IEnumerable<ICodeNode> Children => [Left, Right];
 
 		public override TextWriter Generate(TextWriter writer)
 			=> writer.Code(Left).Append($" {@operator} ").Code(Right);

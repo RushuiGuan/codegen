@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class ImportCollection : SyntaxNode, IExpression {
+	public record class ImportCollection : CodeNode, IExpression {
 		public IEnumerable<ImportExpression> Imports { get; }
 
 		public ImportCollection(params IEnumerable<ImportExpression> imports) {
@@ -28,6 +28,6 @@ namespace Albatross.CodeGen.Python.Expressions {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => Imports;
+		public override IEnumerable<ICodeNode> Children => Imports;
 	}
 }

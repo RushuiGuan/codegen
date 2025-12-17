@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.Python.Expressions {
-	public record class ListComprehensionExpression : SyntaxNode, IExpression {
+	public record class ListComprehensionExpression : CodeNode, IExpression {
 		public required IExpression IterableExpression { get; init; }
 		public required IExpression Expression { get; init; }
 		public required string VariableName { get; init; }
@@ -23,7 +23,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => [
+		public override IEnumerable<ICodeNode> Children => [
 			IterableExpression, Expression,
 		];
 	}

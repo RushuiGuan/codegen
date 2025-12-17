@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
-	public record class FileDeclaration : SyntaxNode, IDeclaration {
+	public record class FileDeclaration : CodeNode, IDeclaration {
 		public FileDeclaration(string name) {
 			this.Name = name;
 		}
@@ -40,9 +40,9 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children {
+		public override IEnumerable<ICodeNode> Children {
 			get {
-				var list = new List<ISyntaxNode>(Imports);
+				var list = new List<ICodeNode>(Imports);
 				list.AddRange(Attributes);
 				list.AddRange(Classes);
 				list.AddRange(Interfaces);

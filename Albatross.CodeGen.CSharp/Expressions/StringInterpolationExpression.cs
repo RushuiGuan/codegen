@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class StringInterpolationExpression : SyntaxNode, IExpression {
+	public record class StringInterpolationExpression : CodeNode, IExpression {
 		public required IEnumerable<IExpression> Expressions { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {
@@ -27,6 +27,6 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			return writer;
 		}
 
-		public override IEnumerable<ISyntaxNode> Children => Expressions;
+		public override IEnumerable<ICodeNode> Children => Expressions;
 	}
 }
