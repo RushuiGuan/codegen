@@ -96,7 +96,7 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 					}.EndOfStatement(),
 					new ReturnExpression{
 						Expression = new IdentifierNameExpression("x")
-					}.EndOfStatement(),
+					},
 				]
 			};
 			var text = new StringWriter().Code(expression).ToString();
