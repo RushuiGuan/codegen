@@ -12,7 +12,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 
 		public override IEnumerable<ICodeNode> Children => [Value, Expression];
 	}
-	public record class SwitchExpression : ListOfNodes<IExpression> {
+	public record class SwitchExpression : CodeNode, IExpression {
 		public required IIdentifierNameExpression Variable { get; init; }
 		public ListOfNodes<SwitchSection> Sections { get; init; } = new();
 		public override TextWriter Generate(TextWriter writer) {
