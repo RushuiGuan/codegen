@@ -1,32 +1,24 @@
 ﻿using Albatross.CommandLine;
-using Microsoft.Extensions.Options;
-using System.CommandLine.Invocation;
 using Test.Proxy;
 
 namespace Test.CommandLine {
-	[Verb("test-redirect", typeof(TestRedirectCommandHandler))]
+	[Verb<TestRedirectCommandHandler>("test-redirect")]
 	public class TestRedirectOptions {
 		public bool AbsUrl { get; set; }
 		public int ActionId { get; set; }
 	}
 
-	public class TestRedirectCommandHandler : ICommandHandler {
+	public class TestRedirectCommandHandler : CommandAction<TestRedirectOptions> {
 		private readonly RedirectTestProxyService client;
 		private readonly AbsUrlRedirectTestProxyService absClient;
-		private readonly TestRedirectOptions options;
 
-		public TestRedirectCommandHandler(IOptions<TestRedirectOptions> options, RedirectTestProxyService client, AbsUrlRedirectTestProxyService absClient) {
+		public TestRedirectCommandHandler(TestRedirectOptions options, RedirectTestProxyService client, AbsUrlRedirectTestProxyService absClient) :base(options){
 			this.client = client;
 			this.absClient = absClient;
-			this.options = options.Value;
 			client.UseTextWriter(System.Console.Out);
 		}
 
-		public int Invoke(InvocationContext context) {
-			throw new NotImplementedException();
-		}
-
-		public async Task<int> InvokeAsync(InvocationContext context) {
+		public async override Task<int> Invoke(CancellationToken _) {
 			if (options.AbsUrl) {
 				await absClient.Get(options.ActionId);
 			} else {

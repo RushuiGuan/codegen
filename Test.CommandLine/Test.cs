@@ -1,24 +1,19 @@
 ﻿using Albatross.CommandLine;
-using System.CommandLine.Invocation;
 using Test.Dto.Classes;
 using Test.Proxy;
 
 namespace Test.CommandLine {
-	[Verb("test", typeof(TestCommandHandler))]
+	[Verb<TestCommandHandler>("test")]
 	public class TestOptions {
 	}
-	public class TestCommandHandler : ICommandHandler {
+	public class TestCommandHandler : CommandAction<TestOptions> {
 		private readonly FromBodyParamTestProxyService proxy;
 
-		public TestCommandHandler(FromBodyParamTestProxyService proxy) {
+		public TestCommandHandler(FromBodyParamTestProxyService proxy, TestOptions options):base(options) {
 			this.proxy = proxy;
 		}
 
-		public int Invoke(InvocationContext context) {
-			throw new NotImplementedException();
-		}
-
-		public async Task<int> InvokeAsync(InvocationContext context) {
+		public async override Task<int> Invoke(CancellationToken _) {
 			await proxy.RequiredObject(new MyDto());
 			return 0;
 		}

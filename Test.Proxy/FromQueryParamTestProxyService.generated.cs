@@ -87,7 +87,7 @@ namespace Test.Proxy {
 			var queryString = new NameValueCollection();
 			queryString.Add("value", $"{value}");
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRequiredJsonResponseForValueType<Test.Dto.Enums.MyEnum>(request);;
+				return await this.GetRequiredJsonResponseForValueType<Test.Dto.Enums.MyEnum>(request);
 			}
 		}
 	}

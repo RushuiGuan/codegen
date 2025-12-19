@@ -30,28 +30,28 @@ namespace Test.Proxy {
 			string path = $"{ControllerPath}/return-interface-async";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Post, path, queryString)) {
-				return await this.GetRequiredJsonResponse<Test.Dto.Classes.ICommand>(request);;
+				return await this.GetRequiredJsonResponse<Test.Dto.Classes.ICommand>(request);
 			}
 		}
 		public async Task<Test.Dto.Classes.ICommand> ReturnInterface() {
 			string path = $"{ControllerPath}/return-interface";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Post, path, queryString)) {
-				return await this.GetRequiredJsonResponse<Test.Dto.Classes.ICommand>(request);;
+				return await this.GetRequiredJsonResponse<Test.Dto.Classes.ICommand>(request);
 			}
 		}
 		public async Task<Test.Dto.Classes.AbstractClass> ReturnAbstractClassAsync() {
 			string path = $"{ControllerPath}/return-abstract-class-async";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Post, path, queryString)) {
-				return await this.GetRequiredJsonResponse<Test.Dto.Classes.AbstractClass>(request);;
+				return await this.GetRequiredJsonResponse<Test.Dto.Classes.AbstractClass>(request);
 			}
 		}
 		public async Task<Test.Dto.Classes.AbstractClass> ReturnAbstractClass() {
 			string path = $"{ControllerPath}/return-abstract-class";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Post, path, queryString)) {
-				return await this.GetRequiredJsonResponse<Test.Dto.Classes.AbstractClass>(request);;
+				return await this.GetRequiredJsonResponse<Test.Dto.Classes.AbstractClass>(request);
 			}
 		}
 	}

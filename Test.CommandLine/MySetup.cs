@@ -2,13 +2,16 @@
 using Albatross.Config;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.CommandLine.Invocation;
+using System.CommandLine;
 using Test.Proxy;
 
 namespace Test.CommandLine {
 	public class MySetup : Setup {
-		public override void RegisterServices(InvocationContext context, IConfiguration configuration, EnvironmentSetting envSetting, IServiceCollection services) {
-			base.RegisterServices(context, configuration, envSetting, services);
+		public MySetup(): base("test commandline") {
+		}
+
+		protected override void RegisterServices(ParseResult result, IConfiguration configuration, EnvironmentSetting envSetting, IServiceCollection services) {
+			base.RegisterServices(result, configuration, envSetting, services);
 			services.AddTestProxy();
 			services.RegisterCommands();
 		}

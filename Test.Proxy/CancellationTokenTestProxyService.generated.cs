@@ -14,7 +14,7 @@ namespace Test.Proxy {
 			string path = $"{ControllerPath}";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 	}

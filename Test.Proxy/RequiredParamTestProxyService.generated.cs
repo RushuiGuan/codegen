@@ -15,7 +15,7 @@ namespace Test.Proxy {
 			var queryString = new NameValueCollection();
 			queryString.Add("text", text);
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> ImplicitStringParam(string text) {
@@ -23,7 +23,7 @@ namespace Test.Proxy {
 			var queryString = new NameValueCollection();
 			queryString.Add("text", text);
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> RequiredStringParam(string text) {
@@ -31,7 +31,7 @@ namespace Test.Proxy {
 			var queryString = new NameValueCollection();
 			queryString.Add("text", text);
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> RequiredValueType(int id) {
@@ -39,7 +39,7 @@ namespace Test.Proxy {
 			var queryString = new NameValueCollection();
 			queryString.Add("id", $"{id}");
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> RequiredDateOnly(System.DateOnly date) {
@@ -47,7 +47,7 @@ namespace Test.Proxy {
 			var queryString = new NameValueCollection();
 			queryString.Add("date", date.ISO8601String());
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> RequiredDateTime(System.DateTime date) {
@@ -55,7 +55,7 @@ namespace Test.Proxy {
 			var queryString = new NameValueCollection();
 			queryString.Add("date", date.ISO8601String());
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task RequiredPostParam(Test.Dto.Classes.MyDto dto) {
@@ -72,7 +72,7 @@ namespace Test.Proxy {
 				queryString.Add("values", item);
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> RequiredStringCollection(System.Collections.Generic.IEnumerable<string> values) {
@@ -82,7 +82,7 @@ namespace Test.Proxy {
 				queryString.Add("values", item);
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> RequiredValueTypeArray(int[] values) {
@@ -92,7 +92,7 @@ namespace Test.Proxy {
 				queryString.Add("values", $"{item}");
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> RequiredValueTypeCollection(System.Collections.Generic.IEnumerable<int> values) {
@@ -102,7 +102,7 @@ namespace Test.Proxy {
 				queryString.Add("values", $"{item}");
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> RequiredDateOnlyCollection(System.Collections.Generic.IEnumerable<System.DateOnly> dates) {
@@ -112,7 +112,7 @@ namespace Test.Proxy {
 				queryString.Add("dates", item.ISO8601String());
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> RequiredDateOnlyArray(System.DateOnly[] dates) {
@@ -122,7 +122,7 @@ namespace Test.Proxy {
 				queryString.Add("dates", item.ISO8601String());
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> RequiredDateTimeCollection(System.Collections.Generic.IEnumerable<System.DateTime> dates) {
@@ -132,7 +132,7 @@ namespace Test.Proxy {
 				queryString.Add("dates", item.ISO8601String());
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> RequiredDateTimeArray(System.DateTime[] dates) {
@@ -142,7 +142,7 @@ namespace Test.Proxy {
 				queryString.Add("dates", item.ISO8601String());
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<Test.Dto.Enums.MyEnum> RequiredEnum(Test.Dto.Enums.MyEnum value) {
@@ -150,7 +150,7 @@ namespace Test.Proxy {
 			var queryString = new NameValueCollection();
 			queryString.Add("value", $"{value}");
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRequiredJsonResponseForValueType<Test.Dto.Enums.MyEnum>(request);;
+				return await this.GetRequiredJsonResponseForValueType<Test.Dto.Enums.MyEnum>(request);
 			}
 		}
 		public async Task<Test.Dto.Enums.MyEnum[]> RequiredEnumArray(Test.Dto.Enums.MyEnum[] values) {
@@ -160,7 +160,7 @@ namespace Test.Proxy {
 				queryString.Add("values", $"{item}");
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRequiredJsonResponse<Test.Dto.Enums.MyEnum[]>(request);;
+				return await this.GetRequiredJsonResponse<Test.Dto.Enums.MyEnum[]>(request);
 			}
 		}
 	}

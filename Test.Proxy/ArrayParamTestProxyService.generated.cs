@@ -17,7 +17,7 @@ namespace Test.Proxy {
 				queryString.Add("a", item);
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> ArrayValueType(int[] array) {
@@ -27,7 +27,7 @@ namespace Test.Proxy {
 				queryString.Add("a", $"{item}");
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> CollectionStringParam(System.Collections.Generic.IEnumerable<string> collection) {
@@ -37,7 +37,7 @@ namespace Test.Proxy {
 				queryString.Add("c", item);
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> CollectionValueType(System.Collections.Generic.IEnumerable<int> collection) {
@@ -47,7 +47,7 @@ namespace Test.Proxy {
 				queryString.Add("c", $"{item}");
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> CollectionDateParam(System.Collections.Generic.IEnumerable<System.DateOnly> collection) {
@@ -57,7 +57,7 @@ namespace Test.Proxy {
 				queryString.Add("c", item.ISO8601String());
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 		public async Task<string> CollectionDateTimeParam(System.Collections.Generic.IEnumerable<System.DateTime> collection) {
@@ -67,7 +67,7 @@ namespace Test.Proxy {
 				queryString.Add("c", item.ISO8601String());
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);;
+				return await this.GetRawResponse(request);
 			}
 		}
 	}

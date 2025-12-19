@@ -35,7 +35,7 @@ namespace Test.Proxy {
 			string path = $"{ControllerPath}";
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRequiredJsonResponseForValueType<int>(request);;
+				return await this.GetRequiredJsonResponseForValueType<int>(request);
 			}
 		}
 		public async Task Put() {
