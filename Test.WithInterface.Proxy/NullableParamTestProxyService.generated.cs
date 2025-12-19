@@ -30,7 +30,6 @@ namespace Test.WithInterface.Proxy {
 			if (text != null) {
 				queryString.Add("text", text);
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -41,7 +40,6 @@ namespace Test.WithInterface.Proxy {
 			if (id != null) {
 				queryString.Add("id", $"{id}");
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -52,7 +50,6 @@ namespace Test.WithInterface.Proxy {
 			if (date != null) {
 				queryString.Add("date", date.Value.ISO8601String());
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -60,7 +57,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task NullablePostParam(Test.Dto.Classes.MyDto? dto) {
 			string path = $"{ControllerPath}/nullable-post-param";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?>(HttpMethod.Post, path, queryString, dto)) {
 				await this.GetRawResponse(request);
 			}
@@ -73,7 +69,6 @@ namespace Test.WithInterface.Proxy {
 					queryString.Add("values", item);
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -86,7 +81,6 @@ namespace Test.WithInterface.Proxy {
 					queryString.Add("values", item);
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -99,7 +93,6 @@ namespace Test.WithInterface.Proxy {
 					queryString.Add("values", $"{item}");
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -112,7 +105,6 @@ namespace Test.WithInterface.Proxy {
 					queryString.Add("values", $"{item}");
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -125,7 +117,6 @@ namespace Test.WithInterface.Proxy {
 					queryString.Add("dates", item.Value.ISO8601String());
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -138,7 +129,6 @@ namespace Test.WithInterface.Proxy {
 					queryString.Add("dates", item.Value.ISO8601String());
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -149,7 +139,6 @@ namespace Test.WithInterface.Proxy {
 			if (value != null) {
 				queryString.Add("value", $"{value}");
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetJsonResponse<System.Nullable<Test.Dto.Enums.MyEnum>>(request);
 			}
@@ -162,7 +151,6 @@ namespace Test.WithInterface.Proxy {
 					queryString.Add("value", $"{item}");
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponse<System.Nullable<Test.Dto.Enums.MyEnum>[]>(request);
 			}

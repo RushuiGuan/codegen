@@ -17,9 +17,7 @@ namespace Test.WithInterface.Proxy {
 				.AddTypedClient<IInterfaceAndAbstractClassTestProxyService, InterfaceAndAbstractClassTestProxyService>()
 				.AddTypedClient<INullableParamTestProxyService, NullableParamTestProxyService>()
 				.AddTypedClient<INullableReturnTypeTestProxyService, NullableReturnTypeTestProxyService>()
-#pragma warning disable CS0612 // Type or member is obsolete
 				.AddTypedClient<IObsoleteProxyService, ObsoleteProxyService>()
-#pragma warning restore CS0612 // Type or member is obsolete
 				.AddTypedClient<IPartiallyObsoleteProxyService, PartiallyObsoleteProxyService>()
 				.AddTypedClient<IOmittedConstructorProxyService, OmittedConstructorProxyService>()
 				.AddTypedClient<IRequiredParamTestProxyService, RequiredParamTestProxyService>()

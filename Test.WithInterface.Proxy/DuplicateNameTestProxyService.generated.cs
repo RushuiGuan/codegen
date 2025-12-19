@@ -18,7 +18,6 @@ namespace Test.WithInterface.Proxy {
 			string path = $"{ControllerPath}/by-id";
 			var queryString = new NameValueCollection();
 			queryString.Add("id", $"{id}");
-
 			using (var request = this.CreateRequest(HttpMethod.Post, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
@@ -27,7 +26,6 @@ namespace Test.WithInterface.Proxy {
 			string path = $"{ControllerPath}/by-name";
 			var queryString = new NameValueCollection();
 			queryString.Add("name", name);
-
 			using (var request = this.CreateRequest(HttpMethod.Post, path, queryString)) {
 				await this.GetRawResponse(request);
 			}

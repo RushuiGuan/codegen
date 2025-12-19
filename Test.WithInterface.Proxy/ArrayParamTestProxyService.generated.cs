@@ -24,7 +24,6 @@ namespace Test.WithInterface.Proxy {
 			foreach (var item in array) {
 				queryString.Add("a", item);
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -35,7 +34,6 @@ namespace Test.WithInterface.Proxy {
 			foreach (var item in array) {
 				queryString.Add("a", $"{item}");
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -46,7 +44,6 @@ namespace Test.WithInterface.Proxy {
 			foreach (var item in collection) {
 				queryString.Add("c", item);
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -57,7 +54,6 @@ namespace Test.WithInterface.Proxy {
 			foreach (var item in collection) {
 				queryString.Add("c", $"{item}");
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -68,7 +64,6 @@ namespace Test.WithInterface.Proxy {
 			foreach (var item in collection) {
 				queryString.Add("c", item.ISO8601String());
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -79,7 +74,6 @@ namespace Test.WithInterface.Proxy {
 			foreach (var item in collection) {
 				queryString.Add("c", item.ISO8601String());
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}

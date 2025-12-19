@@ -43,7 +43,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task Get() {
 			string path = $"{ControllerPath}/void";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
@@ -51,7 +50,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task GetAsync() {
 			string path = $"{ControllerPath}/async-task";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
@@ -59,7 +57,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task GetActionResult() {
 			string path = $"{ControllerPath}/action-result";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
@@ -67,7 +64,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task GetAsyncActionResult() {
 			string path = $"{ControllerPath}/async-action-result";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
@@ -75,7 +71,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<string> GetString() {
 			string path = $"{ControllerPath}/string";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -83,7 +78,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<string> GetAsyncString() {
 			string path = $"{ControllerPath}/async-string";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -91,7 +85,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<string> GetActionResultString() {
 			string path = $"{ControllerPath}/action-result-string";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -99,7 +92,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<string> GetAsyncActionResultString() {
 			string path = $"{ControllerPath}/async-action-result-string";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
 			}
@@ -107,7 +99,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<int> GetInt() {
 			string path = $"{ControllerPath}/int";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<int>(request);
 			}
@@ -115,7 +106,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<int> GetAsyncInt() {
 			string path = $"{ControllerPath}/async-int";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<int>(request);
 			}
@@ -123,7 +113,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<int> GetActionResultInt() {
 			string path = $"{ControllerPath}/action-result-int";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<int>(request);
 			}
@@ -131,7 +120,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<int> GetAsyncActionResultInt() {
 			string path = $"{ControllerPath}/async-action-result-int";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<int>(request);
 			}
@@ -139,7 +127,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<System.DateTime> GetDateTime() {
 			string path = $"{ControllerPath}/datetime";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<System.DateTime>(request);
 			}
@@ -147,7 +134,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<System.DateTime> GetAsyncDateTime() {
 			string path = $"{ControllerPath}/async-datetime";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<System.DateTime>(request);
 			}
@@ -155,7 +141,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<System.DateTime> GetActionResultDateTime() {
 			string path = $"{ControllerPath}/action-result-datetime";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<System.DateTime>(request);
 			}
@@ -163,7 +148,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<System.DateTime> GetAsyncActionResultDateTime() {
 			string path = $"{ControllerPath}/async-action-result-datetime";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<System.DateTime>(request);
 			}
@@ -171,7 +155,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<System.DateOnly> GetDateOnly() {
 			string path = $"{ControllerPath}/dateonly";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<System.DateOnly>(request);
 			}
@@ -179,7 +162,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<System.DateTimeOffset> GetDateTimeOffset() {
 			string path = $"{ControllerPath}/datetimeoffset";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<System.DateTimeOffset>(request);
 			}
@@ -187,7 +169,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<System.TimeOnly> GetTimeOnly() {
 			string path = $"{ControllerPath}/timeonly";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<System.TimeOnly>(request);
 			}
@@ -195,7 +176,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<Test.Dto.Classes.MyDto> GetMyDto() {
 			string path = $"{ControllerPath}/object";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponse<Test.Dto.Classes.MyDto>(request);
 			}
@@ -203,7 +183,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<Test.Dto.Classes.MyDto> GetAsyncMyDto() {
 			string path = $"{ControllerPath}/async-object";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponse<Test.Dto.Classes.MyDto>(request);
 			}
@@ -211,7 +190,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<Test.Dto.Classes.MyDto> ActionResultObject() {
 			string path = $"{ControllerPath}/action-result-object";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponse<Test.Dto.Classes.MyDto>(request);
 			}
@@ -219,7 +197,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<Test.Dto.Classes.MyDto> AsyncActionResultObject() {
 			string path = $"{ControllerPath}/async-action-result-object";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponse<Test.Dto.Classes.MyDto>(request);
 			}
@@ -227,7 +204,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<Test.Dto.Classes.MyDto[]> GetMyDtoArray() {
 			string path = $"{ControllerPath}/array-return-type";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponse<Test.Dto.Classes.MyDto[]>(request);
 			}
@@ -235,7 +211,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>> GetMyDtoCollection() {
 			string path = $"{ControllerPath}/collection-return-type";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponse<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>>(request);
 			}
@@ -243,7 +218,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>> GetMyDtoCollectionAsync() {
 			string path = $"{ControllerPath}/async-collection-return-type";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponse<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>>(request);
 			}
@@ -251,7 +225,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<Test.Dto.Enums.MyEnum> RequiredEnum() {
 			string path = $"{ControllerPath}/required-enum";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<Test.Dto.Enums.MyEnum>(request);
 			}
@@ -259,7 +232,6 @@ namespace Test.WithInterface.Proxy {
 		public async Task<Test.Dto.Enums.MyEnum[]> RequiredEnumArray() {
 			string path = $"{ControllerPath}/required-enum-array";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponse<Test.Dto.Enums.MyEnum[]>(request);
 			}
