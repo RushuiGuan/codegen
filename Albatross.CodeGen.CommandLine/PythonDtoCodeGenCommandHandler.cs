@@ -8,14 +8,14 @@ using Albatross.CodeGen.WebClient.Python;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
-using Microsoft.Extensions.Options;
 using System.Collections.Generic;
-using System.CommandLine.Invocation;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class PythonDtoCodeGenCommandHandler : BaseHandler<CodeGenCommandOptions> {
+	public class PythonDtoCodeGenCommandHandler : CommandAction<CodeGenCommandOptions> {
 		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
 		private readonly ConvertClassSymbolToDtoClassModel dto2Model;
@@ -29,7 +29,7 @@ namespace Albatross.CodeGen.CommandLine {
 			ConvertEnumSymbolToDtoEnumModel enum2Model,
 			ConvertDtoClassModelToDataClass dtoModel2Python,
 			ConvertEnumModelToPythonEnum enumModel2Python,
-			IOptions<CodeGenCommandOptions> options) : base(options) {
+			CodeGenCommandOptions options) : base(options) {
 			this.compilation = compilation;
 			this.settings = settings;
 			this.dto2Model = dto2Model;
@@ -38,7 +38,7 @@ namespace Albatross.CodeGen.CommandLine {
 			this.enumModel2Python = enumModel2Python;
 		}
 
-		public override int Invoke(InvocationContext context) {
+		public override Task<int> Invoke(CancellationToken cancellationToken) {
 			var dtoModels = new List<DtoClassInfo>();
 			var enumModels = new List<EnumInfo>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
@@ -69,7 +69,7 @@ namespace Albatross.CodeGen.CommandLine {
 				streamWriter.Flush();
 				stream.SetLength(stream.Position);
 			}
-			return 0;
+			return Task.FromResult(0);
 		}
 	}
 }

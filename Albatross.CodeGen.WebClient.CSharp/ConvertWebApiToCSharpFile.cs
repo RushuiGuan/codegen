@@ -96,11 +96,11 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				ReturnType = GetMethodReturnType(method.ReturnType),
 				Parameters = GetMethodParameters(method),
 				IsAsync = true,
-				Body = new CodeBlock(
-					BuildPath(method).AsEnumerable()
-						.Concat(BuildQuery(method))
-						.Concat(BuildHttpCall(method))
-				)
+				Body = new CodeBlock {
+					BuildPath(method),
+					{ true,() => BuildQuery(method) },
+					{ true,() => BuildHttpCall(method) },
+				},
 			};
 		}
 
@@ -242,7 +242,6 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		}
 
 		IEnumerable<IExpression> BuildHttpCall(MethodInfo method) {
-			yield return new NewLineExpression();
 			var fromBody = method.Parameters.FirstOrDefault(x => x.WebType == ParameterType.FromBody);
 			yield return new UsingExpression {
 				Resource = new AssignmentExpression {

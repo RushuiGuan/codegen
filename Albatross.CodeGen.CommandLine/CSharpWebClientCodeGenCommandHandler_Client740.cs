@@ -6,15 +6,14 @@ using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
-using System.CommandLine.Invocation;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
 	[Obsolete]
-	public class CSharpWebClientCodeGenCommandHandler_Client740 : BaseHandler<CodeGenCommandOptions> {
+	public class CSharpWebClientCodeGenCommandHandler_Client740 : CommandAction<CodeGenCommandOptions> {
 		private readonly CreateHttpClientRegistrations createHttpClientRegistrations;
 		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
@@ -22,7 +21,7 @@ namespace Albatross.CodeGen.CommandLine {
 		private readonly ConvertApiControllerToControllerModel convertToWebApi;
 		private readonly ConvertWebApiToCSharpCodeStack_Client740 converToCSharpCodeStack;
 
-		public CSharpWebClientCodeGenCommandHandler_Client740(IOptions<CodeGenCommandOptions> options,
+		public CSharpWebClientCodeGenCommandHandler_Client740(CodeGenCommandOptions options,
 			CreateHttpClientRegistrations createHttpClientRegistrations,
 			Compilation compilation,
 			CodeGenSettings settings,
@@ -37,7 +36,7 @@ namespace Albatross.CodeGen.CommandLine {
 			this.converToCSharpCodeStack = converToCSharpFile;
 		}
 
-		public override Task<int> InvokeAsync(InvocationContext context) {
+		public override Task<int> Invoke(CancellationToken cancellationToken) {
 			var controllerClass = new List<INamedTypeSymbol>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
 				var semanticModel = compilation.GetSemanticModel(syntaxTree);
@@ -55,7 +54,7 @@ namespace Albatross.CodeGen.CommandLine {
 					var codeStack = this.converToCSharpCodeStack.Convert(webApi);
 
 					var text = codeStack.Build();
-					this.writer.WriteLine(text);
+					this.Writer.WriteLine(text);
 					if (options.OutputDirectory != null) {
 						using (var writer = new System.IO.StreamWriter(System.IO.Path.Join(options.OutputDirectory.FullName, codeStack.FileName ?? "generated.cs"))) {
 							writer.Write(text);

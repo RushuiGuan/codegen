@@ -15,27 +15,26 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System;
-using System.CommandLine.Invocation;
-using System.Linq;
+using System.CommandLine;
 using System.Text.Json;
 
 namespace Albatross.CodeGen.CommandLine {
 	public class MySetup : Setup {
-		protected override string RootCommandDescription => "Albatross Code Generator that creates HttpClient proxy for CSharp, TypeScript and Python projects";
-
-		public override void RegisterServices(InvocationContext context, IConfiguration configuration, EnvironmentSetting envSetting, IServiceCollection services) {
-			base.RegisterServices(context, configuration, envSetting, services);
+		public MySetup() : base("Albatross Code Generator that creates HttpClient proxy for CSharp, TypeScript and Python projects") { }
+		protected override void RegisterServices(ParseResult result, IConfiguration configuration, EnvironmentSetting envSetting, IServiceCollection services) {
+			base.RegisterServices(result, configuration, envSetting, services);
 			services.RegisterCommands();
+			var key = result.CommandResult.Command.GetCommandKey();
 			services.AddWebClientCodeGen();
-			if (context.ParseResult.CommandResult.Parent?.Symbol.Name == "python") {
+			if (key.StartsWith("python")) {
 				services.AddPythonCodeGen();
 				services.AddPythonWebClientCodeGen();
-			} else if (context.ParseResult.CommandResult.Parent?.Symbol.Name == "typescript") {
+			} else if (key.StartsWith("typescript")) {
 				services.AddTypeScriptCodeGen();
 				services.AddTypeScriptWebClientCodeGen();
-			} else if (context.ParseResult.CommandResult.Parent?.Symbol.Name == "csharp") {
+			} else if (key.StartsWith("csharp ")) {
 				services.AddCSharpWebClientCodeGen();
-			} else if (context.ParseResult.CommandResult.Parent?.Symbol.Name == "csharp2") {
+			} else if (key.StartsWith("csharp2")) {
 				services.AddCSharpWebClientCodeGen();
 			}
 			services.AddShortenLoggerName(false, "Albatross");
@@ -49,7 +48,7 @@ namespace Albatross.CodeGen.CommandLine {
 
 		static IServiceCollection RegisterCodeGenSettings<T>(IServiceCollection services) where T : CodeGenSettings, new() {
 			services.AddSingleton(provider => {
-				var options = provider.GetRequiredService<IOptions<CodeGenCommandOptions>>().Value;
+				var options = provider.GetRequiredService<CodeGenCommandOptions>();
 				if (options.SettingsFile == null) {
 					return new T();
 				} else if (options.SettingsFile.Exists) {

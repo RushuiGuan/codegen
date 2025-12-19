@@ -4,29 +4,27 @@ using Albatross.CodeGen.WebClient;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CodeGen.WebClient.TypeScript;
+using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System.Collections.Generic;
-using System.CommandLine.Invocation;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class TypeScriptWebClientCodeGenCommandHandler : ICommandHandler {
+	public class TypeScriptWebClientCodeGenCommandHandler : CommandAction<CodeGenCommandOptions> {
 		private readonly ILogger<TypeScriptWebClientCodeGenCommandHandler> logger;
-		private readonly CodeGenCommandOptions options;
 		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
 		private readonly ConvertApiControllerToControllerModel convertToWebApi;
 		private readonly ConvertControllerModelToTypeScriptFile converToTypeScriptFile;
 
-		public TypeScriptWebClientCodeGenCommandHandler(IOptions<CodeGenCommandOptions> options,
+		public TypeScriptWebClientCodeGenCommandHandler(CodeGenCommandOptions options,
 			ILogger<TypeScriptWebClientCodeGenCommandHandler> logger,
 			Compilation compilation,
 			CodeGenSettings settings,
 			ConvertApiControllerToControllerModel convertToWebApi,
-			ConvertControllerModelToTypeScriptFile converToTypeScriptFile) {
-			this.options = options.Value;
+			ConvertControllerModelToTypeScriptFile converToTypeScriptFile) : base(options) {
 			this.logger = logger;
 			this.compilation = compilation;
 			this.settings = settings;
@@ -34,11 +32,7 @@ namespace Albatross.CodeGen.CommandLine {
 			this.converToTypeScriptFile = converToTypeScriptFile;
 		}
 
-		public int Invoke(InvocationContext context) {
-			throw new System.NotSupportedException();
-		}
-
-		public Task<int> InvokeAsync(InvocationContext context) {
+		public override Task<int> Invoke(CancellationToken cancellationToken) {
 			var models = new List<INamedTypeSymbol>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
 				var semanticModel = compilation.GetSemanticModel(syntaxTree);

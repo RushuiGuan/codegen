@@ -2,27 +2,28 @@
 using Albatross.CodeGen.WebClient.Python;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CommandLine;
-using Microsoft.Extensions.Options;
 using NJsonSchema;
 using NJsonSchema.Generation;
 using System;
-using System.CommandLine.Invocation;
+using System.CommandLine;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	[Verb("schema python", typeof(GenerateSettingsSchema))]
-	[Verb("schema csharp", typeof(GenerateSettingsSchema))]
-	[Verb("schema typescript", typeof(GenerateSettingsSchema))]
+	[Verb<GenerateSettingsSchema>("schema python")]
+	[Verb<GenerateSettingsSchema>("schema csharp")]
+	[Verb<GenerateSettingsSchema>("schema typescript")]
 	public record class GenerateSettingsSchemaOptions {
+		[Option(Description ="The output file for the generated schema")]
 		public FileInfo? File { get; set; }
 	}
 
-	public class GenerateSettingsSchema : BaseHandler<GenerateSettingsSchemaOptions> {
-		public GenerateSettingsSchema(IOptions<GenerateSettingsSchemaOptions> options) : base(options) {
+	public class GenerateSettingsSchema : CommandAction<GenerateSettingsSchemaOptions> {
+		public GenerateSettingsSchema(ParseResult result, GenerateSettingsSchemaOptions options) : base(result, options) {
 		}
 
-		public override Task<int> InvokeAsync(InvocationContext context) {
+		public override Task<int> Invoke(CancellationToken cancellationToken) {
 			var settings = new SystemTextJsonSchemaGeneratorSettings {
 				FlattenInheritanceHierarchy = true,
 				SerializerOptions = new System.Text.Json.JsonSerializerOptions {
@@ -31,7 +32,7 @@ namespace Albatross.CodeGen.CommandLine {
 				},
 			};
 			var generator = new JsonSchemaGenerator(settings);
-			var schema = context.ParsedCommandName() switch {
+			var schema = Result.CommandResult.Command.Name switch {
 				"python" => generator.Generate(typeof(PythonWebClientSettings)),
 				"typescript" => generator.Generate(typeof(TypeScriptWebClientSettings)),
 				"csharp" => generator.Generate(typeof(CSharpWebClientSettings)),

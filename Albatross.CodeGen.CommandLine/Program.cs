@@ -1,12 +1,8 @@
-﻿using System.CommandLine.Parsing;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
 	internal class Program {
-		static async Task<int> Main(string[] args) {
-			var setup = new MySetup().AddCommands();
-			var parser = setup.CommandBuilder.Build();
-			return await parser.InvokeAsync(args);
-		}
+		static Task<int> Main(string[] args)
+			=> new MySetup().AddCommands().Parse(args).RegisterServices().Build().InvokeAsync();
 	}
 }

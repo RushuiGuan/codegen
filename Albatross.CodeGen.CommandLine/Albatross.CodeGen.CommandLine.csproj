@@ -13,12 +13,12 @@
 		<PackageProjectUrl>$(RepositoryProjectRoot)/Albatross.CodeGen.CommandLine</PackageProjectUrl>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.1-61.main" />
+		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.1-62.main" />
 		<PackageReference Include="Albatross.Threading" Version="7.5.9" />
 		<PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="5.0.0" />
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="5.0.0" />
 		<PackageReference Include="NJsonSchema" Version="11.5.2" />
-		<PackageReference Include="Albatross.CommandLine" Version="8.0.0" />
+		<PackageReference Include="Albatross.CommandLine" Version="8.0.1-48.main" />
 		<PackageReference Include="Albatross.Logging" Version="10.0.1" />
 		<PackageReference Include="Albatross.Serialization.Json" Version="10.0.0" />
 	</ItemGroup>

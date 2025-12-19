@@ -4,16 +4,15 @@ using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
-using Microsoft.Extensions.Options;
 using System.Collections.Generic;
-using System.CommandLine.Invocation;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class DtoClassInfoModelGenerator : BaseHandler<CodeGenCommandOptions> {
+	public class DtoClassInfoModelGenerator : CommandAction<CodeGenCommandOptions> {
 		private Compilation compilation;
 		private ConvertClassSymbolToDtoClassModel dtoConverter;
 		private readonly ConvertEnumSymbolToDtoEnumModel enumConverter;
@@ -22,14 +21,14 @@ namespace Albatross.CodeGen.CommandLine {
 		public DtoClassInfoModelGenerator(Compilation compilation, ConvertClassSymbolToDtoClassModel dtoConverter,
 			ConvertEnumSymbolToDtoEnumModel enumConverter,
 			CodeGenSettings settings,
-			IOptions<CodeGenCommandOptions> options) : base(options) {
+			CodeGenCommandOptions options) : base(options) {
 			this.compilation = compilation;
 			this.dtoConverter = dtoConverter;
 			this.enumConverter = enumConverter;
 			this.settings = settings;
 		}
 
-		public override int Invoke(InvocationContext context) {
+		public override Task<int> Invoke(CancellationToken cancellationToken) {
 			var dtoClasses = new List<INamedTypeSymbol>();
 			var enumClasses = new List<INamedTypeSymbol>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
@@ -49,7 +48,7 @@ namespace Albatross.CodeGen.CommandLine {
 			}
 			if (dtoModels.Any()) {
 				var text = JsonSerializer.Serialize(dtoModels, serializationOptions);
-				this.writer.WriteLine(text);
+				this.Writer.WriteLine(text);
 			}
 			var enumModels = new List<EnumInfo>();
 			foreach (var item in enumClasses) {
@@ -60,7 +59,7 @@ namespace Albatross.CodeGen.CommandLine {
 			}
 			if (enumModels.Any()) {
 				var text = JsonSerializer.Serialize(enumModels, serializationOptions);
-				this.writer.WriteLine(text);
+				this.Writer.WriteLine(text);
 			}
 
 			if (options.OutputDirectory != null) {
@@ -77,7 +76,7 @@ namespace Albatross.CodeGen.CommandLine {
 					}
 				}
 			}
-			return 0;
+			return Task.FromResult(0);
 		}
 	}
 }

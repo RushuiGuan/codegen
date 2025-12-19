@@ -6,7 +6,7 @@
 		<PackageProjectUrl>$(RepositoryProjectRoot)/Albatross.CodeGen.Python</PackageProjectUrl>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.1-61.main" />
+		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.1-62.main" />
 		<PackageReference Include="Albatross.Collections" Version="8.0.1" />
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
 	</ItemGroup>

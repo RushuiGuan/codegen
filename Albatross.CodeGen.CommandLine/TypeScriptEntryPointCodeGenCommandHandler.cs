@@ -4,27 +4,28 @@ using Albatross.CommandLine;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Collections.Generic;
-using System.CommandLine.Invocation;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	[Verb("typescript entrypoint", typeof(TypeScriptEntryPointCodeGenCommandHandler))]
+	[Verb<TypeScriptEntryPointCodeGenCommandHandler>("typescript entrypoint")]
 	public record TypeScriptEntryPointCodeGenOptions {
 		[Option("o")]
 		public DirectoryInfo OutputDirectory { get; init; } = null!;
 	}
-	public class TypeScriptEntryPointCodeGenCommandHandler : BaseHandler<TypeScriptEntryPointCodeGenOptions> {
+	public class TypeScriptEntryPointCodeGenCommandHandler : CommandAction<TypeScriptEntryPointCodeGenOptions> {
 		private readonly ILogger<TypeScriptEntryPointCodeGenCommandHandler> logger;
 		private readonly TypeScriptWebClientSettings settings;
 
-		public TypeScriptEntryPointCodeGenCommandHandler(IOptions<TypeScriptEntryPointCodeGenOptions> options,
+		public TypeScriptEntryPointCodeGenCommandHandler(TypeScriptEntryPointCodeGenOptions options,
 			ILogger<TypeScriptEntryPointCodeGenCommandHandler> logger,
 			TypeScriptWebClientSettings settings) : base(options) {
 			this.logger = logger;
 			this.settings = settings;
 		}
 
-		public override int Invoke(InvocationContext context) {
+		public override Task<int> Invoke(CancellationToken cancellationToken) {
 			string entryFile = Path.Combine(this.options.OutputDirectory.FullName, this.settings.EntryFile);
 			var sourceFoler = Path.Combine(this.options.OutputDirectory.FullName, this.settings.SourcePathRelatedToEntryFile);
 
@@ -53,7 +54,7 @@ namespace Albatross.CodeGen.CommandLine {
 					writer.WriteLine(entry);
 				}
 			}
-			return 0;
+			return Task.FromResult(0);
 		}
 	}
 }

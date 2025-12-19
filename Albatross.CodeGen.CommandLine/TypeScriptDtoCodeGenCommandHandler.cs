@@ -6,14 +6,14 @@ using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CodeGen.WebClient.TypeScript;
 using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
-using Microsoft.Extensions.Options;
 using System.Collections.Generic;
-using System.CommandLine.Invocation;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class TypeScriptDtoCodeGenCommandHandler : BaseHandler<CodeGenCommandOptions> {
+	public class TypeScriptDtoCodeGenCommandHandler : CommandAction<CodeGenCommandOptions> {
 		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
 		private readonly ConvertClassSymbolToDtoClassModel dto2Model;
@@ -27,7 +27,7 @@ namespace Albatross.CodeGen.CommandLine {
 			ConvertEnumSymbolToDtoEnumModel enum2Model,
 			ConvertDtoClassModelToTypeScriptInterface dtoModel2TypeScript,
 			ConvertEnumModelToTypeScriptEnum enumModel2TypeScript,
-			IOptions<CodeGenCommandOptions> options) : base(options) {
+			CodeGenCommandOptions options) : base(options) {
 			this.compilation = compilation;
 			this.settings = settings;
 			this.dto2Model = dto2Model;
@@ -36,7 +36,7 @@ namespace Albatross.CodeGen.CommandLine {
 			this.enumModel2TypeScript = enumModel2TypeScript;
 		}
 
-		public override int Invoke(InvocationContext context) {
+		public override Task<int> Invoke(CancellationToken cancellationToken) {
 			var dtoModels = new List<DtoClassInfo>();
 			var enumModels = new List<EnumInfo>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
@@ -62,7 +62,7 @@ namespace Albatross.CodeGen.CommandLine {
 					dtoFile.Generate(writer);
 				}
 			}
-			return 0;
+			return Task.FromResult(0);
 		}
 	}
 }

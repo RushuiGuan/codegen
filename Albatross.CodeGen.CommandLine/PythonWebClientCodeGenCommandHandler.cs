@@ -4,29 +4,27 @@ using Albatross.CodeGen.WebClient;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Python;
 using Albatross.CodeGen.WebClient.Settings;
+using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System.Collections.Generic;
-using System.CommandLine.Invocation;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class PythonWebClientCodeGenCommandHandler : ICommandHandler {
+	public class PythonWebClientCodeGenCommandHandler : CommandAction<CodeGenCommandOptions> {
 		private readonly ILogger<PythonWebClientCodeGenCommandHandler> logger;
-		private readonly CodeGenCommandOptions options;
 		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
 		private readonly ConvertApiControllerToControllerModel convertToWebApi;
 		private readonly ConvertControllerModelToPythonFile converToPythonFile;
 
-		public PythonWebClientCodeGenCommandHandler(IOptions<CodeGenCommandOptions> options,
+		public PythonWebClientCodeGenCommandHandler(CodeGenCommandOptions options,
 			ILogger<PythonWebClientCodeGenCommandHandler> logger,
 			Compilation compilation,
 			CodeGenSettings settings,
 			ConvertApiControllerToControllerModel convertToWebApi,
-			ConvertControllerModelToPythonFile converToPythonFile) {
-			this.options = options.Value;
+			ConvertControllerModelToPythonFile converToPythonFile) :base(options){
 			this.logger = logger;
 			this.compilation = compilation;
 			this.settings = settings;
@@ -34,11 +32,7 @@ namespace Albatross.CodeGen.CommandLine {
 			this.converToPythonFile = converToPythonFile;
 		}
 
-		public int Invoke(InvocationContext context) {
-			throw new System.NotSupportedException();
-		}
-
-		public Task<int> InvokeAsync(InvocationContext context) {
+		public override Task<int> Invoke(CancellationToken cancellationToken) {
 			var models = new List<INamedTypeSymbol>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
 				var semanticModel = compilation.GetSemanticModel(syntaxTree);

@@ -19,8 +19,8 @@ namespace Albatross.CodeGen.CommandLine {
 		Compilation? compilation;
 		SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
-		public ProjectCompilationFactory(IOptions<CodeGenCommandOptions> projectOptions, ILogger<ProjectCompilationFactory> logger) {
-			this.project = projectOptions.Value.ProjectFile.FullName;
+		public ProjectCompilationFactory(CodeGenCommandOptions projectOptions, ILogger<ProjectCompilationFactory> logger) {
+			this.project = projectOptions.ProjectFile.FullName;
 			this.logger = logger;
 		}
 		public async Task<Compilation> Create() {
@@ -29,13 +29,17 @@ namespace Albatross.CodeGen.CommandLine {
 				if (this.compilation == null) {
 					var workspace = MSBuildWorkspace.Create();
 					var project = await workspace.OpenProjectAsync(this.project);
+					var parseOptions = (CSharpParseOptions)(project.ParseOptions ?? CSharpParseOptions.Default);
 					this.compilation = await project.GetCompilationAsync();
 					if (compilation == null) {
 						throw new InvalidOperationException($"Unable to create compilation for project: {project.Name}");
 					}
-					var generators = project.AnalyzerReferences.SelectMany(a => a.GetGenerators(LanguageNames.CSharp)).ToArray();
+					var generators = project.AnalyzerReferences
+						.Where(a=>a.Display != "Microsoft.CodeAnalysis.Razor.Compiler")
+						.SelectMany(a => a.GetGenerators(LanguageNames.CSharp)).ToArray();
+
 					if (generators.Length > 0) {
-						var driver = CSharpGeneratorDriver.Create(generators);
+						var driver = CSharpGeneratorDriver.Create(generators).WithUpdatedParseOptions(parseOptions);
 						driver.RunGeneratorsAndUpdateCompilation(compilation, out var updatedCompilation, out var diagnostics);
 						if (diagnostics.Length > 0) {
 							foreach (var diag in diagnostics) {

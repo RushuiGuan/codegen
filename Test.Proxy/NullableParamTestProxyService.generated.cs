@@ -16,9 +16,8 @@ namespace Test.Proxy {
 			if (text != null) {
 				queryString.Add("text", text);
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
+				return await this.GetRawResponse(request);;
 			}
 		}
 		public async Task<string> NullableValueType(System.Nullable<int> id) {
@@ -27,9 +26,8 @@ namespace Test.Proxy {
 			if (id != null) {
 				queryString.Add("id", $"{id}");
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
+				return await this.GetRawResponse(request);;
 			}
 		}
 		public async Task<string> NullableDateOnly(System.Nullable<System.DateOnly> date) {
@@ -38,15 +36,13 @@ namespace Test.Proxy {
 			if (date != null) {
 				queryString.Add("date", date.Value.ISO8601String());
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
+				return await this.GetRawResponse(request);;
 			}
 		}
 		public async Task NullablePostParam(Test.Dto.Classes.MyDto? dto) {
 			string path = $"{ControllerPath}/nullable-post-param";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateJsonRequest<Test.Dto.Classes.MyDto?>(HttpMethod.Post, path, queryString, dto)) {
 				await this.GetRawResponse(request);
 			}
@@ -59,9 +55,8 @@ namespace Test.Proxy {
 					queryString.Add("values", item);
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
+				return await this.GetRawResponse(request);;
 			}
 		}
 		public async Task<string> NullableStringCollection(System.Collections.Generic.IEnumerable<string?> values) {
@@ -72,9 +67,8 @@ namespace Test.Proxy {
 					queryString.Add("values", item);
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
+				return await this.GetRawResponse(request);;
 			}
 		}
 		public async Task<string> NullableValueTypeArray(System.Nullable<int>[] values) {
@@ -85,9 +79,8 @@ namespace Test.Proxy {
 					queryString.Add("values", $"{item}");
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
+				return await this.GetRawResponse(request);;
 			}
 		}
 		public async Task<string> NullableValueTypeCollection(System.Collections.Generic.IEnumerable<System.Nullable<int>> values) {
@@ -98,9 +91,8 @@ namespace Test.Proxy {
 					queryString.Add("values", $"{item}");
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
+				return await this.GetRawResponse(request);;
 			}
 		}
 		public async Task<string> NullableDateOnlyCollection(System.Collections.Generic.IEnumerable<System.Nullable<System.DateOnly>> dates) {
@@ -111,9 +103,8 @@ namespace Test.Proxy {
 					queryString.Add("dates", item.Value.ISO8601String());
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
+				return await this.GetRawResponse(request);;
 			}
 		}
 		public async Task<string> NullableDateOnlyArray(System.Nullable<System.DateOnly>[] dates) {
@@ -124,9 +115,8 @@ namespace Test.Proxy {
 					queryString.Add("dates", item.Value.ISO8601String());
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRawResponse(request);
+				return await this.GetRawResponse(request);;
 			}
 		}
 		public async Task<System.Nullable<Test.Dto.Enums.MyEnum>> NullableEnumParameter(System.Nullable<Test.Dto.Enums.MyEnum> value) {
@@ -135,9 +125,8 @@ namespace Test.Proxy {
 			if (value != null) {
 				queryString.Add("value", $"{value}");
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetJsonResponse<System.Nullable<Test.Dto.Enums.MyEnum>>(request);
+				return await this.GetJsonResponse<System.Nullable<Test.Dto.Enums.MyEnum>>(request);;
 			}
 		}
 		public async Task<System.Nullable<Test.Dto.Enums.MyEnum>[]> NullableEnumArray(System.Nullable<Test.Dto.Enums.MyEnum>[] value) {
@@ -148,9 +137,8 @@ namespace Test.Proxy {
 					queryString.Add("value", $"{item}");
 				}
 			}
-
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
-				return await this.GetRequiredJsonResponse<System.Nullable<Test.Dto.Enums.MyEnum>[]>(request);
+				return await this.GetRequiredJsonResponse<System.Nullable<Test.Dto.Enums.MyEnum>[]>(request);;
 			}
 		}
 	}

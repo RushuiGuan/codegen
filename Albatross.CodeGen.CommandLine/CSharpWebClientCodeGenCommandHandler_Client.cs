@@ -6,13 +6,12 @@ using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System.Collections.Generic;
-using System.CommandLine.Invocation;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class CSharpWebClientCodeGenCommandHandler_Client : BaseHandler<CodeGenCommandOptions> {
+	public class CSharpWebClientCodeGenCommandHandler_Client : CommandAction<CodeGenCommandOptions> {
 		private readonly CreateHttpClientRegistrations2 createHttpClientRegistrations;
 		private readonly Compilation compilation;
 		private readonly CSharpWebClientSettings settings;
@@ -20,7 +19,7 @@ namespace Albatross.CodeGen.CommandLine {
 		private readonly ConvertApiControllerToControllerModel convertToWebApi;
 		private readonly ConvertWebApiToCSharpFile converToCSharpCodeStack;
 
-		public CSharpWebClientCodeGenCommandHandler_Client(IOptions<CodeGenCommandOptions> options,
+		public CSharpWebClientCodeGenCommandHandler_Client(CodeGenCommandOptions options,
 			CreateHttpClientRegistrations2 createHttpClientRegistrations,
 			Compilation compilation,
 			CSharpWebClientSettings settings,
@@ -35,7 +34,7 @@ namespace Albatross.CodeGen.CommandLine {
 			this.converToCSharpCodeStack = converToCSharpFile;
 		}
 
-		public override Task<int> InvokeAsync(InvocationContext context) {
+		public override Task<int> Invoke(CancellationToken cancellationToken) {
 			var controllerClass = new List<INamedTypeSymbol>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
 				var semanticModel = compilation.GetSemanticModel(syntaxTree);
@@ -56,7 +55,7 @@ namespace Albatross.CodeGen.CommandLine {
 							csharpFile.Generate(streamWriter);
 						}
 					} else {
-						csharpFile.Generate(this.writer);
+						csharpFile.Generate(this.Writer);
 					}
 				}
 			}
@@ -71,7 +70,7 @@ namespace Albatross.CodeGen.CommandLine {
 					streamWriter.Code(file);
 				}
 			} else {
-				this.writer.Code(file);
+				this.Writer.Code(file);
 			}
 		}
 	}

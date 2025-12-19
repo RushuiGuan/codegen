@@ -13,7 +13,6 @@ namespace Test.Proxy {
 		public async Task Post() {
 			string path = $"{ControllerPath}";
 			var queryString = new NameValueCollection();
-
 			using (var request = this.CreateRequest(HttpMethod.Post, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
