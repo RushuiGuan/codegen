@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class SwitchSection : CodeNode, IExpression {
+	public record class SwitchCaseExpression : CodeNode, IExpression {
 		public required LiteralExpression Value { get; init; }
 		public required IExpression Expression { get; init; }
 
@@ -15,12 +15,12 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		public override IEnumerable<ICodeNode> Children => [Value, Expression];
 	}
 	public record class SwitchExpression : CodeNode, IExpression {
-		public required IIdentifierNameExpression Variable { get; init; }
-		public ListOfNodes<SwitchSection> Sections { get; init; } = new();
+		public required IExpression Value { get; init; }
+		public ListOfNodes<SwitchCaseExpression> Sections { get; init; } = new();
 		public IExpression? DefaultExpression { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {
-			using var scope = writer.Code(Variable).Space().BeginScope("switch");
+			using var scope = writer.Code(Value).Space().BeginScope("switch");
 			IExpression? defaultExpression = null;
 			if (DefaultExpression is not null) {
 				defaultExpression = new LamdaExpression {
@@ -31,6 +31,6 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			scope.Writer.WriteItems(Sections.Cast<IExpression>().UnionIfNotNull(defaultExpression), ",\n", (w, s) => w.Code(s));
 			return writer;
 		}
-		public override IEnumerable<ICodeNode> Children => [Variable, .. Sections];
+		public override IEnumerable<ICodeNode> Children => [Value, .. Sections];
 	}
 }
