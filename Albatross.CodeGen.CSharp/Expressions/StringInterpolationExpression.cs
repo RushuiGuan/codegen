@@ -1,19 +1,16 @@
 ﻿using Albatross.Text;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class StringInterpolationExpression : CodeNode, IExpression {
-		public required IEnumerable<IExpression> Expressions { get; init; }
-
+	public record class StringInterpolationExpression : ListOfNodes<IExpression>, IExpression {
 		public override TextWriter Generate(TextWriter writer) {
-			if (Expressions.Any(x => !(x is StringLiteralExpression))) {
+			if (this.Any(x => !(x is StringLiteralExpression))) {
 				writer.Append("$\"");
 			} else {
 				writer.Append("\"");
 			}
-			foreach (var item in Expressions) {
+			foreach (var item in this) {
 				if (item is StringLiteralExpression literal) {
 					literal.WriteEscapedValue(writer);
 				} else {
@@ -25,7 +22,5 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			writer.Append("\"");
 			return writer;
 		}
-
-		public override IEnumerable<ICodeNode> Children => Expressions;
 	}
 }
