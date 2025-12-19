@@ -36,6 +36,7 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly QualifiedIdentifierNameExpression IServiceCollection = new("IServiceCollection", Namespaces.MicrosoftExtensionsDependencyInjection);
 			public static readonly QualifiedIdentifierNameExpression DateTime = new("DateTime", Namespaces.System);
 			public static readonly QualifiedIdentifierNameExpression DateOnly = new("DateOnly", Namespaces.System);
+			public static readonly IdentifierNameExpression Disgard = new("_");
 		}
 
 		public static class Namespaces {
@@ -99,6 +100,7 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IKeyword Record = new Keyword("record");
 			public static readonly IKeyword Class = new Keyword("class");
 			public static readonly IKeyword New = new Keyword("new");
+			public static readonly IKeyword Throw = new Keyword("throw");
 
 			public static readonly IKeyword Set = new Keyword("set") {
 				PadRight = false
