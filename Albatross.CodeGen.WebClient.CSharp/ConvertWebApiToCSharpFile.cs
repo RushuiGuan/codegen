@@ -233,7 +233,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		IExpression GetResponseFunction(MethodInfo method) {
 			if (method.ReturnType.SpecialType == SpecialType.System_Void) {
-				return GetVoidResponseFunction();
+				return GetVoidResponseFunction().EndOfStatement();
 			} else if (method.ReturnType.SpecialType == SpecialType.System_String) {
 				return GetStringResponseFunction();
 			} else {
@@ -254,7 +254,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						Arguments = CreateRequestFunctionArguments(method, fromBody)
 					}
 				},
-				Body = GetResponseFunction(method).EndOfStatement()
+				Body = GetResponseFunction(method)
 			};
 		}
 
