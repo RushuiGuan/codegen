@@ -1,4 +1,4 @@
-﻿using Albatross.CodeAnalysis.Symbols;
+﻿using Albatross.CodeAnalysis;
 using Albatross.CodeGen.WebClient;
 using Albatross.CodeGen.WebClient.CSharp;
 using Albatross.CodeGen.WebClient.Models;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
 	public class CSharpWebClientCodeGenCommandHandler_Client : CommandAction<CodeGenCommandOptions> {
-		private readonly CreateHttpClientRegistrations2 createHttpClientRegistrations;
+		private readonly CreateHttpClientRegistrations createHttpClientRegistrations;
 		private readonly Compilation compilation;
 		private readonly CSharpWebClientSettings settings;
 		private readonly ILogger<CSharpWebClientCodeGenCommandHandler_Client> logger;
@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.CommandLine {
 		private readonly ConvertWebApiToCSharpFile converToCSharpCodeStack;
 
 		public CSharpWebClientCodeGenCommandHandler_Client(CodeGenCommandOptions options,
-			CreateHttpClientRegistrations2 createHttpClientRegistrations,
+			CreateHttpClientRegistrations createHttpClientRegistrations,
 			Compilation compilation,
 			CSharpWebClientSettings settings,
 			ILogger<CSharpWebClientCodeGenCommandHandler_Client> logger,

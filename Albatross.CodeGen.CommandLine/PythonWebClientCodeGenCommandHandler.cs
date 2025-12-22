@@ -1,4 +1,4 @@
-﻿using Albatross.CodeAnalysis.Symbols;
+﻿using Albatross.CodeAnalysis;
 using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.WebClient;
 using Albatross.CodeGen.WebClient.Models;
