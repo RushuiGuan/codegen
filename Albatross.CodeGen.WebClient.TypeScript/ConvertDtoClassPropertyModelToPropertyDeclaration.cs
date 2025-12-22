@@ -1,4 +1,4 @@
-﻿using Albatross.CodeAnalysis.Symbols;
+﻿using Albatross.CodeAnalysis;
 using Albatross.CodeGen.TypeScript.Declarations;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.Text;

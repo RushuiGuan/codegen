@@ -1,4 +1,4 @@
-﻿using Albatross.CodeAnalysis.Symbols;
+﻿using Albatross.CodeAnalysis;
 using Albatross.CodeGen.TypeScript.Expressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;

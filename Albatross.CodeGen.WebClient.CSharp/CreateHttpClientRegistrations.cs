@@ -1,10 +1,10 @@
-﻿using Albatross.CodeAnalysis.Syntax;
+﻿using Albatross.CodeGen.CSharp;
+using Albatross.CodeGen.CSharp.Declarations;
+using Albatross.CodeGen.CSharp.Expressions;
 using Albatross.CodeGen.WebClient.Models;
-using System;
 using System.Collections.Generic;
 
 namespace Albatross.CodeGen.WebClient.CSharp {
-	[Obsolete]
 	public class CreateHttpClientRegistrations {
 		private readonly CSharpWebClientSettings settings;
 
@@ -12,33 +12,56 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			this.settings = settings;
 		}
 
-		public CodeStack Generate(IEnumerable<ControllerInfo> models) {
-			var codeStack = new CodeStack() {
-				FileName = "Extensions.generated.cs",
-			};
-			using (codeStack.NewScope(new CompilationUnitBuilder())) {
-				codeStack.With(new UsingDirectiveNode("Microsoft.Extensions.DependencyInjection"));
-				using (codeStack.NewScope(new NamespaceDeclarationBuilder(settings.Namespace))) {
-					using (codeStack.NewScope(new ClassDeclarationBuilder("Extensions").Public().Static().Partial())) {
-						using (codeStack.NewScope(new MethodDeclarationBuilder("IHttpClientBuilder", "AddClients").Public().Static())) {
-							codeStack.With(new ParameterNode(new TypeNode("IHttpClientBuilder"), "builder").WithThis());
-							using (codeStack.NewScope(new ReturnExpressionBuilder())) {
-								codeStack.With(new IdentifierNode("builder"));
-								foreach (var model in models) {
-									GenericIdentifierNode addTypedClientIdentifier;
-									if (settings.UseInterface) {
-										addTypedClientIdentifier = new GenericIdentifierNode("AddTypedClient", $"I{model.ControllerName}ProxyService", $"{model.ControllerName}ProxyService");
-									} else {
-										addTypedClientIdentifier = new GenericIdentifierNode("AddTypedClient", model.ControllerName + "ProxyService");
-									}
-									codeStack.With(addTypedClientIdentifier).To(new InvocationExpressionBuilder());
+		public FileDeclaration Generate(IEnumerable<ControllerInfo> models) {
+			return new FileDeclaration("Extensions.generated") {
+				Namespace = new NamespaceExpression(settings.Namespace),
+				NullableEnabled = true,
+				Imports = [
+					new ImportExpression("Microsoft.Extensions.DependencyInjection"),
+				],
+				Classes = [
+					new ClassDeclaration {
+						Name = new IdentifierNameExpression("Extensions"),
+						AccessModifier = Defined.Keywords.Public,
+						IsStatic = true,
+						IsPartial = true,
+						Methods = [
+							new MethodDeclaration {
+								Name = new IdentifierNameExpression("AddClients"),
+								ReturnType = new TypeExpression("IHttpClientBuilder"),
+								AccessModifier = Defined.Keywords.Public,
+								IsStatic = true,
+								Parameters = new ListOfParameterDeclarations(new ParameterDeclaration {
+									Type = new TypeExpression("IHttpClientBuilder"),
+									Name = new IdentifierNameExpression("builder"),
+									UseThisKeyword = true
+								}),
+								Body = new ReturnExpression {
+									Expression = new IdentifierNameExpression("builder")
+										.Chain(true, GetRegistrationFunctions(settings.UseInterface, models))
 								}
 							}
-						}
+						]
 					}
-				}
+				],
+			};
+		}
+
+		IEnumerable<InvocationExpression> GetRegistrationFunctions(bool useInterface, IEnumerable<ControllerInfo> models) {
+			foreach (var model in models) {
+				var interfaceName = $"I{model.ControllerName}ProxyService";
+				var className = $"{model.ControllerName}ProxyService";
+				yield return new InvocationExpression {
+					CallableExpression = new IdentifierNameExpression("AddTypedClient") {
+						GenericArguments = useInterface
+							? new ListOfGenericArguments(
+								new TypeExpression(interfaceName),
+								new TypeExpression(className))
+							: new ListOfGenericArguments(
+								new TypeExpression(className))
+					}
+				};
 			}
-			return codeStack;
 		}
 	}
 }

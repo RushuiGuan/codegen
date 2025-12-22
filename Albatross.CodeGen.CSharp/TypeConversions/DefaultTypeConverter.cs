@@ -1,4 +1,4 @@
-using Albatross.CodeAnalysis.Symbols;
+using Albatross.CodeAnalysis;
 using Albatross.CodeGen.CSharp.Expressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;

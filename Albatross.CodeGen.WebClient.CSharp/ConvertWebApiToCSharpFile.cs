@@ -1,12 +1,9 @@
-﻿using Albatross.CodeAnalysis.Symbols;
-using Albatross.CodeAnalysis.Syntax;
+﻿using Albatross.CodeAnalysis;
 using Albatross.CodeGen.CSharp;
 using Albatross.CodeGen.CSharp.Declarations;
 using Albatross.CodeGen.CSharp.Expressions;
 using Albatross.CodeGen.WebClient.Models;
-using Albatross.CodeGen.WebClient.Settings;
 using Albatross.Collections;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,11 +93,11 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				ReturnType = GetMethodReturnType(method.ReturnType),
 				Parameters = GetMethodParameters(method),
 				IsAsync = true,
-				Body = new CodeBlock {
-					BuildPath(method),
-					{ true,() => BuildQuery(method) },
-					{ true,() => BuildHttpCall(method) },
-				},
+				Body = new CodeBlock(
+					BuildPath(method).AsEnumerable()
+						.Concat(BuildQuery(method))
+						.Concat(BuildHttpCall(method))
+				)
 			};
 		}
 
@@ -111,7 +108,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					Identifier = new IdentifierNameExpression("path"),
 				},
 				Expression = new StringInterpolationExpression {
-					{ true, () => BuildRouteSegments(method.RouteSegments) }
+					{ true, () => BuildRouteSegments(method.RouteSegments) },
 				}
 			}.EndOfStatement();
 		}
@@ -233,7 +230,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		IExpression GetResponseFunction(MethodInfo method) {
 			if (method.ReturnType.SpecialType == SpecialType.System_Void) {
-				return GetVoidResponseFunction().EndOfStatement();
+				return GetVoidResponseFunction();
 			} else if (method.ReturnType.SpecialType == SpecialType.System_String) {
 				return GetStringResponseFunction();
 			} else {
@@ -254,7 +251,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						Arguments = CreateRequestFunctionArguments(method, fromBody)
 					}
 				},
-				Body = GetResponseFunction(method)
+				Body = GetResponseFunction(method).EndOfStatement()
 			};
 		}
 
@@ -295,9 +292,9 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		}
 
 		bool IsDate(ITypeSymbol type) => type.Is(compilation.DateTime())
-										 || type.Is(compilation.DateTimeOffset())
-										 || type.Is(compilation.TimeOnly())
-										 || type.Is(compilation.DateOnly());
+		                                 || type.Is(compilation.DateTimeOffset())
+		                                 || type.Is(compilation.TimeOnly())
+		                                 || type.Is(compilation.DateOnly());
 
 		IExpression GetQueryStringValue(ITypeSymbol type, string variableName) {
 			if (type.SpecialType == SpecialType.System_String) {

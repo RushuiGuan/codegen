@@ -1,4 +1,4 @@
-﻿using Albatross.CodeAnalysis.Symbols;
+﻿using Albatross.CodeAnalysis;
 using Microsoft.CodeAnalysis;
 using System.Text.Json.Serialization;
 

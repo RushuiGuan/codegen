@@ -1,4 +1,4 @@
-﻿using Albatross.CodeAnalysis.Symbols;
+﻿using Albatross.CodeAnalysis;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.Collections;
 using Microsoft.CodeAnalysis;

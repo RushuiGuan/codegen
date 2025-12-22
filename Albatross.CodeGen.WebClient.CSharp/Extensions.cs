@@ -13,7 +13,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			services.AddSingleton<CreateHttpClientRegistrations>();
 #pragma warning restore CS0612 // Type or member is obsolete
 			services.AddCSharpCodeGen();
-			services.AddSingleton<CreateHttpClientRegistrations2>();
+			services.AddSingleton<CreateHttpClientRegistrations>();
 			return services;
 		}
 	}

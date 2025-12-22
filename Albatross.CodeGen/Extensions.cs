@@ -1,5 +1,4 @@
-﻿using Albatross.CodeAnalysis.Syntax;
-using Albatross.Reflection;
+﻿using Albatross.Reflection;
 using Albatross.Text;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -37,14 +36,5 @@ namespace Albatross.CodeGen {
 
 		public static IExpression Chain(this IExpression expression, bool lineBreak, params IEnumerable<IExpression> members)
 			=> new MemberAccessExpression(expression, lineBreak, members);
-
-		[Obsolete]
-		public static CodeStack Condition(this CodeStack codeStack, Func<bool> predicate, Action<CodeStack> action) {
-			if (predicate()) { action(codeStack); }
-			return codeStack;
-		}
-		[Obsolete]
-		public static CodeStack Condition(this CodeStack codeStack, bool condition, Action<CodeStack> action)
-			=> codeStack.Condition(() => condition, action);
 	}
 }
