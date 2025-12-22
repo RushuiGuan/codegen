@@ -2,7 +2,13 @@ using Albatross.CodeGen.CSharp.Expressions;
 using Albatross.CodeGen.CSharp.Keywords;
 
 namespace Albatross.CodeGen.CSharp {
+	/// <summary>
+	/// Provides pre-defined C# code generation elements including types, identifiers, namespaces, literals, and operators
+	/// </summary>
 	public static class Defined {
+		/// <summary>
+		/// Pre-defined C# type expressions for common .NET types
+		/// </summary>
 		public static class Types {
 			public static readonly ITypeExpression Int = new TypeExpression("int");
 			public static readonly ITypeExpression Long = new TypeExpression("long");
@@ -30,6 +36,9 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly ITypeExpression DateOnly = new TypeExpression(Identifiers.DateOnly);
 		}
 
+		/// <summary>
+		/// Pre-defined identifier name expressions for common .NET types and members
+		/// </summary>
 		public static class Identifiers {
 			public static readonly IIdentifierNameExpression Task = new QualifiedIdentifierNameExpression("Task", Defined.Namespaces.SystemThreadingTasks);
 			public static readonly IIdentifierNameExpression NameValueCollection = new QualifiedIdentifierNameExpression("NameValueCollection", Defined.Namespaces.SystemCollectionsSpecialized);
@@ -39,6 +48,9 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IdentifierNameExpression Disgard = new("_");
 		}
 
+		/// <summary>
+		/// Pre-defined namespace expressions for common .NET namespaces
+		/// </summary>
 		public static class Namespaces {
 			public static readonly NamespaceExpression System = new("System");
 			public static readonly NamespaceExpression SystemThreadingTasks = new("System.Threading.Tasks");
@@ -46,12 +58,18 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly NamespaceExpression MicrosoftExtensionsDependencyInjection = new("Microsoft.Extensions.DependencyInjection");
 		}
 
+		/// <summary>
+		/// Pre-defined literal expressions for common C# literal values
+		/// </summary>
 		public static class Literals {
 			public static readonly IExpression Null = new NullExpression();
 			public static readonly IExpression True = new BooleanLiteralExpression(true);
 			public static readonly IExpression False = new BooleanLiteralExpression(false);
 		}
 
+		/// <summary>
+		/// Pre-defined operator expressions for common C# operators
+		/// </summary>
 		public static class Operators {
 			public static readonly IOperator NotEqual = new Operator("!=");
 			public static readonly IOperator Equal = new Operator("==");

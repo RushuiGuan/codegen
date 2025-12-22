@@ -1,6 +1,9 @@
 ﻿using Albatross.CommandLine;
 
 namespace Albatross.CodeGen.CommandLine {
+	/// <summary>
+	/// Parent command options that organize code generation commands by language and target type
+	/// </summary>
 	[Verb("csharp", Alias = ["cs"], Description = "Commands to generate csharp code")]
 	[Verb("typescript", Alias = ["ts"], Description = "Commands to generate typescript code")]
 	[Verb("python", Alias = ["py"], Description = "Commands to generate python code")]

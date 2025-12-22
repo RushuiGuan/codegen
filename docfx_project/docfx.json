@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "..",
+          "files": [
+            "Albatross.CodeGen/Albatross.CodeGen.csproj",
+			"Albatross.CodeGen.CommandLine/Albatross.CodeGen.CommandLine.csproj",
+			"Albatross.CodeGen.CSharp/Albatross.CodeGen.CSharp.csproj",
+			"Albatross.CodeGen.Python/Albatross.CodeGen.Python.csproj",
+			"Albatross.CodeGen.SymbolProviders/Albatross.CodeGen.SymbolProviders.csproj",
+			"Albatross.CodeGen.TypeScript/Albatross.CodeGen.TypeScript.csproj",
+			"Albatross.CodeGen.WebClient/Albatross.CodeGen.WebClient.csproj",
+			"Albatross.CodeGen.WebClient.CSharp/Albatross.CodeGen.WebClient.CSharp.csproj",
+			"Albatross.CodeGen.WebClient.Python/Albatross.CodeGen.WebClient.Python.csproj",
+			"Albatross.CodeGen.WebClient.TypeScript/Albatross.CodeGen.WebClient.TypeScript.csproj"
+          ]
+        }
+      ],
+      "output": "api",
+      "properties": {
+        "TargetFramework": "net8.0"
+      }
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "output": "_site",
+    "template": [
+      "default",
+      "modern"
+    ],
+    "globalMetadata": {
+      "_appName": "Albatross CodeGen Framework",
+      "_appTitle": "Albatross CodeGen Documentation",
+      "_appFooter": "Albatross CodeGen Framework - Multi-language code generation toolkit",
+	  "_appLogoPath":"./images/logo.svg",
+      "_enableSearch": true,
+      "_enableNewTab": true,
+      "_disableContribution": false,
+      "_gitContribute": {
+        "repo": "https://github.com/RushuiGuan/codegen",
+        "branch": "main"
+      },
+      "pdf": false
+    }
+  }
+}

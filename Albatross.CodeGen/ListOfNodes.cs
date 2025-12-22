@@ -15,14 +15,28 @@ namespace Albatross.CodeGen {
 			this.nodes.AddRange(nodes);
 		}
 
+		/// <summary>
+		/// Adds a node to the list
+		/// </summary>
+		/// <param name="node">The node to add</param>
 		public void Add(T node) => nodes.Add(node);
 
+		/// <summary>
+		/// Conditionally adds a node to the list
+		/// </summary>
+		/// <param name="condition">The condition to evaluate</param>
+		/// <param name="func">Function to create the node if condition is true</param>
 		public void Add(bool condition, Func<T> func) {
 			if (condition) {
 				nodes.Add(func());
 			}
 		}
 
+		/// <summary>
+		/// Conditionally adds multiple nodes to the list
+		/// </summary>
+		/// <param name="condition">The condition to evaluate</param>
+		/// <param name="func">Function to create the nodes if condition is true</param>
 		public void Add(bool condition, Func<IEnumerable<T>> func) {
 			if (condition) {
 				foreach (var item in func()) {
@@ -58,6 +72,11 @@ namespace Albatross.CodeGen {
 		/// </summary>
 		public string NodePostfix { get; init; } = string.Empty;
 
+		/// <summary>
+		/// Generates the code representation of the list with separators and padding
+		/// </summary>
+		/// <param name="writer">The TextWriter to write the generated code to</param>
+		/// <returns>The TextWriter for method chaining</returns>
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Append(this.Prefix)
 				.WriteItems(this.nodes.Where(x => x is not NoOpExpression), Separator, (w, item) => w.Code(item).Append(NodePostfix), this.LeftPadding, this.RightPadding)
@@ -65,7 +84,15 @@ namespace Albatross.CodeGen {
 			return writer;
 		}
 
+		/// <summary>
+		/// Gets an enumerator that iterates through the nodes
+		/// </summary>
+		/// <returns>An enumerator for the nodes</returns>
 		public IEnumerator<T> GetEnumerator() => ((IEnumerable<T>)nodes).GetEnumerator();
+		
+		/// <summary>
+		/// Gets the child nodes of this list
+		/// </summary>
 		public override IEnumerable<ICodeNode> Children => nodes.Cast<ICodeNode>();
 		IEnumerator IEnumerable.GetEnumerator() {
 			return GetEnumerator();

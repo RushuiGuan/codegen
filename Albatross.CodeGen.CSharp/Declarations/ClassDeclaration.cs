@@ -5,15 +5,45 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
+	/// <summary>
+	/// Represents a C# class declaration with support for modifiers, generics, inheritance, and members
+	/// </summary>
 	public record class ClassDeclaration : CodeNode, IDeclaration {
+		/// <summary>
+		/// Gets or sets the access modifier for the class (public, private, protected, internal)
+		/// </summary>
 		public AccessModifierKeyword? AccessModifier { get; init; } = Defined.Keywords.Public;
+		/// <summary>
+		/// Gets or sets the name of the class
+		/// </summary>
 		public required IdentifierNameExpression Name { get; init; }
+		/// <summary>
+		/// Gets or sets the base types (base class and interfaces) that this class inherits from or implements
+		/// </summary>
 		public IEnumerable<ITypeExpression> BaseTypes { get; init; } = [];
+		/// <summary>
+		/// Gets or sets the generic type arguments for the class
+		/// </summary>
 		public ListOfGenericArguments ListOfGenericArguments { get; init; } = new();
+		/// <summary>
+		/// Gets or sets a value indicating whether the class is static
+		/// </summary>
 		public bool IsStatic { get; init; }
+		/// <summary>
+		/// Gets or sets a value indicating whether the class is sealed
+		/// </summary>
 		public bool IsSealed { get; init; }
+		/// <summary>
+		/// Gets or sets a value indicating whether the class is abstract
+		/// </summary>
 		public bool IsAbstract { get; init; }
+		/// <summary>
+		/// Gets or sets a value indicating whether the class is partial
+		/// </summary>
 		public bool IsPartial { get; init; }
+		/// <summary>
+		/// Gets or sets a value indicating whether the class is declared as a record
+		/// </summary>
 		public bool IsRecord { get; init; }
 
 		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];

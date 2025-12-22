@@ -1,0 +1,333 @@
+# Configuration Guide
+
+The Albatross CodeGen Framework provides extensive configuration options to customize code generation behavior for different scenarios and requirements.
+
+## Configuration Methods
+
+### 1. Command Line Options
+
+Basic configuration through CLI arguments:
+
+```bash
+codegen typescript web-client \
+  --project MyWebApi.csproj \
+  --output ./generated \
+  --settings codegen.json \
+  --adhoc-filter "*Controller"
+```
+
+**Available Options:**
+- `-p, --project`: Target .NET project file
+- `-o, --output`: Output directory for generated files
+- `-s, --settings`: JSON settings file path
+- `-c, --adhoc-filter`: Filter pattern for types to process
+
+### 2. Settings Files
+
+JSON configuration files provide detailed control:
+
+```json
+{
+  "namespace": "MyCompany.ApiClient",
+  "outputPath": "./Generated",
+  "includePatterns": ["*Controller", "*Service"],
+  "excludePatterns": ["*TestController", "*MockService"],
+  "generateAsync": true,
+  "includeSummaryComments": true,
+  "typeMapping": {
+    "System.Guid": "string",
+    "System.DateTime": "Date"
+  }
+}
+```
+
+## Language-Specific Settings
+
+### C# Web Client Settings
+
+```json
+{
+  "namespace": "MyCompany.Generated.CSharp",
+  "generateInterfaces": true,
+  "useHttpClientFactory": true,
+  "includeJsonAttributes": true,
+  "generateAsyncMethods": true,
+  "httpClientLifetime": "Scoped",
+  "authenticationScheme": "Bearer"
+}
+```
+
+**Key Options:**
+- `generateInterfaces`: Create interfaces for HTTP clients
+- `useHttpClientFactory`: Use IHttpClientFactory pattern
+- `includeJsonAttributes`: Add System.Text.Json attributes
+- `httpClientLifetime`: DI lifetime (Singleton, Scoped, Transient)
+
+### TypeScript Web Client Settings
+
+```json
+{
+  "moduleType": "ES6",
+  "generateInterfaces": true,
+  "useAsyncAwait": true,
+  "includeTypeGuards": true,
+  "outputFormat": "MultipleFiles",
+  "indexFile": true,
+  "typePrefix": "I",
+  "clientSuffix": "Client"
+}
+```
+
+**Key Options:**
+- `moduleType`: Module system (ES6, CommonJS, UMD)
+- `generateInterfaces`: Generate TypeScript interfaces
+- `includeTypeGuards`: Generate runtime type checking functions
+- `outputFormat`: Single file vs multiple files
+- `indexFile`: Generate index.ts barrel exports
+
+### Python Web Client Settings
+
+```json
+{
+  "useDataClasses": true,
+  "includeTypeHints": true,
+  "asyncClient": true,
+  "packageName": "my_api_client",
+  "generateInit": true,
+  "pythonVersion": "3.8",
+  "httpLibrary": "aiohttp"
+}
+```
+
+**Key Options:**
+- `useDataClasses`: Use @dataclass for models
+- `includeTypeHints`: Add Python type hints
+- `asyncClient`: Generate async HTTP methods
+- `httpLibrary`: HTTP library to use (aiohttp, httpx, requests)
+
+## Filtering and Selection
+
+### Include/Exclude Patterns
+
+Control which types are processed:
+
+```json
+{
+  "includePatterns": [
+    "*Controller",
+    "MyNamespace.*",
+    "Models.User*"
+  ],
+  "excludePatterns": [
+    "*TestController",
+    "*MockService",
+    "Internal.*"
+  ]
+}
+```
+
+**Pattern Syntax:**
+- `*`: Wildcard for any characters
+- `**`: Recursive wildcard for namespace depth
+- `?`: Single character wildcard
+- Case-insensitive matching
+
+### Attribute-Based Filtering
+
+Use attributes to control generation:
+
+```csharp
+[GenerateClient] // Include this controller
+public class UsersController : ControllerBase
+{
+    [IgnoreGeneration] // Skip this action
+    public IActionResult InternalAction() => Ok();
+    
+    public IActionResult GetUsers() => Ok();
+}
+```
+
+## Type Mapping Configuration
+
+### Custom Type Mappings
+
+Override default type conversions:
+
+```json
+{
+  "typeMapping": {
+    "System.Guid": {
+      "csharp": "Guid",
+      "typescript": "string",
+      "python": "str"
+    },
+    "System.DateTimeOffset": {
+      "csharp": "DateTimeOffset",
+      "typescript": "Date",
+      "python": "datetime"
+    }
+  }
+}
+```
+
+### Generic Type Handling
+
+Configure how generic types are mapped:
+
+```json
+{
+  "genericTypeMapping": {
+    "System.Collections.Generic.List<T>": {
+      "typescript": "T[]",
+      "python": "List[T]"
+    },
+    "System.Threading.Tasks.Task<T>": {
+      "typescript": "Promise<T>",
+      "python": "Awaitable[T]"
+    }
+  }
+}
+```
+
+## Output Configuration
+
+### File Organization
+
+```json
+{
+  "fileOrganization": {
+    "groupByNamespace": true,
+    "separateModels": true,
+    "separateClients": true,
+    "maxFileSize": 50000
+  },
+  "naming": {
+    "fileNameCase": "kebab-case",
+    "classNameCase": "PascalCase",
+    "propertyNameCase": "camelCase",
+    "methodNameCase": "camelCase"
+  }
+}
+```
+
+**File Organization Options:**
+- `groupByNamespace`: Create folders for namespaces
+- `separateModels`: Split models into separate files
+- `maxFileSize`: Split large files automatically
+
+**Naming Convention Options:**
+- `camelCase`: firstName
+- `PascalCase`: FirstName
+- `kebab-case`: first-name
+- `snake_case`: first_name
+
+### Template Customization
+
+Customize generated code templates:
+
+```json
+{
+  "templates": {
+    "fileHeader": "// Generated by Albatross CodeGen\n// Date: {{date}}\n// Source: {{project}}",
+    "classHeader": "/**\n * {{summary}}\n * Generated from: {{sourceType}}\n */",
+    "methodHeader": "/**\n * {{summary}}\n * @param {{parameters}}\n * @returns {{returnType}}\n */"
+  }
+}
+```
+
+## Environment-Specific Configuration
+
+### Multiple Environments
+
+Support different configurations for different environments:
+
+```bash
+# Development
+codegen typescript web-client -p Api.csproj -s codegen.dev.json
+
+# Production  
+codegen typescript web-client -p Api.csproj -s codegen.prod.json
+```
+
+**codegen.dev.json:**
+```json
+{
+  "baseUrl": "https://localhost:5001",
+  "includeDebugInfo": true,
+  "validateResponses": false
+}
+```
+
+**codegen.prod.json:**
+```json
+{
+  "baseUrl": "https://api.production.com",
+  "includeDebugInfo": false,
+  "validateResponses": true,
+  "minifyOutput": true
+}
+```
+
+## Advanced Configuration
+
+### Custom Converters
+
+Register custom type converters:
+
+```csharp
+services.AddSingleton<ITypeConverter, MyCustomTypeConverter>();
+```
+
+```csharp
+public class MyCustomTypeConverter : ITypeConverter
+{
+    public int Precedence => 100;
+    
+    public bool TryConvert(ITypeSymbol symbol, 
+                          IConvertObject<ITypeSymbol, ITypeExpression> factory,
+                          out ITypeExpression? expression)
+    {
+        if (symbol.Name == "MyCustomType")
+        {
+            expression = new TypeExpression("CustomMappedType");
+            return true;
+        }
+        expression = null;
+        return false;
+    }
+}
+```
+
+### Validation Settings
+
+Configure validation behavior:
+
+```json
+{
+  "validation": {
+    "requireDocumentation": true,
+    "warnOnMissingTypes": true,
+    "failOnErrors": false,
+    "validateGeneratedCode": true
+  }
+}
+```
+
+## Best Practices
+
+### 1. Version Control Settings
+Keep settings files in version control for consistency across team members.
+
+### 2. Environment Separation
+Use different settings files for different deployment environments.
+
+### 3. Incremental Configuration
+Start with basic settings and gradually add complexity as needed.
+
+### 4. Documentation
+Document custom settings and their purposes for team members.
+
+### 5. Validation
+Use validation settings to catch issues early in the development process.
+
+This comprehensive configuration system allows the framework to adapt to a wide variety of project requirements and development workflows.
