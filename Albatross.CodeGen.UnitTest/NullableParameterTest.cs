@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Routing;
-using System;
+﻿using System;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Xunit;

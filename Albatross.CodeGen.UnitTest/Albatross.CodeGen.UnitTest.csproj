@@ -13,7 +13,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Albatross.Testing" Version="8.0.2-21.main" />
+		<PackageReference Include="Albatross.Testing" Version="8.0.1" />
 		<ProjectReference Include="..\Albatross.CodeGen.CSharp\Albatross.CodeGen.CSharp.csproj" />
 		<ProjectReference Include="..\Albatross.CodeGen.Python\Albatross.CodeGen.Python.csproj" />
 		<ProjectReference Include="..\Albatross.CodeGen.TypeScript\Albatross.CodeGen.TypeScript.csproj" />
