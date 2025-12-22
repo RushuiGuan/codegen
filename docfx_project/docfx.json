@@ -7,21 +7,20 @@
           "src": "..",
           "files": [
             "Albatross.CodeGen/Albatross.CodeGen.csproj",
-			"Albatross.CodeGen.CommandLine/Albatross.CodeGen.CommandLine.csproj",
 			"Albatross.CodeGen.CSharp/Albatross.CodeGen.CSharp.csproj",
 			"Albatross.CodeGen.Python/Albatross.CodeGen.Python.csproj",
-			"Albatross.CodeGen.SymbolProviders/Albatross.CodeGen.SymbolProviders.csproj",
 			"Albatross.CodeGen.TypeScript/Albatross.CodeGen.TypeScript.csproj",
 			"Albatross.CodeGen.WebClient/Albatross.CodeGen.WebClient.csproj",
 			"Albatross.CodeGen.WebClient.CSharp/Albatross.CodeGen.WebClient.CSharp.csproj",
 			"Albatross.CodeGen.WebClient.Python/Albatross.CodeGen.WebClient.Python.csproj",
-			"Albatross.CodeGen.WebClient.TypeScript/Albatross.CodeGen.WebClient.TypeScript.csproj"
+			"Albatross.CodeGen.WebClient.TypeScript/Albatross.CodeGen.WebClient.TypeScript.csproj",
+			"Albatross.CodeGen.CommandLine/Albatross.CodeGen.CommandLine.csproj"
           ]
         }
       ],
       "output": "api",
       "properties": {
-        "TargetFramework": "net8.0"
+        "TargetFramework": "net10.0"
       }
     }
   ],
