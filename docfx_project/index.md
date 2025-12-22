@@ -53,5 +53,3 @@ The framework consists of several interconnected projects:
 - [API Reference](api/) - Complete API documentation
 
 ---
-
-*Built with ❤️ by the Albatross team*
