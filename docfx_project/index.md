@@ -1,9 +1,4 @@
----
-_layout: landing
----
-
-# Albatross CodeGen Framework
-
+# Albatross CodeGen
 Welcome to the **Albatross CodeGen Framework** - a comprehensive multi-language code generation toolkit for .NET applications.
 
 ## What is Albatross CodeGen?

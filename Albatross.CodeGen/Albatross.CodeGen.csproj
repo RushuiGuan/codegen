@@ -12,7 +12,10 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.10.0" />
 		<PackageReference Include="Albatross.Reflection" Version="8.0.7" />
 		<PackageReference Include="Albatross.Text" Version="9.0.1" />
-		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.1" />
+		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.3" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<PackageReference Include="Albatross.CodeAnalysis.Polyfill" Version="8.0.3" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\icon.png">
@@ -27,8 +30,5 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
-	</ItemGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-		<PackageReference Include="Albatross.CodeAnalysis.Polyfill" Version="8.0.1" />
 	</ItemGroup>
 </Project>
