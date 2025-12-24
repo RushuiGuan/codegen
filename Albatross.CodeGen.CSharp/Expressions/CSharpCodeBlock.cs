@@ -4,7 +4,7 @@ using System.IO;
 namespace Albatross.CodeGen.CSharp.Expressions {
 	public record class CSharpCodeBlock : CodeBlock {
 		public CSharpCodeBlock() {
-			Prefix = "{";
+			Prefix = " {";
 			PostFix = "}";
 		}
 		public override TextWriter Generate(TextWriter writer) {

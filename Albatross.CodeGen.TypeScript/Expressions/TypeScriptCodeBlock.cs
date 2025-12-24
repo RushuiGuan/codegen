@@ -4,7 +4,7 @@ using System.IO;
 namespace Albatross.CodeGen.TypeScript.Expressions {
 	public record TypeScriptCodeBlock : CodeBlock {
 		public TypeScriptCodeBlock() {
-			Prefix = "{";
+			Prefix = " {";
 			PostFix = "}";
 		}
 		protected override void WriteItem(TextWriter writer, IExpression item) {

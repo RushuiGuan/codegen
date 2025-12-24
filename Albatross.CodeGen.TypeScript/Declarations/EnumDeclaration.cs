@@ -8,7 +8,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public EnumDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 			Items = new ListOfNodes<EnumItemExpression> {
-				Prefix = "{",
+				Prefix = " {",
 				PostFix = "}",
 				Separator = ",",
 				Multiline = true,
