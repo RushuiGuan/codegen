@@ -17,7 +17,14 @@ namespace Albatross.CodeGen.CSharp.TypeConversions {
 			return Convert(from);
 		}
 
-		static string GetFullName(INamedTypeSymbol symbol) => $"{symbol.ContainingNamespace.GetFullNamespace()}.{symbol.Name}";
+		static string GetFullName(INamedTypeSymbol symbol) {
+			var @namespace = symbol.ContainingNamespace.GetFullNamespace();
+			if (string.IsNullOrEmpty(@namespace)) {
+				return symbol.Name;
+			} else {
+				return $"{@namespace}.{symbol.Name}";
+			}
+		}
 
 		public ITypeExpression Convert(ITypeSymbol symbol) {
 			switch (symbol.SpecialType) {
