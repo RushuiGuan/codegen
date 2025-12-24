@@ -7,22 +7,22 @@ using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.TypeConversions {
 	public class DefaultTypeConverter : IConvertObject<ITypeSymbol, ITypeExpression> {
-		private readonly Compilation compilation;
-
-		public DefaultTypeConverter(Compilation compilation) {
-			this.compilation = compilation;
-		}
-
+		public bool UseQualifiedNames { get; set; } = false;
+		
 		object IConvertObject<ITypeSymbol>.Convert(ITypeSymbol from) {
 			return Convert(from);
 		}
 
-		static string GetFullName(INamedTypeSymbol symbol) {
+		static IIdentifierNameExpression GetIdentifier(INamedTypeSymbol symbol, bool useQualifiedNames) {
 			var @namespace = symbol.ContainingNamespace.GetFullNamespace();
 			if (string.IsNullOrEmpty(@namespace)) {
-				return symbol.Name;
+				return new IdentifierNameExpression(symbol.Name);
 			} else {
-				return $"{@namespace}.{symbol.Name}";
+				if (useQualifiedNames) {
+					return new QualifiedIdentifierNameExpression(symbol.Name, new NamespaceExpression(@namespace));
+				} else {
+					return new IdentifierNameExpression($"{@namespace}.{symbol.Name}");
+				}
 			}
 		}
 
@@ -53,11 +53,11 @@ namespace Albatross.CodeGen.CSharp.TypeConversions {
 				if (namedTypeSymbol.IsGenericTypeDefinition()) {
 					throw new InvalidOperationException("Cannot convert generic type definition");
 				} else if (namedTypeSymbol.IsGenericType) {
-					return new TypeExpression(GetFullName(namedTypeSymbol)) {
+					return new TypeExpression(GetIdentifier(namedTypeSymbol, this.UseQualifiedNames)) {
 						GenericArguments = namedTypeSymbol.TypeArguments.Select(Convert).ToArray()
 					};
 				} else {
-					return new TypeExpression(GetFullName(namedTypeSymbol)) {
+					return new TypeExpression(GetIdentifier(namedTypeSymbol, this.UseQualifiedNames)) {
 						Nullable = symbol.IsNullableReferenceType()
 					};
 				}
