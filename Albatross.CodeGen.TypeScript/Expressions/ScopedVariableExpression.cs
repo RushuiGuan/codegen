@@ -30,7 +30,6 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 			if (Assignment != null) {
 				writer.Append(" = ").Code(Assignment);
 			}
-			writer.Append(";");
 			return writer;
 		}
 	}

@@ -221,26 +221,23 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			};
 		}
 
-		IExpression CreateHttpInvocationExpression(MethodInfo method) {
+		IEnumerable<IExpression> CreateHttpInvocationExpression(MethodInfo method) {
 			if (settings.UsePromise) {
-				return new CodeBlock{
-					new ScopedVariableExpression("result") {
-						IsConstant = true,
-						Assignment = CreateHttpRequestInvocationExpression(method),
-					},
-					new ReturnExpression(new InvocationExpression {
-						CallableExpression = Defined.Identifiers.FirstValueFrom,
-						Arguments = { new IdentifierNameExpression("result") },
-						UseAwaitOperator = true,
-					}) };
-			} else {
-				return new CodeBlock{
-					new ScopedVariableExpression("result") {
-						Assignment = CreateHttpRequestInvocationExpression(method),
-						IsConstant = true,
-					},
-					new ReturnExpression(new IdentifierNameExpression("result"))
+				yield return new ScopedVariableExpression("result") {
+					IsConstant = true,
+					Assignment = CreateHttpRequestInvocationExpression(method),
 				};
+				yield return new ReturnExpression(new InvocationExpression {
+					CallableExpression = Defined.Identifiers.FirstValueFrom,
+					Arguments = { new IdentifierNameExpression("result") },
+					UseAwaitOperator = true,
+				});
+			} else {
+				yield return new ScopedVariableExpression("result") {
+					Assignment = CreateHttpRequestInvocationExpression(method),
+					IsConstant = true,
+				};
+				yield return new ReturnExpression(new IdentifierNameExpression("result"));
 			}
 		}
 

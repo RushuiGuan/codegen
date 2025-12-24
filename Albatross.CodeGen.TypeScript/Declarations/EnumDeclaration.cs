@@ -1,5 +1,4 @@
 ﻿using Albatross.CodeGen.TypeScript.Expressions;
-using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 
@@ -9,6 +8,8 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public EnumDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
 			Items = new ListOfNodes<EnumItemExpression> {
+				Prefix = "{",
+				PostFix = "}",
 				Separator = ",",
 				Multiline = true,
 			};
@@ -19,12 +20,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public override IEnumerable<ICodeNode> Children => [Identifier, Items];
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Append("export ").Append("enum ");
-			using (var scope = writer.Code(Identifier).BeginScope()) {
-				scope.Writer.Code(Items);
-			}
-			writer.WriteLine();
-			return writer;
+			return writer.Code(Defined.Keywords.Export).Code(Defined.Keywords.Enum).Code(Identifier).Code(Items);
 		}
 	}
 }

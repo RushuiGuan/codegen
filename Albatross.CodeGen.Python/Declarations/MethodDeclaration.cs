@@ -32,7 +32,6 @@ namespace Albatross.CodeGen.Python.Declarations {
 				if (DocString is not null) { scope.Writer.Code(DocString); }
 				scope.Writer.Code(Body);
 			}
-			writer.WriteLine();
 			return writer;
 		}
 

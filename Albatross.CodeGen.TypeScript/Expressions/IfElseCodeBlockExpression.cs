@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
-	public record class IfElseCodeBlockExpression : CodeNode, IExpression {
+	public record class IfElseCodeBlockExpression : CodeNode, ICodeBlock{
 		public IfElseCodeBlockExpression() { }
 
 		public required IExpression Condition { get; init; }

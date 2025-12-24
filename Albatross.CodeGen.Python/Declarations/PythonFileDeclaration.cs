@@ -37,6 +37,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 			writer.WriteLine();
 			foreach (var item in Classes) {
 				writer.Code(item);
+				writer.WriteLine();
 			}
 			return writer;
 		}

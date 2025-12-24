@@ -35,21 +35,25 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 			using (var scope = writer.BeginScope()) {
 				foreach (var getter in Getters) {
 					scope.Writer.Code(getter);
+					scope.Writer.WriteLine();
 				}
 				foreach (var setter in Setters) {
 					scope.Writer.Code(setter);
+					scope.Writer.WriteLine();
 				}
 				foreach (var property in Properties) {
 					scope.Writer.Code(property);
+					scope.Writer.WriteLine();
 				}
 				if (Constructor != null) {
 					scope.Writer.Code(Constructor);
+					scope.Writer.WriteLine();
 				}
 				foreach (var method in Methods) {
 					scope.Writer.Code(method);
+					scope.Writer.WriteLine();
 				}
 			}
-			writer.WriteLine();
 			return writer;
 		}
 	}

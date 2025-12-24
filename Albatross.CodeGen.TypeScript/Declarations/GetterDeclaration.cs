@@ -19,10 +19,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 			if (!object.Equals(this.ReturnType, Defined.Types.Void())) {
 				writer.Append(": ").Code(ReturnType).Space();
 			}
-			using (var scope = writer.BeginScope()) {
-				scope.Writer.Code(Body);
-			}
-			writer.WriteLine();
+			writer.Code(Body);
 			return writer;
 		}
 	}

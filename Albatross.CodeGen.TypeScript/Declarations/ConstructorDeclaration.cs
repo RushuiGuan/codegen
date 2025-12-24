@@ -8,10 +8,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		}
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Identifier).OpenParenthesis().Code(Parameters).CloseParenthesis();
-			using (var scope = writer.BeginScope()) {
-				scope.Writer.Code(Body);
-			}
-			writer.WriteLine();
+			writer.Code(Body);
 			return writer;
 		}
 	}

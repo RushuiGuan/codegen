@@ -39,6 +39,7 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 			writer.WriteLine();
 			foreach (var item in EnumDeclarations) {
 				writer.Code(item);
+				writer.WriteLine();
 			}
 			foreach (var item in InterfaceDeclarations) {
 				writer.Code(item);

@@ -60,7 +60,6 @@ namespace Albatross.CodeGen.Python.Declarations {
 					scope.Writer.Append("pass");
 				}
 			}
-			writer.WriteLine();
 			return writer;
 		}
 	}

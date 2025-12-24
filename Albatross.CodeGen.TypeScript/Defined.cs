@@ -103,10 +103,12 @@ namespace Albatross.CodeGen.TypeScript {
 		}
 
 		public static class Keywords {
+			public static AccessKeyword Const = new AccessKeyword("const");
 			public static AccessKeyword Public = new AccessKeyword("public");
 			public static AccessKeyword Private = new AccessKeyword("private");
 			public static AccessKeyword Protected = new AccessKeyword("protected");
-
+			public static IKeyword Export = new Keyword("export");
+			public static IKeyword Enum = new Keyword("enum");
 		}
 	}
 }
