@@ -1,4 +1,5 @@
 using Albatross.CodeGen.CSharp.Expressions;
+using Albatross.Testing;
 using System.Collections.Generic;
 using System.IO;
 using Xunit;
@@ -15,8 +16,8 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 			};
 			var writer = new StringWriter();
 			writer.Code(codeBlock);
-			var text = writer.ToString();
-			Assert.Equal("x = 5;", text);
+			var text = writer.ToString().NormalizeLineEnding();
+			Assert.Equal("{\n\tx = 5;\n}", text);
 		}
 
 		[Fact]
@@ -33,8 +34,8 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 			};
 			var writer = new StringWriter();
 			writer.Code(codeBlock);
-			var text = writer.ToString();
-			Assert.Equal("x = 5;\ny = 10;", text);
+			var text = writer.ToString().NormalizeLineEnding();
+			Assert.Equal("{\n\tx = 5;\n\ty = 10;\n}", text);
 		}
 	}
 }

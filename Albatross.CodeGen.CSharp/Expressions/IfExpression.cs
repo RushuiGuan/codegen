@@ -2,21 +2,18 @@
 using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class IfExpression : CodeNode, IExpression {
+	public record class IfExpression : CodeNode, ICodeBlock {
 		public required IExpression Condition { get; init; }
-		public required IExpression IfBlock { get; init; }
-		public IExpression? ElseBlock { get; init; }
+		public CodeBlock IfBlock { get;  } = new CSharpCodeBlock();
+		public CodeBlock ElseBlock { get; } = new CSharpCodeBlock();
 
 		public override TextWriter Generate(TextWriter writer) {
-			using (var mainScope = writer.Code(Defined.Keywords.If).OpenParenthesis().Code(Condition).CloseParenthesis().BeginScope()) {
-				mainScope.Writer.Code(IfBlock);
-			}
-			if (ElseBlock != null) {
-				using (var elseScope = writer.Code(Defined.Keywords.Else).BeginScope()) {
-					elseScope.Writer.Code(ElseBlock);
-				}
+			writer.Code(Defined.Keywords.If).OpenParenthesis().Code(Condition).CloseParenthesis().Code(IfBlock);
+			if (ElseBlock.Any()) {
+				writer.Code(Defined.Keywords.Else).Code(ElseBlock);
 			}
 			return writer;
 		}

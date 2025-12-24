@@ -1,5 +1,4 @@
 ﻿using Albatross.Collections;
-using Albatross.Text;
 using System.Collections.Generic;
 using System.IO;
 
@@ -13,7 +12,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			if (this.Expression != null) {
 				writer.Code(this.Expression);
 			}
-			return writer.Semicolon();
+			return writer;
 		}
 	}
 }

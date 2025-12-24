@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 
 		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];
 		public ListOfParameterDeclarations Parameters { get; init; } = new();
-		public IExpression? Body { get; init; }
+		public CodeBlock Body { get; } = new CSharpCodeBlock();
 		public bool IsAsync { get; init; }
 		public bool IsStatic { get; set; }
 
@@ -32,9 +32,8 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			if (IsAsync) { writer.Code(Defined.Keywords.Async); }
 			writer.Code(ReturnType).Space().Code(Name).Code(ListOfGenericArguments);
 			writer.Code(Parameters);
-			if (Body != null) {
-				using var scope = writer.BeginScope();
-				scope.Writer.Code(Body);
+			if (Body.Any()) {
+				writer.Code(Body);
 			} else {
 				writer.Semicolon();
 			}

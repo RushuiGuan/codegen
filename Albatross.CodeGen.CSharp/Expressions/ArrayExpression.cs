@@ -1,20 +1,19 @@
 ﻿using Albatross.Text;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
 	public record class ArrayExpression : CodeNode, IExpression {
-		public ArrayExpression() {
+		public ArrayExpression(bool multiline = false) {
 			Items = new ListOfNodes<IExpression> {
+				Multiline = multiline,
 				Prefix = "{",
 				PostFix = "}",
-				LeftPadding = " ",
-				RightPadding = " "
+				LeftPadding = multiline ? "" : " ",
+				RightPadding = multiline ? "" : " ",
+				Separator = multiline ? "," : ", "
 			};
 		}
-		public bool Multiline { get; init; }
 		public required ITypeExpression Type { get; init; }
 		public ListOfNodes<IExpression> Items { get; }
 		public override TextWriter Generate(TextWriter writer)

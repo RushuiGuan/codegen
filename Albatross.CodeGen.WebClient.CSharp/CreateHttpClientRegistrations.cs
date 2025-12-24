@@ -38,9 +38,10 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 										UseThisKeyword = true
 									}
 								},
-								Body = new ReturnExpression {
-									Expression = new IdentifierNameExpression("builder")
-										.Chain(true, GetRegistrationFunctions(settings.UseInterface, models))
+								Body = {
+									new ReturnExpression {
+										Expression = new IdentifierNameExpression("builder").Chain(true, GetRegistrationFunctions(settings.UseInterface, models))
+									}
 								}
 							}
 						]

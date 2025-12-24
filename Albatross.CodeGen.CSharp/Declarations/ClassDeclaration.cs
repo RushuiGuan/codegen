@@ -65,7 +65,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			if (IsPartial) { writer.Code(Defined.Keywords.Partial); }
 			if (IsAbstract) { writer.Code(Defined.Keywords.Abstract); }
 			writer.Code(Defined.Keywords.Class).Code(Name).Code(ListOfGenericArguments);
-			writer.WriteItems(BaseTypes, ", ", (w, args) => w.Code(args), " : ", null);
+			writer.WriteItems(BaseTypes, ", ", (w, args) => w.Code(args), " : ");
 			using (var scope = writer.BeginScope()) {
 				foreach (var constructor in Constructors) {
 					scope.Writer.Code(constructor).WriteLine();

@@ -95,7 +95,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				ReturnType = GetMethodReturnType(method.ReturnType),
 				Parameters = GetMethodParameters(method),
 				IsAsync = true,
-				Body = new CodeBlock{
+				Body = {
 					BuildPath(method).AsEnumerable()
 						.Concat(BuildQuery(method))
 						.Concat(BuildHttpCall(method))
@@ -112,7 +112,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				Expression = new StringInterpolationExpression {
 					{ true, () => BuildRouteSegments(method.RouteSegments) },
 				}
-			}.EndOfStatement();
+			};
 		}
 
 		IEnumerable<IExpression> BuildQuery(MethodInfo method) {
@@ -124,7 +124,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				Expression = new NewObjectExpression {
 					Type = Defined.Types.NameValueCollection,
 				}
-			}.EndOfStatement();
+			};
 			foreach (var param in method.Parameters.Where(x => x.WebType == ParameterType.FromQuery)) {
 				if (param.Type.TryGetCollectionElementType(compilation, out var elementType)) {
 					yield return new ForEachExpression {
@@ -132,7 +132,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 							Identifier = new IdentifierNameExpression("item"),
 						},
 						Collection = new IdentifierNameExpression(param.Name),
-						Body = CreateAddQueryStringStatement(elementType, param.QueryKey, "item")
+						Body = { CreateAddQueryStringStatement(elementType, param.QueryKey, "item") }
 					};
 				} else {
 					yield return CreateAddQueryStringStatement(param.Type, param.QueryKey, param.Name);
@@ -253,7 +253,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						Arguments = { CreateRequestFunctionArguments(method, fromBody) }
 					}
 				},
-				Body = GetResponseFunction(method).EndOfStatement()
+				Body = { GetResponseFunction(method) }
 			};
 		}
 
@@ -324,16 +324,18 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						Operator = Defined.Operators.NotEqual,
 						Right = new NullExpression()
 					},
-					IfBlock = new InvocationExpression {
-						CallableExpression = new IdentifierNameExpression("queryString.Add"),
-						Arguments = { new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName) }
-					}.EndOfStatement()
+					IfBlock = {
+						new InvocationExpression {
+							CallableExpression = new IdentifierNameExpression("queryString.Add"),
+							Arguments = { new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName) }
+						} 
+					}
 				};
 			} else {
 				return new InvocationExpression {
 					CallableExpression = new IdentifierNameExpression("queryString.Add"),
 					Arguments = { new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName) }
-				}.EndOfStatement();
+				};
 			}
 		}
 

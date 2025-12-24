@@ -16,12 +16,12 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 		[Fact]
 		public void TestSingleTypeParameter() {
 			var expression = new AnonymousMethodExpression {
-				Parameters = [
+				Parameters = {
 					new ParameterDeclaration {
 						Type = new TypeExpression("int"),
 						Name = new IdentifierNameExpression("x")
 					}
-				]
+				}
 			};
 			var text = new StringWriter().Code(expression).ToString();
 			Assert.Equal("(int x) => { }", text);
@@ -29,12 +29,12 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 		[Fact]
 		public void TestSingleVarParameter() {
 			var expression = new AnonymousMethodExpression {
-				Parameters = [
+				Parameters = {
 					new ParameterDeclaration {
 						Type = Defined.Types.Var,
 						Name = new IdentifierNameExpression("x")
 					}
-				]
+				}
 			};
 			var text = new StringWriter().Code(expression).ToString();
 			Assert.Equal("x => { }", text);
@@ -42,7 +42,7 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 		[Fact]
 		public void TestMultipleTypedParameter() {
 			var expression = new AnonymousMethodExpression {
-				Parameters = [
+				Parameters = {
 					new ParameterDeclaration {
 						Type = Defined.Types.Int,
 						Name = new IdentifierNameExpression("x")
@@ -51,7 +51,7 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 						Type = Defined.Types.Int,
 						Name = new IdentifierNameExpression("y")
 					}
-				]
+				}
 			};
 			var text = new StringWriter().Code(expression).ToString();
 			Assert.Equal("(int x, int y) => { }", text);
@@ -59,7 +59,7 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 		[Fact]
 		public void TestMultipleVarParameter() {
 			var expression = new AnonymousMethodExpression {
-				Parameters = [
+				Parameters = {
 					new ParameterDeclaration {
 						Type = Defined.Types.Var,
 						Name = new IdentifierNameExpression("x")
@@ -68,7 +68,7 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 						Type = Defined.Types.Var,
 						Name = new IdentifierNameExpression("y")
 					}
-				]
+				}
 			};
 			var text = new StringWriter().Code(expression).ToString();
 			Assert.Equal("(x, y) => { }", text);
@@ -76,9 +76,9 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 		[Fact]
 		public void TestSingleExpression() {
 			var expression = new AnonymousMethodExpression {
-				Body = [
+				Body = {
 					new StringLiteralExpression("hello")
-				]
+				}
 			};
 			var text = new StringWriter().Code(expression).ToString();
 			Assert.Equal("() => \"hello\"", text);
@@ -86,18 +86,18 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 		[Fact]
 		public void TestMultilineBody() {
 			var expression = new AnonymousMethodExpression {
-				Body = [
+				Body = {
 					new AssignmentExpression{
 						Left = new VariableDeclaration{
 							Type = Defined.Types.Int,
 							Identifier = new IdentifierNameExpression("x"),
 						},
 						Expression = new IntLiteralExpression(10)
-					}.EndOfStatement(),
+					},
 					new ReturnExpression{
 						Expression = new IdentifierNameExpression("x")
 					},
-				]
+				}
 			};
 			var text = new StringWriter().Code(expression).ToString();
 			Assert.Equal("() => {\n\tint x = 10;\n\treturn x;\n}", text.NormalizeLineEnding());

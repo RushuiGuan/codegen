@@ -51,7 +51,7 @@ namespace Albatross.CodeGen {
 			}
 		}
 
-		private List<T> nodes = new();
+		protected List<T> nodes = new();
 		/// <summary>
 		/// The separator used to separate each node
 		/// </summary>
@@ -85,13 +85,17 @@ namespace Albatross.CodeGen {
 				using var scope = writer.BeginScope(Prefix, PostFix);
 				var seperator = $"{Separator}\n";
 				scope.Writer.WriteItems(this.nodes,
-					seperator, (w, item) => w.Code(item), this.LeftPadding, this.RightPadding);
+					seperator, WriteItem, this.LeftPadding, this.RightPadding);
 			} else {
 				writer.Append(this.Prefix)
-					.WriteItems(this.nodes.Where(x => x is not NoOpExpression), Separator, (w, item) => w.Code(item), this.LeftPadding, this.RightPadding)
+					.WriteItems(this.nodes, Separator, WriteItem, this.LeftPadding, this.RightPadding)
 					.Append(this.PostFix);
 			}
 			return writer;
+		}
+
+		protected virtual void WriteItem(TextWriter writer, T item) {
+			writer.Code(item);
 		}
 
 		/// <summary>

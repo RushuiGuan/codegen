@@ -1,10 +1,12 @@
 ﻿using Albatross.CodeGen.CSharp;
 using Albatross.CodeGen.CSharp.Expressions;
+using Albatross.Testing;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Xunit;
+using Xunit.Sdk;
 
 namespace Albatross.CodeGen.UnitTest.CSharp {
 	public class TestArrayExpression {
@@ -34,7 +36,7 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 
 		[Fact]
 		public void TestMultiline() {
-			var expression = new ArrayExpression {
+			var expression = new ArrayExpression(true) {
 				Type = Defined.Types.String,
 				Items = {
 					new StringLiteralExpression("One"),
@@ -42,12 +44,12 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 					new StringLiteralExpression("Three")
 				}
 			};
-			var text = new StringWriter().Code(expression).ToString();
+			var text = new StringWriter().Code(expression).ToString().NormalizeLineEnding();
 			Assert.Equal(@"new string[] {
 	""One"",
 	""Two"",
 	""Three""
-}", text);
+}".NormalizeLineEnding(), text);
 		}
 	}
 }

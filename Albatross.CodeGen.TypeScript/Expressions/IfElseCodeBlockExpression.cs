@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.TypeScript.Expressions {
 				mainScope.Writer.Code(CodeBlock);
 			}
 			if (ElseBlock != null) {
-				using (var elseScope = writer.Append(" else ").BeginScope()) {
+				using (var elseScope = writer.Append(" else").BeginScope()) {
 					elseScope.Writer.Code(ElseBlock);
 				}
 			}

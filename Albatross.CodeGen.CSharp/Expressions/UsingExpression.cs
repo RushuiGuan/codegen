@@ -2,13 +2,12 @@
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
-	public record class UsingExpression : CodeNode, IExpression {
+	public record class UsingExpression : CodeNode, ICodeBlock{
 		public required IExpression Resource { get; init; }
-		public IExpression Body { get; init; } = new NoOpExpression();
+		public CodeBlock Body { get; } = new CSharpCodeBlock();
 
 		public override TextWriter Generate(TextWriter writer) {
-			using var scope = writer.Code(Defined.Keywords.Using).Code(new ParenthesizedExpression(Resource)).BeginScope();
-			scope.Writer.Code(Body);
+			writer.Code(Defined.Keywords.Using).Code(new ParenthesizedExpression(Resource)).Code(Body);
 			return writer;
 		}
 
