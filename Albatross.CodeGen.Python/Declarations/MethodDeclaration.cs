@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.Python.Declarations {
 		public ITypeExpression ReturnType { get; init; } = Defined.Types.None;
 		public ListOfNodes<ParameterDeclaration> Parameters { get; init; } = new();
 		public IEnumerable<IKeyword> Modifiers { get; init; } = [];
-		public IExpression Body { get; init; } = new EmptyExpression();
+		public PythonCodeBlock Body { get; } = new PythonCodeBlock();
 		public IExpression? DocString { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {
@@ -28,10 +28,15 @@ namespace Albatross.CodeGen.Python.Declarations {
 			writer.Append("def ").Code(Identifier)
 				.OpenParenthesis().Code(Parameters).CloseParenthesis();
 			writer.Append(" -> ").Code(ReturnType);
-			using (var scope = writer.BeginPythonScope()) {
-				if (DocString is not null) { scope.Writer.Code(DocString); }
-				scope.Writer.Code(Body);
+
+			var body = this.Body;
+			if (DocString is not null) {
+				body = new PythonCodeBlock {
+					DocString,
+					Body.Cast<IExpression>(),
+				};
 			}
+			writer.Code(body);
 			return writer;
 		}
 

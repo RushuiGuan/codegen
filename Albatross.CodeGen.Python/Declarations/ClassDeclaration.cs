@@ -46,15 +46,15 @@ namespace Albatross.CodeGen.Python.Declarations {
 				}
 				foreach (var getter in GetProperties) {
 					pass = false;
-					scope.Writer.Code(getter);
+					scope.Writer.Code(getter).AppendLine();
 				}
 				if (Constructor != null) {
 					pass = false;
-					scope.Writer.Code(Constructor);
+					scope.Writer.Code(Constructor).AppendLine();
 				}
 				foreach (var method in Methods) {
 					pass = false;
-					scope.Writer.Code(method);
+					scope.Writer.Code(method).AppendLine();
 				}
 				if (pass) {
 					scope.Writer.Append("pass");

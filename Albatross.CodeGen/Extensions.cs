@@ -49,10 +49,9 @@ namespace Albatross.CodeGen {
 		/// <param name="writer">The TextWriter to create the scope for</param>
 		/// <param name="text">Optional text to write before the opening brace</param>
 		/// <returns>A disposable CodeGeneratorScope that automatically handles indentation and braces</returns>
-		public static CodeGeneratorScope BeginScope(this TextWriter writer) => writer.BeginScope("{", "}");
+		public static CodeGeneratorScope BeginScope(this TextWriter writer) => writer.BeginScope(" {", "}");
 
 		public static CodeGeneratorScope BeginScope(this TextWriter writer, string open, string close) {
-			writer.Space();
 			return new CodeGeneratorScope(writer, args => args.AppendLine(open), args => args.Append(close));
 		}
 
