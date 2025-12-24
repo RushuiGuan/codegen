@@ -13,7 +13,6 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using System;
 using System.CommandLine;
 using System.Text.Json;
@@ -52,7 +51,7 @@ namespace Albatross.CodeGen.CommandLine {
 			}
 			services.AddShortenLoggerName(false, "Albatross");
 			services.AddSingleton<IProjectCompilationFactory, ProjectCompilationFactory>();
-			services.AddSingleton<Compilation>(provider => provider.GetRequiredService<IProjectCompilationFactory>().Create().Result);
+			services.AddSingleton(provider => provider.GetRequiredService<IProjectCompilationFactory>().Create().Result);
 			RegisterCodeGenSettings<CSharpWebClientSettings>(services);
 			RegisterCodeGenSettings<TypeScriptWebClientSettings>(services);
 			RegisterCodeGenSettings<PythonWebClientSettings>(services);
@@ -67,7 +66,7 @@ namespace Albatross.CodeGen.CommandLine {
 		/// <returns>The service collection for method chaining</returns>
 		static IServiceCollection RegisterCodeGenSettings<T>(IServiceCollection services) where T : CodeGenSettings, new() {
 			services.AddSingleton(provider => {
-				var options = provider.GetRequiredService<CodeGenCommandOptions>();
+				var options = provider.GetRequiredService<CodeGenOptions>();
 				if (options.SettingsFile == null) {
 					return new T();
 				} else if (options.SettingsFile.Exists) {

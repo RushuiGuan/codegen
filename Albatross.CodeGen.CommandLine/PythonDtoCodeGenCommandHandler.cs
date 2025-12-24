@@ -15,7 +15,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class PythonDtoCodeGenCommandHandler : CommandAction<CodeGenCommandOptions> {
+	public class PythonDtoCodeGenCommandHandler : CommandAction<CodeGenOptions> {
 		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
 		private readonly ConvertClassSymbolToDtoClassModel dto2Model;
@@ -29,7 +29,7 @@ namespace Albatross.CodeGen.CommandLine {
 			ConvertEnumSymbolToDtoEnumModel enum2Model,
 			ConvertDtoClassModelToDataClass dtoModel2Python,
 			ConvertEnumModelToPythonEnum enumModel2Python,
-			CodeGenCommandOptions options) : base(options) {
+			CodeGenOptions options) : base(options) {
 			this.compilation = compilation;
 			this.settings = settings;
 			this.dto2Model = dto2Model;

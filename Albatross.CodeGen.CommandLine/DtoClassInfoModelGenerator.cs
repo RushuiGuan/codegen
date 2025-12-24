@@ -12,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class DtoClassInfoModelGenerator : CommandAction<CodeGenCommandOptions> {
+	public class DtoClassInfoModelGenerator : CommandAction<CodeGenOptions> {
 		private Compilation compilation;
 		private ConvertClassSymbolToDtoClassModel dtoConverter;
 		private readonly ConvertEnumSymbolToDtoEnumModel enumConverter;
@@ -21,7 +21,7 @@ namespace Albatross.CodeGen.CommandLine {
 		public DtoClassInfoModelGenerator(Compilation compilation, ConvertClassSymbolToDtoClassModel dtoConverter,
 			ConvertEnumSymbolToDtoEnumModel enumConverter,
 			CodeGenSettings settings,
-			CodeGenCommandOptions options) : base(options) {
+			CodeGenOptions options) : base(options) {
 			this.compilation = compilation;
 			this.dtoConverter = dtoConverter;
 			this.enumConverter = enumConverter;

@@ -12,14 +12,14 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class PythonWebClientCodeGenCommandHandler : CommandAction<CodeGenCommandOptions> {
+	public class PythonWebClientCodeGenCommandHandler : CommandAction<CodeGenOptions> {
 		private readonly ILogger<PythonWebClientCodeGenCommandHandler> logger;
 		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
 		private readonly ConvertApiControllerToControllerModel convertToWebApi;
 		private readonly ConvertControllerModelToPythonFile converToPythonFile;
 
-		public PythonWebClientCodeGenCommandHandler(CodeGenCommandOptions options,
+		public PythonWebClientCodeGenCommandHandler(CodeGenOptions options,
 			ILogger<PythonWebClientCodeGenCommandHandler> logger,
 			Compilation compilation,
 			CodeGenSettings settings,

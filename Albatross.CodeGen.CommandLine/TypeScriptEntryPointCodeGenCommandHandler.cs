@@ -2,23 +2,17 @@
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CommandLine;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	[Verb<TypeScriptEntryPointCodeGenCommandHandler>("typescript entrypoint")]
-	public record TypeScriptEntryPointCodeGenOptions {
-		[Option("o")]
-		public DirectoryInfo OutputDirectory { get; init; } = null!;
-	}
-	public class TypeScriptEntryPointCodeGenCommandHandler : CommandAction<TypeScriptEntryPointCodeGenOptions> {
+	public class TypeScriptEntryPointCodeGenCommandHandler : CommandAction<CodeGenOptions> {
 		private readonly ILogger<TypeScriptEntryPointCodeGenCommandHandler> logger;
 		private readonly TypeScriptWebClientSettings settings;
 
-		public TypeScriptEntryPointCodeGenCommandHandler(TypeScriptEntryPointCodeGenOptions options,
+		public TypeScriptEntryPointCodeGenCommandHandler(CodeGenOptions options,
 			ILogger<TypeScriptEntryPointCodeGenCommandHandler> logger,
 			TypeScriptWebClientSettings settings) : base(options) {
 			this.logger = logger;

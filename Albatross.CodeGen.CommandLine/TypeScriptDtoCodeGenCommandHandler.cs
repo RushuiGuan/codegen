@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class TypeScriptDtoCodeGenCommandHandler : CommandAction<CodeGenCommandOptions> {
+	public class TypeScriptDtoCodeGenCommandHandler : CommandAction<CodeGenOptions> {
 		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
 		private readonly ConvertClassSymbolToDtoClassModel dto2Model;
@@ -27,7 +27,7 @@ namespace Albatross.CodeGen.CommandLine {
 			ConvertEnumSymbolToDtoEnumModel enum2Model,
 			ConvertDtoClassModelToTypeScriptInterface dtoModel2TypeScript,
 			ConvertEnumModelToTypeScriptEnum enumModel2TypeScript,
-			CodeGenCommandOptions options) : base(options) {
+			CodeGenOptions options) : base(options) {
 			this.compilation = compilation;
 			this.settings = settings;
 			this.dto2Model = dto2Model;

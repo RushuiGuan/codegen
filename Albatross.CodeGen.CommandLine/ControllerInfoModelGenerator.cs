@@ -10,13 +10,13 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class ControllerInfoModelGenerator : CommandAction<CodeGenCommandOptions> {
+	public class ControllerInfoModelGenerator : CommandAction<CodeGenOptions> {
 		private readonly Compilation compilation;
 		private readonly ConvertApiControllerToControllerModel converter;
 		private readonly CodeGenSettings settings;
 
 		public ControllerInfoModelGenerator(Compilation compilation, ConvertApiControllerToControllerModel converter,
-			CodeGenSettings settings, CodeGenCommandOptions options) : base(options) {
+			CodeGenSettings settings, CodeGenOptions options) : base(options) {
 			this.compilation = compilation;
 			this.converter = converter;
 			this.settings = settings;

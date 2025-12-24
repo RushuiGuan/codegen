@@ -12,14 +12,14 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class TypeScriptWebClientCodeGenCommandHandler : CommandAction<CodeGenCommandOptions> {
+	public class TypeScriptWebClientCodeGenCommandHandler : CommandAction<CodeGenOptions> {
 		private readonly ILogger<TypeScriptWebClientCodeGenCommandHandler> logger;
 		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
 		private readonly ConvertApiControllerToControllerModel convertToWebApi;
 		private readonly ConvertControllerModelToTypeScriptFile converToTypeScriptFile;
 
-		public TypeScriptWebClientCodeGenCommandHandler(CodeGenCommandOptions options,
+		public TypeScriptWebClientCodeGenCommandHandler(CodeGenOptions options,
 			ILogger<TypeScriptWebClientCodeGenCommandHandler> logger,
 			Compilation compilation,
 			CodeGenSettings settings,
