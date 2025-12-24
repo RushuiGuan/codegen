@@ -32,10 +32,12 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		}
 
 		ListOfParameterDeclarations GetMethodParameters(MethodInfo method) {
-			return new ListOfParameterDeclarations(method.Parameters.Select(param => new ParameterDeclaration {
-				Name = new IdentifierNameExpression(param.Name),
-				Type = typeConverter.Convert(param.Type),
-			}));
+			return new ListOfParameterDeclarations{
+				method.Parameters.Select(param => new ParameterDeclaration {
+					Name = new IdentifierNameExpression(param.Name),
+					Type = typeConverter.Convert(param.Type),
+				})
+			};
 		}
 
 		InterfaceDeclaration CreateInterface(ControllerInfo controller) {
@@ -93,11 +95,11 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				ReturnType = GetMethodReturnType(method.ReturnType),
 				Parameters = GetMethodParameters(method),
 				IsAsync = true,
-				Body = new CodeBlock(
+				Body = new CodeBlock{
 					BuildPath(method).AsEnumerable()
 						.Concat(BuildQuery(method))
 						.Concat(BuildHttpCall(method))
-				)
+				}
 			};
 		}
 
@@ -146,7 +148,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			if (constructorSettings?.Omit != true) {
 				var constructor = new ConstructorDeclaration {
 					Name = new IdentifierNameExpression(GetClassName(from)),
-					Parameters = new(
+					Parameters = {
 						new ParameterDeclaration {
 							Name = new IdentifierNameExpression("logger"),
 							Type = new TypeExpression("ILogger", GetClassName(from)),
@@ -155,13 +157,16 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 							Name = new IdentifierNameExpression("client"),
 							Type = new TypeExpression("HttpClient"),
 						}
-					),
+					},
 					BaseConstructorInvocation = new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("base"),
-						Arguments = new ListOfArguments(new List<IExpression> {
+						Arguments = {
 							new IdentifierNameExpression("logger"),
 							new IdentifierNameExpression("client"),
-						}.AddIfNotNull(string.IsNullOrEmpty(constructorSettings?.CustomJsonSettings) ? null : new IdentifierNameExpression(constructorSettings!.CustomJsonSettings)))
+							{
+								!string.IsNullOrEmpty(constructorSettings?.CustomJsonSettings), ()=>new IdentifierNameExpression(constructorSettings!.CustomJsonSettings!)
+							}
+						}
 					},
 				};
 				return [constructor];
@@ -170,16 +175,13 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			}
 		}
 
-		ListOfArguments CreateRequestFunctionArguments(MethodInfo method, ParameterInfo? fromBody) {
-			var list = new List<IExpression> {
-				new IdentifierNameExpression($"HttpMethod.{method.HttpMethod}"),
-				new IdentifierNameExpression("path"),
-				new IdentifierNameExpression("queryString"),
-			};
+		IEnumerable<IExpression> CreateRequestFunctionArguments(MethodInfo method, ParameterInfo? fromBody) {
+			yield return new IdentifierNameExpression($"HttpMethod.{method.HttpMethod}");
+			yield return new IdentifierNameExpression("path");
+			yield return new IdentifierNameExpression("queryString");
 			if (fromBody != null) {
-				list.Add(new IdentifierNameExpression(fromBody.Name));
+				yield return new IdentifierNameExpression(fromBody.Name);
 			}
-			return new ListOfArguments(list);
 		}
 
 		IExpression CreateRequestFunction(ParameterInfo? fromBody) {
@@ -189,7 +191,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				return new IdentifierNameExpression("this.CreateStringRequest");
 			} else {
 				return new IdentifierNameExpression("this.CreateJsonRequest") {
-					GenericArguments = new ListOfGenericArguments(this.typeConverter.Convert(fromBody.Type))
+					GenericArguments = { this.typeConverter.Convert(fromBody.Type) }
 				};
 			}
 		}
@@ -197,7 +199,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		IExpression GetVoidResponseFunction() {
 			return new InvocationExpression {
 				CallableExpression = new IdentifierNameExpression("this.GetRawResponse"),
-				Arguments = new ListOfArguments(new IdentifierNameExpression("request")),
+				Arguments = { new IdentifierNameExpression("request") },
 				UseAwaitOperator = true,
 			};
 		}
@@ -220,9 +222,9 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			return new ReturnExpression {
 				Expression = new InvocationExpression {
 					CallableExpression = new IdentifierNameExpression(functionName) {
-						GenericArguments = new ListOfGenericArguments(this.typeConverter.Convert(method.ReturnType))
+						GenericArguments = { this.typeConverter.Convert(method.ReturnType) }
 					},
-					Arguments = new ListOfArguments(new IdentifierNameExpression("request")),
+					Arguments = { new IdentifierNameExpression("request") },
 					UseAwaitOperator = true,
 				}
 			};
@@ -248,7 +250,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					},
 					Expression = new InvocationExpression {
 						CallableExpression = CreateRequestFunction(fromBody),
-						Arguments = CreateRequestFunctionArguments(method, fromBody)
+						Arguments = { CreateRequestFunctionArguments(method, fromBody) }
 					}
 				},
 				Body = GetResponseFunction(method).EndOfStatement()
@@ -292,9 +294,9 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		}
 
 		bool IsDate(ITypeSymbol type) => type.Is(compilation.DateTime())
-		                                 || type.Is(compilation.DateTimeOffset())
-		                                 || type.Is(compilation.TimeOnly())
-		                                 || type.Is(compilation.DateOnly());
+										 || type.Is(compilation.DateTimeOffset())
+										 || type.Is(compilation.TimeOnly())
+										 || type.Is(compilation.DateOnly());
 
 		IExpression GetQueryStringValue(ITypeSymbol type, string variableName) {
 			if (type.SpecialType == SpecialType.System_String) {
@@ -324,13 +326,13 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					},
 					IfBlock = new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("queryString.Add"),
-						Arguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
+						Arguments = { new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName) }
 					}.EndOfStatement()
 				};
 			} else {
 				return new InvocationExpression {
 					CallableExpression = new IdentifierNameExpression("queryString.Add"),
-					Arguments = new ListOfArguments(new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName))
+					Arguments = { new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName) }
 				}.EndOfStatement();
 			}
 		}

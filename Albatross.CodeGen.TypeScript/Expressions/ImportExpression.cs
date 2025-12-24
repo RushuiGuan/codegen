@@ -6,10 +6,11 @@ using System.Linq;
 namespace Albatross.CodeGen.TypeScript.Expressions {
 	public record class ImportExpression : CodeNode, ICodeElement {
 		public ImportExpression(IEnumerable<IdentifierNameExpression> items) {
-			this.Items = new ListOfNodes<IdentifierNameExpression>(items.Distinct().OrderBy(x => x.Name)) {
+			this.Items = new ListOfNodes<IdentifierNameExpression> {
 				LeftPadding = "{ ",
 				RightPadding = " }"
 			};
+			this.Items.Add(items.Distinct().OrderBy(x => x.Name));
 		}
 
 		public ListOfNodes<IdentifierNameExpression> Items { get; }

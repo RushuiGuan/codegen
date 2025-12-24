@@ -9,12 +9,13 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 	public record class MethodDeclaration : CodeNode, IDeclaration, ICodeElement {
 		public MethodDeclaration(string name) {
 			Identifier = new IdentifierNameExpression(name);
+			Body = new TypeScriptCodeBlock();
 		}
 		public IdentifierNameExpression Identifier { get; }
 		public ITypeExpression ReturnType { get; init; } = Defined.Types.Any();
 		public ListOfNodes<ParameterDeclaration> Parameters { get; init; } = new();
 		public IEnumerable<IKeyword> Modifiers { get; init; } = [];
-		public IExpression Body { get; init; } = new NoOpExpression();
+		public CodeBlock Body { get;  } 
 
 		public override IEnumerable<ICodeNode> Children => new List<ICodeNode> { Identifier, ReturnType, Parameters, Body };
 

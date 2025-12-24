@@ -28,14 +28,15 @@ namespace Albatross.CodeGen.WebClient.Python {
 					Type = Defined.Types.String,
 					Initializer = new InvocationExpression {
 						CallableExpression = Defined.Identifiers.PydanticField,
-						Arguments = new ListOfNodes<IExpression>(
+						Arguments = {
 							new ScopedVariableExpression {
 								Identifier = new IdentifierNameExpression("alias"),
 								Assignment = new StringLiteralExpression("$type")
 							}, new ScopedVariableExpression {
 								Identifier = new IdentifierNameExpression("default"),
 								Assignment = new StringLiteralExpression(from.TypeDiscriminator)
-							})
+							}
+						}
 					}
 				});
 			}
@@ -50,7 +51,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		private FieldDeclaration modelConfig = new FieldDeclaration("model_config") {
 			Initializer = new InvocationExpression {
 				CallableExpression = new QualifiedIdentifierNameExpression("ConfigDict", Defined.Sources.Pydantic),
-				Arguments = new ListOfNodes<IExpression>(
+				Arguments = {
 					new ScopedVariableExpression {
 						Identifier = new IdentifierNameExpression("populate_by_name"),
 						Assignment = Defined.Literals.BooleanLiteral(true),
@@ -58,7 +59,8 @@ namespace Albatross.CodeGen.WebClient.Python {
 					new ScopedVariableExpression {
 						Identifier = new IdentifierNameExpression("serialize_by_alias"),
 						Assignment = Defined.Literals.BooleanLiteral(true),
-					})
+					} 
+				}
 			}
 		};
 		object IConvertObject<DtoClassInfo>.Convert(DtoClassInfo from) => Convert(from);

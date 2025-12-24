@@ -31,11 +31,13 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 								ReturnType = new TypeExpression("IHttpClientBuilder"),
 								AccessModifier = Defined.Keywords.Public,
 								IsStatic = true,
-								Parameters = new ListOfParameterDeclarations(new ParameterDeclaration {
-									Type = new TypeExpression("IHttpClientBuilder"),
-									Name = new IdentifierNameExpression("builder"),
-									UseThisKeyword = true
-								}),
+								Parameters = {
+									new ParameterDeclaration {
+										Type = new TypeExpression("IHttpClientBuilder"),
+										Name = new IdentifierNameExpression("builder"),
+										UseThisKeyword = true
+									}
+								},
 								Body = new ReturnExpression {
 									Expression = new IdentifierNameExpression("builder")
 										.Chain(true, GetRegistrationFunctions(settings.UseInterface, models))
@@ -53,12 +55,10 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				var className = $"{model.ControllerName}ProxyService";
 				yield return new InvocationExpression {
 					CallableExpression = new IdentifierNameExpression("AddTypedClient") {
-						GenericArguments = useInterface
-							? new ListOfGenericArguments(
-								new TypeExpression(interfaceName),
-								new TypeExpression(className))
-							: new ListOfGenericArguments(
-								new TypeExpression(className))
+						GenericArguments = {
+							{ useInterface, ()=> new TypeExpression(interfaceName) },
+							new TypeExpression(className)
+						}
 					}
 				};
 			}

@@ -6,8 +6,9 @@ namespace Albatross.CodeGen {
 	/// the expression will skip any NewLineExpression and NoOpExpression nodes
 	/// </summary>
 	public record class CodeBlock : ListOfNodes<IExpression>, IExpression {
-		public CodeBlock(params IEnumerable<IExpression> items) : base(items) {
-			Separator = "\n";
+		public CodeBlock() {
+			Separator = "";
+			Multiline = true;
 		}
 	}
 }

@@ -31,7 +31,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 				writer.Space().Code(Body.First());
 			} else {
 				using var scope = writer.BeginScope();
-				scope.Writer.Code(new CodeBlock(Body));
+				scope.Writer.Code(new CodeBlock { Body });
 			}
 			return writer;
 		}

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Albatross.CodeGen.TypeScript.Expressions {
 	public record ListOfGenericArguments : ListOfNodes<ITypeExpression>, IExpression {
-		public ListOfGenericArguments(params IEnumerable<ITypeExpression> nodes) : base(nodes) {
+		public ListOfGenericArguments() {
 			LeftPadding = "<";
 			RightPadding = ">";
 		}

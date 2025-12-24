@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 				typeExpression = factory.Convert(symbol.WithNullableAnnotation(NullableAnnotation.None));
 			}
 			if (typeExpression != null) {
-				expression = new MultiTypeExpression(typeExpression, Defined.Types.None);
+				expression = new MultiTypeExpression { typeExpression, Defined.Types.None };
 				return true;
 			} else {
 				expression = null;

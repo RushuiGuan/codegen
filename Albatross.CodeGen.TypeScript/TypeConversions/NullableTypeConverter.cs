@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.TypeScript.TypeConversions {
 				typeExpression = factory.Convert(symbol.WithNullableAnnotation(NullableAnnotation.None));
 			}
 			if (typeExpression != null) {
-				expression = new MultiTypeExpression(typeExpression, Defined.Types.Undefined());
+				expression = new MultiTypeExpression { typeExpression, Defined.Types.Undefined() };
 				return true;
 			} else {
 				expression = null;

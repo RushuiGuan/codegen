@@ -38,14 +38,18 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 						Getters = [
 							new GetterDeclaration("endPoint") {
 								ReturnType = Defined.Types.String(),
-								Body = new ReturnExpression(new InfixExpression {
-									Operator = new Operator("+"),
-									Left = new InvocationExpression {
-										CallableExpression = new MultiPartIdentifierNameExpression("this", "config", "endpoint"),
-										Arguments = new ListOfNodes<IExpression> { new StringLiteralExpression(settings.EndPointName) },
-									},
-									Right = new StringLiteralExpression(model.Route),
-								}),
+								Body = {
+									new ReturnExpression(
+										new InfixExpression {
+											Operator = new Operator("+"),
+											Left = new InvocationExpression {
+												CallableExpression = new MultiPartIdentifierNameExpression("this", "config", "endpoint"),
+												Arguments = new ListOfNodes<IExpression> { new StringLiteralExpression(settings.EndPointName) },
+											},
+											Right = new StringLiteralExpression(model.Route),
+										}
+									)
+								},
 							}
 						],
 						Constructor = new ConstructorDeclaration() {
@@ -61,7 +65,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 									Modifiers = [Defined.Keywords.Protected],
 								}
 							},
-							Body = new TypeScriptCodeBlock {
+							Body = {
 								new InvocationExpression {
 									CallableExpression = new IdentifierNameExpression("super"),
 								},
@@ -93,14 +97,14 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			return new MethodDeclaration(name) {
 				Modifiers = settings.UsePromise ? [new AsyncKeyword()] : [],
 				ReturnType = settings.UsePromise ? returnType.ToPromise() : returnType.ToObservable(),
-				Parameters = new ListOfNodes<ParameterDeclaration>(method.Parameters.Select(x => new ParameterDeclaration(x.Name) { Type = typeConverter.Convert(x.Type) })),
-				Body = new CodeBlock(
+				Parameters = { method.Parameters.Select(x => new ParameterDeclaration(x.Name) { Type = typeConverter.Convert(x.Type) }) },
+				Body = {
 					new ScopedVariableExpression("relativeUrl") {
 						IsConstant = true,
 						Assignment = new StringInterpolationExpression(method.RouteSegments.Select(x => BuildRouteSegment(method, x)))
 					},
 					CreateHttpInvocationExpression(method)
-				),
+				},
 			};
 		}
 
@@ -119,9 +123,10 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		InvocationExpression FormattedDate(string text, string format) {
 			return new InvocationExpression {
 				CallableExpression = new QualifiedIdentifierNameExpression("format", Defined.Sources.DateFns),
-				Arguments = new ListOfNodes<IExpression>(
+				Arguments = {
 					new IdentifierNameExpression(text),
-					new StringLiteralExpression(format)),
+					new StringLiteralExpression(format)
+				},
 			};
 		}
 
@@ -168,12 +173,12 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			if (parameter.Type.TryGetCollectionElementType(compilation, out var elementType) && IsDate(elementType!)) {
 				value = new InvocationExpression {
 					CallableExpression = new MultiPartIdentifierNameExpression(parameter.Name.CamelCase(), "map"),
-					Arguments = new ListOfNodes<IExpression>(
+					Arguments = {
 						new ArrowFunctionExpression {
-							Arguments = new ListOfNodes<IIdentifierNameExpression>(new IdentifierNameExpression("x")),
+							Arguments = {new IdentifierNameExpression("x") },
 							Body = BuildParamValue("x", elementType!),
 						}
-					)
+					}
 				};
 			} else {
 				value = BuildParamValue(parameter.Name.CamelCase(), parameter.Type);
@@ -218,23 +223,24 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 
 		IExpression CreateHttpInvocationExpression(MethodInfo method) {
 			if (settings.UsePromise) {
-				return new CodeBlock(
+				return new CodeBlock{
 					new ScopedVariableExpression("result") {
 						IsConstant = true,
 						Assignment = CreateHttpRequestInvocationExpression(method),
 					},
 					new ReturnExpression(new InvocationExpression {
 						CallableExpression = Defined.Identifiers.FirstValueFrom,
-						Arguments = new ListOfNodes<IExpression>(new IdentifierNameExpression("result")),
+						Arguments = { new IdentifierNameExpression("result") },
 						UseAwaitOperator = true,
-					}));
+					}) };
 			} else {
-				return new CodeBlock(
+				return new CodeBlock{
 					new ScopedVariableExpression("result") {
 						Assignment = CreateHttpRequestInvocationExpression(method),
 						IsConstant = true,
 					},
-					new ReturnExpression(new IdentifierNameExpression("result")));
+					new ReturnExpression(new IdentifierNameExpression("result"))
+				};
 			}
 		}
 

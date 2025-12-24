@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
 	public record ListOfArguments : ListOfNodes<IExpression>, IExpression {
-		public ListOfArguments(params IEnumerable<IExpression> nodes) : base(nodes) {
+		public ListOfArguments() {
 			Prefix = "(";
 			PostFix = ")";
 		}

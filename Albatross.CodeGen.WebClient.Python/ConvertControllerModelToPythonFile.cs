@@ -70,12 +70,12 @@ namespace Albatross.CodeGen.WebClient.Python {
 				},
 				new ParameterDeclaration {
 					Identifier = new IdentifierNameExpression("auth"),
-					Type = new MultiTypeExpression(
+					Type = new MultiTypeExpression{
 						new SimpleTypeExpression {
 							Identifier = settings.Async ? new QualifiedIdentifierNameExpression("Auth", Defined.Sources.Httpx) : new QualifiedIdentifierNameExpression("AuthBase", Defined.Sources.RequestsAuth)
 						},
 						Defined.Types.None
-					),
+					},
 					DefaultValue = new NoneLiteralExpression(),
 				},
 			},
@@ -181,17 +181,19 @@ namespace Albatross.CodeGen.WebClient.Python {
 				Modifiers = settings.Async ? [new AsyncKeyword()] : [],
 				Decorators = method.IsObsolete ? [new DecoratorExpression { CallableExpression = Defined.Identifiers.Deprecated, }] : Array.Empty<DecoratorExpression>(),
 				ReturnType = returnType,
-				Parameters = new ListOfNodes<ParameterDeclaration>(
+				Parameters = {
+					Defined.Parameters.Self,
 					method.Parameters.Select(x => new ParameterDeclaration {
 						Identifier = new IdentifierNameExpression(x.Name.Underscore()),
 						Type = this.typeConverter.Convert(x.Type)
-					})).WithSelf(),
-				Body = new CodeBlock(
+					})
+				},
+				Body = new CodeBlock{
 					BuildRequestUrl(method),
 					BuildQueryParameters(method),
 					CreateHttpInvocationExpression(method),
 					BuildReturnValue(method)
-				),
+				},
 			};
 		}
 
@@ -215,18 +217,18 @@ namespace Albatross.CodeGen.WebClient.Python {
 				builder.Add(new ReturnExpression(
 					new InvocationExpression {
 						CallableExpression = Defined.Identifiers.TypeAdapter,
-						Arguments = new ListOfNodes<IExpression>(this.typeConverter.Convert(method.ReturnType))
+						Arguments = { this.typeConverter.Convert(method.ReturnType) }
 					}.Chain(false, new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("validate_python"),
-						Arguments = new ListOfNodes<IExpression>(
-								new InvocationExpression {
-									CallableExpression = new MultiPartIdentifierNameExpression("response", "json")
-								})
-					}
-					)
+						Arguments = {
+							new InvocationExpression {
+								CallableExpression = new MultiPartIdentifierNameExpression("response", "json")
+							}
+						}
+					})
 				));
 			}
-			return new CodeBlock(builder);
+			return new CodeBlock { builder };
 		}
 
 		IExpression BuildRequestUrl(MethodInfo method) {
@@ -274,15 +276,15 @@ namespace Albatross.CodeGen.WebClient.Python {
 					LineBreak = true,
 					TrueExpression = new InvocationExpression {
 						CallableExpression = new MultiPartIdentifierNameExpression(variableName, "astimezone"),
-						Arguments = new ListOfNodes<IExpression>(Defined.Identifiers.TimeZoneUtc)
+						Arguments = { Defined.Identifiers.TimeZoneUtc }
 					}.Chain(false, new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("isoformat"),
 					}).Chain(false, new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("replace"),
-						Arguments = new ListOfNodes<IExpression>(
+						Arguments = {
 							new StringLiteralExpression("+00:00"),
 							new StringLiteralExpression("Z")
-						)
+						}
 					}),
 					Condition = new MultiPartIdentifierNameExpression(variableName, "tzinfo"),
 					FalseExpression = new InvocationExpression {
@@ -417,15 +419,16 @@ namespace Albatross.CodeGen.WebClient.Python {
 									Identifier = new IdentifierNameExpression("json"),
 									Assignment = new InvocationExpression {
 										CallableExpression = Defined.Identifiers.TypeAdapter,
-										Arguments = new ListOfNodes<IExpression>(this.typeConverter.Convert(fromBodyParameter.Type))
+										Arguments = {this.typeConverter.Convert(fromBodyParameter.Type) }
 									}.Chain(false, new InvocationExpression {
 										CallableExpression = new IdentifierNameExpression("dump_python"),
-										Arguments = new ListOfNodes<IExpression>(
+										Arguments = {
 											new IdentifierNameExpression(fromBodyParameter.Name.Underscore()),
 											new ScopedVariableExpression {
 												Identifier = new IdentifierNameExpression("mode"),
 												Assignment = new StringLiteralExpression("json")
-											})
+											}
+										}
 									})
 								});
 							}
@@ -439,14 +442,14 @@ namespace Albatross.CodeGen.WebClient.Python {
 					},
 				}
 			};
-			return new CodeBlock(
+			return new CodeBlock{
 				new ScopedVariableExpression {
 					Identifier = new IdentifierNameExpression("response"),
 					Assignment = expression,
 				},
 				new InvocationExpression {
 					CallableExpression = new MultiPartIdentifierNameExpression("response", "raise_for_status"),
-				});
+				} };
 		}
 
 		object IConvertObject<ControllerInfo>.Convert(ControllerInfo from) => this.Convert(from);

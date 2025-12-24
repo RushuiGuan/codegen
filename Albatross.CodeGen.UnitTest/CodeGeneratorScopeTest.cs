@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Albatross.Text;
+using System;
 using System.IO;
 using Xunit;
 
@@ -25,7 +26,7 @@ namespace Albatross.CodeGen.UnitTest {
 			using (CodeGeneratorScope scope = new CodeGeneratorScope(writer, args => args.WriteLine("{"), args => args.WriteLine("}"))) {
 
 				scope.Writer.WriteLine("int i = 100;");
-				using (var child = scope.Writer.BeginScope("test")) {
+				using (var child = scope.Writer.Append("test ").BeginScope()) {
 					child.Writer.WriteLine("int a = 200;");
 				}
 			}

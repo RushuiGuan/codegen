@@ -10,7 +10,7 @@ namespace Albatross.CodeGen.TypeScript.TypeConversions {
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {
 			if (symbol is INamedTypeSymbol named && named.IsGenericType) {
 				expression = new GenericTypeExpression(symbol.Name) {
-					Arguments = new ListOfNodes<ITypeExpression>(((symbol as INamedTypeSymbol)?.TypeArguments ?? []).Select(factory.Convert))
+					Arguments = new ListOfNodes<ITypeExpression> { ((symbol as INamedTypeSymbol)?.TypeArguments ?? []).Select(factory.Convert) }
 				};
 				return true;
 			} else {

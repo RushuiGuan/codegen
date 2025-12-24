@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		public IExpression? DefaultExpression { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {
-			using var scope = writer.Code(Value).Space().BeginScope("switch");
+			using var scope = writer.Code(Value).Space().Code(Defined.Keywords.Switch).BeginScope();
 			IExpression? defaultExpression = null;
 			if (DefaultExpression is not null) {
 				defaultExpression = new LamdaExpression {

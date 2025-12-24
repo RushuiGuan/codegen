@@ -11,15 +11,21 @@ namespace Albatross.CodeGen {
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	public record class ListOfNodes<T> : CodeNode, IEnumerable<T> where T : ICodeNode {
-		public ListOfNodes(params IEnumerable<T> nodes) {
-			this.nodes.AddRange(nodes);
-		}
-
 		/// <summary>
 		/// Adds a node to the list
 		/// </summary>
 		/// <param name="node">The node to add</param>
-		public void Add(T node) => nodes.Add(node);
+		public void Add(T? node) {
+			if (node != null && node is not NoOpExpression) {
+				nodes.Add(node);
+			}
+		}
+
+		public void Add(IEnumerable<T> nodes) {
+			foreach (var node in nodes) {
+				this.Add(node);
+			}
+		}
 
 		/// <summary>
 		/// Conditionally adds a node to the list
@@ -28,7 +34,7 @@ namespace Albatross.CodeGen {
 		/// <param name="func">Function to create the node if condition is true</param>
 		public void Add(bool condition, Func<T> func) {
 			if (condition) {
-				nodes.Add(func());
+				this.Add(func());
 			}
 		}
 
@@ -40,7 +46,7 @@ namespace Albatross.CodeGen {
 		public void Add(bool condition, Func<IEnumerable<T>> func) {
 			if (condition) {
 				foreach (var item in func()) {
-					nodes.Add(item);
+					this.Add(item);
 				}
 			}
 		}
@@ -67,10 +73,7 @@ namespace Albatross.CodeGen {
 		/// </summary>
 		public string PostFix { get; init; } = string.Empty;
 
-		/// <summary>
-		/// String to add after each node
-		/// </summary>
-		public string NodePostfix { get; init; } = string.Empty;
+		public bool Multiline { get; init; } = false;
 
 		/// <summary>
 		/// Generates the code representation of the list with separators and padding
@@ -78,9 +81,16 @@ namespace Albatross.CodeGen {
 		/// <param name="writer">The TextWriter to write the generated code to</param>
 		/// <returns>The TextWriter for method chaining</returns>
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Append(this.Prefix)
-				.WriteItems(this.nodes.Where(x => x is not NoOpExpression), Separator, (w, item) => w.Code(item).Append(NodePostfix), this.LeftPadding, this.RightPadding)
-				.Append(this.PostFix);
+			if (Multiline && this.nodes.Count > 0) {
+				using var scope = writer.BeginScope(Prefix, PostFix);
+				var seperator = $"{Separator}\n";
+				scope.Writer.WriteItems(this.nodes,
+					seperator, (w, item) => w.Code(item), this.LeftPadding, this.RightPadding);
+			} else {
+				writer.Append(this.Prefix)
+					.WriteItems(this.nodes.Where(x => x is not NoOpExpression), Separator, (w, item) => w.Code(item), this.LeftPadding, this.RightPadding)
+					.Append(this.PostFix);
+			}
 			return writer;
 		}
 
@@ -89,7 +99,7 @@ namespace Albatross.CodeGen {
 		/// </summary>
 		/// <returns>An enumerator for the nodes</returns>
 		public IEnumerator<T> GetEnumerator() => ((IEnumerable<T>)nodes).GetEnumerator();
-		
+
 		/// <summary>
 		/// Gets the child nodes of this list
 		/// </summary>

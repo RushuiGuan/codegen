@@ -8,11 +8,15 @@ namespace Albatross.CodeGen.TypeScript.Declarations {
 		public IdentifierNameExpression Identifier { get; }
 		public EnumDeclaration(string name) {
 			this.Identifier = new IdentifierNameExpression(name);
+			Items = new ListOfNodes<EnumItemExpression> {
+				Separator = ",",
+				Multiline = true,
+			};
 		}
 		public IEnumerable<IKeyword> Modifiers { get; init; } = [];
-		public required ListOfEnumItems Items { get; init; }
+		public ListOfNodes<EnumItemExpression> Items { get; }
 
-		public override IEnumerable<ICodeNode> Children => new List<ICodeNode> { Identifier, Items };
+		public override IEnumerable<ICodeNode> Children => [Identifier, Items];
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Append("export ").Append("enum ");

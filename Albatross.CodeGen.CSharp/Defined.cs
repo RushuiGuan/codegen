@@ -119,6 +119,7 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly IKeyword Class = new Keyword("class");
 			public static readonly IKeyword New = new Keyword("new");
 			public static readonly IKeyword Throw = new Keyword("throw");
+			public static readonly IKeyword Switch = new Keyword("switch");
 
 			public static readonly IKeyword Set = new Keyword("set") {
 				PadRight = false

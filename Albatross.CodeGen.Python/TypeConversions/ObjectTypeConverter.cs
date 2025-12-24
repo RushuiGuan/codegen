@@ -10,7 +10,7 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 
 		protected override ITypeExpression GetResult(ITypeSymbol symbol) =>
 			symbol.NullableAnnotation == NullableAnnotation.Annotated
-				? new MultiTypeExpression(Defined.Types.None, Defined.Types.Object)
+				? new MultiTypeExpression { Defined.Types.None, Defined.Types.Object }
 				: Defined.Types.Object;
 	}
 }

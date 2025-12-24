@@ -5,15 +5,11 @@ using System.Linq;
 
 namespace Albatross.CodeGen.Python.Expressions {
 	public record class DictionaryExpression : CodeNode, IExpression {
-		public DictionaryExpression(params KeyValuePairExpression[] properties) {
-			Properties = new ListOfNodes<KeyValuePairExpression>(properties);
+		public DictionaryExpression(params IEnumerable<KeyValuePairExpression> properties) {
+			Properties.Add(properties);
 		}
-
+		public ListOfNodes<KeyValuePairExpression> Properties { get; } = new ListOfNodes<KeyValuePairExpression>();
 		public bool LineBreak { get; set; }
-
-		public DictionaryExpression(IEnumerable<KeyValuePairExpression> properties) : this(properties.ToArray()) { }
-
-		public ListOfNodes<KeyValuePairExpression> Properties { get; }
 
 		public override TextWriter Generate(TextWriter writer) {
 			if (LineBreak) {
