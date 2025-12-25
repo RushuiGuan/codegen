@@ -110,7 +110,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					Identifier = new IdentifierNameExpression("path"),
 				},
 				Expression = new StringInterpolationExpression {
-					{ true, () => BuildRouteSegments(method.RouteSegments) },
+					Items = { BuildRouteSegments(method.RouteSegments) },
 				}
 			};
 		}
@@ -311,7 +311,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				};
 			} else {
 				return new StringInterpolationExpression {
-					new IdentifierNameExpression(variableName)
+					Items = { new IdentifierNameExpression(variableName) }
 				};
 			}
 		}
@@ -328,7 +328,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						new InvocationExpression {
 							CallableExpression = new IdentifierNameExpression("queryString.Add"),
 							Arguments = { new StringLiteralExpression(queryKey), GetQueryStringValue(type, variableName) }
-						} 
+						}
 					}
 				};
 			} else {

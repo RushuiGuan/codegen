@@ -9,7 +9,7 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 		[InlineData("a\rb", "\"a\\rb\"")]
 		public void TestLiteral(string text, string expected) {
 			var result = new StringInterpolationExpression {
-				new StringLiteralExpression(text)
+				Items = { new StringLiteralExpression(text) }
 			};
 			var writer = new StringWriter();
 			writer.Code(result);
