@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 			var writer = new StringWriter();
 			writer.Code(codeBlock);
 			var text = writer.ToString().NormalizeLineEnding();
-			Assert.Equal("{\n\tx = 5;\n}", text);
+			Assert.Equal(" {\n\tx = 5;\n}", text);
 		}
 
 		[Fact]
@@ -35,7 +35,7 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 			var writer = new StringWriter();
 			writer.Code(codeBlock);
 			var text = writer.ToString().NormalizeLineEnding();
-			Assert.Equal("{\n\tx = 5;\n\ty = 10;\n}", text);
+			Assert.Equal(" {\n\tx = 5;\n\ty = 10;\n}", text);
 		}
 	}
 }

@@ -15,7 +15,10 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			} else {
 				writer.Code(Parameters);
 			}
-			writer.Append(" => ");
+			writer.Append(" =>");
+			if (Body.Count() <= 1) {
+				writer.Space();
+			}
 			if (Body.Count() == 1) {
 				writer.Code(Body.First());
 			} else {
