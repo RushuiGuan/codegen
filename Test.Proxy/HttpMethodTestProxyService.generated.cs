@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
 	public partial class HttpMethodTestProxyService : ClientBase {
-		public HttpMethodTestProxyService(ILogger<HttpMethodTestProxyService> logger, HttpClient client) : base(logger, client) {
-		}
+		public HttpMethodTestProxyService(ILogger<HttpMethodTestProxyService> logger, HttpClient client) : base(logger, client){ }
 		public const string ControllerPath = "api/http-method-test";
 		public async Task Delete() {
 			string path = $"{ControllerPath}";

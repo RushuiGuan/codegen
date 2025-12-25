@@ -12,7 +12,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public required IdentifierNameExpression Name { get; init; }
 		public ListOfParameterDeclarations Parameters { get; init; } = new();
 		public InvocationExpression? BaseConstructorInvocation { get; init; }
-		public IExpression Body { get; init; } = new NoOpExpression();
+		public CodeBlock Body { get; } = new CSharpCodeBlock();
 
 		public override TextWriter Generate(TextWriter writer) {
 			if (AccessModifier != null) {
@@ -22,8 +22,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			if (BaseConstructorInvocation != null) {
 				writer.Append(" : ").Code(BaseConstructorInvocation);
 			}
-			using var scope = writer.BeginScope();
-			scope.Writer.Code(Body);
+			writer.Code(Body);
 			return writer;
 		}
 

@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
 	public partial class FromQueryParamTestProxyService : ClientBase {
-		public FromQueryParamTestProxyService(ILogger<FromQueryParamTestProxyService> logger, HttpClient client) : base(logger, client) {
-		}
+		public FromQueryParamTestProxyService(ILogger<FromQueryParamTestProxyService> logger, HttpClient client) : base(logger, client){ }
 		public const string ControllerPath = "api/from-query-param-test";
 		public async Task RequiredString(string name) {
 			string path = $"{ControllerPath}/required-string";

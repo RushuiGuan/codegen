@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
 	public partial class RequiredReturnTypeTestProxyService : ClientBase {
-		public RequiredReturnTypeTestProxyService(ILogger<RequiredReturnTypeTestProxyService> logger, HttpClient client) : base(logger, client) {
-		}
+		public RequiredReturnTypeTestProxyService(ILogger<RequiredReturnTypeTestProxyService> logger, HttpClient client) : base(logger, client){ }
 		public const string ControllerPath = "api/required-return-type";
 		public async Task Get() {
 			string path = $"{ControllerPath}/void";
