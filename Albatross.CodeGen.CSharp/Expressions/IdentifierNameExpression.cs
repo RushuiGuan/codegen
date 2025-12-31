@@ -26,7 +26,7 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 			if (IdentifierName.IsMatch(name)) {
 				this.Name = name;
 			} else {
-				throw new ArgumentException($"Invalid identifier name {name}");
+				throw new ArgumentException($"Invalid identifier name '{name}'");
 			}
 		}
 		

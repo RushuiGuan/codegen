@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Expressions {
@@ -7,7 +8,11 @@ namespace Albatross.CodeGen.CSharp.Expressions {
 		public string Source => this.Name.Name;
 
 		public NamespaceExpression(string name) {
-			Name = new IdentifierNameExpression(name);
+			try {
+				Name = new IdentifierNameExpression(name);
+			} catch (ArgumentException) {
+				throw new ArgumentException($"Invalid namespace identifier: '{name}'");
+			}
 		}
 		public override TextWriter Generate(TextWriter writer) => writer.Code(Name);
 	}
