@@ -2,6 +2,7 @@
 using Albatross.CodeGen.WebClient.Python;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CommandLine;
+using Albatross.CommandLine.Annotations;
 using NJsonSchema;
 using NJsonSchema.Generation;
 using System;
@@ -19,11 +20,11 @@ namespace Albatross.CodeGen.CommandLine {
 		public FileInfo? File { get; set; }
 	}
 
-	public class GenerateSettingsSchema : CommandAction<GenerateSettingsSchemaOptions> {
-		public GenerateSettingsSchema(ParseResult result, GenerateSettingsSchemaOptions options) : base(result, options) {
+	public class GenerateSettingsSchema : BaseHandler<GenerateSettingsSchemaOptions> {
+		public GenerateSettingsSchema(ParseResult result, GenerateSettingsSchemaOptions parameters) : base(result, parameters) {
 		}
 
-		public override Task<int> Invoke(CancellationToken cancellationToken) {
+		public override Task<int> InvokeAsync(CancellationToken cancellationToken) {
 			var settings = new SystemTextJsonSchemaGeneratorSettings {
 				FlattenInheritanceHierarchy = true,
 				SerializerOptions = new System.Text.Json.JsonSerializerOptions {
@@ -32,7 +33,7 @@ namespace Albatross.CodeGen.CommandLine {
 				},
 			};
 			var generator = new JsonSchemaGenerator(settings);
-			var schema = Result.CommandResult.Command.Name switch {
+			var schema = result.CommandResult.Command.Name switch {
 				"python" => generator.Generate(typeof(PythonWebClientSettings)),
 				"typescript" => generator.Generate(typeof(TypeScriptWebClientSettings)),
 				"csharp" => generator.Generate(typeof(CSharpWebClientSettings)),
@@ -43,8 +44,8 @@ namespace Albatross.CodeGen.CommandLine {
 			});
 			var text = schema.ToJson();
 			System.Console.WriteLine(text);
-			if (options.File != null) {
-				System.IO.File.WriteAllText(options.File.FullName, text);
+			if (parameters.File != null) {
+				System.IO.File.WriteAllText(parameters.File.FullName, text);
 			}
 			return Task.FromResult(0);
 		}

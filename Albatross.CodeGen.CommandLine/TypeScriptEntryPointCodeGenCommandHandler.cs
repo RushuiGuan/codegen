@@ -3,25 +3,26 @@ using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CommandLine;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.CommandLine;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class TypeScriptEntryPointCodeGenCommandHandler : CommandAction<CodeGenOptions> {
+	public class TypeScriptEntryPointCodeGenCommandHandler : BaseHandler<CodeGenParams> {
 		private readonly ILogger<TypeScriptEntryPointCodeGenCommandHandler> logger;
 		private readonly TypeScriptWebClientSettings settings;
 
-		public TypeScriptEntryPointCodeGenCommandHandler(CodeGenOptions options,
+		public TypeScriptEntryPointCodeGenCommandHandler(ParseResult result, CodeGenParams parameters,
 			ILogger<TypeScriptEntryPointCodeGenCommandHandler> logger,
-			TypeScriptWebClientSettings settings) : base(options) {
+			TypeScriptWebClientSettings settings) : base(result, parameters) {
 			this.logger = logger;
 			this.settings = settings;
 		}
 
-		public override Task<int> Invoke(CancellationToken cancellationToken) {
-			string entryFile = Path.Combine(this.options.OutputDirectory.FullName, this.settings.EntryFile);
-			var sourceFoler = Path.Combine(this.options.OutputDirectory.FullName, this.settings.SourcePathRelatedToEntryFile);
+		public override Task<int> InvokeAsync(CancellationToken cancellationToken) {
+			string entryFile = Path.Combine(this.parameters.OutputDirectory.FullName, this.settings.EntryFile);
+			var sourceFoler = Path.Combine(this.parameters.OutputDirectory.FullName, this.settings.SourcePathRelatedToEntryFile);
 
 			var entries = new HashSet<string>();
 			if (File.Exists(entryFile)) {

@@ -5,6 +5,7 @@ using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
+using System.CommandLine;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -12,23 +13,23 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class DtoClassInfoModelGenerator : CommandAction<CodeGenOptions> {
+	public class DtoClassInfoModelGenerator : BaseHandler<CodeGenParams> {
 		private Compilation compilation;
 		private ConvertClassSymbolToDtoClassModel dtoConverter;
 		private readonly ConvertEnumSymbolToDtoEnumModel enumConverter;
 		private CodeGenSettings settings;
 
-		public DtoClassInfoModelGenerator(Compilation compilation, ConvertClassSymbolToDtoClassModel dtoConverter,
+		public DtoClassInfoModelGenerator(ParseResult result, Compilation compilation, ConvertClassSymbolToDtoClassModel dtoConverter,
 			ConvertEnumSymbolToDtoEnumModel enumConverter,
 			CodeGenSettings settings,
-			CodeGenOptions options) : base(options) {
+			CodeGenParams parameters) : base(result, parameters) {
 			this.compilation = compilation;
 			this.dtoConverter = dtoConverter;
 			this.enumConverter = enumConverter;
 			this.settings = settings;
 		}
 
-		public override Task<int> Invoke(CancellationToken cancellationToken) {
+		public override Task<int> InvokeAsync(CancellationToken cancellationToken) {
 			var dtoClasses = new List<INamedTypeSymbol>();
 			var enumClasses = new List<INamedTypeSymbol>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
@@ -41,7 +42,7 @@ namespace Albatross.CodeGen.CommandLine {
 			var serializationOptions = new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, };
 			var dtoModels = new List<DtoClassInfo>();
 			foreach (var item in dtoClasses) {
-				if (string.IsNullOrEmpty(options.AdhocFilter) || item.GetFullName().Contains(options.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase)) {
+				if (string.IsNullOrEmpty(parameters.AdhocFilter) || item.GetFullName().Contains(parameters.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase)) {
 					var model = dtoConverter.Convert(item);
 					dtoModels.Add(model);
 				}
@@ -52,7 +53,7 @@ namespace Albatross.CodeGen.CommandLine {
 			}
 			var enumModels = new List<EnumInfo>();
 			foreach (var item in enumClasses) {
-				if (string.IsNullOrEmpty(options.AdhocFilter) || item.GetFullName().Contains(options.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase)) {
+				if (string.IsNullOrEmpty(parameters.AdhocFilter) || item.GetFullName().Contains(parameters.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase)) {
 					var model = enumConverter.Convert(item);
 					enumModels.Add(model);
 				}
@@ -62,15 +63,15 @@ namespace Albatross.CodeGen.CommandLine {
 				this.Writer.WriteLine(text);
 			}
 
-			if (options.OutputDirectory != null) {
+			if (parameters.OutputDirectory != null) {
 				if (dtoModels.Any()) {
-					using (var stream = File.OpenWrite(Path.Join(options.OutputDirectory.FullName, "dto.json"))) {
+					using (var stream = File.OpenWrite(Path.Join(parameters.OutputDirectory.FullName, "dto.json"))) {
 						stream.SetLength(0);
 						JsonSerializer.Serialize(stream, dtoModels, serializationOptions);
 					}
 				}
 				if (enumModels.Any()) {
-					using (var stream = File.OpenWrite(Path.Join(options.OutputDirectory.FullName, "enum.json"))) {
+					using (var stream = File.OpenWrite(Path.Join(parameters.OutputDirectory.FullName, "enum.json"))) {
 						stream.SetLength(0);
 						JsonSerializer.Serialize(stream, enumModels, serializationOptions);
 					}

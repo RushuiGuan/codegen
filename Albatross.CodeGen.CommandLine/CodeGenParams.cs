@@ -1,9 +1,9 @@
-﻿using Albatross.CommandLine;
+﻿using Albatross.CommandLine.Annotations;
 using System.IO;
 
 namespace Albatross.CodeGen.CommandLine {
 	/// <summary>
-	/// Command-line options for code generation operations across multiple languages and targets
+	/// Command-line parameters for code generation operations across multiple languages and targets
 	/// </summary>
 	[Verb<CSharpWebClientCodeGenCommandHandler_Client>("csharp2 web-client", Description = "Generate CSharp Http Proxy class that works with the current version of Albatross.WebClient assembly")]
 	[Verb<PythonDtoCodeGenCommandHandler>("python dto")]
@@ -13,7 +13,7 @@ namespace Albatross.CodeGen.CommandLine {
 	[Verb<ControllerInfoModelGenerator>("model controller")]
 	[Verb<DtoClassInfoModelGenerator>("model dto")]
 	[Verb<TypeScriptEntryPointCodeGenCommandHandler>("typescript entrypoint")]
-	public record class CodeGenOptions  {
+	public record class CodeGenParams  {
 		/// <summary>
 		/// Gets or sets the target .NET project file to analyze for code generation
 		/// </summary>

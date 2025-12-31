@@ -7,11 +7,12 @@ using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.CommandLine;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class CSharpWebClientCodeGenCommandHandler_Client : CommandAction<CodeGenOptions> {
+	public class CSharpWebClientCodeGenCommandHandler_Client : BaseHandler<CodeGenParams> {
 		private readonly CreateHttpClientRegistrations createHttpClientRegistrations;
 		private readonly Compilation compilation;
 		private readonly CSharpWebClientSettings settings;
@@ -19,13 +20,13 @@ namespace Albatross.CodeGen.CommandLine {
 		private readonly ConvertApiControllerToControllerModel convertToWebApi;
 		private readonly ConvertWebApiToCSharpFile converToCSharpCodeStack;
 
-		public CSharpWebClientCodeGenCommandHandler_Client(CodeGenOptions options,
+		public CSharpWebClientCodeGenCommandHandler_Client(ParseResult result, CodeGenParams parameters,
 			CreateHttpClientRegistrations createHttpClientRegistrations,
 			Compilation compilation,
 			CSharpWebClientSettings settings,
 			ILogger<CSharpWebClientCodeGenCommandHandler_Client> logger,
 			ConvertApiControllerToControllerModel convertToWebApi,
-			ConvertWebApiToCSharpFile converToCSharpFile) : base(options) {
+			ConvertWebApiToCSharpFile converToCSharpFile) : base(result, parameters) {
 			this.createHttpClientRegistrations = createHttpClientRegistrations;
 			this.compilation = compilation;
 			this.settings = settings;
@@ -34,7 +35,7 @@ namespace Albatross.CodeGen.CommandLine {
 			this.converToCSharpCodeStack = converToCSharpFile;
 		}
 
-		public override Task<int> Invoke(CancellationToken cancellationToken) {
+		public override Task<int> InvokeAsync(CancellationToken cancellationToken) {
 			var controllerClass = new List<INamedTypeSymbol>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
 				var semanticModel = compilation.GetSemanticModel(syntaxTree);
@@ -44,14 +45,14 @@ namespace Albatross.CodeGen.CommandLine {
 			}
 			var models = new List<ControllerInfo>();
 			foreach (var controller in controllerClass) {
-				if (string.IsNullOrEmpty(options.AdhocFilter) || controller.GetFullName().Contains(options.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase)) {
+				if (string.IsNullOrEmpty(parameters.AdhocFilter) || controller.GetFullName().Contains(parameters.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase)) {
 					logger.LogInformation("Generating proxy for {controller}", controller.Name);
 					var webApi = this.convertToWebApi.Convert(controller);
 					webApi.ApplyMethodFilters(settings.ControllerMethodFilters());
 					models.Add(webApi);
 					var csharpFile = this.converToCSharpCodeStack.Convert(webApi);
-					if (options.OutputDirectory != null) {
-						using (var streamWriter = new System.IO.StreamWriter(System.IO.Path.Join(options.OutputDirectory.FullName, csharpFile.FileName))) {
+					if (parameters.OutputDirectory != null) {
+						using (var streamWriter = new System.IO.StreamWriter(System.IO.Path.Join(parameters.OutputDirectory.FullName, csharpFile.FileName))) {
 							csharpFile.Generate(streamWriter);
 						}
 					} else {
@@ -65,8 +66,8 @@ namespace Albatross.CodeGen.CommandLine {
 
 		void BuildRegistrationMethod(IEnumerable<ControllerInfo> models) {
 			var file = this.createHttpClientRegistrations.Generate(models);
-			if (options.OutputDirectory != null) {
-				using (var streamWriter = new System.IO.StreamWriter(System.IO.Path.Join(options.OutputDirectory.FullName, file.FileName))) {
+			if (parameters.OutputDirectory != null) {
+				using (var streamWriter = new System.IO.StreamWriter(System.IO.Path.Join(parameters.OutputDirectory.FullName, file.FileName))) {
 					streamWriter.Code(file);
 				}
 			} else {

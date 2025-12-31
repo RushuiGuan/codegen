@@ -8,23 +8,24 @@ using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.CommandLine;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class PythonWebClientCodeGenCommandHandler : CommandAction<CodeGenOptions> {
+	public class PythonWebClientCodeGenCommandHandler : BaseHandler<CodeGenParams> {
 		private readonly ILogger<PythonWebClientCodeGenCommandHandler> logger;
 		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
 		private readonly ConvertApiControllerToControllerModel convertToWebApi;
 		private readonly ConvertControllerModelToPythonFile converToPythonFile;
 
-		public PythonWebClientCodeGenCommandHandler(CodeGenOptions options,
+		public PythonWebClientCodeGenCommandHandler(ParseResult result, CodeGenParams parameters,
 			ILogger<PythonWebClientCodeGenCommandHandler> logger,
 			Compilation compilation,
 			CodeGenSettings settings,
 			ConvertApiControllerToControllerModel convertToWebApi,
-			ConvertControllerModelToPythonFile converToPythonFile) :base(options){
+			ConvertControllerModelToPythonFile converToPythonFile) :base(result,parameters){
 			this.logger = logger;
 			this.compilation = compilation;
 			this.settings = settings;
@@ -32,7 +33,7 @@ namespace Albatross.CodeGen.CommandLine {
 			this.converToPythonFile = converToPythonFile;
 		}
 
-		public override Task<int> Invoke(CancellationToken cancellationToken) {
+		public override Task<int> InvokeAsync(CancellationToken cancellationToken) {
 			var models = new List<INamedTypeSymbol>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
 				var semanticModel = compilation.GetSemanticModel(syntaxTree);
@@ -42,16 +43,16 @@ namespace Albatross.CodeGen.CommandLine {
 			}
 			var files = new List<PythonFileDeclaration>();
 			foreach (var model in models) {
-				if (string.IsNullOrEmpty(options.AdhocFilter) || model.GetFullName().Contains(options.AdhocFilter)) {
+				if (string.IsNullOrEmpty(parameters.AdhocFilter) || model.GetFullName().Contains(parameters.AdhocFilter)) {
 					logger.LogInformation("Generating proxy for {controller}", model.Name);
 					var webApi = this.convertToWebApi.Convert(model);
 					webApi.ApplyMethodFilters(settings.ControllerMethodFilters());
 					var file = this.converToPythonFile.Convert(webApi);
 					file.Generate(System.Console.Out);
 					files.Add(file);
-					logger.LogInformation("directory: {data}", options.OutputDirectory?.FullName);
-					if (options.OutputDirectory != null) {
-						using (var writer = new System.IO.StreamWriter(System.IO.Path.Join(options.OutputDirectory.FullName, file.FileName))) {
+					logger.LogInformation("directory: {data}", parameters.OutputDirectory?.FullName);
+					if (parameters.OutputDirectory != null) {
+						using (var writer = new System.IO.StreamWriter(System.IO.Path.Join(parameters.OutputDirectory.FullName, file.FileName))) {
 							file.Generate(writer);
 						}
 					}

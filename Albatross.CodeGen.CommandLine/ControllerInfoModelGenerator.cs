@@ -5,24 +5,25 @@ using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
+using System.CommandLine;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class ControllerInfoModelGenerator : CommandAction<CodeGenOptions> {
+	public class ControllerInfoModelGenerator : BaseHandler<CodeGenParams> {
 		private readonly Compilation compilation;
 		private readonly ConvertApiControllerToControllerModel converter;
 		private readonly CodeGenSettings settings;
 
-		public ControllerInfoModelGenerator(Compilation compilation, ConvertApiControllerToControllerModel converter,
-			CodeGenSettings settings, CodeGenOptions options) : base(options) {
+		public ControllerInfoModelGenerator(ParseResult result, Compilation compilation, ConvertApiControllerToControllerModel converter,
+			CodeGenSettings settings, CodeGenParams parameters) : base(result, parameters) {
 			this.compilation = compilation;
 			this.converter = converter;
 			this.settings = settings;
 		}
 
-		public override Task<int> Invoke(CancellationToken cancellationToken) {
+		public override Task<int> InvokeAsync(CancellationToken cancellationToken) {
 			var controllerClass = new List<INamedTypeSymbol>();
 			foreach (var syntaxTree in compilation.SyntaxTrees) {
 				var semanticModel = compilation.GetSemanticModel(syntaxTree);
@@ -31,13 +32,13 @@ namespace Albatross.CodeGen.CommandLine {
 				controllerClass.AddRange(classWalker.Result);
 			}
 			foreach (var item in controllerClass) {
-				if (string.IsNullOrEmpty(options.AdhocFilter) || item.GetFullName().Contains(options.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase)) {
+				if (string.IsNullOrEmpty(parameters.AdhocFilter) || item.GetFullName().Contains(parameters.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase)) {
 					var model = converter.Convert(item);
 					model.ApplyMethodFilters(settings.ControllerMethodFilters());
 					var text = JsonSerializer.Serialize(model, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, });
 					this.Writer.WriteLine(text);
-					if (options.OutputDirectory != null) {
-						using (var streamWriter = new System.IO.StreamWriter(System.IO.Path.Join(options.OutputDirectory.FullName, $"{item.Name}.json"))) {
+					if (parameters.OutputDirectory != null) {
+						using (var streamWriter = new System.IO.StreamWriter(System.IO.Path.Join(parameters.OutputDirectory.FullName, $"{item.Name}.json"))) {
 							streamWriter.BaseStream.SetLength(0);
 							streamWriter.Write(text);
 						}

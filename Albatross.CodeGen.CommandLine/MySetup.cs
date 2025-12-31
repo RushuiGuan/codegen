@@ -6,7 +6,6 @@ using Albatross.CodeGen.WebClient.Python;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CodeGen.WebClient.TypeScript;
 using Albatross.CommandLine;
-using Albatross.Config;
 using Albatross.Logging;
 using Albatross.Serialization.Json;
 using Microsoft.CodeAnalysis;
@@ -66,15 +65,15 @@ namespace Albatross.CodeGen.CommandLine {
 		/// <returns>The service collection for method chaining</returns>
 		static IServiceCollection RegisterCodeGenSettings<T>(IServiceCollection services) where T : CodeGenSettings, new() {
 			services.AddSingleton(provider => {
-				var options = provider.GetRequiredService<CodeGenOptions>();
-				if (options.SettingsFile == null) {
+				var parameters = provider.GetRequiredService<CodeGenParams>();
+				if (parameters.SettingsFile == null) {
 					return new T();
-				} else if (options.SettingsFile.Exists) {
-					using var stream = options.SettingsFile.OpenRead();
+				} else if (parameters.SettingsFile.Exists) {
+					using var stream = parameters.SettingsFile.OpenRead();
 					var settings = JsonSerializer.Deserialize<T>(stream, DefaultJsonSettings.Instance.Value) ?? throw new ArgumentException("Unable to deserialize codegen settings");
 					return settings;
 				} else {
-					throw new InvalidOperationException($"File {options.SettingsFile.Name} doesn't exist");
+					throw new InvalidOperationException($"File {parameters.SettingsFile.Name} doesn't exist");
 				}
 			});
 

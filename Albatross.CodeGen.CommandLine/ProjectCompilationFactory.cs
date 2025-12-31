@@ -32,9 +32,9 @@ namespace Albatross.CodeGen.CommandLine {
 		/// <summary>
 		/// Initializes a new instance of the ProjectCompilationFactory class
 		/// </summary>
-		/// <param name="projectOptions">Command options containing project file path</param>
+		/// <param name="projectOptions">Command parameters containing project file path</param>
 		/// <param name="logger">Logger for diagnostic messages</param>
-		public ProjectCompilationFactory(CodeGenOptions projectOptions, ILogger<ProjectCompilationFactory> logger) {
+		public ProjectCompilationFactory(CodeGenParams projectOptions, ILogger<ProjectCompilationFactory> logger) {
 			this.project = projectOptions.ProjectFile.FullName;
 			this.logger = logger;
 		}
