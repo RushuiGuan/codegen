@@ -6,8 +6,11 @@ using System.Linq;
 namespace Albatross.CodeGen.CSharp.Expressions {
 	public record class NewObjectExpression : CodeNode, IExpression {
 		public required ITypeExpression Type { get; init; }
-		public ListOfArguments Arguments { get; init; } = new();
-		public ListOfNodes<AssignmentExpression> Initializers { get; init; } = new();
+		public ListOfNodes<IExpression> Arguments { get; } = new() {
+			Prefix = "(",
+			PostFix = ")",
+		};
+		public ListOfNodes<AssignmentExpression> Initializers { get; } = new();
 
 		public override TextWriter Generate(TextWriter writer) {
 			writer.Code(Defined.Keywords.New).Code(Type).Code(Arguments);
