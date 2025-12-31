@@ -13,7 +13,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public string Name { get; }
 		public bool NullableEnabled { get; init; } = true;
 
-		public required NamespaceExpression Namespace { get; init; }
+		public NamespaceExpression? Namespace { get; init; }
 		public IEnumerable<ImportExpression> Imports { get; init; } = [];
 		public IEnumerable<AttributeExpression> Attributes { get; init; } = [];
 		public IEnumerable<ClassDeclaration> Classes { get; init; } = [];
@@ -25,18 +25,26 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			if (NullableEnabled) {
 				writer.Code(Defined.PreprocessorDirectives.NullableEnable).WriteLine();
 			}
-			using (var scope = writer.Code(Defined.Keywords.Namespace).Code(Namespace).BeginScope()) {
-				foreach (var item in Attributes) {
-					scope.Writer.Code(item).WriteLine();
+			if (Namespace != null) {
+				using (var scope = writer.Code(Defined.Keywords.Namespace).Code(Namespace).BeginScope()) {
+					OmitCode(scope.Writer);
 				}
-				foreach (var item in Interfaces) {
-					scope.Writer.Code(item).WriteLine();
-				}
-				foreach (var item in Classes) {
-					scope.Writer.Code(item).WriteLine();
-				}
+			} else {
+				OmitCode(writer);
 			}
 			return writer;
+		}
+
+		void OmitCode(TextWriter writer) {
+			foreach (var item in Attributes) {
+				writer.Code(item).WriteLine();
+			}
+			foreach (var item in Interfaces) {
+				writer.Code(item).WriteLine();
+			}
+			foreach (var item in Classes) {
+				writer.Code(item).WriteLine();
+			}
 		}
 
 		public override IEnumerable<ICodeNode> Children {
