@@ -8,13 +8,13 @@ namespace Albatross.CodeGen.CommandLine.Parameters {
 	/// <summary>
 	/// Command-line parameters for code generation operations across multiple languages and targets
 	/// </summary>
-	[Verb<CSharpWebClientCodeGenCommandHandler_Client>("csharp web-client", Description = "Generate CSharp Http Proxy class that works with the current version of Albatross.WebClient assembly")]
-	[Verb<PythonDtoCodeGenCommandHandler>("python dto")]
-	[Verb<PythonWebClientCodeGenCommandHandler>("python web-client")]
-	[Verb<TypeScriptDtoCodeGenCommandHandler>("typescript dto")]
-	[Verb<TypeScriptWebClientCodeGenCommandHandler>("typescript web-client")]
-	[Verb<ControllerInfoModelGenerator>("model controller")]
-	[Verb<DtoClassInfoModelGenerator>("model dto")]
+	[Verb<CSharpWebClientCodeGenCommandHandler>("csharp web-client", Description = "Generate CSharp Http WebClient class that works with the current version of Albatross.WebClient assembly")]
+	[Verb<PythonDtoCodeGenCommandHandler>("python dto", Description = "Generate Python DTO class using Pydantic")]
+	[Verb<PythonWebClientCodeGenCommandHandler>("python web-client", Description = "Generate Python webclient library for a AspnetCore WebApi project")]
+	[Verb<TypeScriptDtoCodeGenCommandHandler>("typescript dto", Description = "Genreate TypeScript Dto classes")]
+	[Verb<TypeScriptWebClientCodeGenCommandHandler>("typescript web-client", Description = "Generate TypeScript webclient library for a aspnetcore WebApi project")]
+	[Verb<ControllerInfoModelGenerator>("model controller", Description = "Generate the controller model")]
+	[Verb<DtoClassInfoModelGenerator>("model dto", Description = "Generate the dto model")]
 	public record class CodeGenParams {
 		/// <summary>
 		/// Gets or sets the target .NET project file to analyze for code generation

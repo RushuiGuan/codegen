@@ -12,9 +12,9 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine.Parameters {
+	[DefaultNameAliases("--project-file", "-p")]
 	[OptionHandler(typeof(LoadCSharpProject))]
 	public class ProjectCompilationOption : InputFileOption, IUseContextValue {
-		public ProjectCompilationOption() : this("--project-file", "-p") { }
 		public ProjectCompilationOption(string name, params string[] aliases) : base(name, aliases) { }
 	}
 	public class LoadCSharpProject : IAsyncOptionHandler<ProjectCompilationOption> {

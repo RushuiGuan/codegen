@@ -17,7 +17,6 @@ namespace Albatross.CodeGen.CommandLine {
 	[Verb<GenerateSettingsSchema>("schema csharp")]
 	[Verb<GenerateSettingsSchema>("schema typescript")]
 	public record class GenerateSettingsSchemaOptions {
-		[Option(Description ="The output file for the generated schema")]
 		[UseOption<OutputFileOption>]
 		public FileInfo? OutputFile { get; set; }
 	}

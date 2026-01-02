@@ -12,18 +12,18 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class CSharpWebClientCodeGenCommandHandler_Client : IAsyncCommandHandler {
+	public class CSharpWebClientCodeGenCommandHandler : IAsyncCommandHandler {
 		private readonly CodeGenParams parameters;
 		private readonly CreateHttpClientRegistrations createHttpClientRegistrations;
 		private readonly CSharpWebClientSettings settings;
-		private readonly ILogger<CSharpWebClientCodeGenCommandHandler_Client> logger;
+		private readonly ILogger<CSharpWebClientCodeGenCommandHandler> logger;
 		private readonly ConvertApiControllerToControllerModel convertToWebApi;
 		private readonly ConvertWebApiToCSharpFile converToCSharpCodeStack;
 
-		public CSharpWebClientCodeGenCommandHandler_Client(CodeGenParams parameters,
+		public CSharpWebClientCodeGenCommandHandler(CodeGenParams parameters,
 			CreateHttpClientRegistrations createHttpClientRegistrations,
 			CSharpWebClientSettings settings,
-			ILogger<CSharpWebClientCodeGenCommandHandler_Client> logger,
+			ILogger<CSharpWebClientCodeGenCommandHandler> logger,
 			ConvertApiControllerToControllerModel convertToWebApi,
 			ConvertWebApiToCSharpFile converToCSharpFile) {
 			this.parameters = parameters;
