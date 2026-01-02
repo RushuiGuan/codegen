@@ -1,7 +1,23 @@
-﻿namespace Test.CommandLine {
+﻿using Albatross.CommandLine;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System.CommandLine;
+using Test.Proxy;
+
+namespace Test.CommandLine {
 	internal class Program {
-		static Task<int> Main(string[] args) {
-			return new MySetup().AddCommands().Parse(args).RegisterServices().Build().InvokeAsync();
+		static async Task<int> Main(string[] args) {
+			await using var host = new CommandHost("test")
+				.RegisterServices(RegisterServices)
+				.AddCommands()
+				.Parse(args)
+				.Build();
+			return await host.InvokeAsync();
+		}
+
+		static void RegisterServices(ParseResult result, IConfiguration config, IServiceCollection services){
+			services.RegisterCommands();
+			services.AddTestProxy();
 		}
 	}
 }

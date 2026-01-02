@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.CommandLine.Parameters {
 	[DefaultNameAliases("--codegen-settings", "-s")]
 	[OptionHandler(typeof(LoadCodeGenSettings))]
-	public class CodeGenSettingsOption : InputFileOption, IUseContextValue {
+	public class CodeGenSettingsOption : InputFileOption, IUseContextValue<CodeGenSettings> {
 		public CodeGenSettingsOption(string name, params string[] aliases) : base(name, aliases) { }
 	}
 

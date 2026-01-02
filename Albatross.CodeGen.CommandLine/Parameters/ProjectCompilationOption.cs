@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.CommandLine.Parameters {
 	[DefaultNameAliases("--project-file", "-p")]
 	[OptionHandler(typeof(LoadCSharpProject))]
-	public class ProjectCompilationOption : InputFileOption, IUseContextValue {
+	public class ProjectCompilationOption : InputFileOption, IUseContextValue<Compilation> {
 		public ProjectCompilationOption(string name, params string[] aliases) : base(name, aliases) { }
 	}
 	public class LoadCSharpProject : IAsyncOptionHandler<ProjectCompilationOption> {
