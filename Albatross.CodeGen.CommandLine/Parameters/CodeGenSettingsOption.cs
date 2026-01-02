@@ -7,8 +7,6 @@ using Albatross.CommandLine.Annotations;
 using Albatross.CommandLine.Inputs;
 using System.CommandLine;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Text.Json.Serialization.Metadata;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,23 +18,6 @@ namespace Albatross.CodeGen.CommandLine.Parameters {
 	}
 
 	public class LoadCodeGenSettings : IAsyncOptionHandler<CodeGenSettingsOption> {
-		static JsonSerializerOptions options = new JsonSerializerOptions {
-			TypeInfoResolver = new DefaultJsonTypeInfoResolver {
-				Modifiers = { (typeInfo) =>{
-					if (typeInfo.Type == typeof(CodeGenSettings)) {
-				typeInfo.PolymorphismOptions = new JsonPolymorphismOptions {
-					TypeDiscriminatorPropertyName = "type",
-					UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FailSerialization,
-					DerivedTypes = {
-						new JsonDerivedType(typeof(CSharpWebClientSettings), "csharp"),
-						new JsonDerivedType(typeof(TypeScriptWebClientSettings), "typescript"),
-						new JsonDerivedType(typeof(PythonWebClientSettings), "python"),
-					}
-				};
-			}
-				}}
-			}
-		};
 		private readonly ICommandContext context;
 
 		public LoadCodeGenSettings(ICommandContext context) {
@@ -46,7 +27,16 @@ namespace Albatross.CodeGen.CommandLine.Parameters {
 			var file = result.GetValue(symbol);
 			if (file != null) {
 				using var stream = file.OpenRead();
-				var settings = await JsonSerializer.DeserializeAsync<CodeGenSettings>(stream, options, cancellationToken);
+				CodeGenSettings settings;
+				if (context.Key.StartsWith("csharp")) {
+					settings = await JsonSerializer.DeserializeAsync<CSharpWebClientSettings>(stream, cancellationToken: cancellationToken);
+				} else if (context.Key.StartsWith("typescript")) {
+					settings = await JsonSerializer.DeserializeAsync<TypeScriptWebClientSettings>(stream, cancellationToken: cancellationToken);
+				} else if (context.Key.StartsWith("python")) {
+					settings = await JsonSerializer.DeserializeAsync<PythonWebClientSettings>(stream, cancellationToken: cancellationToken);
+				} else {
+					settings = await JsonSerializer.DeserializeAsync<CodeGenSettings>(stream, cancellationToken: cancellationToken);
+				}
 				context.SetValue(symbol.Name, settings);
 			}
 		}

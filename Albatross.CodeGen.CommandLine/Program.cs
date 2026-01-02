@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.CommandLine;
 using System.Threading.Tasks;
+using Albatross.CodeGen.CommandLine.Parameters;
 
 namespace Albatross.CodeGen.CommandLine {
 	internal class Program {
@@ -27,8 +28,8 @@ namespace Albatross.CodeGen.CommandLine {
 
 		static void RegisterServices(ParseResult result, IConfiguration configuration, IServiceCollection services) {
 			services.RegisterCommands();
-			var key = result.CommandResult.Command.GetCommandKey();
 			services.AddWebClientCodeGen();
+			var key = result.CommandResult.Command.GetCommandKey();
 			if (key.StartsWith("python ")) {
 				services.AddPythonCodeGen();
 				services.AddPythonWebClientCodeGen();
@@ -39,6 +40,8 @@ namespace Albatross.CodeGen.CommandLine {
 				services.AddCSharpWebClientCodeGen();
 			}
 			services.AddShortenLoggerName(false, "Albatross");
+			services.AddScoped<LoadCodeGenSettings>();
+			services.AddScoped<LoadCSharpProject>();
 		}
 	}
 }

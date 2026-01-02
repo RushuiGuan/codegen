@@ -1,8 +1,4 @@
 ﻿using Albatross.CodeGen.CSharp;
-using Albatross.CodeGen.Python;
-using Albatross.CodeGen.TypeScript;
-using Albatross.CodeGen.WebClient.Models;
-using Albatross.CodeGen.WebClient.Settings;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Albatross.CodeGen.WebClient.CSharp {
@@ -17,11 +13,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		/// <returns>The service collection for method chaining</returns>
 		public static IServiceCollection AddCSharpWebClientCodeGen(this IServiceCollection services) {
 			services.AddCodeGen(typeof(Extensions).Assembly);
-#pragma warning disable CS0612 // Type or member is obsolete
-			services.AddSingleton<CreateHttpClientRegistrations>();
-#pragma warning restore CS0612 // Type or member is obsolete
 			services.AddCSharpCodeGen();
-			services.AddSingleton<CreateHttpClientRegistrations>();
 			return services;
 		}
 	}
