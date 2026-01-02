@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Albatross.CodeGen.WebClient.Settings;
+using System.Collections.Generic;
 
-namespace Albatross.CodeGen.WebClient.Settings {
+namespace Albatross.CodeGen.WebClient.TypeScript {
 	public record class TypeScriptWebClientSettings : CodeGenSettings {
 		public string EndPointName { get; init; } = "endpoint_name";
 		public string BaseClassName { get; init; } = "WebClient";

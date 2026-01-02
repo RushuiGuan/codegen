@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeAnalysis;
+using Albatross.CodeGen.CommandLine.Parameters;
 using Albatross.CodeGen.TypeScript.Declarations;
 using Albatross.CodeGen.WebClient;
 using Albatross.CodeGen.WebClient.Models;

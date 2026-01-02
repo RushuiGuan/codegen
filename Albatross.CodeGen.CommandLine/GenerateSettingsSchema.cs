@@ -1,8 +1,9 @@
 ﻿using Albatross.CodeGen.WebClient.CSharp;
 using Albatross.CodeGen.WebClient.Python;
-using Albatross.CodeGen.WebClient.Settings;
+using Albatross.CodeGen.WebClient.TypeScript;
 using Albatross.CommandLine;
 using Albatross.CommandLine.Annotations;
+using Albatross.CommandLine.Inputs;
 using NJsonSchema;
 using NJsonSchema.Generation;
 using System;
@@ -17,7 +18,8 @@ namespace Albatross.CodeGen.CommandLine {
 	[Verb<GenerateSettingsSchema>("schema typescript")]
 	public record class GenerateSettingsSchemaOptions {
 		[Option(Description ="The output file for the generated schema")]
-		public FileInfo? File { get; set; }
+		[UseOption<OutputFileOption>]
+		public FileInfo? OutputFile { get; set; }
 	}
 
 	public class GenerateSettingsSchema : BaseHandler<GenerateSettingsSchemaOptions> {
@@ -44,8 +46,8 @@ namespace Albatross.CodeGen.CommandLine {
 			});
 			var text = schema.ToJson();
 			System.Console.WriteLine(text);
-			if (parameters.File != null) {
-				System.IO.File.WriteAllText(parameters.File.FullName, text);
+			if (parameters.OutputFile != null) {
+				System.IO.File.WriteAllText(parameters.OutputFile.FullName, text);
 			}
 			return Task.FromResult(0);
 		}

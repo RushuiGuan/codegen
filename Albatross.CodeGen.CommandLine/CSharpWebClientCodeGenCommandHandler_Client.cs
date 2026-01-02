@@ -1,4 +1,5 @@
 ﻿using Albatross.CodeAnalysis;
+using Albatross.CodeGen.CommandLine.Parameters;
 using Albatross.CodeGen.WebClient;
 using Albatross.CodeGen.WebClient.CSharp;
 using Albatross.CodeGen.WebClient.Models;
@@ -7,38 +8,36 @@ using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.CommandLine;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class CSharpWebClientCodeGenCommandHandler_Client : BaseHandler<CodeGenParams> {
+	public class CSharpWebClientCodeGenCommandHandler_Client : IAsyncCommandHandler {
+		private readonly CodeGenParams parameters;
 		private readonly CreateHttpClientRegistrations createHttpClientRegistrations;
-		private readonly Compilation compilation;
 		private readonly CSharpWebClientSettings settings;
 		private readonly ILogger<CSharpWebClientCodeGenCommandHandler_Client> logger;
 		private readonly ConvertApiControllerToControllerModel convertToWebApi;
 		private readonly ConvertWebApiToCSharpFile converToCSharpCodeStack;
 
-		public CSharpWebClientCodeGenCommandHandler_Client(ParseResult result, CodeGenParams parameters,
+		public CSharpWebClientCodeGenCommandHandler_Client(CodeGenParams parameters,
 			CreateHttpClientRegistrations createHttpClientRegistrations,
-			Compilation compilation,
 			CSharpWebClientSettings settings,
 			ILogger<CSharpWebClientCodeGenCommandHandler_Client> logger,
 			ConvertApiControllerToControllerModel convertToWebApi,
-			ConvertWebApiToCSharpFile converToCSharpFile) : base(result, parameters) {
+			ConvertWebApiToCSharpFile converToCSharpFile) {
+			this.parameters = parameters;
 			this.createHttpClientRegistrations = createHttpClientRegistrations;
-			this.compilation = compilation;
 			this.settings = settings;
 			this.logger = logger;
 			this.convertToWebApi = convertToWebApi;
 			this.converToCSharpCodeStack = converToCSharpFile;
 		}
 
-		public override Task<int> InvokeAsync(CancellationToken cancellationToken) {
+		public Task<int> InvokeAsync(CancellationToken cancellationToken) {
 			var controllerClass = new List<INamedTypeSymbol>();
-			foreach (var syntaxTree in compilation.SyntaxTrees) {
-				var semanticModel = compilation.GetSemanticModel(syntaxTree);
+			foreach (var syntaxTree in parameters.Compilation.SyntaxTrees) {
+				var semanticModel = parameters.Compilation.GetSemanticModel(syntaxTree);
 				var dtoClassWalker = new ApiControllerClassWalker(semanticModel, settings.ControllerFilters());
 				dtoClassWalker.Visit(syntaxTree.GetRoot());
 				controllerClass.AddRange(dtoClassWalker.Result);
@@ -56,7 +55,7 @@ namespace Albatross.CodeGen.CommandLine {
 							csharpFile.Generate(streamWriter);
 						}
 					} else {
-						csharpFile.Generate(this.Writer);
+						csharpFile.Generate(System.Console.Out);
 					}
 				}
 			}
@@ -71,7 +70,7 @@ namespace Albatross.CodeGen.CommandLine {
 					streamWriter.Code(file);
 				}
 			} else {
-				this.Writer.Code(file);
+				System.Console.Out.Code(file);
 			}
 		}
 	}

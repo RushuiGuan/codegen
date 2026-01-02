@@ -1,11 +1,12 @@
 ﻿using Albatross.CodeAnalysis;
+using Albatross.CodeGen.CommandLine.Parameters;
 using Albatross.CodeGen.WebClient;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
 using Albatross.CommandLine;
 using Microsoft.CodeAnalysis;
+using System;
 using System.Collections.Generic;
-using System.CommandLine;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -13,28 +14,25 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class DtoClassInfoModelGenerator : BaseHandler<CodeGenParams> {
-		private Compilation compilation;
+	public class DtoClassInfoModelGenerator : IAsyncCommandHandler {
 		private ConvertClassSymbolToDtoClassModel dtoConverter;
 		private readonly ConvertEnumSymbolToDtoEnumModel enumConverter;
-		private CodeGenSettings settings;
+		private readonly CodeGenParams parameters;
 
-		public DtoClassInfoModelGenerator(ParseResult result, Compilation compilation, ConvertClassSymbolToDtoClassModel dtoConverter,
+		public DtoClassInfoModelGenerator(ConvertClassSymbolToDtoClassModel dtoConverter,
 			ConvertEnumSymbolToDtoEnumModel enumConverter,
-			CodeGenSettings settings,
-			CodeGenParams parameters) : base(result, parameters) {
-			this.compilation = compilation;
+			CodeGenParams parameters) {
 			this.dtoConverter = dtoConverter;
 			this.enumConverter = enumConverter;
-			this.settings = settings;
+			this.parameters = parameters;
 		}
 
-		public override Task<int> InvokeAsync(CancellationToken cancellationToken) {
+		public Task<int> InvokeAsync(CancellationToken cancellationToken) {
 			var dtoClasses = new List<INamedTypeSymbol>();
 			var enumClasses = new List<INamedTypeSymbol>();
-			foreach (var syntaxTree in compilation.SyntaxTrees) {
-				var semanticModel = compilation.GetSemanticModel(syntaxTree);
-				var symbolWalker = new DtoClassEnumWalker(semanticModel, settings.DtoFilters());
+			foreach (var syntaxTree in parameters.Compilation.SyntaxTrees) {
+				var semanticModel = parameters.Compilation.GetSemanticModel(syntaxTree);
+				var symbolWalker = new DtoClassEnumWalker(semanticModel, parameters.CodeGenSettings?.DtoFilters() ?? []);
 				symbolWalker.Visit(syntaxTree.GetRoot());
 				dtoClasses.AddRange(symbolWalker.DtoClasses);
 				enumClasses.AddRange(symbolWalker.EnumTypes);
@@ -49,7 +47,7 @@ namespace Albatross.CodeGen.CommandLine {
 			}
 			if (dtoModels.Any()) {
 				var text = JsonSerializer.Serialize(dtoModels, serializationOptions);
-				this.Writer.WriteLine(text);
+				Console.Out.WriteLine(text);
 			}
 			var enumModels = new List<EnumInfo>();
 			foreach (var item in enumClasses) {
@@ -60,7 +58,7 @@ namespace Albatross.CodeGen.CommandLine {
 			}
 			if (enumModels.Any()) {
 				var text = JsonSerializer.Serialize(enumModels, serializationOptions);
-				this.Writer.WriteLine(text);
+				Console.Out.WriteLine(text);
 			}
 
 			if (parameters.OutputDirectory != null) {

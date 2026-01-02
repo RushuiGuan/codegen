@@ -1,28 +1,35 @@
-﻿using Albatross.CodeGen.TypeScript.Expressions;
+﻿using Albatross.CodeGen.CommandLine.Parameters;
+using Albatross.CodeGen.TypeScript.Expressions;
 using Albatross.CodeGen.WebClient.Settings;
+using Albatross.CodeGen.WebClient.TypeScript;
 using Albatross.CommandLine;
-using Microsoft.Extensions.Logging;
+using Albatross.CommandLine.Annotations;
+using Albatross.CommandLine.Inputs;
 using System.Collections.Generic;
-using System.CommandLine;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class TypeScriptEntryPointCodeGenCommandHandler : BaseHandler<CodeGenParams> {
-		private readonly ILogger<TypeScriptEntryPointCodeGenCommandHandler> logger;
-		private readonly TypeScriptWebClientSettings settings;
+	[Verb<TypeScriptEntryPointCodeGenCommandHandler>("typescript entrypoint")]
+	public class TypeScriptEntryPointCodeGenParams {
+		[UseOption<CodeGenSettingsOption>]
+		public CodeGenSettings? CodeGenSettings { get; init; }
+		[UseOption<OutputDirectoryOption>]
+		public required DirectoryInfo OutputDirectory { get; init; }
+	}
 
-		public TypeScriptEntryPointCodeGenCommandHandler(ParseResult result, CodeGenParams parameters,
-			ILogger<TypeScriptEntryPointCodeGenCommandHandler> logger,
-			TypeScriptWebClientSettings settings) : base(result, parameters) {
-			this.logger = logger;
-			this.settings = settings;
+	public class TypeScriptEntryPointCodeGenCommandHandler : IAsyncCommandHandler {
+		private readonly TypeScriptEntryPointCodeGenParams parameters;
+
+		public TypeScriptEntryPointCodeGenCommandHandler(TypeScriptEntryPointCodeGenParams parameters) {
+			this.parameters = parameters;
 		}
 
-		public override Task<int> InvokeAsync(CancellationToken cancellationToken) {
-			string entryFile = Path.Combine(this.parameters.OutputDirectory.FullName, this.settings.EntryFile);
-			var sourceFoler = Path.Combine(this.parameters.OutputDirectory.FullName, this.settings.SourcePathRelatedToEntryFile);
+		public Task<int> InvokeAsync(CancellationToken cancellationToken) {
+			var settings = parameters.CodeGenSettings as TypeScriptWebClientSettings ?? new TypeScriptWebClientSettings();
+			string entryFile = Path.Combine(this.parameters.OutputDirectory.FullName, settings.EntryFile);
+			var sourceFoler = Path.Combine(this.parameters.OutputDirectory.FullName, settings.SourcePathRelatedToEntryFile);
 
 			var entries = new HashSet<string>();
 			if (File.Exists(entryFile)) {
