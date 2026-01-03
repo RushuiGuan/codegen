@@ -22,7 +22,7 @@
     },
     "csharp api": {
       "commandName": "Project",
-      "commandLineArgs": "csharp2 web-client -p ./Test.WebApi/Test.WebApi.csproj -s ./Test.Proxy/codegen-settings.json -o ./Test.Proxy",
+      "commandLineArgs": "csharp web-client -p ./Test.WebApi/Test.WebApi.csproj -s ./Test.Proxy/codegen-settings.json -o ./Test.Proxy",
       "workingDirectory": ".."
     },
     "dto model": {

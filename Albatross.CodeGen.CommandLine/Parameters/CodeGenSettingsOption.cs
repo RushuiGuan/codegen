@@ -28,14 +28,17 @@ namespace Albatross.CodeGen.CommandLine.Parameters {
 			if (file != null) {
 				using var stream = file.OpenRead();
 				CodeGenSettings settings;
+				var options = new JsonSerializerOptions {
+					PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+				};
 				if (context.Key.StartsWith("csharp")) {
-					settings = await JsonSerializer.DeserializeAsync<CSharpWebClientSettings>(stream, cancellationToken: cancellationToken);
+					settings = await JsonSerializer.DeserializeAsync<CSharpWebClientSettings>(stream, options, cancellationToken: cancellationToken);
 				} else if (context.Key.StartsWith("typescript")) {
-					settings = await JsonSerializer.DeserializeAsync<TypeScriptWebClientSettings>(stream, cancellationToken: cancellationToken);
+					settings = await JsonSerializer.DeserializeAsync<TypeScriptWebClientSettings>(stream, options, cancellationToken: cancellationToken);
 				} else if (context.Key.StartsWith("python")) {
-					settings = await JsonSerializer.DeserializeAsync<PythonWebClientSettings>(stream, cancellationToken: cancellationToken);
+					settings = await JsonSerializer.DeserializeAsync<PythonWebClientSettings>(stream, options, cancellationToken: cancellationToken);
 				} else {
-					settings = await JsonSerializer.DeserializeAsync<CodeGenSettings>(stream, cancellationToken: cancellationToken);
+					settings = await JsonSerializer.DeserializeAsync<CodeGenSettings>(stream, options, cancellationToken: cancellationToken);
 				}
 				if (settings != null) {
 					return new OptionHandlerResult<CodeGenSettings>(settings);

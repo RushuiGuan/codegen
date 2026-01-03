@@ -2,7 +2,6 @@
 using System.Text.Json.Serialization;
 
 namespace Albatross.CodeGen.WebClient.Settings {
-	[JsonPolymorphic]
 	public record class CodeGenSettings {
 		public SymbolFilterPatterns[] ControllerFilters { get; init; } = [];
 		public SymbolFilterPatterns[] ControllerMethodFilters { get; init; } = [];

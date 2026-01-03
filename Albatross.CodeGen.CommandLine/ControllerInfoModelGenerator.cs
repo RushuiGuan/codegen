@@ -13,20 +13,21 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.CommandLine {
 	public class ControllerInfoModelGenerator : IAsyncCommandHandler {
 		private readonly ConvertApiControllerToControllerModel converter;
-		private readonly CodeGenSettings settings;
 		private readonly CodeGenParams parameters;
+		private readonly Compilation compilation;
+		private readonly CodeGenSettings settings;
 
-		public ControllerInfoModelGenerator(ConvertApiControllerToControllerModel converter,
-			CodeGenSettings settings, CodeGenParams parameters) {
+		public ControllerInfoModelGenerator(ConvertApiControllerToControllerModel converter, CodeGenParams parameter, IProjectCompilationFactory compilationFactory, ICodeGenSettingsFactory settingsFactory) {
 			this.converter = converter;
-			this.settings = settings;
-			this.parameters = parameters;
+			this.parameters = parameter;
+			this.compilation = this.parameters.Compilation;
+			this.settings = this.parameters.CodeGenSettings ?? new CodeGenSettings();
 		}
 
 		public Task<int> InvokeAsync(CancellationToken cancellationToken) {
 			var controllerClass = new List<INamedTypeSymbol>();
-			foreach (var syntaxTree in parameters.Compilation.SyntaxTrees) {
-				var semanticModel = parameters.Compilation.GetSemanticModel(syntaxTree);
+			foreach (var syntaxTree in compilation.SyntaxTrees) {
+				var semanticModel = compilation.GetSemanticModel(syntaxTree);
 				var classWalker = new ApiControllerClassWalker(semanticModel, settings.ControllerFilters());
 				classWalker.Visit(syntaxTree.GetRoot());
 				controllerClass.AddRange(classWalker.Result);
