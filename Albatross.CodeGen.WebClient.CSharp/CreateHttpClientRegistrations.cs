@@ -8,8 +8,8 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 	public class CreateHttpClientRegistrations {
 		private readonly CSharpWebClientSettings settings;
 
-		public CreateHttpClientRegistrations(CSharpWebClientSettings settings) {
-			this.settings = settings;
+		public CreateHttpClientRegistrations(ICodeGenSettingsFactory factory) {
+			this.settings = factory.Get<CSharpWebClientSettings>();
 		}
 
 		public FileDeclaration Generate(IEnumerable<ControllerInfo> models) {

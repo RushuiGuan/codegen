@@ -11,9 +11,9 @@ namespace Albatross.CodeGen.WebClient.Python {
 		private readonly IConvertObject<DtoClassPropertyInfo, FieldDeclaration> propertyConverter;
 		private readonly PythonWebClientSettings settings;
 
-		public ConvertDtoClassModelToDataClass(PythonWebClientSettings settings, IConvertObject<DtoClassPropertyInfo, FieldDeclaration> propertyConverter) {
+		public ConvertDtoClassModelToDataClass(ICodeGenSettingsFactory settingsFactory, IConvertObject<DtoClassPropertyInfo, FieldDeclaration> propertyConverter) {
 			this.propertyConverter = propertyConverter;
-			this.settings = settings;
+			this.settings = settingsFactory.Get<PythonWebClientSettings>();
 		}
 
 		public ClassDeclaration Convert(DtoClassInfo from) {

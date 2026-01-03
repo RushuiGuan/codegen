@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.CommandLine;
 using System.Threading.Tasks;
 using Albatross.CodeGen.CommandLine.Parameters;
+using Microsoft.CodeAnalysis;
 
 namespace Albatross.CodeGen.CommandLine {
 	internal class Program {
@@ -42,6 +43,8 @@ namespace Albatross.CodeGen.CommandLine {
 			services.AddShortenLoggerName(false, "Albatross");
 			services.AddScoped<LoadCodeGenSettings>();
 			services.AddScoped<LoadCSharpProject>();
+			services.AddScoped<IProjectCompilationFactory, ProjectCompilationFactory>();
+			services.AddScoped<ICodeGenSettingsFactory, CodeGenSettingsFactory>();
 		}
 	}
 }

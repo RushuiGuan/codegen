@@ -9,8 +9,8 @@ namespace Albatross.CodeGen.WebClient.Models {
 		(ITypeSymbol, string)[] GetDerivedTypeDiscriminators(ITypeSymbol symbol);
 	}
 	public sealed class JsonDerivedTypeIndex : IJsonDerivedTypeIndex {
-		public JsonDerivedTypeIndex(Compilation compilation) {
-			this.compilation = compilation;
+		public JsonDerivedTypeIndex(IProjectCompilationFactory factory) {
+			this.compilation = factory.Get();
 		}
 
 		readonly ConcurrentDictionary<ITypeSymbol, IReadOnlyDictionary<ITypeSymbol, string>> indexes = new ConcurrentDictionary<ITypeSymbol, IReadOnlyDictionary<ITypeSymbol, string>>(SymbolEqualityComparer.Default);

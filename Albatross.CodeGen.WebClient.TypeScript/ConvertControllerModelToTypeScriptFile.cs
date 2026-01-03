@@ -20,9 +20,9 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		private readonly Compilation compilation;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertControllerModelToTypeScriptFile(Compilation compilation, TypeScriptWebClientSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
-			this.settings = settings;
-			this.compilation = compilation;
+		public ConvertControllerModelToTypeScriptFile(IProjectCompilationFactory compilationFactory, ICodeGenSettingsFactory settingsFactory, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+			this.compilation = compilationFactory.Get();
+			this.settings = settingsFactory.Get<TypeScriptWebClientSettings>();
 			this.typeConverter = typeConverter;
 		}
 

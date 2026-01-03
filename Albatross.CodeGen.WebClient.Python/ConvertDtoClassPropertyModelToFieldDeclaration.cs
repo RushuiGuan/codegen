@@ -3,7 +3,6 @@ using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Python.Declarations;
 using Albatross.CodeGen.Python.Expressions;
 using Albatross.CodeGen.WebClient.Models;
-using Albatross.CodeGen.WebClient.Settings;
 using Albatross.Text;
 using Humanizer;
 using Microsoft.CodeAnalysis;
@@ -14,9 +13,9 @@ namespace Albatross.CodeGen.WebClient.Python {
 		private readonly PythonWebClientSettings settings;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertDtoClassPropertyModelToFieldDeclaration(Compilation compilation, PythonWebClientSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
-			this.compilation = compilation;
-			this.settings = settings;
+		public ConvertDtoClassPropertyModelToFieldDeclaration(IProjectCompilationFactory compilationFactory, ICodeGenSettingsFactory settingsFactory, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+			this.compilation = compilationFactory.Get();
+			this.settings = settingsFactory.Get<PythonWebClientSettings>();
 			this.typeConverter = typeConverter;
 		}
 

@@ -18,9 +18,9 @@ namespace Albatross.CodeGen.WebClient.Python {
 		private readonly Compilation compilation;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertControllerModelToPythonFile(Compilation compilation, PythonWebClientSettings settings, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
-			this.settings = settings;
-			this.compilation = compilation;
+		public ConvertControllerModelToPythonFile(IProjectCompilationFactory compilationFactory, ICodeGenSettingsFactory settingsFactory, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+			this.compilation = compilationFactory.Get();
+			this.settings = settingsFactory.Get<PythonWebClientSettings>();
 			this.typeConverter = typeConverter;
 		}
 

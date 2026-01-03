@@ -14,6 +14,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		public static IServiceCollection AddCSharpWebClientCodeGen(this IServiceCollection services) {
 			services.AddCodeGen(typeof(Extensions).Assembly);
 			services.AddCSharpCodeGen();
+			services.AddScoped<CreateHttpClientRegistrations>();
 			return services;
 		}
 	}
