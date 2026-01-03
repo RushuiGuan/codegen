@@ -22,7 +22,7 @@ namespace Albatross.CodeGen.UnitTest.CSharp {
 
 			var writer = new StringWriter();
 			writer.Code(result);
-			Assert.Equal("myObject\r\n\t.MyProperty\r\n\t.MyMethod", writer.ToString());
+			Assert.Equal("myObject\n\t.MyProperty\n\t.MyMethod", writer.ToString());
 		}
 	}
 }

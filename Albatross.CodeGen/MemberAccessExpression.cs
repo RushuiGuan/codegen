@@ -38,7 +38,7 @@ namespace Albatross.CodeGen {
 		public IEnumerable<IExpression> Members { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {
-			var delimiter = lineBreak ? "\t\n." : ".";
+			var delimiter = lineBreak ? "\n\t." : ".";
 			writer.WriteItems(Members, delimiter, (w, x) => w.Code(x));
 			return writer;
 		}
