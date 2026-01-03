@@ -3,7 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Test.Proxy {
 	public static partial class Extensions {
 		public static IHttpClientBuilder AddClients(this IHttpClientBuilder builder) {
-			return builder.AddTypedClient<ArrayParamTestProxyService>()
+			return builder
+				.AddTypedClient<ArrayParamTestProxyService>()
 				.AddTypedClient<CancellationTokenTestProxyService>()
 				.AddTypedClient<ControllerRouteTestProxyService>()
 				.AddTypedClient<CustomJsonSettingsProxyService>()
@@ -21,8 +22,7 @@ namespace Test.Proxy {
 				.AddTypedClient<PartiallyObsoleteProxyService>()
 				.AddTypedClient<OmittedConstructorProxyService>()
 				.AddTypedClient<RequiredParamTestProxyService>()
-				.AddTypedClient<RequiredReturnTypeTestProxyService>()
-			;
+				.AddTypedClient<RequiredReturnTypeTestProxyService>();
 		}
 	}
 }
