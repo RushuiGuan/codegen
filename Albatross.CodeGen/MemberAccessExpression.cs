@@ -23,34 +23,26 @@ namespace Albatross.CodeGen {
 				throw new ArgumentException("MemberAccessExpression must have at least one member.");
 			}
 			this.lineBreak = lineBreak;
-			Expression = expression;
-			Members = members;
+			if(expression is InfixExpression) {
+				expression = new ParenthesizedExpression(expression);
+			}
+			var list = new List<IExpression>();
+			list.Add(expression);
+			list.AddRange(members);
+			Members = list;
 		}
 
-		/// <summary>
-		/// Gets the base expression that members are accessed from
-		/// </summary>
-		public IExpression Expression { get; init; }
-		
 		/// <summary>
 		/// Gets the collection of member expressions to access
 		/// </summary>
 		public IEnumerable<IExpression> Members { get; init; }
 
 		public override TextWriter Generate(TextWriter writer) {
-			writer.Code(Expression is InfixExpression ? new ParenthesizedExpression(Expression) : Expression);
-			if (lineBreak) {
-				// start a new indent scope after the first member
-				using var scope = writer.BeginIndentScope();
-				scope.Writer.WriteItems(Members, "\n", (w, member) => w.Append(".").Code(member is InfixExpression ? new ParenthesizedExpression(member) : member));
-			} else {
-				foreach (var member in Members) {
-					writer.Append(".").Code(member is InfixExpression ? new ParenthesizedExpression(member) : member);
-				}
-			}
+			var delimiter = lineBreak ? "\t\n." : ".";
+			writer.WriteItems(Members, delimiter, (w, x) => w.Code(x));
 			return writer;
 		}
 
-		public override IEnumerable<ICodeNode> Children => new List<ICodeNode>(Members) { Expression };
+		public override IEnumerable<ICodeNode> Children => Members;
 	}
 }
