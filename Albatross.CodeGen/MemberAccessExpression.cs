@@ -19,15 +19,17 @@ namespace Albatross.CodeGen {
 		/// <param name="members">The member expressions to access</param>
 		/// <exception cref="ArgumentException">Thrown when no members are provided</exception>
 		public MemberAccessExpression(IExpression expression, bool lineBreak, params IEnumerable<IExpression> members) {
-			if (!members.Any()) {
-				throw new ArgumentException("MemberAccessExpression must have at least one member.");
-			}
 			this.lineBreak = lineBreak;
-			if(expression is InfixExpression) {
-				expression = new ParenthesizedExpression(expression);
-			}
 			var list = new List<IExpression>();
-			list.Add(expression);
+			if(expression is MemberAccessExpression memberAccess) {
+				list.AddRange(memberAccess.Members);
+			} else {
+				if (expression is InfixExpression) {
+					expression = new ParenthesizedExpression(expression);
+				}
+				list.Add(expression);
+			}
+			
 			list.AddRange(members);
 			Members = list;
 		}

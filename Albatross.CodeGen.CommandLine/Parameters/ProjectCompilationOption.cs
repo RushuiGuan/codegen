@@ -13,20 +13,18 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine.Parameters {
 	[DefaultNameAliases("--project-file", "-p")]
-	[OptionHandler(typeof(LoadCSharpProject))]
-	public class ProjectCompilationOption : InputFileOption, IUseContextValue<Compilation> {
+	[OptionHandler<ProjectCompilationOption, LoadCSharpProject, Compilation>]
+	public class ProjectCompilationOption : InputFileOption {
 		public ProjectCompilationOption(string name, params string[] aliases) : base(name, aliases) { }
 	}
-	public class LoadCSharpProject : IAsyncOptionHandler<ProjectCompilationOption> {
+	public class LoadCSharpProject : IAsyncOptionHandler<ProjectCompilationOption, Compilation> {
 		private readonly ILogger<LoadCSharpProject> logger;
-		private readonly ICommandContext context;
 
-		public LoadCSharpProject(ILogger<LoadCSharpProject> logger, ICommandContext context) {
+		public LoadCSharpProject(ILogger<LoadCSharpProject> logger) {
 			this.logger = logger;
-			this.context = context;
 		}
 
-		public async Task InvokeAsync(ProjectCompilationOption symbol, ParseResult result, CancellationToken cancellationToken) {
+		public async Task<OptionHandlerResult<Compilation>> InvokeAsync(ProjectCompilationOption symbol, ParseResult result, CancellationToken cancellationToken) {
 			var file = result.GetValue(symbol);
 			if (file != null) {
 				var workspace = MSBuildWorkspace.Create();
@@ -48,9 +46,11 @@ namespace Albatross.CodeGen.CommandLine.Parameters {
 							logger.LogError("Received warning while running generator: {content}", diag.ToString());
 						}
 					}
-					this.context.SetValue(symbol.Name, compilation);
+					return new OptionHandlerResult<Compilation>(updatedCompilation);
 				}
+				return new OptionHandlerResult<Compilation>(compilation);
 			}
+			return new OptionHandlerResult<Compilation>();
 		}
 	}
 }

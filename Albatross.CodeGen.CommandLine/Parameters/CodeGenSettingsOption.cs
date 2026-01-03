@@ -12,18 +12,18 @@ using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine.Parameters {
 	[DefaultNameAliases("--codegen-settings", "-s")]
-	[OptionHandler(typeof(LoadCodeGenSettings))]
-	public class CodeGenSettingsOption : InputFileOption, IUseContextValue<CodeGenSettings> {
+	[OptionHandler<CodeGenSettingsOption, LoadCodeGenSettings, CodeGenSettings>]
+	public class CodeGenSettingsOption : InputFileOption {
 		public CodeGenSettingsOption(string name, params string[] aliases) : base(name, aliases) { }
 	}
 
-	public class LoadCodeGenSettings : IAsyncOptionHandler<CodeGenSettingsOption> {
+	public class LoadCodeGenSettings : IAsyncOptionHandler<CodeGenSettingsOption, CodeGenSettings> {
 		private readonly ICommandContext context;
 
 		public LoadCodeGenSettings(ICommandContext context) {
 			this.context = context;
 		}
-		public async Task InvokeAsync(CodeGenSettingsOption symbol, ParseResult result, CancellationToken cancellationToken) {
+		public async Task<OptionHandlerResult<CodeGenSettings>> InvokeAsync(CodeGenSettingsOption symbol, ParseResult result, CancellationToken cancellationToken) {
 			var file = result.GetValue(symbol);
 			if (file != null) {
 				using var stream = file.OpenRead();
@@ -37,8 +37,11 @@ namespace Albatross.CodeGen.CommandLine.Parameters {
 				} else {
 					settings = await JsonSerializer.DeserializeAsync<CodeGenSettings>(stream, cancellationToken: cancellationToken);
 				}
-				context.SetValue(symbol.Name, settings);
+				if (settings != null) {
+					return new OptionHandlerResult<CodeGenSettings>(settings);
+				}
 			}
+			return new OptionHandlerResult<CodeGenSettings>();
 		}
 	}
 }
