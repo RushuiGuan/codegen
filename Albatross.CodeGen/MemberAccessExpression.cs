@@ -41,9 +41,8 @@ namespace Albatross.CodeGen {
 			writer.Code(Expression is InfixExpression ? new ParenthesizedExpression(Expression) : Expression);
 			if (lineBreak) {
 				// start a new indent scope after the first member
-				writer.Append(".").Code(Members.First());
 				using var scope = writer.BeginIndentScope();
-				scope.Writer.WriteItems(Members.Skip(1), "\n", (w, member) => w.Append(".").Code(member is InfixExpression ? new ParenthesizedExpression(member) : member));
+				scope.Writer.WriteItems(Members, "\n", (w, member) => w.Append(".").Code(member is InfixExpression ? new ParenthesizedExpression(member) : member));
 			} else {
 				foreach (var member in Members) {
 					writer.Append(".").Code(member is InfixExpression ? new ParenthesizedExpression(member) : member);
