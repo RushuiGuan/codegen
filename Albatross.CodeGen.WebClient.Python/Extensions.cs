@@ -68,7 +68,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			services.AddCodeGen(typeof(Extensions).Assembly);
 			services.AddSingleton<ITypeConverter, Python.MappedTypeConverter>();
 			services.AddSingleton<ISourceLookup>(provider => {
-				var settings = provider.GetRequiredService<PythonWebClientSettings>();
+				var settings = provider.GetRequiredService<ICodeGenSettingsFactory>().Get<PythonWebClientSettings>();
 				return new DefaultPythonSourceLookup(settings.NamespaceModuleMapping);
 			});
 			return services;

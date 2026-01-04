@@ -23,13 +23,11 @@ namespace Albatross.CodeGen.CommandLine {
 
 		public PythonWebClientCodeGenCommandHandler(ParseResult result, CodeGenParams parameters,
 			ILogger<PythonWebClientCodeGenCommandHandler> logger,
-			Compilation compilation,
-			CodeGenSettings settings,
 			ConvertApiControllerToControllerModel convertToWebApi,
 			ConvertControllerModelToPythonFile converToPythonFile) :base(result,parameters){
 			this.logger = logger;
-			this.compilation = compilation;
-			this.settings = settings;
+			this.compilation = parameters.Compilation;
+			this.settings = parameters.CodeGenSettings ?? new PythonWebClientSettings();
 			this.convertToWebApi = convertToWebApi;
 			this.converToPythonFile = converToPythonFile;
 		}

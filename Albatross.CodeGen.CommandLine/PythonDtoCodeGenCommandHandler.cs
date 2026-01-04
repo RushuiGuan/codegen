@@ -25,15 +25,14 @@ namespace Albatross.CodeGen.CommandLine {
 		private readonly ConvertDtoClassModelToDataClass dtoModel2Python;
 		private readonly ConvertEnumModelToPythonEnum enumModel2Python;
 
-		public PythonDtoCodeGenCommandHandler(ParseResult result, Compilation compilation,
-			CodeGenSettings settings,
+		public PythonDtoCodeGenCommandHandler(ParseResult result, 
 			ConvertClassSymbolToDtoClassModel dto2Model,
 			ConvertEnumSymbolToDtoEnumModel enum2Model,
 			ConvertDtoClassModelToDataClass dtoModel2Python,
 			ConvertEnumModelToPythonEnum enumModel2Python,
 			CodeGenParams parameters) : base(result, parameters) {
-			this.compilation = compilation;
-			this.settings = settings;
+			this.compilation = parameters.Compilation;
+			this.settings = parameters.CodeGenSettings ?? new PythonWebClientSettings();
 			this.dto2Model = dto2Model;
 			this.enum2Model = enum2Model;
 			this.dtoModel2Python = dtoModel2Python;
