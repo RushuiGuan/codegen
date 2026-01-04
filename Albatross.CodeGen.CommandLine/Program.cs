@@ -43,7 +43,7 @@ namespace Albatross.CodeGen.CommandLine {
 			services.AddShortenLoggerName(false, "Albatross");
 			services.AddScoped<LoadCodeGenSettings>();
 			services.AddScoped<LoadCSharpProject>();
-			services.AddScoped<IProjectCompilationFactory, ProjectCompilationFactory>();
+			services.AddScoped<ICompilationFactory, ProjectCompilationFactory>();
 			services.AddScoped<ICodeGenSettingsFactory, CodeGenSettingsFactory>();
 		}
 	}

@@ -7,8 +7,8 @@ namespace Albatross.CodeGen.Python.TypeConversions {
 	public class NullableTypeConverter : ITypeConverter {
 		private readonly Compilation compilation;
 		public int Precedence => 80;
-		public NullableTypeConverter(Compilation compilation) {
-			this.compilation = compilation;
+		public NullableTypeConverter(ICompilationFactory factory) {
+			this.compilation = factory.Get();
 		}
 
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {

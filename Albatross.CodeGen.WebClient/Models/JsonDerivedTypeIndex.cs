@@ -9,7 +9,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 		(ITypeSymbol, string)[] GetDerivedTypeDiscriminators(ITypeSymbol symbol);
 	}
 	public sealed class JsonDerivedTypeIndex : IJsonDerivedTypeIndex {
-		public JsonDerivedTypeIndex(IProjectCompilationFactory factory) {
+		public JsonDerivedTypeIndex(ICompilationFactory factory) {
 			this.compilation = factory.Get();
 		}
 

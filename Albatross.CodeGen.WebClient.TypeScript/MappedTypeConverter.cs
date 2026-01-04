@@ -10,8 +10,8 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 	public class MappedTypeConverter : ITypeConverter {
 		private TypeScriptWebClientSettings settings;
 
-		public MappedTypeConverter(TypeScriptWebClientSettings settings) {
-			this.settings = settings;
+		public MappedTypeConverter(ICodeGenSettingsFactory settingsFactory) {
+			this.settings = settingsFactory.Get<TypeScriptWebClientSettings>();
 		}
 		// this should have higher precedence than CustomTypeConversion
 		public int Precedence => 998;

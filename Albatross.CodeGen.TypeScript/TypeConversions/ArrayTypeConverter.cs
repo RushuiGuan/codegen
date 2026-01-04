@@ -7,8 +7,8 @@ namespace Albatross.CodeGen.TypeScript.TypeConversions {
 	public class ArrayTypeConverter : ITypeConverter {
 		private readonly Compilation compilation;
 
-		public ArrayTypeConverter(Compilation compilation) {
-			this.compilation = compilation;
+		public ArrayTypeConverter(ICompilationFactory factory) {
+			this.compilation = factory.Get();
 		}
 
 		public int Precedence => 80;

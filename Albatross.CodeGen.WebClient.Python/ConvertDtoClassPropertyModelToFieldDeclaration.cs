@@ -13,7 +13,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 		private readonly PythonWebClientSettings settings;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertDtoClassPropertyModelToFieldDeclaration(IProjectCompilationFactory compilationFactory, ICodeGenSettingsFactory settingsFactory, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+		public ConvertDtoClassPropertyModelToFieldDeclaration(ICompilationFactory compilationFactory, ICodeGenSettingsFactory settingsFactory, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
 			this.compilation = compilationFactory.Get();
 			this.settings = settingsFactory.Get<PythonWebClientSettings>();
 			this.typeConverter = typeConverter;

@@ -4,7 +4,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 	public record class ConvertEnumSymbolToDtoEnumModel : IConvertObject<INamedTypeSymbol, EnumInfo> {
 		private readonly Compilation compilation;
 
-		public ConvertEnumSymbolToDtoEnumModel(IProjectCompilationFactory factory) {
+		public ConvertEnumSymbolToDtoEnumModel(ICompilationFactory factory) {
 			this.compilation = factory.Get();
 		}
 

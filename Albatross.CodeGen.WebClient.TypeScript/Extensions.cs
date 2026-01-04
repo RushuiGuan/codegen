@@ -45,7 +45,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			services.AddCodeGen(typeof(Extensions).Assembly);
 			services.AddSingleton<ITypeConverter, TypeScript.MappedTypeConverter>();
 			services.AddSingleton<ISourceLookup>(provider => {
-				var settings = provider.GetRequiredService<TypeScriptWebClientSettings>();
+				var settings = provider.GetRequiredService<ICodeGenSettingsFactory>().Get<TypeScriptWebClientSettings>();
 				return new DefaultTypeScriptSourceLookup(settings.NamespaceModuleMapping);
 			});
 			return services;

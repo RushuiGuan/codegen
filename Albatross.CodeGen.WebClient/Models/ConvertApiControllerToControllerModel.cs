@@ -5,7 +5,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 	public class ConvertApiControllerToControllerModel : IConvertObject<INamedTypeSymbol, ControllerInfo> {
 		private readonly Compilation compilation;
 
-		public ConvertApiControllerToControllerModel(IProjectCompilationFactory factory) {
+		public ConvertApiControllerToControllerModel(ICompilationFactory factory) {
 			this.compilation = factory.Get();
 		}
 		public ControllerInfo Convert(INamedTypeSymbol controllerSymbol) {

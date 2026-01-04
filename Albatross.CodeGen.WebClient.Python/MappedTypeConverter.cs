@@ -1,6 +1,5 @@
 ﻿using Albatross.CodeAnalysis;
 using Albatross.CodeGen.Python.Expressions;
-using Albatross.CodeGen.WebClient.Settings;
 using Microsoft.CodeAnalysis;
 using System.Diagnostics.CodeAnalysis;
 
@@ -8,8 +7,8 @@ namespace Albatross.CodeGen.WebClient.Python {
 	public class MappedTypeConverter : ITypeConverter {
 		private PythonWebClientSettings settings;
 
-		public MappedTypeConverter(PythonWebClientSettings settings) {
-			this.settings = settings;
+		public MappedTypeConverter(ICodeGenSettingsFactory settingsFactory) {
+			this.settings = settingsFactory.Get<PythonWebClientSettings>();
 		}
 		// this should have higher precedence than CustomTypeConversion
 		public int Precedence => 998;

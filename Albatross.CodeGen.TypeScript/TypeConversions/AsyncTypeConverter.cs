@@ -8,8 +8,8 @@ namespace Albatross.CodeGen.TypeScript.TypeConversions {
 		private readonly Compilation compilation;
 		public int Precedence => 90;
 
-		public AsyncTypeConverter(Compilation compilation) {
-			this.compilation = compilation;
+		public AsyncTypeConverter(ICompilationFactory factory) {
+			this.compilation = factory.Get();
 		}
 
 		public bool TryConvert(ITypeSymbol symbol, IConvertObject<ITypeSymbol, ITypeExpression> factory, [NotNullWhen(true)] out ITypeExpression? expression) {

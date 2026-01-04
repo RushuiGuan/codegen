@@ -5,7 +5,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 		private readonly Compilation compilation;
 		private readonly IJsonDerivedTypeIndex derivedTypeindex;
 
-		public ConvertClassSymbolToDtoClassModel(IProjectCompilationFactory factory, IJsonDerivedTypeIndex derivedTypeindex) {
+		public ConvertClassSymbolToDtoClassModel(ICompilationFactory factory, IJsonDerivedTypeIndex derivedTypeindex) {
 			this.compilation = factory.Get();
 			this.derivedTypeindex = derivedTypeindex;
 		}

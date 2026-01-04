@@ -13,8 +13,10 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.CommandLine {
 	[Verb<TypeScriptEntryPointCodeGenCommandHandler>("typescript entrypoint")]
 	public class TypeScriptEntryPointCodeGenParams {
+		
 		[UseOption<CodeGenSettingsOption>]
 		public CodeGenSettings? CodeGenSettings { get; init; }
+
 		[UseOption<OutputDirectoryOption>]
 		public required DirectoryInfo OutputDirectory { get; init; }
 	}

@@ -23,13 +23,11 @@ namespace Albatross.CodeGen.CommandLine {
 
 		public TypeScriptWebClientCodeGenCommandHandler(ParseResult result, CodeGenParams parameters,
 			ILogger<TypeScriptWebClientCodeGenCommandHandler> logger,
-			Compilation compilation,
-			CodeGenSettings settings,
 			ConvertApiControllerToControllerModel convertToWebApi,
 			ConvertControllerModelToTypeScriptFile converToTypeScriptFile) : base(result,parameters) {
 			this.logger = logger;
-			this.compilation = compilation;
-			this.settings = settings;
+			this.compilation = parameters.Compilation;
+			this.settings = parameters.CodeGenSettings ?? new TypeScriptWebClientSettings();
 			this.convertToWebApi = convertToWebApi;
 			this.converToTypeScriptFile = converToTypeScriptFile;
 		}

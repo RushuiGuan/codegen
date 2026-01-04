@@ -15,7 +15,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		private readonly CSharpWebClientSettings settings;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
 
-		public ConvertWebApiToCSharpFile(IProjectCompilationFactory compilationFactory, ICodeGenSettingsFactory settingsFactory, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
+		public ConvertWebApiToCSharpFile(ICompilationFactory compilationFactory, ICodeGenSettingsFactory settingsFactory, IConvertObject<ITypeSymbol, ITypeExpression> typeConverter) {
 			this.compilation = compilationFactory.Get();
 			this.settings = settingsFactory.Get<CSharpWebClientSettings>();
 			this.typeConverter = typeConverter;

@@ -44,9 +44,8 @@ public class MyClassD : MyBaseClass {
 		[InlineData("MyClassC", "MyBaseClass", "C")]
 		[InlineData("MyClassD", "MyBaseClass", "D")]
 		public async Task TestClassWithInterfaceBaseType(string className, string expectedBaseClass, string expectedDiscriminator) {
-
 			var compilation = await Code.CreateNet8CompilationAsync();
-			var index = new JsonDerivedTypeIndex(compilation);
+			var index = new JsonDerivedTypeIndex(new CompilationFactory(compilation));
 			var symbol = compilation.GetRequiredSymbol(className);
 			var result = index.GetDerivedTypeDiscriminators(symbol);
 			Assert.Single(result);

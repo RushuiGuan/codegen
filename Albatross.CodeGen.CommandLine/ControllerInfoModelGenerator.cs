@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.CommandLine {
 		private readonly Compilation compilation;
 		private readonly CodeGenSettings settings;
 
-		public ControllerInfoModelGenerator(ConvertApiControllerToControllerModel converter, CodeGenParams parameter, IProjectCompilationFactory compilationFactory, ICodeGenSettingsFactory settingsFactory) {
+		public ControllerInfoModelGenerator(ConvertApiControllerToControllerModel converter, CodeGenParams parameter, ICompilationFactory compilationFactory, ICodeGenSettingsFactory settingsFactory) {
 			this.converter = converter;
 			this.parameters = parameter;
 			this.compilation = this.parameters.Compilation;

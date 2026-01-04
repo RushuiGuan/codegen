@@ -17,21 +17,20 @@ using System.Threading.Tasks;
 namespace Albatross.CodeGen.CommandLine {
 	public class TypeScriptDtoCodeGenCommandHandler : BaseHandler<CodeGenParams> {
 		private readonly Compilation compilation;
-		private readonly CodeGenSettings settings;
+		private readonly TypeScriptWebClientSettings settings;
 		private readonly ConvertClassSymbolToDtoClassModel dto2Model;
 		private readonly ConvertEnumSymbolToDtoEnumModel enum2Model;
 		private readonly ConvertDtoClassModelToTypeScriptInterface dtoModel2TypeScript;
 		private readonly ConvertEnumModelToTypeScriptEnum enumModel2TypeScript;
 
-		public TypeScriptDtoCodeGenCommandHandler(ParseResult result, Compilation compilation,
-			CodeGenSettings settings,
+		public TypeScriptDtoCodeGenCommandHandler(ParseResult result,
 			ConvertClassSymbolToDtoClassModel dto2Model,
 			ConvertEnumSymbolToDtoEnumModel enum2Model,
 			ConvertDtoClassModelToTypeScriptInterface dtoModel2TypeScript,
 			ConvertEnumModelToTypeScriptEnum enumModel2TypeScript,
 			CodeGenParams parameters) : base(result, parameters) {
-			this.compilation = compilation;
-			this.settings = settings;
+			this.compilation = parameters.Compilation;
+			this.settings = parameters.CodeGenSettings as TypeScriptWebClientSettings ?? new TypeScriptWebClientSettings();
 			this.dto2Model = dto2Model;
 			this.enum2Model = enum2Model;
 			this.dtoModel2TypeScript = dtoModel2TypeScript;
