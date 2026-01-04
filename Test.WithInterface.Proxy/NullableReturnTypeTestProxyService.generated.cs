@@ -27,8 +27,7 @@ namespace Test.WithInterface.Proxy {
 		Task<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto?>> GetMyDtoCollection(System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto?> values);
 	}
 	public partial class NullableReturnTypeTestProxyService : ClientBase, INullableReturnTypeTestProxyService {
-		public NullableReturnTypeTestProxyService(ILogger<NullableReturnTypeTestProxyService> logger, HttpClient client) : base(logger, client) {
-		}
+		public NullableReturnTypeTestProxyService(ILogger<NullableReturnTypeTestProxyService> logger, HttpClient client) : base(logger, client) { }
 		public const string ControllerPath = "api/nullable-return-type";
 		public async Task<string?> GetString(string? text) {
 			string path = $"{ControllerPath}/string";

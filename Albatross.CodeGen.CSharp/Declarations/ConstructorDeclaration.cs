@@ -20,7 +20,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			}
 			writer.Code(Name).Code(Parameters);
 			if (BaseConstructorInvocation != null) {
-				writer.Append(" : ").Code(BaseConstructorInvocation);
+				writer.Append(" : ").Code(BaseConstructorInvocation).Space();
 			}
 			writer.Code(Body);
 			return writer;

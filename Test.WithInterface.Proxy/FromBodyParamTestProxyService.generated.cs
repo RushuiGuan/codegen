@@ -17,8 +17,7 @@ namespace Test.WithInterface.Proxy {
 		Task<int> NullableObjectArray(Test.Dto.Classes.MyDto?[] array);
 	}
 	public partial class FromBodyParamTestProxyService : ClientBase, IFromBodyParamTestProxyService {
-		public FromBodyParamTestProxyService(ILogger<FromBodyParamTestProxyService> logger, HttpClient client) : base(logger, client) {
-		}
+		public FromBodyParamTestProxyService(ILogger<FromBodyParamTestProxyService> logger, HttpClient client) : base(logger, client) { }
 		public const string ControllerPath = "api/from-body-param-test";
 		public async Task<int> RequiredObject(Test.Dto.Classes.MyDto dto) {
 			string path = $"{ControllerPath}/required-object";

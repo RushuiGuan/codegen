@@ -19,8 +19,7 @@ namespace Test.WithInterface.Proxy {
 		Task<Test.Dto.Enums.MyEnum> RequiredEnumParameter(Test.Dto.Enums.MyEnum value);
 	}
 	public partial class FromQueryParamTestProxyService : ClientBase, IFromQueryParamTestProxyService {
-		public FromQueryParamTestProxyService(ILogger<FromQueryParamTestProxyService> logger, HttpClient client) : base(logger, client) {
-		}
+		public FromQueryParamTestProxyService(ILogger<FromQueryParamTestProxyService> logger, HttpClient client) : base(logger, client) { }
 		public const string ControllerPath = "api/from-query-param-test";
 		public async Task RequiredString(string name) {
 			string path = $"{ControllerPath}/required-string";

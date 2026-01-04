@@ -7,8 +7,7 @@ namespace Test.WithInterface.Proxy {
 	public partial interface ICustomJsonSettingsProxyService {
 	}
 	public partial class CustomJsonSettingsProxyService : ClientBase, ICustomJsonSettingsProxyService {
-		public CustomJsonSettingsProxyService(ILogger<CustomJsonSettingsProxyService> logger, HttpClient client) : base(logger, client, MyCustomJsonSettings.Options) {
-		}
+		public CustomJsonSettingsProxyService(ILogger<CustomJsonSettingsProxyService> logger, HttpClient client) : base(logger, client, MyCustomJsonSettings.Options) { }
 		public const string ControllerPath = "api/customjsonsettings";
 	}
 }

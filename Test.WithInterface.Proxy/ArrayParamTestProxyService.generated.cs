@@ -15,8 +15,7 @@ namespace Test.WithInterface.Proxy {
 		Task<string> CollectionDateTimeParam(System.Collections.Generic.IEnumerable<System.DateTime> collection);
 	}
 	public partial class ArrayParamTestProxyService : ClientBase, IArrayParamTestProxyService {
-		public ArrayParamTestProxyService(ILogger<ArrayParamTestProxyService> logger, HttpClient client) : base(logger, client) {
-		}
+		public ArrayParamTestProxyService(ILogger<ArrayParamTestProxyService> logger, HttpClient client) : base(logger, client) { }
 		public const string ControllerPath = "api/array-param-test";
 		public async Task<string> ArrayStringParam(string[] array) {
 			string path = $"{ControllerPath}/array-string-param";

@@ -26,8 +26,7 @@ namespace Test.WithInterface.Proxy {
 		Task<Test.Dto.Enums.MyEnum[]> RequiredEnumArray(Test.Dto.Enums.MyEnum[] values);
 	}
 	public partial class RequiredParamTestProxyService : ClientBase, IRequiredParamTestProxyService {
-		public RequiredParamTestProxyService(ILogger<RequiredParamTestProxyService> logger, HttpClient client) : base(logger, client) {
-		}
+		public RequiredParamTestProxyService(ILogger<RequiredParamTestProxyService> logger, HttpClient client) : base(logger, client) { }
 		public const string ControllerPath = "api/required-param-test";
 		public async Task<string> ExplicitStringParam(string text) {
 			string path = $"{ControllerPath}/explicit-string-param";

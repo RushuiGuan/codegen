@@ -10,8 +10,7 @@ namespace Test.WithInterface.Proxy {
 		Task FilteredByNone();
 	}
 	public partial class FilteredMethodProxyService : ClientBase, IFilteredMethodProxyService {
-		public FilteredMethodProxyService(ILogger<FilteredMethodProxyService> logger, HttpClient client) : base(logger, client) {
-		}
+		public FilteredMethodProxyService(ILogger<FilteredMethodProxyService> logger, HttpClient client) : base(logger, client) { }
 		public const string ControllerPath = "api/filtered-method";
 		public async Task FilteredByNone() {
 			string path = $"{ControllerPath}/none";

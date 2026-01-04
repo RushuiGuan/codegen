@@ -10,8 +10,7 @@ namespace Test.WithInterface.Proxy {
 		Task Post();
 	}
 	public partial class ControllerRouteTestProxyService : ClientBase, IControllerRouteTestProxyService {
-		public ControllerRouteTestProxyService(ILogger<ControllerRouteTestProxyService> logger, HttpClient client) : base(logger, client) {
-		}
+		public ControllerRouteTestProxyService(ILogger<ControllerRouteTestProxyService> logger, HttpClient client) : base(logger, client) { }
 		public const string ControllerPath = "api/controllerroutetest";
 		public async Task Post() {
 			string path = $"{ControllerPath}";

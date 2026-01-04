@@ -21,8 +21,7 @@ namespace Test.WithInterface.Proxy {
 		Task<System.Nullable<Test.Dto.Enums.MyEnum>[]> NullableEnumArray(System.Nullable<Test.Dto.Enums.MyEnum>[] value);
 	}
 	public partial class NullableParamTestProxyService : ClientBase, INullableParamTestProxyService {
-		public NullableParamTestProxyService(ILogger<NullableParamTestProxyService> logger, HttpClient client) : base(logger, client) {
-		}
+		public NullableParamTestProxyService(ILogger<NullableParamTestProxyService> logger, HttpClient client) : base(logger, client) { }
 		public const string ControllerPath = "api/nullable-param-test";
 		public async Task<string> NullableStringParam(string? text) {
 			string path = $"{ControllerPath}/nullable-string-param";
