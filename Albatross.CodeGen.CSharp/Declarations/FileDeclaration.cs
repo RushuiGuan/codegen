@@ -4,14 +4,12 @@ using System.IO;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
 	public record class FileDeclaration : CodeNode, IDeclaration {
-		public FileDeclaration(string name, int? index = null) {
+		public FileDeclaration(string name) {
 			this.Name = name;
-			this.Index = index;
 		}
 
-		public string FileName => Index.HasValue ? $"{Index}_{Name}.cs" : $"{Name}.cs";
+		public string FileName => $"{Name}.cs";
 		public string Name { get; }
-		public int? Index { get; }
 		public bool NullableEnabled { get; init; } = true;
 
 		public NamespaceExpression? Namespace { get; init; }
