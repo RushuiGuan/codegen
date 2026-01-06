@@ -37,7 +37,7 @@ namespace Albatross.CodeGen.CommandLine.Parameters {
 		/// <summary>
 		/// Gets or sets the output directory for generated files
 		/// </summary>
-		[UseOption<OutputDirectoryOption>]
+		[UseOption<OutputDirectoryWithAutoCreateOption>]
 		public DirectoryInfo? OutputDirectory { get; init; }
 	}
 }
