@@ -8,8 +8,8 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Test.Proxy\Test.Proxy.csproj" />
-		<PackageReference Include="Albatross.CommandLine" Version="8.0.1-109.main" />
-		<PackageReference Include="Albatross.Text" Version="9.0.1" />
+		<PackageReference Include="Albatross.CommandLine" Version="8.0.1-124.main" />
+		<PackageReference Include="Albatross.Text" Version="9.0.3" />
 		<PackageReference Include="Albatross.WebClient" Version="8.0.3" />
 	</ItemGroup>
 	<ItemGroup>
