@@ -1,16 +1,17 @@
 using Albatross.CodeGen.CSharp.Expressions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.Declarations {
 	public record class FileDeclaration : CodeNode, IDeclaration {
-		public FileDeclaration(string name) {
+		public FileDeclaration(string name, int? index = null) {
 			this.Name = name;
+			this.Index = index;
 		}
 
-		public string FileName => $"{Name}.cs";
+		public string FileName => Index.HasValue ? $"{Name}_{Index}.cs" : $"{Name}.cs";
 		public string Name { get; }
+		public int? Index { get; }
 		public bool NullableEnabled { get; init; } = true;
 
 		public NamespaceExpression? Namespace { get; init; }
