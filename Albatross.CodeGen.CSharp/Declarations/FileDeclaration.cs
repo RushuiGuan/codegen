@@ -9,7 +9,7 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 			this.Index = index;
 		}
 
-		public string FileName => Index.HasValue ? $"{Name}_{Index}.cs" : $"{Name}.cs";
+		public string FileName => Index.HasValue ? $"{Index}_{Name}.cs" : $"{Name}.cs";
 		public string Name { get; }
 		public int? Index { get; }
 		public bool NullableEnabled { get; init; } = true;
