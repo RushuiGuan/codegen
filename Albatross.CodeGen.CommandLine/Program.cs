@@ -27,7 +27,7 @@ namespace Albatross.CodeGen.CommandLine {
 			return 0;
 		}
 
-		static void RegisterServices(ParseResult result, IConfiguration configuration, IServiceCollection services) {
+		static void RegisterServices(ParseResult result, IServiceCollection services) {
 			services.RegisterCommands();
 			services.AddWebClientCodeGen();
 			var key = result.CommandResult.Command.GetCommandKey();
