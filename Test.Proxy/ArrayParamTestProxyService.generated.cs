@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
 	public partial class ArrayParamTestProxyService : ClientBase {
-		public ArrayParamTestProxyService(ILogger<ArrayParamTestProxyService> logger, HttpClient client) : base(logger, client){ }
+		public ArrayParamTestProxyService(ILogger<ArrayParamTestProxyService> logger, HttpClient client) : base(logger, client) { }
 		public const string ControllerPath = "api/array-param-test";
 		public async Task<string> ArrayStringParam(string[] array) {
 			string path = $"{ControllerPath}/array-string-param";
