@@ -25,6 +25,11 @@
     }
   ],
   "build": {
+    "sitemap": {
+      "baseUrl": "https://rushuiguan.github.io/codegen/",
+      "priority": 0.5,
+      "changefreq": "weekly"
+    },
     "content": [
       {
         "files": [
@@ -38,7 +43,9 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "images/**",
+          "*.html",
+          "robots.txt"
         ]
       }
     ],
