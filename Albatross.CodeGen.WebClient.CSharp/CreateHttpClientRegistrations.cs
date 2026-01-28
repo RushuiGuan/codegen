@@ -53,8 +53,8 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		IEnumerable<InvocationExpression> GetRegistrationFunctions(bool useInterface, IEnumerable<ControllerInfo> models) {
 			foreach (var model in models) {
-				var interfaceName = $"I{model.ControllerName}ProxyService";
-				var className = $"{model.ControllerName}ProxyService";
+				var interfaceName = $"I{model.ControllerName}Client";
+				var className = $"{model.ControllerName}Client";
 				yield return new InvocationExpression {
 					CallableExpression = new IdentifierNameExpression("AddTypedClient") {
 						GenericArguments = {

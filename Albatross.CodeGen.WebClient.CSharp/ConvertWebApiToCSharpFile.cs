@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Albatross.CodeGen.WebClient.CSharp {
 	public class ConvertWebApiToCSharpFile : IConvertObject<ControllerInfo, FileDeclaration> {
-		const string WebClient = "WebClient";
+		const string Client = "Client";
 		private readonly Compilation compilation;
 		private readonly CSharpWebClientSettings settings;
 		private readonly IConvertObject<ITypeSymbol, ITypeExpression> typeConverter;
@@ -94,7 +94,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		}
 
 		string GetClassName(ControllerInfo controller) {
-			return $"{controller.ControllerName}{WebClient}";
+			return $"{controller.ControllerName}{Client}";
 		}
 
 		string GetFilename(ControllerInfo controller) {
