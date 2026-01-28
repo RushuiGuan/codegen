@@ -6,10 +6,11 @@ using System;
 using System.Collections.Generic;
 
 namespace Albatross.CodeGen.WebClient.CSharp {
-	public class CreateHttpClientRegistrations {
+	[Obsolete]
+	public class LegacyCreateHttpClientRegistrations {
 		private readonly CSharpWebClientSettings settings;
 
-		public CreateHttpClientRegistrations(ICodeGenSettingsFactory factory) {
+		public LegacyCreateHttpClientRegistrations(ICodeGenSettingsFactory factory) {
 			this.settings = factory.Get<CSharpWebClientSettings>();
 		}
 
