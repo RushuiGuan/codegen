@@ -1,55 +1,47 @@
 # Albatross CodeGen
-Welcome to the **Albatross CodeGen Framework** - a comprehensive multi-language code generation toolkit for .NET applications.
 
-## What is Albatross CodeGen?
-
-The Albatross CodeGen Framework is a powerful and extensible code generation system that enables you to:
-
-- **Generate HTTP client proxies** for C#, TypeScript, and Python from ASP.NET Core Web APIs
-- **Create strongly-typed DTOs** across multiple languages
-- **Build custom code generators** using a flexible, composable architecture
-- **Maintain consistency** across different language implementations of your APIs
+A multi-language code generation framework for .NET that generates HTTP client proxies and DTOs from ASP.NET Core Web APIs. Supports C#, TypeScript, and Python output with full type safety and proper language idioms.
 
 ## Key Features
 
-- 🚀 **Multi-language Support**: Generate code for C#, TypeScript, and Python
-- 🔧 **Extensible Architecture**: Build custom code generators using the core framework
-- 📝 **Rich Type System**: Full support for generics, nullability, and complex types
-- 🎯 **Web API Integration**: Seamless integration with ASP.NET Core controllers
-- ⚙️ **Command Line Tool**: Easy-to-use CLI for automated code generation
-- 📚 **Comprehensive Documentation**: Extensive XML documentation and examples
+- Generate HTTP client proxies for C#, TypeScript, and Python from ASP.NET Core controllers
+- Create strongly-typed DTOs across multiple languages with proper type mapping
+- Roslyn-based code analysis for accurate type information and generics support
+- Extensible architecture with customizable type converters and source lookups
+- Command-line tool for automated code generation in build pipelines
 
 ## Quick Start
 
-1. **Install the tool**:
-   ```bash
-   dotnet tool install --global Albatross.CodeGen.CommandLine
-   ```
+```bash
+# Install the CLI tool
+dotnet tool install --global Albatross.CodeGen.CommandLine
 
-2. **Generate TypeScript client**:
-   ```bash
-   codegen typescript web-client -p YourWebApi.csproj -o ./generated
-   ```
+# Generate TypeScript client from your Web API
+codegen typescript web-client -p YourWebApi.csproj -o ./generated
 
-3. **Generate Python DTOs**:
-   ```bash
-   codegen python dto -p YourWebApi.csproj -o ./generated
-   ```
+# Generate Python client
+codegen python web-client -p YourWebApi.csproj -o ./generated
+```
 
-## Project Structure
+## NuGet Packages
 
-The framework consists of several interconnected projects:
+| Package | Description |
+|---------|-------------|
+| [Albatross.CodeGen](https://www.nuget.org/packages/Albatross.CodeGen) | Core code generation engine with abstract code representations |
+| [Albatross.CodeGen.TypeScript](https://www.nuget.org/packages/Albatross.CodeGen.TypeScript) | TypeScript declarations, expressions, and type converters |
+| [Albatross.CodeGen.Python](https://www.nuget.org/packages/Albatross.CodeGen.Python) | Python declarations, expressions, and type converters |
+| [Albatross.CodeGen.CSharp](https://www.nuget.org/packages/Albatross.CodeGen.CSharp) | C# declarations and expressions for runtime code generation |
+| [Albatross.CodeGen.WebClient](https://www.nuget.org/packages/Albatross.CodeGen.WebClient) | ASP.NET Core controller analysis and model extraction |
+| [Albatross.CodeGen.CommandLine](https://www.nuget.org/packages/Albatross.CodeGen.CommandLine) | CLI tool for code generation |
 
-- **Core**: Base interfaces and abstractions
-- **Language Generators**: C#, Python, TypeScript implementations  
-- **Web Client**: HTTP client proxy generation
-- **Command Line**: CLI tool for code generation
-- **Symbol Providers**: Roslyn-based analysis components
+## Documentation
 
-## Getting Started
-
-- [Introduction](articles/introduction.md) - Learn about the framework concepts
-- [Getting Started Guide](articles/getting-started.md) - Step-by-step tutorial
+- [Introduction](articles/introduction.md) - Framework concepts and architecture
+- [Getting Started](articles/getting-started.md) - Step-by-step tutorial
+- [Configuration](articles/configuration.md) - Settings and customization options
+- [Examples](articles/examples.md) - Real-world usage scenarios
 - [API Reference](api/) - Complete API documentation
 
----
+## Source Code
+
+[GitHub Repository](https://github.com/RushuiGuan/codegen)

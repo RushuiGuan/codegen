@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using SymbolFilter = Albatross.CodeGen.WebClient.Settings.SymbolFilter;
 
 namespace Albatross.CodeGen.WebClient {
+	/// <summary>
+	/// Walks the syntax tree to find ASP.NET Core controller classes that inherit from ControllerBase
+	/// </summary>
 	public class ApiControllerClassWalker : CSharpSyntaxWalker {
 		private readonly SemanticModel semanticModel;
 		private readonly IEnumerable<SymbolFilter> filters;

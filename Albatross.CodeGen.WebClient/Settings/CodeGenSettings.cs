@@ -2,6 +2,9 @@
 using System.Text.Json.Serialization;
 
 namespace Albatross.CodeGen.WebClient.Settings {
+	/// <summary>
+	/// Configuration settings for code generation that control which symbols are included or excluded
+	/// </summary>
 	public record class CodeGenSettings {
 		public SymbolFilterPatterns[] ControllerFilters { get; init; } = [];
 		public SymbolFilterPatterns[] ControllerMethodFilters { get; init; } = [];

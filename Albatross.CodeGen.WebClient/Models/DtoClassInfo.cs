@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Albatross.CodeGen.WebClient.Models {
+	/// <summary>
+	/// Represents metadata extracted from a DTO class for code generation, including properties and JSON polymorphism support
+	/// </summary>
 	public record class DtoClassInfo {
 		public DtoClassInfo(Compilation compilation, INamedTypeSymbol symbol, IJsonDerivedTypeIndex index) {
 			this.Name = symbol.Name;
