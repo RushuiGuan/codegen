@@ -4,25 +4,25 @@ namespace Test.Proxy {
 	public static partial class Extensions {
 		public static IHttpClientBuilder AddClients(this IHttpClientBuilder builder) {
 			return builder
-				.AddTypedClient<ArrayParamTestProxyService>()
-				.AddTypedClient<CancellationTokenTestProxyService>()
-				.AddTypedClient<ControllerRouteTestProxyService>()
-				.AddTypedClient<CustomJsonSettingsProxyService>()
-				.AddTypedClient<DuplicateNameTestProxyService>()
-				.AddTypedClient<FilteredMethodProxyService>()
-				.AddTypedClient<FromBodyParamTestProxyService>()
-				.AddTypedClient<FromHeaderParamTestProxyService>()
-				.AddTypedClient<FromQueryParamTestProxyService>()
-				.AddTypedClient<FromRoutingParamTestProxyService>()
-				.AddTypedClient<HttpMethodTestProxyService>()
-				.AddTypedClient<InterfaceAndAbstractClassTestProxyService>()
-				.AddTypedClient<NullableParamTestProxyService>()
-				.AddTypedClient<NullableReturnTypeTestProxyService>()
-				.AddTypedClient<ObsoleteProxyService>()
-				.AddTypedClient<PartiallyObsoleteProxyService>()
-				.AddTypedClient<OmittedConstructorProxyService>()
-				.AddTypedClient<RequiredParamTestProxyService>()
-				.AddTypedClient<RequiredReturnTypeTestProxyService>();
+				.AddTypedClient<ArrayParamTestClient>()
+				.AddTypedClient<CancellationTokenTestClient>()
+				.AddTypedClient<ControllerRouteTestClient>()
+				.AddTypedClient<CustomJsonSettingsClient>()
+				.AddTypedClient<DuplicateNameTestClient>()
+				.AddTypedClient<FilteredMethodClient>()
+				.AddTypedClient<FromBodyParamTestClient>()
+				.AddTypedClient<FromHeaderParamTestClient>()
+				.AddTypedClient<FromQueryParamTestClient>()
+				.AddTypedClient<FromRoutingParamTestClient>()
+				.AddTypedClient<HttpMethodTestClient>()
+				.AddTypedClient<InterfaceAndAbstractClassTestClient>()
+				.AddTypedClient<NullableParamTestClient>()
+				.AddTypedClient<NullableReturnTypeTestClient>()
+				.AddTypedClient<ObsoleteClient>()
+				.AddTypedClient<PartiallyObsoleteClient>()
+				.AddTypedClient<OmittedConstructorClient>()
+				.AddTypedClient<RequiredParamTestClient>()
+				.AddTypedClient<RequiredReturnTypeTestClient>();
 		}
 	}
 }

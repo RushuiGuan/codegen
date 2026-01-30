@@ -4,8 +4,8 @@ using System.Net.Http;
 using System.Text.Json;
 #nullable enable
 namespace Test.Proxy {
-	public partial class CustomJsonSettingsWebClient {
-		public CustomJsonSettingsWebClient(HttpClient client) {
+	public partial class CustomJsonSettingsClient {
+		public CustomJsonSettingsClient(HttpClient client) {
 			this.client = client;
 			this.jsonSerializerOptions = MyCustomJsonSettings.Options;
 		}

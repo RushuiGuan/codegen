@@ -6,8 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
-	public partial class RequiredReturnTypeTestWebClient {
-		public RequiredReturnTypeTestWebClient(HttpClient client) {
+	public partial class RequiredReturnTypeTestClient {
+		public RequiredReturnTypeTestClient(HttpClient client) {
 			this.client = client;
 			this.jsonSerializerOptions = DefaultJsonSerializerOptions.Value;
 		}
@@ -209,6 +209,13 @@ namespace Test.Proxy {
 				.WithRelativeUrl($"{ControllerPath}/required-enum-array");
 			using var request = builder.Build();
 			return await this.client.ExecuteOrThrow<Test.Dto.Enums.MyEnum[]>(request, this.jsonSerializerOptions, cancellationToken);
+		}
+		public async Task<dynamic> GetDynamic(CancellationToken cancellationToken) {
+			var builder = new RequestBuilder()
+				.WithMethod(HttpMethod.Get)
+				.WithRelativeUrl($"{ControllerPath}/dynamic");
+			using var request = builder.Build();
+			return await this.client.ExecuteOrThrow<dynamic>(request, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

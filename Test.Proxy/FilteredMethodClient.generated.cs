@@ -6,18 +6,18 @@ using System.Threading;
 using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
-	public partial class ControllerRouteTestWebClient {
-		public ControllerRouteTestWebClient(HttpClient client) {
+	public partial class FilteredMethodClient {
+		public FilteredMethodClient(HttpClient client) {
 			this.client = client;
 			this.jsonSerializerOptions = DefaultJsonSerializerOptions.Value;
 		}
-		public const string ControllerPath = "api/controllerroutetest";
+		public const string ControllerPath = "api/filtered-method";
 		private HttpClient client;
 		private JsonSerializerOptions jsonSerializerOptions;
-		public async Task Post(CancellationToken cancellationToken) {
+		public async Task FilteredByNone(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
-				.WithMethod(HttpMethod.Post)
-				.WithRelativeUrl($"{ControllerPath}");
+				.WithMethod(HttpMethod.Get)
+				.WithRelativeUrl($"{ControllerPath}/none");
 			using var request = builder.Build();
 			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
 		}

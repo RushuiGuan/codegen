@@ -73,6 +73,6 @@ namespace Test.WebApi.Controllers {
 		public void NullableDateTimeOffsetDiffName([FromQuery(Name = "d")] DateTimeOffset? dateTimeOffset) { }
 
 		[HttpGet("nullable-enum-parameter")]
-		public MyEnum NullableEnumParameter([FromQuery] MyEnum? value) => value;
+		public MyEnum NullableEnumParameter([FromQuery] MyEnum? value) => value.Value;
 	}
 }

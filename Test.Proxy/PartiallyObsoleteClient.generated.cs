@@ -6,20 +6,20 @@ using System.Threading;
 using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
-	public partial class FilteredMethodWebClient {
-		public FilteredMethodWebClient(HttpClient client) {
+	public partial class PartiallyObsoleteClient {
+		public PartiallyObsoleteClient(HttpClient client) {
 			this.client = client;
 			this.jsonSerializerOptions = DefaultJsonSerializerOptions.Value;
 		}
-		public const string ControllerPath = "api/filtered-method";
+		public const string ControllerPath = "api/partiallyobsolete";
 		private HttpClient client;
 		private JsonSerializerOptions jsonSerializerOptions;
-		public async Task FilteredByNone(CancellationToken cancellationToken) {
+		public async Task<string> Get(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
-				.WithRelativeUrl($"{ControllerPath}/none");
+				.WithRelativeUrl($"{ControllerPath}/get");
 			using var request = builder.Build();
-			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
+			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

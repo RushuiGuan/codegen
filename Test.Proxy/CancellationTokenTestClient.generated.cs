@@ -6,20 +6,20 @@ using System.Threading;
 using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
-	public partial class FromHeaderParamTestWebClient {
-		public FromHeaderParamTestWebClient(HttpClient client) {
+	public partial class CancellationTokenTestClient {
+		public CancellationTokenTestClient(HttpClient client) {
 			this.client = client;
 			this.jsonSerializerOptions = DefaultJsonSerializerOptions.Value;
 		}
-		public const string ControllerPath = "api/from-header-param-test";
+		public const string ControllerPath = "api/cancellationtokentest";
 		private HttpClient client;
 		private JsonSerializerOptions jsonSerializerOptions;
-		public async Task OmitFromHeaderParameters(CancellationToken cancellationToken) {
+		public async Task<string> Get(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"{ControllerPath}");
 			using var request = builder.Build();
-			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
+			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

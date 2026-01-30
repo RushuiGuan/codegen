@@ -98,5 +98,8 @@ namespace Test.WebApi.Controllers {
 
 		[HttpGet("required-enum-array")]
 		public MyEnum[] RequiredEnumArray() => [MyEnum.One, MyEnum.Two, MyEnum.Three];
+
+		[HttpGet("dynamic")]
+		public dynamic GetDynamic() => new { Name = "Test" };
 	}
 }

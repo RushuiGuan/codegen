@@ -6,21 +6,20 @@ using System.Threading;
 using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
-	[System.ObsoleteAttribute()]
-	public partial class ObsoleteWebClient {
-		public ObsoleteWebClient(HttpClient client) {
+	public partial class ControllerRouteTestClient {
+		public ControllerRouteTestClient(HttpClient client) {
 			this.client = client;
 			this.jsonSerializerOptions = DefaultJsonSerializerOptions.Value;
 		}
-		public const string ControllerPath = "api/obsolete";
+		public const string ControllerPath = "api/controllerroutetest";
 		private HttpClient client;
 		private JsonSerializerOptions jsonSerializerOptions;
-		public async Task<string> Get(CancellationToken cancellationToken) {
+		public async Task Post(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
-				.WithMethod(HttpMethod.Get)
-				.WithRelativeUrl($"{ControllerPath}/get");
+				.WithMethod(HttpMethod.Post)
+				.WithRelativeUrl($"{ControllerPath}");
 			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

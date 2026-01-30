@@ -6,8 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
-	public partial class NullableParamTestWebClient {
-		public NullableParamTestWebClient(HttpClient client) {
+	public partial class NullableParamTestClient {
+		public NullableParamTestClient(HttpClient client) {
 			this.client = client;
 			this.jsonSerializerOptions = DefaultJsonSerializerOptions.Value;
 		}

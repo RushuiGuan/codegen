@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Text.Json;
 #nullable enable
 namespace Test.Proxy {
-	public partial class OmittedConstructorWebClient {
+	public partial class OmittedConstructorClient {
 		public const string ControllerPath = "api/omittedconstructor";
 		private HttpClient client;
 		private JsonSerializerOptions jsonSerializerOptions;

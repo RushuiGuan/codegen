@@ -6,8 +6,8 @@ using System.Threading;
 using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
-	public partial class InterfaceAndAbstractClassTestWebClient {
-		public InterfaceAndAbstractClassTestWebClient(HttpClient client) {
+	public partial class InterfaceAndAbstractClassTestClient {
+		public InterfaceAndAbstractClassTestClient(HttpClient client) {
 			this.client = client;
 			this.jsonSerializerOptions = DefaultJsonSerializerOptions.Value;
 		}

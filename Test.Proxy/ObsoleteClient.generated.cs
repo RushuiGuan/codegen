@@ -6,12 +6,13 @@ using System.Threading;
 using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
-	public partial class PartiallyObsoleteWebClient {
-		public PartiallyObsoleteWebClient(HttpClient client) {
+	[System.ObsoleteAttribute()]
+	public partial class ObsoleteClient {
+		public ObsoleteClient(HttpClient client) {
 			this.client = client;
 			this.jsonSerializerOptions = DefaultJsonSerializerOptions.Value;
 		}
-		public const string ControllerPath = "api/partiallyobsolete";
+		public const string ControllerPath = "api/obsolete";
 		private HttpClient client;
 		private JsonSerializerOptions jsonSerializerOptions;
 		public async Task<string> Get(CancellationToken cancellationToken) {
