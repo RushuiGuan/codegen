@@ -73,6 +73,29 @@
     },
     {
       "httpMethod": "Get",
+      "name": "RequiredInt",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "required-int"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "value",
+          "name": "value",
+          "typeText": "System.Int32",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
       "name": "RequiredDateTime",
       "canCancel": false,
       "requiresAuthentication": false,
@@ -226,6 +249,259 @@
           "queryKey": "value",
           "name": "value",
           "typeText": "Test.Dto.Enums.MyEnum",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "NullableString",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "nullable-string"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "name",
+          "name": "name",
+          "typeText": "System.String",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "NullableStringImplied",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "nullable-string-implied"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "name",
+          "name": "name",
+          "typeText": "System.String",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "NullableStringDiffName",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "nullable-string-diff-name"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "n",
+          "name": "name",
+          "typeText": "System.String",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "NullableInt",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "nullable-int"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "value",
+          "name": "value",
+          "typeText": "System.Nullable\u003CSystem.Int32\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "NullableDateTime",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "nullable-datetime"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "datetime",
+          "name": "datetime",
+          "typeText": "System.Nullable\u003CSystem.DateTime\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "NullableDateTimeDiffName",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "nullable-datetime_diff-name"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "d",
+          "name": "datetime",
+          "typeText": "System.Nullable\u003CSystem.DateTime\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "NullableDateOnly",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "nullable-dateonly"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "dateonly",
+          "name": "dateonly",
+          "typeText": "System.Nullable\u003CSystem.DateOnly\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "NullableDateOnlyDiffName",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "nullable-dateonly_diff-name"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "d",
+          "name": "dateonly",
+          "typeText": "System.Nullable\u003CSystem.DateOnly\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "NullableDateTimeOffset",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "nullable-datetimeoffset"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "dateTimeOffset",
+          "name": "dateTimeOffset",
+          "typeText": "System.Nullable\u003CSystem.DateTimeOffset\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "NullableDateTimeOffsetDiffName",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.Void",
+      "routeSegments": [
+        {
+          "text": "nullable-datetimeoffset_diff-name"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "d",
+          "name": "dateTimeOffset",
+          "typeText": "System.Nullable\u003CSystem.DateTimeOffset\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "NullableEnumParameter",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "Test.Dto.Enums.MyEnum",
+      "routeSegments": [
+        {
+          "text": "nullable-enum-parameter"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "value",
+          "name": "value",
+          "typeText": "System.Nullable\u003CTest.Dto.Enums.MyEnum\u003E",
           "webType": "FromQuery"
         }
       ],

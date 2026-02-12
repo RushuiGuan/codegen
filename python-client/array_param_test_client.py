@@ -58,11 +58,37 @@ class ArrayParamTestClient:
 		response.raise_for_status()
 		return response.text
 	
+	def collection_nullable_value_type(self, collection: list[int | None]) -> str:
+		request_url = f"{self._base_url}/collection-nullable-value-type"
+		params = {
+			"cv": [
+				x if x is not None else ""
+				for x in collection
+			]
+		}
+		response = self._client.get(request_url, params = params)
+		response.raise_for_status()
+		return response.text
+	
 	def collection_date_param(self, collection: list[date]) -> str:
 		request_url = f"{self._base_url}/collection-date-param"
 		params = {
 			"c": [
 				x.isoformat()
+				for x in collection
+			]
+		}
+		response = self._client.get(request_url, params = params)
+		response.raise_for_status()
+		return response.text
+	
+	def collection_nullable_date_param(self, collection: list[date | None]) -> str:
+		request_url = f"{self._base_url}/collection-nullable-date-param"
+		params = {
+			"cd": [
+				x.isoformat()
+				if x is not None
+				else ""
 				for x in collection
 			]
 		}

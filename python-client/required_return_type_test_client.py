@@ -188,4 +188,10 @@ class RequiredReturnTypeTestClient:
 		response.raise_for_status()
 		return TypeAdapter(list[MyEnum]).validate_python(response.json())
 	
+	def get_dynamic(self) -> dynamic:
+		request_url = f"{self._base_url}/dynamic"
+		response = self._client.get(request_url)
+		response.raise_for_status()
+		return TypeAdapter(dynamic).validate_python(response.json())
+	
 

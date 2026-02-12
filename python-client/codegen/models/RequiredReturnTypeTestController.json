@@ -421,6 +421,21 @@
       "parameters": [],
       "hasQueryStringParameter": false,
       "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "GetDynamic",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "dynamic",
+      "routeSegments": [
+        {
+          "text": "dynamic"
+        }
+      ],
+      "parameters": [],
+      "hasQueryStringParameter": false,
+      "isObsolete": false
     }
   ],
   "isObsolete": false,

@@ -96,6 +96,29 @@
     },
     {
       "httpMethod": "Get",
+      "name": "CollectionNullableValueType",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "collection-nullable-value-type"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "cv",
+          "name": "collection",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.Nullable\u003CSystem.Int32\u003E\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
       "name": "CollectionDateParam",
       "canCancel": false,
       "requiresAuthentication": false,
@@ -111,6 +134,29 @@
           "queryKey": "c",
           "name": "collection",
           "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.DateOnly\u003E",
+          "webType": "FromQuery"
+        }
+      ],
+      "hasQueryStringParameter": true,
+      "isObsolete": false
+    },
+    {
+      "httpMethod": "Get",
+      "name": "CollectionNullableDateParam",
+      "canCancel": false,
+      "requiresAuthentication": false,
+      "returnTypeText": "System.String",
+      "routeSegments": [
+        {
+          "text": "collection-nullable-date-param"
+        }
+      ],
+      "parameters": [
+        {
+          "skip": false,
+          "queryKey": "cd",
+          "name": "collection",
+          "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.Nullable\u003CSystem.DateOnly\u003E\u003E",
           "webType": "FromQuery"
         }
       ],
