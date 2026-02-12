@@ -17,6 +17,7 @@ using Microsoft.CodeAnalysis;
 namespace Albatross.CodeGen.CommandLine {
 	internal class Program {
 		static async Task<int> Main(string[] args) {
+			Albatross.Logging.Extensions.RemoveLegacySlackSinkOptions();
 			await using var host = new CommandHost("Albatross Code Generator that creates HttpClient proxy for CSharp, TypeScript and Python projects")
 				.RegisterServices(RegisterServices)
 				.AddCommands()
