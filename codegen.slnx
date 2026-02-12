@@ -1,0 +1,36 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="arm64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path=".projects" />
+    <File Path="alias.ps1" />
+    <File Path="Directory.Build.props" />
+    <File Path="icon.png" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Albatross.CodeGen.CommandLine/Albatross.CodeGen.CommandLine.csproj" />
+  <Project Path="Albatross.CodeGen.CSharp/Albatross.CodeGen.CSharp.csproj" />
+  <Project Path="Albatross.CodeGen.Python/Albatross.CodeGen.Python.csproj" />
+  <Project Path="Albatross.CodeGen.SymbolProviders/Albatross.CodeGen.SymbolProviders.csproj" />
+  <Project Path="Albatross.CodeGen.TypeScript/Albatross.CodeGen.TypeScript.csproj" />
+  <Project Path="Albatross.CodeGen.UnitTest/Albatross.CodeGen.UnitTest.csproj" />
+  <Project Path="Albatross.CodeGen.WebClient.CSharp/Albatross.CodeGen.WebClient.CSharp.csproj" />
+  <Project Path="Albatross.CodeGen.WebClient.Python/Albatross.CodeGen.WebClient.Python.csproj" />
+  <Project Path="Albatross.CodeGen.WebClient.TypeScript/Albatross.CodeGen.WebClient.TypeScript.csproj" />
+  <Project Path="Albatross.CodeGen.WebClient/Albatross.CodeGen.WebClient.csproj" />
+  <Project Path="Albatross.CodeGen/Albatross.CodeGen.csproj" />
+  <Project Path="Test.Client/Test.Client.csproj" />
+  <Project Path="Test.CommandLine/Test.CommandLine.csproj" />
+  <Project Path="Test.Dto/Test.Dto.csproj" />
+  <Project Path="Test.Proxy/Test.Proxy.csproj" />
+  <Project Path="Test.WebApi/Test.WebApi.csproj" />
+  <Project Path="Test.WithInterface.Client/Test.WithInterface.Client.csproj" />
+  <Project Path="Test.WithInterface.Proxy/Test.WithInterface.Proxy.csproj" />
+</Solution>
