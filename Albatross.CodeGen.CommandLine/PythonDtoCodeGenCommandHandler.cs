@@ -25,7 +25,7 @@ namespace Albatross.CodeGen.CommandLine {
 		private readonly ConvertDtoClassModelToDataClass dtoModel2Python;
 		private readonly ConvertEnumModelToPythonEnum enumModel2Python;
 
-		public PythonDtoCodeGenCommandHandler(ParseResult result, 
+		public PythonDtoCodeGenCommandHandler(ParseResult result,
 			ConvertClassSymbolToDtoClassModel dto2Model,
 			ConvertEnumSymbolToDtoEnumModel enum2Model,
 			ConvertDtoClassModelToDataClass dtoModel2Python,
@@ -61,7 +61,6 @@ namespace Albatross.CodeGen.CommandLine {
 					.Concat(dtoModels.Select(x => dtoModel2Python.Convert(x)))
 					.ToList(),
 			};
-			dtoFile.Generate(System.Console.Out);
 			if (parameters.OutputDirectory != null) {
 				var file = Path.Join(parameters.OutputDirectory.FullName, dtoFile.FileName);
 				using var stream = new FileStream(file, FileMode.OpenOrCreate, FileAccess.ReadWrite);
@@ -69,6 +68,8 @@ namespace Albatross.CodeGen.CommandLine {
 				dtoFile.Generate(streamWriter);
 				streamWriter.Flush();
 				stream.SetLength(stream.Position);
+			} else {
+				dtoFile.Generate(System.Console.Out);
 			}
 			return Task.FromResult(0);
 		}

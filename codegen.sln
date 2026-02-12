@@ -48,6 +48,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.WebClient
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Albatross.CodeGen.WebClient.TypeScript", "Albatross.CodeGen.WebClient.TypeScript\Albatross.CodeGen.WebClient.TypeScript.csproj", "{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.WithInterface.Client", "Test.WithInterface.Client\Test.WithInterface.Client.csproj", "{8A3A5DDE-15B9-99E5-3D92-9058B5688390}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Client", "Test.Client\Test.Client.csproj", "{C37CC09B-0A92-F0BB-1497-7520C3E05167}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -250,6 +254,30 @@ Global
 		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Release|arm64.Build.0 = Release|Any CPU
 		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Release|x86.ActiveCfg = Release|Any CPU
 		{25E39C9A-960F-4426-AF6A-62EBC0F3CBCB}.Release|x86.Build.0 = Release|Any CPU
+		{8A3A5DDE-15B9-99E5-3D92-9058B5688390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A3A5DDE-15B9-99E5-3D92-9058B5688390}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A3A5DDE-15B9-99E5-3D92-9058B5688390}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{8A3A5DDE-15B9-99E5-3D92-9058B5688390}.Debug|arm64.Build.0 = Debug|Any CPU
+		{8A3A5DDE-15B9-99E5-3D92-9058B5688390}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8A3A5DDE-15B9-99E5-3D92-9058B5688390}.Debug|x86.Build.0 = Debug|Any CPU
+		{8A3A5DDE-15B9-99E5-3D92-9058B5688390}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A3A5DDE-15B9-99E5-3D92-9058B5688390}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A3A5DDE-15B9-99E5-3D92-9058B5688390}.Release|arm64.ActiveCfg = Release|Any CPU
+		{8A3A5DDE-15B9-99E5-3D92-9058B5688390}.Release|arm64.Build.0 = Release|Any CPU
+		{8A3A5DDE-15B9-99E5-3D92-9058B5688390}.Release|x86.ActiveCfg = Release|Any CPU
+		{8A3A5DDE-15B9-99E5-3D92-9058B5688390}.Release|x86.Build.0 = Release|Any CPU
+		{C37CC09B-0A92-F0BB-1497-7520C3E05167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C37CC09B-0A92-F0BB-1497-7520C3E05167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C37CC09B-0A92-F0BB-1497-7520C3E05167}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{C37CC09B-0A92-F0BB-1497-7520C3E05167}.Debug|arm64.Build.0 = Debug|Any CPU
+		{C37CC09B-0A92-F0BB-1497-7520C3E05167}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C37CC09B-0A92-F0BB-1497-7520C3E05167}.Debug|x86.Build.0 = Debug|Any CPU
+		{C37CC09B-0A92-F0BB-1497-7520C3E05167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C37CC09B-0A92-F0BB-1497-7520C3E05167}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C37CC09B-0A92-F0BB-1497-7520C3E05167}.Release|arm64.ActiveCfg = Release|Any CPU
+		{C37CC09B-0A92-F0BB-1497-7520C3E05167}.Release|arm64.Build.0 = Release|Any CPU
+		{C37CC09B-0A92-F0BB-1497-7520C3E05167}.Release|x86.ActiveCfg = Release|Any CPU
+		{C37CC09B-0A92-F0BB-1497-7520C3E05167}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

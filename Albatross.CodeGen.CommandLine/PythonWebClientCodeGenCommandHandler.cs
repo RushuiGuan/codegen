@@ -24,7 +24,7 @@ namespace Albatross.CodeGen.CommandLine {
 		public PythonWebClientCodeGenCommandHandler(ParseResult result, CodeGenParams parameters,
 			ILogger<PythonWebClientCodeGenCommandHandler> logger,
 			ConvertApiControllerToControllerModel convertToWebApi,
-			ConvertControllerModelToPythonFile converToPythonFile) :base(result,parameters){
+			ConvertControllerModelToPythonFile converToPythonFile) : base(result, parameters) {
 			this.logger = logger;
 			this.compilation = parameters.Compilation;
 			this.settings = parameters.CodeGenSettings ?? new PythonWebClientSettings();
@@ -47,13 +47,14 @@ namespace Albatross.CodeGen.CommandLine {
 					var webApi = this.convertToWebApi.Convert(model);
 					webApi.ApplyMethodFilters(settings.ControllerMethodFilters());
 					var file = this.converToPythonFile.Convert(webApi);
-					file.Generate(System.Console.Out);
 					files.Add(file);
 					logger.LogInformation("directory: {data}", parameters.OutputDirectory?.FullName);
 					if (parameters.OutputDirectory != null) {
 						using (var writer = new System.IO.StreamWriter(System.IO.Path.Join(parameters.OutputDirectory.FullName, file.FileName))) {
 							file.Generate(writer);
 						}
+					} else {
+						file.Generate(System.Console.Out);
 					}
 				}
 			}

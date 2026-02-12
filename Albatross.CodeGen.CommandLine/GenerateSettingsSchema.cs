@@ -44,9 +44,11 @@ namespace Albatross.CodeGen.CommandLine {
 				Type = JsonObjectType.String,
 			});
 			var text = schema.ToJson();
-			System.Console.WriteLine(text);
 			if (parameters.OutputFile != null) {
 				System.IO.File.WriteAllText(parameters.OutputFile.FullName, text);
+			} else {
+				System.Console.WriteLine(text);
+
 			}
 			return Task.FromResult(0);
 		}

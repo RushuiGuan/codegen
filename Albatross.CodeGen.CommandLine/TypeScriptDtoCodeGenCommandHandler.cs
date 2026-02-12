@@ -57,11 +57,12 @@ namespace Albatross.CodeGen.CommandLine {
 				InterfaceDeclarations = dtoModels
 					.Select(x => dtoModel2TypeScript.Convert(x)).ToList(),
 			};
-			dtoFile.Generate(System.Console.Out);
 			if (parameters.OutputDirectory != null) {
 				using (var writer = new StreamWriter(Path.Join(parameters.OutputDirectory.FullName, dtoFile.FileName))) {
 					dtoFile.Generate(writer);
 				}
+			} else {
+				dtoFile.Generate(System.Console.Out);
 			}
 			return Task.FromResult(0);
 		}
