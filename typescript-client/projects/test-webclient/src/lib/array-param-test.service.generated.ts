@@ -34,9 +34,19 @@ export class ArrayParamTestService extends WebClient {
 		const result = this.doGetStringAsync(relativeUrl, { c: collection });
 		return result;
 	}
+	collectionNullableValueType(collection: (number|undefined)[]): Observable<string>  {
+		const relativeUrl = `collection-nullable-value-type`;
+		const result = this.doGetStringAsync(relativeUrl, { cv: collection });
+		return result;
+	}
 	collectionDateParam(collection: Date[]): Observable<string>  {
 		const relativeUrl = `collection-date-param`;
 		const result = this.doGetStringAsync(relativeUrl, { c: collection.map(x => format(x, "yyyy-MM-dd")) });
+		return result;
+	}
+	collectionNullableDateParam(collection: (Date|undefined)[]): Observable<string>  {
+		const relativeUrl = `collection-nullable-date-param`;
+		const result = this.doGetStringAsync(relativeUrl, { cd: collection });
 		return result;
 	}
 	collectionDateTimeParam(collection: Date[]): Observable<string>  {

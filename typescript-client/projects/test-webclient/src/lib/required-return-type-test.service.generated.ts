@@ -154,4 +154,9 @@ export class RequiredReturnTypeTestService extends WebClient {
 		const result = this.doGetAsync<MyEnum[]>(relativeUrl, {});
 		return result;
 	}
+	getDynamic(): Observable<dynamic>  {
+		const relativeUrl = `dynamic`;
+		const result = this.doGetAsync<dynamic>(relativeUrl, {});
+		return result;
+	}
 }
