@@ -8,3 +8,5 @@
   href: configuration.md
 - name: Examples
   href: examples.md
+- name: Release Notes
+  href: ../release-notes.md

@@ -7,14 +7,14 @@
           "src": "..",
           "files": [
             "Albatross.CodeGen/Albatross.CodeGen.csproj",
-			"Albatross.CodeGen.CSharp/Albatross.CodeGen.CSharp.csproj",
-			"Albatross.CodeGen.Python/Albatross.CodeGen.Python.csproj",
-			"Albatross.CodeGen.TypeScript/Albatross.CodeGen.TypeScript.csproj",
-			"Albatross.CodeGen.WebClient/Albatross.CodeGen.WebClient.csproj",
-			"Albatross.CodeGen.WebClient.CSharp/Albatross.CodeGen.WebClient.CSharp.csproj",
-			"Albatross.CodeGen.WebClient.Python/Albatross.CodeGen.WebClient.Python.csproj",
-			"Albatross.CodeGen.WebClient.TypeScript/Albatross.CodeGen.WebClient.TypeScript.csproj",
-			"Albatross.CodeGen.CommandLine/Albatross.CodeGen.CommandLine.csproj"
+            "Albatross.CodeGen.CSharp/Albatross.CodeGen.CSharp.csproj",
+            "Albatross.CodeGen.Python/Albatross.CodeGen.Python.csproj",
+            "Albatross.CodeGen.TypeScript/Albatross.CodeGen.TypeScript.csproj",
+            "Albatross.CodeGen.WebClient/Albatross.CodeGen.WebClient.csproj",
+            "Albatross.CodeGen.WebClient.CSharp/Albatross.CodeGen.WebClient.CSharp.csproj",
+            "Albatross.CodeGen.WebClient.Python/Albatross.CodeGen.WebClient.Python.csproj",
+            "Albatross.CodeGen.WebClient.TypeScript/Albatross.CodeGen.WebClient.TypeScript.csproj",
+            "Albatross.CodeGen.CommandLine/Albatross.CodeGen.CommandLine.csproj"
           ]
         }
       ],
@@ -25,6 +25,11 @@
     }
   ],
   "build": {
+    "sitemap": {
+      "baseUrl": "https://rushuiguan.github.io/codegen/",
+      "priority": 0.5,
+      "changefreq": "weekly"
+    },
     "content": [
       {
         "files": [
@@ -38,7 +43,9 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "images/**",
+          "*.html",
+          "robots.txt"
         ]
       }
     ],
@@ -51,7 +58,8 @@
       "_appName": "Albatross CodeGen Framework",
       "_appTitle": "Albatross CodeGen Documentation",
       "_appFooter": "Albatross CodeGen Framework - Multi-language code generation toolkit",
-	  "_appLogoPath":"./images/logo.svg",
+      "_appLogoPath": "./images/logo.svg",
+      "_appFaviconPath": "./images/favicon.svg",
       "_enableSearch": true,
       "_enableNewTab": true,
       "_disableContribution": false,

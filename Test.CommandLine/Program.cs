@@ -15,7 +15,7 @@ namespace Test.CommandLine {
 			return await host.InvokeAsync();
 		}
 
-		static void RegisterServices(ParseResult result, IConfiguration config, IServiceCollection services){
+		static void RegisterServices(ParseResult result, IServiceCollection services){
 			services.RegisterCommands();
 			services.AddTestProxy();
 		}

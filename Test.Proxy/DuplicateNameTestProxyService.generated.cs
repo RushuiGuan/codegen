@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
 	public partial class DuplicateNameTestProxyService : ClientBase {
-		public DuplicateNameTestProxyService(ILogger<DuplicateNameTestProxyService> logger, HttpClient client) : base(logger, client){ }
+		public DuplicateNameTestProxyService(ILogger<DuplicateNameTestProxyService> logger, HttpClient client) : base(logger, client) { }
 		public const string ControllerPath = "api/duplicate-name-test";
 		public async Task Submit(int id) {
 			string path = $"{ControllerPath}/by-id";

@@ -11,7 +11,9 @@ namespace Test.WithInterface.Proxy {
 		Task<string> ArrayValueType(int[] array);
 		Task<string> CollectionStringParam(System.Collections.Generic.IEnumerable<string> collection);
 		Task<string> CollectionValueType(System.Collections.Generic.IEnumerable<int> collection);
+		Task<string> CollectionNullableValueType(System.Collections.Generic.IEnumerable<System.Nullable<int>> collection);
 		Task<string> CollectionDateParam(System.Collections.Generic.IEnumerable<System.DateOnly> collection);
+		Task<string> CollectionNullableDateParam(System.Collections.Generic.IEnumerable<System.Nullable<System.DateOnly>> collection);
 		Task<string> CollectionDateTimeParam(System.Collections.Generic.IEnumerable<System.DateTime> collection);
 	}
 	public partial class ArrayParamTestProxyService : ClientBase, IArrayParamTestProxyService {
@@ -57,11 +59,35 @@ namespace Test.WithInterface.Proxy {
 				return await this.GetRawResponse(request);
 			}
 		}
+		public async Task<string> CollectionNullableValueType(System.Collections.Generic.IEnumerable<System.Nullable<int>> collection) {
+			string path = $"{ControllerPath}/collection-nullable-value-type";
+			var queryString = new NameValueCollection();
+			foreach (var item in collection) {
+				if (item != null) {
+					queryString.Add("cv", $"{item}");
+				}
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRawResponse(request);
+			}
+		}
 		public async Task<string> CollectionDateParam(System.Collections.Generic.IEnumerable<System.DateOnly> collection) {
 			string path = $"{ControllerPath}/collection-date-param";
 			var queryString = new NameValueCollection();
 			foreach (var item in collection) {
 				queryString.Add("c", item.ISO8601String());
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRawResponse(request);
+			}
+		}
+		public async Task<string> CollectionNullableDateParam(System.Collections.Generic.IEnumerable<System.Nullable<System.DateOnly>> collection) {
+			string path = $"{ControllerPath}/collection-nullable-date-param";
+			var queryString = new NameValueCollection();
+			foreach (var item in collection) {
+				if (item != null) {
+					queryString.Add("cd", item.Value.ISO8601String());
+				}
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);

@@ -35,6 +35,7 @@ namespace Test.WithInterface.Proxy {
 		Task<System.Collections.Generic.IEnumerable<Test.Dto.Classes.MyDto>> GetMyDtoCollectionAsync();
 		Task<Test.Dto.Enums.MyEnum> RequiredEnum();
 		Task<Test.Dto.Enums.MyEnum[]> RequiredEnumArray();
+		Task<dynamic> GetDynamic();
 	}
 	public partial class RequiredReturnTypeTestProxyService : ClientBase, IRequiredReturnTypeTestProxyService {
 		public RequiredReturnTypeTestProxyService(ILogger<RequiredReturnTypeTestProxyService> logger, HttpClient client) : base(logger, client) { }
@@ -233,6 +234,13 @@ namespace Test.WithInterface.Proxy {
 			var queryString = new NameValueCollection();
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponse<Test.Dto.Enums.MyEnum[]>(request);
+			}
+		}
+		public async Task<dynamic> GetDynamic() {
+			string path = $"{ControllerPath}/dynamic";
+			var queryString = new NameValueCollection();
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRequiredJsonResponse<dynamic>(request);
 			}
 		}
 	}

@@ -49,7 +49,9 @@ namespace Albatross.CodeGen.CSharp.TypeConversions {
 				case SpecialType.System_Object:
 					return symbol.IsNullableReferenceType() ? Defined.Types.NullableObject : Defined.Types.Object;
 			}
-			if (symbol is INamedTypeSymbol namedTypeSymbol) {
+			if (symbol.TypeKind == TypeKind.Dynamic) {
+				return new DynamicTypeExpression();
+			}else if (symbol is INamedTypeSymbol namedTypeSymbol) {
 				if (namedTypeSymbol.IsGenericTypeDefinition()) {
 					throw new InvalidOperationException("Cannot convert generic type definition");
 				} else if (namedTypeSymbol.IsGenericType) {

@@ -9,6 +9,10 @@ using System.Diagnostics.CodeAnalysis;
 using SymbolFilter = Albatross.CodeGen.WebClient.Settings.SymbolFilter;
 
 namespace Albatross.CodeGen.WebClient {
+	/// <summary>
+	/// Walks the syntax tree to find DTO classes and enum types for code generation.
+	/// Filters out abstract classes, static classes, interfaces, delegates, and JsonConverter derivatives.
+	/// </summary>
 	public class DtoClassEnumWalker : CSharpSyntaxWalker {
 		private readonly SemanticModel semanticModel;
 		public List<INamedTypeSymbol> DtoClasses { get; } = new List<INamedTypeSymbol>();

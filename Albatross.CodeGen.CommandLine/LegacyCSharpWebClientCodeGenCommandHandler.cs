@@ -13,23 +13,24 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Albatross.CodeGen.CommandLine {
-	public class CSharpWebClientCodeGenCommandHandler : IAsyncCommandHandler {
+	[Obsolete]
+	public class LegacyCSharpWebClientCodeGenCommandHandler : IAsyncCommandHandler {
 		private readonly CodeGenParams parameters;
-		private readonly CreateHttpClientRegistrations createHttpClientRegistrations;
+		private readonly LegacyCreateHttpClientRegistrations legacyCreateHttpClientRegistrations;
 		private readonly CSharpWebClientSettings settings;
-		private readonly ILogger<CSharpWebClientCodeGenCommandHandler> logger;
+		private readonly ILogger<LegacyCSharpWebClientCodeGenCommandHandler> logger;
 		private readonly ConvertApiControllerToControllerModel convertToWebApi;
-		private readonly ConvertWebApiToCSharpFile converToCSharpCodeStack;
+		private readonly LegacyConvertWebApiToCSharpFile converToCSharpCodeStack;
 
-		public CSharpWebClientCodeGenCommandHandler(
-			CreateHttpClientRegistrations createHttpClientRegistrations,
+		public LegacyCSharpWebClientCodeGenCommandHandler(
+			LegacyCreateHttpClientRegistrations legacyCreateHttpClientRegistrations,
 			CodeGenParams parameters,
-			ILogger<CSharpWebClientCodeGenCommandHandler> logger,
+			ILogger<LegacyCSharpWebClientCodeGenCommandHandler> logger,
 			ConvertApiControllerToControllerModel convertToWebApi,
-			ConvertWebApiToCSharpFile converToCSharpFile) {
+			LegacyConvertWebApiToCSharpFile converToCSharpFile) {
 			this.parameters = parameters;
 			this.settings = parameters.CodeGenSettings as CSharpWebClientSettings ?? new CSharpWebClientSettings();
-			this.createHttpClientRegistrations = createHttpClientRegistrations;
+			this.legacyCreateHttpClientRegistrations = legacyCreateHttpClientRegistrations;
 			this.logger = logger;
 			this.convertToWebApi = convertToWebApi;
 			this.converToCSharpCodeStack = converToCSharpFile;
@@ -46,7 +47,7 @@ namespace Albatross.CodeGen.CommandLine {
 			var models = new List<ControllerInfo>();
 			foreach (var controller in controllerClass) {
 				if (string.IsNullOrEmpty(parameters.AdhocFilter) || controller.GetFullName().Contains(parameters.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase)) {
-					logger.LogInformation("Generating webclient for {controller}", controller.Name);
+					logger.LogInformation("Generating proxy for {controller}", controller.Name);
 					var webApi = this.convertToWebApi.Convert(controller);
 					webApi.ApplyMethodFilters(settings.ControllerMethodFilters());
 					models.Add(webApi);
@@ -65,7 +66,7 @@ namespace Albatross.CodeGen.CommandLine {
 		}
 
 		void BuildRegistrationMethod(IEnumerable<ControllerInfo> models) {
-			var file = this.createHttpClientRegistrations.Generate(models);
+			var file = this.legacyCreateHttpClientRegistrations.Generate(models);
 			if (parameters.OutputDirectory != null) {
 				using (var streamWriter = new System.IO.StreamWriter(System.IO.Path.Join(parameters.OutputDirectory.FullName, file.FileName))) {
 					streamWriter.Code(file);

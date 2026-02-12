@@ -10,6 +10,7 @@ namespace Test.WithInterface.Proxy {
 		Task RequiredString(string name);
 		Task RequiredStringImplied(string name);
 		Task RequiredStringDiffName(string name);
+		Task RequiredInt(int value);
 		Task RequiredDateTime(System.DateTime datetime);
 		Task RequiredDateTimeDiffName(System.DateTime datetime);
 		Task RequiredDateOnly(System.DateOnly dateonly);
@@ -17,6 +18,17 @@ namespace Test.WithInterface.Proxy {
 		Task RequiredDateTimeOffset(System.DateTimeOffset dateTimeOffset);
 		Task RequiredDateTimeOffsetDiffName(System.DateTimeOffset dateTimeOffset);
 		Task<Test.Dto.Enums.MyEnum> RequiredEnumParameter(Test.Dto.Enums.MyEnum value);
+		Task NullableString(string? name);
+		Task NullableStringImplied(string? name);
+		Task NullableStringDiffName(string? name);
+		Task NullableInt(System.Nullable<int> value);
+		Task NullableDateTime(System.Nullable<System.DateTime> datetime);
+		Task NullableDateTimeDiffName(System.Nullable<System.DateTime> datetime);
+		Task NullableDateOnly(System.Nullable<System.DateOnly> dateonly);
+		Task NullableDateOnlyDiffName(System.Nullable<System.DateOnly> dateonly);
+		Task NullableDateTimeOffset(System.Nullable<System.DateTimeOffset> dateTimeOffset);
+		Task NullableDateTimeOffsetDiffName(System.Nullable<System.DateTimeOffset> dateTimeOffset);
+		Task<Test.Dto.Enums.MyEnum> NullableEnumParameter(System.Nullable<Test.Dto.Enums.MyEnum> value);
 	}
 	public partial class FromQueryParamTestProxyService : ClientBase, IFromQueryParamTestProxyService {
 		public FromQueryParamTestProxyService(ILogger<FromQueryParamTestProxyService> logger, HttpClient client) : base(logger, client) { }
@@ -41,6 +53,14 @@ namespace Test.WithInterface.Proxy {
 			string path = $"{ControllerPath}/required-string-diff-name";
 			var queryString = new NameValueCollection();
 			queryString.Add("n", name);
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
+		public async Task RequiredInt(int value) {
+			string path = $"{ControllerPath}/required-int";
+			var queryString = new NameValueCollection();
+			queryString.Add("value", $"{value}");
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				await this.GetRawResponse(request);
 			}
@@ -97,6 +117,116 @@ namespace Test.WithInterface.Proxy {
 			string path = $"{ControllerPath}/required-enum-parameter";
 			var queryString = new NameValueCollection();
 			queryString.Add("value", $"{value}");
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRequiredJsonResponseForValueType<Test.Dto.Enums.MyEnum>(request);
+			}
+		}
+		public async Task NullableString(string? name) {
+			string path = $"{ControllerPath}/nullable-string";
+			var queryString = new NameValueCollection();
+			if (name != null) {
+				queryString.Add("name", name);
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
+		public async Task NullableStringImplied(string? name) {
+			string path = $"{ControllerPath}/nullable-string-implied";
+			var queryString = new NameValueCollection();
+			if (name != null) {
+				queryString.Add("name", name);
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
+		public async Task NullableStringDiffName(string? name) {
+			string path = $"{ControllerPath}/nullable-string-diff-name";
+			var queryString = new NameValueCollection();
+			if (name != null) {
+				queryString.Add("n", name);
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
+		public async Task NullableInt(System.Nullable<int> value) {
+			string path = $"{ControllerPath}/nullable-int";
+			var queryString = new NameValueCollection();
+			if (value != null) {
+				queryString.Add("value", $"{value}");
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
+		public async Task NullableDateTime(System.Nullable<System.DateTime> datetime) {
+			string path = $"{ControllerPath}/nullable-datetime";
+			var queryString = new NameValueCollection();
+			if (datetime != null) {
+				queryString.Add("datetime", datetime.Value.ISO8601String());
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
+		public async Task NullableDateTimeDiffName(System.Nullable<System.DateTime> datetime) {
+			string path = $"{ControllerPath}/nullable-datetime_diff-name";
+			var queryString = new NameValueCollection();
+			if (datetime != null) {
+				queryString.Add("d", datetime.Value.ISO8601String());
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
+		public async Task NullableDateOnly(System.Nullable<System.DateOnly> dateonly) {
+			string path = $"{ControllerPath}/nullable-dateonly";
+			var queryString = new NameValueCollection();
+			if (dateonly != null) {
+				queryString.Add("dateonly", dateonly.Value.ISO8601String());
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
+		public async Task NullableDateOnlyDiffName(System.Nullable<System.DateOnly> dateonly) {
+			string path = $"{ControllerPath}/nullable-dateonly_diff-name";
+			var queryString = new NameValueCollection();
+			if (dateonly != null) {
+				queryString.Add("d", dateonly.Value.ISO8601String());
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
+		public async Task NullableDateTimeOffset(System.Nullable<System.DateTimeOffset> dateTimeOffset) {
+			string path = $"{ControllerPath}/nullable-datetimeoffset";
+			var queryString = new NameValueCollection();
+			if (dateTimeOffset != null) {
+				queryString.Add("dateTimeOffset", dateTimeOffset.Value.ISO8601String());
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
+		public async Task NullableDateTimeOffsetDiffName(System.Nullable<System.DateTimeOffset> dateTimeOffset) {
+			string path = $"{ControllerPath}/nullable-datetimeoffset_diff-name";
+			var queryString = new NameValueCollection();
+			if (dateTimeOffset != null) {
+				queryString.Add("d", dateTimeOffset.Value.ISO8601String());
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				await this.GetRawResponse(request);
+			}
+		}
+		public async Task<Test.Dto.Enums.MyEnum> NullableEnumParameter(System.Nullable<Test.Dto.Enums.MyEnum> value) {
+			string path = $"{ControllerPath}/nullable-enum-parameter";
+			var queryString = new NameValueCollection();
+			if (value != null) {
+				queryString.Add("value", $"{value}");
+			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRequiredJsonResponseForValueType<Test.Dto.Enums.MyEnum>(request);
 			}

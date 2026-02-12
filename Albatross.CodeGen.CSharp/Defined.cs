@@ -34,6 +34,9 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly TypeExpression IServiceCollection = new(Identifiers.IServiceCollection);
 			public static readonly ITypeExpression DateTime = new TypeExpression(Identifiers.DateTime);
 			public static readonly ITypeExpression DateOnly = new TypeExpression(Identifiers.DateOnly);
+			public static readonly ITypeExpression HttpClient = new TypeExpression(Identifiers.HttpClient);
+			public static readonly ITypeExpression JsonSerializerOptions = new TypeExpression(Identifiers.JsonSerializerOptions);
+			public static readonly ITypeExpression CancellationToken = new TypeExpression(Identifiers.CancellationToken);
 		}
 
 		/// <summary>
@@ -45,6 +48,9 @@ namespace Albatross.CodeGen.CSharp {
 			public static readonly QualifiedIdentifierNameExpression IServiceCollection = new("IServiceCollection", Namespaces.MicrosoftExtensionsDependencyInjection);
 			public static readonly QualifiedIdentifierNameExpression DateTime = new("DateTime", Namespaces.System);
 			public static readonly QualifiedIdentifierNameExpression DateOnly = new("DateOnly", Namespaces.System);
+			public static readonly QualifiedIdentifierNameExpression HttpClient = new("HttpClient", Namespaces.SystemNetHttp);
+			public static readonly QualifiedIdentifierNameExpression JsonSerializerOptions = new("JsonSerializerOptions", Namespaces.SystemTextJson);
+			public static readonly QualifiedIdentifierNameExpression CancellationToken = new("CancellationToken", Namespaces.SystemThreading);
 			public static readonly IdentifierNameExpression Disgard = new("_");
 		}
 
@@ -53,9 +59,12 @@ namespace Albatross.CodeGen.CSharp {
 		/// </summary>
 		public static class Namespaces {
 			public static readonly NamespaceExpression System = new("System");
+			public static readonly NamespaceExpression SystemThreading = new("System.Threading");
 			public static readonly NamespaceExpression SystemThreadingTasks = new("System.Threading.Tasks");
 			public static readonly NamespaceExpression SystemCollectionsSpecialized = new("System.Collections.Specialized");
 			public static readonly NamespaceExpression MicrosoftExtensionsDependencyInjection = new("Microsoft.Extensions.DependencyInjection");
+			public static readonly NamespaceExpression SystemNetHttp = new("System.Net.Http");
+			public static readonly NamespaceExpression SystemTextJson = new("System.Text.Json");
 		}
 
 		/// <summary>

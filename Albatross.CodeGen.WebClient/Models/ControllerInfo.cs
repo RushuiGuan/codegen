@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text.Json.Serialization;
 
 namespace Albatross.CodeGen.WebClient.Models {
+	/// <summary>
+	/// Represents metadata extracted from an ASP.NET Core controller class for code generation
+	/// </summary>
 	public record class ControllerInfo {
 		public const string ControllerNamePlaceholder = "[controller]";
 		public const string ControllerPostfix = "Controller";

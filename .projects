@@ -3,7 +3,7 @@ Albatross.CodeGen
 Albatross.CodeGen.TypeScript
 Albatross.CodeGen.Python
 Albatross.CodeGen.CSharp
-# Albatross.CodeGen.CommandLine
+Albatross.CodeGen.CommandLine
 
 # tests
 Albatross.CodeGen.UnitTest

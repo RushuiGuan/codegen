@@ -6,10 +6,11 @@ using System;
 using System.Collections.Generic;
 
 namespace Albatross.CodeGen.WebClient.CSharp {
-	public class CreateHttpClientRegistrations {
+	[Obsolete]
+	public class LegacyCreateHttpClientRegistrations {
 		private readonly CSharpWebClientSettings settings;
 
-		public CreateHttpClientRegistrations(ICodeGenSettingsFactory factory) {
+		public LegacyCreateHttpClientRegistrations(ICodeGenSettingsFactory factory) {
 			this.settings = factory.Get<CSharpWebClientSettings>();
 		}
 
@@ -53,8 +54,8 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		IEnumerable<InvocationExpression> GetRegistrationFunctions(bool useInterface, IEnumerable<ControllerInfo> models) {
 			foreach (var model in models) {
-				var interfaceName = $"I{model.ControllerName}Client";
-				var className = $"{model.ControllerName}Client";
+				var interfaceName = $"I{model.ControllerName}ProxyService";
+				var className = $"{model.ControllerName}ProxyService";
 				yield return new InvocationExpression {
 					CallableExpression = new IdentifierNameExpression("AddTypedClient") {
 						GenericArguments = {

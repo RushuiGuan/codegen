@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 #nullable enable
 namespace Test.Proxy {
 	public partial class ArrayParamTestProxyService : ClientBase {
-		public ArrayParamTestProxyService(ILogger<ArrayParamTestProxyService> logger, HttpClient client) : base(logger, client){ }
+		public ArrayParamTestProxyService(ILogger<ArrayParamTestProxyService> logger, HttpClient client) : base(logger, client) { }
 		public const string ControllerPath = "api/array-param-test";
 		public async Task<string> ArrayStringParam(string[] array) {
 			string path = $"{ControllerPath}/array-string-param";
@@ -49,11 +49,35 @@ namespace Test.Proxy {
 				return await this.GetRawResponse(request);
 			}
 		}
+		public async Task<string> CollectionNullableValueType(System.Collections.Generic.IEnumerable<System.Nullable<int>> collection) {
+			string path = $"{ControllerPath}/collection-nullable-value-type";
+			var queryString = new NameValueCollection();
+			foreach (var item in collection) {
+				if (item != null) {
+					queryString.Add("cv", $"{item}");
+				}
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRawResponse(request);
+			}
+		}
 		public async Task<string> CollectionDateParam(System.Collections.Generic.IEnumerable<System.DateOnly> collection) {
 			string path = $"{ControllerPath}/collection-date-param";
 			var queryString = new NameValueCollection();
 			foreach (var item in collection) {
 				queryString.Add("c", item.ISO8601String());
+			}
+			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
+				return await this.GetRawResponse(request);
+			}
+		}
+		public async Task<string> CollectionNullableDateParam(System.Collections.Generic.IEnumerable<System.Nullable<System.DateOnly>> collection) {
+			string path = $"{ControllerPath}/collection-nullable-date-param";
+			var queryString = new NameValueCollection();
+			foreach (var item in collection) {
+				if (item != null) {
+					queryString.Add("cd", item.Value.ISO8601String());
+				}
 			}
 			using (var request = this.CreateRequest(HttpMethod.Get, path, queryString)) {
 				return await this.GetRawResponse(request);
