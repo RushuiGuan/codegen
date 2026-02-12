@@ -37,12 +37,13 @@ namespace Albatross.CodeGen.CommandLine {
 					var model = converter.Convert(item);
 					model.ApplyMethodFilters(settings.ControllerMethodFilters());
 					var text = JsonSerializer.Serialize(model, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase, });
-					System.Console.Out.WriteLine(text);
 					if (parameters.OutputDirectory != null) {
 						using (var streamWriter = new System.IO.StreamWriter(System.IO.Path.Join(parameters.OutputDirectory.FullName, $"{item.Name}.json"))) {
 							streamWriter.BaseStream.SetLength(0);
 							streamWriter.Write(text);
 						}
+					} else {
+						System.Console.Out.WriteLine(text);
 					}
 				}
 			}

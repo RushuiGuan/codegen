@@ -45,10 +45,7 @@ namespace Albatross.CodeGen.CommandLine {
 					dtoModels.Add(model);
 				}
 			}
-			if (dtoModels.Any()) {
-				var text = JsonSerializer.Serialize(dtoModels, serializationOptions);
-				Console.Out.WriteLine(text);
-			}
+
 			var enumModels = new List<EnumInfo>();
 			foreach (var item in enumClasses) {
 				if (string.IsNullOrEmpty(parameters.AdhocFilter) || item.GetFullName().Contains(parameters.AdhocFilter, System.StringComparison.InvariantCultureIgnoreCase)) {
@@ -56,11 +53,6 @@ namespace Albatross.CodeGen.CommandLine {
 					enumModels.Add(model);
 				}
 			}
-			if (enumModels.Any()) {
-				var text = JsonSerializer.Serialize(enumModels, serializationOptions);
-				Console.Out.WriteLine(text);
-			}
-
 			if (parameters.OutputDirectory != null) {
 				if (dtoModels.Any()) {
 					using (var stream = File.OpenWrite(Path.Join(parameters.OutputDirectory.FullName, "dto.json"))) {
@@ -73,6 +65,15 @@ namespace Albatross.CodeGen.CommandLine {
 						stream.SetLength(0);
 						JsonSerializer.Serialize(stream, enumModels, serializationOptions);
 					}
+				}
+			} else {
+				if (dtoModels.Any()) {
+					var text = JsonSerializer.Serialize(dtoModels, serializationOptions);
+					Console.Out.WriteLine(text);
+				}
+				if (enumModels.Any()) {
+					var text = JsonSerializer.Serialize(enumModels, serializationOptions);
+					Console.Out.WriteLine(text);
 				}
 			}
 			return Task.FromResult(0);
