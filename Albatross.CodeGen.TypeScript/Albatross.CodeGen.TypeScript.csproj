@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<TargetFramework>net10.0</TargetFramework>
 		<Nullable>enable</Nullable>
-		<PackageProjectUrl>$(RepositoryProjectRoot)/Albatross.CodeGen.TypeScript</PackageProjectUrl>
 	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Albatross.CodeGen.SymbolProviders\Albatross.CodeGen.SymbolProviders.csproj" />

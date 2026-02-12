@@ -10,7 +10,6 @@
 		<ToolCommandName>codegen</ToolCommandName>
 		<Title>Albatross CodeGenerator for CSharp and TypeScript WebApi Proxy Generation</Title>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-		<PackageProjectUrl>$(RepositoryProjectRoot)/Albatross.CodeGen.CommandLine</PackageProjectUrl>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.3" />
