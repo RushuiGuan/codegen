@@ -15,7 +15,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "name",
           "name": "name",
           "typeText": "System.String",
@@ -38,7 +38,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "name",
           "name": "name",
           "typeText": "System.String",
@@ -61,7 +61,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "n",
           "name": "name",
           "typeText": "System.String",
@@ -84,7 +84,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "value",
           "name": "value",
           "typeText": "System.Int32",
@@ -107,7 +107,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "datetime",
           "name": "datetime",
           "typeText": "System.DateTime",
@@ -130,7 +130,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "d",
           "name": "datetime",
           "typeText": "System.DateTime",
@@ -153,7 +153,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "dateonly",
           "name": "dateonly",
           "typeText": "System.DateOnly",
@@ -176,7 +176,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "d",
           "name": "dateonly",
           "typeText": "System.DateOnly",
@@ -199,7 +199,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "dateTimeOffset",
           "name": "dateTimeOffset",
           "typeText": "System.DateTimeOffset",
@@ -222,7 +222,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "d",
           "name": "dateTimeOffset",
           "typeText": "System.DateTimeOffset",
@@ -245,7 +245,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "value",
           "name": "value",
           "typeText": "Test.Dto.Enums.MyEnum",
@@ -268,7 +268,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "name",
           "name": "name",
           "typeText": "System.String",
@@ -291,7 +291,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "name",
           "name": "name",
           "typeText": "System.String",
@@ -314,7 +314,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "n",
           "name": "name",
           "typeText": "System.String",
@@ -337,7 +337,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "value",
           "name": "value",
           "typeText": "System.Nullable\u003CSystem.Int32\u003E",
@@ -360,7 +360,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "datetime",
           "name": "datetime",
           "typeText": "System.Nullable\u003CSystem.DateTime\u003E",
@@ -383,7 +383,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "d",
           "name": "datetime",
           "typeText": "System.Nullable\u003CSystem.DateTime\u003E",
@@ -406,7 +406,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "dateonly",
           "name": "dateonly",
           "typeText": "System.Nullable\u003CSystem.DateOnly\u003E",
@@ -429,7 +429,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "d",
           "name": "dateonly",
           "typeText": "System.Nullable\u003CSystem.DateOnly\u003E",
@@ -452,7 +452,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "dateTimeOffset",
           "name": "dateTimeOffset",
           "typeText": "System.Nullable\u003CSystem.DateTimeOffset\u003E",
@@ -475,7 +475,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "d",
           "name": "dateTimeOffset",
           "typeText": "System.Nullable\u003CSystem.DateTimeOffset\u003E",
@@ -498,7 +498,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "value",
           "name": "value",
           "typeText": "System.Nullable\u003CTest.Dto.Enums.MyEnum\u003E",

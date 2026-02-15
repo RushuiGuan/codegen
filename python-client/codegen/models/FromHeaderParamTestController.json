@@ -9,7 +9,15 @@
       "requiresAuthentication": false,
       "returnTypeText": "System.Void",
       "routeSegments": [],
-      "parameters": [],
+      "parameters": [
+        {
+          "headerKey": "n",
+          "queryKey": "",
+          "name": "name",
+          "typeText": "System.String",
+          "webType": "FromHeader"
+        }
+      ],
       "hasQueryStringParameter": false,
       "isObsolete": false
     }

@@ -15,7 +15,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "id",
           "name": "id",
           "typeText": "System.Int32",
@@ -38,7 +38,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "name",
           "name": "name",
           "typeText": "System.String",

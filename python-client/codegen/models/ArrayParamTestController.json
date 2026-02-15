@@ -15,7 +15,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "a",
           "name": "array",
           "typeText": "System.String[]",
@@ -38,7 +38,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "a",
           "name": "array",
           "typeText": "System.Int32[]",
@@ -61,7 +61,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "c",
           "name": "collection",
           "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.String\u003E",
@@ -84,7 +84,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "c",
           "name": "collection",
           "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.Int32\u003E",
@@ -107,7 +107,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "cv",
           "name": "collection",
           "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.Nullable\u003CSystem.Int32\u003E\u003E",
@@ -130,7 +130,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "c",
           "name": "collection",
           "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.DateOnly\u003E",
@@ -153,7 +153,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "cd",
           "name": "collection",
           "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.Nullable\u003CSystem.DateOnly\u003E\u003E",
@@ -176,7 +176,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "c",
           "name": "collection",
           "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.DateTime\u003E",

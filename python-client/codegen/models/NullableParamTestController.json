@@ -15,7 +15,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "text",
           "name": "text",
           "typeText": "System.String",
@@ -38,7 +38,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "id",
           "name": "id",
           "typeText": "System.Nullable\u003CSystem.Int32\u003E",
@@ -61,7 +61,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "date",
           "name": "date",
           "typeText": "System.Nullable\u003CSystem.DateOnly\u003E",
@@ -84,7 +84,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "",
           "name": "dto",
           "typeText": "Test.Dto.Classes.MyDto",
@@ -107,7 +107,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "values",
           "name": "values",
           "typeText": "System.String[]",
@@ -130,7 +130,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "values",
           "name": "values",
           "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.String\u003E",
@@ -153,7 +153,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "values",
           "name": "values",
           "typeText": "System.Nullable\u003CSystem.Int32\u003E[]",
@@ -176,7 +176,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "values",
           "name": "values",
           "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.Nullable\u003CSystem.Int32\u003E\u003E",
@@ -199,7 +199,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "dates",
           "name": "dates",
           "typeText": "System.Collections.Generic.IEnumerable\u003CSystem.Nullable\u003CSystem.DateOnly\u003E\u003E",
@@ -222,7 +222,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "dates",
           "name": "dates",
           "typeText": "System.Nullable\u003CSystem.DateOnly\u003E[]",
@@ -245,7 +245,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "value",
           "name": "value",
           "typeText": "System.Nullable\u003CTest.Dto.Enums.MyEnum\u003E",
@@ -268,7 +268,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "value",
           "name": "value",
           "typeText": "System.Nullable\u003CTest.Dto.Enums.MyEnum\u003E[]",

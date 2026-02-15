@@ -15,7 +15,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "command",
           "name": "command",
           "typeText": "Test.Dto.Classes.ICommand",
@@ -38,7 +38,7 @@
       ],
       "parameters": [
         {
-          "skip": false,
+          "headerKey": "",
           "queryKey": "command",
           "name": "command",
           "typeText": "Test.Dto.Classes.AbstractClass",
