@@ -25,9 +25,6 @@
     "namespace": {
       "type": "string"
     },
-    "useTextContentTypeForStringPostRequest": {
-      "type": "boolean"
-    },
     "useInterface": {
       "type": "boolean"
     },
