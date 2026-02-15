@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
 
-namespace Test.Client{
+namespace Test.Client {
 	public static partial class Extensions {
 		public static IServiceCollection AddTestProxy(this IServiceCollection services) {
 			services.AddConfig<TestClientConfig>();

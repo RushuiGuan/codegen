@@ -14,7 +14,7 @@ namespace Test.Client {
 		public const string ControllerPath = "api/from-header-param-test";
 		private HttpClient client;
 		private JsonSerializerOptions jsonSerializerOptions;
-		public async Task OmitFromHeaderParameters(CancellationToken cancellationToken) {
+		public async Task OmitFromHeaderParameters(string name, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"{ControllerPath}");
