@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using Xunit;
 
-namespace Albatross.CodeGen.UnitTest.CSharp {
+namespace Albatross.CodeGen.CSharp.UnitTest {
 	public class TestCodeBlock {
 		[Fact]
 		public void TestSingleline() {

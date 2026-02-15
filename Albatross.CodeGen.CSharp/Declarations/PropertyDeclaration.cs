@@ -28,18 +28,26 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 				if (GetterBody is NoOpExpression) {
 					scope.Writer.Code(new EndOfStatement());
 				} else {
-					var subScope = scope.Writer.BeginScope();
+					using var subScope = scope.Writer.BeginScope();
 					subScope.Writer.Code(GetterBody);
+					if (GetterBody is not ICodeBlock) {
+						subScope.Writer.Code(new EndOfStatement());
+					}
 				}
+				scope.Writer.WriteLine();
 			}
 			if (SetterBody != null) {
-				scope.Writer.CodeIfNotNull(SetterAccessModifier).Append(Defined.Keywords.Set);
+				scope.Writer.CodeIfNotNull(SetterAccessModifier).Code(Defined.Keywords.Set);
 				if (SetterBody is NoOpExpression) {
 					scope.Writer.Code(new EndOfStatement());
 				} else {
-					var subScope = scope.Writer.BeginScope();
+					using var subScope = scope.Writer.BeginScope();
 					subScope.Writer.Code(SetterBody);
+					if (SetterBody is not ICodeBlock) {
+						subScope.Writer.Code(new EndOfStatement());
+					}
 				}
+				scope.Writer.WriteLine();
 			}
 			return writer;
 		}

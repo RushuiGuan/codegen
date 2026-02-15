@@ -8,7 +8,7 @@ using System.Text;
 using Xunit;
 using Xunit.Sdk;
 
-namespace Albatross.CodeGen.UnitTest.CSharp {
+namespace Albatross.CodeGen.CSharp.UnitTest {
 	public class TestArrayExpression {
 
 		[Fact]

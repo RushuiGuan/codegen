@@ -5,7 +5,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Albatross.CodeGen.UnitTest.CSharp {
+namespace Albatross.CodeGen.CSharp.UnitTest {
 	public class TestDefaultTypeConverter {
 		[Fact]
 		public async Task TestGenericInterfaceConversion() {

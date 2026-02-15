@@ -5,7 +5,7 @@ using Albatross.Testing;
 using System.IO;
 using Xunit;
 
-namespace Albatross.CodeGen.UnitTest.CSharp {
+namespace Albatross.CodeGen.CSharp.UnitTest {
 	public class TestAnonymousMethodExpression {
 		[Fact]
 		public void TestEmpty() {

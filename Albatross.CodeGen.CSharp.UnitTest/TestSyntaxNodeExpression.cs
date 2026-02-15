@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Albatross.CodeGen.UnitTest.CSharp {
+namespace Albatross.CodeGen.CSharp.UnitTest {
 	public class TestSyntaxNodeExpression {
 		[Fact]
 		public async Task VerifySyntaxNodeNamespaceDependency() {
