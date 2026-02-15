@@ -13,7 +13,7 @@ export class FromHeaderParamTestService extends WebClient {
 		super();
 		console.log("FromHeaderParamTestService instance created");
 	}
-	omitFromHeaderParameters(): Observable<object>  {
+	omitFromHeaderParameters(name: string): Observable<object>  {
 		const relativeUrl = ``;
 		const result = this.doGetAsync<object>(relativeUrl, {});
 		return result;
