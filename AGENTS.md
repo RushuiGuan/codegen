@@ -78,3 +78,46 @@
    - API source: `Test.WebApi/Controllers/*`
    - generated output: `Test.Client`, `Test.Proxy`, `typescript-client`, or `python-client`.
 5. Run corresponding `run.ps1` script if regeneration is needed.
+
+## Build vs Buy Codegen Checklist
+
+Use this checklist before adopting an external generator or replacing an internal one.
+
+### Strategic Rule
+- Treat this repo as core compile-time infrastructure for the ecosystem, not just an HTTP client generator.
+- Prefer keeping internal generators when they preserve architecture consistency and remain low-maintenance.
+
+### Decision Gate (all must be true to replace internal codegen)
+1. External tool can meet required runtime integration without architectural regression (example: can work with `Albatross.Http` via configuration/templates/adapters).
+2. External output achieves at least 90% parity on real controllers/DTOs used in this repo.
+3. Remaining gaps are small and maintainable without forking deep internals.
+4. Adoption reduces long-term maintenance cost after migration and guardrail tests.
+5. External tool does not block or weaken Roslyn compile-time workflows used elsewhere in the ecosystem.
+
+### Evaluation Procedure
+1. Pick two representative APIs:
+   - one straightforward controller
+   - one edge-case-heavy controller (nullable, collections, auth, filters, custom mappings)
+2. Generate outputs side by side (current internal generator vs candidate tool).
+3. Score parity in:
+   - signatures and naming
+   - serialization and nullability behavior
+   - auth/header/query/route/body handling
+   - extensibility and customization points
+   - generated code readability and stability
+4. Document required customization:
+   - simple configuration only
+   - template overrides
+   - custom adapter/plugin code
+5. Decide:
+   - keep internal generator (default)
+   - adopt external tool for a bounded slice
+   - fully replace only if all decision-gate criteria are met
+
+### Operating Model
+- Keep core abstractions (`Albatross.CodeGen*`, Roslyn model pipeline) as the foundation.
+- Use external generators only at boundaries where interoperability value is higher than customization cost.
+- Re-run the checklist when:
+  - adding a new language target
+  - major runtime dependency changes
+  - significant external tool maturity jump
