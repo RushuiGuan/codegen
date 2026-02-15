@@ -27,6 +27,7 @@
   <Project Path="Albatross.CodeGen.UnitTest/Albatross.CodeGen.UnitTest.csproj" />
   <Project Path="Albatross.CodeGen.WebClient.CSharp/Albatross.CodeGen.WebClient.CSharp.csproj" />
   <Project Path="Albatross.CodeGen.WebClient.Python/Albatross.CodeGen.WebClient.Python.csproj" />
+  <Project Path="Albatross.CodeGen.WebClient.UnitTest/Albatross.CodeGen.WebClient.UnitTest.csproj" />
   <Project Path="Albatross.CodeGen.WebClient.TypeScript/Albatross.CodeGen.WebClient.TypeScript.csproj" />
   <Project Path="Albatross.CodeGen.WebClient/Albatross.CodeGen.WebClient.csproj" />
   <Project Path="Albatross.CodeGen/Albatross.CodeGen.csproj" />

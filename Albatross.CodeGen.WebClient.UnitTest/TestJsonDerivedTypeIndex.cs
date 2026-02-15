@@ -1,12 +1,10 @@
 ﻿using Albatross.CodeAnalysis;
 using Albatross.CodeAnalysis.Testing;
 using Albatross.CodeGen.WebClient.Models;
-using Microsoft.CodeAnalysis;
-using System;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Albatross.CodeGen.UnitTest.Model {
+namespace Albatross.CodeGen.WebClient.UnitTest {
 	public class TestJsonDerivedTypeIndex {
 		const string Code = @"
 using System.Text.Json.Serialization;

@@ -2,7 +2,7 @@
 using System;
 using Xunit;
 
-namespace Albatross.CodeGen.UnitTest {
+namespace Albatross.CodeGen.WebClient.UnitTest {
 	public class SymbolFilterTest {
 		[Theory]
 		[InlineData("ABC", null, null, true)]

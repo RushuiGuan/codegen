@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 			}
 		}
 
-		public readonly static Regex RouteTemplateRegex = new Regex(@"{(\*){0,2}([a-z_]+[a-z0-9_]*)}", RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
+		public readonly static Regex RouteTemplateRegex = new Regex(@"{(\*){0,2}([a-z_]+[a-z0-9_]*(:[a-z_]+[a-z0-9_]*)?)}", RegexOptions.Singleline | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
 		public static IEnumerable<IRouteSegment> GetRouteSegments(this string routeTemplate) {
 			int pos = 0;
 			for (Match match = RouteTemplateRegex.Match(routeTemplate); match.Success; match = match.NextMatch()) {
@@ -27,7 +27,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 				yield return new RouteParameterSegment(match.Groups[2].Value);
 				pos = match.Index + match.Length;
 			}
-			if (pos < routeTemplate.Length - 1) {
+			if (pos < routeTemplate.Length) {
 				yield return new RouteTextSegment(routeTemplate.Substring(pos));
 			}
 		}

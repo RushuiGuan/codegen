@@ -10,6 +10,7 @@ Albatross.CodeGen.UnitTest
 Albatross.CodeGen.CSharp.UnitTest
 Albatross.CodeGen.Python.UnitTest
 Albatross.CodeGen.TypeScript.UnitTest
+Albatross.CodeGen.WebClient.UnitTest
 
 # apps
 Albatross.CodeGen.CommandLine
