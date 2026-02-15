@@ -23,7 +23,7 @@ namespace Microsoft.AspNetCore.Mvc {
 	public class FromQueryAttribute : System.Attribute { public string? Name { get; set; } }
 	public class FromRouteAttribute : System.Attribute {}
 	public class FromBodyAttribute : System.Attribute {}
-	public class FromHeaderAttribute : System.Attribute {}
+	public class FromHeaderAttribute : System.Attribute { public string? Name { get; set; } }
 	public class ActionResult {}
 	public class ActionResult<T> {}
 	public interface IActionResult {}
@@ -45,7 +45,7 @@ public class SampleController : Microsoft.AspNetCore.Mvc.ControllerBase {
 	public System.Threading.Tasks.Task<Microsoft.AspNetCore.Mvc.ActionResult<int>> Get(
 		[Microsoft.AspNetCore.Mvc.FromRoute] int id,
 		[Microsoft.AspNetCore.Mvc.FromQuery(Name = "q")] string query,
-		[Microsoft.AspNetCore.Mvc.FromHeader] string token,
+		[Microsoft.AspNetCore.Mvc.FromHeader(Name = "X-Token")] string token,
 		System.Threading.CancellationToken cancellationToken) => throw null!;
 
 	[Microsoft.AspNetCore.Mvc.HttpPost("save")]
@@ -68,10 +68,12 @@ public class SampleController : Microsoft.AspNetCore.Mvc.ControllerBase {
 			getMethod.ReturnTypeText.Should().Be("System.Int32");
 			getMethod.CanCancel.Should().BeTrue();
 			getMethod.RequiresAuthentication.Should().BeTrue();
-			getMethod.Parameters.Should().HaveCount(2);
+			getMethod.Parameters.Should().HaveCount(3);
 			getMethod.HasQueryStringParameter.Should().BeTrue();
 			getMethod.Parameters.Single(x => x.Name == "id").WebType.Should().Be(ParameterType.FromRoute);
 			getMethod.Parameters.Single(x => x.Name == "query").QueryKey.Should().Be("q");
+			getMethod.Parameters.Single(x => x.Name == "token").WebType.Should().Be(ParameterType.FromHeader);
+			getMethod.Parameters.Single(x => x.Name == "token").HeaderKey.Should().Be("X-Token");
 
 			var saveMethod = model.Methods.Single(x => x.Name == "Save");
 			saveMethod.ReturnTypeText.Should().Be("System.Void");

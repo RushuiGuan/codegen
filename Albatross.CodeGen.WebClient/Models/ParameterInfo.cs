@@ -8,9 +8,13 @@ namespace Albatross.CodeGen.WebClient.Models {
 		public ParameterInfo(Compilation compilation, IParameterSymbol symbol, IRouteSegment[] routeSegments) {
 			this.Name = symbol.Name;
 			this.Type = symbol.Type;
-			if (symbol.TryGetAttribute(compilation.FromHeaderAttributeClass(), out _)) {
-				// the header parameter should be setup during proxy registration
-				this.Skip = true;
+			if (symbol.TryGetAttribute(compilation.FromHeaderAttributeClass(), out var headerAttribute)) {
+				this.WebType = ParameterType.FromHeader;
+				if (headerAttribute!.TryGetNamedArgument("Name", out var name)) {
+					this.HeaderKey = System.Convert.ToString(name.Value) ?? string.Empty;
+				} else {
+					this.HeaderKey = this.Name;
+				}
 			} else if (symbol.TryGetAttribute(compilation.FromBodyAttributeClass(), out var attribute)) {
 				this.WebType = ParameterType.FromBody;
 			} else if (symbol.TryGetAttribute(compilation.FromRouteAttributeClass(), out attribute)) {
@@ -48,7 +52,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 			return null;
 		}
 
-		public bool Skip { get; }
+		public string HeaderKey { get; set; } = string.Empty;
 		public string QueryKey { get; set; } = string.Empty;
 		public string Name { get; set; }
 

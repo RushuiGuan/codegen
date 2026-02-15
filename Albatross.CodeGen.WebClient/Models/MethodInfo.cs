@@ -19,7 +19,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 				var paramInfo = new ParameterInfo(compilation, parameter, routeSegments);
 				if (paramInfo.TypeText == "System.Threading.CancellationToken") {
 					this.CanCancel = true;
-				} else if (!paramInfo.Skip) {
+				} else {
 					this.Parameters.Add(paramInfo);
 				}
 			}

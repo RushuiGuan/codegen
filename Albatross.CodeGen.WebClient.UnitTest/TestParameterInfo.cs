@@ -22,7 +22,7 @@ namespace Microsoft.AspNetCore.Mvc {
 	public class FromQueryAttribute : System.Attribute { public string? Name { get; set; } }
 	public class FromRouteAttribute : System.Attribute {}
 	public class FromBodyAttribute : System.Attribute {}
-	public class FromHeaderAttribute : System.Attribute {}
+	public class FromHeaderAttribute : System.Attribute { public string? Name { get; set; } }
 }
 """;
 
@@ -36,7 +36,7 @@ public class DemoController : Microsoft.AspNetCore.Mvc.ControllerBase {
 		[Microsoft.AspNetCore.Mvc.FromRoute] int id,
 		[Microsoft.AspNetCore.Mvc.FromQuery(Name = "q")] string query,
 		[Microsoft.AspNetCore.Mvc.FromBody] string body,
-		[Microsoft.AspNetCore.Mvc.FromHeader] string token,
+		[Microsoft.AspNetCore.Mvc.FromHeader(Name = "X-Token")] string token,
 		string slug,
 		string other) { }
 }
@@ -54,7 +54,8 @@ public class DemoController : Microsoft.AspNetCore.Mvc.ControllerBase {
 			infos["query"].WebType.Should().Be(ParameterType.FromQuery);
 			infos["query"].QueryKey.Should().Be("q");
 			infos["body"].WebType.Should().Be(ParameterType.FromBody);
-			infos["token"].Skip.Should().BeTrue();
+			infos["token"].WebType.Should().Be(ParameterType.FromHeader);
+			infos["token"].HeaderKey.Should().Be("X-Token");
 
 			infos["slug"].WebType.Should().Be(ParameterType.FromRoute);
 			infos["other"].WebType.Should().Be(ParameterType.FromQuery);
