@@ -6,6 +6,10 @@
   href: architecture.md
 - name: Configuration
   href: configuration.md
+- name: C# Web Client Settings
+  href: csharp-webclient-settings.md
+- name: Python Web Client Settings
+  href: python-webclient-settings.md
 - name: Examples
   href: examples.md
 - name: Release Notes
