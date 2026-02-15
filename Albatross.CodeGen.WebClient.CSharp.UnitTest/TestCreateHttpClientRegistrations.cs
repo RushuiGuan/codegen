@@ -2,8 +2,10 @@ using Albatross.CodeAnalysis;
 using Albatross.CodeAnalysis.Testing;
 using Albatross.CodeGen.WebClient.CSharp;
 using Albatross.CodeGen.WebClient.Models;
+using Albatross.Testing;
 using FluentAssertions;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -50,7 +52,9 @@ public class SecondController : Microsoft.AspNetCore.Mvc.ControllerBase {
 		};
 
 		var generator = new CreateHttpClientRegistrations(new StaticSettingsFactory(settings));
-		var text = generator.Generate(models).Render();
+		using var writer = new StringWriter();
+		generator.Generate(models).Generate(writer);
+		var text = writer.ToString().NormalizeLineEnding()!;
 
 		text.Should().Contain("namespace Demo.Client");
 		text.Should().Contain("AddTypedClient<IFirstClient, FirstClient>()");
@@ -69,7 +73,9 @@ public class SecondController : Microsoft.AspNetCore.Mvc.ControllerBase {
 		};
 
 		var generator = new CreateHttpClientRegistrations(new StaticSettingsFactory(settings));
-		var text = generator.Generate(models).Render();
+		using var writer = new StringWriter();
+		generator.Generate(models).Generate(writer);
+		var text = writer.ToString().NormalizeLineEnding()!;
 
 		text.Should().Contain("AddTypedClient<FirstClient>()");
 		text.Should().NotContain("AddTypedClient<IFirstClient, FirstClient>()");

@@ -2,8 +2,10 @@ using Albatross.CodeAnalysis;
 using Albatross.CodeAnalysis.Testing;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Python;
+using Albatross.Testing;
 using FluentAssertions;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -54,14 +56,16 @@ public class DemoController : Microsoft.AspNetCore.Mvc.ControllerBase {
 				["DemoController"] = "DemoApiClient"
 			}
 		};
-		var typeConverter = TestHelpers.BuildTypeConverter(compilation, settings);
+		var typeConverter = TypeConverterFactory.Build(compilation, settings);
 		var converter = new ConvertControllerModelToPythonFile(
 			new CompilationFactory(compilation),
 			new StaticSettingsFactory(settings),
 			typeConverter);
 
 		var file = converter.Convert(model);
-		var text = file.Render();
+		using var writer = new StringWriter();
+		file.Generate(writer);
+		var text = writer.ToString().NormalizeLineEnding()!;
 
 		text.Should().Contain("class DemoApiClient:");
 		text.Should().Contain("from httpx import AsyncClient, Auth");
@@ -79,13 +83,15 @@ public class DemoController : Microsoft.AspNetCore.Mvc.ControllerBase {
 		var settings = new PythonWebClientSettings {
 			Async = false,
 		};
-		var typeConverter = TestHelpers.BuildTypeConverter(compilation, settings);
+		var typeConverter = TypeConverterFactory.Build(compilation, settings);
 		var converter = new ConvertControllerModelToPythonFile(
 			new CompilationFactory(compilation),
 			new StaticSettingsFactory(settings),
 			typeConverter);
 
-		var text = converter.Convert(model).Render();
+		using var writer = new StringWriter();
+		converter.Convert(model).Generate(writer);
+		var text = writer.ToString().NormalizeLineEnding()!;
 
 		text.Should().Contain("from requests import Session");
 		text.Should().Contain("from requests.auth import AuthBase");

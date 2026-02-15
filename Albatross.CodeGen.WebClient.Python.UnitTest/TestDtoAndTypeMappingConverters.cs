@@ -4,9 +4,11 @@ using Albatross.CodeGen.Python;
 using Albatross.CodeGen.Python.Expressions;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Python;
+using Albatross.Testing;
 using FluentAssertions;
 using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
@@ -38,14 +40,16 @@ public class DemoDto {
 				[$"{dto.FullName}.IsActive"] = "is_enabled"
 			}
 		};
-		var typeConverter = TestHelpers.BuildTypeConverter(compilation, settings);
+		var typeConverter = TypeConverterFactory.Build(compilation, settings);
 		var propertyConverter = new ConvertDtoClassPropertyModelToFieldDeclaration(
 			new CompilationFactory(compilation),
 			new StaticSettingsFactory(settings),
 			typeConverter);
 		var converter = new ConvertDtoClassModelToDataClass(new StaticSettingsFactory(settings), propertyConverter);
 
-		var text = converter.Convert(dto).Render();
+		using var writer = new StringWriter();
+		converter.Convert(dto).Generate(writer);
+		var text = writer.ToString().NormalizeLineEnding()!;
 
 		text.Should().Contain("class RenamedDto(BaseModel):");
 		text.Should().Contain("discriminator_: str = Field(alias = \"$type\", default = \"demo\")");
@@ -76,7 +80,9 @@ public class DemoModel {
 
 		result.Should().BeTrue();
 		expression.Should().NotBeNull();
-		expression!.Render().Should().Be("AnyUrl");
+		using var writer = new StringWriter();
+		expression!.Generate(writer);
+		writer.ToString().NormalizeLineEnding()!.Should().Be("AnyUrl");
 		expression.Should().BeOfType<SimpleTypeExpression>();
 	}
 

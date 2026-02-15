@@ -6,10 +6,12 @@ using Albatross.CodeGen.CSharp.TypeConversions;
 using Albatross.CodeGen.WebClient.CSharp;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Settings;
+using Albatross.Testing;
 using FluentAssertions;
 using Microsoft.CodeAnalysis;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -80,7 +82,9 @@ public class DemoDto { public int Id { get; set; } }
 			new StaticSettingsFactory(settings),
 			new DefaultTypeConverter());
 		var file = converter.Convert(model);
-		var text = file.Render();
+		using var writer = new StringWriter();
+		file.Generate(writer);
+		var text = writer.ToString().NormalizeLineEnding()!;
 
 		text.Should().Contain("namespace Demo.Client");
 		text.Should().Contain("public partial interface IDemoClient");
@@ -116,7 +120,9 @@ public class DemoDto { public int Id { get; set; } }
 			new StaticSettingsFactory(settings),
 			new DefaultTypeConverter());
 		var file = converter.Convert(model);
-		var text = file.Render();
+		using var writer = new StringWriter();
+		file.Generate(writer);
+		var text = writer.ToString().NormalizeLineEnding()!;
 
 		text.Should().NotContain("DemoClient(HttpClient client)");
 	}

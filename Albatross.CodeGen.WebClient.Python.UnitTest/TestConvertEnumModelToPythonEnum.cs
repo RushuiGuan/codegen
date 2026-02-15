@@ -2,7 +2,9 @@ using Albatross.CodeAnalysis;
 using Albatross.CodeAnalysis.Testing;
 using Albatross.CodeGen.WebClient.Models;
 using Albatross.CodeGen.WebClient.Python;
+using Albatross.Testing;
 using FluentAssertions;
+using System.IO;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -23,7 +25,9 @@ public enum Status {
 		var model = new EnumInfo(compilation, symbol);
 		var converter = new ConvertEnumModelToPythonEnum();
 
-		var text = converter.Convert(model).Render();
+		using var writer = new StringWriter();
+		converter.Convert(model).Generate(writer);
+		var text = writer.ToString().NormalizeLineEnding()!;
 
 		text.Should().Contain("class Status(Enum):");
 		text.Should().Contain("NEW = \"New\"");
@@ -43,7 +47,9 @@ public enum Status {
 		var model = new EnumInfo(compilation, symbol);
 		var converter = new ConvertEnumModelToPythonEnum();
 
-		var text = converter.Convert(model).Render();
+		using var writer = new StringWriter();
+		converter.Convert(model).Generate(writer);
+		var text = writer.ToString().NormalizeLineEnding()!;
 
 		text.Should().Contain("NEW = 1");
 		text.Should().Contain("DONE = 2");
