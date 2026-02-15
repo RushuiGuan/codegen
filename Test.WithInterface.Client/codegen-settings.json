@@ -1,6 +1,6 @@
 {
   "$schema": "codegen-settings.schema.json",
-  "namespace": "Test.WithInterface.Proxy",
+  "namespace": "Test.WithInterface.Client",
   "useInterface": true,
   "useInternalProxy": false,
   "constructorSettings": {

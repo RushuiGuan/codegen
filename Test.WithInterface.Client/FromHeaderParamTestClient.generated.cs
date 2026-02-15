@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 #nullable enable
 namespace Test.WithInterface.Client {
 	public partial interface IFromHeaderParamTestClient {
-		Task OmitFromHeaderParameters(CancellationToken cancellationToken);
+		Task OmitFromHeaderParameters(string name, CancellationToken cancellationToken);
 	}
 	public partial class FromHeaderParamTestClient : IFromHeaderParamTestClient {
 		public FromHeaderParamTestClient(HttpClient client) {
@@ -17,7 +17,7 @@ namespace Test.WithInterface.Client {
 		public const string ControllerPath = "api/from-header-param-test";
 		private HttpClient client;
 		private JsonSerializerOptions jsonSerializerOptions;
-		public async Task OmitFromHeaderParameters(CancellationToken cancellationToken) {
+		public async Task OmitFromHeaderParameters(string name, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"{ControllerPath}");
