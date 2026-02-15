@@ -9,6 +9,7 @@
     <File Path=".gitattributes" />
     <File Path=".gitignore" />
     <File Path=".projects" />
+    <File Path="AGENTS.md" />
     <File Path="alias.ps1" />
     <File Path="Directory.Build.props" />
     <File Path="icon.png" />
@@ -18,6 +19,7 @@
   <Project Path="Albatross.CodeGen.CommandLine/Albatross.CodeGen.CommandLine.csproj" />
   <Project Path="Albatross.CodeGen.CSharp/Albatross.CodeGen.CSharp.csproj" />
   <Project Path="Albatross.CodeGen.Python/Albatross.CodeGen.Python.csproj" />
+  <Project Path="Albatross.CodeGen.Python.UnitTest/Albatross.CodeGen.Python.UnitTest.csproj" />
   <Project Path="Albatross.CodeGen.SymbolProviders/Albatross.CodeGen.SymbolProviders.csproj" />
   <Project Path="Albatross.CodeGen.TypeScript/Albatross.CodeGen.TypeScript.csproj" />
   <Project Path="Albatross.CodeGen.UnitTest/Albatross.CodeGen.UnitTest.csproj" />
