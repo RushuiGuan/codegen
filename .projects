@@ -8,7 +8,9 @@ Albatross.CodeGen.CommandLine
 # tests
 Albatross.CodeGen.UnitTest
 Albatross.CodeGen.CSharp.UnitTest
+Albatross.CodeGen.WebClient.CSharp.UnitTest
 Albatross.CodeGen.Python.UnitTest
+Albatross.CodeGen.WebClient.Python.UnitTest
 Albatross.CodeGen.TypeScript.UnitTest
 Albatross.CodeGen.WebClient.UnitTest
 
