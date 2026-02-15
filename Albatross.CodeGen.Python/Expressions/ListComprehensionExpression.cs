@@ -17,7 +17,7 @@ namespace Albatross.CodeGen.Python.Expressions {
 					.AppendLine()
 					.Append("for ").Append(VariableName).Append(" in ").Code(IterableExpression);
 			} else {
-				writer.Append("[").Append(" for ").Append(VariableName).Append(" in ").Code(IterableExpression).Append("]");
+				writer.Append("[").Code(Expression).Append(" for ").Append(VariableName).Append(" in ").Code(IterableExpression).Append("]");
 			}
 			return writer;
 		}
