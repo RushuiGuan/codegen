@@ -33,5 +33,17 @@ namespace Albatross.CodeGen.UnitTest {
 			string result = writer.ToString().RemoveCarriageReturn();
 			Assert.Equal(NestedScopeResult, result);
 		}
+
+		const string SpaceIndentScopeResult = "{\n    int i = 100;\n}\n";
+		[Fact]
+		public void SingleScopeWithCustomIndent() {
+			StringWriter writer = new StringWriter();
+			using (var scope = new CodeGeneratorScope(writer, args => args.WriteLine("{"), args => args.WriteLine("}"), "    ")) {
+				scope.Writer.WriteLine("int i = 100;");
+			}
+
+			string result = writer.ToString().RemoveCarriageReturn();
+			Assert.Equal(SpaceIndentScopeResult, result);
+		}
 	}
 }

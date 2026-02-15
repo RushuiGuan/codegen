@@ -13,7 +13,7 @@ public class TestDeclarations {
 
 		var text = declaration.Render();
 
-		text.Should().Be("class empty:\n\tpass");
+		text.Should().Be("class empty:\n    pass");
 	}
 
 	[Fact]

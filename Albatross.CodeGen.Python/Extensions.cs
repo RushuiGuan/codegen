@@ -12,13 +12,14 @@ namespace Albatross.CodeGen.Python {
 	/// Extension methods for Python code generation functionality and dependency injection setup
 	/// </summary>
 	public static class Extensions {
+		const string PythonIndent = "    ";
 		/// <summary>
 		/// Creates a Python-specific code generator scope with colon syntax for block structures
 		/// </summary>
 		/// <param name="writer">The TextWriter to create the scope for</param>
 		/// <returns>A disposable CodeGeneratorScope configured for Python block syntax</returns>
 		public static CodeGeneratorScope BeginPythonScope(this TextWriter writer) {
-			return new CodeGeneratorScope(writer, args => args.AppendLine(":"), args => { });
+			return new CodeGeneratorScope(writer, args => args.AppendLine(":"), args => { }, PythonIndent);
 		}
 
 		/// <summary>
@@ -29,7 +30,7 @@ namespace Albatross.CodeGen.Python {
 		/// <param name="closeBrace">The closing brace or delimiter</param>
 		/// <returns>A disposable CodeGeneratorScope with custom delimiters</returns>
 		public static CodeGeneratorScope BeginPythonLineBreak(this TextWriter writer, string openBrace, string closeBrace) {
-			return new CodeGeneratorScope(writer, args => args.AppendLine(openBrace), args => args.Append(closeBrace));
+			return new CodeGeneratorScope(writer, args => args.AppendLine(openBrace), args => args.Append(closeBrace), PythonIndent);
 		}
 
 		/// <summary>

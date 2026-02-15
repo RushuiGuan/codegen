@@ -18,7 +18,7 @@ public class TestExtensions {
 
 		var text = writer.ToString().Replace("\r", "").TrimEnd();
 
-		text.Should().Be("if True:\n\tpass");
+		text.Should().Be("if True:\n    pass");
 	}
 
 	[Fact]
@@ -30,7 +30,7 @@ public class TestExtensions {
 
 		var text = writer.ToString().Replace("\r", "").TrimEnd();
 
-		text.Should().Be("{\n\tx: 1\n}");
+		text.Should().Be("{\n    x: 1\n}");
 	}
 
 	[Fact]

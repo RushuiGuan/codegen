@@ -30,6 +30,6 @@ public class TestPythonFileDeclaration {
 		text.Should().Contain("from typing import Any");
 		text.Should().NotContain("from dto import MyDto");
 		text.Should().Contain("class Sample:");
-		text.Should().Contain("\tpayload: Any");
+		text.Should().Contain("    payload: Any");
 	}
 }
