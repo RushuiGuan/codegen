@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Albatross.CodeGen.UnitTest.TypeScript {
+namespace Albatross.CodeGen.TypeScript.UnitTest {
 	public class TestFileNameSourceExpression {
 		[Theory]
 		[InlineData("test.ts", "'./test'")]

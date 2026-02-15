@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Albatross.CodeGen.UnitTest.TypeScript {
+namespace Albatross.CodeGen.TypeScript.UnitTest {
 	public class TestRegex {
 		[Theory]
 		[InlineData("a", true)]

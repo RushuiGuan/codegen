@@ -9,7 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Albatross.CodeGen.UnitTest.TypeScript {
+namespace Albatross.CodeGen.TypeScript.UnitTest {
 	public class TestTypeConverters {
 		ILogger<ConvertType> MockedLogger => new Moq.Mock<ILogger<ConvertType>>().Object;
 

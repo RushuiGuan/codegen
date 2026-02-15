@@ -35,11 +35,11 @@ namespace Albatross.CodeGen.TypeScript {
 		}
 
 		public static bool IsPromise(this ITypeExpression type) {
-			return type is GenericTypeExpression generic && generic.Identifier == Defined.Identifiers.Promise;
+			return type is GenericTypeExpression generic && object.Equals(generic.Identifier, Defined.Identifiers.Promise);
 		}
 
 		public static bool IsObservable(this ITypeExpression type) {
-			return type is GenericTypeExpression generic && generic.Identifier == Defined.Identifiers.Observable;
+			return type is GenericTypeExpression generic && object.Equals(generic.Identifier, Defined.Identifiers.Observable);
 		}
 
 		public static ITypeExpression ToPromise(this ITypeExpression type) {

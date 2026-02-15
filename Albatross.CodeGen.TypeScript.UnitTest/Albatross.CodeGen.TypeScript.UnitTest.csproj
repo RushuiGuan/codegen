@@ -5,21 +5,16 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Albatross.CodeAnalysis" Version="8.0.3" />
 		<PackageReference Include="Albatross.CodeAnalysis.Testing" Version="8.0.3" />
+		<PackageReference Include="Albatross.Testing" Version="8.0.1" />
 		<PackageReference Include="FluentAssertions" Version="[7.2.0]" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Albatross.Testing" Version="8.0.1" />
-		<ProjectReference Include="..\Albatross.CodeGen.WebClient\Albatross.CodeGen.WebClient.csproj" />
-		<ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<None Update="appSettings.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
+		<PackageReference Include="Moq" Version="4.20.72" />
+		<ProjectReference Include="..\Albatross.CodeGen.TypeScript\Albatross.CodeGen.TypeScript.csproj" />
 	</ItemGroup>
 </Project>

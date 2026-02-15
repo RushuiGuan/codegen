@@ -21,6 +21,7 @@
   <Project Path="Albatross.CodeGen.CSharp.UnitTest/Albatross.CodeGen.CSharp.UnitTest.csproj" />
   <Project Path="Albatross.CodeGen.Python/Albatross.CodeGen.Python.csproj" />
   <Project Path="Albatross.CodeGen.Python.UnitTest/Albatross.CodeGen.Python.UnitTest.csproj" />
+  <Project Path="Albatross.CodeGen.TypeScript.UnitTest/Albatross.CodeGen.TypeScript.UnitTest.csproj" />
   <Project Path="Albatross.CodeGen.SymbolProviders/Albatross.CodeGen.SymbolProviders.csproj" />
   <Project Path="Albatross.CodeGen.TypeScript/Albatross.CodeGen.TypeScript.csproj" />
   <Project Path="Albatross.CodeGen.UnitTest/Albatross.CodeGen.UnitTest.csproj" />
