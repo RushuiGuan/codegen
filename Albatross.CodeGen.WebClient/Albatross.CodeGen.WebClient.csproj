@@ -12,21 +12,21 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.3" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\Albatross.CodeGen.SymbolProviders\Albatross.CodeGen.SymbolProviders.csproj" />
-	  <ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
+		<ProjectReference Include="..\Albatross.CodeGen.SymbolProviders\Albatross.CodeGen.SymbolProviders.csproj" />
+		<ProjectReference Include="..\Albatross.CodeGen\Albatross.CodeGen.csproj" />
 	</ItemGroup>
-    <ItemGroup>
-        <None Include="..\icon.png">
-            <Pack>True</Pack>
-            <PackagePath>\</PackagePath>
-        </None>
-        <None Include="..\LICENSE">
-            <Pack>True</Pack>
-            <PackagePath>\</PackagePath>
-        </None>
-        <None Include="README.md">
-            <Pack>True</Pack>
-            <PackagePath>\</PackagePath>
-        </None>
-    </ItemGroup>
+	<ItemGroup>
+		<None Include="..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 </Project>
