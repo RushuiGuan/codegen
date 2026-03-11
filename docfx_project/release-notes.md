@@ -1,5 +1,37 @@
 # Release Notes
 
+## Version 9.0.3
+
+### New Features
+
+#### FromHeader Parameter Support
+- Added `[FromHeader]` parameter support in WebClient models for C#, TypeScript, and Python code generation
+
+#### Route Constraint Parsing
+- Improved route segment parsing to handle type-constrained route templates (e.g., `{value:int}`, `{text:string}`)
+
+#### Python Indentation
+- Changed Python code generation to use spaces instead of tabs for PEP 8 compliance
+
+### Unit Tests
+- Added dedicated unit test projects for each language target:
+  - `Albatross.CodeGen.WebClient.CSharp.UnitTest` - C# web client generation tests
+  - `Albatross.CodeGen.WebClient.Python.UnitTest` - Python web client generation tests
+  - `Albatross.CodeGen.CSharp.UnitTest` - Core C# code generation tests
+  - `Albatross.CodeGen.Python.UnitTest` - Core Python code generation tests
+  - `Albatross.CodeGen.TypeScript.UnitTest` - Core TypeScript code generation tests
+
+### Documentation
+- Added documentation articles for C# and Python web client settings
+- Added build-vs-buy codegen decision checklist
+
+### Project Structure
+- Migrated solution to new `.slnx` format
+- Removed legacy Slack sink options from CLI entry point
+- Updated project files with `Albatross.Testing` dependency for unit tests
+
+---
+
 ## Version 9.0.2
 
 Current release with full support for .NET 10.0.
