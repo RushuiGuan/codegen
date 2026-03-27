@@ -49,6 +49,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				IsPartial = true,
 				Attributes = controller.IsObsolete ? [Defined.Attributes.Obsolete] : [],
 				Methods = from method in controller.Methods select new MethodDeclaration {
+					Attributes = method.IsObsolete ? [Defined.Attributes.Obsolete] : [],
 					Name = new IdentifierNameExpression(method.Name),
 					ReturnType = GetMethodReturnType(method.ReturnType),
 					Parameters = GetMethodParameters(method)

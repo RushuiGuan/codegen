@@ -24,6 +24,9 @@ namespace Albatross.CodeGen.CSharp.Declarations {
 		public bool IsStatic { get; set; }
 
 		public override TextWriter Generate(TextWriter writer) {
+			foreach (var attribute in Attributes) {
+				writer.Code(attribute).WriteLine();
+			}
 			if (AccessModifier != null) { writer.Append(AccessModifier.Name).Space(); }
 			if (IsStatic) { writer.Code(Defined.Keywords.Static); }
 			if (IsAbstract) { writer.Code(Defined.Keywords.Abstract); }
