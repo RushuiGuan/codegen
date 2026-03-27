@@ -1,5 +1,15 @@
 # Release Notes
 
+## Version 9.0.4
+
+### Improvements
+
+#### Obsolete Attribute Propagation for Methods
+- C# web client generation now emits `[Obsolete]` attributes on generated methods when the corresponding controller action is marked obsolete
+- Previously, `[Obsolete]` was only propagated to generated client classes (for obsolete controllers), not to individual methods
+
+---
+
 ## Version 9.0.3
 
 ### New Features

@@ -19,7 +19,6 @@ namespace Test.Client {
 				.AddTypedClient<NullableParamTestClient>()
 				.AddTypedClient<NullableReturnTypeTestClient>()
 				.AddTypedClient<ObsoleteClient>()
-				.AddTypedClient<PartiallyObsoleteClient>()
 				.AddTypedClient<OmittedConstructorClient>()
 				.AddTypedClient<RequiredParamTestClient>()
 				.AddTypedClient<RequiredReturnTypeTestClient>();

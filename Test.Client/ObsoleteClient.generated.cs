@@ -15,6 +15,7 @@ namespace Test.Client {
 		public const string ControllerPath = "api/obsolete";
 		private HttpClient client;
 		private JsonSerializerOptions jsonSerializerOptions;
+		[System.ObsoleteAttribute()]
 		public async Task<string> Get(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)

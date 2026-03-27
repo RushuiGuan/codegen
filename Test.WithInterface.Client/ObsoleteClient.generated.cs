@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Test.WithInterface.Client {
 	[System.ObsoleteAttribute()]
 	public partial interface IObsoleteClient {
+		[System.ObsoleteAttribute()]
 		Task<string> Get(CancellationToken cancellationToken);
 	}
 	[System.ObsoleteAttribute()]
@@ -19,6 +20,7 @@ namespace Test.WithInterface.Client {
 		public const string ControllerPath = "api/obsolete";
 		private HttpClient client;
 		private JsonSerializerOptions jsonSerializerOptions;
+		[System.ObsoleteAttribute()]
 		public async Task<string> Get(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)

@@ -19,7 +19,6 @@ namespace Test.WithInterface.Client {
 				.AddTypedClient<INullableParamTestClient, NullableParamTestClient>()
 				.AddTypedClient<INullableReturnTypeTestClient, NullableReturnTypeTestClient>()
 				.AddTypedClient<IObsoleteClient, ObsoleteClient>()
-				.AddTypedClient<IPartiallyObsoleteClient, PartiallyObsoleteClient>()
 				.AddTypedClient<IOmittedConstructorClient, OmittedConstructorClient>()
 				.AddTypedClient<IRequiredParamTestClient, RequiredParamTestClient>()
 				.AddTypedClient<IRequiredReturnTypeTestClient, RequiredReturnTypeTestClient>();
