@@ -19,32 +19,32 @@ namespace Test.Client {
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"{ControllerPath}/nullable-string-param");
 			builder.AddQueryStringIfSet("text", text);
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> NullableValueType(System.Nullable<int> id, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"{ControllerPath}/nullable-value-type");
 			builder.AddQueryStringIfSet("id", id);
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> NullableDateOnly(System.Nullable<System.DateOnly> date, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"{ControllerPath}/nullable-date-only");
 			builder.AddQueryStringIfSet("date", date);
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task NullablePostParam(Test.Dto.Classes.MyDto? dto, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}/nullable-post-param");
 			builder.CreateJsonRequest<Test.Dto.Classes.MyDto?>(dto);
-			using var request = builder.Build();
-			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> NullableStringArray(string?[] values, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -53,8 +53,8 @@ namespace Test.Client {
 			foreach (var item in values) {
 				builder.AddQueryStringIfSet("values", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> NullableStringCollection(System.Collections.Generic.IEnumerable<string?> values, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -63,8 +63,8 @@ namespace Test.Client {
 			foreach (var item in values) {
 				builder.AddQueryStringIfSet("values", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> NullableValueTypeArray(System.Nullable<int>[] values, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -73,8 +73,8 @@ namespace Test.Client {
 			foreach (var item in values) {
 				builder.AddQueryStringIfSet("values", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> NullableValueTypeCollection(System.Collections.Generic.IEnumerable<System.Nullable<int>> values, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -83,8 +83,8 @@ namespace Test.Client {
 			foreach (var item in values) {
 				builder.AddQueryStringIfSet("values", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> NullableDateOnlyCollection(System.Collections.Generic.IEnumerable<System.Nullable<System.DateOnly>> dates, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -93,8 +93,8 @@ namespace Test.Client {
 			foreach (var item in dates) {
 				builder.AddQueryStringIfSet("dates", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> NullableDateOnlyArray(System.Nullable<System.DateOnly>[] dates, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -103,16 +103,16 @@ namespace Test.Client {
 			foreach (var item in dates) {
 				builder.AddQueryStringIfSet("dates", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<System.Nullable<Test.Dto.Enums.MyEnum>> NullableEnumParameter(System.Nullable<Test.Dto.Enums.MyEnum> value, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"{ControllerPath}/nullable-enum-parameter");
 			builder.AddQueryStringIfSet("value", value);
-			using var request = builder.Build();
-			return await this.client.Execute<System.Nullable<Test.Dto.Enums.MyEnum>>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.Execute<System.Nullable<Test.Dto.Enums.MyEnum>>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<System.Nullable<Test.Dto.Enums.MyEnum>[]> NullableEnumArray(System.Nullable<Test.Dto.Enums.MyEnum>[] value, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -121,8 +121,8 @@ namespace Test.Client {
 			foreach (var item in value) {
 				builder.AddQueryStringIfSet("value", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<System.Nullable<Test.Dto.Enums.MyEnum>[]>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<System.Nullable<Test.Dto.Enums.MyEnum>[]>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

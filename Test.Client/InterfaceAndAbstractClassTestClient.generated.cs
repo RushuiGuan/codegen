@@ -19,44 +19,44 @@ namespace Test.Client {
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}/interface-as-param");
 			builder.AddQueryStringIfSet("command", command);
-			using var request = builder.Build();
-			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task SubmitByAbstractClass(Test.Dto.Classes.AbstractClass command, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}/abstract-class-as-param");
 			builder.AddQueryStringIfSet("command", command);
-			using var request = builder.Build();
-			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<Test.Dto.Classes.ICommand> ReturnInterfaceAsync(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}/return-interface-async");
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<Test.Dto.Classes.ICommand>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<Test.Dto.Classes.ICommand>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<Test.Dto.Classes.ICommand> ReturnInterface(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}/return-interface");
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<Test.Dto.Classes.ICommand>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<Test.Dto.Classes.ICommand>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<Test.Dto.Classes.AbstractClass> ReturnAbstractClassAsync(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}/return-abstract-class-async");
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<Test.Dto.Classes.AbstractClass>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<Test.Dto.Classes.AbstractClass>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<Test.Dto.Classes.AbstractClass> ReturnAbstractClass(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}/return-abstract-class");
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<Test.Dto.Classes.AbstractClass>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<Test.Dto.Classes.AbstractClass>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

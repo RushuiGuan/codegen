@@ -21,8 +21,8 @@ namespace Test.Client {
 			foreach (var item in array) {
 				builder.AddQueryStringIfSet("a", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> ArrayValueType(int[] array, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -31,8 +31,8 @@ namespace Test.Client {
 			foreach (var item in array) {
 				builder.AddQueryString("a", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> CollectionStringParam(System.Collections.Generic.IEnumerable<string> collection, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -41,8 +41,8 @@ namespace Test.Client {
 			foreach (var item in collection) {
 				builder.AddQueryStringIfSet("c", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> CollectionValueType(System.Collections.Generic.IEnumerable<int> collection, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -51,8 +51,8 @@ namespace Test.Client {
 			foreach (var item in collection) {
 				builder.AddQueryString("c", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> CollectionNullableValueType(System.Collections.Generic.IEnumerable<System.Nullable<int>> collection, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -61,8 +61,8 @@ namespace Test.Client {
 			foreach (var item in collection) {
 				builder.AddQueryStringIfSet("cv", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> CollectionDateParam(System.Collections.Generic.IEnumerable<System.DateOnly> collection, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -71,8 +71,8 @@ namespace Test.Client {
 			foreach (var item in collection) {
 				builder.AddQueryString("c", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> CollectionNullableDateParam(System.Collections.Generic.IEnumerable<System.Nullable<System.DateOnly>> collection, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -81,8 +81,8 @@ namespace Test.Client {
 			foreach (var item in collection) {
 				builder.AddQueryStringIfSet("cd", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> CollectionDateTimeParam(System.Collections.Generic.IEnumerable<System.DateTime> collection, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -91,8 +91,8 @@ namespace Test.Client {
 			foreach (var item in collection) {
 				builder.AddQueryString("c", item);
 			}
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

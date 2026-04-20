@@ -201,7 +201,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		IExpression GetVoidResponseFunction() {
 			return new InvocationExpression {
 				CallableExpression = new IdentifierNameExpression("this.GetRawResponse"),
-				Arguments = { new IdentifierNameExpression("request") },
+				Arguments = { new IdentifierNameExpression("requestMsg") },
 				UseAwaitOperator = true,
 			};
 		}
@@ -226,7 +226,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					CallableExpression = new IdentifierNameExpression(functionName) {
 						GenericArguments = { this.typeConverter.Convert(method.ReturnType) }
 					},
-					Arguments = { new IdentifierNameExpression("request") },
+					Arguments = { new IdentifierNameExpression("requestMsg") },
 					UseAwaitOperator = true,
 				}
 			};
@@ -248,7 +248,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 				Resource = new AssignmentExpression {
 					Left = new VariableDeclaration {
 						Type = Defined.Types.Var,
-						Identifier = new IdentifierNameExpression("request"),
+						Identifier = new IdentifierNameExpression("requestMsg"),
 					},
 					Expression = new InvocationExpression {
 						CallableExpression = CreateRequestFunction(fromBody),

@@ -19,16 +19,16 @@ namespace Test.Client {
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}/by-id");
 			builder.AddQueryString("id", id);
-			using var request = builder.Build();
-			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task Submit(string name, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}/by-name");
 			builder.AddQueryStringIfSet("name", name);
-			using var request = builder.Build();
-			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

@@ -18,36 +18,36 @@ namespace Test.Client {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Delete)
 				.WithRelativeUrl($"{ControllerPath}");
-			using var request = builder.Build();
-			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task Post(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}");
-			using var request = builder.Build();
-			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task Patch(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Patch)
 				.WithRelativeUrl($"{ControllerPath}");
-			using var request = builder.Build();
-			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<int> Get(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"{ControllerPath}");
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrowStruct<int>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrowStruct<int>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task Put(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Put)
 				.WithRelativeUrl($"{ControllerPath}");
-			using var request = builder.Build();
-			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

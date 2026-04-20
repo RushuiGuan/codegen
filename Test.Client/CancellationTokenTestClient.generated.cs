@@ -18,8 +18,8 @@ namespace Test.Client {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"{ControllerPath}");
-			using var request = builder.Build();
-			return await this.client.ExecuteOrThrow<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			return await this.client.ExecuteOrThrow<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

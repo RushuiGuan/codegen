@@ -191,7 +191,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					GenericArguments = { Defined.Types.String }
 				},
 				Arguments = {
-					new IdentifierNameExpression("request"),
+					new IdentifierNameExpression("requestMsg"),
 					new IdentifierNameExpression("this.jsonSerializerOptions"),
 					new IdentifierNameExpression("cancellationToken"),
 				},
@@ -214,7 +214,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 						GenericArguments = { this.typeConverter.Convert(method.ReturnType) }
 					},
 					Arguments = {
-						new IdentifierNameExpression("request"),
+						new IdentifierNameExpression("requestMsg"),
 						new IdentifierNameExpression("this.jsonSerializerOptions"),
 						new IdentifierNameExpression("cancellationToken"),
 					},
@@ -250,7 +250,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			yield return new UsingExpression {
 				Resource = new AssignmentExpression {
 					Left = new VariableDeclaration {
-						Identifier = new IdentifierNameExpression("request"),
+						Identifier = new IdentifierNameExpression("requestMsg"),
 					},
 					Expression = new InvocationExpression {
 						CallableExpression = new IdentifierNameExpression("builder.Build"),
