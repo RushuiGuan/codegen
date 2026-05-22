@@ -80,7 +80,7 @@ public class DemoDto { public int Id { get; set; } }
 		var converter = new ConvertWebApiToCSharpFile(
 			new CompilationFactory(compilation),
 			new StaticSettingsFactory(settings),
-			new DefaultTypeConverter());
+			new DefaultTypeConverter(new Dictionary<string, string>()));
 		var file = converter.Convert(model);
 		using var writer = new StringWriter();
 		file.Generate(writer);
@@ -118,7 +118,7 @@ public class DemoDto { public int Id { get; set; } }
 		var converter = new ConvertWebApiToCSharpFile(
 			new CompilationFactory(compilation),
 			new StaticSettingsFactory(settings),
-			new DefaultTypeConverter());
+			new DefaultTypeConverter(new Dictionary<string, string>()));
 		var file = converter.Convert(model);
 		using var writer = new StringWriter();
 		file.Generate(writer);
