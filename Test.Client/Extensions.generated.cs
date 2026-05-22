@@ -8,6 +8,7 @@ namespace Test.Client {
 				.AddTypedClient<CancellationTokenTestClient>()
 				.AddTypedClient<ControllerRouteTestClient>()
 				.AddTypedClient<CustomJsonSettingsClient>()
+				.AddTypedClient<CustomRouteTypeClient>()
 				.AddTypedClient<DuplicateNameTestClient>()
 				.AddTypedClient<FilteredMethodClient>()
 				.AddTypedClient<FromBodyParamTestClient>()

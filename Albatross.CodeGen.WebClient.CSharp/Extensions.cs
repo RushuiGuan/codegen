@@ -14,7 +14,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		/// <returns>The service collection for method chaining</returns>
 		public static IServiceCollection AddCSharpWebClientCodeGen(this IServiceCollection services) {
 			services.AddCodeGen(typeof(Extensions).Assembly);
-			services.AddSingleton<IConvertObject<ITypeSymbol, ITypeExpression>>(provider => new DefaultTypeConverter(provider.GetRequiredService<CSharpWebClientSettings>().CustomTypeMapping));
+			services.AddScoped<IConvertObject<ITypeSymbol, ITypeExpression>>(provider => new DefaultTypeConverter(provider.GetRequiredService<ICodeGenSettingsFactory>().Get<CSharpWebClientSettings>().CustomTypeMapping));
 			services.AddScoped<LegacyCreateHttpClientRegistrations>();
 			services.AddScoped<CreateHttpClientRegistrations>();
 			return services;
