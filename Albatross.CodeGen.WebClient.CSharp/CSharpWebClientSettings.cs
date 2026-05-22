@@ -15,5 +15,6 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		public bool UseInternalProxy { get; init; }
 
 		public Dictionary<string, WebClientConstructorSettings> ConstructorSettings { get; init; } = new Dictionary<string, WebClientConstructorSettings>();
+		public Dictionary<string, string> CustomTypeMapping { get; init; } = new Dictionary<string, string>();
 	}
 }

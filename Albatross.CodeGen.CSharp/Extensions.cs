@@ -1,6 +1,7 @@
 ﻿using Albatross.CodeGen.CSharp.TypeConversions;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 
 namespace Albatross.CodeGen.CSharp {
 	/// <summary>
@@ -12,8 +13,8 @@ namespace Albatross.CodeGen.CSharp {
 		/// </summary>
 		/// <param name="services">The service collection to add services to</param>
 		/// <returns>The service collection for method chaining</returns>
-		public static IServiceCollection AddCSharpCodeGen(this IServiceCollection services) {
-			services.AddSingleton<IConvertObject<ITypeSymbol, ITypeExpression>, DefaultTypeConverter>();
+		public static IServiceCollection AddCSharpCodeGen(this IServiceCollection services, Dictionary<string, string> customTypeMapping) {
+			services.AddSingleton<IConvertObject<ITypeSymbol, ITypeExpression>>(new DefaultTypeConverter(customTypeMapping));
 			return services;
 		}
 	}

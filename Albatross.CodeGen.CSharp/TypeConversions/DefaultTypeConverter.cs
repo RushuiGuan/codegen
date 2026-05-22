@@ -1,12 +1,18 @@
 using Albatross.CodeAnalysis;
 using Albatross.CodeGen.CSharp.Expressions;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Albatross.CodeGen.CSharp.TypeConversions {
 	public class DefaultTypeConverter : IConvertObject<ITypeSymbol, ITypeExpression> {
+		private readonly IDictionary<string, string> customTypeMapping;
+
+		public DefaultTypeConverter(IDictionary<string, string> customTypeMapping) {
+			this.customTypeMapping = customTypeMapping;
+		}
+
 		public bool UseQualifiedNames { get; set; } = false;
 		
 		object IConvertObject<ITypeSymbol>.Convert(ITypeSymbol from) {
@@ -27,6 +33,10 @@ namespace Albatross.CodeGen.CSharp.TypeConversions {
 		}
 
 		public ITypeExpression Convert(ITypeSymbol symbol) {
+			if (this.customTypeMapping.TryGetValue(symbol.GetFullName(), out var mappedType)) {
+				return new TypeExpression(mappedType);
+			}
+
 			switch (symbol.SpecialType) {
 				case SpecialType.System_String:
 					return symbol.IsNullableReferenceType() ? Defined.Types.NullableString : Defined.Types.String;

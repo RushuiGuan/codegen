@@ -1,4 +1,5 @@
-﻿using Albatross.CodeGen.CSharp;
+﻿using Albatross.CodeGen.CSharp.TypeConversions;
+using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Albatross.CodeGen.WebClient.CSharp {
@@ -13,7 +14,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 		/// <returns>The service collection for method chaining</returns>
 		public static IServiceCollection AddCSharpWebClientCodeGen(this IServiceCollection services) {
 			services.AddCodeGen(typeof(Extensions).Assembly);
-			services.AddCSharpCodeGen();
+			services.AddSingleton<IConvertObject<ITypeSymbol, ITypeExpression>>(provider => new DefaultTypeConverter(provider.GetRequiredService<CSharpWebClientSettings>().CustomTypeMapping));
 			services.AddScoped<LegacyCreateHttpClientRegistrations>();
 			services.AddScoped<CreateHttpClientRegistrations>();
 			return services;
