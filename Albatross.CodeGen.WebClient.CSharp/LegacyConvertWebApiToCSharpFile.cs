@@ -64,17 +64,23 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					.Concat(settings.UseInterface ? [new TypeExpression(GetInterfaceName(controller))] : []),
 				Attributes = controller.IsObsolete ? [Defined.Attributes.Obsolete] : [],
 				Constructors = CreateConstructors(controller).ToList(),
-				Fields = [
-					new FieldDeclaration {
-						AccessModifier = Defined.Keywords.Public,
-						IsConst = true,
-						Type = new TypeExpression("string"),
-						Name = new IdentifierNameExpression("ControllerPath"),
-						Initializer = new StringLiteralExpression(controller.Route),
-					},
-				],
+				Fields = CreateFields(controller).ToList(),
 				Methods = from method in controller.Methods select CreateMethod(method),
 			};
+		}
+
+		IEnumerable<FieldDeclaration> CreateFields(ControllerInfo controller) {
+			// a parameterized controller route is substituted per-call, so the ControllerPath const
+			// would be unused; only emit it when the route is constant
+			if (!controller.HasRouteParameter) {
+				yield return new FieldDeclaration {
+					AccessModifier = Defined.Keywords.Public,
+					IsConst = true,
+					Type = new TypeExpression("string"),
+					Name = new IdentifierNameExpression("ControllerPath"),
+					Initializer = new StringLiteralExpression(controller.Route),
+				};
+			}
 		}
 
 		string GetInterfaceName(ControllerInfo controller) {

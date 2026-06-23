@@ -128,6 +128,8 @@ public class DemoController : Microsoft.AspNetCore.Mvc.ControllerBase {
 		text.Should().Contain("$\"api/account/{accountId}/demo/item/{id}\"");
 		text.Should().NotContain("AddQueryString");
 		text.Should().Contain("public async Task<int> Get(int accountId, int id, CancellationToken cancellationToken)");
+		// the ControllerPath const is unused for a parameterized controller route, so it is not emitted
+		text.Should().NotContain("ControllerPath");
 	}
 
 	[Fact]
