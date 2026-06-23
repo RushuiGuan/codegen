@@ -61,6 +61,26 @@ namespace Albatross.CodeGen.WebClient.Python {
 			};
 		}
 
+		IExpression BuildBaseUrl(ControllerInfo model) {
+			var strippedBaseUrl = new InvocationExpression {
+				CallableExpression = new MultiPartIdentifierNameExpression("base_url", "rstrip"),
+				Arguments = new ListOfNodes<IExpression> {
+					new StringLiteralExpression("/", true)
+				},
+			};
+			// a parameterized controller route cannot be part of the shared base url; it is substituted
+			// per-call as part of each method's request url instead
+			if (model.HasRouteParameter) {
+				return strippedBaseUrl;
+			} else {
+				return new StringInterpolationExpression(
+					strippedBaseUrl,
+					new StringLiteralExpression("/"),
+					new StringLiteralExpression(model.Route)
+				);
+			}
+		}
+
 		MethodDeclaration CreateConstructor(ControllerInfo model) => new ConstructorDeclaration() {
 			Parameters = new ListOfNodes<ParameterDeclaration> {
 				Defined.Parameters.Self,
@@ -82,16 +102,7 @@ namespace Albatross.CodeGen.WebClient.Python {
 			Body = {
 				new ScopedVariableExpression {
 					Identifier = new MultiPartIdentifierNameExpression("self", "_base_url"),
-					Assignment = new StringInterpolationExpression(
-						new InvocationExpression {
-							CallableExpression = new MultiPartIdentifierNameExpression("base_url", "rstrip"),
-							Arguments = new ListOfNodes<IExpression> {
-								new StringLiteralExpression("/", true)
-							},
-						},
-						new StringLiteralExpression("/"),
-						new StringLiteralExpression(model.Route)
-					),
+					Assignment = BuildBaseUrl(model),
 				},
 				new ScopedVariableExpression {
 					Identifier = new MultiPartIdentifierNameExpression("self", "_client"),
@@ -241,6 +252,13 @@ namespace Albatross.CodeGen.WebClient.Python {
 			if (!settings.Async) {
 				segments.Add(new MultiPartIdentifierNameExpression("self", "_base_url"));
 				segments.Add(new StringLiteralExpression("/"));
+			}
+			// the parameterized controller route was excluded from the base url, so substitute it here
+			if (method.HasControllerRouteParameter) {
+				segments.AddRange(method.ControllerRouteSegments.Select(x => BuildRouteSegment(method, x)));
+				if (method.RouteSegments.Any()) {
+					segments.Add(new StringLiteralExpression("/"));
+				}
 			}
 			segments.AddRange(method.RouteSegments.Select(x => BuildRouteSegment(method, x)));
 			return new ScopedVariableExpression {

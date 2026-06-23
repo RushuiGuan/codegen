@@ -112,7 +112,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 					Identifier = new IdentifierNameExpression("path"),
 				},
 				Expression = new StringInterpolationExpression {
-					Items = { BuildRouteSegments(method.RouteSegments) },
+					Items = { BuildRouteSegments(method) },
 				}
 			};
 		}
@@ -274,24 +274,36 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 			};
 		}
 
-		IEnumerable<IExpression> BuildRouteSegments(IEnumerable<IRouteSegment> segments) {
-			yield return new IdentifierNameExpression("ControllerPath");
-			if (segments.Any()) {
+		IEnumerable<IExpression> BuildRouteSegments(MethodInfo method) {
+			// when the controller route carries a parameter it cannot be emitted as the ControllerPath
+			// const, so substitute its segments inline; otherwise keep using the const prefix
+			if (method.HasControllerRouteParameter) {
+				foreach (var segment in method.ControllerRouteSegments) {
+					yield return BuildRouteSegment(segment);
+				}
+			} else {
+				yield return new IdentifierNameExpression("ControllerPath");
+			}
+			if (method.RouteSegments.Any()) {
 				yield return new StringLiteralExpression("/");
 			}
-			foreach (var segment in segments) {
-				if (segment is RouteParameterSegment routeParam) {
-					var type = routeParam.ParameterInfo?.Type;
-					if (type.Is(compilation.DateTime()) || type.Is(compilation.DateTimeOffset()) || type.Is(compilation.TimeOnly()) || type.Is(compilation.DateOnly())) {
-						yield return new InvocationExpression {
-							CallableExpression = new IdentifierNameExpression($"{routeParam.Text}.ISO8601String"),
-						};
-					} else {
-						yield return new IdentifierNameExpression(routeParam.Text);
-					}
+			foreach (var segment in method.RouteSegments) {
+				yield return BuildRouteSegment(segment);
+			}
+		}
+
+		IExpression BuildRouteSegment(IRouteSegment segment) {
+			if (segment is RouteParameterSegment routeParam) {
+				var type = routeParam.ParameterInfo?.Type;
+				if (type.Is(compilation.DateTime()) || type.Is(compilation.DateTimeOffset()) || type.Is(compilation.TimeOnly()) || type.Is(compilation.DateOnly())) {
+					return new InvocationExpression {
+						CallableExpression = new IdentifierNameExpression($"{routeParam.Text}.ISO8601String"),
+					};
 				} else {
-					yield return new StringLiteralExpression(segment.Text);
+					return new IdentifierNameExpression(routeParam.Text);
 				}
+			} else {
+				return new StringLiteralExpression(segment.Text);
 			}
 		}
 

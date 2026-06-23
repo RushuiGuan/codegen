@@ -39,16 +39,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 							new GetterDeclaration("endPoint") {
 								ReturnType = Defined.Types.String(),
 								Body = {
-									new ReturnExpression(
-										new InfixExpression {
-											Operator = new Operator("+"),
-											Left = new InvocationExpression {
-												CallableExpression = new MultiPartIdentifierNameExpression("this", "config", "endpoint"),
-												Arguments = new ListOfNodes<IExpression> { new StringLiteralExpression(settings.EndPointName) },
-											},
-											Right = new StringLiteralExpression(model.Route),
-										}
-									)
+									new ReturnExpression(BuildEndPoint(model))
 								},
 							}
 						],
@@ -78,6 +69,24 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 			};
 		}
 
+		IExpression BuildEndPoint(ControllerInfo model) {
+			var configEndpoint = new InvocationExpression {
+				CallableExpression = new MultiPartIdentifierNameExpression("this", "config", "endpoint"),
+				Arguments = new ListOfNodes<IExpression> { new StringLiteralExpression(settings.EndPointName) },
+			};
+			// a parameterized controller route cannot be part of the shared endPoint; it is substituted
+			// per-call as part of each method's relativeUrl instead
+			if (model.HasRouteParameter) {
+				return configEndpoint;
+			} else {
+				return new InfixExpression {
+					Operator = new Operator("+"),
+					Left = configEndpoint,
+					Right = new StringLiteralExpression(model.Route),
+				};
+			}
+		}
+
 		// has to do this since typescript doesn't support methods of the same name
 		IEnumerable<(MethodInfo Method, int Index)> GroupMethods(ControllerInfo model) {
 			foreach (var group in model.Methods.GroupBy(x => x.Name)) {
@@ -101,7 +110,7 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 				Body = {
 					new ScopedVariableExpression("relativeUrl") {
 						IsConstant = true,
-						Assignment = new StringInterpolationExpression(method.RouteSegments.Select(x => BuildRouteSegment(method, x)))
+						Assignment = new StringInterpolationExpression(BuildRelativeUrlSegments(method))
 					},
 					CreateHttpInvocationExpression(method)
 				},
@@ -111,6 +120,22 @@ namespace Albatross.CodeGen.WebClient.TypeScript {
 		const string TimeOnlyFormat = "HH:mm:ss.SSS";
 		const string DateOnlyFormat = "yyyy-MM-dd";
 		const string DateTimeFormat = "yyyy-MM-ddTHH:mm:ssXXX";
+
+		// prepends the parameterized controller route segments (with substitution) to the method route
+		// when the controller route carries a parameter; otherwise the controller route lives in endPoint
+		IEnumerable<IExpression> BuildRelativeUrlSegments(MethodInfo method) {
+			if (method.HasControllerRouteParameter) {
+				foreach (var segment in method.ControllerRouteSegments) {
+					yield return BuildRouteSegment(method, segment);
+				}
+				if (method.RouteSegments.Any()) {
+					yield return new StringLiteralExpression("/");
+				}
+			}
+			foreach (var segment in method.RouteSegments) {
+				yield return BuildRouteSegment(method, segment);
+			}
+		}
 
 		IExpression BuildRouteSegment(MethodInfo method, IRouteSegment segment) {
 			if (segment is RouteParameterSegment parameterSegment) {

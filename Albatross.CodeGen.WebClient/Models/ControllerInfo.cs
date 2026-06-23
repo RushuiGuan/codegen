@@ -26,6 +26,12 @@ namespace Albatross.CodeGen.WebClient.Models {
 			}
 		}
 		public string Route { get; set; }
+		/// <summary>
+		/// The controller-level <see cref="Route"/> parsed into segments.  A parameterized segment indicates
+		/// the controller route carries a route parameter shared by all of its methods.
+		/// </summary>
+		public IEnumerable<IRouteSegment> RouteSegments => this.Route.GetRouteSegments();
+		public bool HasRouteParameter => this.RouteSegments.Any(x => x is RouteParameterSegment);
 		public List<MethodInfo> Methods { get; } = new List<MethodInfo>();
 		public bool IsObsolete { get; set; }
 		public bool RequiresAuthentication { get; }
@@ -40,7 +46,7 @@ namespace Albatross.CodeGen.WebClient.Models {
 
 			foreach (var methodSymbol in controller.GetMembers().OfType<IMethodSymbol>()) {
 				if (methodSymbol.GetAttributes().Any(x => x.AttributeClass?.BaseType?.GetFullName() == My.HttpMethodAttributeClassName)) {
-					Methods.Add(new MethodInfo(compilation, methodSymbol));
+					Methods.Add(new MethodInfo(compilation, methodSymbol, this.Route));
 				}
 			}
 		}

@@ -102,6 +102,35 @@ public class DemoDto { public int Id { get; set; } }
 	}
 
 	[Fact]
+	public async Task Convert_ShouldSubstituteControllerLevelRouteParameter() {
+		const string controllerRouteParamCode = """
+[Microsoft.AspNetCore.Mvc.Route("api/account/{accountId}/[controller]")]
+public class DemoController : Microsoft.AspNetCore.Mvc.ControllerBase {
+	[Microsoft.AspNetCore.Mvc.HttpGet("item/{id}")]
+	public System.Threading.Tasks.Task<int> Get(int accountId, int id) => throw null!;
+}
+""";
+		var compilation = await (AspNetCoreStubs + controllerRouteParamCode).CreateNet8CompilationAsync();
+		var controllerSymbol = compilation.GetRequiredSymbol("DemoController");
+		var model = new ControllerInfo(compilation, controllerSymbol);
+		var settings = new CSharpWebClientSettings { Namespace = "Demo.Client" };
+
+		var converter = new ConvertWebApiToCSharpFile(
+			new CompilationFactory(compilation),
+			new StaticSettingsFactory(settings),
+			new DefaultTypeConverter(new Dictionary<string, string>()));
+		var file = converter.Convert(model);
+		using var writer = new StringWriter();
+		file.Generate(writer);
+		var text = writer.ToString().NormalizeLineEnding()!;
+
+		// the controller route parameter is substituted inline, not left as a literal or pushed to the query string
+		text.Should().Contain("$\"api/account/{accountId}/demo/item/{id}\"");
+		text.Should().NotContain("AddQueryString");
+		text.Should().Contain("public async Task<int> Get(int accountId, int id, CancellationToken cancellationToken)");
+	}
+
+	[Fact]
 	public async Task Convert_ShouldOmitConstructor_WhenConfigured() {
 		var compilation = await (AspNetCoreStubs + ControllerCode).CreateNet8CompilationAsync();
 		var controllerSymbol = compilation.GetRequiredSymbol("DemoController");

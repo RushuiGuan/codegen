@@ -9,20 +9,25 @@ namespace Albatross.CodeGen.WebClient.Models {
 	public record class MethodInfo {
 		private readonly Compilation compilation;
 
-		public MethodInfo(Compilation compilation, IMethodSymbol symbol) {
+		public MethodInfo(Compilation compilation, IMethodSymbol symbol, string controllerRoute = "") {
 			this.compilation = compilation;
 			this.Name = symbol.Name;
 			this.ReturnType = GetReturnType(symbol.ReturnType);
+			var controllerRouteSegments = controllerRoute.GetRouteSegments().ToArray();
 			var routeSegments = symbol.GetRouteText().GetRouteSegments().ToArray();
+			// match parameters against both the controller-level and method-level route templates so
+			// that controller route parameters are classified as FromRoute and bound to their segment
+			var allRouteSegments = controllerRouteSegments.Concat(routeSegments).ToArray();
 			this.HttpMethod = GetHttpMethod(symbol);
 			foreach (var parameter in symbol.Parameters) {
-				var paramInfo = new ParameterInfo(compilation, parameter, routeSegments);
+				var paramInfo = new ParameterInfo(compilation, parameter, allRouteSegments);
 				if (paramInfo.TypeText == "System.Threading.CancellationToken") {
 					this.CanCancel = true;
 				} else {
 					this.Parameters.Add(paramInfo);
 				}
 			}
+			this.ControllerRouteSegments = controllerRouteSegments;
 			this.RouteSegments = routeSegments;
 			this.IsObsolete = symbol.GetAttributes().Any(x => x.AttributeClass?.GetFullName() == My.ObsoleteAttribute_ClassName);
 			this.RequiresAuthentication = symbol.GetAttributes().Any(x => x.AttributeClass?.GetFullName() == My.AuthorizeAttribute_ClassName);
@@ -35,6 +40,12 @@ namespace Albatross.CodeGen.WebClient.Models {
 		[JsonIgnore]
 		public ITypeSymbol ReturnType { get; set; }
 		public string ReturnTypeText => ReturnType.GetFullName();
+		/// <summary>
+		/// Route segments declared at the controller level (via its [Route] template).  These carry the
+		/// route parameters that are shared by every method of the controller.
+		/// </summary>
+		public IEnumerable<IRouteSegment> ControllerRouteSegments { get; } = System.Array.Empty<IRouteSegment>();
+		public bool HasControllerRouteParameter => ControllerRouteSegments.Any(x => x is RouteParameterSegment);
 		public IEnumerable<IRouteSegment> RouteSegments { get; }
 		public List<ParameterInfo> Parameters { get; } = new List<ParameterInfo>();
 		public bool HasQueryStringParameter => Parameters.Any(x => x.WebType == ParameterType.FromQuery);

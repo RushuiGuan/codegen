@@ -81,6 +81,35 @@ public class SampleController : Microsoft.AspNetCore.Mvc.ControllerBase {
 		}
 
 		[Fact]
+		public async Task ControllerInfo_ShouldBindControllerLevelRouteParameters() {
+			var code = AspNetCoreStubs + """
+[Microsoft.AspNetCore.Mvc.Route("api/account/{accountId}/[controller]")]
+public class SampleController : Microsoft.AspNetCore.Mvc.ControllerBase {
+	[Microsoft.AspNetCore.Mvc.HttpGet("item/{id}")]
+	public System.Threading.Tasks.Task<int> Get(int accountId, int id) => throw null!;
+}
+""";
+			var compilation = await code.CreateNet8CompilationAsync();
+			var symbol = compilation.GetRequiredSymbol("SampleController");
+			var model = new ControllerInfo(compilation, symbol);
+
+			model.Route.Should().Be("api/account/{accountId}/sample");
+			model.HasRouteParameter.Should().BeTrue();
+			model.RouteSegments.OfType<RouteParameterSegment>().Select(x => x.Text).Should().BeEquivalentTo(["accountId"]);
+
+			var getMethod = model.Methods.Single(x => x.Name == "Get");
+			getMethod.HasControllerRouteParameter.Should().BeTrue();
+			// the controller-level route parameter must be classified as FromRoute, not FromQuery
+			getMethod.Parameters.Single(x => x.Name == "accountId").WebType.Should().Be(ParameterType.FromRoute);
+			getMethod.Parameters.Single(x => x.Name == "id").WebType.Should().Be(ParameterType.FromRoute);
+			getMethod.HasQueryStringParameter.Should().BeFalse();
+
+			// the controller route parameter segment must be bound to its parameter for generation
+			var accountIdSegment = getMethod.ControllerRouteSegments.OfType<RouteParameterSegment>().Single(x => x.Text == "accountId");
+			accountIdSegment.RequiredParameterInfo.Name.Should().Be("accountId");
+		}
+
+		[Fact]
 		public async Task ControllerInfo_ApplyMethodFilters_ShouldRemoveFilteredMethods() {
 			var code = AspNetCoreStubs + """
 [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]

@@ -76,6 +76,57 @@ public class DemoController : Microsoft.AspNetCore.Mvc.ControllerBase {
 		text.Should().Contain("response = await self._client.post(request_url, headers = {\"Content-Type\": \"text/plain\"}, content = body)");
 	}
 
+	const string ControllerRouteParamCode = """
+[Microsoft.AspNetCore.Mvc.Route("api/account/{accountId}/[controller]")]
+public class DemoController : Microsoft.AspNetCore.Mvc.ControllerBase {
+	[Microsoft.AspNetCore.Mvc.HttpGet("item/{id}")]
+	public System.Threading.Tasks.Task<int> Get(int accountId, int id) => throw null!;
+}
+""";
+
+	[Fact]
+	public async Task Convert_ShouldSubstituteControllerLevelRouteParameter_Sync() {
+		var compilation = await (AspNetCoreStubs + ControllerRouteParamCode).CreateNet8CompilationAsync();
+		var model = new ControllerInfo(compilation, compilation.GetRequiredSymbol("DemoController"));
+		var settings = new PythonWebClientSettings { Async = false };
+		var typeConverter = TypeConverterFactory.Build(compilation, settings);
+		var converter = new ConvertControllerModelToPythonFile(
+			new CompilationFactory(compilation),
+			new StaticSettingsFactory(settings),
+			typeConverter);
+
+		using var writer = new StringWriter();
+		converter.Convert(model).Generate(writer);
+		var text = writer.ToString().NormalizeLineEnding()!;
+
+		// the parameterized controller route is excluded from the base url and substituted per-call
+		text.Should().Contain("self._base_url = base_url.rstrip('/')");
+		text.Should().NotContain("/api/account/{accountId}/demo");
+		text.Should().Contain("request_url = f\"{self._base_url}/api/account/{account_id}/demo/item/{id}\"");
+		text.Should().Contain("def get(self, account_id: int, id: int) -> int:");
+	}
+
+	[Fact]
+	public async Task Convert_ShouldSubstituteControllerLevelRouteParameter_Async() {
+		var compilation = await (AspNetCoreStubs + ControllerRouteParamCode).CreateNet8CompilationAsync();
+		var model = new ControllerInfo(compilation, compilation.GetRequiredSymbol("DemoController"));
+		var settings = new PythonWebClientSettings { Async = true };
+		var typeConverter = TypeConverterFactory.Build(compilation, settings);
+		var converter = new ConvertControllerModelToPythonFile(
+			new CompilationFactory(compilation),
+			new StaticSettingsFactory(settings),
+			typeConverter);
+
+		using var writer = new StringWriter();
+		converter.Convert(model).Generate(writer);
+		var text = writer.ToString().NormalizeLineEnding()!;
+
+		// the base url no longer carries the controller route; it is substituted into the relative request url
+		text.Should().Contain("self._base_url = base_url.rstrip('/')");
+		text.Should().Contain("request_url = f\"api/account/{account_id}/demo/item/{id}\"");
+		text.Should().Contain("async def get(self, account_id: int, id: int) -> int:");
+	}
+
 	[Fact]
 	public async Task Convert_ShouldGenerateSyncRequestsClient_WhenAsyncDisabled() {
 		var compilation = await (AspNetCoreStubs + ControllerCode).CreateNet8CompilationAsync();
