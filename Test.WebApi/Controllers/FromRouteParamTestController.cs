@@ -1,17 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using System;
 using Test.Dto.Enums;
 
 namespace Test.WebApi.Controllers {
-	[Route("api/from-routing-param-test")]
+	[Route("api/from-routing-param-test/{tenant}")]
 	[ApiController]
 	public class FromRoutingParamTestController : ControllerBase {
 		private readonly ILogger logger;
 
 		public FromRoutingParamTestController(ILogger logger) {
 			this.logger = logger;
+		}
+
+		[HttpGet("tenantid")]
+		public int GetTenantId([FromRoute] string tenant) {
+			return 1;
 		}
 
 		[HttpGet("implicit-route/{name}/{id}")]
