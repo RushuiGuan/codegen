@@ -19,10 +19,10 @@ namespace Test.WebApi.Controllers {
 		}
 
 		[HttpGet("implicit-route/{name}/{id}")]
-		public void ImplicitRoute(string name, int id) { }
+		public void ImplicitRoute([FromRoute] string tenant, string name, int id) { }
 
 		[HttpGet("explicit-route/{name}/{id}")]
-		public void ExplicitRoute([FromRoute] string name, [FromRoute] int id) { }
+		public void ExplicitRoute([FromRoute] string tenant, [FromRoute] string name, [FromRoute] int id) { }
 
 		[HttpGet("wild-card-route-double/{id}/{**name}")]
 		public void WildCardRouteDouble([FromRoute] string name, [FromRoute] int id) { }
