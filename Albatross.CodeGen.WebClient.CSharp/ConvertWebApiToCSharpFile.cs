@@ -193,9 +193,7 @@ namespace Albatross.CodeGen.WebClient.CSharp {
 
 		IExpression GetExecuteWithVoidFunction() {
 			return new InvocationExpression {
-				CallableExpression = new IdentifierNameExpression("this.client.Send") {
-					GenericArguments = { Defined.Types.String }
-				},
+				CallableExpression = new IdentifierNameExpression("this.client.Send"),
 				Arguments = {
 					new IdentifierNameExpression("requestMsg"),
 					new IdentifierNameExpression("this.jsonSerializerOptions"),
