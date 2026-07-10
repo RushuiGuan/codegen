@@ -3,19 +3,10 @@ Albatross.CodeGen
 Albatross.CodeGen.TypeScript
 Albatross.CodeGen.Python
 Albatross.CodeGen.CSharp
-Albatross.CodeGen.CommandLine
+Albatross.CodeGen.SymbolProviders
 
 # tests
 Albatross.CodeGen.UnitTest
 Albatross.CodeGen.CSharp.UnitTest
-Albatross.CodeGen.WebClient.CSharp.UnitTest
 Albatross.CodeGen.Python.UnitTest
-Albatross.CodeGen.WebClient.Python.UnitTest
 Albatross.CodeGen.TypeScript.UnitTest
-Albatross.CodeGen.WebClient.UnitTest
-
-# apps
-Albatross.CodeGen.CommandLine
-
-# services
-Test.WebApi

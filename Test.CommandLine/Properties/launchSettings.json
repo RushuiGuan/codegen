@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Test.CommandLine": {
-      "commandName": "Project",
-      "commandLineArgs": "test-redirect --log debug"
-    }
-  }
-}
