@@ -12,9 +12,10 @@ namespace Albatross.CodeGen.CSharp.TypeConversions {
 		public DefaultTypeConverter(IDictionary<string, string> customTypeMapping) {
 			this.customTypeMapping = customTypeMapping;
 		}
+		public DefaultTypeConverter() : this(new Dictionary<string, string>()) { }
 
 		public bool UseQualifiedNames { get; set; } = false;
-		
+
 		object IConvertObject<ITypeSymbol>.Convert(ITypeSymbol from) {
 			return Convert(from);
 		}
@@ -61,7 +62,7 @@ namespace Albatross.CodeGen.CSharp.TypeConversions {
 			}
 			if (symbol.TypeKind == TypeKind.Dynamic) {
 				return new DynamicTypeExpression();
-			}else if (symbol is INamedTypeSymbol namedTypeSymbol) {
+			} else if (symbol is INamedTypeSymbol namedTypeSymbol) {
 				if (namedTypeSymbol.IsGenericTypeDefinition()) {
 					throw new InvalidOperationException("Cannot convert generic type definition");
 				} else if (namedTypeSymbol.IsGenericType) {
