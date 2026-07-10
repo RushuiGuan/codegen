@@ -22,4 +22,7 @@
 			<PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Humanizer.Core" Version="3.0.10" />
+	</ItemGroup>
 </Project>

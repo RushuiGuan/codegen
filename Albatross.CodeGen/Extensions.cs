@@ -1,10 +1,10 @@
-﻿using Albatross.Reflection;
-using Albatross.Text;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using Albatross.Text;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace Albatross.CodeGen {

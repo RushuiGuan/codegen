@@ -31,7 +31,6 @@ var compilation = await factory.CreateAsync("MyProject.csproj");
 ## Dependencies
 
 - Microsoft.CodeAnalysis.CSharp 4.10.0
-- Albatross.Reflection 8.0.7
 - Albatross.Text 9.0.3
 - Albatross.CodeAnalysis 8.0.3
 

@@ -23,4 +23,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+	<PropertyGroup>
+		<NoWarn>1701;1702;NU1608</NoWarn>
+	</PropertyGroup>
 </Project>

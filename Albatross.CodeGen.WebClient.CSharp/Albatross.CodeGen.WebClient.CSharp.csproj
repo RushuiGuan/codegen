@@ -7,6 +7,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Albatross.CodeGen.CSharp\Albatross.CodeGen.CSharp.csproj" />
 		<ProjectReference Include="..\Albatross.CodeGen.WebClient\Albatross.CodeGen.WebClient.csproj" />
+		<PackageReference Include="Albatross.Testing" Version="8.0.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\icon.png">
