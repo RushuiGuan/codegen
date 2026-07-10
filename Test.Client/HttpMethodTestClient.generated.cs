@@ -19,21 +19,21 @@ namespace Test.Client {
 				.WithMethod(HttpMethod.Delete)
 				.WithRelativeUrl($"{ControllerPath}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task Post(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task Patch(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Patch)
 				.WithRelativeUrl($"{ControllerPath}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<int> Get(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -47,7 +47,7 @@ namespace Test.Client {
 				.WithMethod(HttpMethod.Put)
 				.WithRelativeUrl($"{ControllerPath}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

@@ -20,68 +20,68 @@ namespace Test.Client {
 			using var requestMsg = builder.Build();
 			return await this.client.ExecuteOrThrowStruct<int>(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
-		public async Task ImplicitRoute(string name, int id, CancellationToken cancellationToken) {
+		public async Task ImplicitRoute(string tenant, string name, int id, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"api/from-routing-param-test/{tenant}/implicit-route/{name}/{id}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
-		public async Task ExplicitRoute(string name, int id, CancellationToken cancellationToken) {
+		public async Task ExplicitRoute(string tenant, string name, int id, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"api/from-routing-param-test/{tenant}/explicit-route/{name}/{id}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
-		public async Task WildCardRouteDouble(string name, int id, CancellationToken cancellationToken) {
+		public async Task WildCardRouteDouble(string tenant, string name, int id, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"api/from-routing-param-test/{tenant}/wild-card-route-double/{id}/{name}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
-		public async Task WildCardRouteSingle(string name, int id, CancellationToken cancellationToken) {
+		public async Task WildCardRouteSingle(string tenant, string name, int id, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"api/from-routing-param-test/{tenant}/wild-card-route-single/{id}/{name}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
-		public async Task DateTimeRoute(System.DateTime date, int id, CancellationToken cancellationToken) {
+		public async Task DateTimeRoute(string tenant, System.DateTime date, int id, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"api/from-routing-param-test/{tenant}/date-time-route/{date.ISO8601()}/{id}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
-		public async Task DateOnlyRoute(System.DateOnly date, int id, CancellationToken cancellationToken) {
+		public async Task DateOnlyRoute(string tenant, System.DateOnly date, int id, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"api/from-routing-param-test/{tenant}/date-only-route/{date.ISO8601()}/{id}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
-		public async Task DateTimeOffsetRoute(System.DateTimeOffset date, int id, CancellationToken cancellationToken) {
+		public async Task DateTimeOffsetRoute(string tenant, System.DateTimeOffset date, int id, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"api/from-routing-param-test/{tenant}/datetimeoffset-route/{date.ISO8601()}/{id}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
-		public async Task TimeOnlyRoute(System.TimeOnly time, int id, CancellationToken cancellationToken) {
+		public async Task TimeOnlyRoute(string tenant, System.TimeOnly time, int id, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"api/from-routing-param-test/{tenant}/timeonly-route/{time.ISO8601()}/{id}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
-		public async Task EnumRoute(Test.Dto.Enums.MyEnum value, int id, CancellationToken cancellationToken) {
+		public async Task EnumRoute(string tenant, Test.Dto.Enums.MyEnum value, int id, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Get)
 				.WithRelativeUrl($"api/from-routing-param-test/{tenant}/enum-route/{value}/{id}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

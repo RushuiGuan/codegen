@@ -10,7 +10,7 @@
 		<PackageReference Include="Albatross.Text" Version="9.0.3" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Albatross.Hosting" Version="10.1.0" />
+		<PackageReference Include="Albatross.Hosting" Version="10.2.0-rc.140" />
 		<ProjectReference Include="..\Test.Dto\Test.Dto.csproj" />
 	</ItemGroup>
 	<ItemGroup>

@@ -8,6 +8,7 @@ namespace Test.WithInterface.Client {
 				.AddTypedClient<ICancellationTokenTestClient, CancellationTokenTestClient>()
 				.AddTypedClient<IControllerRouteTestClient, ControllerRouteTestClient>()
 				.AddTypedClient<ICustomJsonSettingsClient, CustomJsonSettingsClient>()
+				.AddTypedClient<ICustomRouteTypeClient, CustomRouteTypeClient>()
 				.AddTypedClient<IDuplicateNameTestClient, DuplicateNameTestClient>()
 				.AddTypedClient<IFilteredMethodClient, FilteredMethodClient>()
 				.AddTypedClient<IFromBodyParamTestClient, FromBodyParamTestClient>()

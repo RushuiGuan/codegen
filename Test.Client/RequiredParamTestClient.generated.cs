@@ -68,7 +68,7 @@ namespace Test.Client {
 				.WithRelativeUrl($"{ControllerPath}/required-post-param");
 			builder.CreateJsonRequest<Test.Dto.Classes.MyDto>(dto);
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<string> RequiredStringArray(string[] values, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()

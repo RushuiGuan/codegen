@@ -21,8 +21,8 @@ namespace Test.WithInterface.Client {
 			var builder = new RequestBuilder()
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}");
-			using var request = builder.Build();
-			await this.client.Send<string>(request, this.jsonSerializerOptions, cancellationToken);
+			using var requestMsg = builder.Build();
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

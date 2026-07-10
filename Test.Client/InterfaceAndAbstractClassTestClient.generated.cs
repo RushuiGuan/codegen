@@ -20,7 +20,7 @@ namespace Test.Client {
 				.WithRelativeUrl($"{ControllerPath}/interface-as-param");
 			builder.AddQueryStringIfSet("command", command);
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task SubmitByAbstractClass(Test.Dto.Classes.AbstractClass command, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -28,7 +28,7 @@ namespace Test.Client {
 				.WithRelativeUrl($"{ControllerPath}/abstract-class-as-param");
 			builder.AddQueryStringIfSet("command", command);
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task<Test.Dto.Classes.ICommand> ReturnInterfaceAsync(CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()

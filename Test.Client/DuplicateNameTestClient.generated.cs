@@ -20,7 +20,7 @@ namespace Test.Client {
 				.WithRelativeUrl($"{ControllerPath}/by-id");
 			builder.AddQueryString("id", id);
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 		public async Task Submit(string name, CancellationToken cancellationToken) {
 			var builder = new RequestBuilder()
@@ -28,7 +28,7 @@ namespace Test.Client {
 				.WithRelativeUrl($"{ControllerPath}/by-name");
 			builder.AddQueryStringIfSet("name", name);
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }

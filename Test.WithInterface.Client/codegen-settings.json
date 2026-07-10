@@ -23,5 +23,8 @@
     {
       "exclude": "FilteredByAll$"
     }
-  ]
+  ],
+  "customTypeMapping": {
+    "Test.WebApi.Controllers.EntityName": "string"
+  }
 }

@@ -25,24 +25,24 @@ namespace Test.WebApi.Controllers {
 		public void ExplicitRoute([FromRoute] string tenant, [FromRoute] string name, [FromRoute] int id) { }
 
 		[HttpGet("wild-card-route-double/{id}/{**name}")]
-		public void WildCardRouteDouble([FromRoute] string name, [FromRoute] int id) { }
+		public void WildCardRouteDouble([FromRoute] string tenant, [FromRoute] string name, [FromRoute] int id) { }
 
 		[HttpGet("wild-card-route-single/{id}/{*name}")]
-		public void WildCardRouteSingle([FromRoute] string name, [FromRoute] int id) { }
+		public void WildCardRouteSingle([FromRoute] string tenant, [FromRoute] string name, [FromRoute] int id) { }
 
 		[HttpGet("date-time-route/{date}/{id}")]
-		public void DateTimeRoute([FromRoute] DateTime date, [FromRoute] int id) { }
+		public void DateTimeRoute([FromRoute] string tenant, [FromRoute] DateTime date, [FromRoute] int id) { }
 
 		[HttpGet("date-only-route/{date}/{id}")]
-		public void DateOnlyRoute([FromRoute] DateOnly date, [FromRoute] int id) { }
+		public void DateOnlyRoute([FromRoute] string tenant, [FromRoute] DateOnly date, [FromRoute] int id) { }
 
 		[HttpGet("datetimeoffset-route/{date}/{id}")]
-		public void DateTimeOffsetRoute([FromRoute] DateTimeOffset date, [FromRoute] int id) { }
+		public void DateTimeOffsetRoute([FromRoute] string tenant, [FromRoute] DateTimeOffset date, [FromRoute] int id) { }
 
 		[HttpGet("timeonly-route/{time}/{id}")]
-		public void TimeOnlyRoute([FromRoute] TimeOnly time, [FromRoute] int id) { }
+		public void TimeOnlyRoute([FromRoute] string tenant, [FromRoute] TimeOnly time, [FromRoute] int id) { }
 
 		[HttpGet("enum-route/{value}/{id}")]
-		public void EnumRoute([FromRoute] MyEnum value, [FromRoute] int id) { }
+		public void EnumRoute([FromRoute] string tenant, [FromRoute] MyEnum value, [FromRoute] int id) { }
 	}
 }

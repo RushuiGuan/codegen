@@ -19,7 +19,7 @@ namespace Test.Client {
 				.WithMethod(HttpMethod.Post)
 				.WithRelativeUrl($"{ControllerPath}");
 			using var requestMsg = builder.Build();
-			await this.client.Send<string>(requestMsg, this.jsonSerializerOptions, cancellationToken);
+			await this.client.Send(requestMsg, this.jsonSerializerOptions, cancellationToken);
 		}
 	}
 }
